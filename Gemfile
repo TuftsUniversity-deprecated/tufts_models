@@ -25,3 +25,4 @@ gem "devise"
 gem "bootstrap-sass"
 gem 'unicorn'
 gem 'jettywrapper'
+gem 'rspec-rails'
