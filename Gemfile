@@ -24,3 +24,4 @@ gem 'jquery-rails'
 gem "devise"
 gem "bootstrap-sass"
 gem 'unicorn'
+gem 'jettywrapper'

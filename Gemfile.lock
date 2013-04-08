@@ -85,8 +85,6 @@ GEM
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
-    devise-guests (0.3.1)
-      devise
     equivalent-xml (0.3.0)
       nokogiri (>= 1.4.3)
     erubis (2.7.0)
@@ -245,8 +243,8 @@ DEPENDENCIES
   bootstrap-sass
   coffee-rails (~> 3.2.1)
   devise
-  devise-guests (~> 0.3)
   fcrepo_admin!
+  jettywrapper
   jquery-rails
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
