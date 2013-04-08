@@ -3,6 +3,7 @@ Tufts::Application.routes.draw do
 
   Blacklight.add_routes(self)
   HydraHead.add_routes(self)
+  mount FcrepoAdmin::Engine => '/admin', :as=> 'fcrepo_admin'
 
   devise_for :users
 

@@ -30,4 +30,6 @@ class SolrDocument
                          :language => "language_facet",
                          :format => "format"
                          )
+
+  use_extension FcrepoAdmin::SolrDocumentExtension
 end
