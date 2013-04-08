@@ -5,6 +5,7 @@ gem 'rails', '3.2.13'
 gem 'sqlite3'
 
 gem 'fcrepo_admin', github: 'projecthydra/fcrepo-admin'
+gem 'hydra-head'
 
 
 # Gems used only for assets and not required
@@ -26,3 +27,6 @@ gem "bootstrap-sass"
 gem 'unicorn'
 gem 'jettywrapper'
 gem 'rspec-rails'
+
+gem 'chronic' # for lib/tufts/model_methods.rb
+gem 'titleize' # for lib/tufts/model_methods.rb
