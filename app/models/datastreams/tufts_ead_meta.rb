@@ -1,4 +1,4 @@
-class TuftsEADMeta < TuftsDatastream
+class TuftsEADMeta < ActiveFedora::OmDatastream
 
   set_terminology do |t|
     t.root(:path => "ead", :xmlns => "http://dca.tufts.edu/schema/ead", :schema => "http://dca.lib.tufts.edu/schema/ead/ead.xsd")
