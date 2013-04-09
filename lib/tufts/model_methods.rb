@@ -520,7 +520,7 @@ module Tufts
       when "info:fedora/cm:Object.Generic","info:fedora/afmodel:TuftsGenericObject"
         "Generic Objects"
       else
-        COLLECTION_ERROR_LOG.error "Could not determine Format for : #{pid} with model #{models.to_s}"
+        COLLECTION_ERROR_LOG.error "Could not determine Format for : #{pid} with model #{model.inspect}"
       end
 
       Solrizer.insert_field(solr_doc, 'object_type', model_s, :facetable) if model_s
