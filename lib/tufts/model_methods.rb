@@ -1,8 +1,6 @@
 # COPIED From https://github.com/mkorcy/tdl_hydra_head/blob/master/lib/tufts/model_methods.rb
 require 'chronic'
 
-# Note to self : http://stackoverflow.com/questions/3009477/what-is-rubys-double-colon-all-about
-
 # MISCNOTES:
 # There will be no facet for RCR. There will be no way to reach RCR via browse.
 # 3. There will be a facet for "collection guides", namely EAD, namely the landing page view we discussed on Friday.
@@ -47,12 +45,9 @@ module Tufts
     #  config[:sort_fields] << ['author descending', 'author_sort desc, title_sort asc']
     #  config[:sort_fields] << ['title descending', 'title_sort desc, pub_date_sort desc']
 
-    def index_sort_fields(fedora_object, solr_doc)
-      #PUBDATESORT
-      #moved 
-
+    def index_sort_fields(solr_doc)
       #CREATOR SORT
-      names = fedora_object.datastreams["DCA-META"].get_values(:creator)
+      names = self.datastreams["DCA-META"].get_values(:creator)
 
 
       unless names.empty?
@@ -61,7 +56,7 @@ module Tufts
 
       #TITLE SORT
 
-      titles = fedora_object.datastreams["DCA-META"].get_values(:title)
+      titles = self.datastreams["DCA-META"].get_values(:title)
 
 
       unless titles.empty?
@@ -70,7 +65,7 @@ module Tufts
 
     end
 
-    def index_fulltext(fedora_object, solr_doc)
+    def index_fulltext(solr_doc)
       full_text = ""
 
       # p.datastreams['Archival.xml'].content
@@ -78,79 +73,75 @@ module Tufts
       # doc.xpath('//text()').text.gsub(/[^0-9A-Za-z]/, ' ')
       models = self.relationships(:has_model)
 
-      unless models.nil?
-        models.each { |model|
-          case model
-            when "info:fedora/cm:WP", "info:fedora/afmodel:TuftsWP", "info:fedora/afmodel:TuftsTeiFragmented", "info:fedora/cm:Text.TEI-Fragmented"
-              model_s="Datasets"
-            when "info:fedora/cm:Audio", "info:fedora/afmodel:TuftsAudio"
-              model_s="Audio"
-            when "info:fedora/cm:Image.4DS", "info:fedora/cm:Image.3DS	", "info:fedora/afmodel:TuftsImage"
-              model_s="Image"
-            when "info:fedora/afmodel:TuftsPdf", "info:fedora/cm:Text.FacPub", "info:fedora/afmodel:TuftsFacultyPublication", "info:fedora/cm:Text.PDF"
-              #http://dev-processing01.lib.tufts.edu:8080/tika/TikaPDFExtractionServlet?doc=http://repository01.lib.tufts.edu:8080/fedora/objects/tufts:PB.002.001.00001/datastreams/Archival.pdf/content&amp;chunkList=true'
-              processing_url = Settings.processing_url
-              repository_url = Settings.repository_url
-              unless processing_url == "SKIP"
-               pid = fedora_object.pid.to_s
-               url = processing_url + '/tika/TikaPDFExtractionServlet?doc='+ repository_url +'/fedora/objects/' + pid + '/datastreams/Archival.pdf/content&amp;chunkList=true'
-                puts "#{url}"
-                begin
-                  nokogiri_doc = Nokogiri::XML(open(url).read)
-                  full_text = nokogiri_doc.xpath('//text()').text.gsub(/[^0-9A-Za-z]/, ' ')
-                rescue => e
-                  case e
-                    when OpenURI::HTTPError
-                      puts "HTTPError while indexing full text #{pid}"
-                    when SocketError
-                      puts "SocketError while indexing full text #{pid}"
-                    else
-                      puts "Error while indexing full text #{pid}"
-                  end
-                rescue SystemCallError => e
-                  if e === Errno::ECONNRESET
-                    puts "Connection Reset while indexing full text #{pid}"
-                  else
-                    puts "SystemCallError while indexing full text #{pid}"
-                  end
-                end
-              end
-            when "info:fedora/cm:Text.TEI", "info:fedora/afmodel.TuftsTEI","info:fedora/cm:Audio.OralHistory", "info:fedora/afmodel:TuftsAudioText","info:fedora/cm:Text.EAD", "info:fedora/afmodel:TuftsEAD"
-              #nokogiri_doc = Nokogiri::XML(self.datastreams['Archival.xml'].content)
-	      datastream = fedora_object.datastreams["Archival.xml"]
-              # some objects have inconsistent name for the datastream
-
-              if datastream.nil?
-	        datastream = fedora_object.datastreams["ARCHIVAL_XML"]
-              end	
-
-              unless datastream.nil?
-                nokogiri_doc = Nokogiri::XML(File.open(convert_url_to_local_path(datastream.dsLocation)).read)
-                full_text = nokogiri_doc.xpath('//text()').text.gsub(/[^0-9A-Za-z]/, ' ')
-	      end
-            else
-              model_s="Unclassified"
-          end }
+      if models
+        models.each do |model|
+          # Possible bug. Seems like full_text is overwritten if there are multiple models
+          full_text = case model
+          when "info:fedora/afmodel:TuftsPdf", "info:fedora/cm:Text.FacPub", "info:fedora/afmodel:TuftsFacultyPublication", "info:fedora/cm:Text.PDF"
+            extract_fulltext_from_pdf()
+          when "info:fedora/cm:Text.TEI", "info:fedora/afmodel.TuftsTEI","info:fedora/cm:Audio.OralHistory", "info:fedora/afmodel:TuftsAudioText","info:fedora/cm:Text.EAD", "info:fedora/afmodel:TuftsEAD"
+            extract_fulltext_from_xml()
+          end
+        end
       end
 
       ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "text", full_text)
     end
 
-    def create_facets(fedora_object, solr_doc)
-      index_names_info(fedora_object,solr_doc)
-      index_subject_info(fedora_object,solr_doc)
-      index_collection_info(solr_doc)
-      index_date_info(fedora_object,solr_doc)
-      index_format_info(fedora_object,solr_doc)
-      index_pub_date(fedora_object,solr_doc)
-      index_unstemmed_values(fedora_object,solr_doc)
+    def extract_fulltext_from_xml
+      # some objects have inconsistent name for the datastream
+      datastream = self.datastreams["Archival.xml"] || self.datastreams["ARCHIVAL_XML"]
+
+      return unless datastream && datastream.dsLocation
+      nokogiri_doc = Nokogiri::XML(File.open(convert_url_to_local_path(datastream.dsLocation)).read)
+      nokogiri_doc.xpath('//text()').text.gsub(/[^0-9A-Za-z]/, ' ')
     end
 
-  def index_unstemmed_values(fedora_object, solr_doc)
+    def extract_fulltext_from_pdf
+      #http://dev-processing01.lib.tufts.edu:8080/tika/TikaPDFExtractionServlet?doc=http://repository01.lib.tufts.edu:8080/fedora/objects/tufts:PB.002.001.00001/datastreams/Archival.pdf/content&amp;chunkList=true'
+      processing_url = Settings.processing_url
+      repository_url = Settings.repository_url
+      unless processing_url == "SKIP"
+        url = processing_url + '/tika/TikaPDFExtractionServlet?doc='+ repository_url +'/fedora/objects/' + pid + '/datastreams/Archival.pdf/content&amp;chunkList=true'
+        puts "#{url}"
+        begin
+          nokogiri_doc = Nokogiri::XML(open(url).read)
+          return nokogiri_doc.xpath('//text()').text.gsub(/[^0-9A-Za-z]/, ' ')
+        rescue => e
+          case e
+            when OpenURI::HTTPError
+              puts "HTTPError while indexing full text #{pid}"
+            when SocketError
+              puts "SocketError while indexing full text #{pid}"
+            else
+              puts "Error while indexing full text #{pid}"
+          end
+        rescue SystemCallError => e
+          if e === Errno::ECONNRESET
+            puts "Connection Reset while indexing full text #{pid}"
+          else
+            puts "SystemCallError while indexing full text #{pid}"
+          end
+        end
+      end
+      return
+    end
+
+    def create_facets(solr_doc)
+      index_names_info(solr_doc)
+      index_subject_info(solr_doc)
+      index_collection_info(solr_doc)
+      index_date_info(solr_doc)
+      index_format_info(solr_doc)
+      index_pub_date(solr_doc)
+      index_unstemmed_values(solr_doc)
+    end
+
+  def index_unstemmed_values(solr_doc)
     #collection_id_unstem_search^5000
     #corpname_unstem_search^500
     [:corpname].each { |subject_field|
-      subjects = fedora_object.datastreams["DCA-META"].get_values(subject_field)
+      subjects = self.datastreams["DCA-META"].get_values(subject_field)
 
       subjects.each { |subject|
         unless subject.downcase.include? 'unknown'
@@ -163,7 +154,7 @@ module Tufts
       #persname_unstem_search^500
       #geogname_unstem_search^500
     [:geogname].each { |subject_field|
-      subjects = fedora_object.datastreams["DCA-META"].get_values(subject_field)
+      subjects = self.datastreams["DCA-META"].get_values(subject_field)
 
       subjects.each { |subject|
         unless subject.downcase.include? 'unknown'
@@ -175,7 +166,7 @@ module Tufts
     } #end name_field
 
     [:subject].each { |subject_field|
-      subjects = fedora_object.datastreams["DCA-META"].get_values(subject_field)
+      subjects = self.datastreams["DCA-META"].get_values(subject_field)
 
       subjects.each { |subject|
         unless subject.downcase.include? 'unknown'
@@ -189,7 +180,7 @@ module Tufts
     #funder_unstem_search^500
     #persname_unstem_search^500
     [:persname].each { |name_field|
-      names = fedora_object.datastreams["DCA-META"].get_values(name_field)
+      names = self.datastreams["DCA-META"].get_values(name_field)
 
       names.each { |name|
         unless name.downcase.include? 'unknown'
@@ -199,7 +190,7 @@ module Tufts
       }
     }
     [:creator].each { |name_field|
-      names = fedora_object.datastreams["DCA-META"].get_values(name_field)
+      names = self.datastreams["DCA-META"].get_values(name_field)
 
       names.each { |name|
         unless name.downcase.include? 'unknown'
@@ -209,7 +200,7 @@ module Tufts
       }
     }
     [:title].each { |name_field|
-      names = fedora_object.datastreams["DCA-META"].get_values(name_field)
+      names = self.datastreams["DCA-META"].get_values(name_field)
 
       names.each { |name|
         unless name.downcase.include? 'unknown'
@@ -222,10 +213,10 @@ module Tufts
 
   end
 
-  def index_names_info(fedora_object, solr_doc)
+  def index_names_info(solr_doc)
 
     [:creator, :persname, :corpname].each { |name_field|
-      names = fedora_object.datastreams["DCA-META"].get_values(name_field)
+      names = self.datastreams["DCA-META"].get_values(name_field)
 
       names.each { |name|
         unless name.downcase.include? 'unknown'
@@ -238,10 +229,10 @@ module Tufts
 
   end
 
-  def index_subject_info(fedora_object, solr_doc)
+  def index_subject_info(solr_doc)
 
     [:subject, :corpname, :persname, :geogname].each { |subject_field|
-      subjects = fedora_object.datastreams["DCA-META"].get_values(subject_field)
+      subjects = self.datastreams["DCA-META"].get_values(subject_field)
 
       subjects.each { |subject|
         unless subject.downcase.include? 'unknown'
@@ -375,20 +366,20 @@ module Tufts
     ead_title
   end
 
-  def index_pub_date(fedora_object, solr_doc)
-      dates = fedora_object.datastreams["DCA-META"].get_values(:dateCreated)
+  def index_pub_date(solr_doc)
+      dates = self.DCA_META.get_values(:dateCreated)
       
       if dates.empty?
-        dates = fedora_object.datastreams["DCA-META"].get_values(:temporal)
+        dates = self.DCA_META.get_values(:temporal)
       end
 
       if dates.empty?
-        puts "THIS PID HAS NO DATE TO INDEX :::  #{fedora_object.pid}"
+        puts "THIS PID HAS NO DATE TO INDEX :::  #{pid}"
       else
         date = dates[0]
-	valid_date = Time.new
+        valid_date = Time.new
 
-          date = date.to_s
+        date = date.to_s
 
           if (!date.nil? && !date[/^c/].nil?)
             date = date.split[1..10].join(' ')
@@ -423,7 +414,7 @@ module Tufts
           #end YYYY-MM-DD
 
 	  #handle ua084 collection which has dates set as 0000-00-00
- 	  pid = fedora_object.pid.to_s.downcase
+ 	  pid = self.pid.to_s.downcase
           if pid[/tufts\:ua084/]
 	    date="1980"
           end	
@@ -467,15 +458,15 @@ module Tufts
     #Perhaps these could be 10-year ranges, or perhaps, if it's not too difficult, the ranges could generate
     #automatically based on the available data.
 
-    def index_date_info(fedora_object, solr_doc)
-      dates = fedora_object.datastreams["DCA-META"].get_values(:dateCreated)
+    def index_date_info(solr_doc)
+      dates = self.DCA_META.get_values(:dateCreated)
 
       if dates.empty?
-        dates = fedora_object.datastreams["DCA-META"].get_values(:temporal)
+        dates = self.DCA_META.get_values(:temporal)
       end
 
       if dates.empty?
-        puts "THIS PID HAS NO DATE TO INDEX :::  #{fedora_object.pid}"
+        puts "THIS PID HAS NO DATE TO INDEX :::  #{pid}"
       else
         dates.each do |date|
 
@@ -519,73 +510,43 @@ module Tufts
     #Collection guides Text.EAD
     #Audio Includes audio, captioned audio, oral history.
 
-    def index_format_info(fedora_object,solr_doc)
-      models = fedora_object.relationships(:has_model)
+    def index_format_info(solr_doc)
+      models = self.relationships(:has_model)
+      if models
+        models.each do |model|
+          insert_object_type(solr_doc, model)
+        end 
+      end
+    end
 
-      model_s = nil
+    def insert_object_type(solr_doc, model)
+      model_s = case model
+      when "info:fedora/cm:WP","info:fedora/afmodel:TuftsWP","info:fedora/afmodel:TuftsTeiFragmented","info:fedora/cm:Text.TEI-Fragmented","info:fedora/afmodel:TuftsVotingRecord","info:fedora/cm:VotingRecord"
+        "Datasets"
+      when "info:fedora/cm:Text.EAD", "info:fedora/afmodel:TuftsEAD"
+        "Collection Guides"
+      when "info:fedora/cm:Audio", "info:fedora/afmodel:TuftsAudio","info:fedora/cm:Audio.OralHistory","info:fedora/afmodel:TuftsAudioText"
+        "Audio"
+      when "info:fedora/cm:Image.4DS","info:fedora/cm:Image.3DS","info:fedora/afmodel:TuftsImage","info:fedora/cm:Image.HTML"
+        pid.starts_with?("tufts:MS115") ? "Datasets" : "Images"
+      when "info:fedora/cm:Text.PDF","info:fedora/afmodel:TuftsPdf","info:fedora/afmodel:TuftsTEI","info:fedora/cm:Text.TEI","info:fedora/cm:Text.FacPub","info:fedora/afmodel:TuftsFacultyPublication"
+        pid.starts_with?("tufts:UP") ? "Periodicals" : "Text"
+      when "info:fedora/cm:Object.Generic","info:fedora/afmodel:TuftsGenericObject"
+        "Generic Objects"
+      else
+        COLLECTION_ERROR_LOG.error "Could not determine Format for : #{pid} with model #{models.to_s}"
+      end
 
-        unless models.nil?
-          models.each { |model|
-            case model
-              when "info:fedora/cm:WP","info:fedora/afmodel:TuftsWP","info:fedora/afmodel:TuftsTeiFragmented","info:fedora/cm:Text.TEI-Fragmented","info:fedora/afmodel:TuftsVotingRecord","info:fedora/cm:VotingRecord"
-                model_s="Datasets"
-              when "info:fedora/cm:Text.EAD", "info:fedora/afmodel:TuftsEAD"
-                model_s = "Collection Guides"
-              when "info:fedora/cm:Audio", "info:fedora/afmodel:TuftsAudio","info:fedora/cm:Audio.OralHistory","info:fedora/afmodel:TuftsAudioText"
-                model_s="Audio"
-              when "info:fedora/cm:Image.4DS","info:fedora/cm:Image.3DS","info:fedora/afmodel:TuftsImage","info:fedora/cm:Image.HTML"
-                model_s="Images"
-              when "info:fedora/cm:Text.PDF","info:fedora/afmodel:TuftsPdf","info:fedora/afmodel:TuftsTEI","info:fedora/cm:Text.TEI","info:fedora/cm:Text.FacPub","info:fedora/afmodel:TuftsFacultyPublication"
-                model_s="Text"
-              when "info:fedora/cm:Object.Generic","info:fedora/afmodel:TuftsGenericObject"
-                model_s="Generic Objects"
-            end
-
-         #   if fedora_object.pid.starts_with? 'tufts:UP'
-         #     model_s = "Periodicals"
-         #   end
-
-            #First pass of model assignment done.
-
-            #Newspaper assignment by title
-            #titles = fedora_object.datastreams["DCA-META"].get_values(:title)
-            #
-            #if titles.first.start_with?("Tufts Daily")
-            #  model_s="Newspaper"
-            #end
-
-            #Musical score assignment by subject
-            #subjects = fedora_object.datastreams["DCA-META"].get_values(:subject)
-            #
-            #if subjects.include?("Dagomba drumming")
-            #  model_s="Musical score"
-            #end
-            if (model_s == "Text") && (fedora_object.pid.to_s.starts_with? "tufts:UP")
-              model_s = "Periodicals"
-            end
-
-            if (model_s == "Images") && (fedora_object.pid.to_s.starts_with? "tufts:MS115")
-              model_s="Datasets"
-            end
-
-            if model_s.nil?
-              COLLECTION_ERROR_LOG.error "Could not determine Format for : #{fedora_object.pid} with model #{models.to_s}"
-            else
-              Solrizer.insert_field(solr_doc, 'object_type', model_s, :facetable) 
-            end
+      Solrizer.insert_field(solr_doc, 'object_type', model_s, :facetable) if model_s
 
 
-            # At this point primary classification is complete but there are some outlier cases where we want to
-            # Attribute two classifications to one object, now's the time to do that
-            ##,"info:fedora/cm:Audio.OralHistory","info:fedora/afmodel:TuftsAudioText" -> needs text
-            ##,"info:fedora/cm:Image.HTML" -->needs text
-            if ["info:fedora/cm:Audio.OralHistory","info:fedora/afmodel:TuftsAudioText","info:fedora/cm:Image.HTML"].include? model
-              Solrizer.insert_field(solr_doc, 'object_type', 'Text', :facetable) 
-            end
-
-
-          }
-        end
+      # At this point primary classification is complete but there are some outlier cases where we want to
+      # Attribute two classifications to one object, now's the time to do that
+      ##,"info:fedora/cm:Audio.OralHistory","info:fedora/afmodel:TuftsAudioText" -> needs text
+      ##,"info:fedora/cm:Image.HTML" -->needs text
+      if ["info:fedora/cm:Audio.OralHistory","info:fedora/afmodel:TuftsAudioText","info:fedora/cm:Image.HTML"].include? model
+        Solrizer.insert_field(solr_doc, 'object_type', 'Text', :facetable) 
+      end
     end
   end
 end

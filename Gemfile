@@ -30,3 +30,4 @@ gem 'rspec-rails'
 
 gem 'chronic' # for lib/tufts/model_methods.rb
 gem 'titleize' # for lib/tufts/model_methods.rb
+gem 'settingslogic' # for settings
