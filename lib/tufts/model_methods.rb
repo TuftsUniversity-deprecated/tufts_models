@@ -37,14 +37,6 @@ module Tufts
       }
     end
 
-    #  config[:sort_fields] << ['relevance', 'score desc, pub_date_sort desc, title_sort asc']
-    #  config[:sort_fields] << ['year descending', 'pub_date_sort desc, title_sort asc']
-    #  config[:sort_fields] << ['author ascending', 'author_sort asc, title_sort asc']
-    #  config[:sort_fields] << ['title ascending', 'title_sort asc, pub_date_sort desc']
-    #  config[:sort_fields] << ['year ascending', 'pub_date_sort asc, title_sort asc']
-    #  config[:sort_fields] << ['author descending', 'author_sort desc, title_sort asc']
-    #  config[:sort_fields] << ['title descending', 'title_sort desc, pub_date_sort desc']
-
     def index_sort_fields(solr_doc)
       #CREATOR SORT
       names = self.datastreams["DCA-META"].get_values(:creator)
@@ -67,12 +59,7 @@ module Tufts
 
     def index_fulltext(solr_doc)
       full_text = ""
-
-      # p.datastreams['Archival.xml'].content
-      # doc = Nokogiri::XML(p.datastreams['Archival.xml'].content)
-      # doc.xpath('//text()').text.gsub(/[^0-9A-Za-z]/, ' ')
       models = self.relationships(:has_model)
-
       if models
         models.each do |model|
           # Possible bug. Seems like full_text is overwritten if there are multiple models
