@@ -38,7 +38,7 @@ test:
   png_pages:
     page_location: "/tdr"
   local_object_store: "/tdr"
-  processing_url: "http://stage-processing01.lib.tufts.edu:8080"
+  processing_url: "SKIP"
   repository_url: "http://stage-repository01.lib.tufts.edu:8080"
 production:
   <<: *defaults

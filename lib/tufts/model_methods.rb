@@ -85,29 +85,28 @@ module Tufts
     end
 
     def extract_fulltext_from_pdf
-      #http://dev-processing01.lib.tufts.edu:8080/tika/TikaPDFExtractionServlet?doc=http://repository01.lib.tufts.edu:8080/fedora/objects/tufts:PB.002.001.00001/datastreams/Archival.pdf/content&amp;chunkList=true'
       processing_url = Settings.processing_url
       repository_url = Settings.repository_url
       unless processing_url == "SKIP"
         url = processing_url + '/tika/TikaPDFExtractionServlet?doc='+ repository_url +'/fedora/objects/' + pid + '/datastreams/Archival.pdf/content&amp;chunkList=true'
-        puts "#{url}"
+        logger.info "Processing #{url}"
         begin
           nokogiri_doc = Nokogiri::XML(open(url).read)
           return nokogiri_doc.xpath('//text()').text.gsub(/[^0-9A-Za-z]/, ' ')
         rescue => e
           case e
             when OpenURI::HTTPError
-              puts "HTTPError while indexing full text #{pid}"
+              logger.error "HTTPError while indexing full text #{pid}"
             when SocketError
-              puts "SocketError while indexing full text #{pid}"
+              logger.error "SocketError while indexing full text #{pid}"
             else
-              puts "Error while indexing full text #{pid}"
+              logger.error "Error while indexing full text #{pid}"
           end
         rescue SystemCallError => e
           if e === Errno::ECONNRESET
-            puts "Connection Reset while indexing full text #{pid}"
+            logger.error "Connection Reset while indexing full text #{pid}"
           else
-            puts "SystemCallError while indexing full text #{pid}"
+            logger.error "SystemCallError while indexing full text #{pid}"
           end
         end
       end
