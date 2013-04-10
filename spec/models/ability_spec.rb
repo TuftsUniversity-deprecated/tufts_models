@@ -9,6 +9,7 @@ describe Ability do
     it { should be_able_to(:edit, another_user) }
     it { should be_able_to(:index, Role) }
     it { should be_able_to(:create, Role) }
+    it { should be_able_to(:show, Role) }
   end
 
   describe "a non-admin user" do
@@ -16,6 +17,7 @@ describe Ability do
     it { should_not be_able_to(:edit, another_user) }
     it { should_not be_able_to(:index, Role) }
     it { should_not be_able_to(:create, Role) }
+    it { should_not be_able_to(:show, Role) }
   end
 
 end
