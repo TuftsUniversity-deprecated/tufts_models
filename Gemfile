@@ -18,15 +18,18 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-rails'
+  gem "bootstrap-sass"
 end
 
-gem 'jquery-rails'
-
 gem "devise"
-gem "bootstrap-sass"
-gem 'unicorn'
-gem 'jettywrapper'
-gem 'rspec-rails'
+
+group :development do
+  gem 'unicorn'
+  gem 'jettywrapper'
+  gem 'rspec-rails'
+  gem 'capybara'
+end
 
 gem 'chronic' # for lib/tufts/model_methods.rb
 gem 'titleize' # for lib/tufts/model_methods.rb
