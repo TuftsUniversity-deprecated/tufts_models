@@ -8,6 +8,14 @@ GIT
       mime-types (~> 1.19)
       rails (~> 3.2)
 
+GIT
+  remote: git://github.com/projecthydra/hydra-role-management.git
+  revision: 911fec020410671fc1e41a0dfdbf3677c132449e
+  ref: 911fec0
+  specs:
+    hydra-role-management (0.0.1)
+      cancan
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -98,6 +106,11 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
     fastercsv (1.5.5)
     ffi (1.6.0)
     hike (1.2.1)
@@ -268,8 +281,10 @@ DEPENDENCIES
   chronic
   coffee-rails (~> 3.2.1)
   devise
+  factory_girl_rails
   fcrepo_admin!
   hydra-head
+  hydra-role-management!
   jettywrapper
   jquery-rails
   rails (= 3.2.13)

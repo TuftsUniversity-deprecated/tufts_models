@@ -6,7 +6,8 @@ gem 'sqlite3'
 
 gem 'fcrepo_admin', github: 'projecthydra/fcrepo-admin'
 gem 'hydra-head'
-
+#gem 'hydra-role-management', path: '../hydra-role-management'
+gem 'hydra-role-management', github: 'projecthydra/hydra-role-management', ref: '911fec0'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,8 +28,12 @@ gem "devise"
 group :development do
   gem 'unicorn'
   gem 'jettywrapper'
+end
+
+group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'factory_girl_rails'
 end
 
 gem 'chronic' # for lib/tufts/model_methods.rb
