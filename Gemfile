@@ -7,7 +7,7 @@ gem 'sqlite3'
 gem 'fcrepo_admin', github: 'projecthydra/fcrepo-admin'
 gem 'hydra-head'
 #gem 'hydra-role-management', path: '../hydra-role-management'
-gem 'hydra-role-management', github: 'projecthydra/hydra-role-management', ref: '911fec0'
+gem 'hydra-role-management', github: 'projecthydra/hydra-role-management', ref: '8883687'
 
 # Gems used only for assets and not required
 # in production environments by default.

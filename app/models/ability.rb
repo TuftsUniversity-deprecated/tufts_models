@@ -3,8 +3,8 @@ class Ability
 
   def custom_permissions
     if current_user.admin?
-      can [:index, :edit, :destroy], [User, Role]
-      can :show, Role
+      #can [:index, :edit, :destroy], User
+      can [:show, :add_user, :index], Role
       can :create, :all
     end
   end
