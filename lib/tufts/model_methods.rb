@@ -43,16 +43,14 @@ module Tufts
 
 
       unless names.empty?
-        ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "author_sort", names[0])
+        Solrizer.insert_field(solr_doc, 'author', names[0], :sortable)
       end
 
       #TITLE SORT
 
       titles = self.datastreams["DCA-META"].get_values(:title)
-
-
       unless titles.empty?
-        ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "title_sort", titles[0])
+        Solrizer.insert_field(solr_doc, 'title', titles[0], :sortable)
       end
 
     end
@@ -378,8 +376,6 @@ module Tufts
             valid_date_string = valid_date.strftime("%Y")
  	  end
 
-        # ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "pub_date_i", "#{valid_date_string}")
-        # ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "pub_date_sort", "#{valid_date_string}")
         Solrizer.insert_field(solr_doc, 'pub_date', valid_date_string.to_i, :stored_sortable) 
       end
 
@@ -416,8 +412,6 @@ module Tufts
             if decade_upper >= 2020
               decade_upper ="Present"
             end
-            #::Solrizer::Extractor.insert_solr_field_value(solr_doc, "year_facet", "#{decade_lower} to #{decade_upper}")
-            #::Solrizer::Extractor.insert_solr_field_value(solr_doc, "year_facet", "#{valid_date.year}f")
             Solrizer.insert_field(solr_doc, 'year', "#{decade_lower} to #{decade_upper}", :facetable) 
           end
         end

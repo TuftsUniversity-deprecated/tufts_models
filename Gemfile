@@ -24,6 +24,7 @@ group :assets do
 end
 
 gem "devise"
+gem 'bootstrap_forms'
 
 group :development do
   gem 'unicorn'

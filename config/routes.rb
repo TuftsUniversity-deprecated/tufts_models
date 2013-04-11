@@ -9,6 +9,9 @@ Tufts::Application.routes.draw do
   mount Hydra::RoleManagement::Engine => '/'
 
 
+  resources :records
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

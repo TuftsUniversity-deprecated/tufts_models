@@ -5,9 +5,8 @@ feature 'Admin user creates document' do
     sign_in :admin
   end
   scenario 'with a TuftsAudio' do
-    pending
     visit root_path
-    click_link 'Add Object'
+    click_link 'Create a new object'
 
     select "Audio", from: 'Type' 
   end

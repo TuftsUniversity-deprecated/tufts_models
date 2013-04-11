@@ -1,0 +1,7 @@
+<h1>Create a new record</h1>
+
+<%= bootstrap_form_for @record, :url=>records_path do |f| %>
+  <%= f.text_field :title %>
+  <%= hidden_field_tag :type, params[:type] %>
+  <%= f.actions %>
+<% end %>
