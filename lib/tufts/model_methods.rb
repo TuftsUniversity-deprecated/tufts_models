@@ -43,7 +43,7 @@ module Tufts
 
 
       unless names.empty?
-        ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "author_sort", "#{names[0]}")
+        ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "author_sort", names[0])
       end
 
       #TITLE SORT
@@ -52,7 +52,7 @@ module Tufts
 
 
       unless titles.empty?
-        ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "title_sort", "#{titles[0]}")
+        ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "title_sort", titles[0])
       end
 
     end
@@ -124,112 +124,63 @@ module Tufts
     end
 
   def index_unstemmed_values(solr_doc)
-    #collection_id_unstem_search^5000
-    #corpname_unstem_search^500
-    [:corpname].each { |subject_field|
+    [:corpname].each do |subject_field|
       subjects = self.datastreams["DCA-META"].get_values(subject_field)
-
-      subjects.each { |subject|
-        unless subject.downcase.include? 'unknown'
-          clean_subject = Titleize.titleize(subject);
-          ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "corpname_unstem_search", "#{clean_subject}")
-        end
-      }
-
-    } #end name_field
-      #persname_unstem_search^500
-      #geogname_unstem_search^500
-    [:geogname].each { |subject_field|
+      titleize_and_index(solr_doc, 'corpname', subjects, :unstemmed_searchable)  
+    end 
+    [:geogname].each do |subject_field|
       subjects = self.datastreams["DCA-META"].get_values(subject_field)
+      titleize_and_index(solr_doc, 'geogname', subjects, :unstemmed_searchable)  
+    end
 
-      subjects.each { |subject|
-        unless subject.downcase.include? 'unknown'
-          clean_subject = Titleize.titleize(subject);
-          ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "geogname_unstem_search", "#{clean_subject}")
-        end
-      }
-
-    } #end name_field
-
-    [:subject].each { |subject_field|
+    [:subject].each do |subject_field|
       subjects = self.datastreams["DCA-META"].get_values(subject_field)
+      titleize_and_index(solr_doc, 'subject_topic', subjects, :unstemmed_searchable)  
+    end
 
-      subjects.each { |subject|
-        unless subject.downcase.include? 'unknown'
-          clean_subject = Titleize.titleize(subject);
-          ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "subject_topic_unstem_search", "#{clean_subject}")
-        end
-      }
-
-    } #end name_field
-
-    #funder_unstem_search^500
-    #persname_unstem_search^500
-    [:persname].each { |name_field|
+    [:persname].each do |name_field|
       names = self.datastreams["DCA-META"].get_values(name_field)
+      titleize_and_index(solr_doc, 'persname', names, :unstemmed_searchable)  
+    end
 
-      names.each { |name|
-        unless name.downcase.include? 'unknown'
-          clean_name = Titleize.titleize(name)
-          ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "persname_unstem_search", "#{clean_name}")
-        end
-      }
-    }
-    [:creator].each { |name_field|
+    [:creator].each do |name_field|
       names = self.datastreams["DCA-META"].get_values(name_field)
+      titleize_and_index(solr_doc, 'author', names, :unstemmed_searchable)  
+    end 
 
-      names.each { |name|
-        unless name.downcase.include? 'unknown'
-          clean_name = Titleize.titleize(name)
-          ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "author_unstem_search", "#{clean_name}")
-        end
-      }
-    }
-    [:title].each { |name_field|
+    [:title].each do |name_field|
       names = self.datastreams["DCA-META"].get_values(name_field)
-
-      names.each { |name|
-        unless name.downcase.include? 'unknown'
-          clean_name = Titleize.titleize(name)
-          ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "title_unstem_search", "#{clean_name}")
-        end
-      }
-
-    } #end name_field
+      titleize_and_index(solr_doc, 'title', names, :unstemmed_searchable)  
+    end
 
   end
 
   def index_names_info(solr_doc)
-
-    [:creator, :persname, :corpname].each { |name_field|
+    [:creator, :persname, :corpname].each do |name_field|
       names = self.datastreams["DCA-META"].get_values(name_field)
-
-      names.each { |name|
-        unless name.downcase.include? 'unknown'
-          clean_name = Titleize.titleize(name)
-          ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "names_facet", "#{clean_name}")
-        end
-      }
-
-    } #end name_field
-
+      titleize_and_index(solr_doc, 'names', names, :facetable)  #names_sim
+    end
   end
 
   def index_subject_info(solr_doc)
-
-    [:subject, :corpname, :persname, :geogname].each { |subject_field|
+    [:subject, :corpname, :persname, :geogname].each do |subject_field|
       subjects = self.datastreams["DCA-META"].get_values(subject_field)
-
-      subjects.each { |subject|
-        unless subject.downcase.include? 'unknown'
-          clean_subject = Titleize.titleize(subject);
-          ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "subject_facet", "#{clean_subject}")
-        end
-      }
-
-    } #end name_field
-
+      titleize_and_index(solr_doc, 'subject', subjects, :facetable)  #subject_sim
+    end
   end
+
+
+  def titleize_and_index(solr_doc, field_prefix, values, index_type)
+    values.each do |name|
+      if name.present? &&  !name.downcase.include?('unknown')
+        clean_name = Titleize.titleize(name)
+        Solrizer.insert_field(solr_doc, field_prefix, clean_name, index_type)
+      end
+    end
+  end
+
+  
+
     #
     # Adds metadata about the depositor to the asset
     # Most important behavior: if the asset has a rightsMetadata datastream, this method will add +depositor_id+ to its individual edit permissions.
@@ -260,7 +211,7 @@ module Tufts
           COLLECTION_ERROR_LOG.error "Could not determine Collection for : #{self.pid}"
         else
           clean_ead_title = Titleize.titleize(ead_title);
-          ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "collection_facet", clean_ead_title)
+          Solrizer.insert_field(solr_doc, 'collection', clean_ead_title, :facetable) 
         end
       else
         ead = ead.first.gsub('info:fedora/','')
@@ -281,17 +232,14 @@ module Tufts
 
 
         end
-            clean_ead_title = Titleize.titleize(ead_title)
-          ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "collection_id_facet", ead)
-          ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "collection_facet", clean_ead_title)
-          ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "collection_title_t", clean_ead_title)
-          ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "collection_id_unstem_search", ead)
-      end
+          clean_ead_title = Titleize.titleize(ead_title)
+          Solrizer.insert_field(solr_doc, 'collection', clean_ead_title, :facetable) 
+          Solrizer.insert_field(solr_doc, 'collection_title', clean_ead_title, :stored_searchable) 
 
-         # unless collections.nil?
-         #   collections.each {|collection|
-         #   ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "collection_facet", "#{collection}") }
-         # end
+          # TODO Facetable and unstemmed_searchable might be equivalent
+          Solrizer.insert_field(solr_doc, 'collection_id', ead, :facetable) 
+          Solrizer.insert_field(solr_doc, 'collection_id', ead, :unstemmed_searchable) 
+      end
     end
 
 
@@ -432,7 +380,7 @@ module Tufts
 
         # ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "pub_date_i", "#{valid_date_string}")
         # ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "pub_date_sort", "#{valid_date_string}")
-        Solrizer.insert_field(solr_doc, 'pub_date', valid_date_string, :stored_sortable) 
+        Solrizer.insert_field(solr_doc, 'pub_date', valid_date_string.to_i, :stored_sortable) 
       end
 
     end

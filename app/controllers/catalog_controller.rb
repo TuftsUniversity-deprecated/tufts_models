@@ -62,16 +62,10 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display 
-    #config.add_index_field solr_name('title', :stored_searchable, type: :string), :label => 'Title:'
-    #config.add_index_field solr_name('title_vern', :stored_searchable, type: :string), :label => 'Title:'
-    #config.add_index_field solr_name('author', :stored_searchable, type: :string), :label => 'Author:'
-    #config.add_index_field solr_name('author_vern', :stored_searchable, type: :string), :label => 'Author:'
-    #config.add_index_field solr_name('format', :symbol), :label => 'Format:'
-    #config.add_index_field solr_name('language', :stored_searchable, type: :string), :label => 'Language:'
-    #config.add_index_field solr_name('published', :stored_searchable, type: :string), :label => 'Published:'
-    #config.add_index_field solr_name('published_vern', :stored_searchable, type: :string), :label => 'Published:'
-    #config.add_index_field solr_name('lc_callnum', :stored_searchable, type: :string), :label => 'Call number:'
-    #config.add_index_field solr_name('temporal_teim', :stored_searchable, type: :string), :label => 'Pub Date:'
+    config.add_index_field solr_name('description', :stored_searchable), :label => 'Description:'
+    config.add_index_field solr_name('identifier', :stored_searchable), :label => 'Identifier:'
+    config.add_index_field solr_name('dateCreated', :stored_searchable), :label => 'Date Created:'
+    config.add_index_field solr_name('dateAvailable', :stored_searchable), :label => 'Date Available:'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display 
@@ -163,7 +157,7 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    config.add_sort_field 'score desc, pub_date_dtsi desc, title_tesi asc', :label => 'relevance'
+    config.add_sort_field 'score desc, pub_date_isi desc, title_tesi asc', :label => 'relevance'
     config.add_sort_field 'pub_date_isi desc, title_tesi asc', :label => 'year'
     config.add_sort_field 'creator_tesi asc, title_tesi asc', :label => 'author'
     config.add_sort_field 'title_tesi asc, pub_date_isi desc', :label => 'title'
