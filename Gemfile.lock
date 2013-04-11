@@ -10,8 +10,8 @@ GIT
 
 GIT
   remote: git://github.com/projecthydra/hydra-role-management.git
-  revision: 888368756a828ecf93721fcaed6003b48a3f700b
-  ref: 8883687
+  revision: 96b0002c2fe56da03b927b13eec442f285d70796
+  ref: 96b0002
   specs:
     hydra-role-management (0.0.1)
       cancan

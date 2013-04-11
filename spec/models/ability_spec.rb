@@ -8,6 +8,7 @@ describe Ability do
     it { should be_able_to(:create, Role) }
     it { should be_able_to(:show, Role) }
     it { should be_able_to(:add_user, Role) }
+    it { should be_able_to(:remove_user, Role) }
   end
 
   describe "a non-admin user" do
