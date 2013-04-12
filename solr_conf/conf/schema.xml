@@ -152,27 +152,7 @@
 
   </fields>
 
-
-  <!-- Above, multiple source fields are copied to the [text] field.
-      Another way to map multiple source fields to the same
-      destination field is to use the dynamic field syntax.
-      copyField also supports a maxChars to copy setting.  -->
-
-    <!-- <copyField source="*_tesim" dest="text" maxChars="3000"/> -->
-<!--  
-    <copyField source="*_s" dest="text"/>
-    <copyField source="*_t" dest="text"/>
-    <copyField source="*_facet" dest="text"/>
--->
-    <!-- copy name to alphaNameSort, a field designed for sorting by name -->
-    <!-- <copyField source="name" dest="alphaNameSort"/> -->
-
-    <!-- END hydra deprecated items -->
-
-  <!-- copy fields;  note that you must define copyField source and dest fields explicity or schemaBrowser doesn't work -->
-<!--
-  <copyField source="some_field" dest="all_text_timv" />
--->  
+    <!-- <copyField source="*_tesim" dest="all_text_timv" maxChars="3000"/> -->
 
   <types>
     <fieldType name="string" class="solr.StrField" sortMissingLast="true" />

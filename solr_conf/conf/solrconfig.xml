@@ -39,15 +39,36 @@
           id
           active_fedora_model_ssi
           title_tesim
-          author_tesim
-          subject_tesim
+          creator_tesim
+          source2_tesim
+          description_tesim
+          identifier_tesim
+          dateCreated_tesim
+          dateAvailable_tesim
+          dateIssued_tesim
+          rights_tesim
+          bilbiographicCitation_tesim
+          publisher_tesim
+          type2_tesim
+          format2_tesim
+          extent_tesim
+          persname_tesim
+          corpname_tesim
+          geogname_tesim
+          genre_tesim
+          funder_tesim
+          temporal_tesim
+          resolution_tesim
+          bitDepth_tesim
+          colorSpace_tesim
+          filesize_tesim
         </str>
         <str name="pf">
           all_text_timv^10
         </str>
 
        <str name="author_qf">
-          author_tesim
+          creator_tesim
        </str>
        <str name="author_pf">
        </str>
