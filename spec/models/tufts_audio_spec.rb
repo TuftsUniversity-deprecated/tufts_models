@@ -20,4 +20,12 @@ describe TuftsAudio do
     end
   end
 
+  describe "terms_for_editing" do
+    its(:terms_for_editing) { should == [:title, :creator, :source2, :description, :dateCreated, :dateAvailable, 
+                           :dateIssued, :identifier, :rights, :bibliographicCitation, :publisher,
+                           :type2, :format2, :extent, :persname, :corpname, :geogname, :genre,
+                           :subject, :funder, :temporal, :resolution, :bitDepth, :colorSpace, 
+                           :filesize]}
+  end
+
 end

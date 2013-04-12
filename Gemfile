@@ -6,6 +6,7 @@ gem 'sqlite3'
 
 gem 'fcrepo_admin', github: 'projecthydra/fcrepo-admin'
 gem 'hydra-head'
+gem 'active-fedora', github: 'projecthydra/active_fedora'
 #gem 'hydra-role-management', path: '../hydra-role-management'
 gem 'hydra-role-management', github: 'projecthydra/hydra-role-management', ref: '96b0002'
 

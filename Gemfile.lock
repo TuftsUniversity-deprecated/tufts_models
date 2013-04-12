@@ -1,4 +1,21 @@
 GIT
+  remote: git://github.com/projecthydra/active_fedora.git
+  revision: 4838f3ea560ea9d329c8abbd096be43ca98dfb1c
+  specs:
+    active-fedora (6.0.0)
+      activeresource (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      builder (~> 3.0.0)
+      deprecation
+      mediashelf-loggable
+      nom-xml (>= 0.5.1)
+      om (~> 2.0.0)
+      rdf
+      rdf-rdfxml (~> 1.0.0)
+      rsolr
+      rubydora (~> 1.6)
+
+GIT
   remote: git://github.com/projecthydra/fcrepo-admin.git
   revision: 03d5dc76219fdea69a457ee66977d9a69fd6ca6c
   specs:
@@ -32,18 +49,6 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    active-fedora (6.0.0)
-      activeresource (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      builder (~> 3.0.0)
-      deprecation
-      mediashelf-loggable
-      nom-xml (>= 0.5.1)
-      om (~> 2.0.0)
-      rdf
-      rdf-rdfxml (~> 1.0.0)
-      rsolr
-      rubydora (~> 1.5)
     activemodel (3.2.13)
       activesupport (= 3.2.13)
       builder (~> 3.0.0)
@@ -277,6 +282,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active-fedora!
   bootstrap-sass
   bootstrap_forms
   capybara
