@@ -4,7 +4,7 @@ describe TuftsAudio do
   
   describe "with access rights" do
     before do
-      @audio = TuftsAudio.new
+      @audio = TuftsAudio.new(title: 'foo')
       @audio.read_groups = ['public']
       @audio.save!
     end
@@ -26,6 +26,15 @@ describe TuftsAudio do
                            :type2, :format2, :extent, :persname, :corpname, :geogname, :genre,
                            :subject, :funder, :temporal, :resolution, :bitDepth, :colorSpace, 
                            :filesize]}
+  end
+
+  describe "required terms" do
+    it "should be required" do
+       subject.required?(:title).should be_true
+       # subject.required?(:creator).should be_true
+       # subject.required?(:description).should be_true
+       subject.required?(:source2).should be_false
+    end
   end
 
 end

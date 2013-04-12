@@ -10,6 +10,8 @@ class TuftsBase < ActiveFedora::Base
   # Tufts specific needed metadata streams
   has_metadata :name => "DCA-META", :type => TuftsDcaMeta
 
+  validates_presence_of :title#, :creator, :description
+  
   delegate_to "DCA-META", [:title, :creator, :source2, :description, :dateCreated, :dateAvailable, 
                            :dateIssued, :identifier, :rights, :bibliographicCitation, :publisher,
                            :type2, :format2, :extent, :persname, :corpname, :geogname, :genre,
@@ -26,6 +28,10 @@ class TuftsBase < ActiveFedora::Base
 
   def descMetadata
     self.DCA_META
+  end
+
+  def required?(key)
+    self.class.validators_on(key).any?{|v| v.kind_of? ActiveModel::Validations::PresenceValidator}
   end
 
 
