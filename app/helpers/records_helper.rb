@@ -9,7 +9,7 @@ module RecordsHelper
   end
 
   def render_edit_field_partial(key, locals)
-    render_edit_field_partial_with_action('generic_files', key, locals)
+    render_edit_field_partial_with_action('records', key, locals)
   end
 
   def render_batch_edit_field_partial(key, locals)
@@ -24,9 +24,7 @@ module RecordsHelper
       # for determining if a partial template exists..
       begin
         return render :partial => str, :locals=>locals.merge({key: key})
-      rescue ActionView::MissingTemplate
-        nil
-      end
+      rescue ActionView::MissingTemplate; end
     end
     nil
   end
