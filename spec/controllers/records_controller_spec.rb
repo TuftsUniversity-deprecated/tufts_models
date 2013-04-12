@@ -3,7 +3,8 @@ require 'spec_helper'
 describe RecordsController do
   describe "an admin" do
     before do
-      sign_in FactoryGirl.create(:admin)
+      @user = FactoryGirl.create(:admin)
+      sign_in @user
     end
     describe "who goes to the new page" do
       it "should be successful" do
@@ -21,21 +22,40 @@ describe RecordsController do
     describe "creating a new record" do
       it "should be successful" do
         post :create, :type=>'TuftsAudio', :tufts_audio=>{:title=>"My title"}
-        response.should redirect_to(record_path(assigns[:record])) 
-        assigns[:record].title.should == 'My title'
+        response.should redirect_to(catalog_path(assigns[:record])) 
+        assigns[:record].title.should == ['My title']
       end
     end
-    describe "showing a record" do
+
+    describe "editing a record" do
       before do
-        @audio = TuftsAudio.create!(title: 'My title2')
+        @audio = TuftsAudio.new(title: 'My title2')
+        @audio.edit_users = [@user.email]
+        @audio.save!
       end
       after do
         @audio.destroy
       end
       it "should be successful" do
-        get :show, :id=>@audio.pid
+        get :edit, :id=>@audio.pid
         response.should be_successful
-        assigns[:record].title.should == 'My title2'
+        assigns[:record].title.should == ['My title2']
+      end
+    end
+
+    describe "updating a record" do
+      before do
+        @audio = TuftsAudio.new(title: 'My title2')
+        @audio.edit_users = [@user.email]
+        @audio.save!
+      end
+      after do
+        @audio.destroy
+      end
+      it "should be successful" do
+        put :update, :id=>@audio, :tufts_audio=>{:title=>"My title 3"}
+        response.should redirect_to(catalog_path(assigns[:record])) 
+        assigns[:record].title.should == ['My title 3']
       end
     end
   end

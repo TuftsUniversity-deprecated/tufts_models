@@ -10,23 +10,32 @@ class RecordsController < ApplicationController
     initialize_fields
   end
 
+  def edit
+    @record = ActiveFedora::Base.find(params[:id], cast: true)
+    authorize! :edit, @record
+    initialize_fields
+  end
+
   def create
     authorize! :create, ActiveFedora::Base
     unless has_valid_type?
       redirect_to new_record_path, :flash=> {error: "Lost the type"}
       return
     end
-    record_name = params[:type]
-    @record = record_name.constantize.new
-    @record.attributes = params[record_name.underscore]
+    @record = params[:type].constantize.new
+    @record.attributes = params[@record.class.model_name.underscore]
     @record.save!
 
-    redirect_to record_path(@record)
+    redirect_to catalog_path(@record)
   end
 
-  def show
-    authorize! :show, ActiveFedora::Base
+  def update
     @record = ActiveFedora::Base.find(params[:id], cast: true)
+    authorize! :update, @record
+    @record.attributes = params[@record.class.model_name.underscore]
+    @record.save!
+
+    redirect_to catalog_path(@record)
   end
 
   private

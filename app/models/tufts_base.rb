@@ -16,7 +16,7 @@ class TuftsBase < ActiveFedora::Base
                            :dateIssued, :identifier, :rights, :bibliographicCitation, :publisher,
                            :type2, :format2, :extent, :persname, :corpname, :geogname, :genre,
                            :subject, :funder, :temporal, :resolution, :bitDepth, :colorSpace, 
-                           :filesize], :unique=>true
+                           :filesize]
 
   def terms_for_editing
     terms_for_display 

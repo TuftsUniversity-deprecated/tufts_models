@@ -9,7 +9,7 @@ Tufts::Application.routes.draw do
   mount Hydra::RoleManagement::Engine => '/'
 
 
-  resources :records
+  resources :records, except: [:index]
 
 
   # The priority is based upon order of creation:

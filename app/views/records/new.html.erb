@@ -1,14 +1,2 @@
 <h1>Create a new record</h1>
-
-<%= bootstrap_form_for @record, :url=>records_path do |f| %>
-  <div id="descriptions_display">
-    <h2 class="non lower">Descriptions <small class="pull-right"><span class="error">*</span> indicates required fields</small> </h2>
-    <div class="well">
-      <% @record.terms_for_editing.each do |term| %>
-        <%= render :partial => "edit_field", :locals => {:f =>f, :render_req => true, :key => term } %>
-      <% end %>
-    </div><!-- /well -->
-  </div>
-  <%= hidden_field_tag :type, params[:type] %>
-  <%= f.actions %>
-<% end %>
+<%= render :partial=>'form' %>
