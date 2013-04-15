@@ -1,6 +1,4 @@
 class TuftsBase < ActiveFedora::Base
-
-  include Hydra::ModelMethods
   include Tufts::ModelMethods
   include Hydra::ModelMixins::RightsMetadata
   
