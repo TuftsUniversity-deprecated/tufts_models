@@ -16,4 +16,6 @@
 // Required by Blacklight
 //= require blacklight/blacklight
 //= require bootstrap-tab
+//= require hydra-editor/multiForm
+//= require edit_metadata
 //= require_tree .
