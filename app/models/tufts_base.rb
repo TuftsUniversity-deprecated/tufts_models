@@ -8,7 +8,7 @@ class TuftsBase < ActiveFedora::Base
   has_metadata "rightsMetadata", type: Hydra::Datastream::RightsMetadata
 
   # Tufts specific needed metadata streams
-  has_metadata :name => "DCA-META", :type => TuftsDcaMeta
+  has_metadata "DCA-META", type: TuftsDcaMeta
 
   validates_presence_of :title#, :creator, :description
   
