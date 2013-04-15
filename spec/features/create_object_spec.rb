@@ -15,7 +15,6 @@ feature 'Admin user creates document' do
     click_button 'Save'
 
     page.should have_selector('h1', text: 'My title')
-
   end
 
 end

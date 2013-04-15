@@ -37,4 +37,18 @@ describe TuftsAudio do
     end
   end
 
+  describe "to_solr" do
+    describe "subject field" do
+      it "should save both" do
+        subject.subject = "subject1"
+        subject.funder = "subject2"
+        solr_doc = subject.to_solr
+        solr_doc["subject_tesim"].should == ["subject1"]
+        solr_doc["funder_tesim"].should == ["subject2"]
+        # TODO is this right?
+        solr_doc["subject_sim"].should == ["Subject1"]
+      end
+    end
+  end
+
 end
