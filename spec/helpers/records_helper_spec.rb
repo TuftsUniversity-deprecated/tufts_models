@@ -1,15 +1,7 @@
 require 'spec_helper'
 
-# Specs in this file have access to a helper object that includes
-# the RecordsHelper. For example:
-#
-# describe RecordsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe RecordsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should have object_type_options" do
+    helper.object_type_options.should == {'Audio' => 'Audio', 'PDF' => 'Pdf'}
+  end
 end

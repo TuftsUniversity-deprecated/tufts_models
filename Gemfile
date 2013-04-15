@@ -10,7 +10,7 @@ gem 'active-fedora', github: 'projecthydra/active_fedora'
 #gem 'hydra-role-management', path: '../hydra-role-management'
 gem 'hydra-role-management', github: 'projecthydra/hydra-role-management', ref: '96b0002'
 #gem 'hydra-editor', path: '../hydra-editor'
-gem 'hydra-editor', github: 'projecthydra/hydra-editor', ref: '1e5730b'
+gem 'hydra-editor', github: 'projecthydra/hydra-editor', ref: 'cf87b0c'
 
 # Gems used only for assets and not required
 # in production environments by default.
