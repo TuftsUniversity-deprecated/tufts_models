@@ -26,6 +26,14 @@ GIT
       rails (~> 3.2)
 
 GIT
+  remote: git://github.com/projecthydra/hydra-editor.git
+  revision: 1e5730b013438d759d8d2df459a0ac052d1f1b43
+  ref: 1e5730b
+  specs:
+    hydra-editor (0.0.1)
+      rails (~> 3.2.13)
+
+GIT
   remote: git://github.com/projecthydra/hydra-role-management.git
   revision: 96b0002c2fe56da03b927b13eec442f285d70796
   ref: 96b0002
@@ -291,6 +299,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   fcrepo_admin!
+  hydra-editor!
   hydra-head
   hydra-role-management!
   jettywrapper

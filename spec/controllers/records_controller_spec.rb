@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe RecordsController do
+  before do
+    @routes = HydraEditor::Engine.routes 
+  end
   describe "an admin" do
     before do
       @user = FactoryGirl.create(:admin)
@@ -22,7 +25,7 @@ describe RecordsController do
     describe "creating a new record" do
       it "should be successful" do
         post :create, :type=>'TuftsAudio', :tufts_audio=>{:title=>"My title"}
-        response.should redirect_to(catalog_path(assigns[:record])) 
+        response.should redirect_to("/catalog/#{assigns[:record].pid}") 
         assigns[:record].title.should == ['My title']
       end
     end
@@ -54,7 +57,7 @@ describe RecordsController do
       end
       it "should be successful" do
         put :update, :id=>@audio, :tufts_audio=>{:title=>"My title 3"}
-        response.should redirect_to(catalog_path(assigns[:record])) 
+        response.should redirect_to("/catalog/#{assigns[:record].pid}") 
         assigns[:record].title.should == ['My title 3']
       end
     end
