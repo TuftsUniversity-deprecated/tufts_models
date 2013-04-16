@@ -20,4 +20,10 @@ describe TuftsImage do
     end
   end
 
+  describe "to_class_uri" do
+    subject {TuftsImage}
+    its(:to_class_uri) {should == 'info:fedora/cm:Image.4DS'}
+  end
+
+
 end
