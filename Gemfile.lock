@@ -27,8 +27,8 @@ GIT
 
 GIT
   remote: git://github.com/projecthydra/hydra-editor.git
-  revision: c2bc9aadcdbff2b91aa1045cf3dd2e986e6edf5b
-  ref: c2bc9aa
+  revision: 6e977b6a806f15ccc5c3ec6169199f283945b8b7
+  ref: 6e977b6
   specs:
     hydra-editor (0.0.1)
       rails (~> 3.2.13)
