@@ -51,4 +51,10 @@ describe TuftsAudio do
     end
   end
 
+  describe "to_class_uri" do
+    subject {TuftsAudio}
+    its(:to_class_uri) {should == 'info:fedora/cm:Audio'}
+  end
+
+
 end

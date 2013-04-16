@@ -20,4 +20,9 @@ describe TuftsPdf do
     end
   end
 
+  describe "to_class_uri" do
+    subject {TuftsPdf}
+    its(:to_class_uri) {should == 'info:fedora/cm:Text.PDF'}
+  end
+
 end
