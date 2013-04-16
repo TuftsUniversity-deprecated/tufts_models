@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foxml:digitalObject VERSION="1.1" PID="tufts:MS115.003.001.00002"
+xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+<foxml:objectProperties>
+<foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE=""/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE=""/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2008-06-20T17:24:11.286Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-08-17T19:15:53.379Z"/>
+</foxml:objectProperties>
+<foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2008-06-20T17:24:11.286Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:xmlContent>
+<audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+<audit:record ID="AUDREC1">
+<audit:process type="Fedora API-M"/>
+<audit:action>ingest</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-04-26T19:51:20.301Z</audit:date>
+<audit:justification>Ingested from local file p:\ingests\ele-1392\objects\MS115.003.001.00002.xml</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC2">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-ADMIN</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-17T19:15:53.379Z</audit:date>
+<audit:justification>dringest-262</audit:justification>
+</audit:record>
+</audit:auditTrail>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Relationships to other objects" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="764">
+<foxml:xmlContent>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns="http://www.fedora.info/definitions/">
+          					<rdf:Description rdf:about="info:fedora/tufts:MS115.003.001.00002">
+						            <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Object.Generic"></fedora-model:hasModel>
+						            <itemID xmlns="http://www.openarchives.org/OAI/2.0/">oai:tufts:MS115.003.001.00002</itemID>
+                  <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.MS115.002"></rel:isMemberOfCollection>
+      					    </rdf:Description>
+        				</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DC.1" LABEL="Dublin Core Metadata" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="1008">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.fedora.info/definitions/">
+				           <dc:title>Election records candidate name authority records, zipped</dc:title>
+				           <dc:creator>Philip Lampi</dc:creator>
+				           <dc:creator>Tufts University Digital Collections and Archives</dc:creator>
+				           <dc:creator>American Antiquarian Society</dc:creator>
+				           <dc:identifier>tufts:MS115.003.001.00002</dc:identifier>
+				           <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+				           <dc:date>2011</dc:date>
+				           <dc:type>text</dc:type>
+				           <dc:format>application/zip</dc:format>
+				           <dc:source>MS115</dc:source>
+				           <dc:rights>http://dca.tufts.edu/ua/access/rights-creator.html</dc:rights>
+			         </oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DC.2" LABEL="Dublin Core Metadata" CREATED="2009-12-08T22:17:13.180Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="890">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:title>Election records candidate name authority records, zipped</dc:title>
+  <dc:creator>Philip Lampi</dc:creator>
+  <dc:creator>Tufts University Digital Collections and Archives</dc:creator>
+  <dc:creator>American Antiquarian Society</dc:creator>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:date>2011</dc:date>
+  <dc:type>text</dc:type>
+  <dc:format>application/zip</dc:format>
+  <dc:identifier>tufts:MS115.003.001.00002</dc:identifier>
+  <dc:source>MS115</dc:source>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-creator.html</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DCA-ADMIN" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DCA-ADMIN.1" LABEL="DCA Adminstrative Metadata" CREATED="2005-05-17T23:08:38.024Z" MIMETYPE="text/xml" SIZE="316">
+<foxml:xmlContent>
+<dca_admin:admin xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.fedora.info/definitions/">
+			</dca_admin:admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-ADMIN.2" LABEL="DCA Adminstrative Metadata" CREATED="2011-08-17T19:15:53.379Z" MIMETYPE="text/xml">
+<foxml:xmlContent>
+<dca_admin:admin xmlns="http://www.fedora.info/definitions/" xmlns:admin="http://nils.lib.tufts.edu/admin/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin/"
+  xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DCA-META" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DCA-META.1" LABEL="DCA Descriptive Metadata" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="text/xml" SIZE="1404">
+<foxml:xmlContent>
+<dca_dc:dc xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.fedora.info/definitions/">
+				           <dc:title>Election records candidate name authority records, zipped</dc:title>
+				           <dc:creator>Philip Lampi</dc:creator>
+				           <dc:creator>Tufts University Digital Collections and Archives</dc:creator>
+				           <dc:creator>American Antiquarian Society</dc:creator>
+				           <dc:source>MS115</dc:source>
+				           <dc:temporal>MS115</dc:temporal>
+				           <dc:date.created>2011-01-10</dc:date.created>
+				           <dc:date.available>2011-01-10</dc:date.available>
+				           <dc:date.issued>2011-01-24</dc:date.issued>
+				           <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+				           <dc:rights>http://dca.tufts.edu/ua/access/rights-creator.html</dc:rights>
+				           <dc:identifier>http://hdl.handle.net/10427/70466</dc:identifier>
+				           <dcterms:extent>3908079</dcterms:extent>
+				           <dc:extent>3908079</dc:extent>
+				           <dc:type>text</dc:type>
+				           <dc:format>application/zip</dc:format>
+			         </dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="GENERIC-CONTENT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="GENERIC-CONTENT.0" LABEL="Enter a label here." CREATED="2009-10-16T15:56:59.270Z" MIMETYPE="text/xml" SIZE="411">
+<foxml:xmlContent>
+<content xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.fedora.info/definitions/">
+  					        <item id="0">
+    					         <link>http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS115/generic/MS115.003.001.00002.zip</link>
+    					         <fileName>MS115.003.001.00002</fileName>
+    					         <mimeType>application/zip</mimeType>
+  					        </item>
+				        </content>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+</foxml:digitalObject>

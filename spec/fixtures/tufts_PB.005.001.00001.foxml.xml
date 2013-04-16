@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foxml:digitalObject VERSION="1.1" PID="tufts:PB.005.001.00001"
+xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+<foxml:objectProperties>
+<foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="Multiresolution Decomposition Schemes Using the Parameterized Logarithmic Image Processing Model with Application to Image Fusion"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE=""/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2005-06-20T16:35:13.957Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-09-21T18:33:02.272Z"/>
+</foxml:objectProperties>
+<foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2005-06-20T16:35:13.957Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:xmlContent>
+<audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+<audit:record ID="AUDREC1">
+<audit:process type="Fedora API-M"/>
+<audit:action>ingest</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-09-21T18:33:02.272Z</audit:date>
+<audit:justification>Ingested from local file p:\ingests\20110914.2\objects\tufts-PB.005.001.00001.foxml.xml</audit:justification>
+</audit:record>
+</audit:auditTrail>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="Access.xml" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
+<foxml:datastreamVersion ID="Access.xml.0" LABEL="Index PDF of the Document Source" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="text/xml">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/DEMO/access_xml/DEMO.003.003.00012.access.xml"/>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Relationships to other objects" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="926">
+<foxml:xmlContent>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.fedora.info/definitions/">
+          					<rdf:Description rdf:about="info:fedora/tufts:PB.005.001.00001">
+							           <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.FacPub"></fedora-model:hasModel>
+							           <itemID xmlns="http://www.openarchives.org/OAI/2.0/">oai:tufts:PB.005.001.00001</itemID>
+							           
+							<rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.PB001.00017"></rel:isMemberOfCollection>
+							           <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.PB002.00008"></rel:isMemberOfCollection>
+						         </rdf:Description>
+        				</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DC.1" LABEL="Dublin Core Metadata" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="2770">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+xmlns:dc="http://purl.org/dc/elements/1.1/"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:title>Multiresolution Decomposition Schemes Using the Parameterized Logarithmic Image Processing Model with Application to Image Fusion</dc:title>
+  <dc:creator>Nercessian, Shahan C.</dc:creator>
+  <dc:creator>Panetta, Karen A.</dc:creator>
+  <dc:creator>Agaian, Sos S.</dc:creator>
+  <dc:subject>Image processing</dc:subject>
+  <dc:subject>Data processing</dc:subject>
+  <dc:description>New pixel- and region-based multiresolution image fusion algorithms are introduced in this paper using the Parameterized Logarithmic Image Processing (PLIP) model, a framework more suitable for processing images. A mathematical analysis shows that the Logarithmic Image Processing (LIP) model and standard mathematical operators are extreme cases of the PLIP model operators. Moreover, the PLIP model operators also have the ability to take on cases in between LIP and standard operators based on the visual requirements of the input images. PLIP-based multiresolution decomposition schemes are developed and thoroughly applied for image fusion as analysis and synthesis methods. The new decomposition schemes and fusion rules yield novel image fusion algorithms which are able to provide visually more pleasing fusion results. LIP-based multiresolution image fusion approaches are consequently formulated due to the generalized nature of the PLIP model. Computer simulations illustrate that the proposed image fusion algorithms using the Parameterized Logarithmic Laplacian Pyramid, Parameterized Logarithmic Discrete Wavelet Transform, and Parameterized Logarithmic Stationary Wavelet Transform outperform their respective traditional approaches by both qualitative and quantitative means. The algorithms were tested over a range of different image classes, including out-of-focus, medical, surveillance, and remote sensing images. The permanent URL for this resource is: http://hdl.handle.net/10427/71566</dc:description>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:date>20110913</dc:date>
+  <dc:date>2011</dc:date>
+  <dc:type>text</dc:type>
+  <dc:format>application/pdf</dc:format>
+  <dc:identifier>tufts:PB.005.001.00001</dc:identifier>
+  <dc:source>PB</dc:source>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-creator.html</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DCA-ADMIN" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DCA-ADMIN.1" LABEL="DCA Administrative Metadata" CREATED="2005-05-17T23:08:38.024Z" MIMETYPE="text/xml" SIZE="341">
+<foxml:xmlContent>
+<dca_admin:admin xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.fedora.info/definitions/">&gt;
+			</dca_admin:admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DCA-META" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DCA-META.1" LABEL="DCA Descriptive Metadata" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="text/xml" SIZE="3464">
+<foxml:xmlContent>
+<dca_dc:dc xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.fedora.info/definitions/">
+				           <dc:title>Multiresolution Decomposition Schemes Using the Parameterized Logarithmic Image Processing Model with Application to Image Fusion</dc:title>
+				           <dc:creator>Nercessian, Shahan C.</dc:creator>
+				           <dc:creator>Panetta, Karen A.</dc:creator>
+				           <dc:creator>Agaian, Sos S.</dc:creator>
+				           <dc:description>New pixel- and region-based multiresolution image fusion algorithms are introduced in this paper using the Parameterized Logarithmic Image Processing (PLIP) model, a framework more suitable for processing images. A mathematical analysis shows that the Logarithmic Image Processing (LIP) model and standard mathematical operators are extreme cases of the PLIP model operators. Moreover, the PLIP model operators also have the ability to take on cases in between LIP and standard operators based on the visual requirements of the input images. PLIP-based multiresolution decomposition schemes are developed and thoroughly applied for image fusion as analysis and synthesis methods. The new decomposition schemes and fusion rules yield novel image fusion algorithms which are able to provide visually more pleasing fusion results. LIP-based multiresolution image fusion approaches are consequently formulated due to the generalized nature of the PLIP model. Computer simulations illustrate that the proposed image fusion algorithms using the Parameterized Logarithmic Laplacian Pyramid, Parameterized Logarithmic Discrete Wavelet Transform, and Parameterized Logarithmic Stationary Wavelet Transform outperform their respective traditional approaches by both qualitative and quantitative means. The algorithms were tested over a range of different image classes, including out-of-focus, medical, surveillance, and remote sensing images.</dc:description>
+				           <dc:source>PB</dc:source>
+				           <dc:bibliographicCitation>Nercessian, Shahan C., Karen A. Panetta, Sos S. Agaian.  &quot;Multiresolution Decomposition Schemes Using the Parameterized Logarithmic Image Processing Model with Application to Image Fusion.&quot; Journal on Advances in Signal Processing 2011, (2011).</dc:bibliographicCitation>
+				           <dc:temporal>2011</dc:temporal>
+				           <dc:date.created>2011</dc:date.created>
+				           <dc:date.available>20110913</dc:date.available>
+				           <dc:date.issued>2011-09-14</dc:date.issued>
+				           <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+				           <dc:rights>http://dca.tufts.edu/ua/access/rights-creator.html</dc:rights>
+				           <dc:identifier>http://hdl.handle.net/10427/71566</dc:identifier>
+				           <dcterms:extent>6676428 bytes</dcterms:extent>
+				           <dc:extent>6676428 bytes</dc:extent>
+				           <dc:type>text</dc:type>
+				           <dc:format>application/pdf</dc:format>
+				           <dcatech:fileSize>6676428 bytes</dcatech:fileSize>
+				           <dcadesc:subject>Image processing</dcadesc:subject>
+				           <dcadesc:subject>Data processing</dcadesc:subject>
+			         </dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="Archival.pdf" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
+<foxml:datastreamVersion ID="Archival.pdf.0" LABEL="Multiresolution Decomposition Schemes Using the Parameterized Logarithmic Image Processing Model with Application to Image Fusion" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="application/pdf">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/PB/archival_pdf/PB.005.001.00001.archival.pdf"/>
+</foxml:datastreamVersion>
+</foxml:datastream>
+</foxml:digitalObject>

@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foxml:digitalObject VERSION="1.1" PID="tufts:ky.clerkofthehouse.1813"
+xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+<foxml:objectProperties>
+<foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="Kentucky 1813 State Assembly, Clerk of the House of Representatives"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE=""/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2006-08-29T12:58:31.542Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-11-30T20:12:51.160Z"/>
+</foxml:objectProperties>
+<foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2006-08-29T12:58:31.542Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:xmlContent>
+<audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+<audit:record ID="AUDREC1">
+<audit:process type="Fedora API-M"/>
+<audit:action>ingest</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-11-08T14:00:03.395Z</audit:date>
+<audit:justification>Ingested from local file c:\20101104\objects\ky.clerkofthehouse.1813.xml</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC2">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DC</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-04-28T19:27:58.348Z</audit:date>
+<audit:justification>dringest-235</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC3">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-META</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-04-28T19:27:58.489Z</audit:date>
+<audit:justification>dringest-235</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC4">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-ADMIN</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-04-28T19:27:58.638Z</audit:date>
+<audit:justification>dringest-235</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC5">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RECORD-XML</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-04-28T19:27:58.793Z</audit:date>
+<audit:justification>dringest-235</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC6">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-04-28T19:27:58.929Z</audit:date>
+<audit:justification>dringest-235</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC7">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DC</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-11-30T20:12:50.567Z</audit:date>
+<audit:justification>dringest-304</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC8">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-META</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-11-30T20:12:50.744Z</audit:date>
+<audit:justification>dringest-304</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC9">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-ADMIN</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-11-30T20:12:50.890Z</audit:date>
+<audit:justification>dringest-304</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC10">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RECORD-XML</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-11-30T20:12:51.037Z</audit:date>
+<audit:justification>dringest-304</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC11">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-11-30T20:12:51.160Z</audit:date>
+<audit:justification>dringest-304</audit:justification>
+</audit:record>
+</audit:auditTrail>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RECORD-XML" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RECORD-XML.0" LABEL="Voting record XML data" CREATED="2006-06-23T20:08:56.186Z" MIMETYPE="text/xml" SIZE="5071">
+<foxml:xmlContent>
+<aas:election_record xmlns:aas="http://dca.tufts.edu/aas" xmlns="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/1999/xlink" label="Kentucky 1813 State Assembly, Clerk of the House of Representatives" type="Legislative" iteration="First Ballot" date="1813" election_id="ky.clerkofthehouse.1813" handle="10427/28661" schemaLocation="http://dca.tufts.edu/aas http://dca.tufts.edu/schema/aas/electionRecord.xsd">
+	              <aas:office name="Clerk of the House of Representatives" office_id="ON022" scope="State">
+		                <aas:role title="Clerk of the House of Representatives" scope="State">
+		                   <aas:ballot>
+			                     <aas:candidate name="Robert S. Todd" name_id="TR0010" affiliation="null" affiliation_id="null" candidate_num="1"></aas:candidate>
+			                     <aas:candidate name="Christopher Thompkins" name_id="TC0006" affiliation="null" affiliation_id="null" candidate_num="2"></aas:candidate>
+			                     <aas:candidate name="Gabriel I. Johnson" name_id="JG0013" affiliation="null" affiliation_id="null" candidate_num="3"></aas:candidate>
+			                     <aas:candidate name="Francis Flournoy" name_id="FF0008" affiliation="null" affiliation_id="null" candidate_num="4"></aas:candidate>
+		                   </aas:ballot>
+		                   <aas:overview status="null" modified="2008-04-23">
+			                     <aas:candidate_summary candidate_ref="1" vote_total="35" resp="Philip Lampi"></aas:candidate_summary>
+			                     <aas:candidate_summary candidate_ref="2" vote_total="25" resp="Philip Lampi"></aas:candidate_summary>
+			                     <aas:candidate_summary candidate_ref="3" vote_total="5" resp="Philip Lampi"></aas:candidate_summary>
+			                     <aas:candidate_summary candidate_ref="4" vote_total="1" resp="Philip Lampi"></aas:candidate_summary>
+			                     <aas:reference type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10329" resp="Philip Lampi"></aas:reference>
+			                     <aas:reference type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10330" resp="Philip Lampi"></aas:reference>
+			                     <aas:reference type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10331" resp="Philip Lampi"></aas:reference>
+		                   </aas:overview>
+		                   <aas:admin_unit type="State" name="Kentucky" geog_id="null">
+			                     <aas:sub_unit type="null" name="House of Representatives" geog_id="null">
+				                       <aas:result candidate_ref="1" vote="35" resp="Philip Lampi"></aas:result>
+				                       <aas:result candidate_ref="2" vote="25" resp="Philip Lampi"></aas:result>
+				                       <aas:result candidate_ref="3" vote="5" resp="Philip Lampi"></aas:result>
+				                       <aas:result candidate_ref="4" vote="1" resp="Philip Lampi"></aas:result>
+				                       <aas:reference type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10329" resp="Philip Lampi"></aas:reference>
+				                       <aas:reference type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10330" resp="Philip Lampi"></aas:reference>
+				                       <aas:reference type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10331" resp="Philip Lampi"></aas:reference>
+				                       <aas:note resp="Philip Lampi">&quot;House of Representatives. Monday, December 6, 1813. This being the day appointed by law for the meeting of the Legislature, both branches convened... The Hon. Joseph H. Hawkins, was unanimously elected speaker of the house of representatives--and Robert S. Todd, Esq. clerk.&quot;</aas:note>
+				                       <aas:note resp="Philip Lampi">&quot;Joseph H. Hawkins, Esq. is elected Speaker of the House of Representatives of this State without opposition.  Mr. Robert S. Todd, was elected clerk to the house on the first ballot.&quot;</aas:note>
+				                       <aas:note resp="Philip Lampi">&quot;...as a proper person to fill the office of clerk; ...and on taking the vote they stood thus: Robert S. Todd, 35, Christopher Tompkins, 25, Gabriel I. Johnson, 5, Francis Flournoy, 1. A majority appearing in favor of Mr. Robert S. Todd he was thereupon declared duly elected.&quot;</aas:note> 
+			                     </aas:sub_unit>
+		                   </aas:admin_unit>
+	                 </aas:role>
+	              </aas:office>
+	              <aas:reference type="citation" resp="Philip Lampi" urn="tufts:central:dca:MS115:MS115.001.DO.10329">Argus of Western America.  December 8, 1813.</aas:reference>
+	              <aas:reference type="citation" resp="Philip Lampi" urn="tufts:central:dca:MS115:MS115.001.DO.10330">The Reporter (Lexington).  December 11, 1813.</aas:reference>
+	              <aas:reference type="citation" resp="Philip Lampi" urn="tufts:central:dca:MS115:MS115.001.DO.10331">Journal of the House of Representatives 1813. Pages 4-5.</aas:reference>
+            </aas:election_record>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RECORD-XML.1" LABEL="Voting record XML data" CREATED="2011-04-28T19:27:58.793Z" MIMETYPE="text/xml" SIZE="4397">
+<foxml:xmlContent>
+<aas:election_record xmlns:aas="http://dca.tufts.edu/aas" date="1813-12" election_id="ky.clerkofthehouse.1813" handle="10427/28661" iteration="First Ballot" label="Kentucky 1813 Clerk of the House of Representatives" schemaLocation="http://dca.tufts.edu/aas http://dca.tufts.edu/schema/aas/electionRecord.xsd" type="Legislative">
+  <aas:office name="Clerk of the House of Representatives" office_id="ON022" scope="State">
+    <aas:role scope="State" title="Clerk of the House of Representatives">
+      <aas:ballot>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="1" name="Robert S. Todd" name_id="TR0010"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="2" name="Christopher Thompkins" name_id="TC0006"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="3" name="Gabriel I. Johnson" name_id="JG0013"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="4" name="Francis Flournoy" name_id="FF0008"></aas:candidate>
+      </aas:ballot>
+      <aas:overview modified="2008-04-23" status="null">
+        <aas:candidate_summary candidate_ref="1" resp="Philip Lampi" vote_total="35"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="2" resp="Philip Lampi" vote_total="25"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="3" resp="Philip Lampi" vote_total="5"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="4" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:reference resp="Philip Lampi" type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10329"></aas:reference>
+        <aas:reference resp="Philip Lampi" type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10330"></aas:reference>
+        <aas:reference resp="Philip Lampi" type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10331"></aas:reference>
+      </aas:overview>
+      <aas:admin_unit geog_id="null" name="Kentucky" type="State">
+        <aas:sub_unit geog_id="null" name="House of Representatives" type="null">
+          <aas:result candidate_ref="1" resp="Philip Lampi" vote="35"></aas:result>
+          <aas:result candidate_ref="2" resp="Philip Lampi" vote="25"></aas:result>
+          <aas:result candidate_ref="3" resp="Philip Lampi" vote="5"></aas:result>
+          <aas:result candidate_ref="4" resp="Philip Lampi" vote="1"></aas:result>
+          <aas:reference resp="Philip Lampi" type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10329"></aas:reference>
+          <aas:reference resp="Philip Lampi" type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10330"></aas:reference>
+          <aas:reference resp="Philip Lampi" type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10331"></aas:reference>
+          <aas:note resp="Philip Lampi">&quot;House of Representatives. Monday, December 6, 1813. This being the day appointed by law for the meeting of the Legislature, both branches convened... The Hon. Joseph H. Hawkins, was unanimously elected speaker of the house of representatives--and Robert S. Todd, Esq. clerk.&quot;</aas:note>
+          <aas:note resp="Philip Lampi">&quot;Joseph H. Hawkins, Esq. is elected Speaker of the House of Representatives of this State without opposition.  Mr. Robert S. Todd, was elected clerk to the house on the first ballot.&quot;</aas:note>
+          <aas:note resp="Philip Lampi">&quot;...as a proper person to fill the office of clerk; ...and on taking the vote they stood thus: Robert S. Todd, 35, Christopher Tompkins, 25, Gabriel I. Johnson, 5, Francis Flournoy, 1. A majority appearing in favor of Mr. Robert S. Todd he was thereupon declared duly elected.&quot;</aas:note>
+        </aas:sub_unit>
+      </aas:admin_unit>
+    </aas:role>
+  </aas:office>
+  <aas:reference resp="Philip Lampi" type="citation" urn="tufts:central:dca:MS115:MS115.001.DO.10329">Argus of Western America.  December 8, 1813.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation" urn="tufts:central:dca:MS115:MS115.001.DO.10330">The Reporter (Lexington).  December 11, 1813.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation" urn="tufts:central:dca:MS115:MS115.001.DO.10331">Journal of the House of Representatives 1813. Pages 4-5.</aas:reference>
+</aas:election_record>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RECORD-XML.2" LABEL="Voting record XML data" CREATED="2011-11-30T20:12:51.037Z" MIMETYPE="text/xml" SIZE="4404">
+<foxml:xmlContent>
+<aas:election_record xmlns:aas="http://dca.tufts.edu/aas" date="1813-12" election_id="ky.clerkofthehouse.1813" handle="10427/28661" iteration="First Ballot" label="Kentucky 1813 Clerk of the House of Representatives" schemaLocation="http://dca.tufts.edu/aas http://dca.tufts.edu/schema/aas/electionRecord.xsd" type="Legislative">
+  <aas:office name="Clerk of the House of Representatives" office_id="ON022" scope="State">
+    <aas:role scope="State" title="Clerk of the House of Representatives">
+      <aas:ballot>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="1" name="Robert S. Todd" name_id="TR0010"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="2" name="Christopher Thompkins" name_id="TC0006"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="3" name="Gabriel I. Johnson" name_id="JG0013"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="4" name="Francis Flournoy" name_id="FF0008"></aas:candidate>
+      </aas:ballot>
+      <aas:overview modified="2008-04-23" status="Version 1.0">
+        <aas:candidate_summary candidate_ref="1" resp="Philip Lampi" vote_total="35"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="2" resp="Philip Lampi" vote_total="25"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="3" resp="Philip Lampi" vote_total="5"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="4" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:reference resp="Philip Lampi" type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10329"></aas:reference>
+        <aas:reference resp="Philip Lampi" type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10330"></aas:reference>
+        <aas:reference resp="Philip Lampi" type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10331"></aas:reference>
+      </aas:overview>
+      <aas:admin_unit geog_id="null" name="Kentucky" type="State">
+        <aas:sub_unit geog_id="null" name="House of Representatives" type="null">
+          <aas:result candidate_ref="1" resp="Philip Lampi" vote="35"></aas:result>
+          <aas:result candidate_ref="2" resp="Philip Lampi" vote="25"></aas:result>
+          <aas:result candidate_ref="3" resp="Philip Lampi" vote="5"></aas:result>
+          <aas:result candidate_ref="4" resp="Philip Lampi" vote="1"></aas:result>
+          <aas:reference resp="Philip Lampi" type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10329"></aas:reference>
+          <aas:reference resp="Philip Lampi" type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10330"></aas:reference>
+          <aas:reference resp="Philip Lampi" type="page_image" urn="tufts:central:dca:MS115:MS115.001.DO.10331"></aas:reference>
+          <aas:note resp="Philip Lampi">&quot;House of Representatives. Monday, December 6, 1813. This being the day appointed by law for the meeting of the Legislature, both branches convened... The Hon. Joseph H. Hawkins, was unanimously elected speaker of the house of representatives--and Robert S. Todd, Esq. clerk.&quot;</aas:note>
+          <aas:note resp="Philip Lampi">&quot;Joseph H. Hawkins, Esq. is elected Speaker of the House of Representatives of this State without opposition.  Mr. Robert S. Todd, was elected clerk to the house on the first ballot.&quot;</aas:note>
+          <aas:note resp="Philip Lampi">&quot;...as a proper person to fill the office of clerk; ...and on taking the vote they stood thus: Robert S. Todd, 35, Christopher Tompkins, 25, Gabriel I. Johnson, 5, Francis Flournoy, 1. A majority appearing in favor of Mr. Robert S. Todd he was thereupon declared duly elected.&quot;</aas:note>
+        </aas:sub_unit>
+      </aas:admin_unit>
+    </aas:role>
+  </aas:office>
+  <aas:reference resp="Philip Lampi" type="citation" urn="tufts:central:dca:MS115:MS115.001.DO.10329">Argus of Western America.  December 8, 1813.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation" urn="tufts:central:dca:MS115:MS115.001.DO.10330">The Reporter (Lexington).  December 11, 1813.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation" urn="tufts:central:dca:MS115:MS115.001.DO.10331">Journal of the House of Representatives 1813. Pages 4-5.</aas:reference>
+</aas:election_record>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="RDF Relationship Metadata" CREATED="2006-06-23T20:07:38.965Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="944">
+<foxml:xmlContent>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/1999/xlink">
+               <rdf:Description rdf:about="info:fedora/tufts:ky.clerkofthehouse.1813">
+                  <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:VotingRecord"></fedora-model:hasModel>
+                  <itemID xmlns="http://www.openarchives.org/OAI/2.0/">oai:tufts:ky.clerkofthehouse.1813</itemID>
+                  <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.MS115.002.KY.1813"></rel:isMemberOfCollection>
+                  <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:VotingRecord"></fedora-model:hasModel>
+               </rdf:Description>
+            </rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.1" LABEL="RDF Relationship Metadata" CREATED="2011-04-28T19:27:58.929Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="904">
+<foxml:xmlContent>
+<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <rdf:Description rdf:about="info:fedora/tufts:ky.clerkofthehouse.1813">
+    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:VotingRecord"></fedora-model:hasModel>
+    <itemID xmlns="http://www.openarchives.org/OAI/2.0/">oai:tufts:ky.clerkofthehouse.1813</itemID>
+    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.MS115.002.KY.1813"></rel:isMemberOfCollection>
+    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:VotingRecord"></fedora-model:hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.2" LABEL="RDF Relationship Metadata" CREATED="2011-11-30T20:12:51.160Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0">
+<foxml:xmlContent>
+<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <rdf:Description rdf:about="info:fedora/tufts:ky.clerkofthehouse.1813">
+    <fedora-model:hasModel rdf:resource="info:fedora/cm:VotingRecord" xmlns:fedora-model="info:fedora/fedora-system:def/model#"/>
+    <itemID xmlns="http://www.openarchives.org/OAI/2.0/">oai:tufts:ky.clerkofthehouse.1813</itemID>
+    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.MS115.002.KY.1813"/>
+    <fedora-model:hasModel rdf:resource="info:fedora/cm:VotingRecord" xmlns:fedora-model="info:fedora/fedora-system:def/model#"/>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DC.0" LABEL="Dublin Core Metadata" CREATED="2006-06-23T20:08:15.351Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="1229">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:title>Kentucky 1813 State Assembly, Clerk of the House of Representatives</dc:title>
+  <dc:creator>Philip Lampi</dc:creator>
+  <dc:creator>Tufts University Digital Collections and Archives</dc:creator>
+  <dc:creator>American Antiquarian Society</dc:creator>
+  <dc:subject>Clerk of the House of Representatives</dc:subject>
+  <dc:subject>Kentucky</dc:subject>
+  <dc:subject>Election districts Kentucky</dc:subject>
+  <dc:description>Kentucky 1813 State Assembly, Clerk of the House of Representatives. The permanent URL for this resource is: http://hdl.handle.net/10427/28661</dc:description>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:date>1813</dc:date>
+  <dc:type>dataset</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dc:identifier>tufts:ky.clerkofthehouse.1813</dc:identifier>
+  <dc:source>MS115</dc:source>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-pd.html</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DC.1" LABEL="Dublin Core Metadata" CREATED="2011-04-28T19:27:58.348Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="1214">
+<foxml:xmlContent>
+<oai_dc:dc xmlns="http://www.fedora.info/definitions/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dc:title>Kentucky 1813 Clerk of the House of Representatives</dc:title>
+  <dc:creator>Philip Lampi</dc:creator>
+  <dc:creator>Tufts University Digital Collections and Archives</dc:creator>
+  <dc:creator>American Antiquarian Society</dc:creator>
+  <dc:subject>Clerk of the House of Representatives</dc:subject>
+  <dc:subject>Kentucky</dc:subject>
+  <dc:subject>Election districts Kentucky</dc:subject>
+  <dc:description>Kentucky 1813 Clerk of the House of Representatives. The permanent URL for this resource is: http://hdl.handle.net/10427/28661</dc:description>
+  <dc:identifier>tufts:ky.clerkofthehouse.1813</dc:identifier>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:date>1813</dc:date>
+  <dc:type>dataset</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dc:source>MS115</dc:source>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-pd.html</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DC.2" LABEL="Dublin Core Metadata" CREATED="2011-11-30T20:12:50.567Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="1214">
+<foxml:xmlContent>
+<oai_dc:dc xmlns="http://www.fedora.info/definitions/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dc:title>Kentucky 1813 Clerk of the House of Representatives</dc:title>
+  <dc:creator>Philip Lampi</dc:creator>
+  <dc:creator>Tufts University Digital Collections and Archives</dc:creator>
+  <dc:creator>American Antiquarian Society</dc:creator>
+  <dc:subject>Clerk of the House of Representatives</dc:subject>
+  <dc:subject>Kentucky</dc:subject>
+  <dc:subject>Election districts Kentucky</dc:subject>
+  <dc:description>Kentucky 1813 Clerk of the House of Representatives. The permanent URL for this resource is: http://hdl.handle.net/10427/28661</dc:description>
+  <dc:identifier>tufts:ky.clerkofthehouse.1813</dc:identifier>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:date>1813</dc:date>
+  <dc:type>dataset</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dc:source>MS115</dc:source>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-pd.html</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DCA-ADMIN" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DCA-ADMIN.0" LABEL="DCA Adminstrative Metadata" CREATED="2006-06-23T20:08:15.351Z" MIMETYPE="text/xml" SIZE="312">
+<foxml:xmlContent>
+<dca_admin:admin xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/1999/xlink"></dca_admin:admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-ADMIN.1" LABEL="DCA Adminstrative Metadata" CREATED="2011-04-28T19:27:58.638Z" MIMETYPE="text/xml" SIZE="367">
+<foxml:xmlContent>
+<dca_admin:admin xmlns="http://www.fedora.info/definitions/" xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin /" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"></dca_admin:admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-ADMIN.2" LABEL="DCA Adminstrative Metadata" CREATED="2011-11-30T20:12:50.890Z" MIMETYPE="text/xml" SIZE="367">
+<foxml:xmlContent>
+<dca_admin:admin xmlns="http://www.fedora.info/definitions/" xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin /" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"></dca_admin:admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DCA-META" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DCA-META.0" LABEL="DCA Descriptive Metadata" CREATED="2006-06-23T20:07:38.965Z" MIMETYPE="text/xml" SIZE="2265">
+<foxml:xmlContent>
+<dca_dc:dc xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/1999/xlink">
+               <dc:title>Kentucky 1813 State Assembly, Clerk of the House of Representatives</dc:title>
+               <dc:creator>Philip Lampi</dc:creator>
+               <dc:creator>Tufts University Digital Collections and Archives</dc:creator>
+               <dc:creator>American Antiquarian Society</dc:creator>
+               <dc:subject>Clerk of the House of Representatives</dc:subject>
+               <dc:subject>Election districts Kentucky</dc:subject>
+               <dc:date.created>1813</dc:date.created>
+               <dc:date.issued>2010-11-02</dc:date.issued>
+               <dc:temporal>1813</dc:temporal>
+               <dc:type>dataset</dc:type>
+               <dc:format>text/xml</dc:format>
+               <dc:source>MS115</dc:source>
+               <dc:bibliographicCitation>American Antiquarian Society and Tufts University Digital Collections and Archives. &quot;Kentucky 1813 State Assembly, Clerk of the House of Representatives.&quot; 2010. Tufts University. Digital Collections and Archives. Medford, MA. http://hdl.handle.net/10427/28661</dc:bibliographicCitation>
+               <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+               <dc:rights>http://dca.tufts.edu/ua/access/rights-pd.html</dc:rights>
+               <dc:identifier>http://hdl.handle.net/10427/28661</dc:identifier>
+               <dcterms:extent>3831 bytes</dcterms:extent>
+               <dcatech:fileSize>3831 bytes</dcatech:fileSize>
+               <dcadesc:geogname>Kentucky</dcadesc:geogname>
+               <dcadesc:funder>National Endowment for the Humanities</dcadesc:funder>
+               <dcadesc:persname>Robert S. Todd</dcadesc:persname>
+               <dcadesc:persname>Christopher Thompkins</dcadesc:persname>
+               <dcadesc:persname>Gabriel I. Johnson</dcadesc:persname>
+               <dcadesc:persname>Francis Flournoy</dcadesc:persname>
+            </dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-META.1" LABEL="DCA Descriptive Metadata" CREATED="2011-04-28T19:27:58.489Z" MIMETYPE="text/xml" SIZE="1963">
+<foxml:xmlContent>
+<dca_dc:dc xmlns="http://www.fedora.info/definitions/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dc:title>Kentucky 1813 Clerk of the House of Representatives</dc:title>
+  <dc:creator>Philip Lampi</dc:creator>
+  <dc:creator>Tufts University Digital Collections and Archives</dc:creator>
+  <dc:creator>American Antiquarian Society</dc:creator>
+  <dc:subject>Clerk of the House of Representatives</dc:subject>
+  <dc:subject>Election districts Kentucky</dc:subject>
+  <dc:date.created>1813</dc:date.created>
+  <dc:date.issued>2010-11-02</dc:date.issued>
+  <dc:temporal>1813</dc:temporal>
+  <dc:type>dataset</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dc:source>MS115</dc:source>
+  <dc:bibliographicCitation>American Antiquarian Society and Tufts University Digital Collections and Archives. &quot;Kentucky 1813 Clerk of the House of Representatives.&quot; 2010. Tufts University. Digital Collections and Archives. Medford, MA. http://hdl.handle.net/10427/28661</dc:bibliographicCitation>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-pd.html</dc:rights>
+  <dc:identifier>http://hdl.handle.net/10427/28661</dc:identifier>
+  <dcterms:extent>3818 bytes</dcterms:extent>
+  <dcatech:fileSize>3818 bytes</dcatech:fileSize>
+  <dcadesc:geogname>Kentucky</dcadesc:geogname>
+  <dcadesc:funder>National Endowment for the Humanities</dcadesc:funder>
+  <dcadesc:persname>Robert S. Todd</dcadesc:persname>
+  <dcadesc:persname>Christopher Thompkins</dcadesc:persname>
+  <dcadesc:persname>Gabriel I. Johnson</dcadesc:persname>
+  <dcadesc:persname>Francis Flournoy</dcadesc:persname>
+</dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-META.2" LABEL="DCA Descriptive Metadata" CREATED="2011-11-30T20:12:50.744Z" MIMETYPE="text/xml" SIZE="1963">
+<foxml:xmlContent>
+<dca_dc:dc xmlns="http://www.fedora.info/definitions/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dc:title>Kentucky 1813 Clerk of the House of Representatives</dc:title>
+  <dc:creator>Philip Lampi</dc:creator>
+  <dc:creator>Tufts University Digital Collections and Archives</dc:creator>
+  <dc:creator>American Antiquarian Society</dc:creator>
+  <dc:subject>Clerk of the House of Representatives</dc:subject>
+  <dc:subject>Election districts Kentucky</dc:subject>
+  <dc:date.created>1813</dc:date.created>
+  <dc:date.issued>2010-11-02</dc:date.issued>
+  <dc:temporal>1813</dc:temporal>
+  <dc:type>dataset</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dc:source>MS115</dc:source>
+  <dc:bibliographicCitation>American Antiquarian Society and Tufts University Digital Collections and Archives. &quot;Kentucky 1813 Clerk of the House of Representatives.&quot; 2010. Tufts University. Digital Collections and Archives. Medford, MA. http://hdl.handle.net/10427/28661</dc:bibliographicCitation>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-pd.html</dc:rights>
+  <dc:identifier>http://hdl.handle.net/10427/28661</dc:identifier>
+  <dcterms:extent>3825 bytes</dcterms:extent>
+  <dcatech:fileSize>3825 bytes</dcatech:fileSize>
+  <dcadesc:geogname>Kentucky</dcadesc:geogname>
+  <dcadesc:funder>National Endowment for the Humanities</dcadesc:funder>
+  <dcadesc:persname>Robert S. Todd</dcadesc:persname>
+  <dcadesc:persname>Christopher Thompkins</dcadesc:persname>
+  <dcadesc:persname>Gabriel I. Johnson</dcadesc:persname>
+  <dcadesc:persname>Francis Flournoy</dcadesc:persname>
+</dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+</foxml:digitalObject>

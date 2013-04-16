@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foxml:digitalObject VERSION="1.1" PID="tufts:sample001"
+xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+<foxml:objectProperties>
+<foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="HTML Example"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE=""/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-01-24T16:00:00.000Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-04-08T16:51:47.142Z"/>
+</foxml:objectProperties>
+<foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:xmlContent>
+<audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+<audit:record ID="AUDREC1">
+<audit:process type="Fedora API-M"/>
+<audit:action>ingest</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-04-07T19:28:17.232Z</audit:date>
+<audit:justification>Ingested from local file /home/bgoodm01/CM-HTML/sample001.foxml.xml</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC2">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>Advanced.jpg</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-04-08T16:48:28.995Z</audit:date>
+<audit:justification>a more realistic test</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC3">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>Basic.jpg</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-04-08T16:50:12.753Z</audit:date>
+<audit:justification>for more realistic testing</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC4">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>Thumbnail.png</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-04-08T16:51:05.109Z</audit:date>
+<audit:justification>for more realistic testing</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC5">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>Archival.tif</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-04-08T16:51:47.142Z</audit:date>
+<audit:justification>for more realistic testing</audit:justification>
+</audit:record>
+</audit:auditTrail>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Relationships to other objects" CREATED="2010-08-26T16:14:57.839Z" MIMETYPE="text/xml" FORMAT_URI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" SIZE="843">
+<foxml:xmlContent>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/TR/xlink">
+          <rdf:Description rdf:about="info:fedora/tufts:sample001">
+            <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Image.HTML"></fedora-model:hasModel>
+            <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:sample"></rel:isMemberOfCollection>
+            <rel:hasDescription rdf:resource="info:fedora/tufts:sample"></rel:hasDescription>
+            <rel:isDependentOf rdf:resource="info:fedora/tufts:UA069.005.DO.00033"></rel:isDependentOf>
+            <itemID xmlns="http://www.openarchives.org/OAI/2.0/">oai:tufts:sample001</itemID>
+          </rdf:Description>
+        </rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DC.0" LABEL="Dublin Core Metadata" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="934">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:title>HTML Example</dc:title>
+  <dc:creator>Goodmon, Brian K.</dc:creator>
+  <dc:subject>Identifying Organs by Color</dc:subject>
+  <dc:description>This example HTML object was created for testing.</dc:description>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:date>01/24/2011</dc:date>
+  <dc:type>text</dc:type>
+  <dc:format>text/html</dc:format>
+  <dc:identifier>tufts:sample001</dc:identifier>
+  <dc:source>MS036</dc:source>
+  <dc:relation>MS036</dc:relation>
+  <dc:coverage>Medford;7014023;42.417;-71.100</dc:coverage>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights.html</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DCA-ADMIN" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DCA-ADMIN.0" LABEL="DCA Administrative Metadata" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="text/xml" SIZE="1582">
+<foxml:xmlContent>
+<dca_admin:admin xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/TR/xlink">
+          <admin:status>current</admin:status>
+          <admin:accessPoint>Tufts Digital Library</admin:accessPoint>
+          <admin:los>Archival/Public</admin:los>
+          <admin:responsibleParty>Digital Collections and Archives</admin:responsibleParty>
+          <admin:contact>n/a</admin:contact>
+          <admin:transferDate>2011-01-24</admin:transferDate>
+          <admin:accessionDate>null</admin:accessionDate>
+          <admin:provenance>Deborah emailed it to me.</admin:provenance>
+          <admin:subAgreement>n/a</admin:subAgreement>
+          <admin:disposition>archival</admin:disposition>
+          <admin:bdefSubscriptions>bdef:AssetDef, bdef:TuftsAccess, bdef:TuftsAccessRights, bdef:TuftsArchival, bdef:TuftsImage, bdef:TuftsMetadata, bdef:TuftsReference, bdef:TuftsType</admin:bdefSubscriptions>
+          <admin:accessRights>This image is freely available for research or educational use. Use of the image for publication or redistribution is prohibited except by permission of the Digital Collections and Archives, Tufts University</admin:accessRights>
+          <admin:notes>On Wed May 20 16:40:06 2009 GMT-5, this file was modified to transform URNs from the Tufts naming service to point to CNRI Handles. Old URN: </admin:notes>
+          <admin:checksum>null</admin:checksum>
+        </dca_admin:admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DCA-META" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DCA-META.0" LABEL="DCA Descriptive Metadata" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="text/xml" SIZE="1403">
+<foxml:xmlContent>
+<dca_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/TR/xlink">
+          <dc:title>Example HTML entry</dc:title>
+          <dc:description>Example HTML object.</dc:description>
+          <dc:bibliographicCitation>Made up HTML object.</dc:bibliographicCitation>
+          <dc:source>MS036</dc:source>
+          <dc:coverage>Medford;7014023;42.417;-71.100</dc:coverage>
+          <dc:temporal>2011</dc:temporal>
+          <dc:creator>Goodmon, Brian</dc:creator>
+          <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+          <dc:rights>http://dca.tufts.edu/ua/access/rights.html</dc:rights>
+          <dc:identifier>http://hdl.handle.net/10427/3863</dc:identifier>
+          <dcterms:isPartOf>MS036</dcterms:isPartOf>
+          <dcterms:created>01/24/2011</dcterms:created>
+          <dcterms:available>01/24/2011</dcterms:available>
+          <dc:type>text</dc:type>
+          <dc:format>text/html</dc:format>
+          <dcadesc:corpname>Tufts Academic Technology</dcadesc:corpname>
+          <dcadesc:geogname>Medford Campus</dcadesc:geogname>
+          <dcadesc:subject>Identifying Organs by Color</dcadesc:subject>
+        </dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="Thumbnail.png" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
+<foxml:datastreamVersion ID="Thumbnail.png.0" LABEL="Thumbnail" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="image/png">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/thumb_png/TV07-450.COLO.Distended.Gallbladder.thumbnail.png"/>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="Thumbnail.png.1" LABEL="Thumbnail" CREATED="2011-04-08T16:51:05.109Z" MIMETYPE="image/png">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/thumb_png/sample001.thumb.png"/>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="Basic.jpg" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
+<foxml:datastreamVersion ID="Basic.jpg.0" LABEL="Medium-quality image" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="image/jpeg">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/basic_jpg/TV07-450.COLO.Distended.Gallbladder.basic.jpg"/>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="Basic.jpg.1" LABEL="Medium-quality image" CREATED="2011-04-08T16:50:12.753Z" MIMETYPE="image/jpeg">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/basic_jpg/sample001.basic.jpg"/>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="Advanced.jpg" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
+<foxml:datastreamVersion ID="Advanced.jpg.0" LABEL="High-quality image" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="image/jpeg">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/advanced_jpg/TV07-450.COLO.Distended.Gallbladder.jpg"/>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="Advanced.jpg.1" LABEL="High-quality image" CREATED="2011-04-08T16:48:28.995Z" MIMETYPE="image/jpeg">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/advanced_jpg/sample001.advanced.jpg"/>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="Archival.tif" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
+<foxml:datastreamVersion ID="Archival.tif.0" LABEL="Archival-quality image" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="image/jpeg">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/archival_tif/TV07-450.COLO.Distended.Gallbladder.jpg"/>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="Archival.tif.1" LABEL="Archival-quality image" CREATED="2011-04-08T16:51:47.142Z" MIMETYPE="image/jpeg">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/archival_tif/sample001.archivial.tif"/>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="Content.html" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
+<foxml:datastreamVersion ID="Metadata.xml.0" LABEL="HTML Content" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="text/html">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/access_xml/sample001.html"/>
+</foxml:datastreamVersion>
+</foxml:datastream>
+</foxml:digitalObject>

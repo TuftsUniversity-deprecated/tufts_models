@@ -1,0 +1,1410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foxml:digitalObject VERSION="1.1" PID="tufts:me.uscongress3.second.1825"
+xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+<foxml:objectProperties>
+<foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="Maine 1825 U.S. Congress, 3rd District"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE=""/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2006-08-29T12:58:31.542Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2011-11-30T20:41:49.707Z"/>
+</foxml:objectProperties>
+<foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2006-08-29T12:58:31.542Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:xmlContent>
+<audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+<audit:record ID="AUDREC1">
+<audit:process type="Fedora API-M"/>
+<audit:action>ingest</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-11-08T14:09:52.930Z</audit:date>
+<audit:justification>Ingested from local file c:\20101104\objects\me.uscongress3.second.1825.xml</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC2">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-META</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-15T16:25:29.690Z</audit:date>
+<audit:justification>dringest-262</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC3">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-ADMIN</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-15T16:25:29.829Z</audit:date>
+<audit:justification>dringest-262</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC4">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RECORD-XML</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-15T16:25:29.974Z</audit:date>
+<audit:justification>dringest-262</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC5">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-15T16:25:30.129Z</audit:date>
+<audit:justification>dringest-262</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC6">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DC</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-15T19:01:25.346Z</audit:date>
+<audit:justification>dringest-262</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC7">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-META</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-15T19:01:25.531Z</audit:date>
+<audit:justification>dringest-262</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC8">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-ADMIN</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-15T19:01:25.698Z</audit:date>
+<audit:justification>dringest-262</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC9">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RECORD-XML</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-15T19:01:25.915Z</audit:date>
+<audit:justification>dringest-262</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC10">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-08-15T19:01:26.093Z</audit:date>
+<audit:justification>dringest-262</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC11">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DC</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-11-30T20:41:48.861Z</audit:date>
+<audit:justification>dringest-304</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC12">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-META</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-11-30T20:41:49.022Z</audit:date>
+<audit:justification>dringest-304</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC13">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-ADMIN</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-11-30T20:41:49.198Z</audit:date>
+<audit:justification>dringest-304</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC14">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RECORD-XML</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-11-30T20:41:49.514Z</audit:date>
+<audit:justification>dringest-304</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC15">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-11-30T20:41:49.707Z</audit:date>
+<audit:justification>dringest-304</audit:justification>
+</audit:record>
+</audit:auditTrail>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RECORD-XML" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RECORD-XML.0" LABEL="Voting record XML data" CREATED="2006-06-23T20:08:56.186Z" MIMETYPE="text/xml" SIZE="24340">
+<foxml:xmlContent>
+<aas:election_record xmlns:aas="http://dca.tufts.edu/aas" xmlns="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/1999/xlink" label="Maine 1825 U.S. Congress, 3rd District" type="General" iteration="Second Ballot" date="1825-01" election_id="me.uscongress3.second.1825" handle="10427/58407" schemaLocation="http://dca.tufts.edu/aas http://dca.tufts.edu/schema/aas/electionRecord.xsd">
+               <aas:office name="U.S. House of Representatives" office_id="ON111" scope="Federal">
+                  <aas:role title="U.S. Congressman" scope="District">
+                     <aas:ballot>                
+                        <aas:candidate name="Ebenezer Herrick" name_id="HE0005" affiliation="Republican" affiliation_id="A0001" candidate_num="1"></aas:candidate>
+                        <aas:candidate name="Albert Smith" name_id="SA0006" affiliation="null" affiliation_id="null" candidate_num="2"></aas:candidate>
+                        <aas:candidate name="Ebenzer Thatcher" name_id="TE0011" affiliation="null" affiliation_id="null" candidate_num="3"></aas:candidate>
+                        <aas:candidate name="Elisha J. Ford" name_id="FE0005" affiliation="null" affiliation_id="null" candidate_num="4"></aas:candidate>
+                        <aas:candidate name="Moses Carlton" name_id="CM0019" affiliation="Republican" affiliation_id="A0001" candidate_num="5"></aas:candidate>
+                        <aas:candidate name="Nathaniel Green" name_id="GN0010" affiliation="null" affiliation_id="null" candidate_num="6"></aas:candidate>
+                        <aas:candidate name="Elihu Hatch" name_id="HE0011" affiliation="null" affiliation_id="null" candidate_num="7"></aas:candidate>
+                        <aas:candidate name="Stephen Parsons" name_id="PS0020" affiliation="null" affiliation_id="null" candidate_num="8"></aas:candidate>
+                        <aas:candidate name="Ebenezer Delano" name_id="DE0008" affiliation="Republican" affiliation_id="A0001" candidate_num="9"></aas:candidate>
+                        <aas:candidate name="Lucius Barnard" name_id="BL0012" affiliation="null" affiliation_id="null" candidate_num="10"></aas:candidate>
+                        <aas:candidate name="Parker MacCobb" name_id="MP0027" affiliation="null" affiliation_id="null" candidate_num="11"></aas:candidate>
+                        <aas:candidate name="James MacLellan" name_id="MJ0035" affiliation="null" affiliation_id="null" candidate_num="12"></aas:candidate>                
+                        <aas:candidate name="Peleg Tallman" name_id="TP0010" affiliation="Republican" affiliation_id="A0001" candidate_num="13"></aas:candidate>
+                        <aas:candidate name="Daniel Rose" name_id="RD0021" affiliation="null" affiliation_id="null" candidate_num="14"></aas:candidate>
+                        <aas:candidate name="Charles R. Partins" name_id="PC0013" affiliation="null" affiliation_id="null" candidate_num="15"></aas:candidate>
+                        <aas:candidate name="E. J. Ford" name_id="FE0005" affiliation="null" affiliation_id="null" candidate_num="16"></aas:candidate>
+                        <aas:note resp="Philip Lampi">The first ballot for this office occured in 1824.</aas:note>
+                     </aas:ballot>
+                     <aas:overview status="Version 1.0" modified="2008-07-11">
+                        <aas:candidate_summary candidate_ref="1" vote_total="871" resp="Philip Lampi"></aas:candidate_summary>
+                        <aas:candidate_summary candidate_ref="2" vote_total="535" resp="Philip Lampi"></aas:candidate_summary>
+                        <aas:candidate_summary candidate_ref="3" vote_total="478" resp="Philip Lampi"></aas:candidate_summary>
+                        <aas:candidate_summary candidate_ref="4" vote_total="4" resp="Philip Lampi"></aas:candidate_summary>                
+                        <aas:candidate_summary candidate_ref="5" vote_total="2" resp="Philip Lampi"></aas:candidate_summary>
+                        <aas:candidate_summary candidate_ref="6" vote_total="35" resp="Philip Lampi"></aas:candidate_summary>
+                        <aas:candidate_summary candidate_ref="7" vote_total="1" resp="Philip Lampi"></aas:candidate_summary>
+                        <aas:candidate_summary candidate_ref="8" vote_total="24" resp="Philip Lampi"></aas:candidate_summary>                
+                        <aas:candidate_summary candidate_ref="9" vote_total="3" resp="Philip Lampi"></aas:candidate_summary>
+                        <aas:candidate_summary candidate_ref="10" vote_total="2" resp="Philip Lampi"></aas:candidate_summary>
+                        <aas:candidate_summary candidate_ref="11" vote_total="4" resp="Philip Lampi"></aas:candidate_summary>
+                        <aas:candidate_summary candidate_ref="12" vote_total="1" resp="Philip Lampi"></aas:candidate_summary>                
+                        <aas:candidate_summary candidate_ref="13" vote_total="1" resp="Philip Lampi"></aas:candidate_summary>
+                        <aas:candidate_summary candidate_ref="14" vote_total="1" resp="Philip Lampi"></aas:candidate_summary>
+                        <aas:candidate_summary candidate_ref="15" vote_total="1" resp="Philip Lampi"></aas:candidate_summary>
+                        <aas:candidate_summary candidate_ref="16" vote_total="1" resp="Philip Lampi"></aas:candidate_summary>
+                        <aas:note resp="Philip Lampi">No choice.</aas:note>
+                     </aas:overview>
+                     <aas:admin_unit type="State" name="Maine" geog_id="mes">
+                        <aas:sub_unit type="District" name="Third" geog_id="null">
+                           <aas:sub_unit type="County" name="Lincoln" geog_id="mes_lincoln">                        
+                              <aas:result candidate_ref="1" vote="871" resp="Philip Lampi"></aas:result>
+                              <aas:result candidate_ref="2" vote="535" resp="Philip Lampi"></aas:result>
+                              <aas:result candidate_ref="3" vote="478" resp="Philip Lampi"></aas:result>
+                              <aas:result candidate_ref="4" vote="4" resp="Philip Lampi"></aas:result>                        
+                              <aas:result candidate_ref="5" vote="2" resp="Philip Lampi"></aas:result>
+                              <aas:result candidate_ref="6" vote="35" resp="Philip Lampi"></aas:result>
+                              <aas:result candidate_ref="7" vote="1" resp="Philip Lampi"></aas:result>
+                              <aas:result candidate_ref="8" vote="24" resp="Philip Lampi"></aas:result>                        
+                              <aas:result candidate_ref="9" vote="3" resp="Philip Lampi"></aas:result>
+                              <aas:result candidate_ref="10" vote="2" resp="Philip Lampi"></aas:result>
+                              <aas:result candidate_ref="11" vote="4" resp="Philip Lampi"></aas:result>
+                              <aas:result candidate_ref="12" vote="1" resp="Philip Lampi"></aas:result>                        
+                              <aas:result candidate_ref="13" vote="1" resp="Philip Lampi"></aas:result>
+                              <aas:result candidate_ref="14" vote="1" resp="Philip Lampi"></aas:result>
+                              <aas:result candidate_ref="15" vote="1" resp="Philip Lampi"></aas:result>
+                              <aas:result candidate_ref="16" vote="1" resp="Philip Lampi"></aas:result>                    
+                              <aas:sub_unit type="Town" name="Alna" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="47" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="19" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="9" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="4" vote="4" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Bath" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="163" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="29" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="97" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="5" vote="2" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>
+                              <aas:sub_unit type="Town" name="Boothbay" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="17" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="5" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="0" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Bowdoin" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="119" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="1" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="2" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Bowdoinham" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="180" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="0" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="1" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="6" vote="1" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="7" vote="1" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Bristol" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="2" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="62" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="11" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Camden" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="1" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="18" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="31" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Cushing" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="8" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="1" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="8" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Dresden" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="43" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="0" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="8" resp="Philip Lampi"></aas:result>
+                                 <aas:note resp="Philip Lampi">The Maine Gazette, 7 January 1825, reported 20 votes for Ebenezer Herrick and 8 votes for Ebenezer Thatcher.</aas:note>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Edgecomb" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="3" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="1" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="0" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="8" vote="24" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Friendship" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="0" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="9" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="0" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Georgetown" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="5" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="0" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="0" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="9" vote="3" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Hope" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="7" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="0" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="2" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Jefferson" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="1" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="145" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="0" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Litchfield" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="37" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="0" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="0" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="6" vote="34" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="New Castle" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="3" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="65" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="0" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="10" vote="2" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="16" vote="1" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Nobleborough" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="0" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="71" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="1" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>
+                              <aas:sub_unit type="Town" name="Phipsburg" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="18" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="24" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="28" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="11" vote="4" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="12" vote="1" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="13" vote="1" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit> 
+                              <aas:sub_unit type="Town" name="Richmond" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="53" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="0" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="0" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="St. George" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="0" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="10" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="2" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Thomaston" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="8" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="24" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="34" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Topsham" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="50" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="14" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="4" resp="Philip Lampi"></aas:result>                            
+                                 <aas:result candidate_ref="14" vote="1" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="15" vote="1" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Union" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="0" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="2" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="47" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Waldoborough" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="4" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="13" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="65" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Warren" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="2" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="15" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="79" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Whitefield" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="43" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="2" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="0" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Wiscasset" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="46" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="2" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="31" resp="Philip Lampi"></aas:result>
+                              </aas:sub_unit>   
+                              <aas:sub_unit type="Town" name="Woolwich" geog_id="null">
+                                 <aas:result candidate_ref="1" vote="11" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="2" vote="3" resp="Philip Lampi"></aas:result>
+                                 <aas:result candidate_ref="3" vote="18" resp="Philip Lampi"></aas:result>
+                                 <aas:note resp="Philip Lampi">The Maine Gazette, 7 January 1825, reported 3 votes for Ebenezer Herrick, 13 votes for Albert Smith, and 16 votes for EbenezerThatcher.</aas:note>
+                              </aas:sub_unit>   
+                           </aas:sub_unit>
+                        </aas:sub_unit>
+                     </aas:admin_unit>
+                  </aas:role>
+               </aas:office>    
+               <aas:reference type="citation" resp="Philip Lampi" urn="tufts:central:dca:MS115:MS115.001.DO.13886">The Independant Statesman and Maine Republican (Portland). March 25, 1825</aas:reference>    
+               <aas:reference type="citation" resp="Philip Lampi" urn="tufts:central:dca:MS115:MS115.001.DO.13961">Eastern Argus (Portland). March 7, 1825 + American Advocate (Hallowell). March 12, 1825</aas:reference>
+               <aas:reference type="citation" resp="Philip Lampi">Original Returns</aas:reference>
+               <aas:reference type="citation" resp="Philip Lampi">Maine Gazette (Bath). January 7, 1825</aas:reference>
+               <aas:reference type="citation" resp="Philip Lampi">Maine Gazette (Bath). January 14, 1825</aas:reference>
+               <aas:reference type="citation" resp="Philip Lampi">The American Advocate (Hallowell). January, 8, 1825</aas:reference>    
+               <aas:reference type="citation" resp="Philip Lampi">The American Advocate (Hallowell). January 15, 1825</aas:reference>
+               <aas:reference type="citation" resp="Philip Lampi">The American Advocate (Hallowell). March 12, 1825</aas:reference>
+               <aas:reference type="citation" resp="Philip Lampi">The American Advocate (Hallowell). March 25, 1825</aas:reference>
+               <aas:reference type="citation" resp="Philip Lampi">Eastern Argus (Portland). March 8, 1825</aas:reference>
+               <aas:reference type="citation" resp="Philip Lampi">Portland Advertiser. March 9, 1825</aas:reference>
+               <aas:reference type="citation" resp="Philip Lampi">Portland Advertiser. March 12, 1825</aas:reference>
+               <aas:reference type="citation" resp="Philip Lampi">Dubin, Michael J. United States Congressional Elections, 1788-1997. Jefferson, N.C.: McFarland and Company, 1998</aas:reference>
+            </aas:election_record>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RECORD-XML.1" LABEL="Voting record XML data" CREATED="2011-08-15T16:25:29.974Z" MIMETYPE="text/xml" SIZE="19793">
+<foxml:xmlContent>
+<aas:election_record xmlns:aas="http://dca.tufts.edu/aas" date="1825-01" election_id="me.uscongress3.second.1825" handle="10427/58407" iteration="Second Ballot" label="Maine 1825 U.S. House of Representatives, District 3, Ballot 2" schemaLocation="http://dca.tufts.edu/aas http://dca.tufts.edu/schema/aas/electionRecord.xsd" type="General">
+  <aas:office name="U.S. House of Representatives" office_id="ON111" scope="Federal">
+    <aas:role scope="District" title="U.S. Congressman">
+      <aas:ballot>
+        <aas:candidate affiliation="Republican" affiliation_id="A0001" candidate_num="1" name="Ebenezer Herrick" name_id="HE0005"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="2" name="Albert Smith" name_id="SA0006"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="3" name="Ebenzer Thatcher" name_id="TE0011"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="6" name="Nathaniel Green" name_id="GN0010"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="8" name="Stephen Parsons" name_id="PS0020"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="4" name="Elisha J. Ford" name_id="FE0005"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="11" name="Parker MacCobb" name_id="MP0027"></aas:candidate>
+        <aas:candidate affiliation="Republican" affiliation_id="A0001" candidate_num="9" name="Ebenezer Delano" name_id="DE0008"></aas:candidate>
+        <aas:candidate affiliation="Republican" affiliation_id="A0001" candidate_num="5" name="Moses Carlton" name_id="CM0019"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="10" name="Lucius Barnard" name_id="BL0012"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="7" name="Elihu Hatch" name_id="HE0011"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="12" name="James MacLellan" name_id="MJ0035"></aas:candidate>
+        <aas:candidate affiliation="Republican" affiliation_id="A0001" candidate_num="13" name="Peleg Tallman" name_id="TP0010"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="14" name="Daniel Rose" name_id="RD0021"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="15" name="Charles R. Partins" name_id="PC0013"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="16" name="E. J. Ford" name_id="FE0005"></aas:candidate>
+      </aas:ballot>
+      <aas:overview modified="2008-07-11" status="Version 1.0">
+        <aas:candidate_summary candidate_ref="1" resp="Philip Lampi" vote_total="871"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="2" resp="Philip Lampi" vote_total="535"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="3" resp="Philip Lampi" vote_total="478"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="4" resp="Philip Lampi" vote_total="35"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="5" resp="Philip Lampi" vote_total="24"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="6" resp="Philip Lampi" vote_total="4"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="7" resp="Philip Lampi" vote_total="4"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="8" resp="Philip Lampi" vote_total="3"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="9" resp="Philip Lampi" vote_total="2"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="10" resp="Philip Lampi" vote_total="2"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="11" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="12" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="13" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="14" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="15" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="16" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:note resp="Philip Lampi">No choice.</aas:note>
+        <aas:note resp="Philip Lampi">The first ballot for this office occured in 1824.</aas:note>
+      </aas:overview>
+      <aas:admin_unit geog_id="mes" name="Maine" type="State">
+        <aas:sub_unit geog_id="null" name="Third" type="District">
+          <aas:sub_unit geog_id="mes_lincoln" name="Lincoln" type="County">
+            <aas:result candidate_ref="1" resp="Philip Lampi" vote="871"></aas:result>
+            <aas:result candidate_ref="2" resp="Philip Lampi" vote="535"></aas:result>
+            <aas:result candidate_ref="3" resp="Philip Lampi" vote="478"></aas:result>
+            <aas:result candidate_ref="4" resp="Philip Lampi" vote="35"></aas:result>
+            <aas:result candidate_ref="5" resp="Philip Lampi" vote="24"></aas:result>
+            <aas:result candidate_ref="6" resp="Philip Lampi" vote="4"></aas:result>
+            <aas:result candidate_ref="7" resp="Philip Lampi" vote="4"></aas:result>
+            <aas:result candidate_ref="8" resp="Philip Lampi" vote="3"></aas:result>
+            <aas:result candidate_ref="9" resp="Philip Lampi" vote="2"></aas:result>
+            <aas:result candidate_ref="10" resp="Philip Lampi" vote="2"></aas:result>
+            <aas:result candidate_ref="11" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:result candidate_ref="12" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:result candidate_ref="13" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:result candidate_ref="14" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:result candidate_ref="15" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:result candidate_ref="16" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:sub_unit geog_id="null" name="Alna" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="47"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="19"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="9"></aas:result>
+              <aas:result candidate_ref="6" resp="Philip Lampi" vote="4"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Bath" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="163"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="29"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="97"></aas:result>
+              <aas:result candidate_ref="9" resp="Philip Lampi" vote="2"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Boothbay" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="17"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="5"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Bowdoin" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="119"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="2"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Bowdoinham" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="180"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>  
+            <aas:result candidate_ref="3" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="4" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="11" resp="Philip Lampi" vote="1"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Bristol" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="62"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="11"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Camden" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="18"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="31"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Cushing" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="8"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="8"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Dresden" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="43"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="8"></aas:result>
+              <aas:note resp="Philip Lampi">The Maine Gazette of January 7, 1825, lists 20 votes for Ebenezer Herrick and 8 votes for Ebenezer Thatcher.</aas:note>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Edgecomb" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="3"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="5" resp="Philip Lampi" vote="24"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Friendship" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="9"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Georgetown" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="5"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="8" resp="Philip Lampi" vote="3"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Hope" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="7"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="2"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Jefferson" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="145"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Litchfield" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="37"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="4" resp="Philip Lampi" vote="34"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="New Castle" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="3"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="65"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="10" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="16" resp="Philip Lampi" vote="1"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Nobleborough" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="71"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="1"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Phipsburg" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="18"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="24"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="28"></aas:result>
+              <aas:result candidate_ref="7" resp="Philip Lampi" vote="4"></aas:result>
+              <aas:result candidate_ref="12" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="13" resp="Philip Lampi" vote="1"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Richmond" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="53"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Saint George" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="10"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="2"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Thomaston" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="8"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="24"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="34"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Topsham" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="50"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="14"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="4"></aas:result>
+              <aas:result candidate_ref="14" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="15" resp="Philip Lampi" vote="1"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Union" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="47"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Waldoborough" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="4"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="13"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="65"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Warren" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="15"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="79"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Whitefield" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="43"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Wiscasset" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="46"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="31"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Woolwich" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="11"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="3"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="18"></aas:result>
+              <aas:note resp="Philip Lampi">The Maine Gazette of January 7, 1825, lists 3 votes for Ebenezer Herrick, 13 votes for Albert Smith, and 16 votes for EbenezerThatcher.</aas:note>
+            </aas:sub_unit>
+          </aas:sub_unit>
+        </aas:sub_unit>
+      </aas:admin_unit>
+    </aas:role>
+  </aas:office>
+  <aas:reference resp="Philip Lampi" type="citation">Original Returns</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Maine Gazette (Bath). January 7, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">The American Advocate (Hallowell). January, 8, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Maine Gazette (Bath). January 14, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">The American Advocate (Hallowell). January 15, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation" urn="tufts:central:dca:MS115:MS115.001.DO.13961">Eastern Argus (Portland). March 7, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Eastern Argus (Portland). March 8, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Portland Advertiser. March 9, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation" urn="tufts:central:dca:MS115:MS115.001.DO.13961">American Advocate (Hallowell). March 12, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Portland Advertiser. March 12, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">The American Advocate (Hallowell). March 12, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">The American Advocate (Hallowell). March 25, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation" urn="tufts:central:dca:MS115:MS115.001.DO.13886">The Independant Statesman and Maine Republican (Portland). March 25, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Dubin, Michael J. United States Congressional Elections, 1788-1997. Jefferson, N.C.: McFarland and Company, 1998</aas:reference>
+</aas:election_record>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RECORD-XML.2" LABEL="Voting record XML data" CREATED="2011-08-15T19:01:25.915Z" MIMETYPE="text/xml" SIZE="19793">
+<foxml:xmlContent>
+<aas:election_record xmlns:aas="http://dca.tufts.edu/aas" date="1825-01" election_id="me.uscongress3.second.1825" handle="10427/58407" iteration="Second Ballot" label="Maine 1825 U.S. House of Representatives, District 3, Ballot 2" schemaLocation="http://dca.tufts.edu/aas http://dca.tufts.edu/schema/aas/electionRecord.xsd" type="General">
+  <aas:office name="U.S. House of Representatives" office_id="ON111" scope="Federal">
+    <aas:role scope="District" title="U.S. Congressman">
+      <aas:ballot>
+        <aas:candidate affiliation="Republican" affiliation_id="A0001" candidate_num="1" name="Ebenezer Herrick" name_id="HE0005"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="2" name="Albert Smith" name_id="SA0006"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="3" name="Ebenzer Thatcher" name_id="TE0011"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="6" name="Nathaniel Green" name_id="GN0010"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="8" name="Stephen Parsons" name_id="PS0020"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="4" name="Elisha J. Ford" name_id="FE0005"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="11" name="Parker MacCobb" name_id="MP0027"></aas:candidate>
+        <aas:candidate affiliation="Republican" affiliation_id="A0001" candidate_num="9" name="Ebenezer Delano" name_id="DE0008"></aas:candidate>
+        <aas:candidate affiliation="Republican" affiliation_id="A0001" candidate_num="5" name="Moses Carlton" name_id="CM0019"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="10" name="Lucius Barnard" name_id="BL0012"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="7" name="Elihu Hatch" name_id="HE0011"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="12" name="James MacLellan" name_id="MJ0035"></aas:candidate>
+        <aas:candidate affiliation="Republican" affiliation_id="A0001" candidate_num="13" name="Peleg Tallman" name_id="TP0010"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="14" name="Daniel Rose" name_id="RD0021"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="15" name="Charles R. Partins" name_id="PC0013"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="16" name="E. J. Ford" name_id="FE0005"></aas:candidate>
+      </aas:ballot>
+      <aas:overview modified="2008-07-11" status="Version 1.0">
+        <aas:candidate_summary candidate_ref="1" resp="Philip Lampi" vote_total="871"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="2" resp="Philip Lampi" vote_total="535"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="3" resp="Philip Lampi" vote_total="478"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="4" resp="Philip Lampi" vote_total="35"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="5" resp="Philip Lampi" vote_total="24"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="6" resp="Philip Lampi" vote_total="4"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="7" resp="Philip Lampi" vote_total="4"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="8" resp="Philip Lampi" vote_total="3"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="9" resp="Philip Lampi" vote_total="2"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="10" resp="Philip Lampi" vote_total="2"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="11" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="12" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="13" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="14" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="15" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="16" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:note resp="Philip Lampi">No choice.</aas:note>
+        <aas:note resp="Philip Lampi">The first ballot for this office occured in 1824.</aas:note>
+      </aas:overview>
+      <aas:admin_unit geog_id="mes" name="Maine" type="State">
+        <aas:sub_unit geog_id="null" name="Third" type="District">
+          <aas:sub_unit geog_id="mes_lincoln" name="Lincoln" type="County">
+            <aas:result candidate_ref="1" resp="Philip Lampi" vote="871"></aas:result>
+            <aas:result candidate_ref="2" resp="Philip Lampi" vote="535"></aas:result>
+            <aas:result candidate_ref="3" resp="Philip Lampi" vote="478"></aas:result>
+            <aas:result candidate_ref="4" resp="Philip Lampi" vote="35"></aas:result>
+            <aas:result candidate_ref="5" resp="Philip Lampi" vote="24"></aas:result>
+            <aas:result candidate_ref="6" resp="Philip Lampi" vote="4"></aas:result>
+            <aas:result candidate_ref="7" resp="Philip Lampi" vote="4"></aas:result>
+            <aas:result candidate_ref="8" resp="Philip Lampi" vote="3"></aas:result>
+            <aas:result candidate_ref="9" resp="Philip Lampi" vote="2"></aas:result>
+            <aas:result candidate_ref="10" resp="Philip Lampi" vote="2"></aas:result>
+            <aas:result candidate_ref="11" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:result candidate_ref="12" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:result candidate_ref="13" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:result candidate_ref="14" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:result candidate_ref="15" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:result candidate_ref="16" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:sub_unit geog_id="null" name="Alna" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="47"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="19"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="9"></aas:result>
+              <aas:result candidate_ref="6" resp="Philip Lampi" vote="4"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Bath" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="163"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="29"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="97"></aas:result>
+              <aas:result candidate_ref="9" resp="Philip Lampi" vote="2"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Boothbay" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="17"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="5"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Bowdoin" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="119"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="2"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Bowdoinham" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="180"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="4" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="11" resp="Philip Lampi" vote="1"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Bristol" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="62"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="11"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Camden" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="18"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="31"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Cushing" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="8"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="8"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Dresden" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="43"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="8"></aas:result>
+              <aas:note resp="Philip Lampi">The Maine Gazette of January 7, 1825, lists 20 votes for Ebenezer Herrick and 8 votes for Ebenezer Thatcher.</aas:note>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Edgecomb" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="3"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="5" resp="Philip Lampi" vote="24"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Friendship" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="9"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Georgetown" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="5"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="8" resp="Philip Lampi" vote="3"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Hope" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="7"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="2"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Jefferson" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="145"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Litchfield" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="37"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="4" resp="Philip Lampi" vote="34"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="New Castle" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="3"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="65"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="10" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="16" resp="Philip Lampi" vote="1"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Nobleborough" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="71"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="1"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Phipsburg" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="18"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="24"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="28"></aas:result>
+              <aas:result candidate_ref="7" resp="Philip Lampi" vote="4"></aas:result>
+              <aas:result candidate_ref="12" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="13" resp="Philip Lampi" vote="1"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Richmond" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="53"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Saint George" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="10"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="2"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Thomaston" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="8"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="24"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="34"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Topsham" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="50"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="14"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="4"></aas:result>
+              <aas:result candidate_ref="14" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="15" resp="Philip Lampi" vote="1"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Union" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="47"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Waldoborough" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="4"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="13"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="65"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Warren" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="15"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="79"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Whitefield" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="43"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Wiscasset" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="46"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="31"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Woolwich" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="11"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="3"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="18"></aas:result>
+              <aas:note resp="Philip Lampi">The Maine Gazette of January 7, 1825, lists 3 votes for Ebenezer Herrick, 13 votes for Albert Smith, and 16 votes for EbenezerThatcher.</aas:note>
+            </aas:sub_unit>
+          </aas:sub_unit>
+        </aas:sub_unit>
+      </aas:admin_unit>
+    </aas:role>
+  </aas:office>
+  <aas:reference resp="Philip Lampi" type="citation">Original Returns</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Maine Gazette (Bath). January 7, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">The American Advocate (Hallowell). January, 8, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Maine Gazette (Bath). January 14, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">The American Advocate (Hallowell). January 15, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation" urn="tufts:central:dca:MS115:MS115.001.DO.13961">Eastern Argus (Portland). March 7, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Eastern Argus (Portland). March 8, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Portland Advertiser. March 9, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation" urn="tufts:central:dca:MS115:MS115.001.DO.13961">American Advocate (Hallowell). March 12, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Portland Advertiser. March 12, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">The American Advocate (Hallowell). March 12, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">The American Advocate (Hallowell). March 25, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation" urn="tufts:central:dca:MS115:MS115.001.DO.13886">The Independant Statesman and Maine Republican (Portland). March 25, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Dubin, Michael J. United States Congressional Elections, 1788-1997. Jefferson, N.C.: McFarland and Company, 1998</aas:reference>
+</aas:election_record>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RECORD-XML.3" LABEL="Voting record XML data" CREATED="2011-11-30T20:41:49.514Z" MIMETYPE="text/xml" SIZE="19793">
+<foxml:xmlContent>
+<aas:election_record xmlns:aas="http://dca.tufts.edu/aas" date="1825-01" election_id="me.uscongress3.second.1825" handle="10427/58407" iteration="Second Ballot" label="Maine 1825 U.S. House of Representatives, District 3, Ballot 2" schemaLocation="http://dca.tufts.edu/aas http://dca.tufts.edu/schema/aas/electionRecord.xsd" type="General">
+  <aas:office name="U.S. House of Representatives" office_id="ON111" scope="Federal">
+    <aas:role scope="District" title="U.S. Congressman">
+      <aas:ballot>
+        <aas:candidate affiliation="Republican" affiliation_id="A0001" candidate_num="1" name="Ebenezer Herrick" name_id="HE0005"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="2" name="Albert Smith" name_id="SA0006"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="3" name="Ebenzer Thatcher" name_id="TE0011"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="6" name="Nathaniel Green" name_id="GN0010"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="8" name="Stephen Parsons" name_id="PS0020"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="4" name="Elisha J. Ford" name_id="FE0005"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="11" name="Parker MacCobb" name_id="MP0027"></aas:candidate>
+        <aas:candidate affiliation="Republican" affiliation_id="A0001" candidate_num="9" name="Ebenezer Delano" name_id="DE0008"></aas:candidate>
+        <aas:candidate affiliation="Republican" affiliation_id="A0001" candidate_num="5" name="Moses Carlton" name_id="CM0019"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="10" name="Lucius Barnard" name_id="BL0012"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="7" name="Elihu Hatch" name_id="HE0011"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="12" name="James MacLellan" name_id="MJ0035"></aas:candidate>
+        <aas:candidate affiliation="Republican" affiliation_id="A0001" candidate_num="13" name="Peleg Tallman" name_id="TP0010"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="14" name="Daniel Rose" name_id="RD0021"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="15" name="Charles R. Partins" name_id="PC0013"></aas:candidate>
+        <aas:candidate affiliation="null" affiliation_id="null" candidate_num="16" name="E. J. Ford" name_id="FE0005"></aas:candidate>
+      </aas:ballot>
+      <aas:overview modified="2008-07-11" status="Version 1.0">
+        <aas:candidate_summary candidate_ref="1" resp="Philip Lampi" vote_total="871"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="2" resp="Philip Lampi" vote_total="535"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="3" resp="Philip Lampi" vote_total="478"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="4" resp="Philip Lampi" vote_total="35"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="5" resp="Philip Lampi" vote_total="24"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="6" resp="Philip Lampi" vote_total="4"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="7" resp="Philip Lampi" vote_total="4"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="8" resp="Philip Lampi" vote_total="3"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="9" resp="Philip Lampi" vote_total="2"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="10" resp="Philip Lampi" vote_total="2"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="11" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="12" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="13" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="14" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="15" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:candidate_summary candidate_ref="16" resp="Philip Lampi" vote_total="1"></aas:candidate_summary>
+        <aas:note resp="Philip Lampi">No choice.</aas:note>
+        <aas:note resp="Philip Lampi">The first ballot for this office occured in 1824.</aas:note>
+      </aas:overview>
+      <aas:admin_unit geog_id="mes" name="Maine" type="State">
+        <aas:sub_unit geog_id="null" name="Third" type="District">
+          <aas:sub_unit geog_id="mes_lincoln" name="Lincoln" type="County">
+            <aas:result candidate_ref="1" resp="Philip Lampi" vote="871"></aas:result>
+            <aas:result candidate_ref="2" resp="Philip Lampi" vote="535"></aas:result>
+            <aas:result candidate_ref="3" resp="Philip Lampi" vote="478"></aas:result>
+            <aas:result candidate_ref="4" resp="Philip Lampi" vote="35"></aas:result>
+            <aas:result candidate_ref="5" resp="Philip Lampi" vote="24"></aas:result>
+            <aas:result candidate_ref="6" resp="Philip Lampi" vote="4"></aas:result>
+            <aas:result candidate_ref="7" resp="Philip Lampi" vote="4"></aas:result>
+            <aas:result candidate_ref="8" resp="Philip Lampi" vote="3"></aas:result>
+            <aas:result candidate_ref="9" resp="Philip Lampi" vote="2"></aas:result>
+            <aas:result candidate_ref="10" resp="Philip Lampi" vote="2"></aas:result>
+            <aas:result candidate_ref="11" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:result candidate_ref="12" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:result candidate_ref="13" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:result candidate_ref="14" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:result candidate_ref="15" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:result candidate_ref="16" resp="Philip Lampi" vote="1"></aas:result>
+            <aas:sub_unit geog_id="null" name="Alna" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="47"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="19"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="9"></aas:result>
+              <aas:result candidate_ref="6" resp="Philip Lampi" vote="4"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Bath" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="163"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="29"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="97"></aas:result>
+              <aas:result candidate_ref="9" resp="Philip Lampi" vote="2"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Boothbay" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="17"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="5"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Bowdoin" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="119"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="2"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Bowdoinham" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="180"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>  
+            <aas:result candidate_ref="3" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="4" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="11" resp="Philip Lampi" vote="1"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Bristol" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="62"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="11"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Camden" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="18"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="31"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Cushing" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="8"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="8"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Dresden" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="43"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="8"></aas:result>
+              <aas:note resp="Philip Lampi">The Maine Gazette of January 7, 1825, lists 20 votes for Ebenezer Herrick and 8 votes for Ebenezer Thatcher.</aas:note>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Edgecomb" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="3"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="5" resp="Philip Lampi" vote="24"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Friendship" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="9"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Georgetown" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="5"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="8" resp="Philip Lampi" vote="3"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Hope" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="7"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="2"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Jefferson" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="145"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Litchfield" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="37"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="4" resp="Philip Lampi" vote="34"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="New Castle" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="3"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="65"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="10" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="16" resp="Philip Lampi" vote="1"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Nobleborough" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="71"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="1"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Phipsburg" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="18"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="24"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="28"></aas:result>
+              <aas:result candidate_ref="7" resp="Philip Lampi" vote="4"></aas:result>
+              <aas:result candidate_ref="12" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="13" resp="Philip Lampi" vote="1"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Richmond" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="53"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Saint George" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="10"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="2"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Thomaston" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="8"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="24"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="34"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Topsham" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="50"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="14"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="4"></aas:result>
+              <aas:result candidate_ref="14" resp="Philip Lampi" vote="1"></aas:result>
+              <aas:result candidate_ref="15" resp="Philip Lampi" vote="1"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Union" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="47"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Waldoborough" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="4"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="13"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="65"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Warren" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="15"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="79"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Whitefield" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="43"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Wiscasset" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="46"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="2"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="31"></aas:result>
+            </aas:sub_unit>
+            <aas:sub_unit geog_id="null" name="Woolwich" type="Town">
+              <aas:result candidate_ref="1" resp="Philip Lampi" vote="11"></aas:result>
+              <aas:result candidate_ref="2" resp="Philip Lampi" vote="3"></aas:result>
+              <aas:result candidate_ref="3" resp="Philip Lampi" vote="18"></aas:result>
+              <aas:note resp="Philip Lampi">The Maine Gazette of January 7, 1825, lists 3 votes for Ebenezer Herrick, 13 votes for Albert Smith, and 16 votes for EbenezerThatcher.</aas:note>
+            </aas:sub_unit>
+          </aas:sub_unit>
+        </aas:sub_unit>
+      </aas:admin_unit>
+    </aas:role>
+  </aas:office>
+  <aas:reference resp="Philip Lampi" type="citation">Original Returns</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Maine Gazette (Bath). January 7, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">The American Advocate (Hallowell). January, 8, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Maine Gazette (Bath). January 14, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">The American Advocate (Hallowell). January 15, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation" urn="tufts:central:dca:MS115:MS115.001.DO.13961">Eastern Argus (Portland). March 7, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Eastern Argus (Portland). March 8, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Portland Advertiser. March 9, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation" urn="tufts:central:dca:MS115:MS115.001.DO.13961">American Advocate (Hallowell). March 12, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Portland Advertiser. March 12, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">The American Advocate (Hallowell). March 12, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">The American Advocate (Hallowell). March 25, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation" urn="tufts:central:dca:MS115:MS115.001.DO.13886">The Independant Statesman and Maine Republican (Portland). March 25, 1825.</aas:reference>
+  <aas:reference resp="Philip Lampi" type="citation">Dubin, Michael J. United States Congressional Elections, 1788-1997. Jefferson, N.C.: McFarland and Company, 1998</aas:reference>
+</aas:election_record>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="RDF Relationship Metadata" CREATED="2006-06-23T20:07:38.965Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="950">
+<foxml:xmlContent>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/1999/xlink">
+               <rdf:Description rdf:about="info:fedora/tufts:me.uscongress3.second.1825">
+                  <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:VotingRecord"></fedora-model:hasModel>
+                  <itemID xmlns="http://www.openarchives.org/OAI/2.0/">oai:tufts:me.uscongress3.second.1825</itemID>
+                  <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.MS115.002.ME.1825"></rel:isMemberOfCollection>
+                  <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:TuftsVotingRecord"></fedora-model:hasModel>
+               </rdf:Description>
+            </rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.1" LABEL="RDF Relationship Metadata" CREATED="2011-08-15T16:25:30.129Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="910">
+<foxml:xmlContent>
+<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <rdf:Description rdf:about="info:fedora/tufts:me.uscongress3.second.1825">
+    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:VotingRecord"></fedora-model:hasModel>
+    <itemID xmlns="http://www.openarchives.org/OAI/2.0/">oai:tufts:me.uscongress3.second.1825</itemID>
+    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.MS115.002.ME.1825"></rel:isMemberOfCollection>
+    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:VotingRecord"></fedora-model:hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.2" LABEL="RDF Relationship Metadata" CREATED="2011-08-15T19:01:26.093Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="910">
+<foxml:xmlContent>
+<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <rdf:Description rdf:about="info:fedora/tufts:me.uscongress3.second.1825">
+    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:VotingRecord"></fedora-model:hasModel>
+    <itemID xmlns="http://www.openarchives.org/OAI/2.0/">oai:tufts:me.uscongress3.second.1825</itemID>
+    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.MS115.002.ME.1825"></rel:isMemberOfCollection>
+    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:VotingRecord"></fedora-model:hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.3" LABEL="RDF Relationship Metadata" CREATED="2011-11-30T20:41:49.707Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0">
+<foxml:xmlContent>
+<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <rdf:Description rdf:about="info:fedora/tufts:me.uscongress3.second.1825">
+    <fedora-model:hasModel rdf:resource="info:fedora/cm:VotingRecord" xmlns:fedora-model="info:fedora/fedora-system:def/model#"/>
+    <itemID xmlns="http://www.openarchives.org/OAI/2.0/">oai:tufts:me.uscongress3.second.1825</itemID>
+    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.MS115.002.ME.1825"/>
+    <fedora-model:hasModel rdf:resource="info:fedora/cm:VotingRecord" xmlns:fedora-model="info:fedora/fedora-system:def/model#"/>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DC.0" LABEL="Dublin Core Metadata" CREATED="2006-06-23T20:08:15.351Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="1160">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:title>Maine 1825 U.S. Congress, 3rd District</dc:title>
+  <dc:creator>Philip Lampi</dc:creator>
+  <dc:creator>Tufts University Digital Collections and Archives</dc:creator>
+  <dc:creator>American Antiquarian Society</dc:creator>
+  <dc:subject>U.S. House of Representatives</dc:subject>
+  <dc:subject>Maine</dc:subject>
+  <dc:subject>Election districts Maine</dc:subject>
+  <dc:description>Maine 1825 U.S. Congress, 3rd District. The permanent URL for this resource is: http://hdl.handle.net/10427/58407</dc:description>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:date>1825</dc:date>
+  <dc:type>dataset</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dc:identifier>tufts:me.uscongress3.second.1825</dc:identifier>
+  <dc:source>MS115</dc:source>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-pd.html</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DC.1" LABEL="Dublin Core Metadata" CREATED="2011-08-15T19:01:25.346Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="1225">
+<foxml:xmlContent>
+<oai_dc:dc xmlns="http://www.fedora.info/definitions/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dc:title>Maine 1825 U.S. House of Representatives, District 3, Ballot 2</dc:title>
+  <dc:creator>Philip Lampi</dc:creator>
+  <dc:creator>Tufts University Digital Collections and Archives</dc:creator>
+  <dc:creator>American Antiquarian Society</dc:creator>
+  <dc:subject>U.S. House of Representatives</dc:subject>
+  <dc:subject>Maine</dc:subject>
+  <dc:subject>Election districts Maine</dc:subject>
+  <dc:description>Maine 1825 U.S. House of Representatives, District 3, Ballot 2. The permanent URL for this resource is: http://hdl.handle.net/10427/58407</dc:description>
+  <dc:identifier>tufts:me.uscongress3.second.1825</dc:identifier>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:date>1825</dc:date>
+  <dc:type>dataset</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dc:source>MS115</dc:source>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-pd.html</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DC.2" LABEL="Dublin Core Metadata" CREATED="2011-11-30T20:41:48.861Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="1225">
+<foxml:xmlContent>
+<oai_dc:dc xmlns="http://www.fedora.info/definitions/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dc:title>Maine 1825 U.S. House of Representatives, District 3, Ballot 2</dc:title>
+  <dc:creator>Philip Lampi</dc:creator>
+  <dc:creator>Tufts University Digital Collections and Archives</dc:creator>
+  <dc:creator>American Antiquarian Society</dc:creator>
+  <dc:subject>U.S. House of Representatives</dc:subject>
+  <dc:subject>Maine</dc:subject>
+  <dc:subject>Election districts Maine</dc:subject>
+  <dc:description>Maine 1825 U.S. House of Representatives, District 3, Ballot 2. The permanent URL for this resource is: http://hdl.handle.net/10427/58407</dc:description>
+  <dc:identifier>tufts:me.uscongress3.second.1825</dc:identifier>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:date>1825</dc:date>
+  <dc:type>dataset</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dc:source>MS115</dc:source>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-pd.html</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DCA-ADMIN" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DCA-ADMIN.0" LABEL="DCA Adminstrative Metadata" CREATED="2006-06-23T20:08:15.351Z" MIMETYPE="text/xml" SIZE="312">
+<foxml:xmlContent>
+<dca_admin:admin xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/1999/xlink"></dca_admin:admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-ADMIN.1" LABEL="DCA Adminstrative Metadata" CREATED="2011-08-15T16:25:29.829Z" MIMETYPE="text/xml" SIZE="367">
+<foxml:xmlContent>
+<dca_admin:admin xmlns="http://www.fedora.info/definitions/" xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin /" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"></dca_admin:admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-ADMIN.2" LABEL="DCA Adminstrative Metadata" CREATED="2011-08-15T19:01:25.698Z" MIMETYPE="text/xml" SIZE="367">
+<foxml:xmlContent>
+<dca_admin:admin xmlns="http://www.fedora.info/definitions/" xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin /" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"></dca_admin:admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-ADMIN.3" LABEL="DCA Adminstrative Metadata" CREATED="2011-11-30T20:41:49.198Z" MIMETYPE="text/xml" SIZE="367">
+<foxml:xmlContent>
+<dca_admin:admin xmlns="http://www.fedora.info/definitions/" xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin /" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"></dca_admin:admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DCA-META" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DCA-META.0" LABEL="DCA Descriptive Metadata" CREATED="2006-06-23T20:07:38.965Z" MIMETYPE="text/xml" SIZE="2984">
+<foxml:xmlContent>
+<dca_dc:dc xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/1999/xlink">
+               <dc:title>Maine 1825 U.S. Congress, 3rd District</dc:title>
+               <dc:creator>Philip Lampi</dc:creator>
+               <dc:creator>Tufts University Digital Collections and Archives</dc:creator>
+               <dc:creator>American Antiquarian Society</dc:creator>
+               <dc:subject>U.S. House of Representatives</dc:subject>
+               <dc:subject>Election districts Maine</dc:subject>
+               <dc:date.created>1825</dc:date.created>
+               <dc:date.issued>2010-11-02</dc:date.issued>
+               <dc:temporal>1825</dc:temporal>
+               <dc:type>dataset</dc:type>
+               <dc:format>text/xml</dc:format>
+               <dc:source>MS115</dc:source>
+               <dc:bibliographicCitation>American Antiquarian Society and Tufts University Digital Collections and Archives. &quot;Maine 1825 U.S. Congress, 3rd District.&quot; 2010. Tufts University. Digital Collections and Archives. Medford, MA. http://hdl.handle.net/10427/58407</dc:bibliographicCitation>
+               <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+               <dc:rights>http://dca.tufts.edu/ua/access/rights-pd.html</dc:rights>
+               <dc:identifier>http://hdl.handle.net/10427/58407</dc:identifier>
+               <dcterms:extent>19858 bytes</dcterms:extent>
+               <dcatech:fileSize>19858 bytes</dcatech:fileSize>
+               <dcadesc:geogname>Maine</dcadesc:geogname>
+               <dcadesc:funder>National Endowment for the Humanities</dcadesc:funder>
+               <dcadesc:persname>Ebenezer Herrick</dcadesc:persname>
+               <dcadesc:persname>Albert Smith</dcadesc:persname>
+               <dcadesc:persname>Ebenzer Thatcher</dcadesc:persname>
+               <dcadesc:persname>Elisha J. Ford</dcadesc:persname>
+               <dcadesc:persname>Moses Carlton</dcadesc:persname>
+               <dcadesc:persname>Nathaniel Green</dcadesc:persname>
+               <dcadesc:persname>Elihu Hatch</dcadesc:persname>
+               <dcadesc:persname>Stephen Parsons</dcadesc:persname>
+               <dcadesc:persname>Ebenezer Delano</dcadesc:persname>
+               <dcadesc:persname>Lucius Barnard</dcadesc:persname>
+               <dcadesc:persname>Parker MacCobb</dcadesc:persname>
+               <dcadesc:persname>James MacLellan</dcadesc:persname>
+               <dcadesc:persname>Peleg Tallman</dcadesc:persname>
+               <dcadesc:persname>Daniel Rose</dcadesc:persname>
+               <dcadesc:persname>Charles R. Partins</dcadesc:persname>
+               <dcadesc:persname>E. J. Ford</dcadesc:persname>
+            </dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-META.1" LABEL="DCA Descriptive Metadata" CREATED="2011-08-15T16:25:29.690Z" MIMETYPE="text/xml" SIZE="2606">
+<foxml:xmlContent>
+<dca_dc:dc xmlns="http://www.fedora.info/definitions/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dc:title>Maine 1825 U.S. House of Representatives, District 3, Ballot 2</dc:title>
+  <dc:creator>Philip Lampi</dc:creator>
+  <dc:creator>Tufts University Digital Collections and Archives</dc:creator>
+  <dc:creator>American Antiquarian Society</dc:creator>
+  <dc:subject>U.S. House of Representatives</dc:subject>
+  <dc:subject>Election districts Maine</dc:subject>
+  <dc:date.created>1825</dc:date.created>
+  <dc:date.issued>2010-11-02</dc:date.issued>
+  <dc:temporal>1825</dc:temporal>
+  <dc:type>dataset</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dc:source>MS115</dc:source>
+  <dc:bibliographicCitation>American Antiquarian Society and Tufts University Digital Collections and Archives. &quot;Maine 1825 U.S. House of Representatives, District 3, Ballot 2.&quot; 2010. Tufts University. Digital Collections and Archives. Medford, MA. http://hdl.handle.net/10427/58407</dc:bibliographicCitation>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-pd.html</dc:rights>
+  <dc:identifier>http://hdl.handle.net/10427/58407</dc:identifier>
+  <dcterms:extent>19643 bytes</dcterms:extent>
+  <dcatech:fileSize>19643 bytes</dcatech:fileSize>
+  <dcadesc:geogname>Maine</dcadesc:geogname>
+  <dcadesc:funder>National Endowment for the Humanities</dcadesc:funder>
+  <dcadesc:persname>Ebenezer Herrick</dcadesc:persname>
+  <dcadesc:persname>Albert Smith</dcadesc:persname>
+  <dcadesc:persname>Ebenzer Thatcher</dcadesc:persname>
+  <dcadesc:persname>Nathaniel Green</dcadesc:persname>
+  <dcadesc:persname>Stephen Parsons</dcadesc:persname>
+  <dcadesc:persname>Elisha J. Ford</dcadesc:persname>
+  <dcadesc:persname>Parker MacCobb</dcadesc:persname>
+  <dcadesc:persname>Ebenezer Delano</dcadesc:persname>
+  <dcadesc:persname>Moses Carlton</dcadesc:persname>
+  <dcadesc:persname>Lucius Barnard</dcadesc:persname>
+  <dcadesc:persname>Elihu Hatch</dcadesc:persname>
+  <dcadesc:persname>James MacLellan</dcadesc:persname>
+  <dcadesc:persname>Peleg Tallman</dcadesc:persname>
+  <dcadesc:persname>Daniel Rose</dcadesc:persname>
+  <dcadesc:persname>Charles R. Partins</dcadesc:persname>
+  <dcadesc:persname>E. J. Ford</dcadesc:persname>
+</dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-META.2" LABEL="DCA Descriptive Metadata" CREATED="2011-08-15T19:01:25.531Z" MIMETYPE="text/xml" SIZE="2606">
+<foxml:xmlContent>
+<dca_dc:dc xmlns="http://www.fedora.info/definitions/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dc:title>Maine 1825 U.S. House of Representatives, District 3, Ballot 2</dc:title>
+  <dc:creator>Philip Lampi</dc:creator>
+  <dc:creator>Tufts University Digital Collections and Archives</dc:creator>
+  <dc:creator>American Antiquarian Society</dc:creator>
+  <dc:subject>U.S. House of Representatives</dc:subject>
+  <dc:subject>Election districts Maine</dc:subject>
+  <dc:date.created>1825</dc:date.created>
+  <dc:date.issued>2010-11-02</dc:date.issued>
+  <dc:temporal>1825</dc:temporal>
+  <dc:type>dataset</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dc:source>MS115</dc:source>
+  <dc:bibliographicCitation>American Antiquarian Society and Tufts University Digital Collections and Archives. &quot;Maine 1825 U.S. House of Representatives, District 3, Ballot 2.&quot; 2010. Tufts University. Digital Collections and Archives. Medford, MA. http://hdl.handle.net/10427/58407</dc:bibliographicCitation>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-pd.html</dc:rights>
+  <dc:identifier>http://hdl.handle.net/10427/58407</dc:identifier>
+  <dcterms:extent>19643 bytes</dcterms:extent>
+  <dcatech:fileSize>19643 bytes</dcatech:fileSize>
+  <dcadesc:geogname>Maine</dcadesc:geogname>
+  <dcadesc:funder>National Endowment for the Humanities</dcadesc:funder>
+  <dcadesc:persname>Ebenezer Herrick</dcadesc:persname>
+  <dcadesc:persname>Albert Smith</dcadesc:persname>
+  <dcadesc:persname>Ebenzer Thatcher</dcadesc:persname>
+  <dcadesc:persname>Nathaniel Green</dcadesc:persname>
+  <dcadesc:persname>Stephen Parsons</dcadesc:persname>
+  <dcadesc:persname>Elisha J. Ford</dcadesc:persname>
+  <dcadesc:persname>Parker MacCobb</dcadesc:persname>
+  <dcadesc:persname>Ebenezer Delano</dcadesc:persname>
+  <dcadesc:persname>Moses Carlton</dcadesc:persname>
+  <dcadesc:persname>Lucius Barnard</dcadesc:persname>
+  <dcadesc:persname>Elihu Hatch</dcadesc:persname>
+  <dcadesc:persname>James MacLellan</dcadesc:persname>
+  <dcadesc:persname>Peleg Tallman</dcadesc:persname>
+  <dcadesc:persname>Daniel Rose</dcadesc:persname>
+  <dcadesc:persname>Charles R. Partins</dcadesc:persname>
+  <dcadesc:persname>E. J. Ford</dcadesc:persname>
+</dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-META.3" LABEL="DCA Descriptive Metadata" CREATED="2011-11-30T20:41:49.022Z" MIMETYPE="text/xml" SIZE="2606">
+<foxml:xmlContent>
+<dca_dc:dc xmlns="http://www.fedora.info/definitions/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dc:title>Maine 1825 U.S. House of Representatives, District 3, Ballot 2</dc:title>
+  <dc:creator>Philip Lampi</dc:creator>
+  <dc:creator>Tufts University Digital Collections and Archives</dc:creator>
+  <dc:creator>American Antiquarian Society</dc:creator>
+  <dc:subject>U.S. House of Representatives</dc:subject>
+  <dc:subject>Election districts Maine</dc:subject>
+  <dc:date.created>1825</dc:date.created>
+  <dc:date.issued>2010-11-02</dc:date.issued>
+  <dc:temporal>1825</dc:temporal>
+  <dc:type>dataset</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dc:source>MS115</dc:source>
+  <dc:bibliographicCitation>American Antiquarian Society and Tufts University Digital Collections and Archives. &quot;Maine 1825 U.S. House of Representatives, District 3, Ballot 2.&quot; 2010. Tufts University. Digital Collections and Archives. Medford, MA. http://hdl.handle.net/10427/58407</dc:bibliographicCitation>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-pd.html</dc:rights>
+  <dc:identifier>http://hdl.handle.net/10427/58407</dc:identifier>
+  <dcterms:extent>19642 bytes</dcterms:extent>
+  <dcatech:fileSize>19642 bytes</dcatech:fileSize>
+  <dcadesc:geogname>Maine</dcadesc:geogname>
+  <dcadesc:funder>National Endowment for the Humanities</dcadesc:funder>
+  <dcadesc:persname>Ebenezer Herrick</dcadesc:persname>
+  <dcadesc:persname>Albert Smith</dcadesc:persname>
+  <dcadesc:persname>Ebenzer Thatcher</dcadesc:persname>
+  <dcadesc:persname>Nathaniel Green</dcadesc:persname>
+  <dcadesc:persname>Stephen Parsons</dcadesc:persname>
+  <dcadesc:persname>Elisha J. Ford</dcadesc:persname>
+  <dcadesc:persname>Parker MacCobb</dcadesc:persname>
+  <dcadesc:persname>Ebenezer Delano</dcadesc:persname>
+  <dcadesc:persname>Moses Carlton</dcadesc:persname>
+  <dcadesc:persname>Lucius Barnard</dcadesc:persname>
+  <dcadesc:persname>Elihu Hatch</dcadesc:persname>
+  <dcadesc:persname>James MacLellan</dcadesc:persname>
+  <dcadesc:persname>Peleg Tallman</dcadesc:persname>
+  <dcadesc:persname>Daniel Rose</dcadesc:persname>
+  <dcadesc:persname>Charles R. Partins</dcadesc:persname>
+  <dcadesc:persname>E. J. Ford</dcadesc:persname>
+</dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+</foxml:digitalObject>

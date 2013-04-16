@@ -8,10 +8,3 @@ module ActiveFedora::Model
   end
 end
 
-# Our foxml fixtures don't have the extension and it seems unnecessary to add them at this point
-ActiveFedora::FixtureLoader.class_eval do
-    def filename_for_pid(pid)
-        File.join(path, "#{pid.gsub(":", "_")}")
-    end
-end
-

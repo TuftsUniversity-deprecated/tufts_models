@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foxml:digitalObject VERSION="1.1" PID="tufts:UA069.001.DO.UA015"
+xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+<foxml:objectProperties>
+<foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE=""/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2005-02-15T14:21:58.000Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2010-12-20T19:57:23.403Z"/>
+</foxml:objectProperties>
+<foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2005-02-15T14:21:58.000Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:xmlContent>
+<audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+<audit:record ID="AUDREC1">
+<audit:process type="Fedora API-M"/>
+<audit:action>ingestObject</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2008-08-05T20:18:48.794Z</audit:date>
+<audit:justification>Ingested from local file p:\ingests\20080506.1\objects\tufts-UA069.001.DO.UA015.foxml.xml</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC2">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DC</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-08-25T17:01:19.111Z</audit:date>
+<audit:justification>DRINGEST-187</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC3">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-META</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-08-25T17:01:19.238Z</audit:date>
+<audit:justification>DRINGEST-187</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC4">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-ADMIN</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-08-25T17:01:19.390Z</audit:date>
+<audit:justification>DRINGEST-187</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC5">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-08-25T17:01:19.525Z</audit:date>
+<audit:justification>DRINGEST-187</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC6">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DC</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-08-25T19:56:42.959Z</audit:date>
+<audit:justification>DRINGEST-187</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC7">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-META</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-08-25T19:56:43.139Z</audit:date>
+<audit:justification>DRINGEST-187</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC8">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-ADMIN</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-08-25T19:56:43.268Z</audit:date>
+<audit:justification>DRINGEST-187</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC9">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-08-25T19:56:43.404Z</audit:date>
+<audit:justification>DRINGEST-187</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC10">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DC</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-08-26T16:00:19.582Z</audit:date>
+<audit:justification>DRINGEST-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC11">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-META</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-08-26T16:00:19.733Z</audit:date>
+<audit:justification>DRINGEST-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC12">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-ADMIN</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-08-26T16:00:19.913Z</audit:date>
+<audit:justification>DRINGEST-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC13">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-08-26T16:00:20.102Z</audit:date>
+<audit:justification>DRINGEST-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC14">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-08-26T17:49:29.145Z</audit:date>
+<audit:justification>DRINGEST-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC15">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-08-28T21:20:39.862Z</audit:date>
+<audit:justification>Added itemID for OAI harvesting</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC16">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>Archival.xml</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-09-03T17:44:21.629Z</audit:date>
+<audit:justification>DRINGEST-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC17">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>Archival.xml</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-17T19:07:50.086Z</audit:date>
+<audit:justification>ele-1384</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC18">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-17T19:07:50.480Z</audit:date>
+<audit:justification>ele-1384</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC19">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>Archival.xml</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-17T19:31:03.899Z</audit:date>
+<audit:justification>dringest-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC20">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-17T19:31:04.261Z</audit:date>
+<audit:justification>dringest-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC21">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DC</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-17T19:40:32.157Z</audit:date>
+<audit:justification>dringest-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC22">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-META</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-17T19:40:32.350Z</audit:date>
+<audit:justification>dringest-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC23">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-ADMIN</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-17T19:40:32.546Z</audit:date>
+<audit:justification>dringest-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC24">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>Archival.xml</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-17T19:40:32.736Z</audit:date>
+<audit:justification>dringest-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC25">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-17T19:40:32.976Z</audit:date>
+<audit:justification>dringest-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC26">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DC</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-17T21:37:03.257Z</audit:date>
+<audit:justification>dringest-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC27">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-META</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-17T21:37:03.708Z</audit:date>
+<audit:justification>dringest-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC28">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-ADMIN</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-17T21:37:05.004Z</audit:date>
+<audit:justification>dringest-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC29">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>Archival.xml</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-17T21:37:05.493Z</audit:date>
+<audit:justification>dringest-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC30">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>RELS-EXT</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-17T21:37:06.179Z</audit:date>
+<audit:justification>dringest-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC31">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>Archival.xml</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-20T17:58:26.543Z</audit:date>
+<audit:justification>dringest-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC32">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>Archival.xml</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-20T19:02:11.205Z</audit:date>
+<audit:justification>dringest-190</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC33">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByReference</audit:action>
+<audit:componentID>Archival.xml</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2010-12-20T19:57:23.403Z</audit:date>
+<audit:justification>dringest-190</audit:justification>
+</audit:record>
+</audit:auditTrail>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Relationships to other objects" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="686">
+<foxml:xmlContent>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:fbm="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/TR/xlink">
+		            
+               <rdf:Description rdf:about="info:fedora/tufts:UA069.001.DO.UA015"><fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.EAD"></fedora-model:hasModel>
+		               
+                  <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UACOLL"></rel:isMemberOfCollection>
+		            
+               </rdf:Description>
+		         
+            </rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.1" LABEL="Relationships to other objects" CREATED="2010-08-25T17:01:19.525Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="576">
+<foxml:xmlContent>
+<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rdf:Description rdf:about="info:fedora/tufts:UA069.001.DO.UA015">
+    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015"></rel:isMemberOfCollection>
+    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.EAD"></fedora-model:hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.2" LABEL="Relationships to other objects" CREATED="2010-08-25T19:56:43.404Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="576">
+<foxml:xmlContent>
+<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rdf:Description rdf:about="info:fedora/tufts:UA069.001.DO.UA015">
+    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015"></rel:isMemberOfCollection>
+    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.EAD"></fedora-model:hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.3" LABEL="Relationships to other objects" CREATED="2010-08-26T16:00:20.102Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="576">
+<foxml:xmlContent>
+<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rdf:Description rdf:about="info:fedora/tufts:UA069.001.DO.UA015">
+    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015"></rel:isMemberOfCollection>
+    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.EAD"></fedora-model:hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.4" LABEL="Relationships to other objects" CREATED="2010-08-26T17:49:29.145Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="687">
+<foxml:xmlContent>
+<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rdf:Description rdf:about="info:fedora/tufts:UA069.001.DO.UA015">
+    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015"></rel:isMemberOfCollection>
+    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UACOLL"></rel:isMemberOfCollection>
+    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.EAD"></fedora-model:hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.5" LABEL="Relationships to other objects" CREATED="2010-08-28T21:20:39.862Z" MIMETYPE="text/xml" FORMAT_URI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" SIZE="782">
+<foxml:xmlContent>
+<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rdf:Description rdf:about="info:fedora/tufts:UA069.001.DO.UA015">
+    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015"></rel:isMemberOfCollection>
+    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UACOLL"></rel:isMemberOfCollection>
+    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.EAD"></fedora-model:hasModel>
+    <itemID xmlns="http://www.openarchives.org/OAI/2.0/">oai:tufts:UA069.001.DO.UA015</itemID>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.6" LABEL="Relationships to other objects" CREATED="2010-12-17T19:07:50.480Z" MIMETYPE="text/xml" FORMAT_URI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" SIZE="576">
+<foxml:xmlContent>
+<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rdf:Description rdf:about="info:fedora/tufts:UA069.001.DO.UA015">
+    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015"></rel:isMemberOfCollection>
+    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.EAD"></fedora-model:hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.7" LABEL="Relationships to other objects" CREATED="2010-12-17T19:31:04.261Z" MIMETYPE="text/xml" FORMAT_URI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" SIZE="576">
+<foxml:xmlContent>
+<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rdf:Description rdf:about="info:fedora/tufts:UA069.001.DO.UA015">
+    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015"></rel:isMemberOfCollection>
+    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.EAD"></fedora-model:hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.8" LABEL="Relationships to other objects" CREATED="2010-12-17T19:40:32.976Z" MIMETYPE="text/xml" FORMAT_URI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" SIZE="576">
+<foxml:xmlContent>
+<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rdf:Description rdf:about="info:fedora/tufts:UA069.001.DO.UA015">
+    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015"></rel:isMemberOfCollection>
+    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.EAD"></fedora-model:hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="RELS-EXT.9" LABEL="Relationships to other objects" CREATED="2010-12-17T21:37:06.179Z" MIMETYPE="text/xml" FORMAT_URI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" SIZE="576">
+<foxml:xmlContent>
+<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rdf:Description rdf:about="info:fedora/tufts:UA069.001.DO.UA015">
+    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015"></rel:isMemberOfCollection>
+    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.EAD"></fedora-model:hasModel>
+  </rdf:Description>
+</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="Archival.xml" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
+<foxml:datastreamVersion ID="Archival.xml.0" LABEL="A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="text/xml">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UA015.archival.xml"/>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="Archival.xml.1" LABEL="A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003" CREATED="2010-09-03T17:44:21.629Z" MIMETYPE="text/xml">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UA015.archival.xml"/>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="Archival.xml.2" LABEL="A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003" CREATED="2010-12-17T19:07:50.086Z" MIMETYPE="text/xml">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UA015.archival.xml"/>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="Archival.xml.3" LABEL="A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003" CREATED="2010-12-17T19:31:03.899Z" MIMETYPE="text/xml">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UA015.archival.xml"/>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="Archival.xml.4" LABEL="A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003" CREATED="2010-12-17T19:40:32.736Z" MIMETYPE="text/xml">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UA015.archival.xml"/>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="Archival.xml.5" LABEL="A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003" CREATED="2010-12-17T21:37:05.493Z" MIMETYPE="text/xml">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UA015.archival.xml"/>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="Archival.xml.6" LABEL="A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003" CREATED="2010-12-20T17:58:26.543Z" MIMETYPE="text/xml">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UA015.archival.xml"/>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="Archival.xml.7" LABEL="A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003" CREATED="2010-12-20T19:02:11.205Z" MIMETYPE="text/xml">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UA015.archival.xml"/>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="Archival.xml.8" LABEL="A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003" CREATED="2010-12-20T19:57:23.403Z" MIMETYPE="text/xml">
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UA015.archival.xml"/>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DC.1" LABEL="Dublin Core Metadata" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="976">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <dc:title>A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003</dc:title>
+  <dc:creator>Digital Collections and Archives</dc:creator>
+  <dc:subject>Fletcher School of Law and Diplomacy</dc:subject>
+  <dc:description>Finding aid for the Fletcher School of Law and Diplomacy records at the Digital Collections and Archives, Tufts University. The permanent URL for this resource is: http://hdl.handle.net/10427/14552.</dc:description>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:date>/  /</dc:date>
+  <dc:type>text</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dc:identifier>tufts:UA069.001.DO.UA015</dc:identifier>
+  <dc:source>UA069</dc:source>
+  <dc:relation>UA069</dc:relation>
+  <dc:relation>UA015</dc:relation>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights.html</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DC.2" LABEL="Dublin Core Metadata" CREATED="2010-08-25T17:01:19.111Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="1065">
+<foxml:xmlContent>
+<metadata xmlns="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/1999/xlink" ID="DC">
+  <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/">
+    <dc:title>A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003</dc:title>
+    <dc:creator>Digital Collections and Archives</dc:creator>
+    <dc:subject>Fletcher School of Law and Diplomacy</dc:subject>
+    <dc:description>Finding aid for the Fletcher School of Law and Diplomacy records at the Digital Collections and Archives, Tufts University. The permanent URL for this resource is: http://hdl.handle.net/10427/14552</dc:description>
+    <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+    <dc:date>/  /</dc:date>
+    <dc:date>2008</dc:date>
+    <dc:type>text</dc:type>
+    <dc:format>text/xml</dc:format>
+    <dc:source>UA069</dc:source>
+    <dc:rights>http://dca.tufts.edu/ua/access/rights-tufts.html</dc:rights>
+  </oai_dc:dc>
+</metadata>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DC.3" LABEL="Dublin Core Metadata" CREATED="2010-08-25T19:56:42.959Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="1065">
+<foxml:xmlContent>
+<metadata xmlns="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/1999/xlink" ID="DC">
+  <oai_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/">
+    <dc:title>A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003</dc:title>
+    <dc:creator>Digital Collections and Archives</dc:creator>
+    <dc:subject>Fletcher School of Law and Diplomacy</dc:subject>
+    <dc:description>Finding aid for the Fletcher School of Law and Diplomacy records at the Digital Collections and Archives, Tufts University. The permanent URL for this resource is: http://hdl.handle.net/10427/14552</dc:description>
+    <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+    <dc:date>/  /</dc:date>
+    <dc:date>2008</dc:date>
+    <dc:type>text</dc:type>
+    <dc:format>text/xml</dc:format>
+    <dc:source>UA069</dc:source>
+    <dc:rights>http://dca.tufts.edu/ua/access/rights-tufts.html</dc:rights>
+  </oai_dc:dc>
+</metadata>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DC.4" LABEL="Dublin Core Metadata" CREATED="2010-08-26T16:00:19.582Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="1066">
+<foxml:xmlContent>
+<oai_dc:dc xmlns="http://www.fedora.info/definitions/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <dc:title>A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003</dc:title>
+  <dc:creator>Digital Collections and Archives</dc:creator>
+  <dc:subject>Fletcher School of Law and Diplomacy</dc:subject>
+  <dc:description>Finding aid for the Fletcher School of Law and Diplomacy records at the Digital Collections and Archives, Tufts University. The permanent URL for this resource is: http://hdl.handle.net/10427/14552</dc:description>
+  <dc:identifier>tufts:UA069.001.DO.UA015</dc:identifier>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:date>/  /</dc:date>
+  <dc:date>2008</dc:date>
+  <dc:type>text</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dc:source>UA069</dc:source>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-tufts.html</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DC.5" LABEL="Dublin Core Metadata" CREATED="2010-12-17T19:40:32.157Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="1060">
+<foxml:xmlContent>
+<oai_dc:dc xmlns="http://www.fedora.info/definitions/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <dc:title>A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003</dc:title>
+  <dc:creator>Digital Collections and Archives</dc:creator>
+  <dc:subject>Fletcher School of Law and Diplomacy</dc:subject>
+  <dc:description>Finding aid for the Fletcher School of Law and Diplomacy records at the Digital Collections and Archives, Tufts University. The permanent URL for this resource is: http://hdl.handle.net/10427/14552</dc:description>
+  <dc:identifier>UA069.001.DO.UA015</dc:identifier>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:date>/  /</dc:date>
+  <dc:date>2008</dc:date>
+  <dc:type>text</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dc:source>UA069</dc:source>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-tufts.html</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DC.6" LABEL="Dublin Core Metadata" CREATED="2010-12-17T21:37:03.257Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="1060">
+<foxml:xmlContent>
+<oai_dc:dc xmlns="http://www.fedora.info/definitions/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <dc:title>A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003</dc:title>
+  <dc:creator>Digital Collections and Archives</dc:creator>
+  <dc:subject>Fletcher School of Law and Diplomacy</dc:subject>
+  <dc:description>Finding aid for the Fletcher School of Law and Diplomacy records at the Digital Collections and Archives, Tufts University. The permanent URL for this resource is: http://hdl.handle.net/10427/14552</dc:description>
+  <dc:identifier>UA069.001.DO.UA015</dc:identifier>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:date>/  /</dc:date>
+  <dc:date>2008</dc:date>
+  <dc:type>text</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dc:source>UA069</dc:source>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-tufts.html</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DCA-ADMIN" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DCA-ADMIN.1" LABEL="DCA Adminstrative Metadata" CREATED="2005-05-17T23:08:38.024Z" MIMETYPE="text/xml" SIZE="1540">
+<foxml:xmlContent>
+<dca_admin:admin xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns:fbm="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/TR/xlink">
+				        
+               <admin:status>current</admin:status>
+				        
+               <admin:accessPoint>Tufts Digital Library</admin:accessPoint>
+				        
+               <admin:los>Archival/Public</admin:los>
+				        
+               <admin:responsibleParty>Digital Collections and Archives</admin:responsibleParty>
+				        
+               <admin:transferDate>05/02/08</admin:transferDate>
+				        
+               <admin:provenance>From the Digital Collections and Archives records (UA069)</admin:provenance>
+				        
+               <admin:subAgreement>n/a</admin:subAgreement>
+				        
+               <admin:disposition>archival</admin:disposition>
+				        
+               <admin:accessRights>This resource is freely available for research or educational use. Use of the finding aid for publication or redistribution is prohibited except by permission of the Digital Collections and Archives, Tufts University.</admin:accessRights>
+				        
+               <admin:checksum>null</admin:checksum>
+			      
+            <admin:notes>On Wed May 20 16:40:06 2009 GMT-5, this file was modified to transform URNs from the Tufts naming service to point to CNRI Handles. Old URN: </admin:notes>
+</dca_admin:admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-ADMIN.2" LABEL="DCA Adminstrative Metadata" CREATED="2010-08-25T17:01:19.390Z" MIMETYPE="text/xml" SIZE="1257">
+<foxml:xmlContent>
+<metadata xmlns="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/1999/xlink" ID="DCA-ADMIN" LABEL="DCA Adminstrative Metadata">
+  <dca_admin:admin xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin/" xmlns:dcterms="http://purl.org/dc/terms/">
+    <admin:status>current</admin:status>
+    <admin:accessPoint>Tufts Digital Library</admin:accessPoint>
+    <admin:los>Archival/Public</admin:los>
+    <admin:responsibleParty>Digital Collections and Archives</admin:responsibleParty>
+    <admin:subAgreement>n/a</admin:subAgreement>
+    <admin:disposition>archival</admin:disposition>
+    <admin:bdefSubscriptions>bdef:AssetDef, bdef:TuftsAccess, bdef:TuftsAccessRights, bdef:TuftsArchival, bdef:TuftsImage, bdef:TuftsMetadata, bdef:TuftsReference, bdef:TuftsType</admin:bdefSubscriptions>
+    <admin:accessRights>This image is freely available for research or educational use. Use of the image for publication or redistribution is prohibited except by permission of Digital Collections and Archives, Tufts University</admin:accessRights>
+    <admin:notes>n/a</admin:notes>
+    <admin:checksum>null</admin:checksum>
+  </dca_admin:admin>
+</metadata>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-ADMIN.3" LABEL="DCA Adminstrative Metadata" CREATED="2010-08-25T19:56:43.268Z" MIMETYPE="text/xml" SIZE="1257">
+<foxml:xmlContent>
+<metadata xmlns="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/1999/xlink" ID="DCA-ADMIN" LABEL="DCA Adminstrative Metadata">
+  <dca_admin:admin xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin/" xmlns:dcterms="http://purl.org/dc/terms/">
+    <admin:status>current</admin:status>
+    <admin:accessPoint>Tufts Digital Library</admin:accessPoint>
+    <admin:los>Archival/Public</admin:los>
+    <admin:responsibleParty>Digital Collections and Archives</admin:responsibleParty>
+    <admin:subAgreement>n/a</admin:subAgreement>
+    <admin:disposition>archival</admin:disposition>
+    <admin:bdefSubscriptions>bdef:AssetDef, bdef:TuftsAccess, bdef:TuftsAccessRights, bdef:TuftsArchival, bdef:TuftsImage, bdef:TuftsMetadata, bdef:TuftsReference, bdef:TuftsType</admin:bdefSubscriptions>
+    <admin:accessRights>This image is freely available for research or educational use. Use of the image for publication or redistribution is prohibited except by permission of Digital Collections and Archives, Tufts University</admin:accessRights>
+    <admin:notes>n/a</admin:notes>
+    <admin:checksum>null</admin:checksum>
+  </dca_admin:admin>
+</metadata>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-ADMIN.4" LABEL="DCA Adminstrative Metadata" CREATED="2010-08-26T16:00:19.913Z" MIMETYPE="text/xml" SIZE="1160">
+<foxml:xmlContent>
+<dca_admin:admin xmlns="http://www.fedora.info/definitions/" xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <admin:status>current</admin:status>
+  <admin:accessPoint>Tufts Digital Library</admin:accessPoint>
+  <admin:los>Archival/Public</admin:los>
+  <admin:responsibleParty>Digital Collections and Archives</admin:responsibleParty>
+  <admin:subAgreement>n/a</admin:subAgreement>
+  <admin:disposition>archival</admin:disposition>
+  <admin:bdefSubscriptions>bdef:AssetDef, bdef:TuftsAccess, bdef:TuftsAccessRights, bdef:TuftsArchival, bdef:TuftsImage, bdef:TuftsMetadata, bdef:TuftsReference, bdef:TuftsType</admin:bdefSubscriptions>
+  <admin:accessRights>This image is freely available for research or educational use. Use of the image for publication or redistribution is prohibited except by permission of Digital Collections and Archives, Tufts University</admin:accessRights>
+  <admin:notes>n/a</admin:notes>
+  <admin:checksum>null</admin:checksum>
+</dca_admin:admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-ADMIN.5" LABEL="DCA Adminstrative Metadata" CREATED="2010-12-17T19:40:32.546Z" MIMETYPE="text/xml" SIZE="1160">
+<foxml:xmlContent>
+<dca_admin:admin xmlns="http://www.fedora.info/definitions/" xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <admin:status>current</admin:status>
+  <admin:accessPoint>Tufts Digital Library</admin:accessPoint>
+  <admin:los>Archival/Public</admin:los>
+  <admin:responsibleParty>Digital Collections and Archives</admin:responsibleParty>
+  <admin:subAgreement>n/a</admin:subAgreement>
+  <admin:disposition>archival</admin:disposition>
+  <admin:bdefSubscriptions>bdef:AssetDef, bdef:TuftsAccess, bdef:TuftsAccessRights, bdef:TuftsArchival, bdef:TuftsImage, bdef:TuftsMetadata, bdef:TuftsReference, bdef:TuftsType</admin:bdefSubscriptions>
+  <admin:accessRights>This image is freely available for research or educational use. Use of the image for publication or redistribution is prohibited except by permission of Digital Collections and Archives, Tufts University</admin:accessRights>
+  <admin:notes>n/a</admin:notes>
+  <admin:checksum>null</admin:checksum>
+</dca_admin:admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-ADMIN.6" LABEL="DCA Adminstrative Metadata" CREATED="2010-12-17T21:37:05.004Z" MIMETYPE="text/xml" SIZE="1160">
+<foxml:xmlContent>
+<dca_admin:admin xmlns="http://www.fedora.info/definitions/" xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <admin:status>current</admin:status>
+  <admin:accessPoint>Tufts Digital Library</admin:accessPoint>
+  <admin:los>Archival/Public</admin:los>
+  <admin:responsibleParty>Digital Collections and Archives</admin:responsibleParty>
+  <admin:subAgreement>n/a</admin:subAgreement>
+  <admin:disposition>archival</admin:disposition>
+  <admin:bdefSubscriptions>bdef:AssetDef, bdef:TuftsAccess, bdef:TuftsAccessRights, bdef:TuftsArchival, bdef:TuftsImage, bdef:TuftsMetadata, bdef:TuftsReference, bdef:TuftsType</admin:bdefSubscriptions>
+  <admin:accessRights>This image is freely available for research or educational use. Use of the image for publication or redistribution is prohibited except by permission of Digital Collections and Archives, Tufts University</admin:accessRights>
+  <admin:notes>n/a</admin:notes>
+  <admin:checksum>null</admin:checksum>
+</dca_admin:admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DCA-META" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DCA-META.1" LABEL="DCA Descriptive Metadata" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="text/xml" SIZE="2087">
+<foxml:xmlContent>
+<dca_dc:dc xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:fbm="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/TR/xlink">
+				        
+               <dc:title>A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003</dc:title>
+				        
+               <dc:description>Finding aid for the Fletcher School of Law and Diplomacy records at the Digital Collections and Archives, Tufts University.</dc:description>
+				        
+               <dc:source>UA069</dc:source>
+				        
+               <dc:temporal>2008</dc:temporal>
+				        
+               <dcterms:isPartOf>UA069</dcterms:isPartOf>
+				        
+               <dcterms:isPartOf>UA015</dcterms:isPartOf>
+				        
+               <dc:creator>Digital Collections and Archives</dc:creator>
+				        
+               <dc:bibliographicCitation>Digital Collections and Archives, Medford, MA. A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003, 2008. Permanent URL: http://hdl.handle.net/10427/14552.</dc:bibliographicCitation>
+				        
+               <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+				        
+               <dc:rights>http://dca.tufts.edu/ua/access/rights.html</dc:rights>
+				        
+               <dc:identifier>http://hdl.handle.net/10427/14552</dc:identifier>
+				        
+               <dcterms:extent>494048 bytes</dcterms:extent>
+				        
+               <dcterms:created>/  /</dcterms:created>
+				        
+               <dcterms:available>05/02/2008</dcterms:available>
+				        
+               <dc:type>text</dc:type>
+				        
+               <dc:format>text/xml</dc:format>
+				        
+               <dcatech:fileSize>494048 bytes</dcatech:fileSize>
+				        
+               <dcadesc:corpname>Fletcher School of Law and Diplomacy</dcadesc:corpname>
+			      
+            </dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-META.2" LABEL="DCA Descriptive Metadata" CREATED="2010-08-25T17:01:19.238Z" MIMETYPE="text/xml" SIZE="1747">
+<foxml:xmlContent>
+<metadata xmlns="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/1999/xlink" ID="DCA-META" LABEL="DCA Descriptive Metadata">
+  <dca_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcterms="http://purl.org/dc/terms/">
+    <dc:title>A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003</dc:title>
+    <dc:creator>Digital Collections and Archives</dc:creator>
+    <dc:description>Finding aid for the Fletcher School of Law and Diplomacy records at the Digital Collections and Archives, Tufts University.</dc:description>
+    <dc:source>UA069</dc:source>
+    <dc:temporal>2008</dc:temporal>
+    <dc:date.created>2008</dc:date.created>
+    <dc:date.available>/  /</dc:date.available>
+    <dc:date.issued>2010-07-29</dc:date.issued>
+    <dc:bibliographicCitation>Digital Collections and Archives. &quot;A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003.&quot; 2008. Digital Collections and Archives. Tufts University. Medford, MA. http://hdl.handle.net/10427/14552</dc:bibliographicCitation>
+    <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+    <dc:rights>http://dca.tufts.edu/ua/access/rights-tufts.html</dc:rights>
+    <dc:identifier>http://hdl.handle.net/10427/14552</dc:identifier>
+    <dc:extent>494048 bytes</dc:extent>
+    <dcterms:extent>494048 bytes</dcterms:extent>
+    <dc:type>text</dc:type>
+    <dc:format>text/xml</dc:format>
+    <dcatech:fileSize>494048 bytes</dcatech:fileSize>
+    <dcadesc:corpname>Fletcher School of Law and Diplomacy</dcadesc:corpname>
+  </dca_dc:dc>
+</metadata>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-META.3" LABEL="DCA Descriptive Metadata" CREATED="2010-08-25T19:56:43.139Z" MIMETYPE="text/xml" SIZE="1747">
+<foxml:xmlContent>
+<metadata xmlns="http://www.fedora.info/definitions/" xmlns:xlink="http://www.w3.org/1999/xlink" ID="DCA-META" LABEL="DCA Descriptive Metadata">
+  <dca_dc:dc xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcterms="http://purl.org/dc/terms/">
+    <dc:title>A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003</dc:title>
+    <dc:creator>Digital Collections and Archives</dc:creator>
+    <dc:description>Finding aid for the Fletcher School of Law and Diplomacy records at the Digital Collections and Archives, Tufts University.</dc:description>
+    <dc:source>UA069</dc:source>
+    <dc:temporal>2008</dc:temporal>
+    <dc:date.created>2008</dc:date.created>
+    <dc:date.available>/  /</dc:date.available>
+    <dc:date.issued>2010-07-29</dc:date.issued>
+    <dc:bibliographicCitation>Digital Collections and Archives. &quot;A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003.&quot; 2008. Digital Collections and Archives. Tufts University. Medford, MA. http://hdl.handle.net/10427/14552</dc:bibliographicCitation>
+    <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+    <dc:rights>http://dca.tufts.edu/ua/access/rights-tufts.html</dc:rights>
+    <dc:identifier>http://hdl.handle.net/10427/14552</dc:identifier>
+    <dc:extent>494048 bytes</dc:extent>
+    <dcterms:extent>494048 bytes</dcterms:extent>
+    <dc:type>text</dc:type>
+    <dc:format>text/xml</dc:format>
+    <dcatech:fileSize>494048 bytes</dcatech:fileSize>
+    <dcadesc:corpname>Fletcher School of Law and Diplomacy</dcadesc:corpname>
+  </dca_dc:dc>
+</metadata>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-META.4" LABEL="DCA Descriptive Metadata" CREATED="2010-08-26T16:00:19.733Z" MIMETYPE="text/xml" SIZE="1637">
+<foxml:xmlContent>
+<dca_dc:dc xmlns="http://www.fedora.info/definitions/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <dc:title>A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003</dc:title>
+  <dc:creator>Digital Collections and Archives</dc:creator>
+  <dc:description>Finding aid for the Fletcher School of Law and Diplomacy records at the Digital Collections and Archives, Tufts University.</dc:description>
+  <dc:source>UA069</dc:source>
+  <dc:temporal>2008</dc:temporal>
+  <dc:date.created>2008</dc:date.created>
+  <dc:date.available>/  /</dc:date.available>
+  <dc:date.issued>2010-08-25</dc:date.issued>
+  <dc:bibliographicCitation>Digital Collections and Archives. &quot;A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003.&quot; 2008. Digital Collections and Archives. Tufts University. Medford, MA. http://hdl.handle.net/10427/14552</dc:bibliographicCitation>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-tufts.html</dc:rights>
+  <dc:identifier>http://hdl.handle.net/10427/14552</dc:identifier>
+  <dc:extent>494048 bytes</dc:extent>
+  <dcterms:extent>494048 bytes</dcterms:extent>
+  <dc:type>text</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dcatech:fileSize>494048 bytes</dcatech:fileSize>
+  <dcadesc:corpname>Fletcher School of Law and Diplomacy</dcadesc:corpname>
+</dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-META.5" LABEL="DCA Descriptive Metadata" CREATED="2010-12-17T19:40:32.350Z" MIMETYPE="text/xml" SIZE="1637">
+<foxml:xmlContent>
+<dca_dc:dc xmlns="http://www.fedora.info/definitions/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <dc:title>A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003</dc:title>
+  <dc:creator>Digital Collections and Archives</dc:creator>
+  <dc:description>Finding aid for the Fletcher School of Law and Diplomacy records at the Digital Collections and Archives, Tufts University.</dc:description>
+  <dc:source>UA069</dc:source>
+  <dc:temporal>2008</dc:temporal>
+  <dc:date.created>2008</dc:date.created>
+  <dc:date.available>/  /</dc:date.available>
+  <dc:date.issued>2010-08-25</dc:date.issued>
+  <dc:bibliographicCitation>Digital Collections and Archives. &quot;A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003.&quot; 2008. Digital Collections and Archives. Tufts University. Medford, MA. http://hdl.handle.net/10427/14552</dc:bibliographicCitation>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-tufts.html</dc:rights>
+  <dc:identifier>http://hdl.handle.net/10427/14552</dc:identifier>
+  <dc:extent>494048 bytes</dc:extent>
+  <dcterms:extent>494048 bytes</dcterms:extent>
+  <dc:type>text</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dcatech:fileSize>494048 bytes</dcatech:fileSize>
+  <dcadesc:corpname>Fletcher School of Law and Diplomacy</dcadesc:corpname>
+</dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-META.6" LABEL="DCA Descriptive Metadata" CREATED="2010-12-17T21:37:03.708Z" MIMETYPE="text/xml" SIZE="1637">
+<foxml:xmlContent>
+<dca_dc:dc xmlns="http://www.fedora.info/definitions/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <dc:title>A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003</dc:title>
+  <dc:creator>Digital Collections and Archives</dc:creator>
+  <dc:description>Finding aid for the Fletcher School of Law and Diplomacy records at the Digital Collections and Archives, Tufts University.</dc:description>
+  <dc:source>UA069</dc:source>
+  <dc:temporal>2008</dc:temporal>
+  <dc:date.created>2008</dc:date.created>
+  <dc:date.available>/  /</dc:date.available>
+  <dc:date.issued>2010-08-25</dc:date.issued>
+  <dc:bibliographicCitation>Digital Collections and Archives. &quot;A Guide to the Fletcher School of Law and Diplomacy records, 1923-2003.&quot; 2008. Digital Collections and Archives. Tufts University. Medford, MA. http://hdl.handle.net/10427/14552</dc:bibliographicCitation>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights-tufts.html</dc:rights>
+  <dc:identifier>http://hdl.handle.net/10427/14552</dc:identifier>
+  <dc:extent>494048 bytes</dc:extent>
+  <dcterms:extent>494048 bytes</dcterms:extent>
+  <dc:type>text</dc:type>
+  <dc:format>text/xml</dc:format>
+  <dcatech:fileSize>494048 bytes</dcatech:fileSize>
+  <dcadesc:corpname>Fletcher School of Law and Diplomacy</dcadesc:corpname>
+</dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+</foxml:digitalObject>
