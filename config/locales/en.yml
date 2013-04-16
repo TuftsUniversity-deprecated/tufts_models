@@ -2,4 +2,18 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  hydra:
+    field_label:
+      source2: "Alternate Source"
+      dateCreated: "Date Created"
+      dateAvailable: "Date Available"
+      dateIssued: "Date Issued"
+      bibliographicCitation: "Bibliographic Citation"
+      type2: "Alternate Type"
+      format2: "Alternate Format"
+      persname: "Person Name"
+      corpname: "Corporation Name"
+      geogname: "Geographic Name"
+      bitDepth: "Bit Depth"
+      colorSpace: "Color Space"
+      filesize: "File Size"
