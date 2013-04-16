@@ -17,3 +17,6 @@ en:
       bitDepth: "Bit Depth"
       colorSpace: "Color Space"
       filesize: "File Size"
+    model_label:
+      TuftsPdf: "PDF"
+      TuftsAudio: "audio"
