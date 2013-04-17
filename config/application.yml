@@ -6,13 +6,13 @@ defaults: &defaults
     page_location: "#{Rails.root}/pdf_pages"
   tdl_feedback_address: "brian.goodmon@tufts.edu"
   tdl_feedback_subject: "TDL Content Feedback"
-  local_object_store: "#{Rails.root}/local_object_store"
   trim_bucket_url: "http://bucket01.lib.tufts.edu"
   processing_url: "http://processing01.lib.tufts.edu:8080"
   repository_url: "http://repository01.lib.tufts.edu:8080"
 development:
   <<: *defaults
   neat_setting: 800
+  local_object_store: "#{Rails.root}/spec/fixtures/local_object_store"
   processing_url: "SKIP"
   repository_url: "http://localhost:8983/"
 tdldev:

@@ -86,9 +86,4 @@ xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.opena
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="RCR-CONTENT" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="RCR-CONTENT.0" LABEL="Tufts University" CREATED="2010-03-16T22:41:26.896Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/RCR/RCR00001.xml"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
 </foxml:digitalObject>

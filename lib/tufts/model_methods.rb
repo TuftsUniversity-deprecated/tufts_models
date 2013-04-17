@@ -43,14 +43,14 @@ module Tufts
 
 
       unless names.empty?
-        Solrizer.insert_field(solr_doc, 'author', names[0], :sortable)
+        solr_doc[Solrizer.solr_name('author', :sortable, type: :string)] = names[0]
       end
 
       #TITLE SORT
 
       titles = self.datastreams["DCA-META"].get_values(:title)
       unless titles.empty?
-        Solrizer.insert_field(solr_doc, 'title', titles[0], :sortable)
+        solr_doc[Solrizer.solr_name('title', :sortable, type: :string)] = titles[0]
       end
 
     end
@@ -70,7 +70,7 @@ module Tufts
         end
       end
 
-      ::Solrizer::Extractor.insert_solr_field_value(solr_doc, "text", full_text)
+      solr_doc["text_tei"] = full_text
     end
 
     def extract_fulltext_from_xml

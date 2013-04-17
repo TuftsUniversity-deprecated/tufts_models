@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TEI.2 PUBLIC "-//TEI P4//DTD Main DTD Driver File//EN"
+"http://dca.tufts.edu/schema/tei/tei2.dtd" [
+ <!ENTITY % TEI.corpus 'INCLUDE'>
+ <!ENTITY % TEI.figures 'INCLUDE'>
+ <!ENTITY % TEI.spoken 'INCLUDE'>
+ <!ENTITY % TEI.linking 'INCLUDE'>
+ <!ENTITY % TEI.XML 'INCLUDE'>
+]>
+
+<TEI.2>
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+	<title>Edward Dente Interview</title>
+	<author>Katie Meierdiercks</author>
+      </titleStmt>
+      <extent>40275 Bytes</extent>
+      <publicationStmt>
+	<distributor>Tufts University Digital Collections and Archives</distributor>
+	<address>
+	  <addrLine>Tufts University</addrLine>
+	  <addrLine>35 Professors Row</addrLine>
+	  <addrLine>Tisch Library Medford, MA 01255</addrLine>
+	</address>
+	<idno>tufts:central:dca:MS124:MS124.001.001.00003</idno>
+	<availability status="free">
+	  <p>This publication is freely available for scholarly or educational use.</p>
+	</availability>
+      </publicationStmt>
+      <sourceDesc>
+	<recordingStmt>
+	  <recording type="audio" dur="1330225ms">
+	    <date>2002-04-04</date>
+	    <equipment>
+	      <p>audio tape</p>
+	    </equipment>
+	    <respStmt>
+	      <resp>interview conducted by:</resp>
+	      <name>Katie Meierdiercks</name>
+	    </respStmt>
+	  </recording>
+	</recordingStmt>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <editorialDecl>
+	<stdVals>
+	  <p>Standard date values are given in ISO form: yyyy-mm-dd.</p>
+	</stdVals>
+      </editorialDecl>
+      <classDecl>
+	<taxonomy id="LCSH">
+	  <bibl>
+	    <title>Library of Congress Subject Headings</title>
+	  </bibl>
+	</taxonomy>
+	<taxonomy id="LC">
+	  <bibl>
+	    <title>Library of Congress</title>
+	  </bibl>
+	</taxonomy>
+      </classDecl>
+    </encodingDesc>
+    <profileDesc>
+      <creation>
+	<date>2006-05-04</date>
+      </creation>
+      <langUsage>
+	<language id="EN" usage="100">English.</language>
+      </langUsage>
+      <particDesc>
+	<person id="KM" sex="f" role="interviewer"><p>Katie Meierdiercks</p></person>
+	<person id="ED" sex="m" role="interviewee"><p>Ed Dente</p></person>
+	<person id="Randy" sex="m"><p>Unidentified person</p></person>
+	<person id="Vida"  sex="f"><p>Unidentified person</p></person>
+      </particDesc>
+    </profileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <timeline id="transcript_timeline" unit="millisecond" origin="timepoint_begin">
+	<when id="timepoint_begin" absolute="beginning of recording"/>
+	<when id="timepoint_1" since="timepoint_begin" interval="0"/>
+	<when id="timepoint_2" since="timepoint_begin" interval="16800"/>
+	<when id="timepoint_3" since="timepoint_begin" interval="35100"/>
+	<when id="timepoint_4" since="timepoint_begin" interval="55100"/>
+	<when id="timepoint_5" since="timepoint_begin" interval="61800"/>
+	<when id="timepoint_6" since="timepoint_begin" interval="70200"/>
+	<when id="timepoint_7" since="timepoint_begin" interval="82400"/>
+	<when id="timepoint_8" since="timepoint_begin" interval="97900"/>
+	<when id="timepoint_9" since="timepoint_begin" interval="110800"/>
+	<when id="timepoint_10" since="timepoint_begin" interval="124400"/>
+	<when id="timepoint_11" since="timepoint_begin" interval="129900"/>
+	<when id="timepoint_12" since="timepoint_begin" interval="139300"/>
+	<when id="timepoint_13" since="timepoint_begin" interval="148200"/>
+	<when id="timepoint_14" since="timepoint_begin" interval="159200"/>
+	<when id="timepoint_15" since="timepoint_begin" interval="176500"/>
+	<when id="timepoint_16" since="timepoint_begin" interval="187600"/>
+	<when id="timepoint_17" since="timepoint_begin" interval="203400"/>
+	<when id="timepoint_18" since="timepoint_begin" interval="209500"/>
+	<when id="timepoint_19" since="timepoint_begin" interval="227300"/>
+	<when id="timepoint_20" since="timepoint_begin" interval="256400"/>
+	<when id="timepoint_21" since="timepoint_begin" interval="267800"/>
+	<when id="timepoint_22" since="timepoint_begin" interval="281700"/>
+	<when id="timepoint_23" since="timepoint_begin" interval="319800"/>
+	<when id="timepoint_24" since="timepoint_begin" interval="333700"/>
+	<when id="timepoint_25" since="timepoint_begin" interval="344800"/>
+	<when id="timepoint_26" since="timepoint_begin" interval="360400"/>
+	<when id="timepoint_27" since="timepoint_begin" interval="380400"/>
+	<when id="timepoint_28" since="timepoint_begin" interval="402900"/>
+	<when id="timepoint_29" since="timepoint_begin" interval="420700"/>
+	<when id="timepoint_30" since="timepoint_begin" interval="438100"/>
+	<when id="timepoint_31" since="timepoint_begin" interval="444600"/>
+	<when id="timepoint_32" since="timepoint_begin" interval="472100"/>
+	<when id="timepoint_33" since="timepoint_begin" interval="486100"/>
+	<when id="timepoint_34" since="timepoint_begin" interval="517000"/>
+	<when id="timepoint_35" since="timepoint_begin" interval="523900"/>
+	<when id="timepoint_36" since="timepoint_begin" interval="535500"/>
+	<when id="timepoint_37" since="timepoint_begin" interval="553500"/>
+	<when id="timepoint_38" since="timepoint_begin" interval="571000"/>
+	<when id="timepoint_39" since="timepoint_begin" interval="604000"/>
+	<when id="timepoint_40" since="timepoint_begin" interval="616299"/>
+	<when id="timepoint_41" since="timepoint_begin" interval="647800"/>
+	<when id="timepoint_42" since="timepoint_begin" interval="656100"/>
+	<when id="timepoint_43" since="timepoint_begin" interval="666800"/>
+	<when id="timepoint_44" since="timepoint_begin" interval="680000"/>
+	<when id="timepoint_45" since="timepoint_begin" interval="694000"/>
+	<when id="timepoint_46" since="timepoint_begin" interval="702500"/>
+	<when id="timepoint_47" since="timepoint_begin" interval="712300"/>
+	<when id="timepoint_48" since="timepoint_begin" interval="721200"/>
+	<when id="timepoint_49" since="timepoint_begin" interval="752400"/>
+	<when id="timepoint_50" since="timepoint_begin" interval="769800"/>
+	<when id="timepoint_51" since="timepoint_begin" interval="781100"/>
+	<when id="timepoint_52" since="timepoint_begin" interval="787900"/>
+	<when id="timepoint_53" since="timepoint_begin" interval="814800"/>
+	<when id="timepoint_54" since="timepoint_begin" interval="830500"/>
+	<when id="timepoint_55" since="timepoint_begin" interval="843000"/>
+	<when id="timepoint_56" since="timepoint_begin" interval="853100"/>
+	<when id="timepoint_57" since="timepoint_begin" interval="867300"/>
+	<when id="timepoint_58" since="timepoint_begin" interval="873700"/>
+	<when id="timepoint_59" since="timepoint_begin" interval="893600"/>
+	<when id="timepoint_60" since="timepoint_begin" interval="903500"/>
+	<when id="timepoint_61" since="timepoint_begin" interval="929800"/>
+	<when id="timepoint_62" since="timepoint_begin" interval="946900"/>
+	<when id="timepoint_63" since="timepoint_begin" interval="968600"/>
+	<when id="timepoint_64" since="timepoint_begin" interval="979600"/>
+	<when id="timepoint_65" since="timepoint_begin" interval="1004700"/>
+	<when id="timepoint_66" since="timepoint_begin" interval="1017600"/>
+	<when id="timepoint_67" since="timepoint_begin" interval="1032100"/>
+	<when id="timepoint_68" since="timepoint_begin" interval="1042300"/>
+	<when id="timepoint_69" since="timepoint_begin" interval="1056500"/>
+	<when id="timepoint_70" since="timepoint_begin" interval="1065900"/>
+	<when id="timepoint_71" since="timepoint_begin" interval="1078100"/>
+	<when id="timepoint_72" since="timepoint_begin" interval="1089700"/>
+	<when id="timepoint_73" since="timepoint_begin" interval="1105600"/>
+	<when id="timepoint_74" since="timepoint_begin" interval="1113400"/>
+	<when id="timepoint_75" since="timepoint_begin" interval="1133400"/>
+	<when id="timepoint_76" since="timepoint_begin" interval="1149300"/>
+	<when id="timepoint_77" since="timepoint_begin" interval="1160000"/>
+	<when id="timepoint_78" since="timepoint_begin" interval="1174600"/>
+	<when id="timepoint_79" since="timepoint_begin" interval="1181800"/>
+	<when id="timepoint_80" since="timepoint_begin" interval="1192900"/>
+	<when id="timepoint_81" since="timepoint_begin" interval="1206000"/>
+	<when id="timepoint_82" since="timepoint_begin" interval="1213100"/>
+	<when id="timepoint_83" since="timepoint_begin" interval="1228500"/>
+	<when id="timepoint_84" since="timepoint_begin" interval="1242100"/>
+	<when id="timepoint_85" since="timepoint_begin" interval="1249500"/>
+	<when id="timepoint_86" since="timepoint_begin" interval="1261400"/>
+	<when id="timepoint_87" since="timepoint_begin" interval="1269700"/>
+	<when id="timepoint_88" since="timepoint_begin" interval="1276400"/>
+	<when id="timepoint_89" since="timepoint_begin" interval="1295800"/>
+	<when id="timepoint_90" since="timepoint_begin" interval="1307800"/>
+	<when id="timepoint_end" since="timepoint_begin" interval="1330225"/>
+      </timeline>
+      <div1 id="transcript.1" n="Transcript">
+	<u rend="transcript_chunk" start="timepoint_1" n="1" end="timepoint_2">
+	  <u who="KM">This is actually nice</u>
+	  <u who="ED">Focused?</u>
+	  <u who="KM">...developed, yeah a little bit more focused since last time we ta-, last time we talked.</u>
+	  <u who="ED">Ok, that fine.</u>
+	  <u who="KM">So I have, I have specific questions.</u>
+	  <u who="ED">Ok.</u>
+	  <u who="KM">And then, and then, just, just to go over some of the stuff we talked about before.</u>
+	  <u who="ED">Yeah, that's fine, yup, ok.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_2" n="2" end="timepoint_3">
+	  <u who="KM">Yeah, so thank you, thank you for, for coming...</u>
+	  <u who="ED">How's the project coming along? The whole class and everything...</u>
+	  <u who="KM">It's going along pretty well, we just sort of gave our, I don't know if you'd say fifty percent presentation or maybe, maybe more like seventy-five, um....we'd passed in our, our proposal for final design last class, so, yeah, it seems like it's going really great.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_3" n="3" end="timepoint_4">
+	  <u who="ED">Excellent. And when does the museum...?</u>
+	  <u who="KM">You know, I don't know, I was just thinking about that this morning, um, and I don't know, I don't know. It's, this, some time in the summer, but I'm not, I'm not sure.</u>
+	  <u who="ED">Good, we live, my wife and I live right round around the corner from the museum and we're members, so we're looking forward to going down and seeing that. Should be good. Excellent.</u>
+	  <u who="KM">Yeah, that's great</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_4" n="4" end="timepoint_5">
+	  <u who="KM">yeah, looking forward to it.</u>
+	  <u who="ED">Ok.</u>
+	  <u who="KM">Ok. Well I just wanted</u>
+	  <event desc="a knock on door"/>
+	  <u who="ED">Come in! Sorry...</u>
+	  <u who="KM">Oh no, that's ok.</u>
+	  <u who="ED">Randy...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_5" n="5" end="timepoint_6">
+	  <u who="ED">Hi I just sent you an email this morning.</u>
+	  <u who="Randy">Yeah I just got it. I found the guy I'm meeting with him tomorrow</u>
+	  <u who="ED">You talked with Nate right?</u>
+	  <u who="Randy">No I didn't I didn't need to </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_6" n="6" end="timepoint_7">
+	  <u who="ED">Oh ok good, who Can I ask you who? </u>
+	  <u who="Randy">It's professor Morrison <gap desc="inaudiable"/></u>
+	  <u who="ED">ok that's fine if you're comfortable with that. I really don't know</u>
+	  <u who="Randy">Oh I'm very comfortable. I just didn't know <gap desc="inaudible"/></u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_7" n="7" end="timepoint_8">
+	  <u who="ED">excellent, well I don't need, actually this is the only part that I need to do. But I'll sign it anyway. excellent, Do you want your folder?</u>
+	  <u who="Randy">ummm</u>
+	  <u who="ED">I'm sorry</u>
+	  <u who="Randy">know what, I'll get it tomorrow I just need to get all this stuff so that I can turn it in</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_8" n="8" end="timepoint_9">
+	  <u who="ED">Go right ahead,</u>
+	  <u who="Randy">And I'll stop by later</u>
+	  <u who="ED">good luck</u>
+	  <u who="Randy">Sorry to interrupt</u>
+	  <u who="ED">ok How's the, I saw that you had a start the other day. You started the other day.</u>
+	  <u who="Randy"><gap desc="inaudiable"/></u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_9" n="9" end="timepoint_10">
+	  <u who="ED">This weekend is better then <unclear>April</unclear></u>
+	  <u who="Randy">Yeah much better the <unclear>April</unclear>, I have a 2:20</u>
+	  <u who="ED">alright</u>
+	  <u who="Randy"><gap desc="inaudible"/></u>
+	  <u who="ED">Yeah 21, thanks. Sorry</u>
+	  <u who="KM">Yeah no, that's ok. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_10" n="10" end="timepoint_11">
+	  <u who="KM">Um, Ok, so I want to ask you when, what were the years that you actually went, went to the Central?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_11" n="11" end="timepoint_12">
+	  <u who="ED">About '54 to about '66 or so. Now, I say '66, it may have closed even before then, I'm not sure. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_12" n="12" end="timepoint_13">
+	  <u who="ED">Sometime '63, sixty-, '64, '65, '66, I'm not sure exactly when the theatre closed.</u>
+	  <u who="KM">Yeah, I'm, I'm not sure either.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_13" n="13" end="timepoint_14">
+	  <u who="ED">Once I got into, into high school, we didn't go that often, but from nin-, about 1954 onwards, yup, 'til it closed, yeah, in the mid sixties.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_14" n="14" end="timepoint_15">
+	  <u who="KM">How old were you in 1954?</u>
+	  <u who="ED">Oh God I was, uhhh, six, six, six or seven. Yeah, six most of the year, we started, uh, I would go with the, the older kids, we'd always would go with the older kids when I was that young <unclear>again</unclear>.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_15" n="15" end="timepoint_16">
+	  <u who="ED">Which is why I got in so much trouble when they had that bicycle contest that no one else wanted to go and I went, they had to send the older kids up to get me in order to be there, so, they didn't appreciate that much.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_16" n="16" end="timepoint_17">
+	  <u who="KM">Yeah, I remember that, that's great. And where did you actually live in...?</u>
+	  <u who="ED">On Central Street, I would, and, we lived, uh, let's see, 1-2-3-4-5, five or six blocks away on Central Street down towards Somerville Avenue.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_17" n="17" end="timepoint_18">
+	  <u who="ED">It was definitely the nearest theater, it was the neighborhood theater, 'cause it's the nearest theatre to our house, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_18" n="18" end="timepoint_19">
+	  <u who="KM">Mmm-hmm. Right, um, with, then I want to ask you just a little bit, if you could tell me again what, what the neighborhood was like, what time ah, what kind of families lived there....</u>
+	  <u who="ED">Sure, well, the most important thing about the neighborhood to remember was then, was people lived there like for years and years.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_19" n="19" end="timepoint_20">
+	  <u who="ED">There was very little mobility. People had lived there for a generation or two, you know and, and um, um, my whole childhood growing up in the neighborhood, I can only remember one or two families that moved in or moved out over that time, which is very very different, from, from now, when families move in every year, you know</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_20" n="20" end="timepoint_21">
+	  <u who="ED">So there was a very cohe-, sense of, strong sense of coherence, identity, neighborhood identity, and continuity, all through my childhood.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_21" n="21" end="timepoint_22">
+	  <u who="ED">The same people at the beginning were there at the end except for one or two people, you know? And, so that, is I think one big difference, I, I don't think there's that same coherence or, or continuity now that there was then.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_22" n="22" end="timepoint_23">
+	  <u who="ED">Another thing that was very different about the neighborhood then, that is so different now, I notice it now because I, I live in the same neighborhood, now. Is that ah, uh, you couldn't drive down a street without having to wait for all the kids who were playing on the street to get off the street, ok. Now, there are no kids playing on the street, like there's none of that, it's very different, there was, we were in the middle of the baby boom, so every family had two or three or four or five kids in it. And they all belonged to different groups in the same neighborhood by age, but everyone was out playing on the street or in the schoolyard. </u>
+	  <u who="KM">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_23" n="23" end="timepoint_24">
+	  <u who="ED">Ok, you don't see that anymore, everyone is involved in organized, individual activities now. The only organized activity we had then was that their was, uh maybe Little League, only, and only a couple kids were in that. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_24" n="24" end="timepoint_25">
+	  <u who="ED">We would go to the Y, but we'd go as a group to the Y. Because the YMCA was, a couple, only a couple buildings, and still is a couple buildings down from where the theater was.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_25" n="25" end="timepoint_26">
+	  <u who="ED">Otherwise, we were all a group, and we all played in the street or in the schoolyard, and, uh it went on for, the, the group stayed together for my whole childhood and early adole-, and adolescence. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_26" n="26" end="timepoint_27">
+	  <u who="ED">We were mostly a, a second generation immigrant neighboorhood, I would say, forty percent Irish, forty percent Italian, and um, a few Portuguese descendents, and a few uh, Canadian descendents. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_27" n="27" end="timepoint_28">
+	  <u who="ED">So, our parents weren't Italian and Irish immigrants, although some were, mostly it was our grandparents who had immigrated, because when we were born, immigration in the United States had been pretty much closed since the '20s. So, it was our parents' parents who had, but we still all maintained very strong ethnic identities, </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_28" n="28" end="timepoint_29">
+	  <u who="ED">The Irish kids in our neighborhood, very strong Irish ethnic background, and the Italians, very strong Italian, Italo-American cultural traditions that we all maintained. And um, I don't know, is that sort of like an answer to you....</u>
+	  <u who="KM">Yeah, yeah,</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_29" n="29" end="timepoint_30">
+	  <u who="KM">yeah, that's good.</u>
+	  <u who="ED">So um, we were very aware of our ethnic backgrounds, but we weren't first generation immigrants ourselves, or our parents we-, our grandparents were mostly the immigrants from either Ireland or Italy.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_30" n="30" end="timepoint_31">
+	  <u who="KM">Ok. I know, I was just...</u>
+	  <u who="ED">It was mostly a blue collar....</u>
+	  <u who="KM">Blue collar, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_31" n="31" end="timepoint_32">
+	  <u who="ED">My, my father was a doctor, and he was on the staff of the Central hospital, which was only a block away from us. Central hospital was halfway between us and the central theater, or more close, closer to us, which is where I was born and most of the people in my neighborhood were born right in that hospital, right in the, right in the neighborhood. My father delivered most of the people in the neighborhood, there was mostly, aside from my father, I think it was a ninety-five percent, ninety-nine percent blue collar neighborhood.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_32" n="32" end="timepoint_33">
+	  <u who="KM">Yeah. Are there any aspects of the, maybe at the social structure the, of the neighborhood that you can think of, that contributed to, to the general movie go-, movie going experience at the Central?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_33" n="33" end="timepoint_34">
+	  <u who="KM">I know this is sort of a, a tough question, but, I just, when just talking to other people, the fact that it was working class, there weren't, this is just an example, there weren't very many cars, so that's why a lot of people went to, to the Central Theater, or also, it was, um, there's a lot of families living there, so, it was a very f-, I, I've noticed that it is a family oriented movie theater. Is there anything along those lines that you could sorta see?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_34" n="34" end="timepoint_35">
+	  <u who="ED">Well, we, I don't think I ever went to the Central Theater with my parents, we always went with our age group of kids. </u>
+	  <u who="KM">ok</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_35" n="35" end="timepoint_36">
+	  <u who="ED">If you went to the movies with your parents, you would go to downtown to Boston, maybe the Somerville Theater, but basically your parents would take you to the movies it would be a big social event. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_36" n="36" end="timepoint_37">
+	  <u who="ED">And it would be in Boston, my Mother used to take me to the, the, the big fancy movie theaters in Boston, and back then the theaters in Boston were huge movie palaces, really, really, elaborate things, and so that was a big social occasion. We did not go to the movies with our parents at the Central Theater.</u>
+	  <u who="KM">Ok.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_37" n="37" end="timepoint_38">
+	  <u who="ED">We went with our, strictly with our age group. And as I said, we had a number of age groups in our neighborhood, my age group was very distinct from the age group of the kids 2 or 3 years older than, than us, and the kids 2 or 3 years younger than us. Ok. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_38" n="38" end="timepoint_39">
+	  <u who="ED">Uh, that's very different today. Because we didn't participate in organized activities, like going to soccer team, going to dancing classes, going to music classes, because we didn't do those sorts of things, uh, we, would, I guess, go to the theater as a group, in lieu of some of those organized activities. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_39" n="39" end="timepoint_40">
+	  <u who="ED">I mean, some of us had dancing, some of like my sister went to dancing school, if you did anything you'd go to little league or go to dancing school, or some. But they were very few organized after-school activities at all. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_40" n="40" end="timepoint_41">
+	  <u who="ED">And ah, and the Central Theater, going to the theater was not an evening thing with the family during the week. It was a Saturday thing, definitely a Saturday thing. As I grew older into my adolescence, and started dating, if you were going on a Friday night date, the Central Theater, you know you'd go to the, either the Somerville, or into Boston, 'cause you wanted to do something classier than go to the local neighborhood theater. You know, so, I don't know if that's any kind of an answer.</u>
+	  <u who="KM">Yeah, yeah, that's good. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_41" n="41" end="timepoint_42">
+	  <u who="ED">And, but, uh, no, most definitely, it was not a family activity going to the Central Theater. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_42" n="42" end="timepoint_43">
+	  <u who="ED">It was a peer group activity. And it was always a Saturday afternoon that we were doing, that all the different groups in the city were doing. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_43" n="43" end="timepoint_44">
+	  <u who="ED">So the theater on Saturday afternoon would be filled with kids, no adults at all. You know, we'd be, and uh, on, I guess the adults, when they used to go to the theater, would go during the week and the evening, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_44" n="44" end="timepoint_45">
+	  <u who="KM">Yeah. Another interesting thing about the, the theater that I found out is that their used to be a, a passageway, connecting, in the basement, connecting the theater with, with Brown's pharmacy. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_45" n="45" end="timepoint_46">
+	  <u who="KM">Do you remember that passageway at all?</u>
+	  <u who="ED">No. I vaguely remember some kind of thing like that, but I couldn't have told you where it went or what it was for.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_46" n="46" end="timepoint_47">
+	  <u who="ED">That's interesting, I didn't, I didn't really know the extent of that, but now that you mention it, I vaguely remember some kind of <event desc="knock on the door"/> Come in! ...some kind of thing like that, yes.  </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_47" n="47" end="timepoint_48">
+	  <u who="ED">Yes Vida</u>
+	  <u who="Vida">I just want to borrow <gap desc="inaudible"/> There it is</u>
+	  <u who="ED">Yep... </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_48" n="48" end="timepoint_49">
+	  <u who="Vida">This has made life so much easier</u>
+	  <u who="ED">Those are great and we get new release notices all the time. So in July when our new budget comes in, we get, every week I get a new release memo</u>
+	  <u who="Vida">Well I haven't even told you. I have been having twice now. <unclear>by criteria once for an essay on a new DVD and the second for solaris the other cd and I probably get out my colleague and I have written the script and are doing the voice over commentary</unclear></u>
+	  <u who="ED">Alright that is yeah</u>
+	  <u who="Vida">So that'll keep me going</u>
+	  <event desc="door closes"/>
+	  <u who="ED">alright</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_49" n="49" end="timepoint_50">
+	  <u who="KM">Then, another interesting thing I found out is that their used to be a, a custodian who lived in the basement with his family...</u>
+	  <u who="ED">Oh, I didn't know that. That's interesting.</u>
+	  <u who="KM">Ok, yeah. So you don't know very anything about that.</u>
+	  <u who="ED">Doesn't surprise me, doesn't surprise me.</u>
+	  <u who="KM">Yeah, yeah, so,</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_50" n="50" end="timepoint_51">
+	  <u who="KM">um, and then, and then one other final thing about, about sort of the physical structure of the theatre is that um, well the, the apartment building attached to it.</u>
+	  <u who="ED">Yeah, yeah</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_51" n="51" end="timepoint_52">
+	  <u who="KM">Do you remember, do you remember that at all?</u>
+	  <u who="ED">Yeah, yeah</u>
+	  <u who="KM">Can you tell me anything about the residents who live there?</u>
+	  <u who="ED">No, </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_52" n="52" end="timepoint_53">
+	  <u who="ED">I, I, that wasn't part of our neighborhood hangout area, since it was just a few blocks away down Central Street, so I don't really know, all I know that, just that their used to be a mom &amp; pop store, uh, variety store across the street, where I used to walk up, it used to be a big thing to walk up from my house by himself up to there to and buy the latest superman comic book as it came in, for ten cents at the mom and pop store. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_53" n="53" end="timepoint_54">
+	  <u who="ED">And that's uh, that's, I would go to that little neighborhood corner there either to go to the movies, or to buy the comic books at, at the store across the street from, from the theater. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_54" n="54" end="timepoint_55">
+	  <u who="ED">I remember the pharmacy, but I don't think we used to go there. We used to go bowling at the bowling alley across the street, but that was later, probably in the mid '60s. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_55" n="55" end="timepoint_56">
+	  <u who="ED">And, there used to be a submarine sandwich shop that I used to go to too, right in the same, right next to the theater, there, and, that was pretty cool but I don't think that came until the '60s, early '60s. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_56" n="56" end="timepoint_57">
+	  <u who="KM">Ok.</u>
+	  <u who="ED">I don't remember that much about the other components of the neighborhood, very much at all. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_57" n="57" end="timepoint_58">
+	  <u who="ED">I know there was an older group of kids who used to hang out in, in the neighborhood.</u>
+	  <u who="KM">Yeah, yeah.</u>
+	  <u who="ED">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_58" n="58" end="timepoint_59">
+	  <u who="KM">Yeah, I guess, I guess that was it, that's um, my, I guess I'm sorta focusing on my final project j-, just sort of the structure of the building itself, and then, and then also the structure of the, of the neighborhood. So...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_59" n="59" end="timepoint_60">
+	  <u who="ED">Well, we used to be able to leave the theater from the, from the other exits you know, in the front of, and go out towards the back, I remember, I remember that. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_60" n="60" end="timepoint_61">
+	  <u who="ED">And as I said before, it had a balcony, but we would never g-, they would not, sometimes let us in the balcony. We would try and sit in the front row, and as I said before, that, that was sort of, the wrong thing to do because they would always at, they would, when we got rowdy they would throw us out from the front row back and we never learned to, to sit in the back instead of, instead of sitting in the front.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_61" n="61" end="timepoint_62">
+	  <u who="ED">Um, what about...I, I, I remember they had a stage there, you know with curtains in front of the, the screen. We'd never saw a live show that, that would have events like the drawings for the contests, and things up on the, up on the stage.</u>
+	  <u who="KM">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_62" n="62" end="timepoint_63">
+	  <u who="ED">Sound system in the film, the theater was always good, I never had a, a problem with that. We never had problem hearing, except for the noise we made, but um....it was, films never weren't breaking down or something, they kept it in good shape</u>
+	  <u who="KM">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_63" n="63" end="timepoint_64">
+	  <u who="ED">Yeah, yeah. So...</u>
+	  <u who="KM">That's interesting. Did you ever sneak in to the theater?</u>
+	  <u who="ED">Um, no, no it was really hard to do. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_64" n="64" end="timepoint_65">
+	  <u who="ED">You had to go in the lobby, buy your ticket in the lobby, and right across from the ticket counter was the uh, um, concession stand, but what we did do as I said before was, like, sort of take cups from inside the soda machine that was right there, that was a trick we learned from the older kids and, we did that for awhile, something that got us into trouble a couple times, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_65" n="65" end="timepoint_66">
+	  <u who="ED">One time I was actually evicted from the theater for being caught doing that, so, I was really ashamed to go home after that, I thought I was going to get in so much trouble. But uh, </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_66" n="66" end="timepoint_67">
+	  <u who="ED">um, if we're an-, we wouldn't buy popcorn that much, we'd buy the little candies...</u>
+	  <u who="KM">Yeah.</u>
+	  <u who="ED">Or jujubees cause we could, make instruments out of the, the boxes and things like that. And goggles and things like that.</u>
+	  <u who="KM">That's great, that's great.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_67" n="67" end="timepoint_68">
+	  <u who="ED">I hope that's sort of, a little bit helpful.</u>
+	  <u who="KM">Yeah, yeah it is. It is, yeah, I think it's helpful just to, yeah, it's good for me to do the, the follow-up questions.</u>
+	  <u who="ED">Ok, yeah, yeah</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_68" n="68" end="timepoint_69">
+	  <u who="ED">It's really nostalgic just to go back and remember those days, it was definitely a, an important part of my childhood, and that was something we used to love doing so much - the Saturdays at the, at the movies.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_69" n="69" end="timepoint_70">
+	  <u who="KM">About how many Saturdays out of the month do you think you'd go?</u>
+	  <u who="ED">Oh one or two. We'd go one or two weeks every month.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_70" n="70" end="timepoint_71">
+	  <u who="KM">Yeah, right.</u>
+	  <u who="ED">Except for the time they had the six-week bicycle contest, and I, every week to get all the possible tickets for the entries to the, to the contest.</u>
+	  <u who="KM">Uh-huh. Yeah,</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_71" n="71" end="timepoint_72">
+	  <u who="ED">And are you actually doing a, like a, a paper on, on this here? Really like to see that when it's done.</u>
+	  <u who="KM">Yeah, </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_72" n="72" end="timepoint_73">
+	  <u who="KM">ok yeah.</u>
+	  <u who="ED">There'll be presentations?</u>
+	  <u who="KM">Yeah, we're gonna, I'm not exactly sure of the format yet, but we're doing a paper and we're a doing a, right, we're doing an actual presentation.</u>
+	  <u who="ED">Excellent.</u>
+	  <u who="KM">And then, and then we're preparing a display for the, for the museum</u>
+	  <u who="ED">The museum, great.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_73" n="73" end="timepoint_74">
+	  <u who="KM">Yeah, so I'll definitely be in touch with you about that.</u>
+	  <u who="ED">I can't believe I have, I have just trunks full of photos at home, we just never took any of that area.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_74" n="74" end="timepoint_75">
+	  <u who="KM">Yeah.</u>
+	  <u who="ED">It's too bad, but uh, one thing I can tell you though is about the Elks club that was right across the street.</u>
+	  <u who="KM">Yeah.	</u>
+	  <u who="ED">Yeah, do you, do you know about the Elks club right there?</u>
+	  <u who="KM">Right the Elks club that, that um, it's been torn down now, right?</u>
+	  <u who="ED">It's torn down about ten years ago, and up until last year there was this big enormous bronze elk right in the, right in the corner there,</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_75" n="75" end="timepoint_76">
+	  <u who="ED">That was finally taken away last year and put in front of some other Elks Club. But all the important people in the neighborhood belong to the, the, the Elks Club. </u>
+	  <u who="KM">right</u>
+	  <u who="ED">And it was a really, a cool place to, to be accepted to, and to be a member of.</u>
+	  <u who="KM">Uh-huh</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_76" n="76" end="timepoint_77">
+	  <u who="ED">And, and, and to go to. And um, I used to go with my father to the Elks Club because he was a member of the Elks, and, and they would have big social events there. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_77" n="77" end="timepoint_78">
+	  <u who="ED">That's what I remember, uh, the only other social thing we were doing that it right in the corner area, yeah. It was a big fancy building, and um, course by the '70s and '80s it wasn't so big and fancy, wasn't so fancy anymore.</u>
+	  <u who="KM">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_78" n="78" end="timepoint_79">
+	  <u who="ED">And ah, the membership really dwindled so much that they had to, they couldn't afford to, to keep it up.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_79" n="79" end="timepoint_80">
+	  <u who="KM">Yeah. Do you remember anything about The American Legion, across the street? Other than, well you mentioned um, that there was a bowling alley but do you, what, what was that like when you were...?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_80" n="80" end="timepoint_81">
+	  <u who="ED">Well, The American Legion is up the street on the left. As you, as you cross the street, it's a, it's, it's, it's right next to a church, about a block up on, on, on the left. Host 19 I think you mean? </u>
+	  <u who="KM">Yeah</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_81" n="81" end="timepoint_82">
+	  <u who="ED">That was the place where all of the army veterans would go and, and and and socialize.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_82" n="82" end="timepoint_83">
+	  <u who="ED">It's still very, very strong, it's a, it's a, it's a strong post it was always in the lead in the neighborhood for, for sponsoring events in the neighborhood, for spon-, for sponsoring the local sports teams, they sponsored their own baseball team.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_83" n="83" end="timepoint_84">
+	  <u who="ED">And I think they still do, that won, has won, regional if not national championships, and, they were always very active in sports, and it was also a place people to go and drink and socialize as well. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_84" n="84" end="timepoint_85">
+	  <u who="ED">You oughta drop by there, they have like, like uh, I think they're having a weekend bazaar coming up sometime soon.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_85" n="85" end="timepoint_86">
+	  <u who="KM">Oh really, huh.</u>
+	  <u who="ED">Yeah, yeah they have a, um, a big flea market or bazaar something, something like that a couple times a year, usually have it in April so it should be coming up.</u>
+	  <u who="KM">Hmm, interesting.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_86" n="86" end="timepoint_87">
+	  <u who="ED">But that's been there for fifty years at least. Oh at least fifty years, probably seventy-five years.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_87" n="87" end="timepoint_88">
+	  <u who="ED">And um, right across the street from that is the YMCA too. </u>
+	  <u who="KM">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_88" n="88" end="timepoint_89">
+	  <u who="ED">So, uh, as a matter fact my wife, once she graduated from Tufts, after she graduated from Tufts, lived in apartment across the street from American Legion and we used to date when she lived there, so, we, but by then the theater had long been closed.</u>
+	  <u who="KM">Right, yeah</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_89" n="89" end="timepoint_90">
+	  <u who="ED">So we would go to the Somerville theater instead and ah, and, get annoyed 'cause all the Tufts students were making so much noise and we couldn't hear the movie.</u>
+	  <u who="KM">That's right, that's right. Right</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_90" n="90" end="timepoint_end">
+	  <u who="ED">So. Well, I hope that's a little bit helpful.</u>
+	  <u who="KM">Yeah no, it's very helpful, yeah, thank you, thank you, I wanted to hear about the kids again so...</u>
+	  <u who="ED"><vocal desc="Speaking at the same time as KM"/> I'm really looking for forward to this <gap desc="inaudible"/> project, seems great to be able to be doing this.</u>
+	  <u who="KM">Yeah! Yeah, yeah. Good. well we appreciate you, you taking the time to talk with us.</u>
+	  <u who="ED">Oh! Sure, thanks, yeah, yeah.</u>
+	  <event desc="end tape"/>
+	</u>
+      </div1>
+    </body>
+  </text>
+</TEI.2>

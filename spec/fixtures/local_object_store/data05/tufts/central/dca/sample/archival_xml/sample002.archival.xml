@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TEI.2>
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title><!--FILL IN--></title>
+            <author><!--FILL IN--></author>
+            <author>Murrow, Edward R.</author>
+         </titleStmt>
+         <extent><!--FILL IN--></extent>
+         <publicationStmt>
+            <distributor>Tufts University Digital Collections and Archives</distributor>
+            <address>
+               <addrLine>Tufts University</addrLine>
+               <addrLine>35 Professors Row</addrLine>
+               <addrLine>Tisch Library Medford, MA 01255</addrLine>
+            </address>
+            <idno><!--FILL IN number--></idno>
+            <availability status="free">
+               <p>This publication is freely available for scholarly or educational use.</p>
+            </availability>
+         </publicationStmt>
+         <sourceDesc>
+            <recordingStmt>
+               <recording type="audio" dur="259128ms">
+                  <date><!--FILL IN--></date>
+               </recording>
+            </recordingStmt>
+         </sourceDesc>
+      </fileDesc>
+      <encodingDesc>
+         <editorialDecl>
+            <stdVals>
+               <p>Standard date values are given in ISO form: yyyy-mm-dd.</p>
+            </stdVals>
+         </editorialDecl>
+         <classDecl>
+            <taxonomy id="LCSH">
+               <bibl>
+                  <title>Library of Congress Subject Headings</title>
+               </bibl>
+            </taxonomy>
+            <taxonomy id="LC">
+               <bibl>
+                  <title>Library of Congress</title>
+               </bibl>
+            </taxonomy>
+         </classDecl>
+      </encodingDesc>
+      <profileDesc>
+         <langUsage>
+            <language id="EN" usage="100">English.</language>
+         </langUsage>
+      </profileDesc>
+   </teiHeader>
+   <text>
+      <body>
+         <timeline id="transcript_timeline" unit="millisecond" origin="timepoint_begin">
+            <when id="timepoint_begin" absolute="beginning of recording"/>
+            <when id="timepoint_1" since="timepoint_begin" interval="0"/>
+            <when id="timepoint_2" since="timepoint_begin" interval="48700"/>
+            <when id="timepoint_3" since="timepoint_begin" interval="98900"/>
+            <when id="timepoint_4" since="timepoint_begin" interval="153100"/>
+            <when id="timepoint_5" since="timepoint_begin" interval="203200"/>
+            <when id="timepoint_end" since="timepoint_begin" interval="259128"/>
+         </timeline>
+         <div1 id="transcript.1" n="Transcript">
+            <u rend="transcript_chunk" start="timepoint_1" n="1" end="timepoint_2">
+<u who="Announcer">And now, This I Believe. Here is Edward R. Murrow.</u>
+<u who="Murrow">This I Believe. Roger S. Phillips is a publisher of magazines on international affairs. Before he was 30, he became publisher of United Nations World, and then publisher of its successor, World Magazine. He was born in Butler, Pennsylvania, and educated at Andover and Yale. During World War II, he served as a ferry pilot in the China Burma India Theater. Here is what Roger Phillips believes.</u>
+<u who="Phillips">About 300 hundred years ago, a great English preacher named Thomas Fuller said, "Experience teacheth fools, and he is a great one that will not learn by it." I suppose everyone, like myself, has been a fool at some </u>
+</u>
+            <u rend="transcript_chunk" start="timepoint_2" n="2" end="timepoint_3">
+<u>time. I think that man's great ambition should be to stop being a fool. But even in this effort, I cannot speak without prejudice. </u>
+<u>Born of and reared by Christian parents and educated under Christianity, I necessarily am prejudiced in its favor. Accordingly, I believe that we should work to further those factors in human life which we Americans admire and love.</u>
+<u>My beliefs stem from my personal background and experience and luck. Mine is a pioneering heritage. Forceful grandparents--each an individual with intellect, with purpose, and with willingness to labor for honorable fulfillment of his life--left me a heritage from which only to benefit. </u>
+</u>
+            <u rend="transcript_chunk" start="timepoint_3" n="3" end="timepoint_4">
+<u>My mother's ability and devotion can only be remembered and followed; her artistic sense and temperament counterbalanced and blended with my father's realism and practicality. They could hand down a real understanding of the rewards of individualism in business, in politics, and even in religion. </u>
+<u>But a man's characteristics are not all inherited. Some are acquired and most are modified later in life. Love and hatred, success and failure, ordinary and unusual circumstances all have their effects.</u>
+<u>A most important influence on an individual is his mate. Here, I once was a fool. But because of that experience, the next time I avoided a similar mistake. And now I know that faith and understanding and loyalty from one's mate,</u>
+</u>
+            <u rend="transcript_chunk" start="timepoint_4" n="4" end="timepoint_5">
+<u>with God's help, can give a man the strength and determination to do things and to believe things which otherwise he would not do or believe. </u>
+<u>Yet a man's makeup reflects more than the present. From the Jews, we inherited a philosophy of life stemming from the laws of Moses. From the Greeks, we inherited a way of community life. From Christ, we learned to interpret the laws of Moses and forever to adopt them, and the democratic principles of the Greeks, to human life. We learned that God is good and that each individual must find for himself his own personal relationship to God. </u>
+<u>And a group of our forefathers contemplated all this and caused to be invented a way to guarantee to every man his</u>
+</u>
+            <u rend="transcript_chunk" start="timepoint_5" n="5" end="timepoint_end">
+<u>individuality and his personal liberty. Looking around and comparing my fate with that of my contemporaries abroad, I realize how great is our heritage. We will never be able to repay our forbearers for our blessings. We can only follow their example and leave the world better off than when we entered it.</u>
+<u>And so, this I believe: Our relationship to ourselves, to our families, and to our friends, physically and spiritually, is in direct equation to our relationship to God. Humbly we must gain by our mistakes, and courageously we must stop our foolishness before it undoes us. And under the Christian God of love, understanding, and forgiveness, we shall develop for the future that which is still only the foundation of our society.</u>
+<u who="Murrow">That was Roger S. Phillips of Norwalk, Connecticut.</u>
+</u>
+         </div1>
+      </body>
+   </text>
+</TEI.2>

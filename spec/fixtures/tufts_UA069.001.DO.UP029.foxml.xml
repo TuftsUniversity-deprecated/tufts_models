@@ -382,35 +382,6 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="Archival.xml" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Archival.xml.0" LABEL="Full EAD Document Source" CREATED="2005-12-13T14:25:13.000Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UP029.archival.xml"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Archival.xml.1" LABEL="Full EAD Document Source" CREATED="2010-09-03T17:45:09.949Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UP029.archival.xml"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Archival.xml.2" LABEL="Full EAD Document Source" CREATED="2010-12-17T19:10:05.869Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UP029.archival.xml"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Archival.xml.3" LABEL="Full EAD Document Source" CREATED="2010-12-17T19:33:45.717Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UP029.archival.xml"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Archival.xml.4" LABEL="Full EAD Document Source" CREATED="2010-12-17T19:44:19.206Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UP029.archival.xml"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Archival.xml.5" LABEL="Full EAD Document Source" CREATED="2010-12-17T21:42:25.881Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UP029.archival.xml"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Archival.xml.6" LABEL="Full EAD Document Source" CREATED="2010-12-20T17:59:43.953Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UP029.archival.xml"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Archival.xml.7" LABEL="Full EAD Document Source" CREATED="2010-12-20T19:03:32.726Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UP029.archival.xml"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Archival.xml.8" LABEL="Full EAD Document Source" CREATED="2010-12-20T19:58:39.983Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/UA069/archival_xml/UA069.001.DO.UP029.archival.xml"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
 <foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="DC.1" LABEL="Dublin Core Metadata" CREATED="2005-12-13T14:25:13.000Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="949">
 <foxml:xmlContent>

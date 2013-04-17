@@ -1,0 +1,2116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE TEI.2 PUBLIC "-//TEI P4//DTD Main DTD Driver File//EN"
+"http://dca.tufts.edu/schema/tei/tei2.dtd" [
+ <!ENTITY % TEI.corpus 'INCLUDE'>
+ <!ENTITY % TEI.figures 'INCLUDE'>
+ <!ENTITY % TEI.spoken 'INCLUDE'>
+ <!ENTITY % TEI.linking 'INCLUDE'>
+ <!ENTITY % TEI.XML 'INCLUDE'>
+]>
+
+<TEI.2>
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+	<title>Bob Hanon Interview</title>
+	<author>Carl Mould-Millman</author>
+      </titleStmt>
+      <extent>157064 Bytes</extent>
+      <publicationStmt>
+	<distributor>Tufts University Digital Collections and Archives</distributor>
+	<address>
+	  <addrLine>Tufts University</addrLine>
+	  <addrLine>35 Professors Row</addrLine>
+	  <addrLine>Tisch Library Medford, MA 01255</addrLine>
+	</address>
+	<idno>tufts:central:dca:MS124:MS124.001.001.00006</idno>
+	<availability status="free">
+	  <p>This publication is freely available for scholarly or educational use.</p>
+	</availability>
+      </publicationStmt>
+      <sourceDesc>
+	<recordingStmt>
+	  <recording type="audio" dur="5449106ms">
+	    <date>2002-03-05</date>
+	    <equipment>
+	      <p>audio tape</p>
+	    </equipment>
+	    <respStmt>
+	      <resp>interview conducted by:</resp>
+	      <name>Carl Mould-Millman</name>
+	    </respStmt>
+	  </recording>
+	</recordingStmt>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <editorialDecl>
+	<stdVals>
+	  <p>Standard date values are given in ISO form: yyyy-mm-dd.</p>
+	</stdVals>
+      </editorialDecl>
+      <classDecl>
+	<taxonomy id="LCSH">
+	  <bibl>
+	    <title>Library of Congress Subject Headings</title>
+	  </bibl>
+	</taxonomy>
+	<taxonomy id="LC">
+	  <bibl>
+	    <title>Library of Congress</title>
+	  </bibl>
+	</taxonomy>
+      </classDecl>
+    </encodingDesc>
+    <profileDesc>
+      <creation>
+	<date>2006-05-02</date>
+      </creation>
+      <langUsage>
+	<language id="EN" usage="100">English.</language>
+      </langUsage>
+      <particDesc>
+	<person id="BH" role="interviewee" sex="m"><p>Bob Hanon</p></person>
+	<person id="C"  role="interviewer" sex="m"><p>Carl Mould-Millman</p></person>
+      </particDesc>
+    </profileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <timeline id="transcript_timeline" unit="millisecond" origin="timepoint_begin">
+	<when id="timepoint_begin" absolute="beginning of recording"/>
+	<when id="timepoint_1" since="timepoint_begin" interval="0"/>
+	<when id="timepoint_2" since="timepoint_begin" interval="17900"/>
+	<when id="timepoint_3" since="timepoint_begin" interval="33400"/>
+	<when id="timepoint_4" since="timepoint_begin" interval="39900"/>
+	<when id="timepoint_5" since="timepoint_begin" interval="61300"/>
+	<when id="timepoint_6" since="timepoint_begin" interval="68700"/>
+	<when id="timepoint_7" since="timepoint_begin" interval="82900"/>
+	<when id="timepoint_8" since="timepoint_begin" interval="102500"/>
+	<when id="timepoint_9" since="timepoint_begin" interval="108000"/>
+	<when id="timepoint_10" since="timepoint_begin" interval="116400"/>
+	<when id="timepoint_11" since="timepoint_begin" interval="130600"/>
+	<when id="timepoint_12" since="timepoint_begin" interval="139300"/>
+	<when id="timepoint_13" since="timepoint_begin" interval="156100"/>
+	<when id="timepoint_14" since="timepoint_begin" interval="158300"/>
+	<when id="timepoint_15" since="timepoint_begin" interval="179100"/>
+	<when id="timepoint_16" since="timepoint_begin" interval="202500"/>
+	<when id="timepoint_17" since="timepoint_begin" interval="212000"/>
+	<when id="timepoint_18" since="timepoint_begin" interval="220500"/>
+	<when id="timepoint_19" since="timepoint_begin" interval="224200"/>
+	<when id="timepoint_20" since="timepoint_begin" interval="239200"/>
+	<when id="timepoint_21" since="timepoint_begin" interval="258900"/>
+	<when id="timepoint_22" since="timepoint_begin" interval="269000"/>
+	<when id="timepoint_23" since="timepoint_begin" interval="287400"/>
+	<when id="timepoint_24" since="timepoint_begin" interval="312600"/>
+	<when id="timepoint_25" since="timepoint_begin" interval="333800"/>
+	<when id="timepoint_26" since="timepoint_begin" interval="339600"/>
+	<when id="timepoint_27" since="timepoint_begin" interval="345300"/>
+	<when id="timepoint_28" since="timepoint_begin" interval="350100"/>
+	<when id="timepoint_29" since="timepoint_begin" interval="366500"/>
+	<when id="timepoint_30" since="timepoint_begin" interval="377300"/>
+	<when id="timepoint_31" since="timepoint_begin" interval="395700"/>
+	<when id="timepoint_32" since="timepoint_begin" interval="412100"/>
+	<when id="timepoint_33" since="timepoint_begin" interval="436299"/>
+	<when id="timepoint_34" since="timepoint_begin" interval="457600"/>
+	<when id="timepoint_35" since="timepoint_begin" interval="480600"/>
+	<when id="timepoint_36" since="timepoint_begin" interval="508500"/>
+	<when id="timepoint_37" since="timepoint_begin" interval="527300"/>
+	<when id="timepoint_38" since="timepoint_begin" interval="535700"/>
+	<when id="timepoint_39" since="timepoint_begin" interval="551500"/>
+	<when id="timepoint_40" since="timepoint_begin" interval="560400"/>
+	<when id="timepoint_41" since="timepoint_begin" interval="590300"/>
+	<when id="timepoint_42" since="timepoint_begin" interval="595200"/>
+	<when id="timepoint_43" since="timepoint_begin" interval="623500"/>
+	<when id="timepoint_44" since="timepoint_begin" interval="633600"/>
+	<when id="timepoint_45" since="timepoint_begin" interval="652800"/>
+	<when id="timepoint_46" since="timepoint_begin" interval="670900"/>
+	<when id="timepoint_47" since="timepoint_begin" interval="680700"/>
+	<when id="timepoint_48" since="timepoint_begin" interval="690700"/>
+	<when id="timepoint_49" since="timepoint_begin" interval="705400"/>
+	<when id="timepoint_50" since="timepoint_begin" interval="720700"/>
+	<when id="timepoint_51" since="timepoint_begin" interval="727900"/>
+	<when id="timepoint_52" since="timepoint_begin" interval="735000"/>
+	<when id="timepoint_53" since="timepoint_begin" interval="758100"/>
+	<when id="timepoint_54" since="timepoint_begin" interval="773300"/>
+	<when id="timepoint_55" since="timepoint_begin" interval="802600"/>
+	<when id="timepoint_56" since="timepoint_begin" interval="817400"/>
+	<when id="timepoint_57" since="timepoint_begin" interval="826900"/>
+	<when id="timepoint_58" since="timepoint_begin" interval="844100"/>
+	<when id="timepoint_59" since="timepoint_begin" interval="855500"/>
+	<when id="timepoint_60" since="timepoint_begin" interval="876000"/>
+	<when id="timepoint_61" since="timepoint_begin" interval="887300"/>
+	<when id="timepoint_62" since="timepoint_begin" interval="912000"/>
+	<when id="timepoint_63" since="timepoint_begin" interval="936100"/>
+	<when id="timepoint_64" since="timepoint_begin" interval="961500"/>
+	<when id="timepoint_65" since="timepoint_begin" interval="972000"/>
+	<when id="timepoint_66" since="timepoint_begin" interval="982800"/>
+	<when id="timepoint_67" since="timepoint_begin" interval="991500"/>
+	<when id="timepoint_68" since="timepoint_begin" interval="999100"/>
+	<when id="timepoint_69" since="timepoint_begin" interval="1011700"/>
+	<when id="timepoint_70" since="timepoint_begin" interval="1019600"/>
+	<when id="timepoint_71" since="timepoint_begin" interval="1045200"/>
+	<when id="timepoint_72" since="timepoint_begin" interval="1056800"/>
+	<when id="timepoint_73" since="timepoint_begin" interval="1067000"/>
+	<when id="timepoint_74" since="timepoint_begin" interval="1083700"/>
+	<when id="timepoint_75" since="timepoint_begin" interval="1094000"/>
+	<when id="timepoint_76" since="timepoint_begin" interval="1108500"/>
+	<when id="timepoint_77" since="timepoint_begin" interval="1121700"/>
+	<when id="timepoint_78" since="timepoint_begin" interval="1133200"/>
+	<when id="timepoint_79" since="timepoint_begin" interval="1161800"/>
+	<when id="timepoint_80" since="timepoint_begin" interval="1166400"/>
+	<when id="timepoint_81" since="timepoint_begin" interval="1173500"/>
+	<when id="timepoint_82" since="timepoint_begin" interval="1180000"/>
+	<when id="timepoint_83" since="timepoint_begin" interval="1205800"/>
+	<when id="timepoint_84" since="timepoint_begin" interval="1218400"/>
+	<when id="timepoint_85" since="timepoint_begin" interval="1231000"/>
+	<when id="timepoint_86" since="timepoint_begin" interval="1251100"/>
+	<when id="timepoint_87" since="timepoint_begin" interval="1264400"/>
+	<when id="timepoint_88" since="timepoint_begin" interval="1270700"/>
+	<when id="timepoint_89" since="timepoint_begin" interval="1276000"/>
+	<when id="timepoint_90" since="timepoint_begin" interval="1291500"/>
+	<when id="timepoint_91" since="timepoint_begin" interval="1296600"/>
+	<when id="timepoint_92" since="timepoint_begin" interval="1322200"/>
+	<when id="timepoint_93" since="timepoint_begin" interval="1346300"/>
+	<when id="timepoint_94" since="timepoint_begin" interval="1359500"/>
+	<when id="timepoint_95" since="timepoint_begin" interval="1377200"/>
+	<when id="timepoint_96" since="timepoint_begin" interval="1396500"/>
+	<when id="timepoint_97" since="timepoint_begin" interval="1405600"/>
+	<when id="timepoint_98" since="timepoint_begin" interval="1414500"/>
+	<when id="timepoint_99" since="timepoint_begin" interval="1428200"/>
+	<when id="timepoint_100" since="timepoint_begin" interval="1439700"/>
+	<when id="timepoint_101" since="timepoint_begin" interval="1455300"/>
+	<when id="timepoint_102" since="timepoint_begin" interval="1465900"/>
+	<when id="timepoint_103" since="timepoint_begin" interval="1477200"/>
+	<when id="timepoint_104" since="timepoint_begin" interval="1481500"/>
+	<when id="timepoint_105" since="timepoint_begin" interval="1499200"/>
+	<when id="timepoint_106" since="timepoint_begin" interval="1528300"/>
+	<when id="timepoint_107" since="timepoint_begin" interval="1535200"/>
+	<when id="timepoint_108" since="timepoint_begin" interval="1547200"/>
+	<when id="timepoint_109" since="timepoint_begin" interval="1575100"/>
+	<when id="timepoint_110" since="timepoint_begin" interval="1585100"/>
+	<when id="timepoint_111" since="timepoint_begin" interval="1599200"/>
+	<when id="timepoint_112" since="timepoint_begin" interval="1623600"/>
+	<when id="timepoint_113" since="timepoint_begin" interval="1640300"/>
+	<when id="timepoint_114" since="timepoint_begin" interval="1654600"/>
+	<when id="timepoint_115" since="timepoint_begin" interval="1666000"/>
+	<when id="timepoint_117" since="timepoint_begin" interval="1691100"/>
+	<when id="timepoint_118" since="timepoint_begin" interval="1702400"/>
+	<when id="timepoint_119" since="timepoint_begin" interval="1724100"/>
+	<when id="timepoint_120" since="timepoint_begin" interval="1734700"/>
+	<when id="timepoint_121" since="timepoint_begin" interval="1757400"/>
+	<when id="timepoint_122" since="timepoint_begin" interval="1766700"/>
+	<when id="timepoint_123" since="timepoint_begin" interval="1777200"/>
+	<when id="timepoint_124" since="timepoint_begin" interval="1793800"/>
+	<when id="timepoint_125" since="timepoint_begin" interval="1802100"/>
+	<when id="timepoint_127" since="timepoint_begin" interval="1820100"/>
+	<when id="timepoint_128" since="timepoint_begin" interval="1824700"/>
+	<when id="timepoint_129" since="timepoint_begin" interval="1855000"/>
+	<when id="timepoint_130" since="timepoint_begin" interval="1863900"/>
+	<when id="timepoint_131" since="timepoint_begin" interval="1877600"/>
+	<when id="timepoint_132" since="timepoint_begin" interval="1886500"/>
+	<when id="timepoint_133" since="timepoint_begin" interval="1910700"/>
+	<when id="timepoint_134" since="timepoint_begin" interval="1920400"/>
+	<when id="timepoint_135" since="timepoint_begin" interval="1936600"/>
+	<when id="timepoint_137" since="timepoint_begin" interval="1965300"/>
+	<when id="timepoint_138" since="timepoint_begin" interval="1990200"/>
+	<when id="timepoint_139" since="timepoint_begin" interval="2011700"/>
+	<when id="timepoint_140" since="timepoint_begin" interval="2039800"/>
+	<when id="timepoint_141" since="timepoint_begin" interval="2055000"/>
+	<when id="timepoint_142" since="timepoint_begin" interval="2069300"/>
+	<when id="timepoint_143" since="timepoint_begin" interval="2090000"/>
+	<when id="timepoint_144" since="timepoint_begin" interval="2114600"/>
+	<when id="timepoint_145" since="timepoint_begin" interval="2118000"/>
+	<when id="timepoint_146" since="timepoint_begin" interval="2126800"/>
+	<when id="timepoint_147" since="timepoint_begin" interval="2145600"/>
+	<when id="timepoint_148" since="timepoint_begin" interval="2154600"/>
+	<when id="timepoint_149" since="timepoint_begin" interval="2162800"/>
+	<when id="timepoint_150" since="timepoint_begin" interval="2167000"/>
+	<when id="timepoint_151" since="timepoint_begin" interval="2185200"/>
+	<when id="timepoint_152" since="timepoint_begin" interval="2212800"/>
+	<when id="timepoint_153" since="timepoint_begin" interval="2224500"/>
+	<when id="timepoint_154" since="timepoint_begin" interval="2233900"/>
+	<when id="timepoint_155" since="timepoint_begin" interval="2243500"/>
+	<when id="timepoint_156" since="timepoint_begin" interval="2255600"/>
+	<when id="timepoint_157" since="timepoint_begin" interval="2269200"/>
+	<when id="timepoint_158" since="timepoint_begin" interval="2277100"/>
+	<when id="timepoint_159" since="timepoint_begin" interval="2288500"/>
+	<when id="timepoint_160" since="timepoint_begin" interval="2301400"/>
+	<when id="timepoint_161" since="timepoint_begin" interval="2325000"/>
+	<when id="timepoint_162" since="timepoint_begin" interval="2334900"/>
+	<when id="timepoint_163" since="timepoint_begin" interval="2354700"/>
+	<when id="timepoint_164" since="timepoint_begin" interval="2361900"/>
+	<when id="timepoint_165" since="timepoint_begin" interval="2381900"/>
+	<when id="timepoint_166" since="timepoint_begin" interval="2392000"/>
+	<when id="timepoint_167" since="timepoint_begin" interval="2416299"/>
+	<when id="timepoint_168" since="timepoint_begin" interval="2427100"/>
+	<when id="timepoint_169" since="timepoint_begin" interval="2433000"/>
+	<when id="timepoint_170" since="timepoint_begin" interval="2452200"/>
+	<when id="timepoint_171" since="timepoint_begin" interval="2466700"/>
+	<when id="timepoint_172" since="timepoint_begin" interval="2476100"/>
+	<when id="timepoint_173" since="timepoint_begin" interval="2484800"/>
+	<when id="timepoint_174" since="timepoint_begin" interval="2491100"/>
+	<when id="timepoint_175" since="timepoint_begin" interval="2512200"/>
+	<when id="timepoint_176" since="timepoint_begin" interval="2523100"/>
+	<when id="timepoint_177" since="timepoint_begin" interval="2539700"/>
+	<when id="timepoint_178" since="timepoint_begin" interval="2546300"/>
+	<when id="timepoint_179" since="timepoint_begin" interval="2557900"/>
+	<when id="timepoint_180" since="timepoint_begin" interval="2569000"/>
+	<when id="timepoint_181" since="timepoint_begin" interval="2582600"/>
+	<when id="timepoint_182" since="timepoint_begin" interval="2595400"/>
+	<when id="timepoint_183" since="timepoint_begin" interval="2604800"/>
+	<when id="timepoint_184" since="timepoint_begin" interval="2616400"/>
+	<when id="timepoint_185" since="timepoint_begin" interval="2630800"/>
+	<when id="timepoint_186" since="timepoint_begin" interval="2658100"/>
+	<when id="timepoint_187" since="timepoint_begin" interval="2674500"/>
+	<when id="timepoint_188" since="timepoint_begin" interval="2685200"/>
+	<when id="timepoint_189" since="timepoint_begin" interval="2695700"/>
+	<when id="timepoint_190" since="timepoint_begin" interval="2708800"/>
+	<when id="timepoint_191" since="timepoint_begin" interval="2724000"/>
+	<when id="timepoint_192" since="timepoint_begin" interval="2734200"/>
+	<when id="timepoint_193" since="timepoint_begin" interval="2745200"/>
+	<when id="timepoint_194" since="timepoint_begin" interval="2757500"/>
+	<when id="timepoint_195" since="timepoint_begin" interval="2775900"/>
+	<when id="timepoint_196" since="timepoint_begin" interval="2790000"/>
+	<when id="timepoint_197" since="timepoint_begin" interval="2794600"/>
+	<when id="timepoint_198" since="timepoint_begin" interval="2811300"/>
+	<when id="timepoint_199" since="timepoint_begin" interval="2820700"/>
+	<when id="timepoint_200" since="timepoint_begin" interval="2827600"/>
+	<when id="timepoint_201" since="timepoint_begin" interval="2834400"/>
+	<when id="timepoint_202" since="timepoint_begin" interval="2847000"/>
+	<when id="timepoint_203" since="timepoint_begin" interval="2858600"/>
+	<when id="timepoint_204" since="timepoint_begin" interval="2865700"/>
+	<when id="timepoint_205" since="timepoint_begin" interval="2886100"/>
+	<when id="timepoint_206" since="timepoint_begin" interval="2896299"/>
+	<when id="timepoint_207" since="timepoint_begin" interval="2907800"/>
+	<when id="timepoint_208" since="timepoint_begin" interval="2921300"/>
+	<when id="timepoint_209" since="timepoint_begin" interval="2933500"/>
+	<when id="timepoint_210" since="timepoint_begin" interval="2949700"/>
+	<when id="timepoint_211" since="timepoint_begin" interval="2956200"/>
+	<when id="timepoint_212" since="timepoint_begin" interval="2974000"/>
+	<when id="timepoint_213" since="timepoint_begin" interval="2995200"/>
+	<when id="timepoint_214" since="timepoint_begin" interval="3004600"/>
+	<when id="timepoint_215" since="timepoint_begin" interval="3010500"/>
+	<when id="timepoint_216" since="timepoint_begin" interval="3024500"/>
+	<when id="timepoint_217" since="timepoint_begin" interval="3044400"/>
+	<when id="timepoint_218" since="timepoint_begin" interval="3060100"/>
+	<when id="timepoint_219" since="timepoint_begin" interval="3073800"/>
+	<when id="timepoint_220" since="timepoint_begin" interval="3083200"/>
+	<when id="timepoint_221" since="timepoint_begin" interval="3088600"/>
+	<when id="timepoint_222" since="timepoint_begin" interval="3107600"/>
+	<when id="timepoint_223" since="timepoint_begin" interval="3112600"/>
+	<when id="timepoint_224" since="timepoint_begin" interval="3123300"/>
+	<when id="timepoint_225" since="timepoint_begin" interval="3133600"/>
+	<when id="timepoint_226" since="timepoint_begin" interval="3145400"/>
+	<when id="timepoint_227" since="timepoint_begin" interval="3152599"/>
+	<when id="timepoint_228" since="timepoint_begin" interval="3162700"/>
+	<when id="timepoint_229" since="timepoint_begin" interval="3175100"/>
+	<when id="timepoint_230" since="timepoint_begin" interval="3181900"/>
+	<when id="timepoint_231" since="timepoint_begin" interval="3192200"/>
+	<when id="timepoint_232" since="timepoint_begin" interval="3208300"/>
+	<when id="timepoint_233" since="timepoint_begin" interval="3218000"/>
+	<when id="timepoint_234" since="timepoint_begin" interval="3228900"/>
+	<when id="timepoint_235" since="timepoint_begin" interval="3237700"/>
+	<when id="timepoint_236" since="timepoint_begin" interval="3246700"/>
+	<when id="timepoint_237" since="timepoint_begin" interval="3249900"/>
+	<when id="timepoint_238" since="timepoint_begin" interval="3264300"/>
+	<when id="timepoint_239" since="timepoint_begin" interval="3280300"/>
+	<when id="timepoint_240" since="timepoint_begin" interval="3284300"/>
+	<when id="timepoint_241" since="timepoint_begin" interval="3294100"/>
+	<when id="timepoint_242" since="timepoint_begin" interval="3306200"/>
+	<when id="timepoint_243" since="timepoint_begin" interval="3327700"/>
+	<when id="timepoint_244" since="timepoint_begin" interval="3343800"/>
+	<when id="timepoint_245" since="timepoint_begin" interval="3354000"/>
+	<when id="timepoint_246" since="timepoint_begin" interval="3366200"/>
+	<when id="timepoint_247" since="timepoint_begin" interval="3376100"/>
+	<when id="timepoint_248" since="timepoint_begin" interval="3386100"/>
+	<when id="timepoint_249" since="timepoint_begin" interval="3396200"/>
+	<when id="timepoint_250" since="timepoint_begin" interval="3411300"/>
+	<when id="timepoint_251" since="timepoint_begin" interval="3422300"/>
+	<when id="timepoint_252" since="timepoint_begin" interval="3437900"/>
+	<when id="timepoint_253" since="timepoint_begin" interval="3446400"/>
+	<when id="timepoint_254" since="timepoint_begin" interval="3459400"/>
+	<when id="timepoint_255" since="timepoint_begin" interval="3466300"/>
+	<when id="timepoint_256" since="timepoint_begin" interval="3482200"/>
+	<when id="timepoint_257" since="timepoint_begin" interval="3490400"/>
+	<when id="timepoint_258" since="timepoint_begin" interval="3516000"/>
+	<when id="timepoint_259" since="timepoint_begin" interval="3521800"/>
+	<when id="timepoint_260" since="timepoint_begin" interval="3536200"/>
+	<when id="timepoint_261" since="timepoint_begin" interval="3550000"/>
+	<when id="timepoint_262" since="timepoint_begin" interval="3559100"/>
+	<when id="timepoint_263" since="timepoint_begin" interval="3562800"/>
+	<when id="timepoint_264" since="timepoint_begin" interval="3573200"/>
+	<when id="timepoint_265" since="timepoint_begin" interval="3580400"/>
+	<when id="timepoint_266" since="timepoint_begin" interval="3589400"/>
+	<when id="timepoint_267" since="timepoint_begin" interval="3593400"/>
+	<when id="timepoint_268" since="timepoint_begin" interval="3601400"/>
+	<when id="timepoint_269" since="timepoint_begin" interval="3611800"/>
+	<when id="timepoint_270" since="timepoint_begin" interval="3631800"/>
+	<when id="timepoint_271" since="timepoint_begin" interval="3639100"/>
+	<when id="timepoint_272" since="timepoint_begin" interval="3651200"/>
+	<when id="timepoint_273" since="timepoint_begin" interval="3666800"/>
+	<when id="timepoint_274" since="timepoint_begin" interval="3680000"/>
+	<when id="timepoint_275" since="timepoint_begin" interval="3690400"/>
+	<when id="timepoint_276" since="timepoint_begin" interval="3698500"/>
+	<when id="timepoint_277" since="timepoint_begin" interval="3705900"/>
+	<when id="timepoint_278" since="timepoint_begin" interval="3716900"/>
+	<when id="timepoint_279" since="timepoint_begin" interval="3732100"/>
+	<when id="timepoint_280" since="timepoint_begin" interval="3749800"/>
+	<when id="timepoint_281" since="timepoint_begin" interval="3758700"/>
+	<when id="timepoint_282" since="timepoint_begin" interval="3778600"/>
+	<when id="timepoint_283" since="timepoint_begin" interval="3786400"/>
+	<when id="timepoint_284" since="timepoint_begin" interval="3801200"/>
+	<when id="timepoint_285" since="timepoint_begin" interval="3818500"/>
+	<when id="timepoint_286" since="timepoint_begin" interval="3824600"/>
+	<when id="timepoint_287" since="timepoint_begin" interval="3834400"/>
+	<when id="timepoint_288" since="timepoint_begin" interval="3840500"/>
+	<when id="timepoint_289" since="timepoint_begin" interval="3852000"/>
+	<when id="timepoint_290" since="timepoint_begin" interval="3863600"/>
+	<when id="timepoint_291" since="timepoint_begin" interval="3879000"/>
+	<when id="timepoint_292" since="timepoint_begin" interval="3882100"/>
+	<when id="timepoint_293" since="timepoint_begin" interval="3902400"/>
+	<when id="timepoint_294" since="timepoint_begin" interval="3910500"/>
+	<when id="timepoint_295" since="timepoint_begin" interval="3919500"/>
+	<when id="timepoint_296" since="timepoint_begin" interval="3928800"/>
+	<when id="timepoint_297" since="timepoint_begin" interval="3941400"/>
+	<when id="timepoint_298" since="timepoint_begin" interval="3954500"/>
+	<when id="timepoint_299" since="timepoint_begin" interval="3971400"/>
+	<when id="timepoint_300" since="timepoint_begin" interval="3987100"/>
+	<when id="timepoint_301" since="timepoint_begin" interval="4002000"/>
+	<when id="timepoint_302" since="timepoint_begin" interval="4011700"/>
+	<when id="timepoint_303" since="timepoint_begin" interval="4025900"/>
+	<when id="timepoint_304" since="timepoint_begin" interval="4036200"/>
+	<when id="timepoint_305" since="timepoint_begin" interval="4047300"/>
+	<when id="timepoint_306" since="timepoint_begin" interval="4060800"/>
+	<when id="timepoint_307" since="timepoint_begin" interval="4067300"/>
+	<when id="timepoint_308" since="timepoint_begin" interval="4080200"/>
+	<when id="timepoint_309" since="timepoint_begin" interval="4085400"/>
+	<when id="timepoint_310" since="timepoint_begin" interval="4097800"/>
+	<when id="timepoint_311" since="timepoint_begin" interval="4110800"/>
+	<when id="timepoint_312" since="timepoint_begin" interval="4124200"/>
+	<when id="timepoint_313" since="timepoint_begin" interval="4144100"/>
+	<when id="timepoint_314" since="timepoint_begin" interval="4152100"/>
+	<when id="timepoint_315" since="timepoint_begin" interval="4159100"/>
+	<when id="timepoint_316" since="timepoint_begin" interval="4171700"/>
+	<when id="timepoint_317" since="timepoint_begin" interval="4183600"/>
+	<when id="timepoint_318" since="timepoint_begin" interval="4194200"/>
+	<when id="timepoint_319" since="timepoint_begin" interval="4205500"/>
+	<when id="timepoint_320" since="timepoint_begin" interval="4228500"/>
+	<when id="timepoint_321" since="timepoint_begin" interval="4240900"/>
+	<when id="timepoint_322" since="timepoint_begin" interval="4246200"/>
+	<when id="timepoint_323" since="timepoint_begin" interval="4265200"/>
+	<when id="timepoint_324" since="timepoint_begin" interval="4272100"/>
+	<when id="timepoint_325" since="timepoint_begin" interval="4289400"/>
+	<when id="timepoint_326" since="timepoint_begin" interval="4304800"/>
+	<when id="timepoint_327" since="timepoint_begin" interval="4322200"/>
+	<when id="timepoint_328" since="timepoint_begin" interval="4330100"/>
+	<when id="timepoint_329" since="timepoint_begin" interval="4352300"/>
+	<when id="timepoint_330" since="timepoint_begin" interval="4362200"/>
+	<when id="timepoint_331" since="timepoint_begin" interval="4376300"/>
+	<when id="timepoint_332" since="timepoint_begin" interval="4383600"/>
+	<when id="timepoint_333" since="timepoint_begin" interval="4391800"/>
+	<when id="timepoint_334" since="timepoint_begin" interval="4400600"/>
+	<when id="timepoint_335" since="timepoint_begin" interval="4410500"/>
+	<when id="timepoint_336" since="timepoint_begin" interval="4420200"/>
+	<when id="timepoint_337" since="timepoint_begin" interval="4438300"/>
+	<when id="timepoint_338" since="timepoint_begin" interval="4449400"/>
+	<when id="timepoint_339" since="timepoint_begin" interval="4460200"/>
+	<when id="timepoint_340" since="timepoint_begin" interval="4472400"/>
+	<when id="timepoint_341" since="timepoint_begin" interval="4484300"/>
+	<when id="timepoint_342" since="timepoint_begin" interval="4500400"/>
+	<when id="timepoint_343" since="timepoint_begin" interval="4507300"/>
+	<when id="timepoint_344" since="timepoint_begin" interval="4521000"/>
+	<when id="timepoint_345" since="timepoint_begin" interval="4528200"/>
+	<when id="timepoint_346" since="timepoint_begin" interval="4546700"/>
+	<when id="timepoint_347" since="timepoint_begin" interval="4558000"/>
+	<when id="timepoint_348" since="timepoint_begin" interval="4566400"/>
+	<when id="timepoint_349" since="timepoint_begin" interval="4572400"/>
+	<when id="timepoint_350" since="timepoint_begin" interval="4582000"/>
+	<when id="timepoint_351" since="timepoint_begin" interval="4592300"/>
+	<when id="timepoint_352" since="timepoint_begin" interval="4605100"/>
+	<when id="timepoint_353" since="timepoint_begin" interval="4624800"/>
+	<when id="timepoint_354" since="timepoint_begin" interval="4644200"/>
+	<when id="timepoint_355" since="timepoint_begin" interval="4655500"/>
+	<when id="timepoint_356" since="timepoint_begin" interval="4671500"/>
+	<when id="timepoint_357" since="timepoint_begin" interval="4687900"/>
+	<when id="timepoint_358" since="timepoint_begin" interval="4693100"/>
+	<when id="timepoint_359" since="timepoint_begin" interval="4698500"/>
+	<when id="timepoint_360" since="timepoint_begin" interval="4707500"/>
+	<when id="timepoint_361" since="timepoint_begin" interval="4728400"/>
+	<when id="timepoint_362" since="timepoint_begin" interval="4738500"/>
+	<when id="timepoint_363" since="timepoint_begin" interval="4754600"/>
+	<when id="timepoint_364" since="timepoint_begin" interval="4769700"/>
+	<when id="timepoint_365" since="timepoint_begin" interval="4782600"/>
+	<when id="timepoint_366" since="timepoint_begin" interval="4799500"/>
+	<when id="timepoint_367" since="timepoint_begin" interval="4810900"/>
+	<when id="timepoint_368" since="timepoint_begin" interval="4818200"/>
+	<when id="timepoint_369" since="timepoint_begin" interval="4837500"/>
+	<when id="timepoint_370" since="timepoint_begin" interval="4842000"/>
+	<when id="timepoint_371" since="timepoint_begin" interval="4855400"/>
+	<when id="timepoint_372" since="timepoint_begin" interval="4863900"/>
+	<when id="timepoint_373" since="timepoint_begin" interval="4884000"/>
+	<when id="timepoint_374" since="timepoint_begin" interval="4897400"/>
+	<when id="timepoint_375" since="timepoint_begin" interval="4917000"/>
+	<when id="timepoint_376" since="timepoint_begin" interval="4946600"/>
+	<when id="timepoint_377" since="timepoint_begin" interval="4963100"/>
+	<when id="timepoint_378" since="timepoint_begin" interval="4970700"/>
+	<when id="timepoint_379" since="timepoint_begin" interval="4976000"/>
+	<when id="timepoint_380" since="timepoint_begin" interval="4990400"/>
+	<when id="timepoint_381" since="timepoint_begin" interval="5002000"/>
+	<when id="timepoint_382" since="timepoint_begin" interval="5007700"/>
+	<when id="timepoint_383" since="timepoint_begin" interval="5016800"/>
+	<when id="timepoint_384" since="timepoint_begin" interval="5024700"/>
+	<when id="timepoint_385" since="timepoint_begin" interval="5036500"/>
+	<when id="timepoint_386" since="timepoint_begin" interval="5049900"/>
+	<when id="timepoint_387" since="timepoint_begin" interval="5062800"/>
+	<when id="timepoint_388" since="timepoint_begin" interval="5076000"/>
+	<when id="timepoint_389" since="timepoint_begin" interval="5080200"/>
+	<when id="timepoint_390" since="timepoint_begin" interval="5101800"/>
+	<when id="timepoint_391" since="timepoint_begin" interval="5111100"/>
+	<when id="timepoint_392" since="timepoint_begin" interval="5129700"/>
+	<when id="timepoint_393" since="timepoint_begin" interval="5151600"/>
+	<when id="timepoint_394" since="timepoint_begin" interval="5163900"/>
+	<when id="timepoint_395" since="timepoint_begin" interval="5173200"/>
+	<when id="timepoint_396" since="timepoint_begin" interval="5180400"/>
+	<when id="timepoint_397" since="timepoint_begin" interval="5200800"/>
+	<when id="timepoint_398" since="timepoint_begin" interval="5206600"/>
+	<when id="timepoint_399" since="timepoint_begin" interval="5225000"/>
+	<when id="timepoint_400" since="timepoint_begin" interval="5243200"/>
+	<when id="timepoint_401" since="timepoint_begin" interval="5250200"/>
+	<when id="timepoint_402" since="timepoint_begin" interval="5262900"/>
+	<when id="timepoint_403" since="timepoint_begin" interval="5272700"/>
+	<when id="timepoint_404" since="timepoint_begin" interval="5282300"/>
+	<when id="timepoint_405" since="timepoint_begin" interval="5294600"/>
+	<when id="timepoint_406" since="timepoint_begin" interval="5311500"/>
+	<when id="timepoint_407" since="timepoint_begin" interval="5327200"/>
+	<when id="timepoint_408" since="timepoint_begin" interval="5339000"/>
+	<when id="timepoint_409" since="timepoint_begin" interval="5350100"/>
+	<when id="timepoint_410" since="timepoint_begin" interval="5365700"/>
+	<when id="timepoint_411" since="timepoint_begin" interval="5382700"/>
+	<when id="timepoint_412" since="timepoint_begin" interval="5422300"/>
+	<when id="timepoint_413" since="timepoint_begin" interval="5433800"/>
+	<when id="timepoint_end" since="timepoint_begin" interval="5449106"/>
+      </timeline>
+      <div1 id="transcript.1" n="Transcript">
+	<u rend="transcript_chunk" start="timepoint_1" n="1" end="timepoint_2">
+	  <u who="C">Today's um, Tuesday, March 5th, at uh, about 10 past, yeah. Interview with Mr. Bob Hanon from Hyde Park.</u>
+	  <u who="BH">Yes.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_2" n="2" end="timepoint_3">
+	  <u who="C">Ok. I know we've talked about it, we talked about it you know a little bit.</u>
+	  <u who="BH">Yeah, yeah, ah, just getting your name again.</u>
+	  <u who="C">Ok, Carl.</u>
+	  <u who="BH">Carl, with a C yeah.</u>
+	  <u who="C">Yup, with a C.</u>
+	  <u who="BH">Ok. Mould.</u>
+	  <u who="C">Mould. Millman.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_3" n="3" end="timepoint_4">
+	  <u who="BH">M-I-L...</u>
+	  <u who="C">...L-M-A-N.</u>
+	  <u who="BH">Good. Alright. Ok.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_4" n="4" end="timepoint_5">
+	  <u who="C">Excellent. Ok. So um, just kinda to get a background you know about uh <unclear>that's your ice tea</unclear> just to get a background of you and your family situation and stuff, just kinda know what was going on, when you were young, can you talk about, where you grew up, well I don't know if you were born here or you moved here...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_5" n="5" end="timepoint_6">
+	  <u who="BH">Well I, I was born in Cambridge at a hospital, but, but came here from birth.</u>
+	  <u who="C">Ok.</u>
+	  <u who="BH">And lived at uh, 290 Boston Avenue.</u>
+	  <u who="C">Ok.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_6" n="6" end="timepoint_7">
+	  <u who="BH">In the Medford Hillside section.</u>
+	  <u who="C">Ok.</u>
+	  <u who="BH">With the, with the tracks, j-, just a, uh, Boston main railroad tracks, a little way behind our house and all, you know. Near the corner of Pickett road. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_7" n="7" end="timepoint_8">
+	  <u who="BH">But, grew up in the, in the Hillside here, went to the Hillside school, which is only two stone's throws from wh-, where we're sitting now...</u>
+	  <u who="C">Yeah.</u>
+	  <u who="BH">And I discovered today in a kind of a, tour of some of my roots, by car, the school appears to be closed.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_8" n="8" end="timepoint_9">
+	  <u who="BH">Except for an occupational therapy school clinic, according to the sign now.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_9" n="9" end="timepoint_10">
+	  <u who="BH">So things do change, and as, as, as, as we were saying before the interview, anthropologically, things, things changed.</u>
+	  <u who="C">Definitely.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_10" n="10" end="timepoint_11">
+	  <u who="BH">And, and I said in, in a generation or certainly two generations, they do change. I remember the streets and all the names and all, but sometimes it seems to me, the old trees that I remember, have gone.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_11" n="11" end="timepoint_12">
+	  <u who="C">Oh really?</u>
+	  <u who="BH">And so from a viewpoint of a, of a youngsta', 'till now, things do appear differently.</u>
+	  <u who="C">Yeah, I can imagine.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_12" n="12" end="timepoint_13">
+	  <u who="BH">And so, so we grew up in, in Medford Hillside, there used to be a bank there, there is where, three grocery stores, the hardware store and a <gap desc="inaudible"/> but there never was a movie, never was a local movie place in Medford Hillside.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_13" n="13" end="timepoint_14">
+	  <u who="C">Why do you think that was?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_14" n="14" end="timepoint_15">
+	  <u who="BH">Well...probably there was no no no space for it, and maybe they figured that, the market was sufficient so that people could go in Medford to Medford Square, there's a couple of theaters, or, or, to nearby Somerville where we are now, west Somerville, and Ball Square.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_15" n="15" end="timepoint_16">
+	  <u who="BH">And, and, so, I guess f-, for, for many reasons, 'cause there were a lot of residences here on Boston Avenue...'cause they, they, for some, they just wasn't, they had a railroad station and they had activity, uh, right, right there, but uh, there wasn't uh, there wasn't a movies, so we, we gravitated a little distance.</u>
+	  <u who="C">Right</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_16" n="16" end="timepoint_17">
+	  <u who="BH">I remember where we, right behind us, at, at Tufts College, it used to be the Tuft Reservoir.</u>
+	  <u who="C">Right.</u>
+	  <u who="BH">And you said that you, you had never heard about that...</u>
+	  <u who="C">No.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_17" n="17" end="timepoint_18">
+	  <u who="BH">...But I uh, picked it, but if you, you do look through some of the old pictures, I, I think you'll find, there's a, there's a, a, a re-, a reserve water supply.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_18" n="18" end="timepoint_19">
+	  <u who="C">For Medford or Somerville or...?</u>
+	  <u who="BH">For the Medford area </u>
+	  <u who="C">Ok</u>
+	  <u who="BH">yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_19" n="19" end="timepoint_20">
+	  <u who="BH">Probably, probably, one of the remote backups for the water system that <unclear>we did.</unclear> Originally I gu-, I guess it was a reservoir for, for Medford. Probably mostly in Medford, but the, the line comes somewhere through here. </u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_20" n="20" end="timepoint_21">
+	  <u who="BH">Yeah. And, so, we used to go up there, and there was, was hills, and I would remember going up and down, <gap desc="tape cuts out briefly"/> and it seemed to me that, that, in the old, in, I remember distances where, they seem to be greater then they are now when I measured on a, on a, uh, the odometer on a car.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_21" n="21" end="timepoint_22">
+	  <u who="BH">Yeah. So, so it's, it's back to your roots and you see the, the things that, either not as you remembered 'em, or, or they, or they have changed.</u>
+	  <u who="C">Changed yeah. So, uh...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_22" n="22" end="timepoint_23">
+	  <u who="BH">So and, one of the places we used to go on Saturday, afternoons, for probably ten cents, or even maybe nine cents or so, was to the, to the movie on Saturday afternoon. That was, that was our television and uh, and entertainment and concerts and everything else.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_23" n="23" end="timepoint_24">
+	  <u who="BH">And uh, in, in those days, the, the, the movies uh, ran double feature, that is, they had two feature films, and they usually had a, a newsreel in the beginning. Which is what you see on television every night now, and I, I remember I was fascinated by News Of The World, in, in film, I I, I I, I, I like that, yeah. Uh, and then, then there would be, what they call "Coming Attractions," but they call 'em trailors now.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_24" n="24" end="timepoint_25">
+	  <u who="BH">Then they'd have one, one picture, and they would have, have-e-have often a little fi-, film in between, maybe it's a short subject or a comedy, and then they'd have the second picture, and then as I told you on the phone, the, the, the Saturday afternoon feature was always a serial, what they call 'em, uh an adventure serial, yeah, of different ones, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_25" n="25" end="timepoint_26">
+	  <u who="C">How long were these uh, the, the pictures, the movies themselves? Were they like full movies, or just uh...?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_26" n="26" end="timepoint_27">
+	  <u who="BH">They, they seem to be full movies, yeah. Maybe, they're, they're, they're not the two hour ones now.</u>
+	  <u who="C">No.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_27" n="27" end="timepoint_28">
+	  <u who="BH">Maybe they were more of an hour or so, I think, but, but it seemed adequate to...</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_28" n="28" end="timepoint_29">
+	  <u who="BH">Yeah. I remember there was, we used to scream when there was kissing scenes, that got with that we, we were too young then, and that was, that was the dull part, and we wanted to, uh get through uh, through uh, get that by and get to the adventure.</u>
+	  <u who="C">Right. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_29" n="29" end="timepoint_30">
+	  <u who="C">Well, let's uh, back up a little bit, and could you tell me a little about your, your household, you know who was in your household, and ah...</u>
+	  <u who="BH">Yeah, I grew up in a, <unclear>first</unclear> floor of a three-decker...</u>
+	  <u who="C">Ok.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_30" n="30" end="timepoint_31">
+	  <u who="BH">...between the out. That house is still there but it's now, I think it went with, it, it it had gone to condominiums. I was the first of three boys, my mother and father lived there, and, my mother was in effect the landlord, landlady.</u>
+	  <u who="C">Ok.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_31" n="31" end="timepoint_32">
+	  <u who="BH">And we had to, rent it out, rent it to two ap-pa-pa-pa-partments in our end, and I remember they were, those were the good ole days for, for tenants I guess where, rents were very inexpensive, and it was a renters market...</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_32" n="32" end="timepoint_33">
+	  <u who="BH">So you had to almost redecorate all the time for new tenants, and I remember people, whenever there was a vacancy people would be trooping in and out, as they do now, and they would turn up their nose often and they would <gap desc="inaudible"/> ya. So, and there w-, there's, so, yeah, so, you didn't get too much revenue out of it either, you'd get enough to keep to...</u>
+	  <u who="C">Going?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_33" n="33" end="timepoint_34">
+	  <u who="BH">Yeah. My father worked in the grocery business, he was born in Ireland, came to Boston, settled in Roxbury with his sister and brothers, and my mother came from one of the islands of, of, of Barbados.</u>
+	  <u who="C">Oh wow.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_34" n="34" end="timepoint_35">
+	  <u who="BH">Yeah, yeah, she was born down there, but, uh, it, it was, it was a white family, and, and uh, her, her people were family, either my, either her father or mother was one who was a British captain or something and they were, down in the, down in the Caribbean. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_35" n="35" end="timepoint_36">
+	  <u who="BH">And ah, he was either injured or something but he settled there, and her family was, was, was I guess, <gap desc="inaudible"/> and prosperous <gap desc="inaudible"/> and they, they, they married, they were, in the Episcopal church which were there, but for some reason they went into the Catholic church, and I think that my mother had, family of nine, her, a last, very last of those died just last year, my aunt in '93 or so.</u>
+	  <u who="C">Wow.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_36" n="36" end="timepoint_37">
+	  <u who="BH">So but they came to Boston, mostly for the, for the, for the free public schools, that my, that father and mother wanted so, they moved into Dorchester, and they went to school, or, or they moved I think first over to, near the Christian Science church in the Back Bay, and then...</u>
+	  <u who="C">Yeah, I know that.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_37" n="37" end="timepoint_38">
+	  <u who="BH">...ok, so. Then my mother met my father, working and then, they bo-, my father bought a house out here...</u>
+	  <u who="C"><unclear>Hillside?</unclear></u>
+	  <u who="BH">Yeah, </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_38" n="38" end="timepoint_39">
+	  <u who="BH">Yeah, uh, from, from Roxbury, and then lived here yeah, and he, and he commuted and he used to run a First Nationals grocery store. And, near South Station in Boston, right on Summer Street, was one of the few few in town grocery stores right near South Station. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_39" n="39" end="timepoint_40">
+	  <u who="BH">That area has completely changed now, anthropologically ah it, it, you wouldn't recognize it, it's near the one-cent <gap desc="inaudible"/>.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_40" n="40" end="timepoint_41">
+	  <u who="BH">So we grew up here, uh, and I went to, uh, Medford high, went to the Lawrence Junior, no I'm sorry, the Hobbes Junior High School after this in, in West Medford, then to Medford High School, the old high school which is on um, Forest Street, near, near Medford Center, near, near the <gap desc="inaudible"/> Post office there's now a new one up in West Medford, but, and then I went in, went from there Northeastern, to study J-, English Journalism, and then....</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_41" n="41" end="timepoint_42">
+	  <u who="C">Became a journalist as well...</u>
+	  <u who="BH">Th-, then, then, then, then worked for the Boston Herald....</u>
+	  <u who="C">The Herald, ok.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_42" n="42" end="timepoint_43">
+	  <u who="BH">You started as a copy boy, actually started as a, as an advertising messenger running around the city in Arlington. Maybe I get to know some of the downtown streets in Arlington, stores and picking up things, and then eventually, uh, uh, given a trial as a reporter, and, and served as a reporter, for, 1950 or so, I, I got out of college at '48, did until, 'til '72 when the paper was sold.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_43" n="43" end="timepoint_44">
+	  <u who="C">Wow, so you probably know much more about this than I do about interviewing.</u>
+	  <u who="BH">A little bit, yeah, so, I, I've had a, an interesting, cities in the like and the...</u>
+	  <u who="C">Ok. So...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_44" n="44" end="timepoint_45">
+	  <u who="BH">And a, a second brother grew up here too, and he went to Tufts, went to Tufts Medical, was a osteopathic, no I'm sorry, an obstetrician in Medford, Medford Hillside, Served at the hospitals in Medford and Malden, and a little bit in Winchester. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_45" n="45" end="timepoint_46">
+	  <u who="BH">My other brother, grew up here, went into the Marines, and then went into business, and he's now, a retired president of a company in Cincinnati, that makes meters to register natural ga-, natural gas.</u>
+	  <u who="C">Gas, ok. I understand.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_46" n="46" end="timepoint_47">
+	  <u who="BH">And I told him about it, about this project, he's a little interested so. So that's my life in a nutshell <vocal desc="C laughs"/>, or maybe a big nutshell.</u>
+	  <u who="C">Big nutshell, right. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_47" n="47" end="timepoint_48">
+	  <u who="C">So, so you said, ok you lived in Hillside, you went to School, uh...</u>
+	  <u who="BH">Locally.</u>
+	  <u who="C">Just down the street on <gap desc="inaudible"/> street,yeah?</u>
+	  <u who="BH">Yeah from grades one to six.</u>
+	  <u who="C">One to six.</u>
+	  <u who="BH">Through six, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_48" n="48" end="timepoint_49">
+	  <u who="C">Ok, after that you were in High School in West Medford?</u>
+	  <u who="BH">Went to the Hobbes Junior High...</u>
+	  <u who="C">Hobbes Junior High School</u>
+	  <u who="BH">High school yeah.</u>
+	  <u who="C">Ok.</u>
+	  <u who="BH">For grades seven, eight, nine. And then went to Medford High School for ten, eleven, twelve.</u>
+	  <u who="C">Ok.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_49" n="49" end="timepoint_50">
+	  <u who="BH">That used to be the structure, six, six under, six elementary, three jun-, they call it junior high rather than, what they now call it, middle, middle....</u>
+	  <u who="C">Middle school.</u>
+	  <u who="BH">Middle school. That was junior high school, and then, then high school was, was the last three years.</u>
+	  <u who="C">Right. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_50" n="50" end="timepoint_51">
+	  <u who="C">So, in addition to those, you spent time at the, the reservoir down at uh...?</u>
+	  <u who="BH">Right by the <unclear>across here</unclear> </u>
+	  <u who="C">Yeah.</u>
+	  <u who="BH">Yeah, yeah. </u>
+	  <u who="C">And uh</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_51" n="51" end="timepoint_52">
+	  <u who="BH">I remember we used to go to Sacred Heart church, which is still right down on Winter Street.</u>
+	  <u who="C">Right, just down the street.</u>
+	  <u who="BH">Yeah, it is, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_52" n="52" end="timepoint_53">
+	  <u who="C">So, so you found out that you were, around this area a lot, and I was just wondering, and we're kinda surrounded by Ball Square, Teele Square, Teele Square and Ball Square.</u>
+	  <u who="BH">Powderhouse Square.</u>
+	  <u who="C">Powderhouse Square, and, and further down in Medford, I'm thinking about areas where there were cinemas, or there were theaters back in those days. I'm just trying to say that, you were in the middle of all these theaters, why did you decide to go to...?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_53" n="53" end="timepoint_54">
+	  <u who="BH">I think because it was a, it, it, it was a convenient walk, you walk up to, up Winthrop street...</u>
+	  <u who="C">Right, come down...</u>
+	  <u who="BH">Right d	own c-,c-, Curtis Street, it's a <gap desc="inaudible"/> Curtis Avenue, but its Curtis Street, and it, it's a natural walk right up to it. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_54" n="54" end="timepoint_55">
+	  <u who="BH">But, I mean, it, it wasn't exclusively the Teele Square, I remember we used to walk in the other direction, along Boston Avenue, where Tufts was was, to our right, the railroad tracks on our left, we would walk down, and re-, remember the old Tufts post office, and I think its still there, and there was a <gap desc="inaudible"/>, there was a hall that would would serve as a, as a dining quarters....</u>
+	  <u who="C">Yeah, that's still down there.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_55" n="55" end="timepoint_56">
+	  <u who="BH">And, and, and then, then, then Boston Avenue goes straight down, and and, in fact following the railroad track you go by a Saint Clemens church and school which is still there. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_56" n="56" end="timepoint_57">
+	  <u who="BH">And then, a short distance up where where where, where where Boston Avenue meets Broadway is is where, is where that's Ball Square. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_57" n="57" end="timepoint_58">
+	  <u who="BH">And the theater was right around the corner. I remember, that too, has probably changed now, but, and may-, maybe I'm confusing a little of that, a-, a-, agriculture, that architectural memory, with Teele Square, but that had kind of a facade in the front. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_58" n="58" end="timepoint_59">
+	  <u who="BH">And I remember we went in there and yeah, often we'd come out the back, the rear exit, which would be on Boston Avenue, we can come out there, and just head, turn left and head home. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_59" n="59" end="timepoint_60">
+	  <u who="BH">And I remember, the trips to the movie were often, other, had other adventures too, once in a while you'd, you'd go off and explore different streets, or you'd go up and and, the field at Tufts College there, or coming back from Ball Square I remember we would sometimes follow the railroad track, which ran right all along there.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_60" n="60" end="timepoint_61">
+	  <u who="C">Did you walk on the track or?</u>
+	  <u who="BH">We walked on the tr-, yeah lot, sometimes along the track, probably take, throw stones and other things. And you have to, you have to watch the train.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_61" n="61" end="timepoint_62">
+	  <u who="BH">I remember, and I wouldn't be here if I didn't escape it, many years ago when I was very young, right at Medford Hillside Station, for some reason I was down there, and I had a, a need to cross the tracks so, and it, and I remember was, right in front of a train and I, I, somehow I fled across it, and I, I have the picture of just barely surviving or so.</u>
+	  <u who="C">Wow.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_62" n="62" end="timepoint_63">
+	  <u who="BH">Now, over the years, maybe that episode has changed a little bit, but I do remember something about crossing, maybe, maybe it was twenty or thirty feet away and I thought it was more like six or so. Now, but that, I mean, but that was one of my scarier episodes. So I, for some reason I was spared to, to, to, to live on yeah, it could have been a tragedy.</u>
+	  <u who="C">Thank God for that. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_63" n="63" end="timepoint_64">
+	  <u who="C">So how old were you when you started going to, you know to, to the theaters?</u>
+	  <u who="BH">I guess eight or nine</u>
+	  <u who="C">Eight or nine. Still in primary, primary school.</u>
+	  <u who="BH">Yeah, I was still in, still...</u>
+	  <u who="C">Elementary school.</u>
+	  <u who="BH">Grammar school, elementary school. Yeah. And our parents let us go I guess, yeah, knowing that we, we weren't bent for trouble, or...</u>
+	  <u who="C">Really...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_64" n="64" end="timepoint_65">
+	  <u who="BH">I suppose there was always the cautionary "watch out when your crossing streets," be careful. And often we'd, we'd go with three or four kids, I remember, companions.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_65" n="65" end="timepoint_66">
+	  <u who="C">Friends from school?</u>
+	  <u who="BH">From, from, around, not in the neighborhood, yeah. I know one fellow who lived on Capen Street. Corner of Capen and Adams.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_66" n="66" end="timepoint_67">
+	  <u who="C">Do you remember his name?</u>
+	  <u who="BH">Yeah, his name was William Butler.</u>
+	  <u who="C">William Butler.</u>
+	  <u who="BH">He now lives in West Virginia.</u>
+	  <u who="C">Ah, ok, I believe, I think you told me when I was...</u>
+	  <u who="BH">Yeah, yeah, yeah, yeah. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_67" n="67" end="timepoint_68">
+	  <u who="C">So which...</u>
+	  <u who="BH">There was, yeah there was some other, there was some other companions I've, I've lost track of over, over the years.</u>
+	  <u who="C">Yeah, it was awhile ago. Um...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_68" n="68" end="timepoint_69">
+	  <u who="BH">One of two of...passed away too.</u>
+	  <u who="C">Yeah. So out of all theaters, you went to Teele and Ball I guess, which, which was your favorite?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_69" n="69" end="timepoint_70">
+	  <u who="BH">I, don't know, may-, maybe just an edge to Teele Square, and why I don't know.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_70" n="70" end="timepoint_71">
+	  <u who="BH">As I, I, as I remember, and I might be confusing the two, you, you'd walk in, you'd go by the lobby, where they were selling candy or popcorn or so, I remember, I go into a theater and then I think you'd turn, the, the screen was to your right, so you went in, and you, you sat, either a little bit on your left or dart, down in the orchestra to the right or so. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_71" n="71" end="timepoint_72">
+	  <u who="BH">And, Billy Butler, Bill Butler tell, tells me, he remembers Bob, who used to be the man of all trades here. I only hazily remember him.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_72" n="72" end="timepoint_73">
+	  <u who="C">Bob who....?</u>
+	  <u who="BH">Bob who,  was supposed to be the manager of the theater, I think. And I think Cathy Stanton's, they remember, said that some other people have spoken about him.</u>
+	  <u who="C">Ok.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_73" n="73" end="timepoint_74">
+	  <u who="BH">But Bill Butler remembered him, he was the one who would open up the theater, and he would sell you the tickers, and then he'd appear at the, at the, at the candy counter.</u>
+	  <u who="C">So he was doing everything.</u>
+	  <u who="BH">He was doing everything, yeah. He, he maybe even a spare projectionist if needed. Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_74" n="74" end="timepoint_75">
+	  <u who="C"><vocal desc="quietly"/> That's interesting. So tell me, tell me more about, about the theater itself, so, like, what would you remember about the outside of the theater about when you first walked in about the type of people around...?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_75" n="75" end="timepoint_76">
+	  <u who="BH">I remember it was a broad entry, glass doors, probably, as many theaters are, you walk <gap desc="inaudible"/>, and then, then you, you go to a ticket counter. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_76" n="76" end="timepoint_77">
+	  <u who="BH">And and and and, one of the tickets had, had the, had the ticket gate, booths right, right on the street, something tells me it was for the Broad-, Ball Square I think, yeah. I mean, right on the side, not on the street, I mean right on the sidewalk. </u>
+	  <u who="C">Ok.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_77" n="77" end="timepoint_78">
+	  <u who="BH">And, then there are, others that you, you walk into the lobby and then go to it.</u>
+	  <u who="C">And so which one, how was Teele Square like?</u>
+	  <u who="BH">I don't clearly remember, I, I kinda think it was recessed inside somewhere.</u>
+	  <u who="C">Ok</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_78" n="78" end="timepoint_79">
+	  <u who="BH">I mean, a-,a-, after you go to a lot of different theaters over the years, and I don't go very much now, but yeah, you, you tend to, mix them, confuse them, so, there are theaters where you go to the right side, theaters you go to the left side, all inside, to, to buy. I, I, guess I, I guess what the ticket part would just, is something perfunctory to be got over with, so you get into the movie.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_79" n="79" end="timepoint_80">
+	  <u who="C">Right, so was there, were there usually a lot of people, like I don't know what days you used to go...?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_80" n="80" end="timepoint_81">
+	  <u who="BH">Well, I, I seem to remember Saturday.</u>
+	  <u who="C">Saturday, huh? In the morning, afternoon, evening?</u>
+	  <u who="BH">Was it Saturday Afternoon, yeah, I mean.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_81" n="81" end="timepoint_82">
+	  <u who="BH">These are my fresh memories, but are there, are there, the, the enjoyable youthful memories.  </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_82" n="82" end="timepoint_83">
+	  <u who="BH">Now, as I remember, in those days, the, the theaters almost everywhere would change their schedules twice a week. So, Sunday, Monday, Tuesday, and Wednesday I believe was, was one pairing of films, and Thursday, Friday, Saturday, for the weekend, was a whole new, whole new presentation.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_83" n="83" end="timepoint_84">
+	  <u who="BH">So that I'm sure was due to, to encourage people to go, once a week, the first part of the week and then again the second time. I mean, to, to, to, to get double, double attendance, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_84" n="84" end="timepoint_85">
+	  <u who="BH">Now I remember, and you probably have heard this, seem to be often on Tuesday nights, maybe it varied, it would be dish night or gift night.</u>
+	  <u who="C">Yes</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_85" n="85" end="timepoint_86">
+	  <u who="BH">And people who went on that night, would be given a free plate for instance, one plate to go. And that would be an <gap desc="inaudible"/> to come. And then, as part of a set, and then if you went the following Tuesday, you might get a saucer or a cup, and eventually, if you went on faithfully enough, you would...</u>
+	  <u who="C">Get the whole set</u>
+	  <u who="BH">You did, yeah. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_86" n="86" end="timepoint_87">
+	  <u who="BH">And I think that, now here on the "Antique Road Show," and places like that, people who do have those sets from way back, have, have intact, have, have, have something valuable. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_87" n="87" end="timepoint_88">
+	  <u who="BH">And I'm, and I'm sure there are some around, who probably have been handed down, to two or three generations by now. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_88" n="88" end="timepoint_89">
+	  <u who="C">You didn't get any of those did you?</u>
+	  <u who="BH">I don't remember getting it, no.</u>
+	  <u who="C">You weren't interested?</u>
+	  <u who="BH">No, I wasn't no. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_89" n="89" end="timepoint_90">
+	  <u who="BH">And I don't know if my, my mother would go once in awhile I think but uh, but they would probably go in the evening. And I think, I, I think, I think maybe these were h-, given out in the evening performances, not the matinees.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_90" n="90" end="timepoint_91">
+	  <u who="BH">And I'm not sure whether they had a Monday-Tuesday-Wednesday matinee, or not. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_91" n="91" end="timepoint_92">
+	  <u who="BH">Sun-, Sunday, they, they, they had film yeah. And that was, that was one of the few exceptions to the Sunday laws around here. In those days, almost everything closed on Sunday. I mean, grocery stores you know for certain, maybe the corner stores, what they call the Mom &amp; Pop, meaning they're owned by a Mom, Mother and Father...</u>
+	  <u who="C">Mom &amp; Pop yeah.</u>
+	  <u who="BH">They would probably be the only ones open. A little variety store. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_92" n="92" end="timepoint_93">
+	  <u who="BH">But, so, to have the movies on Sunday was, was, was an attraction. And of course that was the days before, before television so. People were eager to, to, to, for, for, for entertainment, meaning there was the radio, and that was the only entertainment at home. So, pictures, pictures that coming in with, with, dream of the future.</u>
+	  <u who="C">It's a big thing. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_93" n="93" end="timepoint_94">
+	  <u who="BH">There used to be Buck Rogers of Fla-, insi-, Flash Gordon, Buck Rogers in the 25th century, that was a, a cartoon that ran I think, I mean, and they were futuristic things. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_94" n="94" end="timepoint_95">
+	  <u who="BH">And, and you could only, you could only marvel and dream about someday we'll able to see pictures in the home. So meanwhile we, we see them at the mov-, local movie theater, and I guess that the movies did, did a, a brisk business. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_95" n="95" end="timepoint_96">
+	  <u who="BH">It was competitive, you say Somerville had fourteen movies alone, local movies, um, Medford I, they had maybe, maybe a half dozen, maybe even more, if I could figure out. Except in, in our area so, so maybe,</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_96" n="96" end="timepoint_97">
+	  <u who="BH">Maybe absence made that, made our heart a little fonder for movies and that's why we were willing to take a walk, yeah, almost a mile or so.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_97" n="97" end="timepoint_98">
+	  <u who="C">So, every Saturday when you went, or most Saturdays when you went, where there like a lot of people like at the, at the theater, or what kind...?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_98" n="98" end="timepoint_99">
+	  <u who="BH">I think it was yeah, it was mostly, what, in those days it would be mostly young, young children, yeah yeah. And as I remember, it was probably a noisy, it was a noisy place with the kids chattering and all.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_99" n="99" end="timepoint_100">
+	  <u who="BH">Yeah. And, when the, when the, when the good movie, when the good films came on the, what was good, interesting to kids, kids, they would probably be quiet or, </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_100" n="100" end="timepoint_101">
+	  <u who="BH">I remember there was times where the film would break and the lights would go on or something, and then, like in prison, there'd be the stamping of people, and all of that, the signs that say "hurry up and repair it and get going..."</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_101" n="101" end="timepoint_102">
+	  <u who="C"><unclear>And Bob Dimaggio?</unclear></u>
+	  <u who="BH">But, I, I don't know, I think you could just take it.</u>
+	  <u who="C">Yeah, usually. Did you like know a lot of people apart from the people you went with, in the cinema and the, and the theater?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_102" n="102" end="timepoint_103">
+	  <u who="BH">In the theater, I, no, the management, I didn't know any...</u>
+	  <u who="C">No, I mean like when you went, like the uh, the crowds, all the children, did you recognize people other than friends or...?</u>
+	  <u who="BH">I think, I think mostly just the ones we went with.</u>
+	  <u who="C">Ok.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_103" n="103" end="timepoint_104">
+	  <u who="BH">But here they were, they were from Teele Square and other areas too. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_104" n="104" end="timepoint_105">
+	  <u who="BH">I remember there was some movie, and, and I don't know what place it was, I don't remember it being Teele Square, but as a youngsta, I went into a movie once, and they showed a, I think a, a, the newsreel,</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_105" n="105" end="timepoint_106">
+	  <u who="BH">what they call 'em, and it had something about a, a person who was named Adolf Hitler, and he was strutting there or something, and I remember I let out a, a raspberry, a <vocal desc="imitates sounds of blowing on his lips"/>, <vocal desc="C laugh"/>, you know, some, some outburst that was disparaging, and product demonstration, I remember the usher came down, and I was ejected from the movie <vocal desc="C laughs"/>, for razzing Adolf Hitler, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_106" n="106" end="timepoint_107">
+	  <u who="C">Well, you knew who he was?</u>
+	  <u who="BH">Well, I, I, I, I knew he was yeah, a bad guy.</u>
+	  <u who="C">Ok. <vocal desc="laughs"/></u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_107" n="107" end="timepoint_108">
+	  <u who="BH">So, so those, those things happened right, I don't know, is that, is that a, was that an injustice, should I be proud of that now yeah?</u>
+	  <u who="C">I, yeah, I think it's a good story either way.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_108" n="108" end="timepoint_109">
+	  <u who="BH">That, that's almost akin to the other thing I can boast about, one time in Boston I was crossing the, in the street, and a policeman took me over, was in front of a Colo-, Colonial Theater I think in downtown Boston, this is when I was growing up and so, and I got a jaywalking ticket, which was something new, yeah, and, and I think I had to pay a fine of a dollar or so, so I have a record as a jaywalker.</u>
+	  <u who="C">Oh wow <vocal desc="laughs"/>.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_109" n="109" end="timepoint_110">
+	  <u who="BH">Most people said "Why didn't you say your name was Mickey Mouse?" when I had to give it, so that, you mean, so, the, the Hitler episode reminded me of the other thing.</u>
+	  <u who="C">Right, interesting. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_110" n="110" end="timepoint_111">
+	  <u who="C">Now tell me, I'm interested about ah, kids, your age and above going to theaters. I'm just wondering whether, you have any stories about kids sneaking in, like the theaters, like negotiating the price with the owner when you didn't have enough money or...?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_111" n="111" end="timepoint_112">
+	  <u who="BH">I don't remember that no, I remember here and there, and it might have been some other theater, there would be talk of, there's a back door sometimes, some people in, would open it a crack, when you're in, so that somebody could sneak in, yeah. But that wasn't <unclear>gate crashing</unclear>, that did that at, at ball games and other things.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_112" n="112" end="timepoint_113">
+	  <u who="BH">Yeah, I don't remember too much about that yeah. There was, this was after the coc-, the Coconut Grove episode in Boston which was a, a n-, disastrous nightclub fire, which some five, close to five hundred people perished.</u>
+	  <u who="C">Oh wow.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_113" n="113" end="timepoint_114">
+	  <u who="BH">And, and, and one of the scandals then was that their emergency doors were locked, shut, and chained to keep people from coming in, but, but in an emergency it kept people from going out, and a lot of them perished. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_114" n="114" end="timepoint_115">
+	  <u who="BH">So, after that time there was, there was a, it was, a lot of attention to emergency doors that they must be available, and they're not blocked.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_115" n="115" end="timepoint_117">
+	  <u who="BH">And that the, swinging door, that used to, used to let people go out in a revolving, but could coll-, could, could, could also trap people if they didn't move, were ki-, were outlawed, that is, that is the revolving one, if, if a rush, if people in a rush crowded both sides of that, it couldn't revolve, and it would go there.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_117" n="117" end="timepoint_118">
+	  <u who="BH">And then, and then the Cocoanut Grove, people were, were stacked up against there, looking out at the people, looking out through the glass, they couldn't get out and they were asphyxiated. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_118" n="118" end="timepoint_119">
+	  <u who="BH">So, so I mean, so, there wasn't any kind of locked doors, lo-, lo-, they were locked from the outside, but lo- not, not locked so that people could escape. And I always remember that the, in every theater there seemed to be the red exit signs so you could go out, I never remember having an occasion to, to, to flee a movie.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_119" n="119" end="timepoint_120">
+	  <u who="C">Ok. So, do you, apart from a pulling a raspberry at Adolf Hitler and getting a jaywalking ticket, do you get in like any other trouble like, in the cinema or...?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_120" n="120" end="timepoint_121">
+	  <u who="BH">Well, no, no, uh, they, they used to, kids, young, young, young boys would often uh, volun-, well, they'd work at this, as ushers, and they would have flashlights, made them with special, and they would blow, walk up and down the aisles, and if you were noisy or so, they'd come in and flash the things at you, once in awhile then, they'd ask you to come out or so.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_121" n="121" end="timepoint_122">
+	  <u who="C">And were these boys in uniform or hats or just uh...?</u>
+	  <u who="BH">They might have been, I think they probably had a little uh, uniforms on, but, but they were hired by the movie I think.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_122" n="122" end="timepoint_123">
+	  <u who="BH">Just to, to keep, to keep order.</u>
+	  <u who="C">What about ah, like other people, like young kids, like fighting, and stuff like that, I don't know, was there any of that going on?</u>
+	  <u who="BH">I don't remember that no.</u>
+	  <u who="C">No? </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_123" n="123" end="timepoint_124">
+	  <u who="BH">There could be on the way after, going home or so when you're dispersed, but I don't remember, that.</u>
+	  <u who="C">And usually it's some...</u>
+	  <u who="BH">Mean you, you'd, if there was in the Winter time, you'd might throw snowballs <gap desc="inaudible"/>, it's all part of the adventure of going to the movies.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_124" n="124" end="timepoint_125">
+	  <u who="C">And uh, how long would you say you usually stayed at the cinema, what time did you go, what time did you leave?</u>
+	  <u who="BH">I guess from one to four-thirty or so.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_125" n="125" end="timepoint_127">
+	  <u who="C">Oh, for so, for movies that were an hour apiece, that's, that's a long time.</u>
+	  <u who="BH">Well, well, well, with, with the coming attractions, the comedies, the short things, maybe, maybe, maybe it was more like, maybe more like one-thirty to four or so.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_127" n="127" end="timepoint_128">
+	  <u who="BH">It, it, it seemed to kill much of the afternoon.</u>
+	  <u who="C">Yeah, sounds like it.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_128" n="128" end="timepoint_129">
+	  <u who="BH">I, I, I did remember yo-, yo-, your, your, your, your transported to another part of the, the world, in the dark, you're watching the film and all that, then when it's all over, or even if, if, if its still dark here, here, you, well you go from the darkened theater or so, out, out into bright sunlight, so it was a, a transformation in that way, yeah. And so, going from fanta-, fantasy to reality.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_129" n="129" end="timepoint_130">
+	  <u who="BH">I do remember, there was, there was a hierarchy or, or progression of, of a how the films got here. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_130" n="130" end="timepoint_131">
+	  <u who="BH">It seemed to be that the first releases, very new films, would be in Boston and probably in all other cities around, they would, they would start at... </u>
+	  <gap desc="tape cuts out briefly"/>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_131" n="131" end="timepoint_132">
+	  <u who="BH">Film, films had a, had a, had a progressive course yeah. They would, they were often start with the higher price in town movies, from Boston. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_132" n="132" end="timepoint_133">
+	  <u who="BH">And they would play awhile there, and gradually they would go out to a, probably second-large, secondary size theaters or so,</u>
+	  <u who="C">Right</u>
+	  <u who="BH">And eventually they would come out into the neighborhood theaters. So if you waited long enough, even as you do now for a film...the films would come out to your neighborhood.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_133" n="133" end="timepoint_134">
+	  <u who="BH">And I, I remember, they would be advertising in the newspapers, in probably what would be now the television section. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_134" n="134" end="timepoint_135">
+	  <u who="BH">We, people looked at the movies to see what was playing, so, and, if you, if, you if you, would rather have some place else, you might look and you might see, the Regents theater in Arlington, which was Arlington's big one. They were, they might have a film that you'd want to go to. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_135" n="135" end="timepoint_137">
+	  <u who="BH">In our case, we could walk which was a long way, or, or take the Lechmere bus to Arlington center, if you need it. So once in awhile, you, you'd do that. I see now, that the Regent theater has I guess resurged and, and, probably show special films now, so, in, in that way, I, I guess a lot of us, not a lot, but some, some of the neighborhood theaters have, have kept going...</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_137" n="137" end="timepoint_138">
+	  <u who="BH">...or been revised.</u>
+	  <u who="C">Yeah, the Somerville theater's still going.</u>
+	  <u who="BH">Still going, without a break all these years?</u>
+	  <u who="C">I, I think so, it's pretty amazing.</u>
+	  <u who="BH">Yeah, I, I came by there today, and I saw the Somerville theater, no big marquee, or no big uh vertical, uh marker that, that some of the theaters had.</u>
+	  <u who="C">No, no, no, no, none of that.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_138" n="138" end="timepoint_139">
+	  <u who="BH">I guess those big ones were more in town Boston. Though there would be times where, where we would go into town, I remember if we went to the Metropolitan Theater which was, it was a big event, it was like going to the opera <vocal desc="laughs"/>, in fact, that's what, now, now is the opera house over there.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_139" n="139" end="timepoint_140">
+	  <u who="BH">Until another one was built. But, I remember, those theaters, it was like, like going into a Taj Mahal temple or so. I mean, ornate lobbies, statuary and gilded, and so theaters were, were, were, were, were very uh....</u>
+	  <u who="C">...really elaborate?</u>
+	  <u who="BH">Elaborate yeah, I was gonna' say pretentious but, they were striking, yeah. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_140" n="140" end="timepoint_141">
+	  <u who="BH">It seemed to be, often though, in a, in...a child probably, we wouldn't appreciate all that, they, were more interested in what went on on the, on the screen, but in later years I did come to, to to see how, how elaborate it is. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_141" n="141" end="timepoint_142">
+	  <u who="BH">In Mattapan Square, near where I live now though, was the Oriental theater, and that was famous for its uh, its its, roof, its, its, its, uh, skylight, </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_142" n="142" end="timepoint_143">
+	  <u who="BH">I'm sorry, its, yeah its overhead, and it was like an Oriental sky and it was painted like that. And so some of the, some of the old theaters did try to uh festoon, decorate their theaters with, with a something to see besides what you saw on the screen. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_143" n="143" end="timepoint_144">
+	  <u who="BH">And even that theater that I'm talking about is now, become a, another business, it was once an electrical shop in Arlington. Even the more elaborate theaters, the, the premiere in each neighborhood, they have, in many cases, probably in most cases, are now into something else.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_144" n="144" end="timepoint_145">
+	  <u who="BH">If the building standards, been renovated.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_145" n="145" end="timepoint_146">
+	  <u who="C">So, at, at the time what, what did the Teele Square cinema look like inside, like what in terms of them trying, you know to decorate it up a little bit?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_146" n="146" end="timepoint_147">
+	  <u who="BH">I don't remember that was up, very much decorated.</u>
+	  <u who="C">No?</u>
+	  <u who="BH">I think it was uh, basically ev-, every theater, the seats rose at a slant, so, so that the, the screen was, in a lower area, so <gap desc="inaudible"/> view.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_147" n="147" end="timepoint_148">
+	  <u who="C">It was the same in Teele?</u>
+	  <u who="BH">I think so, yeah. I think so, yeah.</u>
+	  <u who="C">But there's only, there's only one screening room in the Teele Square's theater or...?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_148" n="148" end="timepoint_149">
+	  <u who="BH">Oh, oh, in all of the ones I remember, th-, th-, th-, there was, th-, th-, th-, there was only one screen in the theaters, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_149" n="149" end="timepoint_150">
+	  <u who="BH">In the whole, the whole, the whole thing was given over to that, to that performance. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_150" n="150" end="timepoint_151">
+	  <u who="BH">There'd be one projection booth, in the back, and something tells me Teele Square was way up high, and they had, somebody had to climb a ladder to, to get up to the projection, so that they, they could project down, and, and I, and I, I never did get up into the projection room.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_151" n="151" end="timepoint_152">
+	  <u who="BH">but, but, but they were, rudimentary but they, they served a function, and, and I, as I remember, it would be, maybe when you went in the, theater, there'd be a, a, a, an aisle or passageway straight ahead, and, and you could go to the left or so, up a little incline to the seats there, or go down the other way, towards, towards the, the screen, toward what would be the orchestra.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_152" n="152" end="timepoint_153">
+	  <u who="BH">And, as I remember, you'd, you'd sit anywhere, there, there, there, there was no, at least in those, there was no gradation of prices, I think you, you bought your ticket and you sat there, so. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_153" n="153" end="timepoint_154">
+	  <u who="BH">Some kids, some people would like to sit down front, and others would sit way back because they were told that, it would ruin your eyes if you got up too close to the film.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_154" n="154" end="timepoint_155">
+	  <u who="C">Where did you sit?</u>
+	  <u who="BH">Huh? I sat, maybe, two-thirds of the way down, maybe one-third of the way back or so.</u>
+	  <u who="C">Ok.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_155" n="155" end="timepoint_156">
+	  <u who="BH">Every once in awhile, I'd go down front, if you go way down to the front row...</u>
+	  <u who="C">Your neck?</u>
+	  <u who="BH">Yeah, yeah. But, but, the, the screen seemed so big ya' know.</u>
+	  <u who="C">Ok.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_156" n="156" end="timepoint_157">
+	  <u who="BH">And, I oh I, I suppose, I seem to remember now, at least at the children's performance, there'd always be kids going up and down the aisles, so there's a lot of traffic,</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_157" n="157" end="timepoint_158">
+	  <u who="BH">And they were either going to the, to the restroom, and I don't remember clearly where that was, or they were going up to get some more candy or popcorn or so.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_158" n="158" end="timepoint_159">
+	  <u who="C">So, so people usually had a lot of popcorn and candy while they're watching the movie, or the kids at least, any, were there drinks?</u>
+	  <u who="BH">I think some yeah, and, and I don't remember drinks, but there might have been. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_159" n="159" end="timepoint_160">
+	  <u who="BH">Although, it seems to me early on they didn't do so much of that, it was probably, probably candy bars if nothing, which was just cleaner then, then the, then the liquids so...</u>
+	  <u who="C">Yeah. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_160" n="160" end="timepoint_161">
+	  <u who="BH">But, I, I didn't remember. I remember, I used to have a, a, have a, eccentricism with oh, I would take uh oranges to the, I used to like oranges, I'd bring oranges there and I'd peel 'em and eat them. And I think, I think, the uh, the acrid o-, the pungent odor yeah, got to some of the people around and all that but, </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_161" n="161" end="timepoint_162">
+	  <u who="BH">I was never told to stop that I remember. I, I think may-, maybe in later years, or nowadays the films, the theaters discourage you brining in your own.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_162" n="162" end="timepoint_163">
+	  <u who="C">Yeah.</u>
+	  <u who="BH">Or I remember, if you want candy bars, it'd be easier to go to buy them at your store, before you went there, it, it, it less expensive of course, then, then, then patronize them, yeah. So, so, I, I never was one I guess to, to buy big at the popcorn <unclear>stand, counter</unclear></u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_163" n="163" end="timepoint_164">
+	  <u who="BH">Mostly I think we went there for, for whatever was showing.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_164" n="164" end="timepoint_165">
+	  <u who="C">So, what uh, what did you like best about what was on the screen like what type of film, like which, which kind of film, did you like the comedies or, did you like the feature films or?</u>
+	  <u who="BH">Yeah, I, I used to like the, I used to like the comedies, or what they used to call cartoons. We put like, like Disney cartoons.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_165" n="165" end="timepoint_166">
+	  <u who="BH">Yeah...the cat, the, there was a cat and a mouse they always used to, Felix The Cat</u>
+	  <u who="C">Felix The Cat.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_166" n="166" end="timepoint_167">
+	  <u who="BH">Maybe even that's, maybe that was even a little before me yeah.</u>
+	  <u who="C">Tom and Jerry and all that stuff?</u>
+	  <u who="BH">Yeah, and a lot of it was slapstick, yeah, they would, they, they, they kind of the same theme, they would be chasing one another, and a, and if the mouse was the hero he, he would embarrass the cat by doing something, and they, they would do impossible things.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_167" n="167" end="timepoint_168">
+	  <u who="BH">Then there would be The Three Stooges, which, which would, people doing it.</u>
+	  <u who="C">Yeah.</u>
+	  <u who="BH">And I remember they would had exaggerating thing where they hit each other on the head and all that, </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_168" n="168" end="timepoint_169">
+	  <u who="BH">There, it would be fatal in these days. Now...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_169" n="169" end="timepoint_170">
+	  <u who="BH">There was the shoot-em-ups, or the ga-, the, the westerns or so, I remember that yeah, the Tom Nix and Buck Jones and others, but, you know, you know in those days though, the kids did no go out and then emulate, I mean the gun, guns around, it was unheard of. </u>
+	  <u who="C">Right</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_170" n="170" end="timepoint_171">
+	  <u who="BH">It would be a high scandal there but, so, you could see, you could see, shoot-em-ups in the theater, but it wouldn't, at least it didn't, corrupt us.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_171" n="171" end="timepoint_172">
+	  <u who="C">Yeah.</u>
+	  <u who="BH">There was something else I was gonna mention along that line, but maybe it will come back to me.</u>
+	  <u who="C">OK</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_172" n="172" end="timepoint_173">
+	  <u who="C">So I know you said you went on Saturdays, I don't know if, did you ever...</u>
+	  <u who="BH">I would go, some-, sometimes I'd go other times of the week too,</u>
+	  <u who="C">ok</u>
+	  <u who="BH">I remember yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_173" n="173" end="timepoint_174">
+	  <u who="C">Was it, what was the reason, was it you were interested in the type of film that was showing or?</u>
+	  <u who="BH">I, no, no,</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_174" n="174" end="timepoint_175">
+	  <u who="BH">I, what I said before that people would look to see what was playing at theaters yeah, as I re-, seem to remember, often times we, we really wouldn't, take that much, uh, notice about it, it, we probably, it was almost a, a habit, you'd go every weekend, you went...</u>
+	  <u who="C">Regardless.</u>
+	  <u who="BH">Yeah. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_175" n="175" end="timepoint_176">
+	  <u who="BH">But, you and you reme-, you remember seeing the coming, what they call the coming attractions, and uh, the week before and you'd say "oh yeah, we saw that that was coming, so we'll see it now."</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_176" n="176" end="timepoint_177">
+	  <u who="BH">And, I, I, I remember, it, you got what, what seems now a bargain for your money, getting two full films, or what was then, a full length feature, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_177" n="177" end="timepoint_178">
+	  <u who="BH">Maybe they, maybe in, in actuality they were shorter. I think they probably were shorter than today's films. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_178" n="178" end="timepoint_179">
+	  <u who="BH">But they seemed to tell the story, and uh, gave you satisfaction, and then, and then, and then, then you'd, you'd, you'd have a second feature. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_179" n="179" end="timepoint_180">
+	  <u who="BH">I often wonder why now sometimes, movies don't bring back double features, maybe to, to attract back people who are, gone to, to television.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_180" n="180" end="timepoint_181">
+	  <u who="BH">And of course, I, I, I think maybe we all agree that television is, is, is probably was the main, ingredient in, the neighborhood theaters going the way of the horses, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_181" n="181" end="timepoint_182">
+	  <u who="BH">I don't know, may-, maybe you when you were growing up yourself, I don't, if you had any neighboring movies or so that you, that you would go to.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_182" n="182" end="timepoint_183">
+	  <u who="C">Yeah, once in a couple uh, but we, we would go just for the movie, we wouldn't go as a, the matter of habit.</u>
+	  <u who="BH">You wouldn't go?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_183" n="183" end="timepoint_184">
+	  <u who="C">No, just you know, just something coming that you were really interested or if you felt like going to, see a movie, you'd try and find a day that a good movie was showing, just so you could get your money's worth.</u>
+	  <u who="BH">Yeah.</u>
+	  <u who="C">Yeah, but it was yeah...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_184" n="184" end="timepoint_185">
+	  <u who="BH">Now, <gap desc="inaudible"/>, every single Saturday I'd be there. I, I'm not sure, there must've been ti-, other, other daytimes when, when something else would, would come along </u>
+	  <u who="C">Right</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_185" n="185" end="timepoint_186">
+	  <u who="BH">And, and, and, would...but, I, I seem to have, have these memories of that. I remember one time I was walking to Teele Square when, it was, it had after a snowstorm, and there was a, the snow banks on the, on the sidewalk or so and I was climbing up those. Part of the adventure of going in snow and I, fell down and I got a serious injury or so, was passing blood around...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_186" n="186" end="timepoint_187">
+	  <u who="C">Oh no.</u>
+	  <u who="BH">You know, at the movies, yeah. So I, I, I seem to remember that as an inter-, as a <vocal desc="laughs"/>, as a, an unfortunate incident or so. But thin-, but things happen, in uh, in your, in your life yeah.</u>
+	  <u who="C">Right,</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_187" n="187" end="timepoint_188">
+	  <u who="C">So...</u>
+	  <u who="BH">And you often wonder how our parents did survive with all the injuries that children would encounter. What, were you going to say something else?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_188" n="188" end="timepoint_189">
+	  <u who="C">No, I was going to ask you, uh, like, so what are the things that happened at the theaters like apart from um, like the movies, I know there used to be sometimes like magic acts, waterbills, giveaway contests...?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_189" n="189" end="timepoint_190">
+	  <u who="BH">Well the giveaway contest, oh oh alright, there, there was the giving away of dishes or, or, or, on, or our silverware or something and they explained to you before. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_190" n="190" end="timepoint_191">
+	  <u who="BH">Now, I notice that almost all the theaters had a big stage, and when I would go near, I, I used to wonder what's the stage for, ca-, cause it would just a, an area in front of the film and wouldn't see it. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_191" n="191" end="timepoint_192">
+	  <u who="BH">But, in earlier days I understand, there used to be vaudeville, at, at the local theaters. And there would be presentations and people would get up on the stage. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_192" n="192" end="timepoint_193">
+	  <u who="BH">So, I think the, the vaudeville part of it, kind of its, eh, had bypass-, had, had passed by, by my time.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_193" n="193" end="timepoint_194">
+	  <u who="BH">Uh, I think, in some of the theaters in, a-, again, in town Boston, they might, sometimes they had have special ones and they'd, they'd have an orchestra or so, come. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_194" n="194" end="timepoint_195">
+	  <u who="BH">And I think I remember once, and this is again going to, I think it was the Metropolitan Theater, Rudy Valley, who was a, came from the state of Maine, played the saxophone, had his own band, and, and Rudy Valley and his Connecticut Yankees. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_195" n="195" end="timepoint_196">
+	  <u who="BH">It was like a, a, a, an orchestra, swing orchestra or so. I think he was, one of the, the present, one of the features, so they, in those cases they would have a, a, a live performance and then I think a film afterwards.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_196" n="196" end="timepoint_197">
+	  <u who="BH">But I don't remember too many, out in the neighborhood. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_197" n="197" end="timepoint_198">
+	  <u who="BH">Once in awhile, I think, somebody from the theatre would get up and, and uh, make an announcement of, of some kind, or public service announcement or something. And that, that would be probably be about the few times those stages were used.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_198" n="198" end="timepoint_199">
+	  <u who="BH">In fact I, I, as I think back now, I don't remember any stairs going right up to the stage, as, as you, from the audience, as, as you would.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_199" n="199" end="timepoint_200">
+	  <u who="C">And it was a high stage?</u>
+	  <u who="BH">High. Four, five feet as I remember, yeah, yeah, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_200" n="200" end="timepoint_201">
+	  <u who="C">How did people get up onto the stage?</u>
+	  <u who="BH">I don't know, they could've come from back, back, th-....</u>
+	  <u who="C">Ok.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_201" n="201" end="timepoint_202">
+	  <u who="BH">Oh, um...I, yeah, I, I do re-, think, seem to remember that there was, curtains, so that they would open the curtains, and then the screen would be there. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_202" n="202" end="timepoint_203">
+	  <u who="BH">So the curtains, I guess for, suggested that, that they're there, or had been used for, for, for, for other, other uses too. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_203" n="203" end="timepoint_204">
+	  <u who="BH">But, I don't clearly remember too many activities involving the stages. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_204" n="204" end="timepoint_205">
+	  <u who="BH">I think I re-, remember once in awhile, sometimes on Thanksgiving morning or so, and I, I wouldn't be there, they would, they might have a, a little party or so, and give away turkeys or so, and I seem to be, that, that, I was more likely, I read, read about that rather than attended those performances, those events.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_205" n="205" end="timepoint_206">
+	  <u who="BH">I, I think later on, some of them even, even became churches on a Sunday morning, as a gathering place.</u>
+	  <u who="C">OK</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_206" n="206" end="timepoint_207">
+	  <u who="BH">Again I didn't, didn't go to those. And that, that could've been a little later development from, from when, when I was, going in, in my youth. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_207" n="207" end="timepoint_208">
+	  <u who="BH">Oh, one thing I was gonna' m-, mention, you, you said once that the whole, that the whole theater, become one vista, one <gap desc="inaudible"/>, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_208" n="208" end="timepoint_209">
+	  <u who="BH">Nowadays, you, you have the multiplex, or the multi cinemas, and those are probably nothing but concrete box, eight or twelve in a, in a row.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_209" n="209" end="timepoint_210">
+	  <u who="BH">And I, and I, I, I know, several years ago, when I would, would go to one of those, or two of those, I would, I would be struck by how confining they were, compared with the, the old neighbor theaters, where, you would, would, would spread out. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_210" n="210" end="timepoint_211">
+	  <u who="BH">And, and, and you would, you would have the, the film to yourself, that would be the only thing shown.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_211" n="211" end="timepoint_212">
+	  <u who="BH">And ah, and then some of these I remember, they, they even had boxes up on the side, and it reminded me of the old kind of royalty in the European days where the, the r-, the elite would be sitting in the boxes or so, and the common people down below.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_212" n="212" end="timepoint_213">
+	  <u who="BH">Again, I, whate-, the boxes uh, or loges or so, rarely were used, and I, never used I can see. They again might have been for an earlier day when, when the stage performance was the attraction. I don't know if I got far afield or not, but...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_213" n="213" end="timepoint_214">
+	  <u who="C">No, it's just, it's just a, so I was wondering, so, how uh, so you went you started going to cinemas when you were about, what eight or so...</u>
+	  <u who="BH">I would guess so.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_214" n="214" end="timepoint_215">
+	  <u who="C">...so how, up to what age would say you went somewhat frequently and when did you kinda stop going or...?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_215" n="215" end="timepoint_216">
+	  <u who="BH">I think, that maybe I went, round age fifteen, four-, fifteen, fourteen or so...</u>
+	  <u who="C">That's when you stopped?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_216" n="216" end="timepoint_217">
+	  <u who="BH">When I stopped going that frequently as I, yeah. By that time there was a boy scout interest, uh, which came on, and, then we're getting into junior high or getting in towards high school, and there would be studies and, and, and other concerns. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_217" n="217" end="timepoint_218">
+	  <u who="BH">And then, then it would be working, I think I worked for my father on, on weekends or so, around age sixteen or so. So, that, that became a new activity.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_218" n="218" end="timepoint_219">
+	  <u who="BH">And then, then I suppose my, my visits to the movies were probably more in the evenings, and less frequently, and maybe more selectively. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_219" n="219" end="timepoint_220">
+	  <u who="BH">Uh, and then when we get the wo-, working <gap desc="inaudible"/>, was, was even, more rare that I'd go to movies.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_220" n="220" end="timepoint_221">
+	  <u who="C">So when you used to go to the movies selectively, like how would you decide what night to go out and what?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_221" n="221" end="timepoint_222">
+	  <u who="BH">Hopefully I think, when, when I, when I was free. I remember I used to have a days off in, days off Wed-, Wednesday and Thursday yeah. Yeah. Which is probably the, the poorest time to be off.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_222" n="222" end="timepoint_223">
+	  <u who="BH">Then I would work Friday-Saturday-Sunday and then around...</u>
+	  <u who="C">Right</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_223" n="223" end="timepoint_224">
+	  <u who="BH">And...and so, one of them was a toastmaster's club I would go to one Thursday, so that, that left just Wednesday. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_224" n="224" end="timepoint_225">
+	  <u who="BH">And I, I don't fully remember, but I'm pretty sure I didn't go every single free day </u>
+	  <u who="C">Right</u>
+	  <u who="BH">And all that, and it would be on occasion. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_225" n="225" end="timepoint_226">
+	  <u who="BH">So, from, from, from someone, somebody who used to go, what it seems to me now, rather frequently to movies, I, I'm almost an abstainer completely right now.</u>
+	  <u who="C">Yeah, sounds like it.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_226" n="226" end="timepoint_227">
+	  <u who="BH">Sometimes I say, I joke that the last time I went to the movies was to see Snow White or something.</u>
+	  <u who="C">When was this?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_227" n="227" end="timepoint_228">
+	  <u who="BH">That was probably twenty-five years, thirty years ago. But I, no, once in awhile I'll go, but I don't think I've been to mo-, one now in more than a year. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_228" n="228" end="timepoint_229">
+	  <u who="BH">And I, when I do go now, I, I, I have been, and I still am, shocked at the, at the language that the, that the films today present.</u>
+	  <u who="C">Yeah?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_229" n="229" end="timepoint_230">
+	  <u who="BH">I mean, yeah, yeah, I mean, back in the days that I talked about, it, it was, it was a shel-, shelter. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_230" n="230" end="timepoint_231">
+	  <u who="BH">The language was pure, yeah. I mean there'd be nothing suggestive, and I, and, and so that's a, that's a big change in the culture too.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_231" n="231" end="timepoint_232">
+	  <u who="BH">So, so, so, so, the difference from then to now is, is in some cases shocking to me when, and maybe that's, maybe that's why I don't care to go to 'em. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_232" n="232" end="timepoint_233">
+	  <u who="BH">And today's, there's a lot of violence in the movies, well there is on television too, ah, needless violence.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_233" n="233" end="timepoint_234">
+	  <u who="BH">It's unrealistic, with the car chases, and the, and the cliff jumps off a roofs and, and acrobatic things, impossible things. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_234" n="234" end="timepoint_235">
+	  <u who="BH">In the old days, only those antics would be in the Tom and Jerry cartoons or so.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_235" n="235" end="timepoint_236">
+	  <u who="BH">But uh, I'm talk, talking like an old stogy, or old fogy now, but...</u>
+	  <u who="C">No, it's, it's true.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_236" n="236" end="timepoint_237">
+	  <u who="BH">That, that, that's another change from...</u>
+	  <u who="C">Yeah. So</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_237" n="237" end="timepoint_238">
+	  <u who="C">What, what would you think your, your most favorite thing was about the theater, either the Ball Square or the Teele Square theater. <gap desc="inaudible"/> Teele Square. What did you just love about, you know going?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_238" n="238" end="timepoint_239">
+	  <u who="BH">I, I, I think just th-...just the milieu of going there, and, and doing something. Maybe talking over, with, with the companions what happens so.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_239" n="239" end="timepoint_240">
+	  <u who="C">On the day after the movie, or after school?</u>
+	  <u who="BH">Yeah, or on, on the way home.</u>
+	  <u who="C">Right</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_240" n="240" end="timepoint_241">
+	  <u who="BH">And often as I remember, you, you were, you were, you were left with the, with the climax of the serial. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_241" n="241" end="timepoint_242">
+	  <u who="BH">The, the, the hero or somebody would always, always be in a cliffhanger or a, or a predicament at the end of the thing, and then suddenly and it says...</u>
+	  <u who="C">You have to wait for it...</u>
+	  <u who="BH">Says, says, says "continued next week" or so.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_242" n="242" end="timepoint_243">
+	  <u who="BH">And then I remember, the next week you'd go back, and it would start, it would be just a slight recap, they they, they would just go back a little before the incident, to lead up to it, then you say "well, I've seen this," and then, then comes the, the, the way that the, the hero escapes the predicament. </u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_243" n="243" end="timepoint_244">
+	  <u who="BH">Then, then you, you breathe a sigh of relief or so, and you, you, so, so then, they go on until, through the episode, and may-, maybe it's only fif-, maybe it's only fifteen minutes long, but it seems that, so, if, if that. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_244" n="244" end="timepoint_245">
+	  <u who="BH">And then, by the end of that, there, there'd be another cliff-, cliffhanger, or anxious moment, and that would induce you to come back. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_245" n="245" end="timepoint_246">
+	  <u who="BH">And once in a while, if you missed one, there'd be a, like, like, like, a get lap, a ga-, a gap in your, your education or so, you'd wonder what happened between episodes seven and nine...</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_246" n="246" end="timepoint_247">
+	  <u who="BH">As I remember, there used, used to be ten or twelve in a series or so, and then, it would all end happily at the end. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_247" n="247" end="timepoint_248">
+	  <u who="BH">And then a new one would, would start, probably the next week. I, I, I, I seem to dwell a lot on that because that, that's something I remember.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_248" n="248" end="timepoint_249">
+	  <u who="C">So would you say that, that's your most powerful memory, like if, if somebody says...</u>
+	  <u who="BH">I think so, I think so yeah.</u>
+	  <u who="C">....Teele Square cinema theater, what's the first thing that you think of, does it....</u>
+	  <u who="BH">Yeah, yeah, </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_249" n="249" end="timepoint_250">
+	  <u who="BH">Yeah that, that is uh...and I, I seem to remember, very faintly, the, the theaters had their own odors, there were odors....</u>
+	  <u who="C">Fragrance?</u>
+	  <u who="BH">S-, S-, S-, Smell.</u>
+	  <u who="C">Odors. <vocal desc="laughs"/></u>
+	  <u who="BH">Odor. O-dor, O-D-O-R. Yeah.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_250" n="250" end="timepoint_251">
+	  <u who="BH">Yeah. I don't mean unpleasant, but they had a distinctive one yeah. And I think it was a mixture of the popcorn, and, and maybe the, the, the heated bodies and everything else. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_251" n="251" end="timepoint_252">
+	  <u who="BH">And I, I think now if you go into a theater, old theater you, if there are any allowed yeah, you might still get that kind of a, a, significant, indistinctive fragrances.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_252" n="252" end="timepoint_253">
+	  <u who="C">And what did, what did the Teele Square smell like?</u>
+	  <u who="BH">I don't know, I don't...I, I don't clearly remember that.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_253" n="253" end="timepoint_254">
+	  <u who="C">It had a distinct...</u>
+	  <u who="BH">I, well, yeah, yeah well again this kind of blends in with, with other memories of other theaters and all that. I don't know if it was the popcorn or not.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_254" n="254" end="timepoint_255">
+	  <u who="BH">In those days though, the popcorn almost was, was down to one, one little popcorn maker. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_255" n="255" end="timepoint_256">
+	  <u who="BH">It wasn't, it wasn't elaborate counter and all, with, with the, the popcorn, in big bins where you shovel out, I think they would scoop it out from the little popcorn maker. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_256" n="256" end="timepoint_257">
+	  <u who="BH">And, why popcorn, may-, maybe, maybe popcorn was easier to sweep up.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_257" n="257" end="timepoint_258">
+	  <u who="BH">Because I do remember that, in later years when I was, after I was being married <unclear>and everything</unclear>, we'd go to a movie once in a while, and the, maybe you've experienced this yourself, you go into a some of them, and they have carpets and all, but the carpets are saturated with, with drippings from soda, soda and syrups and all that, and you'd <vocal desc="makes squishing sound"/>, you'd squish along, have you ever had that?</u>
+	  <u who="C">Yeah, I think so.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_258" n="258" end="timepoint_259">
+	  <u who="BH">Yeah. And, I often wonder how they, how they cleaned them.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_259" n="259" end="timepoint_260">
+	  <u who="BH">I, I think, they used to set, the theater would have a, a sweeping out after each performance, they would go up and down the aisles with a broom and all that, but, I think there's a lot of remnants.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_260" n="260" end="timepoint_261">
+	  <u who="BH">So, so I, it was the odors, I remember the squinting on the foot, yeah. Oh in later years, but in the, in the, in my youth I don't remember that, because I don't think there was, that much debris on it.</u>
+	  <u who="C">Ok.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_261" n="261" end="timepoint_262">
+	  <u who="BH">Maybe they, once in awhile, they came upon a few of the orange peels that I used to have, but that was, you know when I, I said I would take them <event desc="phone rings"/></u>
+	  <u who="C">Oh, I'm sorry.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_262" n="262" end="timepoint_263">
+	  <u who="BH">Do you want to stop this?</u>
+	  <u who="C">Just excuse me for one second.</u>
+	  <gap desc="tape cuts out"/>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_263" n="263" end="timepoint_264">
+	  <u who="BH">Have you had any, have you interviewed anybody else?</u>
+	  <u who="C">No, you're actually the first person...</u>
+	  <u who="BH">I didn't know if you were yet able to compare my memories with anybody else.</u>
+	  <u who="C">No, but</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_264" n="264" end="timepoint_265">
+	  <u who="C">Other people have interviewed other people, who went to other cinemas and....</u>
+	  <u who="BH">About that same period or...?</u>
+	  <u who="C">Yes, yes,</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_265" n="265" end="timepoint_266">
+	  <u who="C">The memory seem to be pretty consistent like, everybody seem to say exactly what you're saying. But I'm just wondering like, now that the cinemas are gone, especially with Teele Square like, do you, do you miss it, like...?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_266" n="266" end="timepoint_267">
+	  <u who="BH">I, I do, yeah.</u>
+	  <u who="C">Yeah, why?</u>
+	  <u who="BH">I do.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_267" n="267" end="timepoint_268">
+	  <u who="BH">It, it was part of the uh, the integrity of the whole neighborhood, of Teele Square.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_268" n="268" end="timepoint_269">
+	  <u who="BH">When I look at it now, I, I say that "there, there should be a theater there." What it, something there now and it just doesn't look right. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_269" n="269" end="timepoint_270">
+	  <u who="BH">And, I, I often, uh, grieve, maybe that's a strong word, that, that different places, the old theaters, what was the neighborhood theaters, have either run down or turned into something else.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_270" n="270" end="timepoint_271">
+	  <u who="BH">and I say "well gee, how many memories, how much of, of, of the good old days is gone with that."</u>
+	  <u who="C">Yeah</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_271" n="271" end="timepoint_272">
+	  <u who="BH">And it'd be nice to bring it back</u>
+	  <event desc="tape cuts to another part"/>
+	  <u who="BH">Remember out in Pittsfield, which is in the western part of this state, is a theater there, I've never been to it no, but I think it became a wallpaper store or so. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_272" n="272" end="timepoint_273">
+	  <u who="BH">And I, I think later on I say, member Mrs., Mrs. Clinton when, when, when she was still the vice, the first lady rather than senator, she went out there I think for, something to support some drive or, to resuscitate and bring back the theaters.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_273" n="273" end="timepoint_274">
+	  <u who="BH">And I remember in my travels around, I, I, going through different parts of this country and all, you come, you come downtown, you see, what, what seem to be an old theater and I, it's gone the way that most have it. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_274" n="274" end="timepoint_275">
+	  <u who="BH">And consequent-, also if there is a place where the neighborhood theater is still going, it strikes me too, and I say "good."</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_275" n="275" end="timepoint_276">
+	  <u who="BH">It's, it's like history, history that has managed itself.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_276" n="276" end="timepoint_277">
+	  <u who="BH">Like the book I was telling you about, Lost Boston, well it's a...</u>
+	  <u who="C">Mmm-hmm.</u>
+	  <u who="BH">...it's a, a lost...</u>
+	  <u who="C">Yeah.</u>
+	  <u who="BH">...part, part of a neighborhood.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_277" n="277" end="timepoint_278">
+	  <u who="BH">And, I often sometimes say, wouldn't it be nice even for a day to bring them back, but, but then you'd have to turn the old calendar back.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_278" n="278" end="timepoint_279">
+	  <u who="BH">I'm sure people in the horse in buggy days, and carriages, often, often wish for those, yeah, in, in the days before those the automobile and others, modern conveniences...</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_279" n="279" end="timepoint_280">
+	  <u who="BH">They got their problem. But the technology has changed, society has changed, ways of living, income scales, people who at all I guess... </u>
+	  <gap desc="tape cuts out"/>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_280" n="280" end="timepoint_281">
+	  <u who="C">Ok.</u>
+	  <u who="BH">I probably said pretty much of what...</u>
+	  <u who="C">Yeah, you said a lot.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_281" n="281" end="timepoint_282">
+	  <u who="BH">It's, it's prob-, probably like Mark Twain or, or...Samuel Clemens, his, his old days in Hannibal, Missouri, he remembered them through Tom Sawyer his books, and...</u>
+	  <u who="C">Yeah.</u>
+	  <u who="BH">And Huckleberry Finn and what...</u>
+	  <u who="C">Yeah.</u>
+	  <u who="BH">Yeah, and those days have changed too.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_282" n="282" end="timepoint_283">
+	  <u who="C">So tell me, what, what, like in general, what do you, what do it look, what did the theater, going to the theater, what did it mean to you?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_283" n="283" end="timepoint_284">
+	  <u who="BH">Part of growing up, it meant that entertainment, storytelling, a little bit of escapism I guess yeah.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_284" n="284" end="timepoint_285">
+	  <u who="BH">And once in awhile, I, I used to try to find educational if I could put that word <gap desc="inaudible"/>, the news reel particularly, I mean, they were the only thing time you could see anything.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_285" n="285" end="timepoint_286">
+	  <u who="C">So it was an important part of your education?</u>
+	  <u who="BH">Well, it was a...</u>
+	  <u who="C">A little part.</u>
+	  <u who="BH">It was, was, was interesting, yeah, yeah. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_286" n="286" end="timepoint_287">
+	  <u who="BH">Maybe because I said "Gee whiz, visual education is, is an attractive way to, to learn something."</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_287" n="287" end="timepoint_288">
+	  <u who="BH">Most of you when you have to, grind through books of all the things, that's tiring and all that.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_288" n="288" end="timepoint_289">
+	  <u who="BH">And, and may-, maybe it goes back even to, I guess even to back, maybe even to the Hillside School. On rare, rare occasions, somebody might bring in and have a film, so. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_289" n="289" end="timepoint_290">
+	  <u who="BH">Maybe sixteen millimeter, eight millimeter film on, and that was an event, or a junior high. I mean, because, 'cause it was so rare.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_290" n="290" end="timepoint_291">
+	  <u who="BH">Again, that's what we see now on television and we take it for granted. But, but in those days, seeing something in pictures, moving, I found very fascinating.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_291" n="291" end="timepoint_292">
+	  <u who="BH">And that's maybe why I liked the newsreels. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_292" n="292" end="timepoint_293">
+	  <u who="BH">There were a lot of people said, "Bah, I'm not interested in that." But it would show you different parts of the world, <vocal desc="laughs"/> you might only get eighteen seconds, seconds or so of some, of something but, in the, there were certain commentators, their, their sharp, staccato voice and all that, they, they  would speak along with it.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_293" n="293" end="timepoint_294">
+	  <u who="BH">And there was almost a pattern to it, but I, but I found it again a little bit of escapism, and something new.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_294" n="294" end="timepoint_295">
+	  <u who="BH">But then, then I, I guess went there to get the whole menu of what would be coming. </u>
+	  <u who="C">Yeah. </u>
+	  <u who="BH"><unclear>Shlick</unclear> or shorts and all that.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_295" n="295" end="timepoint_296">
+	  <u who="C">I have, I have a few...</u>
+	  <u who="BH"><vocal desc="interrupting"/> No, I, I don't think I was a movieholic though <vocal desc="C laughs"/>, I would-, would-, wouldn't be at every performance all the time.</u>
+	  <u who="C">Right, just enjoy this</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_296" n="296" end="timepoint_297">
+	  <u who="BH">Yeah, yeah, yeah, good. You wanted to say what?</u>
+	  <u who="C">No, I have here a couple of uh photos, and um, I'll just show them to you, and if you know, say what you...</u>
+	  <u who="BH"><vocal desc="interrupting in an excited manner"/> Here, now here, here, here, there's Teele Square alright. It did have a facade! Didn't it.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_297" n="297" end="timepoint_298">
+	  <u who="C">Here, yeah let me sit next to you.</u>
+	  <u who="BH">There's an archway here, yeah, alright? Now, by gosh, it's still the same one-story street level yeah. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_298" n="298" end="timepoint_299">
+	  <u who="BH">But now in the back here, that must of, yeah, as I remember, you would go in here, and you turn, the screen was to the right as you, as you, as you go through here, and the little bit a, a seating would be up here I think, the middle aisle went down like this.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_299" n="299" end="timepoint_300">
+	  <u who="BH">And I think the projection booth was somewhere up here, up high as I remember it. Now, now, as I saw today, the by gosh it is the same thing, and then there's a high rise, so, so, maybe it hasn't changed as much as all that. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_300" n="300" end="timepoint_301">
+	  <u who="BH">Uh, Teele Square Sweet Shop yeah, was, was there, was something else, and I, I think I remember you could go in there and get, something to munch on during the film if you wanted.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_301" n="301" end="timepoint_302">
+	  <u who="C">So would you rather buy stuff from the sweet shop...</u>
+	  <u who="BH">Yes.</u>
+	  <u who="C">...or would you rather buy stuff from the confections inside?</u>
+	  <u who="BH">I think you'd buy, rather buy it here. And maybe they had a better selection than that.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_302" n="302" end="timepoint_303">
+	  <u who="C">Ok.</u>
+	  <u who="BH">But in some of the modern cubicles, the theaters they had the multi ones, they, they have a big refreshment plant, but you, you pay exorbitant prices for anything, yeah, now. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_303" n="303" end="timepoint_304">
+	  <u who="BH">And I remember, out, out of sight on this picture is, I think there's a street and then there's the fire house that, that is still there.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_304" n="304" end="timepoint_305">
+	  <u who="BH">So some of the neighbor is still there. The, the vistas coming in are a little bit, the traffic pattern is a little different and all that but you could go again. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_305" n="305" end="timepoint_306">
+	  <u who="BH">And, going around I remember the, a few of the names of streets come back. Back, back, back behind Teele Square, I, I, I look today and there, there's, there's a whole complex of condominiums built back</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_306" n="306" end="timepoint_307">
+	  <u who="BH">back...</u>
+	  <u who="C">To the right.</u>
+	  <u who="BH">Back to, back to the right behind us yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_307" n="307" end="timepoint_308">
+	  <u who="BH">And I don't see where there used to be an exit, out on the street I think from the theater, I think that's gone now for parking <gap desc="inaudible"/>. Oh the, the Ray's Theater in the back is not there...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_308" n="308" end="timepoint_309">
+	  <u who="C">What about the uh, Nick's fruit store and the uh market?</u>
+	  <u who="BH">I don't remember those.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_309" n="309" end="timepoint_310">
+	  <u who="C">Maybe those are newer, more recent...</u>
+	  <u who="BH">I think they yeah, yeah. There, there must have been something there but, uh, I suppose an old city directory if they had it, would probably tell you what was there. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_310" n="310" end="timepoint_311">
+	  <u who="BH">But of course, when, when I was going there, I, I, I didn't concern myself to too much, except a hazy, hazy memory that something was there, and across the street something else. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_311" n="311" end="timepoint_312">
+	  <u who="BH">Is that across the street?</u>
+	  <u who="C">Yes, this is actually to the side of it, so this is looking in from I guess uh...</u>
+	  <u who="BH">This is where?</u>
+	  <u who="C">This is Clar-, Clarendon Ave.</u>
+	  <u who="BH">Oh yes...Clarendon, yes ok.</u>
+	  <u who="C">Yeah, so that would be over here.</u>
+	  <u who="BH">Yeah, yeah, ok,</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_312" n="312" end="timepoint_313">
+	  <u who="BH">Which goes in to North Cambridge, yeah.</u>
+	  <u who="C">Yeah.</u>
+	  <u who="BH">Yeah. Now this store is Tulett's. She married an artist, Teele Square so there's a, oh, that must have been the, the, the posters would, would would be, made up to tell you what's coming and so.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_313" n="313" end="timepoint_314">
+	  <u who="BH">And there's probably, if you look at it, there's probably more, that may be the feature film, and there may have been an-, another one with it, so.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_314" n="314" end="timepoint_315">
+	  <u who="C">Now looking at the type of cause, what, what period would you say this is from, what age do you think you were?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_315" n="315" end="timepoint_316">
+	  <u who="BH"><vocal desc="sighs"/> This is probably a little later then when I went there, yeah.</u>
+	  <u who="C">Mmm.</u>
+	  <u who="BH">With a microscope, y-, you, might be able to pick out a, a date on that, with a, the plate, yeah. </u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_316" n="316" end="timepoint_317">
+	  <u who="BH">There was, there was a time where they used to, license plates would be changed every year. Or every two years. So, I, I don't know uh. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_317" n="317" end="timepoint_318">
+	  <u who="BH">And I, and I, I don't, I've never concerned myself with styles of cars so much so I, I wouldn't know. Somebody could probably tell you "oh it's a, it's a '39 such and such."</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_318" n="318" end="timepoint_319">
+	  <u who="BH">But it, it probably be, this is probably post-war, the, the period between World War II that there, there weren't very many cars put out.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_319" n="319" end="timepoint_320">
+	  <u who="BH">No, but, but apparently that, that building is still there, but, if you go up in it, look, lo-, looks like in the back, it looks like is a, white shingled white, with, w-, not, not shingles but uh siding, air <gap desc="inaudible"/>, resident, residence, that that surprising <unclear>today</unclear>.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_320" n="320" end="timepoint_321">
+	  <u who="BH">I remember here, now is, Curtis street would be right here I gander...</u>
+	  <u who="C">Curtis Street yeah, it would be like one down I think.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_321" n="321" end="timepoint_322">
+	  <u who="BH">Oh it's one down? </u>
+	  <u who="C">Actually I'm not...</u>
+	  <u who="BH">M-, may-, maybe it's, maybe it's down here. </u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_322" n="322" end="timepoint_323">
+	  <u who="BH">Yeah, so there, there's a laundry there now, <gap desc="inaudible"/> hardware store in the neighborhood...and I, I don't know if there was a, there's Clarendon Avenue with the <gap desc="inaudible"/>, I don't know if there was a, eating places or not, I antic-, probably a few, but I...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_323" n="323" end="timepoint_324">
+	  <u who="C">Yeah, there's a few on that side now <gap desc="inaudible"/>.</u>
+	  <u who="BH">Yeah I think there's more now, which is, again, changing with the culture. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_324" n="324" end="timepoint_325">
+	  <u who="BH">Uh, now this, is that a, is that a facade over this or is it that part of that building? I didn't know if this was a, a peek...</u>
+	  <u who="C">Yeah, this, I think this is...</u>
+	  <u who="BH">No, it's not, no....</u>
+	  <u who="C">I, I, mmm.... I think mmm.....</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_325" n="325" end="timepoint_326">
+	  <u who="BH">Was it a pointed peak?</u>
+	  <u who="C">No I think all this is, is this, and this is probably, to the side of, <gap desc="inaudible"/></u>
+	  <u who="BH">Maybe so, Ok, I didn't know if it was a, a pointed...</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_326" n="326" end="timepoint_327">
+	  <u who="BH">a pointed archway ab-, above this rounded arch or not. Now, what year is that I don't know, Abbot &amp; Costello?</u>
+	  <u who="C">Actually you may be right, but I think that, that's what this is, it's by an arch, o-, over...</u>
+	  <u who="BH">Was there a peak over that, I don't...</u>
+	  <u who="C">Hmm, I'm not sure.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_327" n="327" end="timepoint_328">
+	  <u who="BH">Ok, that's <unclear>alright</unclear>. Now, this seem to say, is two, is two picture playing, doesn't it?</u>
+	  <u who="C">Y-eah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_328" n="328" end="timepoint_329">
+	  <u who="BH">So, so, Abbott &amp; Costello was first billing and, Who Killed Aunt Maggie is probably a, a, a shorter one or the sec-, the second feature, and as I remember, they used to, the featu-, the sec-, the last one would be towards the end of the billing, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_329" n="329" end="timepoint_330">
+	  <u who="BH">I means, the feature film of the two would be the last of course, so if you got there late, you, you might miss a little of this one but you wouldn't miss some of that. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_330" n="330" end="timepoint_331">
+	  <u who="BH">And as I remember, the, the, the serials on Saturday afternoon probably followed those. But I think, they, they were just, for, for, for the children screen.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_331" n="331" end="timepoint_332">
+	  <u who="C">Right.</u>
+	  <u who="BH">I don't know why I, I, I focus so much on that</u>
+	  <u who="C">It's ok, if you remember that's fine.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_332" n="332" end="timepoint_333">
+	  <u who="BH">Well here it is, yeah.</u>
+	  <u who="C">It's an ad for uh...</u>
+	  <u who="BH">Oh, 1932</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_333" n="333" end="timepoint_334">
+	  <u who="C">Now tell me what years, roughly what years were you going to uh, to the Cinema, like when was this, 19-...? </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_334" n="334" end="timepoint_335">
+	  <u who="BH">...'26, Thirty....</u>
+	  <u who="C">What year were you born?</u>
+	  <u who="BH">I, I, '26.</u>
+	  <u who="C">'26, so when you were about eight it was about '34....</u>
+	  <u who="BH">'34 or so yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_335" n="335" end="timepoint_336">
+	  <u who="BH">Ok yeah. So, I think I'm going to come a little, just, just a little beyond this, but but...</u>
+	  <u who="C">But we're still doing this.</u>
+	  <u who="BH">That was yeah, that was in the yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_336" n="336" end="timepoint_337">
+	  <u who="BH">Dinnerware free yeah. High class photo yeah, at no extra cost. And I think one week you'd get this.</u>
+	  <u who="C">Mmm-hmm.</u>
+	  <u who="BH">And another week you, you'd get, you get this, but then you have to come back to get the saucer, the saucer another week or so.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_337" n="337" end="timepoint_338">
+	  <u who="BH">And so, if you went, what's that? That two or one? That's a <unclear>treemurfin</unclear>.</u>
+	  <u who="C">Yes. </u>
+	  <u who="BH">One, two, three, four, five, six. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_338" n="338" end="timepoint_339">
+	  <u who="BH">So you'd probably have to come and go six, six weeks, I mean to, to get this whole set. And maybe some of 'em had six or eight weeks or so.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_339" n="339" end="timepoint_340">
+	  <u who="BH">So, if a woman was, was, had had gone and said "was that a Tuesday night?" Oh no, I, I, I said, I said, I remember Tuesday, but she said Monday and Thursday.</u>
+	  <u who="C">Thursday yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_340" n="340" end="timepoint_341">
+	  <u who="BH">So, if she couldn't go Monday, she'd go Thurs-, but if, if, but if she had, four of these <unclear>ships or so</unclear>. She'd, she'd want to be sure to go to get the rest, and not miss it so...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_341" n="341" end="timepoint_342">
+	  <u who="BH">"Absolutely Free," "Ten Dollar Theatre Regular," now would this, this is always in the evening isn't it? China night, well this is chinaware isn't it?</u>
+	  <u who="C">Yup.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_342" n="342" end="timepoint_343">
+	  <u who="BH">Yeah, ok. The display no, I don't remember the lobby displays but they must have been those...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_343" n="343" end="timepoint_344">
+	  <u who="BH">but this is the long line, I don't remember ever getting a piece of dishware myself, and was, wasn't interested...</u>
+	  <u who="C">'Cause it was at n-, nights wasn't it? And was it on days you probably maybe didn't go that often.</u>
+	  <u who="BH">Yeah. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_344" n="344" end="timepoint_345">
+	  <u who="BH">Now, Monday and Thursday, remember I told ya, that uh, they used to change I think either on Wednesday and Thursday.</u>
+	  <u who="C">Mmm-hmm.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_345" n="345" end="timepoint_346">
+	  <u who="BH">Um...What a minute, did I, I think it used to Sunday-Monday-Tuesday-Wednesday and then it would change Thursday, Friday, Saturday. Now, o-, obviously Mondays, and I used to think Tuesdays, were, were the slower nights. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_346" n="346" end="timepoint_347">
+	  <u who="BH">A lot of people would go to a movie on Sunday night, so that was the big one. So, so Monday was slow and that's probably why they wanted to attract people in.</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_347" n="347" end="timepoint_348">
+	  <u who="BH">Now Thursday, I don't know. Nowadays, I noticed, Thursdays is the start of a weekend.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_348" n="348" end="timepoint_349">
+	  <u who="BH">I, I mean, among the young people.</u>
+	  <u who="C">Mmm-hmm.</u>
+	  <u who="BH">In town, things start right up Thursday...</u>
+	  <u who="C">Thursday Night, yup.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_349" n="349" end="timepoint_350">
+	  <u who="BH">They don't wait for Fri-, so I don't know, maybe it was that Th-, Thursday was the start of the weekend billing or so.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_350" n="350" end="timepoint_351">
+	  <u who="C">Get people the weekend before they spend all their money?</u>
+	  <u who="BH">Well I don't know, in those days I think, Saturdays was the big pay day.</u>
+	  <u who="C">Ah, ok</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_351" n="351" end="timepoint_352">
+	  <u who="BH">Yeah. I mean, it was the day people were paid. Then I think it moved back to Friday, and I think now it is, I think Friday is the big payday for, for people. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_352" n="352" end="timepoint_353">
+	  <u who="BH">Just as another view on, on sociology and econ-, and the economy and all, I often have noticed that when people, people are paid on Friday now, and often, by the weekend they're broke or so.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_353" n="353" end="timepoint_354">
+	  <u who="BH">And then they go into Monday/Tuesday <gap desc="inaudible"/>. I often wondered if people were paid on Mondays, instead of the previous Fridays, would they have more money left to pay their bills, their utilities and all. 'Cause, cause they would be starting the week...</u>
+	  <u who="C">Right.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_354" n="354" end="timepoint_355">
+	  <u who="BH">Yeah, rather than have spent it all. But that, that would be a whole change in economy to, to, if the, if the, if the nation went that way or so.</u>
+	  <u who="C">Probably.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_355" n="355" end="timepoint_356">
+	  <u who="BH">And I think a lot of, lot of places of entertainment, as well as, liquor places and all would, would, would suffer from that because, by the time they got around to the weekend, they wouldn't have that money, but a lot of them would have, have money available to pay other bills. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_356" n="356" end="timepoint_357">
+	  <u who="BH">And in some ways families might, might benefit, particularly those who have to go hungry, because the money is, is running out, but they...</u>
+	  <u who="C"><gap desc="inaudible"/></u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_357" n="357" end="timepoint_358">
+	  <u who="BH">But I often thought that would be an interesting, economic project to, to undertake or so. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_358" n="358" end="timepoint_359">
+	  <u who="BH">Plus the fact that on Mondays, a lot of people would not come in to work because you used to be hanging. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_359" n="359" end="timepoint_360">
+	  <u who="BH">This would make them come in yeah....maybe theaters would suffer... <event desc="shuffling noise"/></u>
+	  <u who="C">Probably.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_360" n="360" end="timepoint_361">
+	  <u who="BH">"One Hour," "Four Hour."</u>
+	  <u who="C">"In four hours they show six pictures, every Saturday and Sunday matinee. Starting Saturday and Sunday, November 2nd and 3rd."</u>
+	  <u who="BH">What year is that?</u>
+	  <u who="C">This is a good question. Um, it's probably roughly by the same time.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_361" n="361" end="timepoint_362">
+	  <u who="BH">Yeah, you know, you could, you, do you have a world almanac on you, you, you, you can look up in one of those, did you ever see one of those perpetual calendars?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_362" n="362" end="timepoint_363">
+	  <u who="C">Mmmm. I know what you mean.</u>
+	  <u who="BH">So if you, if you want to know what date of the week uh, November 2nd fell, in the year 1934 or something, you, you could fathom through or so.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_363" n="363" end="timepoint_364">
+	  <u who="C">Hmm. Do you want me to try, I can try and do it, would you like me to try and do it?</u>
+	  <u who="BH">Well I mean the reverse would be, you...know that Saturday was the 2nd, but you'd have to trace it down to see what...</u>
+	  <u who="C">...year it was?</u>
+	  <u who="BH">...year it was, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_364" n="364" end="timepoint_365">
+	  <u who="BH">And it would, would....would be within, yeah, it, it's a rotation, would be within, within seven years or so. But, do you remember I told there was the, the coming attractions...</u>
+	  <u who="C">Hmm-hmm.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_365" n="365" end="timepoint_366">
+	  <u who="BH">And the, no, no, the newsreels, coming attractions, sometimes a cartoon, and then the first film, and then sometimes a little in between the first film and second film, and then the second film, and maybe, the, the serial. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_366" n="366" end="timepoint_367">
+	  <u who="BH">Now...this is a Sunday, nah nah, ok. Now, A Man Sees Red, Buck Jones, he was the cowboy.</u>
+	  <u who="C">Cowboy.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_367" n="367" end="timepoint_368">
+	  <u who="C">So was that from your time or...?</u>
+	  <u who="BH">Um...g-, generally, yeah, yeah, it would be yeah. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_368" n="368" end="timepoint_369">
+	  <u who="BH">Now The Nitwits, now, that, that, that's a, that sounds like a short film, a spoof or comedy or something.</u>
+	  <u who="C">Yeah.</u>
+	  <u who="BH">Now, Break of Hearts with Katherine Hepburn...she's still going isn't she?</u>
+	  <u who="C"><vocal desc="laughs"/> Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_369" n="369" end="timepoint_370">
+	  <u who="BH">I don't, I don't remember that completely, but yeah, ok. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_370" n="370" end="timepoint_371">
+	  <u who="BH">Smashing western, remember I told you about...Rustlers of Red Dog with John Mac Brown. I didn't know him too much but I think he was another cowboy.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_371" n="371" end="timepoint_372">
+	  <u who="C">So, Maybe this could be in maybe in the late 30s, 40s, or...?</u>
+	  <u who="BH">Um, yeah, yeah. I think it would be. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_372" n="372" end="timepoint_373">
+	  <u who="BH">Ok now, now remember then, then a cartoon comedy, uh, was that six one, where was the six, or is it four, oh four hours. Oh, it didn't say six hours. Ok.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_373" n="373" end="timepoint_374">
+	  <u who="C">No, four hour six-picture show, so one, two, three, four...</u>
+	  <u who="BH">...five....six. <vocal desc="pause"/> </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_374" n="374" end="timepoint_375">
+	  <u who="BH">Each one of these....now often the serials ended, but I didn't know they were on Sunday, alright. Now Sunday, remember when I said, would they, they often change again, yeah. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_375" n="375" end="timepoint_376">
+	  <u who="BH">Ok now, The Trail <unclear>Driver</unclear>, that, that sounds like a, a western. Here Comes The Band.....<unclear>Loose Cabot</unclear>....four....latest news five....now, remember the newsreel, I think that would be yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_376" n="376" end="timepoint_377">
+	  <u who="BH">The latest news might be three weeks old or so, but I mean...something might, might, there might be fleet maneuvers or some, or, or opening of an aquarium in California or something, thing, that was one of the things they'd often feature, photogenic things. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_377" n="377" end="timepoint_378">
+	  <u who="BH">But it could be three weeks before it got here, but, you saw it for the first time its, its latest news to you.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_378" n="378" end="timepoint_379">
+	  <u who="BH">Now, nowhere do I see six of 'em, do you.</u>
+	  <u who="C">Yeah, me neither, I don't know.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_379" n="379" end="timepoint_380">
+	  <u who="BH">"Continued performance," ok, "Saturday matinee, big shows starts at one fifteen." I, I, didn't I say, I thought it was around one-ten?</u>
+	  <u who="C">Yeah, around one-thirty yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_380" n="380" end="timepoint_381">
+	  <u who="BH">Ok, um. This is, this is very interesting. Now was this in a newspaper?</u>
+	  <u who="C">Y-eah, I think we got it from a, an old newspaper.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_381" n="381" end="timepoint_382">
+	  <u who="BH">A local paper, the Somerville paper or, or the Boston...?</u>
+	  <u who="C">No, it's probably the Somerville paper, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_382" n="382" end="timepoint_383">
+	  <u who="BH">Now, Vianos, now that, that's not, was that...</u>
+	  <u who="C">Those are the owners, the, the person who started the, the Somerville theater. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_383" n="383" end="timepoint_384">
+	  <u who="BH">Is that the one who still has it now you? </u>
+	  <u who="C">No.</u>
+	  <u who="BH">Oh you say that he bought it from them.</u>
+	  <u who="C">Yeah, he's, he's, he's the original, I guess owner of the...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_384" n="384" end="timepoint_385">
+	  <u who="BH">OK "Sunday starting at 3 o'clock." Must give people time to be, people time to have their Sunday dinner. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_385" n="385" end="timepoint_386">
+	  <u who="BH">I would often imagine that would start at one-thirty, two also. And this, this was continuous it said so, so this would run through and then, then there'd be, a second one.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_386" n="386" end="timepoint_387">
+	  <u who="BH">So, it seemed to me then that that, people would, people would, come for the early one at 3 o'clock or so, but suppose they didn't get there 'til quarter of five or so, on Sunday so. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_387" n="387" end="timepoint_388">
+	  <u who="BH">They, they, they'd buy their ticket and go in, and they might, that might be on by that time, so they'd, they'd, they'd start with that, and they'd see the news and then they go, they'd sit through this and all that.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_388" n="388" end="timepoint_389">
+	  <u who="BH">Did you ever hear the expression, "This is Where I Came In"?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_389" n="389" end="timepoint_390">
+	  <u who="C"><vocal desc="pause, and then very quietly"/> I don't know.</u>
+	  <u who="BH">That's ok yeah, it was a, and it often was, if you came in during this, maybe it was a, a car chase or they were working on a farm or something, so you'd, you'd....you'd come in and you'd sit down and you'd follow the film through to the end.  </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_390" n="390" end="timepoint_391">
+	  <u who="BH">Sometimes, missing the first one, you, you'd, you'd have to kinda, i-, imagine, to get your bearing on what, what's happening. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_391" n="391" end="timepoint_392">
+	  <u who="BH">So then you'd sit through the whole film here, and long maybe about...five, maybe about seven-fifteen or so, it com-, this would come again, and you'd, you'd see the beginning of this or so, and then it would be something and you say "I've seen this before, yeah," And you'd say, "Well, this is where I came in." </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_392" n="392" end="timepoint_393">
+	  <u who="BH">Meaning in the last cycle. And so, at that point, some of the people would say "well, time to go" and they'd get up and leave, meaning, meaning, they put together the beginning of it, and then they, they know what happens later on, and they have to get home or something. So that was an expression, and I think it's o-, often because, of that, when, when, continuous movies, when you come in to something like that. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_393" n="393" end="timepoint_394">
+	  <u who="BH">But now this one was a, this was a Sat-, the matinee wasn't it?</u>
+	  <u who="C">Mmm-hmm.</u>
+	  <u who="BH">One show, yeah. Now nowhere do I see six separate features, do you?</u>
+	  <u who="C">Yeah, me either.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_394" n="394" end="timepoint_395">
+	  <u who="BH">One big four hour show. Unless, unless you add the, the serial, but I, I would think that they would, would bill it, wouldn't you? </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_395" n="395" end="timepoint_396">
+	  <u who="BH">Now the carton comedy, oh wait a minute, would this be the sixth one?</u>
+	  <u who="C">The news &amp; the cartoon comedy.</u>
+	  <u who="BH">That's two.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_396" n="396" end="timepoint_397">
+	  <u who="BH">Three, four, five, six. One, two, three, four, five. I don't see any comedy...so, so, these would be six into, into four hours huh? </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_397" n="397" end="timepoint_398">
+	  <u who="BH">So, so it would be roughly one-fifteen to five-fifteen. Ok. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_398" n="398" end="timepoint_399">
+	  <u who="BH">Now if this...one, if the, four hours after two main pictures, or were, or would, or were there three main pictures here? This, this, this.</u>
+	  <u who="C">This is three, three big feature pictures.</u>
+	  <u who="BH">Three pictures, yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_399" n="399" end="timepoint_400">
+	  <u who="BH">Ok. Suppose, suppose those three each, each average an hour or so. That's three, three, three of the four hours, and then the cartoon, the news, and what's the other, and The Nitwits probably...</u>
+	  <u who="C">Yeah,</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_400" n="400" end="timepoint_401">
+	  <u who="C">Yeah, were short.</u>
+	  <u who="BH">Yeah Might, might total another hour.</u>
+	  <u who="C">But, were there any breaks in between the movies?</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_401" n="401" end="timepoint_402">
+	  <u who="BH">No, no. There were no intermissions, and I, no. In this one, there might be, usually the continuous ones they have an intermission period and so forth. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_402" n="402" end="timepoint_403">
+	  <u who="BH">Maybe five minutes or so, probably to encourage you to go to patronize the stand, if, if the popcorn stand was the bigger thing there.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_403" n="403" end="timepoint_404">
+	  <u who="BH">But, nowadays, I think, I think the modern ones, they, they encourage you, to go and, visit, the refreshment stand again, to buy the things you know. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_404" n="404" end="timepoint_405">
+	  <u who="BH">But, but, but, so, so, alright, so, so, four hour show. Maybe the, the ones I think of, may- maybe, maybe what I went to was a little short of four hours. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_405" n="405" end="timepoint_406">
+	  <u who="BH">With the, with, with, again a lot of the elements I remember, the two, the two pictures I remember, the newsreels, coming attractions, a cartoon <gap desc="inaudible"/>, and a serial would be, about six, six different things too.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_406" n="406" end="timepoint_407">
+	  <u who="BH">They, they would be all in, one after another as I remember yeah. In order to fit it in with time I guess. But, it's interesting just, just to be, reminded of the time and all that. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_407" n="407" end="timepoint_408">
+	  <u who="BH">Now, apparently, maybe Ball Square had one like that, I, I don't remember, or the others.</u>
+	  <u who="C">Yeah, we've seen a couple of other.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_408" n="408" end="timepoint_409">
+	  <u who="BH">Did Professor Gus obtained these?</u>
+	  <u who="C">Yeah.</u>
+	  <u who="BH">Might be interesting just to look up the year of this uh...</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_409" n="409" end="timepoint_410">
+	  <u who="C"><vocal desc="pause"/> hmm, how do I do this, I don't know.</u>
+	  <u who="BH">Do you have one of a...</u>
+	  <u who="C">No, I don't have an almanac, I don't know if I can do it on my uh...</u>
+	  <u who="BH">No, there's what they call a perpetual calendar.</u>
+	  <u who="C">Yeah.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_410" n="410" end="timepoint_411">
+	  <event desc="about a half minute of silence, with some sounds of paper and moving around"/>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_411" n="411" end="timepoint_412">
+	  <u who="BH"><vocal desc="in the background"/> You could even work it out uh...one year through. You can get a calendar, a present day calendar, and just see if a, if, if Monday, Monday February 1st....February 1st would tell you the...November 2nd. One would be a Monday, one would be a Saturday, <gap desc="inaudible"/> that's different or so. </u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_412" n="412" end="timepoint_413">
+	  <u who="BH">But there's, there's a way you, you could...</u>
+	  <u who="C">Yeah, figure it out.</u>
+	  <u who="BH">...if, if, if you wanted to know <gap desc="inaudible"/> for that year, and, and for your, for your project up, on...</u>
+	  <u who="C">It would be good to know.</u>
+	</u>
+	<u rend="transcript_chunk" start="timepoint_413" n="413" end="timepoint_end">
+	  <u who="BH">It might, might, might be interesting to get to know what year.</u>
+	  <u who="C">Yeah, I'll do that, I'll try and look it up.</u>
+	  <u who="BH">It could be as much as seven years off, but it would, it, it, you know, as it rotates around, now, yeah, I, I think I'm drained...</u>
+	  <event desc="end tape"/>
+	</u>
+      </div1>
+    </body>
+  </text>
+</TEI.2>
