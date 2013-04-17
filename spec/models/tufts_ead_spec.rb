@@ -20,4 +20,9 @@ describe TuftsEAD do
     end
   end
 
+  describe "to_class_uri" do
+    subject {TuftsEAD}
+    its(:to_class_uri) {should == 'info:fedora/cm:Text.EAD'}
+  end
+
 end

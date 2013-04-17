@@ -20,4 +20,9 @@ describe TuftsGenericObject do
     end
   end
 
+  describe "to_class_uri" do
+    subject {TuftsGenericObject}
+    its(:to_class_uri) {should == 'info:fedora/cm:Object.Generic'}
+  end
+
 end
