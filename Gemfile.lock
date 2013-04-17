@@ -27,8 +27,8 @@ GIT
 
 GIT
   remote: git://github.com/projecthydra/hydra-editor.git
-  revision: 1049d60422c7bfd8284deb00d44e5cff7fb8640f
-  ref: 1049d60
+  revision: 7f58c24ee0070eb5af443dd5a2c5a94556da5254
+  ref: 7f58c24
   specs:
     hydra-editor (0.0.1)
       rails (~> 3.2.13)
@@ -40,6 +40,18 @@ GIT
   specs:
     hydra-role-management (0.0.1)
       cancan
+
+GIT
+  remote: git://github.com/projecthydra/om.git
+  revision: 7edca33f91047497f8e7a3187418c37022d7a0dc
+  specs:
+    om (2.0.0)
+      activemodel
+      activesupport
+      deprecation
+      mediashelf-loggable
+      nokogiri (>= 1.4.2)
+      solrizer (~> 3.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -177,13 +189,6 @@ GEM
       activesupport
       i18n
       nokogiri
-    om (2.0.0)
-      activemodel
-      activesupport
-      deprecation
-      mediashelf-loggable
-      nokogiri (>= 1.4.2)
-      solrizer (~> 3.0.0)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -304,6 +309,7 @@ DEPENDENCIES
   hydra-role-management!
   jettywrapper
   jquery-rails
+  om!
   rails (= 3.2.13)
   rspec-rails
   sass-rails (~> 3.2.3)

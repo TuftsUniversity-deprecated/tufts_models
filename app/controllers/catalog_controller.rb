@@ -21,12 +21,12 @@ class CatalogController < ApplicationController
 
     # solr field configuration for search results/index views
     config.index.show_link = 'title_tesim'
-    config.index.record_tsim_type = 'has_model_ssim'
+    config.index.record_tsim_type = 'active_fedora_model_ssi'
 
     # solr field configuration for document/show views
     config.show.html_title = 'title_tesim'
     config.show.heading = 'title_tesim'
-    config.show.display_type = 'has_model_ssim'
+    config.show.display_type = 'active_fedora_model_ssi'
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -92,6 +92,8 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name('bitDepth', :stored_searchable), :label => 'Bit Depth:'
     config.add_show_field solr_name('colorSpace', :stored_searchable), :label => 'Color Space:'
     config.add_show_field solr_name('filesize', :stored_searchable), :label => 'File Size:'
+    config.add_show_field 'has_model_ssim', :label=>'Content Model'
+    config.add_show_field 'active_fedora_model_ssi', :label=>'Hydra Class'
 
 
     # "fielded" search configuration. Used by pulldown among other places.
