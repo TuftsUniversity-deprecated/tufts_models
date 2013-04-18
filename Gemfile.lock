@@ -53,6 +53,22 @@ GIT
       nokogiri (>= 1.4.2)
       solrizer (~> 3.0.0)
 
+GIT
+  remote: git://github.com/projecthydra/rubydora.git
+  revision: 357a0a7d27eaa5814ef72369954394a84ff2464d
+  branch: expose_datastream_methods
+  specs:
+    rubydora (1.6.1)
+      activemodel
+      activesupport
+      deprecation
+      equivalent-xml
+      fastercsv
+      hooks
+      mime-types
+      nokogiri
+      rest-client
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -241,16 +257,6 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
-    rubydora (1.6.1)
-      activemodel
-      activesupport
-      deprecation
-      equivalent-xml
-      fastercsv
-      hooks
-      mime-types
-      nokogiri
-      rest-client
     sass (3.2.7)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -312,6 +318,7 @@ DEPENDENCIES
   om!
   rails (= 3.2.13)
   rspec-rails
+  rubydora!
   sass-rails (~> 3.2.3)
   settingslogic
   sqlite3

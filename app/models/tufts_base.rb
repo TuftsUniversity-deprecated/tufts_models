@@ -18,6 +18,16 @@ class TuftsBase < ActiveFedora::Base
                            :subject, :funder, :temporal, :resolution, :bitDepth, :colorSpace, 
                            :filesize]
 
+  def datastreams= (ds_data)
+    ds_data.each do |dsid, val|
+      next unless val.present?
+      ds = datastreams[dsid]
+      if ds.external?
+        ds.dsLocation = val
+      end
+    end
+  end
+
   def terms_for_editing
     terms_for_display 
   end
@@ -28,6 +38,10 @@ class TuftsBase < ActiveFedora::Base
 
   def descMetadata
     self.DCA_META
+  end
+
+  def external_datastreams
+    datastreams.select { |name, ds| ds.external? }
   end
 
   def required?(key)

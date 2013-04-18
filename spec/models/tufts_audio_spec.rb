@@ -56,5 +56,10 @@ describe TuftsAudio do
     its(:to_class_uri) {should == 'info:fedora/cm:Audio'}
   end
 
+  describe "external_datastreams" do
+    it "should have the correct ones" do
+      subject.external_datastreams.keys.should include('ACCESS_MP3', 'ARCHIVAL_SOUND')
+    end
+  end
 
 end

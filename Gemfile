@@ -12,6 +12,7 @@ gem 'hydra-role-management', github: 'projecthydra/hydra-role-management', ref: 
 #gem 'hydra-editor', path: '../hydra-editor'
 gem 'hydra-editor', github: 'projecthydra/hydra-editor', ref: '7f58c24'
 gem 'om', github: 'projecthydra/om'
+gem 'rubydora', github: 'projecthydra/rubydora', branch: 'expose_datastream_methods'
 
 # Gems used only for assets and not required
 # in production environments by default.

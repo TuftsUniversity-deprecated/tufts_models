@@ -1,6 +1,9 @@
 class TuftsImage < TuftsBase
 
-  #'Thumbnail.png', 'Archival.tif', 'Advanced.jpg'
+  has_file_datastream 'Thumbnail.png', control_group: 'E'
+  has_file_datastream 'Archival.tif', control_group: 'E'
+  has_file_datastream 'Advanced.jpg', control_group: 'E'
+  has_file_datastream 'Basic.jpg', control_group: 'E'
 
   def to_solr(solr_doc=Hash.new, opts={})
     #prefilter perseus and art history objects

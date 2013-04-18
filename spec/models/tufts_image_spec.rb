@@ -25,5 +25,11 @@ describe TuftsImage do
     its(:to_class_uri) {should == 'info:fedora/cm:Image.4DS'}
   end
 
+  describe "external_datastreams" do
+    it "should have the correct ones" do
+      subject.external_datastreams.keys.should include('Advanced.jpg', 'Basic.jpg', 'Archival.tif', 'Thumbnail.png')
+    end
+  end
+
 
 end

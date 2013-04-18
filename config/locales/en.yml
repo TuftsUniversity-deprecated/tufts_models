@@ -20,3 +20,4 @@ en:
     model_label:
       TuftsPdf: "PDF"
       TuftsAudio: "audio"
+      TuftsImage: "image"
