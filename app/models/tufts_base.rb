@@ -74,10 +74,16 @@ class TuftsBase < ActiveFedora::Base
     self.push_production = true
     if save
       # Now copy to prod
+      foxml = self.inner_object.repository.export(pid: pid, context: 'archive')
+      production_fedora_connection.ingest(file: foxml)
     else
       # couldn't save
       raise "Unable to push to production"
     end
+  end
+
+  def production_fedora_connection
+    @prod_repo ||= Rubydora.connect(:url => 'http://localhost:8983/fedora', :user => 'fedoraAdmin', :password => 'fedoraAdmin')
   end
 
 
