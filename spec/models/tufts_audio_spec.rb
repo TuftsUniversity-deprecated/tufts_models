@@ -62,4 +62,25 @@ describe TuftsAudio do
     end
   end
 
+
+  describe "push_to_production!" do
+    before do
+      @audio = TuftsAudio.new(title: 'foo')
+      @audio.read_groups = ['public']
+      @audio.save!
+    end
+
+    after do
+      @audio.destroy
+    end
+
+    it "should publish to production" do
+      @audio.should_not be_published
+      @audio.push_to_production!
+      @audio.should be_published
+    end
+
+    
+  end
+
 end

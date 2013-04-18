@@ -9,14 +9,28 @@ class TuftsBase < ActiveFedora::Base
 
   # Tufts specific needed metadata streams
   has_metadata "DCA-META", type: TuftsDcaMeta
+  has_metadata "DCA-ADMIN", type: DcaAdmin
 
-  validates_presence_of :title#, :creator, :description
+  attr_accessor :push_production
+
+  before_save do
+    self.edited_at = DateTime.now
+    self.admin.published_at = edited_at if push_production
+  end
+
+  #MK 2011-04-13 - Are we really going to need to access FILE-META from FILE-META.  I'm guessing
+  # not.
+  has_metadata :name => "FILE-META", :type => TuftsFileMeta
+
+
+  validates_presence_of :title
   
   delegate_to "DCA-META", [:title, :creator, :source2, :description, :dateCreated, :dateAvailable, 
                            :dateIssued, :identifier, :rights, :bibliographicCitation, :publisher,
                            :type2, :format2, :extent, :persname, :corpname, :geogname, :genre,
                            :subject, :funder, :temporal, :resolution, :bitDepth, :colorSpace, 
                            :filesize]
+  delegate_to "DCA-ADMIN", [:published_at, :edited_at]
 
   def datastreams= (ds_data)
     ds_data.each do |dsid, val|
@@ -40,6 +54,10 @@ class TuftsBase < ActiveFedora::Base
     self.DCA_META
   end
 
+  def admin
+    self.DCA_ADMIN
+  end
+
   def external_datastreams
     datastreams.select { |name, ds| ds.external? }
   end
@@ -48,10 +66,20 @@ class TuftsBase < ActiveFedora::Base
     self.class.validators_on(key).any?{|v| v.kind_of? ActiveModel::Validations::PresenceValidator}
   end
 
+  def published?
+    published_at == edited_at
+  end
 
-  #MK 2011-04-13 - Are we really going to need to access FILE-META from FILE-META.  I'm guessing
-  # not.
-  has_metadata :name => "FILE-META", :type => TuftsFileMeta
+  def push_to_production!
+    self.push_production = true
+    if save
+      # Now copy to prod
+    else
+      # couldn't save
+      raise "Unable to push to production"
+    end
+  end
+
 
   def to_solr(solr_doc=Hash.new, opts={})
     solr_doc = super
