@@ -83,7 +83,7 @@ class TuftsBase < ActiveFedora::Base
   end
 
   def production_fedora_connection
-    @prod_repo ||= Rubydora.connect(:url => 'http://localhost:8983/fedora', :user => 'fedoraAdmin', :password => 'fedoraAdmin')
+    @prod_repo ||= Rubydora.connect(ActiveFedora.data_production_credentials)
   end
 
 
