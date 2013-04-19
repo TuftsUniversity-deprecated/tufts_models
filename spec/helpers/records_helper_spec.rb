@@ -2,7 +2,14 @@ require 'spec_helper'
 
 describe RecordsHelper do
   it "should have object_type_options" do
-    helper.object_type_options.should == {'Audio' => 'TuftsAudio', 'Image' => 'TuftsImage', 'PDF' => 'TuftsPdf'}
+    helper.object_type_options.should == {'Audio' => 'TuftsAudio', 
+       "Audio text" => "TuftsAudioText",
+       "Collection guide" => "TuftsEAD",
+       "Faculty publication" => "TuftsFacultyPublication",
+       "Generic object" => "TuftsGenericObject",
+       "Image text" => "TuftsImageText",
+       'Image' => 'TuftsImage',
+       'PDF' => 'TuftsPdf'}
   end
 
   it "should have model_labels" do
