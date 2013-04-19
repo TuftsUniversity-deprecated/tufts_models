@@ -9,7 +9,7 @@ Tufts::Application.routes.draw do
   HydraHead.add_routes(self)
   mount FcrepoAdmin::Engine => '/admin', :as=> 'fcrepo_admin'
   mount HydraEditor::Engine => '/'
-  match 'records/:id/publish' => 'records#publish', via: :post, as: 'publish_record'
+  match 'records/:id/publish' => 'records#publish', via: :post, as: 'publish_record', constraints: { id: /[a-zA-Z0-9.:]+/ }
   
 
   devise_for :users

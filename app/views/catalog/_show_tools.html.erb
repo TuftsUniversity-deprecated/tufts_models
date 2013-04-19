@@ -22,6 +22,8 @@
           <%= link_to "Publish", publish_record_path(@document.id), method: :post%>
        </li>
       <% end %>
+      <li>
+      <%= link_to "Preview", ActiveFedora.fedora_config.credentials[:url] + "/objects/#{@document.id}", :target=>'_new' %>
+      </li>
   </ul>
 
-  <%= @document.inspect %>
