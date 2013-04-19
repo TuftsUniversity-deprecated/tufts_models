@@ -43,14 +43,16 @@ module Tufts
 
 
       unless names.empty?
-        solr_doc[Solrizer.solr_name('author', :sortable, type: :string)] = names[0]
+        #solr_doc[Solrizer.solr_name('author', :sortable, type: :string)] = names[0]
+        Solrizer.insert_field(solr_doc, 'author', names[0], :sortable)
       end
 
       #TITLE SORT
 
       titles = self.datastreams["DCA-META"].get_values(:title)
       unless titles.empty?
-        solr_doc[Solrizer.solr_name('title', :sortable, type: :string)] = titles[0]
+        #solr_doc[Solrizer.solr_name('title', :sortable, type: :string)] = titles[0]
+        Solrizer.insert_field(solr_doc, 'title', titles[0], :sortable)
       end
 
     end

@@ -61,6 +61,19 @@ GIT
       nokogiri
       rest-client
 
+GIT
+  remote: git://github.com/projecthydra/solrizer.git
+  revision: d876a4366afbe79a694bc190e062a098b0381d89
+  branch: single_value_field
+  specs:
+    solrizer (3.0.0)
+      activesupport
+      daemons
+      mediashelf-loggable (~> 0.4.7)
+      nokogiri
+      stomp
+      xml-simple
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -258,13 +271,6 @@ GEM
       sass (>= 3.1.10)
       tilt (~> 1.3)
     settingslogic (2.0.9)
-    solrizer (3.0.0)
-      activesupport
-      daemons
-      mediashelf-loggable (~> 0.4.7)
-      nokogiri
-      stomp
-      xml-simple
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -316,6 +322,7 @@ DEPENDENCIES
   rubydora!
   sass-rails (~> 3.2.3)
   settingslogic
+  solrizer!
   sqlite3
   titleize
   uglifier (>= 1.0.3)

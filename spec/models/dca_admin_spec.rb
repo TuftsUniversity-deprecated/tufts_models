@@ -12,4 +12,11 @@ describe DcaAdmin do
     subject.edited_at = time
     subject.edited_at.should == [time]
   end
+
+  it "should index the published and edited dates" do
+    time = DateTime.parse('2013-03-22T12:33:00Z')
+    subject.edited_at = time
+    subject.published_at = time
+    subject.to_solr.should == {'edited_at_dtsi' =>'2013-03-22T12:33:00Z', 'published_at_dtsi' =>'2013-03-22T12:33:00Z'}
+  end
 end

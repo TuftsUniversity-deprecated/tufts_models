@@ -13,4 +13,15 @@
       <li>
         <%= link_to "Edit", hydra_editor.edit_record_path(@document.id) %>
       </li>
+      <% if  @document.published? %> 
+       <li class="disabled">
+         <%= link_to "Publish", '#' %>
+       </li>
+      <% else %>
+       <li>
+          <%= link_to "Publish", publish_record_path(@document.id), method: :post%>
+       </li>
+      <% end %>
   </ul>
+
+  <%= @document.inspect %>

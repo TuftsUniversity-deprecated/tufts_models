@@ -22,6 +22,7 @@ describe Ability do
       it { should be_able_to(:create, TuftsAudio) }
       it { should be_able_to(:edit, @audio) }
       it { should be_able_to(:update, @audio) }
+      it { should be_able_to(:publish, @audio) }
     end
   end
 

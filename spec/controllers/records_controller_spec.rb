@@ -89,6 +89,24 @@ describe RecordsController do
         end
       end
     end
+
+    describe "publish a record" do
+      before do
+        @routes = Tufts::Application.routes 
+        @audio = TuftsAudio.new(title: 'My title2')
+        @audio.edit_users = [@user.email]
+        @audio.save!
+      end
+      after do
+        @audio.destroy
+      end
+      it "should be successful" do
+        TuftsAudio.any_instance.should_receive(:push_to_production!)
+        post :publish, :id=>@audio
+        response.should redirect_to("/catalog/#{assigns[:record].pid}") 
+        flash[:notice].should == '"My title2" has been pushed to production'
+      end
+    end
   end
 
 

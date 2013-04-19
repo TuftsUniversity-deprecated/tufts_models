@@ -12,6 +12,7 @@ gem 'hydra-role-management', '0.0.2'
 gem 'hydra-editor', github: 'projecthydra/hydra-editor', ref: '7f58c24'
 gem 'om', github: 'projecthydra/om'
 gem 'rubydora', github: 'projecthydra/rubydora', branch: 'expose_datastream_methods'
+gem 'solrizer', github: 'projecthydra/solrizer', branch: 'single_value_field'
 
 # Gems used only for assets and not required
 # in production environments by default.
