@@ -21,3 +21,8 @@ en:
       TuftsPdf: "PDF"
       TuftsAudio: "audio"
       TuftsImage: "image"
+      TuftsEAD: "collection guide"
+      TuftsFacultyPublication: 'faculty publication'
+      TuftsImageText: 'image text'
+      TuftsAudioText: 'audio text'
+      TuftsGenericObject: 'generic object'
