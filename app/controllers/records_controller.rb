@@ -8,12 +8,4 @@ class RecordsController < ApplicationController
     redirect_to catalog_path(@record), notice: "\"#{@record.title.first}\" has been pushed to production"
   end
 
-  protected
-  
-  # Overridden to have the models we want
-  # With AF 6.1 we could probably just do:
-  # ActiveFedora::Base.decendants
-  def valid_types
-    ["TuftsAudio", "TuftsPdf"]
-  end
 end
