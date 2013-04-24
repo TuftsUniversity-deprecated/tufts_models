@@ -4,15 +4,16 @@ gem 'rails', '3.2.13'
 
 gem 'sqlite3'
 
-gem 'fcrepo_admin', github: 'projecthydra/fcrepo-admin'
+gem 'fcrepo_admin',   git: 'https://github.com/projecthydra/fcrepo-admin.git'
 gem 'hydra-head'
-gem 'active-fedora', github: 'projecthydra/active_fedora'
+gem 'active-fedora',  git: 'https://github.com/projecthydra/active_fedora.git'
 gem 'hydra-role-management', '0.0.2'
 #gem 'hydra-editor', path: '../hydra-editor'
-gem 'hydra-editor', github: 'projecthydra/hydra-editor', ref: '7f58c24'
-gem 'om', github: 'projecthydra/om'
-gem 'rubydora', github: 'projecthydra/rubydora', branch: 'expose_datastream_methods'
-gem 'solrizer', github: 'projecthydra/solrizer', branch: 'single_value_field'
+gem 'hydra-editor',   git: 'https://github.com/projecthydra/hydra-editor.git', ref: '7f58c24'
+gem 'om',             git: 'https://github.com/projecthydra/om.git'
+gem 'rubydora',       git: 'https://github.com/projecthydra/rubydora.git', branch: 'expose_datastream_methods'
+gem 'solrizer',       git: 'https://github.com/projecthydra/solrizer.git', branch: 'single_value_field'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
