@@ -9,6 +9,7 @@ feature 'Admin user creates document' do
     click_link 'Create a new object'
 
     select "Audio", from: 'Type' 
+    fill_in 'Pid', with: 'tufts:001.102.201'
     click_button 'Next'
 
     fill_in '*Title', with: 'My title'

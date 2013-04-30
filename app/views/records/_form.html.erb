@@ -20,6 +20,7 @@
     </div>
   </div>
   <%= hidden_field_tag :type, params[:type] %>
+  <%= hidden_field_tag :pid, params[:pid] if controller.action_name == 'new'%>
   <%= f.actions do %>
     <%= f.submit 'Save' %>
     <%= f.cancel %>
