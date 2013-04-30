@@ -34,4 +34,6 @@ Tufts::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.preview_root = 'http://localhost:8983/fedora'
 end

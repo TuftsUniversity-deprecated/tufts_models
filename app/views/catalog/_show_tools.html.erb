@@ -23,7 +23,7 @@
        </li>
       <% end %>
       <li>
-      <%= link_to "Preview", ActiveFedora.fedora_config.credentials[:url] + "/objects/#{@document.id}", :target=>'_new' %>
+      <%= link_to "Preview", Tufts::Application.config.preview_root + "/objects/#{@document.id}", :target=>'_new' %>
       </li>
   </ul>
 
