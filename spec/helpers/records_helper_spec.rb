@@ -5,9 +5,7 @@ describe RecordsHelper do
     helper.object_type_options.should == {'Audio' => 'TuftsAudio', 
        "Audio text" => "TuftsAudioText",
        "Collection guide" => "TuftsEAD",
-       "Faculty publication" => "TuftsFacultyPublication",
        "Generic object" => "TuftsGenericObject",
-       "Image text" => "TuftsImageText",
        'Image' => 'TuftsImage',
        'PDF' => 'TuftsPdf'}
   end
