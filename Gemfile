@@ -8,7 +8,7 @@ gem 'fcrepo_admin', '0.3.5'
 gem 'hydra-head'
 gem 'hydra-role-management', '0.0.2'
 #gem 'hydra-editor', path: '../hydra-editor'
-gem 'hydra-editor',   git: 'https://github.com/projecthydra/hydra-editor.git', ref: '2cd86d5'
+gem 'hydra-editor',   git: 'https://github.com/projecthydra/hydra-editor.git', ref: '2c668a3'
 gem 'solrizer',       git: 'https://github.com/projecthydra/solrizer.git', branch: 'single_value_field'
 
 # Gems used only for assets and not required

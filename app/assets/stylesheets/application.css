@@ -13,3 +13,7 @@
  *= require hydra-editor/hydra-editor
  */
 
+.bar {
+    height: 18px;
+    background: green;
+}
