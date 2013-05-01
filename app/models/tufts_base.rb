@@ -1,6 +1,7 @@
 class TuftsBase < ActiveFedora::Base
   include Tufts::ModelMethods
   include Hydra::ModelMixins::RightsMetadata
+  include AttachedFiles
   
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
   has_metadata "rightsMetadata", type: Hydra::Datastream::RightsMetadata

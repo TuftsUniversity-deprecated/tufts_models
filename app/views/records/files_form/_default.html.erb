@@ -1,0 +1,3 @@
+<% @record.external_datastreams.each do |name, ds| %>
+  <%= bootstrap_text_field_tag("#{@record.class.model_name.underscore}[datastreams][#{name}]", ds.dsLocation, :label=> name, :class=>'input-large') %>
+<% end %>

@@ -1,6 +1,19 @@
 class RecordsController < ApplicationController
   include RecordsControllerBehavior
 
+  def new
+    authorize! :create, ActiveFedora::Base
+    unless has_valid_type?
+      render 'choose_type'
+      return
+    end
+
+    args = params[:pid].present? ? {pid: params[:pid]} : {}
+    @record = params[:type].constantize.new(args)
+    @record.save!
+    initialize_fields
+  end
+
   def publish
     @record = ActiveFedora::Base.find(params[:id], cast: true)
     authorize! :publish, @record
@@ -9,8 +22,11 @@ class RecordsController < ApplicationController
   end
   
   def set_attributes
-    super
-    @record.inner_object.pid = params[:pid] if params[:pid]
+    if params[:files].present?
+      @record.store_archival_file(params[:files].first)
+    else
+      super
+    end
   end
 
 end

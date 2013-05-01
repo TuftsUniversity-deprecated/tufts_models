@@ -1,7 +1,7 @@
 class TuftsImage < TuftsBase
 
   has_file_datastream 'Thumbnail.png', control_group: 'E'
-  has_file_datastream 'Archival.tif', control_group: 'E'
+  has_file_datastream 'Archival.tif', control_group: 'E', original: true
   has_file_datastream 'Advanced.jpg', control_group: 'E'
   has_file_datastream 'Basic.jpg', control_group: 'E'
 
@@ -21,6 +21,7 @@ class TuftsImage < TuftsBase
     index_fulltext solr_doc
     return solr_doc
   end
+
 
   def self.to_class_uri
     'info:fedora/cm:Image.4DS'

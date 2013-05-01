@@ -5,6 +5,7 @@ Tufts::Application.routes.draw do
   # This is from Blacklight::Routes#solr_document, but with the constraints added which allows periods in the id
   resources :solr_document,  :path => 'catalog', :controller => 'catalog', :only => [:show, :update] 
   resources :catalog, :only => [:show, :update], :constraints => { :id => /[a-zA-Z0-9.:]+/ }
+  resources :download, :only =>[:show]
   
   HydraHead.add_routes(self)
   mount FcrepoAdmin::Engine => '/admin', :as=> 'fcrepo_admin'

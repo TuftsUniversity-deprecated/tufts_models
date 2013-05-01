@@ -8,7 +8,7 @@ gem 'fcrepo_admin', '0.3.5'
 gem 'hydra-head'
 gem 'hydra-role-management', '0.0.2'
 #gem 'hydra-editor', path: '../hydra-editor'
-gem 'hydra-editor',   git: 'https://github.com/projecthydra/hydra-editor.git', ref: '24838c2'
+gem 'hydra-editor',   git: 'https://github.com/projecthydra/hydra-editor.git', ref: '2cd86d5'
 gem 'solrizer',       git: 'https://github.com/projecthydra/solrizer.git', branch: 'single_value_field'
 
 # Gems used only for assets and not required
@@ -22,6 +22,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-rails'
+  gem "jquery-fileupload-rails"
   gem "bootstrap-sass"
 end
 

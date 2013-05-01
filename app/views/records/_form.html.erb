@@ -1,30 +1,28 @@
-<%= bootstrap_form_for @record, :url=>@record.new_record? ? hydra_editor.records_path : hydra_editor.record_path(@record), html: {:class => 'form-inline'} do |f| %>
-  <div class="row">
-    <div id="descriptions_display" class="span6">
+<div class="row">
+  <div id="descriptions_display" class="span6">
+      <%= bootstrap_form_for @record, :url=>@record.new_record? ? hydra_editor.records_path : hydra_editor.record_path(@record), html: {:class => 'form-inline'} do |f| %>
       <h2 class="non lower">Descriptions <small class="pull-right"><span class="error">*</span> indicates required fields</small> </h2>
       <div class="well">
         <% @record.terms_for_editing.each do |term| %>
           <%= render :partial => "edit_field", :locals => {:f =>f, :render_req => true, :key => term } %>
         <% end %>
       </div><!-- /well -->
-    </div>
+      <%= hidden_field_tag :type, params[:type] %>
+      <%= hidden_field_tag :pid, params[:pid] if controller.action_name == 'new'%>
+      <%= f.actions do %>
+        <%= f.submit 'Save' %>
+        <%= f.cancel %>
+      <% end %>
+    <% end %>
+  </div>
 
-    <div class="span6">
-      <h2>Datastream management</h2>
-      <div class="well">
-        <h3>External Datastreams</h3>
-        <% @record.external_datastreams.each do |name, ds| %>
-          <%= bootstrap_text_field_tag "#{@record.class.model_name.underscore}[datastreams][#{name}]", ds.dsLocation, :label=> name, :class=>'input-large' %>
-        <% end %>
-      </div>
+  <div class="span6">
+    <h2>Datastream management</h2>
+    <div class="well">
+      <h3>External Datastreams</h3>
+      <%= render_files_form(@record) %>
     </div>
   </div>
-  <%= hidden_field_tag :type, params[:type] %>
-  <%= hidden_field_tag :pid, params[:pid] if controller.action_name == 'new'%>
-  <%= f.actions do %>
-    <%= f.submit 'Save' %>
-    <%= f.cancel %>
-  <% end %>
-<% end %>
+</div>
 
 

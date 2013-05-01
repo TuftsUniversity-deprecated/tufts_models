@@ -1,15 +1,7 @@
 module TuftsFileAssetsHelper
 
   def convert_url_to_local_path(url)
-    local_object_store = Settings.local_object_store
-
-    if local_object_store.match(/^\#\{Rails.root\}/)
-      local_object_store = "#{Rails.root}" + local_object_store.gsub("\#\{Rails.root\}", "")
-    end
-
-    url = local_object_store + url.gsub(Settings.trim_bucket_url, "")
-
-    return url
+    Settings.local_object_store + url.gsub(Settings.trim_bucket_url, "")
   end
 
   # def send_datastream_inline(datastream)
