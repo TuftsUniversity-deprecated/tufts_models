@@ -10,12 +10,10 @@ $(function () {
         },
         add: function (e, data) {
             $('.progress').addClass('active').addClass('progress-striped');
-            //data.context = $('<p/>').text('Uploading...').appendTo(document.body);
             data.submit();
         },
         done: function (e, data) {
             $('.progress').removeClass('active').removeClass('progress-striped');
-            //data.context.text('Upload finished.');
         }
     });
 });

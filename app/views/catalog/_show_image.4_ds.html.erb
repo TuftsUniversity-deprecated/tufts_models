@@ -1,0 +1,8 @@
+<%= render partial: 'show_default', locals: {document: document} %>
+
+<h3>Thumbnail</h3>
+<img src="<%= download_path(document.id, datastream_id: 'Thumbnail.png') %>">
+<h3>Basic</h3>
+<img src="<%= download_path(document.id, datastream_id: 'Basic.jpg') %>">
+<h3>Advanced</h3>
+<img src="<%= download_path(document.id, datastream_id: 'Advanced.jpg') %>">

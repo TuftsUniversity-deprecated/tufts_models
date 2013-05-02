@@ -10,7 +10,7 @@ defaults: &defaults
 development:
   <<: *defaults
   neat_setting: 800
-  object_store_root: "<%=Rails.root%>/spec/fixtures/local_object_store"
+  object_store_root: "<%=Rails.root%>/tmp/local_object_store"
   processing_url: "SKIP"
   repository_url: "http://localhost:8983/"
 tdldev:
@@ -25,7 +25,7 @@ stage:
   repository_url: "http://stage-repository01.lib.tufts.edu:8080"
 test:
   <<: *defaults
-  object_store_root: "/tdr/dcadata02/tufts/central/dca/fake_bucket"
+  object_store_root: "<%=Rails.root%>/spec/fixtures/local_object_store"
   processing_url: "SKIP"
   repository_url: "http://stage-repository01.lib.tufts.edu:8080"
 production:

@@ -9,14 +9,18 @@ module AttachedFiles
   end
 
   def store_archival_file(file)
-    dir = File.join(local_path_root, directory_for(original_file_datastream))
-    FileUtils.mkdir_p(dir) unless Dir.exists?(dir)
+    make_directory_for_datastream(original_file_datastream)
     File.open(local_path_for(original_file_datastream), 'wb') do |f| 
       f.write file.read 
     end
 
     datastreams[original_file_datastream].dsLocation = remote_url_for(original_file_datastream)
     create_derivatives
+  end
+
+  def make_directory_for_datastream(dsid)
+    dir = File.join(local_path_root, directory_for(dsid))
+    FileUtils.mkdir_p(dir) unless Dir.exists?(dir)
   end
 
   def remote_url_for(name)
