@@ -9,12 +9,13 @@ module AttachedFiles
   end
 
   def store_archival_file(file)
+    extension = file.original_filename.split('.').last
     make_directory_for_datastream(original_file_datastream)
-    File.open(local_path_for(original_file_datastream), 'wb') do |f| 
+    File.open(local_path_for(original_file_datastream, extension), 'wb') do |f| 
       f.write file.read 
     end
 
-    datastreams[original_file_datastream].dsLocation = remote_url_for(original_file_datastream)
+    datastreams[original_file_datastream].dsLocation = remote_url_for(original_file_datastream, extension)
     create_derivatives
   end
 
@@ -23,12 +24,12 @@ module AttachedFiles
     FileUtils.mkdir_p(dir) unless Dir.exists?(dir)
   end
 
-  def remote_url_for(name)
-    File.join(remote_root, file_path(name))
+  def remote_url_for(name, extension)
+    File.join(remote_root, file_path(name, extension))
   end
 
-  def local_path_for(name)
-    File.join(local_path_root, file_path(name))
+  def local_path_for(name, extension=nil)
+    File.join(local_path_root, file_path(name, extension))
   end
 
 
@@ -46,15 +47,24 @@ module AttachedFiles
     File.join(Settings.trim_bucket_url, Settings.object_store_path)
   end
 
-
   def local_path_root
     File.join(Settings.object_store_root, Settings.object_store_path)
   end
 
-  def file_path(name)
+  # Given a datastream name, return the local path where the file can be found.
+  # If an extension is provided, generate the path, if the extension is not provided,
+  # derive it from the stored dsLocation
+  # @example
+  #   obj.file_path('Archival.tif', 'tif')
+  #   # => /local_object_store/data01/tufts/central/dca/MS054/archival_tif/MS054.003.DO.02108.archival.tif
+  def file_path(name, extension=nil)
     File.join(directory_for(name), "#{pid_without_namespace}.#{name.downcase}")
   end
 
+  # Given a datastream name, return the directory path where the file can be found.
+  # @example
+  #   obj.file_path('Archival.tif')
+  #   # => /local_object_store/data01/tufts/central/dca/MS054/archival_tif
   def directory_for(name)
     File.join(collection_id, name.downcase.gsub('.', '_'))
   end

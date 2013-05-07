@@ -1,7 +1,7 @@
 module TuftsFileAssetsHelper
 
   def convert_url_to_local_path(url)
-    Settings.local_object_store + url.gsub(Settings.trim_bucket_url, "")
+    Settings.object_store_root + url.gsub(Settings.trim_bucket_url, "")
   end
 
   # def send_datastream_inline(datastream)

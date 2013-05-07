@@ -40,10 +40,10 @@ describe TuftsImage do
       subject.inner_object.pid = 'tufts:MS054.003.DO.02108'
     end
     it "should give a remote url" do
-      subject.remote_url_for('Archival.tif').should == 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/archival_tif/MS054.003.DO.02108.archival.tif'
+      subject.remote_url_for('Archival.tif', 'tif').should == 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/archival_tif/MS054.003.DO.02108.archival.tif'
     end
     it "should give a local_path" do
-      subject.local_path_for('Archival.tif').should == "#{Rails.root}/spec/fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_tif/MS054.003.DO.02108.archival.tif"
+      subject.local_path_for('Archival.tif', 'tif').should == "#{Rails.root}/spec/fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_tif/MS054.003.DO.02108.archival.tif"
     end
   end
 
@@ -54,7 +54,7 @@ describe TuftsImage do
     describe "basic" do
       before { subject.create_basic }
       it "should create Basic.jpg" do
-        File.exists?(subject.local_path_for('Basic.jpg')).should be_true
+        File.exists?(subject.local_path_for('Basic.jpg', 'jpg')).should be_true
         subject.datastreams["Basic.jpg"].dsLocation.should == "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/basic_jpg/MISS.ISS.IPPI.basic.jpg"
         subject.datastreams["Basic.jpg"].mimeType.should == "image/jpeg"
       end
@@ -63,7 +63,7 @@ describe TuftsImage do
     describe "advanced" do
       before { subject.create_advanced }
       it "should create Advanced.jpg" do
-        File.exists?(subject.local_path_for('Advanced.jpg')).should be_true
+        File.exists?(subject.local_path_for('Advanced.jpg', 'jpg')).should be_true
         subject.datastreams["Advanced.jpg"].dsLocation.should == "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/advanced_jpg/MISS.ISS.IPPI.advanced.jpg"
         subject.datastreams["Advanced.jpg"].mimeType.should == "image/jpeg"
       end
@@ -72,7 +72,7 @@ describe TuftsImage do
     describe "thumbnail" do
       before { subject.create_thumbnail }
       it "should create Thumbnail.png" do
-        File.exists?(subject.local_path_for('Thumbnail.png')).should be_true
+        File.exists?(subject.local_path_for('Thumbnail.png', 'png')).should be_true
         subject.datastreams["Thumbnail.png"].dsLocation.should == "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/thumbnail_png/MISS.ISS.IPPI.thumbnail.png"
         subject.datastreams["Thumbnail.png"].mimeType.should == "image/png"
       end

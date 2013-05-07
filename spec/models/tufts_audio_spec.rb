@@ -79,8 +79,38 @@ describe TuftsAudio do
       @audio.push_to_production!
       @audio.should be_published
     end
-
-    
   end
 
+
+  it "should have an original_file_datastream" do
+    TuftsAudio.original_file_datastream.should == "ARCHIVAL_SOUND"
+  end
+
+  describe "an image with a pid" do
+    before do
+      subject.inner_object.pid = 'tufts:MS054.003.DO.02108'
+    end
+    it "should give a remote url" do
+      subject.remote_url_for('ARCHIVAL_SOUND', 'mp3').should == 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3'
+    end
+    it "should give a local_path" do
+      subject.local_path_for('ARCHIVAL_SOUND', 'mp3').should == "#{Rails.root}/spec/fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3"
+    end
+  end
+
+
+  describe "create_derivatives" do
+    before do
+      subject.inner_object.pid = 'tufts:MISS.ISS.IPPI'
+      subject.datastreams["ARCHIVAL_SOUND"].dsLocation = "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/archival_sound/MISS.ISS.IPPI.archival.wav"
+    end
+    describe "basic" do
+      before { subject.create_derivatives }
+      it "should create ACCESS_MP3" do
+        File.exists?(subject.local_path_for('ACCESS_MP3', 'mp3')).should be_true
+        subject.datastreams["ACCESS_MP3"].dsLocation.should == "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/access_mp3/MISS.ISS.IPPI.access.mp3"
+        subject.datastreams["ACCESS_MP3"].mimeType.should == "audio/mp3"
+      end
+    end
+  end
 end

@@ -81,7 +81,8 @@ class TuftsImage < TuftsBase
 
   def create_image(dsid, mime_type, quality = nil)
     make_directory_for_datastream(dsid)
-    output_path = local_path_for(dsid)
+    # passing the extension is not necessary, so just plassing mime_type as a placeholder for that.
+    output_path = local_path_for(dsid, mime_type)
     xfrm = load_image_transformer
     yield(xfrm) if block_given?
     if quality
@@ -89,14 +90,15 @@ class TuftsImage < TuftsBase
     else
       xfrm.write(output_path)
     end
-    datastreams[dsid].dsLocation = remote_url_for(dsid)
+    # passing the extension is not necessary, so just plassing mime_type as a placeholder for that.
+    datastreams[dsid].dsLocation = remote_url_for(dsid, mime_type)
     datastreams[dsid].mimeType = mime_type
     output_path
   end
 
 
   def load_image_transformer
-    Magick::ImageList.new(local_path_for(original_file_datastream))
+    Magick::ImageList.new(local_path_for(original_file_datastream, 'tif'))
   end
 
   def self.to_class_uri

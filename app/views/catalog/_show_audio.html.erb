@@ -1,0 +1,4 @@
+<%= render partial: 'show_default', locals: {document: document} %>
+
+<h3>Mp3</h3>
+<audio src="<%= download_path(document.id, datastream_id: 'ACCESS_MP3') %>"/>
