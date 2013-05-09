@@ -110,7 +110,7 @@ describe TuftsAudio do
       it "should create ACCESS_MP3" do
         File.exists?(subject.local_path_for('ACCESS_MP3', 'mp3')).should be_true
         subject.datastreams["ACCESS_MP3"].dsLocation.should == "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/access_mp3/MISS.ISS.IPPI.access.mp3"
-        subject.datastreams["ACCESS_MP3"].mimeType.should == "audio/mp3"
+        subject.datastreams["ACCESS_MP3"].mimeType.should == "audio/mpeg"
       end
     end
   end

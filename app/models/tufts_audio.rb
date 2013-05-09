@@ -18,7 +18,7 @@ class TuftsAudio < TuftsBase
 
     # passing the extension is not necessary, so just plassing mime_type as a placeholder for that.
     datastreams['ACCESS_MP3'].dsLocation = remote_url_for('ACCESS_MP3', 'mp3')
-    datastreams['ACCESS_MP3'].mimeType = 'audio/mp3' 
+    datastreams['ACCESS_MP3'].mimeType = 'audio/mpeg' 
     output_path
 
   end
