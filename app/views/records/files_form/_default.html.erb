@@ -1,5 +1,5 @@
 <%= form_for @record, :url=>@record.new_record? ? hydra_editor.records_path : hydra_editor.record_path(@record) do |f| %>
-  <input id="fileupload" type="file" name="files[]" multiple>
+  <input class="fileupload" type="file" name="files[<%= @record.class.original_file_datastreams.first%>]">
   <div id="progress" class="progress progress-striped">
       <div class="bar" style="width: 0%;"></div>
   </div>

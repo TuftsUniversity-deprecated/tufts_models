@@ -2,21 +2,23 @@ module AttachedFiles
   extend ActiveSupport::Concern
 
   included do
-    class_attribute :original_file_datastream
+    class_attribute :original_file_datastreams
+    self.original_file_datastreams = []
   end
 
   def create_derivatives
   end
 
-  def store_archival_file(file)
+  def store_archival_file(dsid, file)
     extension = file.original_filename.split('.').last
-    make_directory_for_datastream(original_file_datastream)
-    File.open(local_path_for(original_file_datastream, extension), 'wb') do |f| 
+    make_directory_for_datastream(dsid)
+    File.open(local_path_for(dsid, extension), 'wb') do |f| 
       f.write file.read 
     end
 
-    ds = datastreams[original_file_datastream]
-    ds.dsLocation = remote_url_for(original_file_datastream, extension)
+    puts "DSID: #{dsid}"
+    ds = datastreams[dsid]
+    ds.dsLocation = remote_url_for(dsid, extension)
     ds.mimeType = file.content_type
     create_derivatives
   end
@@ -106,7 +108,7 @@ module AttachedFiles
         args = args.first || {}
       end
 
-      self.original_file_datastream = args.fetch(:name, 'content') if args[:original]
+      self.original_file_datastreams += [args.fetch(:name, 'content')] if args[:original]
     end
 
   end

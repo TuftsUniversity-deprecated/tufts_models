@@ -23,7 +23,9 @@ class RecordsController < ApplicationController
   
   def set_attributes
     if params[:files].present?
-      @record.store_archival_file(params[:files].first)
+      params[:files].each do |dsid, file|
+        @record.store_archival_file(dsid, file)
+      end
     else
       super
     end

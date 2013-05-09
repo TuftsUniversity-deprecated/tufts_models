@@ -1,19 +1,22 @@
 $(function () {
-    $('#fileupload').fileupload({
+    $('.fileupload').fileupload({
         dataType: 'json',
         progressall: function (e, data) {
+            $form = $(this).closest('form');
             var progress = parseInt(data.loaded / data.total * 100, 10);
-            $('.progress .bar').css(
+            $('.progress .bar', $form).css(
                 'width',
                 progress + '%'
             );
         },
         add: function (e, data) {
-            $('.progress').addClass('active').addClass('progress-striped');
+            $form = $(this).closest('form');
+            $('.progress', $form).addClass('active').addClass('progress-striped');
             data.submit();
         },
         done: function (e, data) {
-            $('.progress').removeClass('active').removeClass('progress-striped');
+            $form = $(this).closest('form');
+            $('.progress', $form).removeClass('active').removeClass('progress-striped');
         }
     });
 });

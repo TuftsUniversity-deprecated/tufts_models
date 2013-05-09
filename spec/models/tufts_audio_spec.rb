@@ -83,10 +83,10 @@ describe TuftsAudio do
 
 
   it "should have an original_file_datastream" do
-    TuftsAudio.original_file_datastream.should == "ARCHIVAL_SOUND"
+    TuftsAudio.original_file_datastreams.should == ["ARCHIVAL_SOUND"]
   end
 
-  describe "an image with a pid" do
+  describe "an audio with a pid" do
     before do
       subject.inner_object.pid = 'tufts:MS054.003.DO.02108'
     end

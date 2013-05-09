@@ -32,7 +32,7 @@ describe TuftsImage do
   end
 
   it "should have an original_file_datastream" do
-    TuftsImage.original_file_datastream.should == "Archival.tif"
+    TuftsImage.original_file_datastreams.should == ["Archival.tif"]
   end
 
   describe "an image with a pid" do

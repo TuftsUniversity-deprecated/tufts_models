@@ -26,7 +26,7 @@ describe TuftsPdf do
   end
 
   it "should have an original_file_datastream" do
-    TuftsPdf.original_file_datastream.should == "Archival.pdf"
+    TuftsPdf.original_file_datastreams.should == ["Archival.pdf"]
   end
 
   describe "an pdf with a pid" do

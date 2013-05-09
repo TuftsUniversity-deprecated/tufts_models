@@ -51,7 +51,7 @@ class TuftsAudio < TuftsBase
 
   # Given a datastream name, return the local path where the file can be found.
   # @example
-  #   obj.file_path('Archival.tif', 'image/tiff')
+  #   obj.file_path('Archival.tif', 'tif')
   #   # => /local_object_store/data01/tufts/central/dca/MS054/archival_tif/MS054.003.DO.02108.archival.tif
   def file_path(name, extension = nil)
     case name

@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe TuftsAudioText do
-  
   describe "with access rights" do
     before do
       @audio_text = TuftsAudioText.new
@@ -24,5 +23,34 @@ describe TuftsAudioText do
     subject {TuftsAudioText}
     its(:to_class_uri) {should == 'info:fedora/cm:Audio.OralHistory'}
   end
+
+  it "should have an original_file_datastreams" do
+    TuftsAudioText.original_file_datastreams.should == ['ARCHIVAL_XML', "ARCHIVAL_WAV"]
+  end
+
+  describe "an audio text with a pid" do
+    before do
+      subject.inner_object.pid = 'tufts:MS054.003.DO.02108'
+    end
+    it "should give a remote url" do
+      subject.remote_url_for('ARCHIVAL_WAV', 'wav').should == 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/archival_wav/MS054.003.DO.02108.archival.wav'
+    end
+    it "should give a local_path" do
+      subject.local_path_for('ARCHIVAL_WAV', 'wav').should == "#{Rails.root}/spec/fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_wav/MS054.003.DO.02108.archival.wav"
+    end
+    it "should give a remote url" do
+      subject.remote_url_for('ARCHIVAL_XML', 'xml').should == 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/archival_xml/MS054.003.DO.02108.archival.xml'
+    end
+    it "should give a local_path" do
+      subject.local_path_for('ARCHIVAL_XML', 'xml').should == "#{Rails.root}/spec/fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_xml/MS054.003.DO.02108.archival.xml"
+    end
+    it "should give a remote url" do
+      subject.remote_url_for('ACCESS_MP3', 'mp3').should == 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/access_mp3/MS054.003.DO.02108.access.mp3'
+    end
+    it "should give a local_path" do
+      subject.local_path_for('ACCESS_MP3', 'mp3').should == "#{Rails.root}/spec/fixtures/local_object_store/data01/tufts/central/dca/MS054/access_mp3/MS054.003.DO.02108.access.mp3"
+    end
+  end
+
 
 end
