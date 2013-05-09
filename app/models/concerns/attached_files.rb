@@ -15,7 +15,9 @@ module AttachedFiles
       f.write file.read 
     end
 
-    datastreams[original_file_datastream].dsLocation = remote_url_for(original_file_datastream, extension)
+    ds = datastreams[original_file_datastream]
+    ds.dsLocation = remote_url_for(original_file_datastream, extension)
+    ds.mimeType = file.content_type
     create_derivatives
   end
 

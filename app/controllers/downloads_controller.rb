@@ -12,4 +12,8 @@ class DownloadsController < ApplicationController
   def content_options
     {disposition: 'inline', type: datastream.mimeType, filename: datastream_name}
   end
+
+  def datastream_name
+    File.basename(asset.local_path_for(params[:datastream_id]))
+  end
 end
