@@ -73,6 +73,17 @@ module AttachedFiles
     File.join(collection_id, name.downcase.gsub('.', '_'))
   end
 
+# 2. There are two locations where uploaded files and manifestations end up. We will refer to them as "Tisch" and "DCA".
+#   a. You can figure out which is which based on the PID creation
+#     i.  If the objects use an automatically created pid, then they are "Tisch" objects.
+#     ii. If the objects use a user-supplied PID, then they are "DCA" objects.
+#   c. The location of the uploaded file is determined by the object type. The path is NFS mounted on the same system where the server is running, beginning at the location Mike refers to in his e-mail as "bucket".
+#     i.      If this is a "Tisch" object then it goes in [bucket]/tufts/sas, and then the appropriate directory as in 2b. above.
+#     ii.      If this is a "DCA" object than it goes in [bucket]/tufts/central/dca/[collection #], and then the appropriate directory as in 2b. above.
+#         1. "Collection #" is a five digit alphanumeric string (e.g. "MS001"). These five characters are the first five characters in the PID after "tufts:".
+#         2. For example, for the PDF with the PID tufts:UA015.012.079.00001, the PDF datastream would go into a directory called [bucket]/tufts/central/dca/UA015/archival_pdf
+
+
 
   module ClassMethods
 
