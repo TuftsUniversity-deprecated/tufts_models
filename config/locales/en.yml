@@ -2,6 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  blacklight:
+    application_name: "Tufts Repository Admin"
   hydra:
     field_label:
       source2: "Alternate Source"
