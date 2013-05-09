@@ -99,7 +99,8 @@ describe TuftsAudio do
   end
 
 
-  describe "create_derivatives" do
+  # This tests depends on ffmpeg, so exlude it for travis
+  describe "create_derivatives", :unless=> ENV["TRAVIS"] do
     before do
       subject.inner_object.pid = 'tufts:MISS.ISS.IPPI'
       subject.datastreams["ARCHIVAL_SOUND"].dsLocation = "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/archival_sound/MISS.ISS.IPPI.archival.wav"
