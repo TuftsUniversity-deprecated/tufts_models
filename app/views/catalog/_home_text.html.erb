@@ -1,5 +1,7 @@
 <h1>Here we are</h1>
 
 <nav>
-<%= link_to "Create a new object", hydra_editor.new_record_path() %>
+<% if can? :create,  ActiveFedora::Base %>
+  <%= link_to "Create a new object", hydra_editor.new_record_path()%>
+<% end %>
 </nav>
