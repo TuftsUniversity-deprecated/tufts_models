@@ -24,14 +24,15 @@ class TuftsBase < ActiveFedora::Base
   has_metadata :name => "FILE-META", :type => TuftsFileMeta
 
 
-  validates_presence_of :title
+  validates :title, :presence => true
+  validates :displays, :inclusion => { :in => %w(dl tisch aah perseus elections dark), :if => :displays}
   
   delegate_to "DCA-META", [:title, :creator, :source2, :description, :dateCreated, :dateAvailable, 
                            :dateIssued, :identifier, :rights, :bibliographicCitation, :publisher,
                            :type2, :format2, :extent, :persname, :corpname, :geogname, :genre,
                            :subject, :funder, :temporal, :resolution, :bitDepth, :colorSpace, 
                            :filesize]
-  delegate_to "DCA-ADMIN", [:published_at, :edited_at]
+  delegate_to "DCA-ADMIN", [:published_at, :edited_at, :displays], :unique=>true
 
   def datastreams= (ds_data)
     ds_data.each do |dsid, val|

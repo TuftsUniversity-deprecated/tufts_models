@@ -45,9 +45,37 @@ describe TuftsAudio do
         solr_doc = subject.to_solr
         solr_doc["subject_tesim"].should == ["subject1"]
         solr_doc["funder_tesim"].should == ["subject2"]
-        # TODO is this right?
+        # TODO is this right? Presumably this is for the facet
         solr_doc["subject_sim"].should == ["Subject1"]
       end
+    end
+
+    describe "displays" do
+      it "should save it" do
+        subject.displays = "dl"
+        solr_doc = subject.to_solr
+        solr_doc['displays_ssi'].should == 'dl'
+      end
+    end
+  end
+
+  describe "displays" do
+    it "should only allow one of the approved values" do
+      subject.should be_valid # no value
+      subject.displays = 'fake'
+      subject.should_not be_valid
+      subject.displays = 'dl'
+      subject.should be_valid
+      subject.displays = 'tisch'
+      subject.should be_valid
+      subject.displays = 'aah'
+      subject.should be_valid
+      subject.displays = 'perseus'
+      subject.should be_valid
+      subject.displays = 'elections'
+      subject.should be_valid
+      subject.displays = 'dark'
+      subject.should be_valid
     end
   end
 
