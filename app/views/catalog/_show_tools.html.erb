@@ -23,7 +23,7 @@
        </li>
       <% end %>
       <li>
-      <%= link_to "Preview", Tufts::Application.config.preview_root + "/objects/#{@document.id}", :target=>'_new' %>
+      <%= link_to "Preview", @document.preview_path, :target=>'_new' %>
       </li>
   </ul>
 

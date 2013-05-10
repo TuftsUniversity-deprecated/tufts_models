@@ -63,7 +63,5 @@ module Tufts
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    
-    config.preview_root = 'http://localhost:8983/fedora'
   end
 end

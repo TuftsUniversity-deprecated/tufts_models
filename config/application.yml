@@ -7,6 +7,8 @@ defaults: &defaults
   repository_url: "http://repository01.lib.tufts.edu:8080"
   object_store_root: '/tdr/dcadata02/tufts/central/dca/fake_bucket'
   object_store_path: 'data01/tufts/central/dca'
+  preview_fedora_url: 'http://hydraadmin-dev.uit.tufts.edu:8080/fedora'
+  preview_dl_url: 'http://dev-dl.lib.tufts.edu'
 development:
   <<: *defaults
   neat_setting: 800
@@ -28,6 +30,7 @@ test:
   object_store_root: "<%=Rails.root%>/spec/fixtures/local_object_store"
   processing_url: "SKIP"
   repository_url: "http://stage-repository01.lib.tufts.edu:8080"
+  preview_fedora_url: 'http://localhost:8983/fedora'
 production:
   <<: *defaults
   tdl_feedback_address: "deborah.kaplan@tufts.edu"
