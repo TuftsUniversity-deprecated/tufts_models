@@ -10,7 +10,7 @@ class RecordsController < ApplicationController
 
     args = params[:pid].present? ? {pid: params[:pid]} : {}
     @record = params[:type].constantize.new(args)
-    @record.save!
+    @record.save(validate: false)
     initialize_fields
   end
 

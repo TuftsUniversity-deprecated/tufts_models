@@ -7,8 +7,10 @@ gem 'sqlite3'
 gem 'fcrepo_admin', '0.3.5'
 gem 'hydra-head'
 gem 'hydra-role-management', '0.0.2'
+gem 'active-fedora', git: 'https://github.com/projecthydra/active_fedora.git', ref: 'e44f974'
+gem 'om', git: 'https://github.com/projecthydra/om.git', branch: 'fix_serializing_nil'
+gem 'hydra-editor',   git: 'https://github.com/projecthydra/hydra-editor.git', ref: '9316391'
 #gem 'hydra-editor', path: '../hydra-editor'
-gem 'hydra-editor',   git: 'https://github.com/projecthydra/hydra-editor.git', ref: '2c668a3'
 
 # Gems used only for assets and not required
 # in production environments by default.

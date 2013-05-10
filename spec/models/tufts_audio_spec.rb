@@ -25,7 +25,8 @@ describe TuftsAudio do
                            :dateIssued, :identifier, :rights, :bibliographicCitation, :publisher,
                            :type2, :format2, :extent, :persname, :corpname, :geogname, :genre,
                            :subject, :funder, :temporal, :resolution, :bitDepth, :colorSpace, 
-                           :filesize]}
+                           :filesize, :steward, :name, :comment, :retentionPeriod, :displays,
+                           :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note]}
   end
 
   describe "required terms" do

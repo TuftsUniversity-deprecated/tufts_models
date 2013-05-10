@@ -1,10 +1,40 @@
 GIT
+  remote: https://github.com/projecthydra/active_fedora.git
+  revision: e44f974d3faca830888ea05fccabfbbae34068fa
+  ref: e44f974
+  specs:
+    active-fedora (6.1.1)
+      activeresource (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      deprecation
+      mediashelf-loggable
+      nom-xml (>= 0.5.1)
+      om (~> 2.1.0)
+      rdf
+      rdf-rdfxml (~> 1.0.0)
+      rsolr
+      rubydora (~> 1.6)
+
+GIT
   remote: https://github.com/projecthydra/hydra-editor.git
-  revision: 2c668a33bc83ae3b34fac641d054e8a45cbe0e2f
-  ref: 2c668a3
+  revision: 9316391a6f3bc98f904cfaeef33096e01e002dcd
+  ref: 9316391
   specs:
     hydra-editor (0.0.1)
       rails (~> 3.2.13)
+
+GIT
+  remote: https://github.com/projecthydra/om.git
+  revision: 10929f7b27fdc4e76c6e4e6f45959f9b6b2e078b
+  branch: fix_serializing_nil
+  specs:
+    om (2.1.2)
+      activemodel
+      activesupport
+      deprecation
+      mediashelf-loggable
+      nokogiri (>= 1.4.2)
+      solrizer (~> 3.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -22,18 +52,6 @@ GEM
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
-    active-fedora (6.1.1)
-      activeresource (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      builder (~> 3.0.0)
-      deprecation
-      mediashelf-loggable
-      nom-xml (>= 0.5.1)
-      om (~> 2.1.0)
-      rdf
-      rdf-rdfxml (~> 1.0.0)
-      rsolr
-      rubydora (~> 1.6)
     activemodel (3.2.13)
       activesupport (= 3.2.13)
       builder (~> 3.0.0)
@@ -167,13 +185,6 @@ GEM
       activesupport
       i18n
       nokogiri
-    om (2.1.2)
-      activemodel
-      activesupport
-      deprecation
-      mediashelf-loggable
-      nokogiri (>= 1.4.2)
-      solrizer (~> 3.1.0)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -284,6 +295,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active-fedora!
   bootstrap-sass
   bootstrap_forms
   capybara
@@ -298,6 +310,7 @@ DEPENDENCIES
   jettywrapper
   jquery-fileupload-rails
   jquery-rails
+  om!
   rails (= 3.2.13)
   rmagick (= 2.13.2)
   rspec-rails

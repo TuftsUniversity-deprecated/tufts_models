@@ -32,7 +32,9 @@ class TuftsBase < ActiveFedora::Base
                            :type2, :format2, :extent, :persname, :corpname, :geogname, :genre,
                            :subject, :funder, :temporal, :resolution, :bitDepth, :colorSpace, 
                            :filesize]
-  delegate_to "DCA-ADMIN", [:published_at, :edited_at, :displays], :unique=>true
+  delegate_to "DCA-ADMIN", [:published_at, :edited_at, :displays], unique: true
+  delegate_to "DCA-ADMIN", [:steward, :name, :comment, :retentionPeriod, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note]
+
 
   def datastreams= (ds_data)
     ds_data.each do |dsid, val|
@@ -49,7 +51,15 @@ class TuftsBase < ActiveFedora::Base
   end
 
   def terms_for_display
-    self.descMetadata.class.terminology.terms.keys - [:root]
+    descMetadata_display_fields + admin_display_fields
+  end
+
+  def descMetadata_display_fields
+    descMetadata.class.terminology.terms.keys - [:root]
+  end
+
+  def admin_display_fields
+    admin.class.terminology.terms.keys  - [:admin, :published_at, :edited_at]
   end
 
   def descMetadata
