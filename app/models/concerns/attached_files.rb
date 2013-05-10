@@ -16,7 +16,6 @@ module AttachedFiles
       f.write file.read 
     end
 
-    puts "DSID: #{dsid}"
     ds = datastreams[dsid]
     ds.dsLocation = remote_url_for(dsid, extension)
     ds.mimeType = file.content_type

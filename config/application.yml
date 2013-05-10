@@ -15,6 +15,7 @@ development:
   object_store_root: "<%=Rails.root%>/tmp/local_object_store"
   processing_url: "SKIP"
   repository_url: "http://localhost:8983/"
+  preview_fedora_url: 'http://localhost:8983/fedora'
 tdldev:
   <<: *defaults
   object_store_root: "/tdr/dcadata02/tufts/central/dca/fake_bucket"
