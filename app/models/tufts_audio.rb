@@ -57,7 +57,7 @@ class TuftsAudio < TuftsBase
     case name
     when 'ARCHIVAL_SOUND'
       if self.datastreams[name].dsLocation
-        self.datastreams[name].dsLocation.sub(Settings.trim_bucket_url + '/' + Settings.object_store_path, "")
+        self.datastreams[name].dsLocation.sub(Settings.trim_bucket_url + '/' + object_store_path, "")
       else
         raise ArgumentError, "Extension required for #{name}" unless extension
         File.join(directory_for(name), "#{pid_without_namespace}.archival.#{extension}")

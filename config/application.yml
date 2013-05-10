@@ -5,8 +5,11 @@ defaults: &defaults
   trim_bucket_url: "http://bucket01.lib.tufts.edu"
   processing_url: "http://processing01.lib.tufts.edu:8080"
   repository_url: "http://repository01.lib.tufts.edu:8080"
+    #/tdr/dcadata02/tufts/central/dca/
   object_store_root: '/tdr/dcadata02/tufts/central/dca/fake_bucket'
-  object_store_path: 'data01/tufts/central/dca'
+  object_store_base: 'data01/tufts'
+  object_store_dca: 'central/dca'
+  object_store_tisch: 'sas'
   preview_fedora_url: 'http://hydraadmin-dev.uit.tufts.edu:8080/fedora'
   preview_dl_url: 'http://dev-dl.lib.tufts.edu'
 development:
