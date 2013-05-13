@@ -13,9 +13,10 @@ task :default => [:ci]
 
 require 'resque/tasks'
 
-task "resque:setup" => :environment do
-  puts "Doing this jazz"
-  Resque.after_fork do
-    Resque.redis.client.reconnect
-  end
-end
+task "resque:setup" => :environment
+# do
+#   puts "Doing this jazz"
+#   Resque.after_fork do
+#     Resque.redis.client.reconnect
+#   end
+# end
