@@ -22,7 +22,6 @@ class TuftsImage < TuftsBase
 
     solr_doc = super
     index_sort_fields solr_doc
-    index_fulltext solr_doc
     return solr_doc
   end
 

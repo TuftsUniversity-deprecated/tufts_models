@@ -58,6 +58,7 @@ module Tufts
     end
 
     def index_fulltext(solr_doc)
+      return # Turn off for now.  We don't have a valid processing url.
       full_text = ""
       models = self.relationships(:has_model)
       if models
