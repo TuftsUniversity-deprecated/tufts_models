@@ -12,7 +12,7 @@ module Job
     end
 
     def run
-      self.record = ActiveFeora::Base.load_instance_from_solr(record_id)
+      self.record = ActiveFedora::Base.load_instance_from_solr(record_id)
       record.create_derivatives
     end
   end

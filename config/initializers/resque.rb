@@ -1,6 +1,17 @@
 config = YAML::load(ERB.new(IO.read(File.join(Rails.root, 'config', 'redis.yml'))).result)[Rails.env].with_indifferent_access
 Resque.redis = Redis.new(host: config[:host], port: config[:port], thread_safe: true)
 
+
+unless Resque.inline?
+  require 'active_support/lazy_load_hooks'
+  ActiveSupport.on_load :active_record do
+    require 'resque'
+    Resque.before_fork do |job|
+      ActiveRecord::Base.clear_all_connections!
+    end
+  end
+end
+
 # if defined?(PhusionPassenger)
 #   PhusionPassenger.on_event(:starting_worker_process) do |forked|
 #     # We're in smart spawning mode.
