@@ -19,7 +19,7 @@ module AttachedFiles
     ds = datastreams[dsid]
     ds.dsLocation = remote_url_for(dsid, extension)
     ds.mimeType = file.content_type
-    create_derivatives
+    Tufts.queue.push(Job::CreateDerivatives.new(pid))
   end
 
   def make_directory_for_datastream(dsid)

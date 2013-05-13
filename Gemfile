@@ -30,6 +30,7 @@ end
 gem "devise"
 gem 'bootstrap_forms'
 gem 'rmagick', '2.13.2', require: 'RMagick'
+gem 'resque'
 
 group :development do
   gem 'unicorn'
