@@ -9,9 +9,15 @@ class RecordsController < ApplicationController
     end
 
     args = params[:pid].present? ? {pid: params[:pid]} : {}
-    @record = params[:type].constantize.new(args)
-    @record.save(validate: false)
-    initialize_fields
+
+    if !args[:pid] || (args[:pid] && /:/.match(args[:pid]))
+      @record = params[:type].constantize.new(args)
+      @record.save(validate: false)
+      initialize_fields
+    else
+      flash[:error] = "You have specified an invalid pid. A valid pid must contain a colin (i.e. tufts:1231)"
+      render 'choose_type'
+    end
   end
 
   def publish

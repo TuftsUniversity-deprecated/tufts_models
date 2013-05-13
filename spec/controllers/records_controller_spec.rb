@@ -15,10 +15,35 @@ describe RecordsController do
         response.should be_successful
         response.should render_template(:choose_type)
       end
-      it "should be successful" do
+      it "should be successful without a pid" do
         get :new, :type=>'TuftsAudio'
         response.should be_successful
         response.should render_template(:new)
+        assigns[:record].should be_kind_of TuftsAudio
+        assigns[:record].should_not be_new_object
+      end
+      describe "with a pid" do
+        before do
+          begin
+            a = TuftsAudio.find('tufts:123.1231')
+            a.destroy
+          rescue ActiveFedora::ObjectNotFoundError
+          end
+        end
+        it "should be successful with a pid" do
+          get :new, :type=>'TuftsAudio', :pid=>'tufts:123.1231'
+          response.should be_successful
+          response.should render_template(:new)
+          assigns[:record].should be_kind_of TuftsAudio
+          assigns[:record].should_not be_new_object
+          assigns[:record].pid.should == 'tufts:123.1231'
+        end
+      end
+      it "should be an error with an invalid pid" do
+        get :new, :type=>'TuftsAudio', :pid => '123.1231'
+        response.should be_successful
+        response.should render_template(:choose_type)
+        flash[:error].should == "You have specified an invalid pid. A valid pid must contain a colin (i.e. tufts:1231)"
       end
     end
 
