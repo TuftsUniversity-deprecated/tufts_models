@@ -1,14 +1,4 @@
-class TuftsRCR < ActiveFedora::Base
-
-  include Hydra::ModelMethods
-  include Tufts::ModelMethods
-  include Hydra::ModelMixins::RightsMetadata
-  
-  # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
-  has_metadata "rightsMetadata", type: Hydra::Datastream::RightsMetadata
-
-  # Tufts specific needed metadata streams
-  has_metadata :name => "DCA-META", :type => TuftsDcaMeta
+class TuftsRCR < TuftsBase
 
   #MK 2011-04-13 - Are we really going to need to access FILE-META from FILE-META.  I'm guessing
   # not.

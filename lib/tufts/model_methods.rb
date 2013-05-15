@@ -9,37 +9,9 @@ module Tufts
   module ModelMethods
   include TuftsFileAssetsHelper
 
-    def self.get_metadata(fedora_obj)
-      datastream = fedora_obj.datastreams["DCA-META"]
-
-      # create the union (ie, without duplicates) of subject, geogname, persname, and corpname
-      subjects = []
-      Tufts::MetadataMethods.union(subjects, datastream.find_by_terms_and_value(:subject))
-      Tufts::MetadataMethods.union(subjects, datastream.find_by_terms_and_value(:geogname))
-      Tufts::MetadataMethods.union(subjects, datastream.find_by_terms_and_value(:persname))
-      Tufts::MetadataMethods.union(subjects, datastream.find_by_terms_and_value(:corpname))
-
-      return {
-          :titles => datastream.find_by_terms_and_value(:title),
-          :creators => datastream.find_by_terms_and_value(:creator),
-          :dates => datastream.find_by_terms_and_value(:dateCreated2),
-          :descriptions => datastream.find_by_terms_and_value(:description),
-          :sources => datastream.find_by_terms_and_value(:source2),
-          :citable_urls => datastream.find_by_terms_and_value(:identifier),
-          :citations => datastream.find_by_terms_and_value(:bibliographicCitation),
-          :publishers => datastream.find_by_terms_and_value(:publisher),
-          :genres => datastream.find_by_terms_and_value(:genre),
-          :types => datastream.find_by_terms_and_value(:type2),
-          :formats => datastream.find_by_terms_and_value(:format2),
-          :rights => datastream.find_by_terms_and_value(:rights),
-          :subjects => subjects,
-          :temporals => datastream.find_by_terms_and_value(:temporal)
-      }
-    end
-
     def index_sort_fields(solr_doc)
       #CREATOR SORT
-      names = self.datastreams["DCA-META"].get_values(:creator)
+      names = self.creator
 
 
       unless names.empty?
@@ -49,7 +21,7 @@ module Tufts
 
       #TITLE SORT
 
-      titles = self.datastreams["DCA-META"].get_values(:title)
+      titles = self.title
       unless titles.empty?
         #solr_doc[Solrizer.solr_name('title', :sortable, type: :string)] = titles[0]
         Solrizer.insert_field(solr_doc, 'title', titles[0], :sortable)
@@ -126,31 +98,31 @@ module Tufts
 
   def index_unstemmed_values(solr_doc)
     [:corpname].each do |subject_field|
-      subjects = self.datastreams["DCA-META"].get_values(subject_field)
+      subjects = self.send(subject_field)
       titleize_and_index(solr_doc, 'corpname', subjects, :unstemmed_searchable)  
     end 
     [:geogname].each do |subject_field|
-      subjects = self.datastreams["DCA-META"].get_values(subject_field)
+      subjects = self.send(subject_field)
       titleize_and_index(solr_doc, 'geogname', subjects, :unstemmed_searchable)  
     end
 
     [:subject].each do |subject_field|
-      subjects = self.datastreams["DCA-META"].get_values(subject_field)
+      subjects = self.send(subject_field)
       titleize_and_index(solr_doc, 'subject_topic', subjects, :unstemmed_searchable)  
     end
 
     [:persname].each do |name_field|
-      names = self.datastreams["DCA-META"].get_values(name_field)
+      names = self.send(name_field)
       titleize_and_index(solr_doc, 'persname', names, :unstemmed_searchable)  
     end
 
     [:creator].each do |name_field|
-      names = self.datastreams["DCA-META"].get_values(name_field)
+      names = self.send(name_field)
       titleize_and_index(solr_doc, 'author', names, :unstemmed_searchable)  
     end 
 
     [:title].each do |name_field|
-      names = self.datastreams["DCA-META"].get_values(name_field)
+      names = self.send(name_field)
       titleize_and_index(solr_doc, 'title', names, :unstemmed_searchable)  
     end
 
@@ -158,14 +130,14 @@ module Tufts
 
   def index_names_info(solr_doc)
     [:creator, :persname, :corpname].each do |name_field|
-      names = self.datastreams["DCA-META"].get_values(name_field)
+      names = self.send(name_field)
       titleize_and_index(solr_doc, 'names', names, :facetable)  #names_sim
     end
   end
 
   def index_subject_info(solr_doc)
     [:subject, :corpname, :persname, :geogname].each do |subject_field|
-      subjects = self.datastreams["DCA-META"].get_values(subject_field)
+      subjects = self.send(subject_field)
       titleize_and_index(solr_doc, 'subject', subjects, :facetable)  #subject_sim
     end
   end
@@ -261,10 +233,10 @@ module Tufts
   end
 
   def index_pub_date(solr_doc)
-      dates = self.DCA_META.get_values(:dateCreated)
+      dates = self.date_created
       
       if dates.empty?
-        dates = self.DCA_META.get_values(:temporal)
+        dates = self.temporal
       end
 
       if dates.empty?
@@ -351,10 +323,10 @@ module Tufts
     #automatically based on the available data.
 
     def index_date_info(solr_doc)
-      dates = self.DCA_META.get_values(:dateCreated)
+      dates = self.date_created
 
       if dates.empty?
-        dates = self.DCA_META.get_values(:temporal)
+        dates = self.temporal
       end
 
       if dates.empty?
