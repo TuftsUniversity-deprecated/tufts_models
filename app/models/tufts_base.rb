@@ -46,6 +46,8 @@ class TuftsBase < ActiveFedora::Base
     end
   end
 
+  # The list of all fields on this object that can be edited.
+  # this governs the values that will be accepted from the form submission
   def terms_for_editing
     terms_for_display 
   end
@@ -54,18 +56,22 @@ class TuftsBase < ActiveFedora::Base
     descMetadata_display_fields + admin_display_fields
   end
 
+  # The list of fields to edit from the DCA_META datastream
   def descMetadata_display_fields
     descMetadata.class.terminology.terms.keys - [:root]
   end
 
+  # The list of fields to edit from the DCA_ADMIN datastream
   def admin_display_fields
     admin.class.terminology.terms.keys  - [:admin, :published_at, :edited_at]
   end
 
+  # a more idiomatic name for the DCA-META datastream
   def descMetadata
     self.DCA_META
   end
 
+  # a more idiomatic name for the DCA-ADMIN datastream
   def admin
     self.DCA_ADMIN
   end
