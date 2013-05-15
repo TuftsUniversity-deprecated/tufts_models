@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TuftsAudioText do
   describe "with access rights" do
     before do
-      @audio_text = TuftsAudioText.new
+      @audio_text = TuftsAudioText.new(title: 'new audio text')
       @audio_text.read_groups = ['public']
       @audio_text.save!
     end

@@ -4,7 +4,7 @@ describe TuftsImage do
   
   describe "with access rights" do
     before do
-      @image = TuftsImage.new
+      @image = TuftsImage.new(title: 'test image')
       @image.read_groups = ['public']
       @image.save!
     end

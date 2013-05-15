@@ -4,7 +4,7 @@ describe TuftsEAD do
   
   describe "with access rights" do
     before do
-      @ead = TuftsEAD.new
+      @ead = TuftsEAD.new(title: 'test ead')
       @ead.read_groups = ['public']
       @ead.save!
     end

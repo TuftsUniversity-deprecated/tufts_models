@@ -10,6 +10,7 @@ class TuftsBase < ActiveFedora::Base
 
   # Tufts specific needed metadata streams
   has_metadata "DCA-META", type: TuftsDcaMeta
+  has_metadata "DC-DETAIL-META", type: TuftsDcDetailed
   has_metadata "DCA-ADMIN", type: DcaAdmin
 
   attr_accessor :push_production
@@ -27,11 +28,17 @@ class TuftsBase < ActiveFedora::Base
   validates :title, :presence => true
   validates :displays, :inclusion => { :in => %w(dl tisch aah perseus elections dark), :if => :displays}
   
-  delegate_to "DCA-META", [:title, :creator, :source2, :description, :date_created, :date_available, 
-                           :date_issued, :identifier, :rights, :bibliographic_citation, :publisher,
-                           :type2, :format2, :extent, :persname, :corpname, :geogname, :genre,
-                           :subject, :funder, :temporal, :resolution, :bitdepth, :colorspace, 
-                           :filesize]
+  delegate_to "DC-DETAIL-META", [:identifier, :title, :alternative, :creator, :contributor, 
+                                 :description, :abstract, :toc, :publisher, :source, :date, 
+                                 :date_created, :date_copyrighted, :date_submitted, 
+                                 :date_accepted, :date_issued, :date_available, :date_modified, 
+                                 :language, :type, :format, :extent, :medium, :persname, 
+                                 :corpname, :geogname, :subject, :genre, :provenance, :rights, 
+                                 :access_rights, :rights_holder, :license, :replaces, 
+                                 :isReplacedBy, :hasFormat, :isFormatOf, :hasPart, :isPartOf, 
+                                 :accruralPolicy, :audience, :references, :spatial, 
+                                 :bibliographic_citation, :temporal, :funder, :resolution, 
+                                 :bitdepth, :colorspace, :filesize]
   delegate_to "DCA-ADMIN", [:published_at, :edited_at, :displays], unique: true
   delegate_to "DCA-ADMIN", [:steward, :name, :comment, :retentionPeriod, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note]
 
@@ -58,7 +65,7 @@ class TuftsBase < ActiveFedora::Base
 
   # The list of fields to edit from the DCA_META datastream
   def descMetadata_display_fields
-    descMetadata.class.terminology.terms.keys - [:root]
+    descMetadata.class.terminology.terms.keys - [:dc]
   end
 
   # The list of fields to edit from the DCA_ADMIN datastream
@@ -66,9 +73,9 @@ class TuftsBase < ActiveFedora::Base
     admin.class.terminology.terms.keys  - [:admin, :published_at, :edited_at]
   end
 
-  # a more idiomatic name for the DCA-META datastream
+  # a more idiomatic name for the DC-DETAIL-META datastream
   def descMetadata
-    self.DCA_META
+    self.DC_DETAIL_META
   end
 
   # a more idiomatic name for the DCA-ADMIN datastream

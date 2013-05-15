@@ -14,7 +14,7 @@ describe Ability do
 
     describe "working on TuftsAudio" do
       before :all do
-        @audio = TuftsAudio.create!
+        @audio = TuftsAudio.create!(title: 'test audio')
       end
       after :all do
         @audio.destroy

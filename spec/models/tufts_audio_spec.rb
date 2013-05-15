@@ -21,12 +21,7 @@ describe TuftsAudio do
   end
 
   describe "terms_for_editing" do
-    its(:terms_for_editing) { should == [:title, :creator, :source2, :description, :date_created, :date_available, 
-                           :date_issued, :identifier, :rights, :bibliographic_citation, :publisher,
-                           :type2, :format2, :extent, :persname, :corpname, :geogname, :genre,
-                           :subject, :funder, :temporal, :resolution, :bitdepth, :colorspace, 
-                           :filesize, :steward, :name, :comment, :retentionPeriod, :displays,
-                           :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note]}
+    its(:terms_for_editing) { should == [:identifier, :title, :alternative, :creator, :contributor, :description, :abstract, :toc, :publisher, :source, :date, :date_created, :date_copyrighted, :date_submitted, :date_accepted, :date_issued, :date_available, :date_modified, :language, :type, :format, :extent, :medium, :persname, :corpname, :geogname, :subject, :genre, :provenance, :rights, :access_rights, :rights_holder, :license, :replaces, :isReplacedBy, :hasFormat, :isFormatOf, :hasPart, :isPartOf, :accruralPolicy, :audience, :references, :spatial, :bibliographic_citation, :temporal, :funder, :resolution, :bitdepth, :colorspace, :filesize, :steward, :name, :comment, :retentionPeriod, :displays, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note]}
   end
 
   describe "required terms" do
@@ -62,6 +57,7 @@ describe TuftsAudio do
 
   describe "displays" do
     it "should only allow one of the approved values" do
+      subject.title = 'test title' #make it valid
       subject.should be_valid # no value
       subject.displays = 'fake'
       subject.should_not be_valid

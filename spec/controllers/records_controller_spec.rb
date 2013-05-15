@@ -96,7 +96,7 @@ describe RecordsController do
       
       describe "with an image" do
         before do
-          @image = TuftsImage.new()
+          @image = TuftsImage.new(title: "test image")
           @image.edit_users = [@user.email]
           @image.save!
         end

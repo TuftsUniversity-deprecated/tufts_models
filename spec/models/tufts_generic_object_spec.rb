@@ -4,7 +4,7 @@ describe TuftsGenericObject do
   
   describe "with access rights" do
     before do
-      @generic_object = TuftsGenericObject.new
+      @generic_object = TuftsGenericObject.new(title: 'test generic')
       @generic_object.read_groups = ['public']
       @generic_object.save!
     end

@@ -4,7 +4,7 @@ describe TuftsPdf do
   
   describe "with access rights" do
     before do
-      @pdf = TuftsPdf.new
+      @pdf = TuftsPdf.new(title: 'test pdf')
       @pdf.read_groups = ['public']
       @pdf.save!
     end

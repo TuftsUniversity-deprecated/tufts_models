@@ -177,9 +177,7 @@ module Tufts
         dates = self.temporal
       end
 
-      if dates.empty?
-        puts "THIS PID HAS NO DATE TO INDEX :::  #{pid}"
-      else
+      unless dates.empty?
         date = dates[0]
         valid_date = Time.new
 
@@ -267,9 +265,7 @@ module Tufts
         dates = self.temporal
       end
 
-      if dates.empty?
-        puts "THIS PID HAS NO DATE TO INDEX :::  #{pid}"
-      else
+      unless dates.empty?
         dates.each do |date|
 
         if date.length() == 4
