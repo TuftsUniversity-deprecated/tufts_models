@@ -141,7 +141,22 @@ describe RecordsController do
     end
     describe "who goes to the new page" do
       it "should not be allowed" do
-        lambda { get :new }.should raise_error CanCan::AccessDenied
+        get :new
+        response.should redirect_to( Tufts::Application.routes.url_helpers.root_path)
+        flash[:alert].should == "You are not authorized to access this page."
+      end
+    end
+    describe "who goes to the edit page" do
+      before do
+        @audio = TuftsAudio.create!(title: 'My title2')
+      end
+      after do
+        @audio.destroy
+      end
+      it "should not be allowed" do
+        get :edit, id: @audio
+        response.should redirect_to( Tufts::Application.routes.url_helpers.catalog_path(@audio))
+        flash[:alert].should == "You do not have sufficient privileges to edit this document."
       end
     end
   end

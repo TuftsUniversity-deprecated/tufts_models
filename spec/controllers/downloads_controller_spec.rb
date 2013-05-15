@@ -17,5 +17,4 @@ describe DownloadsController do
       response.headers['Content-Type'].should =="application/pdf"
     end
   end
-
 end
