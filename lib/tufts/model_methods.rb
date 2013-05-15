@@ -13,77 +13,15 @@ module Tufts
       #CREATOR SORT
       names = self.creator
 
-
       unless names.empty?
-        #solr_doc[Solrizer.solr_name('author', :sortable, type: :string)] = names[0]
         Solrizer.insert_field(solr_doc, 'author', names[0], :sortable)
       end
 
       #TITLE SORT
-
       titles = self.title
       unless titles.empty?
-        #solr_doc[Solrizer.solr_name('title', :sortable, type: :string)] = titles[0]
         Solrizer.insert_field(solr_doc, 'title', titles[0], :sortable)
       end
-
-    end
-
-    def index_fulltext(solr_doc)
-      return # Turn off for now.  We don't have a valid processing url.
-      full_text = ""
-      models = self.relationships(:has_model)
-      if models
-        models.each do |model|
-          # Possible bug. Seems like full_text is overwritten if there are multiple models
-          full_text = case model
-          when "info:fedora/afmodel:TuftsPdf", "info:fedora/cm:Text.FacPub", "info:fedora/afmodel:TuftsFacultyPublication", "info:fedora/cm:Text.PDF"
-            extract_fulltext_from_pdf()
-          when "info:fedora/cm:Text.TEI", "info:fedora/afmodel.TuftsTEI","info:fedora/cm:Audio.OralHistory", "info:fedora/afmodel:TuftsAudioText","info:fedora/cm:Text.EAD", "info:fedora/afmodel:TuftsEAD"
-            extract_fulltext_from_xml()
-          end
-        end
-      end
-
-      solr_doc["text_tei"] = full_text
-    end
-
-    def extract_fulltext_from_xml
-      # some objects have inconsistent name for the datastream
-      datastream = self.datastreams["Archival.xml"] || self.datastreams["ARCHIVAL_XML"]
-
-      return unless datastream && datastream.dsLocation
-      nokogiri_doc = Nokogiri::XML(File.open(convert_url_to_local_path(datastream.dsLocation)).read)
-      nokogiri_doc.xpath('//text()').text.gsub(/[^0-9A-Za-z]/, ' ')
-    end
-
-    def extract_fulltext_from_pdf
-      processing_url = Settings.processing_url
-      repository_url = Settings.repository_url
-      unless processing_url == "SKIP"
-        url = processing_url + '/tika/TikaPDFExtractionServlet?doc='+ repository_url +'/fedora/objects/' + pid + '/datastreams/Archival.pdf/content&amp;chunkList=true'
-        logger.info "Processing #{url}"
-        begin
-          nokogiri_doc = Nokogiri::XML(open(url).read)
-          return nokogiri_doc.xpath('//text()').text.gsub(/[^0-9A-Za-z]/, ' ')
-        rescue => e
-          case e
-            when OpenURI::HTTPError
-              logger.error "HTTPError while indexing full text #{pid}"
-            when SocketError
-              logger.error "SocketError while indexing full text #{pid}"
-            else
-              logger.error "Error while indexing full text #{pid}"
-          end
-        rescue SystemCallError => e
-          if e === Errno::ECONNRESET
-            logger.error "Connection Reset while indexing full text #{pid}"
-          else
-            logger.error "SystemCallError while indexing full text #{pid}"
-          end
-        end
-      end
-      return
     end
 
     def create_facets(solr_doc)
@@ -305,10 +243,10 @@ module Tufts
 
           end
           if date == "0"
-	    valid_date_string = "0"
-	  else
-            valid_date_string = valid_date.strftime("%Y")
- 	  end
+            valid_date_string = "0"
+          else
+                  valid_date_string = valid_date.strftime("%Y")
+          end
 
         Solrizer.insert_field(solr_doc, 'pub_date', valid_date_string.to_i, :stored_sortable) 
       end
