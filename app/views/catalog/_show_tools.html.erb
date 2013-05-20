@@ -23,7 +23,16 @@
        </li>
       <% end %>
       <li>
-      <%= link_to "Preview", @document.preview_path, :target=>'_new' %>
+      <%= link_to "View in Fedora", @document.preview_fedora_path%>
       </li>
+      <% if  @document.preview_dl_path.present? %> 
+        <li>
+          <%= link_to "Preview in DL", @document.preview_dl_path%>
+        </li>
+      <% else %>
+        <li class="disabled">
+          <%= link_to "Preview in DL", '#' %>
+         </li>
+      <% end %>
   </ul>
 
