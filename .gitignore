@@ -14,4 +14,8 @@
 /log/*.log
 /tmp
 
+# Ignore jetty data and config files
 jetty
+
+# Don't send local rvm config
+.rvmrc
