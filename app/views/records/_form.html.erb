@@ -17,7 +17,12 @@
       <%= hidden_field_tag :pid, params[:pid] if controller.action_name == 'new'%>
       <%= f.actions do %>
         <%= f.submit 'Save' %>
-        <%= f.cancel %>
+        <% if controller.action_name == 'new' %>
+          <%# if the object was just created (temporary object) delete it if they cancel %>
+          <%= link_to "Cancel", hydra_editor.record_path(@record), :method=>:delete, :class=>'btn cancel' %>
+        <% else %>
+          <%= link_to "Cancel", :back, :class=>'btn cancel' %>
+        <% end %>
       <% end %>
     <% end %>
   </div>

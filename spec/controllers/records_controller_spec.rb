@@ -132,6 +132,19 @@ describe RecordsController do
         flash[:notice].should == '"My title2" has been pushed to production'
       end
     end
+
+    describe "destroying a record" do
+      before do
+        @audio = TuftsAudio.new(title: 'My title2')
+        @audio.edit_users = [@user.email]
+        @audio.save!
+      end
+      it "should be successful with a pid" do
+        delete :destroy, :id=>@audio
+        response.should redirect_to(Tufts::Application.routes.url_helpers.root_path)
+        TuftsAudio.exists?(@audio.pid).should be_false
+      end
+    end
   end
 
 

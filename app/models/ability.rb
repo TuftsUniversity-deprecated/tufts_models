@@ -4,7 +4,7 @@ class Ability
   def custom_permissions
     if current_user.admin?
       can [:create, :show, :add_user, :remove_user, :index], Role
-      can [:create, :edit, :update, :publish], ActiveFedora::Base
+      can [:create, :edit, :update, :publish, :destroy], ActiveFedora::Base
     end
   end
 
