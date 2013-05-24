@@ -26,7 +26,7 @@ class TuftsBase < ActiveFedora::Base
 
 
   validates :title, :presence => true
-  validates :displays, :inclusion => { :in => %w(dl tisch aah perseus elections dark), :if => :displays}
+  validates :displays, :inclusion => { :in => %w(dl tisch aah perseus elections dark), :if => lambda {|f| f.displays.present? } }
   
   delegate_to "DC-DETAIL-META", [:identifier, :title, :alternative, :creator, :contributor, 
                                  :description, :abstract, :toc, :publisher, :source, :date, 
