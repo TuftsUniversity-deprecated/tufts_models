@@ -13,10 +13,18 @@ $(function () {
             $form = $(this).closest('form');
             $('.progress', $form).removeClass('hidden').addClass('active').addClass('progress-striped');
             data.submit();
+
+            // Don't let the user click the save button while upload is in progress
+            $('.btn-primary').prop("disabled", true);
         },
         done: function (e, data) {
             $form = $(this).closest('form');
             $('.progress', $form).removeClass('active').removeClass('progress-striped');
+
+            // Enable the save button only if all forms have finished upload
+            if ($('.progress.active').length == 0)
+              $('.btn-primary').prop("disabled", false);
+              
         },
         fail: function (e, data) {
           $('.progress', $form).removeClass('active').removeClass('progress-striped');
