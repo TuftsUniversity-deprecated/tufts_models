@@ -28,17 +28,21 @@ class TuftsBase < ActiveFedora::Base
   validates :title, :presence => true
   validates :displays, :inclusion => { :in => %w(dl tisch aah perseus elections dark), :if => lambda {|f| f.displays.present? } }
   
-  delegate_to "DC-DETAIL-META", [:identifier, :title, :alternative, :creator, :contributor, 
-                                 :description, :abstract, :toc, :publisher, :source, :date, 
-                                 :date_created, :date_copyrighted, :date_submitted, 
-                                 :date_accepted, :date_issued, :date_available, :date_modified, 
-                                 :language, :type, :format, :extent, :medium, :persname, 
-                                 :corpname, :geogname, :subject, :genre, :provenance, :rights, 
-                                 :access_rights, :rights_holder, :license, :replaces, 
-                                 :isReplacedBy, :hasFormat, :isFormatOf, :hasPart, :isPartOf, 
-                                 :accruralPolicy, :audience, :references, :spatial, 
-                                 :bibliographic_citation, :temporal, :funder, :resolution, 
-                                 :bitdepth, :colorspace, :filesize]
+  delegate_to "DCA-META", [:title, :creator, :description, :publisher, :source, 
+                           :date_created, :date_issued, :date_available, :type,
+                           :format, :extent,  :persname, :corpname, :geogname,
+                           :subject, :genre, :rights, :bibliographic_citation,
+                           :temporal, :funder, :resolution, :bitdepth,
+                           :colorspace, :filesize]
+
+  delegate_to "DC-DETAIL-META", [:alternative, :contributor, :abstract, :toc,
+                           :date, :date_copyrighted, :date_submitted,
+                           :date_accepted, :date_modified, :language, :medium,
+                           :provenance, :access_rights, :rights_holder,
+                           :license, :replaces, :isReplacedBy, :hasFormat,
+                           :isFormatOf, :hasPart, :isPartOf, :accruralPolicy,
+                           :audience, :references, :spatial]
+
   delegate_to "DCA-ADMIN", [:published_at, :edited_at, :displays], unique: true
   delegate_to "DCA-ADMIN", [:steward, :name, :comment, :retentionPeriod, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note]
 
@@ -65,7 +69,15 @@ class TuftsBase < ActiveFedora::Base
 
   # The list of fields to edit from the DCA_META datastream
   def descMetadata_display_fields
-    descMetadata.class.terminology.terms.keys - [:dc]
+    [:title, :alternative, :creator, :contributor, :description, :abstract,
+     :toc, :publisher, :source, :date, :date_created, :date_copyrighted,
+     :date_submitted, :date_accepted, :date_issued, :date_available,
+     :date_modified, :language, :type, :format, :extent, :medium, :persname, 
+     :corpname, :geogname, :subject, :genre, :provenance, :rights,
+     :access_rights, :rights_holder, :license, :replaces, :isReplacedBy,
+     :hasFormat, :isFormatOf, :hasPart, :isPartOf, :accruralPolicy, :audience,
+     :references, :spatial, :bibliographic_citation, :temporal, :funder,
+     :resolution, :bitdepth, :colorspace, :filesize]
   end
 
   # The list of fields to edit from the DCA_ADMIN datastream
