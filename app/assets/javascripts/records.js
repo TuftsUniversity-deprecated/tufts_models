@@ -30,11 +30,12 @@ $(function () {
     var fileInput = $(':file').wrap(wrapper);
 
     fileInput.change(function(){
-        $this = $(this);
-        $('.file').hide();
+        $form = $(this).closest('form');
+        $('.file', $form).hide();
     })
 
     $('.file').click(function(){
-        fileInput.click();
+        $form = $(this).closest('form');
+        $(':file', $form).click();
     }).show();
 });

@@ -1,6 +1,10 @@
 <%= form_for @record, :url=>@record.new_record? ? hydra_editor.records_path : hydra_editor.record_path(@record) do |f| %>
   <h4>Audio</h4>
   <input class="fileupload" type="file" name="files[ARCHIVAL_WAV]">
+  <div class="file btn">
+    <%= @record.datastreams['ARCHIVAL_WAV'].new? ? 'Upload ARCHIVAL_WAV' : 'Replace ARCHIVAL_WAV' %>
+    <i class="icon-upload"></i>
+  </div>
   <div id="progress" class="progress progress-striped">
       <div class="bar" style="width: 0%;"></div>
   </div>
@@ -9,6 +13,10 @@
 <%= form_for @record, :url=>@record.new_record? ? hydra_editor.records_path : hydra_editor.record_path(@record) do |f| %>
   <h4>Transcript</h4>
   <input class="fileupload" type="file" name="files[ARCHIVAL_XML]">
+  <div class="file btn">
+    <%= @record.datastreams['ARCHIVAL_XML'].new? ? 'Upload ARCHIVAL_XML' : 'Replace ARCHIVAL_XML' %>
+    <i class="icon-upload"></i>
+  </div>
   <div id="progress" class="progress progress-striped">
       <div class="bar" style="width: 0%;"></div>
   </div>
