@@ -25,4 +25,8 @@ describe TuftsFacultyPublication do
     its(:to_class_uri) {should == 'info:fedora/cm:Text.FacPub'}
   end
 
+  it "should have an original_file_datastream" do
+    TuftsFacultyPublication.original_file_datastreams.should == ["Archival.pdf"]
+  end
+
 end
