@@ -11,12 +11,30 @@ $(function () {
         },
         add: function (e, data) {
             $form = $(this).closest('form');
-            $('.progress', $form).addClass('active').addClass('progress-striped');
+            $('.progress', $form).removeClass('hidden').addClass('active').addClass('progress-striped');
             data.submit();
         },
         done: function (e, data) {
             $form = $(this).closest('form');
             $('.progress', $form).removeClass('active').removeClass('progress-striped');
+        },
+        fail: function (e, data) {
+          $('.progress', $form).removeClass('active').removeClass('progress-striped');
+          console.log(data.jqXHR);
+          alert("There was an error attaching your file: " + data.errorThrown);
         }
     });
+
+    /** Style the buttons **/
+    var wrapper = $('<div/>').css({height:0,width:0,'overflow':'hidden'});
+    var fileInput = $(':file').wrap(wrapper);
+
+    fileInput.change(function(){
+        $this = $(this);
+        $('.file').hide();
+    })
+
+    $('.file').click(function(){
+        fileInput.click();
+    }).show();
 });

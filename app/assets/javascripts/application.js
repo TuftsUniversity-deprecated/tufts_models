@@ -19,3 +19,4 @@
 //= require hydra-editor/hydra-editor
 //= require jquery-fileupload/basic
 //= require_tree .
+//

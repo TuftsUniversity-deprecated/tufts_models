@@ -29,6 +29,8 @@ class RecordsController < ApplicationController
   
   def set_attributes
     if params[:files].present?
+      # Need to put a fake title on to pass validations in the case that the metadata had never been saved.
+      @record.title = 'Temporary title'
       params[:files].each do |dsid, file|
         @record.store_archival_file(dsid, file)
       end

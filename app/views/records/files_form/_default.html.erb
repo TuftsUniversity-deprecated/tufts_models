@@ -1,6 +1,11 @@
 <%= form_for @record, :url=>@record.new_record? ? hydra_editor.records_path : hydra_editor.record_path(@record) do |f| %>
+
   <input class="fileupload" type="file" name="files[<%= @record.class.original_file_datastreams.first%>]">
-  <div id="progress" class="progress progress-striped">
+  <div class="file btn">
+    <%= @record.datastreams[@record.class.original_file_datastreams.first].new? ? 'Upload' : 'Replace' %>
+    <%= @record.class.original_file_datastreams.first%> <i class="icon-upload"></i>
+  </div>
+  <div id="progress" class="progress progress-striped hidden">
       <div class="bar" style="width: 0%;"></div>
   </div>
 <% end %>
