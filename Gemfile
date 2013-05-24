@@ -12,6 +12,8 @@ gem 'om', git: 'https://github.com/projecthydra/om.git', branch: 'fix_serializin
 gem 'hydra-editor',   git: 'https://github.com/projecthydra/hydra-editor.git', ref: '9316391'
 #gem 'hydra-editor', path: '../hydra-editor'
 
+gem 'disable_assets_logger', :group => :development
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

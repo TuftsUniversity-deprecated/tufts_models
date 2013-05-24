@@ -109,6 +109,7 @@ GEM
       railties (~> 3.1)
       warden (~> 1.2.1)
     diff-lcs (1.2.4)
+    disable_assets_logger (1.0.0)
     equivalent-xml (0.3.0)
       nokogiri (>= 1.4.3)
     erubis (2.7.0)
@@ -318,6 +319,7 @@ DEPENDENCIES
   chronic
   coffee-rails (~> 3.2.1)
   devise
+  disable_assets_logger
   factory_girl_rails
   fcrepo_admin (= 0.3.5)
   hydra-editor!
