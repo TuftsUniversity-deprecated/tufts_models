@@ -13,7 +13,7 @@ class RecordsController < ApplicationController
     if !args[:pid] || (args[:pid] && /:/.match(args[:pid]))
       @record = params[:type].constantize.new(args)
       @record.save(validate: false)
-      initialize_fields
+      redirect_to record_attachments_path(@record)
     else
       flash[:error] = "You have specified an invalid pid. A valid pid must contain a colin (i.e. tufts:1231)"
       render 'choose_type'
@@ -34,19 +34,4 @@ class RecordsController < ApplicationController
     redirect_to root_path
 
   end
-
-  private
-  
-  def set_attributes
-    if params[:files].present?
-      # Need to put a fake title on to pass validations in the case that the metadata had never been saved.
-      @record.title = 'Temporary title'
-      params[:files].each do |dsid, file|
-        @record.store_archival_file(dsid, file)
-      end
-    else
-      super
-    end
-  end
-
 end

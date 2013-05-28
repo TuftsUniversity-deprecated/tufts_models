@@ -1,4 +1,4 @@
-<%= form_for @record, :url=>@record.new_record? ? hydra_editor.records_path : hydra_editor.record_path(@record) do |f| %>
+<%= form_for @record, :url=>record_attachment_path(@record, 'ARCHIVAL_WAV') do |f| %>
   <h4>Audio</h4>
   <input class="fileupload" type="file" name="files[ARCHIVAL_WAV]">
   <div class="file btn">
@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-<%= form_for @record, :url=>@record.new_record? ? hydra_editor.records_path : hydra_editor.record_path(@record) do |f| %>
+<%= form_for @record, :url=>record_attachment_path(@record, 'ARCHIVAL_XML') do |f| %>
   <h4>Transcript</h4>
   <input class="fileupload" type="file" name="files[ARCHIVAL_XML]">
   <div class="file btn">

@@ -1,4 +1,4 @@
-<%= form_for @record, :url=>@record.new_record? ? hydra_editor.records_path : hydra_editor.record_path(@record) do |f| %>
+<%= form_for @record, :url=>record_attachment_path(@record, @record.class.original_file_datastreams.first) do |f| %>
 
   <input class="fileupload" type="file" name="files[<%= @record.class.original_file_datastreams.first%>]">
   <div class="file btn">
