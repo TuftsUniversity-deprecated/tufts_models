@@ -13,6 +13,9 @@ feature 'Admin user creates document' do
     click_button 'Next'
 
     # On the upload page
+    page.should have_selector('.file.btn', text: 'Upload ARCHIVAL_SOUND')
+    page.should have_selector('input[type="file"].fileupload')
+    page.should have_selector('div.progress.progress-striped.hidden > .bar')
     click_button 'Next'
 
     fill_in '*Title', with: 'My title'
