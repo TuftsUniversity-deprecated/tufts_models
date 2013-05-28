@@ -12,6 +12,9 @@ feature 'Admin user creates document' do
     fill_in 'Pid', with: 'tufts:001.102.201'
     click_button 'Next'
 
+    # On the upload page
+    click_button 'Next'
+
     fill_in '*Title', with: 'My title'
     click_button 'Save'
 
