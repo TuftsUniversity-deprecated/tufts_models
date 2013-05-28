@@ -20,5 +20,6 @@ describe AttachmentsController do
         response.should be_successful
         assigns[:record].title.should == ['My title2']
       end
+    end
   end
 end

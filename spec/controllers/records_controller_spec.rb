@@ -17,10 +17,9 @@ describe RecordsController do
       end
       it "should be successful without a pid" do
         get :new, :type=>'TuftsAudio'
-        response.should be_successful
-        response.should render_template(:new)
         assigns[:record].should be_kind_of TuftsAudio
         assigns[:record].should_not be_new_object
+        response.should redirect_to Tufts::Application.routes.url_helpers.record_attachments_path(assigns[:record]) 
       end
       describe "with a pid" do
         before do
@@ -32,10 +31,9 @@ describe RecordsController do
         end
         it "should be successful with a pid" do
           get :new, :type=>'TuftsAudio', :pid=>'tufts:123.1231'
-          response.should be_successful
-          response.should render_template(:new)
           assigns[:record].should be_kind_of TuftsAudio
           assigns[:record].should_not be_new_object
+          response.should redirect_to Tufts::Application.routes.url_helpers.record_attachments_path(assigns[:record]) 
           assigns[:record].pid.should == 'tufts:123.1231'
         end
       end

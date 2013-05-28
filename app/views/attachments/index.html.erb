@@ -4,5 +4,6 @@
   <%= render_files_form(@record) %>
 </div>
 
-<%= button_to "Next", hydra_editor.edit_record_path(@record), method: :get, class: 'btn btn-primary' %>
-
+<div class="form-actions">
+  <%= button_to "Next", hydra_editor.edit_record_path(@record), method: :get, class: 'btn btn-primary' %>
+</div>
