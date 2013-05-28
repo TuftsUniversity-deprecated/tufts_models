@@ -16,6 +16,9 @@ Tufts::Application.routes.draw do
   post 'records/:id/publish', to: 'records#publish', as: 'publish_record', constraints: { id: ALLOW_DOTS }
 
   resources :records, only: [], constraints: { id: ALLOW_DOTS } do
+    member do
+      delete 'cancel'
+    end
     resources :attachments, constraints: { id: ALLOW_DOTS }
   end
     

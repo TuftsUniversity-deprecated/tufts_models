@@ -69,6 +69,35 @@ describe RecordsController do
       end
     end
 
+    describe 'cancel' do
+      before do
+        @routes = Tufts::Application.routes
+      end
+      describe "on an object with no existing versions of DCA-META" do
+        before do
+          @audio = TuftsAudio.new()
+          @audio.edit_users = [@user.email]
+          @audio.save(validate: false)
+        end
+        it "should remove the record" do
+          expect { delete :cancel, id: @audio}.to change{TuftsAudio.count}.by(-1)
+        end
+      end
+
+      describe "on an object with an existing version of DCA-META" do
+        before do
+          @audio = TuftsAudio.new(title: "My title2")
+          @audio.edit_users = [@user.email]
+          @audio.save!
+        end
+        it "should not remove the record" do
+          expect { delete :cancel, id: @audio}.to_not change{TuftsAudio.count}
+        end
+      end
+      it "should not remove the record if there are no existing versions of the dca-META" do
+      end
+    end
+
     describe "updating a record" do
       describe "with an audio" do
         before do

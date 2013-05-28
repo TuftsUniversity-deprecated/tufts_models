@@ -1,5 +1,5 @@
 <div id="descriptions_display">
-    <%= bootstrap_form_for @record, :url=>@record.new_record? ? hydra_editor.records_path : hydra_editor.record_path(@record), html: {:class => 'form-inline'} do |f| %>
+    <%= bootstrap_form_for @record, :url=>hydra_editor.record_path(@record), html: {:class => 'form-inline'} do |f| %>
     <h2 class="non lower">Descriptions <small class="pull-right"><span class="error">*</span> indicates required fields</small> </h2>
     <div class="well">
       <div class="control-group">
@@ -19,10 +19,9 @@
     <%= hidden_field_tag :pid, params[:pid] if controller.action_name == 'new'%>
     <%= f.actions do %>
       <%= f.submit 'Save', 'data-disable-with'=>"Saving..." %>
-      <% if params[:cancelable] %>
+      <% if @record.DCA_META.versions.empty? %>
         <%# if the object was just created (temporary object) delete it if they cancel %>
-        <%= submit_tag "Cancel", :name=>'cancel', :class=>'btn cancel', 'formnovalidate'=>true %>
-        <input type="submit" value="save current state" formnovalidate /> 
+        <%= link_to "Cancel", cancel_record_path(@record), :class=>'btn cancel', :method=>:delete %>
       <% else %>
         <%= link_to "Cancel", :back, :class=>'btn cancel' %>
       <% end %>

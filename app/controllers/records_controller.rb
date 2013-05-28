@@ -1,6 +1,8 @@
 class RecordsController < ApplicationController
   include RecordsControllerBehavior
 
+  before_filter :load_object, only: [:publish, :destroy, :cancel]
+
   def new
     authorize! :create, ActiveFedora::Base
     unless has_valid_type?
@@ -28,10 +30,24 @@ class RecordsController < ApplicationController
   end
 
   def destroy
-    @record = ActiveFedora::Base.find(params[:id], cast: true)
     authorize! :destroy, @record
     @record.destroy
     redirect_to root_path
-
   end
+
+  def cancel
+    authorize! :destroy, @record
+    if @record.DCA_META.versions.empty?
+      destroy
+    else
+      redirect_to root_path
+    end
+  end
+
+  private
+
+  def load_object
+    @record = ActiveFedora::Base.find(params[:id], cast: true)
+  end
+
 end
