@@ -31,7 +31,6 @@
       // }
 
       newRow.find('input[type=text]').each(function() {
-        console.log($(this).prop('name'));
         old_name = $(this).prop('name');
         $(this).prop('name', old_name.replace('0', counter - 1));
       });
@@ -41,7 +40,6 @@
 
     function removeField () {
       // get parent and remove it
-      console.log($(this).closest('tr'))
       $(this).closest('tr').remove();
       return false;
     }
