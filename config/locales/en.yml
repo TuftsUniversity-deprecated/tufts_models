@@ -6,6 +6,7 @@ en:
     application_name: "Tufts Repository Admin"
   hydra:
     field_label:
+      identifier: "Permanent URL"
       source: "Alternate Source"
       date_created: "Date Created"
       date_available: "Date Available"

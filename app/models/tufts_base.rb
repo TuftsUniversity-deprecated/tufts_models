@@ -28,7 +28,7 @@ class TuftsBase < ActiveFedora::Base
   validates :title, :presence => true
   validates :displays, :inclusion => { :in => %w(dl tisch aah perseus elections dark), :if => lambda {|f| f.displays.present? } }
   
-  delegate_to "DCA-META", [:creator, :description, :publisher, :source, 
+  delegate_to "DCA-META", [:identifier, :creator, :description, :publisher, :source, 
                            :date_created, :date_issued, :date_available, :type,
                            :format, :extent,  :persname, :corpname, :geogname,
                            :subject, :genre, :rights, :bibliographic_citation,
@@ -70,7 +70,7 @@ class TuftsBase < ActiveFedora::Base
 
   # The list of fields to edit from the DCA_META datastream
   def descMetadata_display_fields
-    [:title, :alternative, :creator, :contributor, :description, :abstract,
+    [:identifier, :title, :alternative, :creator, :contributor, :description, :abstract,
      :toc, :publisher, :source, :date, :date_created, :date_copyrighted,
      :date_submitted, :date_accepted, :date_issued, :date_available,
      :date_modified, :language, :type, :format, :extent, :medium, :persname, 
