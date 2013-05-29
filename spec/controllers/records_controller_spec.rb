@@ -49,7 +49,7 @@ describe RecordsController do
       it "should be successful" do
         post :create, :type=>'TuftsAudio', :tufts_audio=>{:title=>"My title"}
         response.should redirect_to("/catalog/#{assigns[:record].pid}") 
-        assigns[:record].title.should == ['My title']
+        assigns[:record].title.should == 'My title'
       end
     end
 
@@ -65,7 +65,7 @@ describe RecordsController do
       it "should be successful" do
         get :edit, :id=>@audio.pid
         response.should be_successful
-        assigns[:record].title.should == ['My title2']
+        assigns[:record].title.should == 'My title2'
       end
     end
 
@@ -111,7 +111,7 @@ describe RecordsController do
         it "should be successful" do
           put :update, :id=>@audio, :tufts_audio=>{:title=>"My title 3"}
           response.should redirect_to("/catalog/#{assigns[:record].pid}") 
-          assigns[:record].title.should == ['My title 3']
+          assigns[:record].title.should == 'My title 3'
         end
         it "should update external datastream paths" do
           put :update, :id=>@audio, :tufts_audio=>{:datastreams=>{"ACCESS_MP3"=>"http://example.com/access.mp3", "ARCHIVAL_SOUND"=>"http://example.com/archival.wav"} }

@@ -18,7 +18,7 @@ describe AttachmentsController do
       it "should be successful" do
         get :index, :record_id=>@audio.pid
         response.should be_successful
-        assigns[:record].title.should == ['My title2']
+        assigns[:record].title.should == 'My title2'
       end
     end
     describe "editing generic object" do

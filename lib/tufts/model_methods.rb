@@ -18,9 +18,8 @@ module Tufts
       end
 
       #TITLE SORT
-      titles = self.title
-      unless titles.empty?
-        Solrizer.insert_field(solr_doc, 'title', titles[0], :sortable)
+      if title
+        Solrizer.insert_field(solr_doc, 'title', title, :sortable)
       end
     end
 
@@ -35,34 +34,12 @@ module Tufts
     end
 
   def index_unstemmed_values(solr_doc)
-    [:corpname].each do |subject_field|
-      subjects = self.send(subject_field)
-      titleize_and_index(solr_doc, 'corpname', subjects, :unstemmed_searchable)  
-    end 
-    [:geogname].each do |subject_field|
-      subjects = self.send(subject_field)
-      titleize_and_index(solr_doc, 'geogname', subjects, :unstemmed_searchable)  
-    end
-
-    [:subject].each do |subject_field|
-      subjects = self.send(subject_field)
-      titleize_and_index(solr_doc, 'subject_topic', subjects, :unstemmed_searchable)  
-    end
-
-    [:persname].each do |name_field|
-      names = self.send(name_field)
-      titleize_and_index(solr_doc, 'persname', names, :unstemmed_searchable)  
-    end
-
-    [:creator].each do |name_field|
-      names = self.send(name_field)
-      titleize_and_index(solr_doc, 'author', names, :unstemmed_searchable)  
-    end 
-
-    [:title].each do |name_field|
-      names = self.send(name_field)
-      titleize_and_index(solr_doc, 'title', names, :unstemmed_searchable)  
-    end
+    titleize_and_index(solr_doc, 'corpname', corpname, :unstemmed_searchable)  
+    titleize_and_index(solr_doc, 'geogname', geogname, :unstemmed_searchable)  
+    titleize_and_index(solr_doc, 'subject_topic', subject, :unstemmed_searchable)  
+    titleize_and_index(solr_doc, 'persname', persname, :unstemmed_searchable)  
+    titleize_and_index(solr_doc, 'author', creator, :unstemmed_searchable)  
+    titleize_and_index(solr_doc, 'title', [title], :unstemmed_searchable)  
 
   end
 

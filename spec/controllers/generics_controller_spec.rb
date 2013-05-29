@@ -15,7 +15,7 @@ describe GenericsController do
     it "should be successful" do
       get :edit, id: @generic
       response.should be_successful
-      assigns[:generic].title.should == ['My title2']
+      assigns[:generic].title.should == 'My title2'
     end
 
     it "should update with many rows" do

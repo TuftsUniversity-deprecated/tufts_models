@@ -28,12 +28,13 @@ class TuftsBase < ActiveFedora::Base
   validates :title, :presence => true
   validates :displays, :inclusion => { :in => %w(dl tisch aah perseus elections dark), :if => lambda {|f| f.displays.present? } }
   
-  delegate_to "DCA-META", [:title, :creator, :description, :publisher, :source, 
+  delegate_to "DCA-META", [:creator, :description, :publisher, :source, 
                            :date_created, :date_issued, :date_available, :type,
                            :format, :extent,  :persname, :corpname, :geogname,
                            :subject, :genre, :rights, :bibliographic_citation,
                            :temporal, :funder, :resolution, :bitdepth,
                            :colorspace, :filesize]
+  delegate_to "DCA-META", [:title], unique: true
 
   delegate_to "DC-DETAIL-META", [:alternative, :contributor, :abstract, :toc,
                            :date, :date_copyrighted, :date_submitted,
