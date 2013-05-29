@@ -29,6 +29,12 @@ en:
       qrStatus: "Quality Review Status"
       rejectionReason: "Rejection Reason"
       note: "QR Note"
+      isReplacedBy: 'Is Replaced By'
+      hasFormat: 'Has Format'
+      isFormatOf: 'Is Format Of'
+      hasPart: 'Has Part'
+      isPartOf: 'Is Part Of'
+      accruralPolicy: 'Accrural Policy'
     model_label:
       TuftsPdf: "PDF"
       TuftsAudio: "audio"
