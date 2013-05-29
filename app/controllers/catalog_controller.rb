@@ -130,15 +130,15 @@ class CatalogController < ApplicationController
       # Solr parameter de-referencing like $title_qf.
       # See: http://wiki.apache.org/solr/LocalParams
       field.solr_local_parameters = { 
-        :qf => '$title_qf',
-        :pf => '$title_pf'
+        :qf => 'title_tesim',
+        :pf => 'title_tesim'
       }
     end
     
-    config.add_search_field('author') do |field|
+    config.add_search_field('creator') do |field|
       field.solr_local_parameters = { 
-        :qf => '$author_qf',
-        :pf => '$author_pf'
+        :qf => 'creator_tesim contributor_tesim',
+        :pf => 'creator_tesim contributor_tesim'
       }
     end
     
@@ -148,8 +148,8 @@ class CatalogController < ApplicationController
     config.add_search_field('subject') do |field|
       field.qt = 'search'
       field.solr_local_parameters = { 
-        :qf => '$subject_qf',
-        :pf => '$subject_pf'
+        :qf => 'subject_tesim',
+        :pf => 'subject_tesim'
       }
     end
 
