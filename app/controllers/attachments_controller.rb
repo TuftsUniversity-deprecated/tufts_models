@@ -1,7 +1,11 @@
 class AttachmentsController < ApplicationController
   def index
     @record = ActiveFedora::Base.find(params[:record_id], cast: true)
-    authorize! :update, @record
+    if @record.is_a? TuftsGenericObject
+      redirect_to edit_generic_path(@record)
+    else
+      authorize! :update, @record
+    end
   end
 
   def update

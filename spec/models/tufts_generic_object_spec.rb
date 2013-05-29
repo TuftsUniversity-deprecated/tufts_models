@@ -54,4 +54,11 @@ describe TuftsGenericObject do
       subject.local_path_for('GENERIC-CONTENT', 'zip').should == "#{Rails.root}/spec/fixtures/local_object_store/data01/tufts/central/dca/MS054/generic/MS054.003.DO.02108.zip"
     end
   end
+
+  describe "setting items" do
+    it "should accept a hash" do
+      subject.item_attributes = {"0"=>{"link"=>"link one", "mimeType"=>"mime one", "fileName"=>"file one"}, "1"=>{"link"=>"link two", "mimeType"=>"mime two", "fileName"=>"file two"}, "2"=>{"link"=>"link three", "mimeType"=>"mime three", "fileName"=>"file three"}}
+      subject.item(1).link.should == ["link two"]
+    end
+  end
 end

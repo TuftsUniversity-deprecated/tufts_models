@@ -1,6 +1,8 @@
 class TuftsGenericObject < TuftsBase
   has_metadata :name => "GENERIC-CONTENT", :type => TuftsGenericMeta
   #has_file_datastream 'Archival.pdf', control_group: 'E', original: true
+  #
+  delegate :item, :to => 'GENERIC-CONTENT'
 
   def self.to_class_uri
     'info:fedora/cm:Object.Generic'
@@ -23,5 +25,14 @@ class TuftsGenericObject < TuftsBase
   #   # => /local_object_store/data01/tufts/central/dca/MS054/generic
   def directory_for(name)
     File.join(collection_id, 'generic')
+  end
+
+  def item_attributes=(items)
+    items.each do |key, values|
+      new_item = item(key.to_i)
+      values.each do |name, val|
+        new_item.send("#{name}=".to_sym, val)
+      end
+    end
   end
 end

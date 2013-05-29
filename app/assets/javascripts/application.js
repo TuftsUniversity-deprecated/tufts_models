@@ -16,7 +16,7 @@
 // Required by Blacklight
 //= require blacklight/blacklight
 //= require bootstrap-tab
-//= require hydra-editor/hydra-editor
+// require hydra-editor/hydra-editor
 //= require jquery-fileupload/basic
 //= require_tree .
 //

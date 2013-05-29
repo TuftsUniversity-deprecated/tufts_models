@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/projecthydra/active_fedora.git
-  revision: e44f974d3faca830888ea05fccabfbbae34068fa
-  ref: e44f974
+  revision: d19e6b07e31dc75007abea91eb58a69b43f5f5bf
+  branch: delegate_parameters
   specs:
     active-fedora (6.1.1)
       activeresource (>= 3.0.0)
@@ -17,8 +17,8 @@ GIT
 
 GIT
   remote: https://github.com/projecthydra/hydra-editor.git
-  revision: 9316391a6f3bc98f904cfaeef33096e01e002dcd
-  ref: 9316391
+  revision: bb3ab78ad4c592652fe754526dc0a64c89a06aa7
+  ref: bb3ab78
   specs:
     hydra-editor (0.0.1)
       rails (~> 3.2.13)
@@ -249,13 +249,13 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
-    rubydora (1.6.3)
+    rubydora (1.6.4)
       activemodel
       activesupport
       deprecation
       equivalent-xml
       fastercsv
-      hooks
+      hooks (~> 0.2.2)
       mime-types
       nokogiri
       rest-client

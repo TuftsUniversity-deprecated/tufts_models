@@ -22,6 +22,7 @@ Tufts::Application.routes.draw do
     resources :attachments, constraints: { id: ALLOW_DOTS }
   end
     
+  resources :generics, only: [:edit, :update], constraints: { id: ALLOW_DOTS }
 
   devise_for :users
   mount Hydra::RoleManagement::Engine => '/'

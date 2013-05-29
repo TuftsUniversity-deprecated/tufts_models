@@ -21,5 +21,19 @@ describe AttachmentsController do
         assigns[:record].title.should == ['My title2']
       end
     end
+    describe "editing generic object" do
+      before do
+        @generic = TuftsGenericObject.new(title: 'My title2')
+        @generic.edit_users = [@user.email]
+        @generic.save!
+      end
+      after do
+        @generic.destroy
+      end
+      it "should be successful" do
+        get :index, :record_id=>@generic.pid
+        response.should redirect_to edit_generic_path(@generic)
+      end
+    end
   end
 end
