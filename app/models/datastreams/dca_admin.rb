@@ -2,18 +2,18 @@ class DcaAdmin < ActiveFedora::OmDatastream
   set_terminology do |t|
     t.root(:path => "admin", 'xmlns'=>"http://nils.lib.tufts.edu/dcaadmin/", 'xmlns:ac'=>"http://purl.org/dc/dcmitype/")
 
-    t.steward()
-    t.name(:namespace_prefix => "ac")
-    t.comment(:namespace_prefix => "ac")
-    t.retentionPeriod
-    t.displays(index_as: :stored_sortable)
-    t.embargo
-    t.status
-    t.startDate
-    t.expDate
-    t.qrStatus
-    t.rejectionReason
-    t.note
+    t.steward index_as: :stored_searchable
+    t.name namespace_prefix: "ac", index_as: :stored_searchable
+    t.comment namespace_prefix: "ac", index_as: :stored_searchable
+    t.retentionPeriod index_as: :stored_searchable
+    t.displays index_as: :stored_sortable
+    t.embargo index_as: :stored_searchable
+    t.status index_as: :stored_searchable
+    t.startDate index_as: :stored_searchable
+    t.expDate index_as: :stored_searchable
+    t.qrStatus index_as: :stored_searchable
+    t.rejectionReason index_as: :stored_searchable
+    t.note index_as: :stored_searchable
 
     t.published_at(:path => "publishedAt", :type=>:time, index_as: :stored_sortable)
     t.edited_at(:path => "editedAt", :type=>:time, index_as: :stored_sortable)
