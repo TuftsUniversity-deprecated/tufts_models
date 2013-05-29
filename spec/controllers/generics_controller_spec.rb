@@ -23,6 +23,7 @@ describe GenericsController do
 
       @generic.reload.item.size.should == 3
       @generic.reload.item(2).mimeType.should == ['mime three']
+      response.should redirect_to(HydraEditor::Engine.routes.url_helpers.edit_record_path(@generic))
     end
   end
 end

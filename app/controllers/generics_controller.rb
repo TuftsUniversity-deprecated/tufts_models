@@ -9,8 +9,9 @@ class GenericsController < ApplicationController
     authorize! :update, @generic
     @generic.update_attributes(params[:generic])
     @generic.save(validate: false)
-    redirect_to catalog_path(@generic)
+    redirect_to hydra_editor.edit_record_path(@generic)
   end
+
   private
 
   def load_object
