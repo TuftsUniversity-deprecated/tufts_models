@@ -29,4 +29,14 @@ describe "Overrides of ActiveFedora" do
     end
   end
 
+  describe "setting inner_object state" do
+    it "should store it" do
+      obj = TuftsAudio.create(title: "an audio")
+      obj.state='D'
+      obj.save!
+      obj.reload
+      obj.state.should == 'D'
+    end
+  end
+
 end

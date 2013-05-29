@@ -22,4 +22,7 @@ module ActiveFedora
         return parts[-1].gsub('_', '/').classify, parts[0]
     end
   end
+
 end
+
+ActiveFedora::Base.delegate :state=, to: :inner_object
