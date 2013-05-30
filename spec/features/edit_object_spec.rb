@@ -8,7 +8,7 @@ feature 'Admin user edits document' do
   end
   scenario 'with a TuftsAudio' do
     visit catalog_path(@audio)
-    click_link 'Edit'
+    click_link 'Edit Metadata'
 
     fill_in '*Title',      with: 'My title'
     fill_in 'Description', with: 'My desc'
