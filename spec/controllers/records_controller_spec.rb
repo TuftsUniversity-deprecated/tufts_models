@@ -37,6 +37,14 @@ describe RecordsController do
           assigns[:record].pid.should == 'tufts:123.1231'
         end
       end
+      describe "with the pid of an existing object" do
+        let(:record) { TuftsAudio.create(title: "existing") }
+        it "should redirect to the edit page and give a warning" do
+          get :new, :type=>'TuftsAudio', :pid=>record.id
+          response.should redirect_to HydraEditor::Engine.routes.url_helpers.edit_record_path(record.id)
+          flash[:alert].should == "A record with the pid \"#{record.id}\" already exists."
+        end
+      end
       it "should be an error with an invalid pid" do
         get :new, :type=>'TuftsAudio', :pid => '123.1231'
         response.should be_successful

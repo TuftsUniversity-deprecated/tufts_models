@@ -13,9 +13,14 @@ class RecordsController < ApplicationController
     args = params[:pid].present? ? {pid: params[:pid]} : {}
 
     if !args[:pid] || (args[:pid] && /:/.match(args[:pid]))
-      @record = params[:type].constantize.new(args)
-      @record.save(validate: false)
-      redirect_to record_attachments_path(@record)
+      if ActiveFedora::Base.exists?(args[:pid])
+        flash[:alert] = "A record with the pid \"#{args[:pid]}\" already exists."
+        redirect_to hydra_editor.edit_record_path(args[:pid])
+      else
+        @record = params[:type].constantize.new(args)
+        @record.save(validate: false)
+        redirect_to record_attachments_path(@record)
+      end
     else
       flash[:error] = "You have specified an invalid pid. A valid pid must contain a colin (i.e. tufts:1231)"
       render 'choose_type'

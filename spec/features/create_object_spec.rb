@@ -3,6 +3,11 @@ require 'spec_helper'
 feature 'Admin user creates document' do
   before do
     sign_in :admin
+    begin
+      a = TuftsAudio.find('tufts:001.102.201')
+      a.destroy
+    rescue ActiveFedora::ObjectNotFoundError
+    end
   end
   scenario 'with a TuftsAudio' do
     visit root_path
