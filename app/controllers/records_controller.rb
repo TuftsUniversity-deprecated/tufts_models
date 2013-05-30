@@ -31,17 +31,20 @@ class RecordsController < ApplicationController
 
   def destroy
     authorize! :destroy, @record
-    @record.destroy
+    @record.state= "D"
+    @record.save(validate: false)
+    # only push to production if it's already on production.
+    @record.push_to_production! if @record.published_at
+    flash[:notice] = "\"#{@record.title}\" has been purged"
     redirect_to root_path
   end
 
   def cancel
-    authorize! :destroy, @record
     if @record.DCA_META.versions.empty?
-      destroy
-    else
-      redirect_to root_path
+      authorize! :destroy, @record
+      @record.destroy
     end
+    redirect_to root_path
   end
 
   private

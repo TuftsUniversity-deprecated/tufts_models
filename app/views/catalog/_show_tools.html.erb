@@ -22,7 +22,7 @@
        </li>
       <% else %>
        <li>
-          <%= link_to "Publish", publish_record_path(@document.id), method: :post%>
+          <%= link_to "Publish", publish_record_path(@document), method: :post%>
        </li>
       <% end %>
       <li>
@@ -37,5 +37,8 @@
           <%= link_to "Preview in DL", '#' %>
          </li>
       <% end %>
+      <li>
+         <%= link_to "Purge", record_path(@document), method: :delete%>
+      </li>
   </ul>
 

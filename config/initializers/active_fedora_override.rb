@@ -24,5 +24,3 @@ module ActiveFedora
   end
 
 end
-
-ActiveFedora::Base.delegate :state=, to: :inner_object

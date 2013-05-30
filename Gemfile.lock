@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/projecthydra/active_fedora.git
-  revision: d19e6b07e31dc75007abea91eb58a69b43f5f5bf
+  revision: 7c8f20a48b05087771afdc8b9012dc65b707e217
   branch: delegate_parameters
   specs:
     active-fedora (6.1.1)
@@ -17,8 +17,8 @@ GIT
 
 GIT
   remote: https://github.com/projecthydra/hydra-editor.git
-  revision: b80985f6d81961143519da68ac25d976b20bb6a8
-  ref: b80985f
+  revision: 542002061a4df7915f1fae9317dcd5a39e70f4c4
+  ref: 5420020
   specs:
     hydra-editor (0.0.1)
       rails (~> 3.2.13)
@@ -171,6 +171,8 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.0)
+    launchy (2.3.0)
+      addressable (~> 2.3)
     libv8 (3.11.8.17)
     logger (1.2.8)
     mail (2.5.3)
@@ -180,7 +182,7 @@ GEM
     marc (0.5.0)
     mediashelf-loggable (0.4.9)
     mime-types (1.23)
-    multi_json (1.7.3)
+    multi_json (1.7.4)
     nokogiri (1.5.9)
     nom-xml (0.5.1)
       activesupport
@@ -328,6 +330,7 @@ DEPENDENCIES
   jettywrapper
   jquery-fileupload-rails
   jquery-rails
+  launchy
   om!
   rails (= 3.2.13)
   resque
