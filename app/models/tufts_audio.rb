@@ -68,4 +68,11 @@ class TuftsAudio < TuftsBase
       raise ArgumentError, "I don't know about the datastream #{name}"
     end
   end
+
+  # @param [String] dsid Datastream id
+  # @param [String] type the content type to test
+  # @return [Boolean] true if type is a valid mime type for audio
+  def valid_type_for_datastream?(dsid, type)
+    %Q{audio/wav audio/x-wav audio/wave audio/mpeg audio/x-mpeg audio/mp3 audio/x-mp3 audio/mpeg3 audio/x-mpeg3 audio/mpg audio/x-mpg audio/x-mpegaudio}.include?(type)
+  end
 end

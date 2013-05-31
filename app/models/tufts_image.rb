@@ -104,4 +104,11 @@ class TuftsImage < TuftsBase
   def self.to_class_uri
     'info:fedora/cm:Image.4DS'
   end
+
+  # @param [String] dsid Datastream id
+  # @param [String] type the content type to test
+  # @return [Boolean] true if type is a valid mime type for image
+  def valid_type_for_datastream?(dsid, type)
+    %Q{image/tif image/x-tif image/tiff image/x-tiff application/tif application/x-tif application/tiff application/x-tiff}.include?(type)
+  end
 end

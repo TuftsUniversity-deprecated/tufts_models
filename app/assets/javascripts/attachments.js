@@ -18,6 +18,12 @@ $(function () {
             $('.btn-primary').prop("disabled", true);
         },
         done: function (e, data) {
+            if (data.jqXHR.responseText) {
+              result = JSON.parse(data.jqXHR.responseText);
+              if (result.message) {
+                alert(result.message);
+              }
+            }
             $form = $(this).closest('form');
             $('.progress', $form).removeClass('active').removeClass('progress-striped');
 
@@ -28,7 +34,6 @@ $(function () {
         },
         fail: function (e, data) {
           $('.progress', $form).removeClass('active').removeClass('progress-striped');
-          console.log(data.jqXHR);
           alert("There was an error attaching your file: " + data.errorThrown);
         }
     });

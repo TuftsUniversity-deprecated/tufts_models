@@ -140,6 +140,13 @@ class TuftsBase < ActiveFedora::Base
     index_sort_fields solr_doc
     solr_doc
   end
+
+  # override this method if you want to restrict the accepted formats to a particular mime-type
+  # @param [String] dsid Datastream id
+  # @param [String] type the content type to test
+  def valid_type_for_datastream?(dsid, type)
+    true
+  end
 end
 
 

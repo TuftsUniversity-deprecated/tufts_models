@@ -25,4 +25,18 @@ class TuftsAudioText < TuftsBase
       File.join(directory_for(name), "#{pid_without_namespace}.#{name.downcase.sub('_', '.')}")
     end
   end
+
+  # @param [String] dsid Datastream id
+  # @param [String] type the content type to test
+  # @return [Boolean] true if type is a valid mime type for audio when dsid == 'ARCHIVAL_WAV' or an xml type when dsid == 'ARCHIVAL_XML'
+  def valid_type_for_datastream?(dsid, type)
+    case dsid
+    when 'ARCHIVAL_WAV'
+      %Q{audio/wav audio/x-wav audio/wave audio/mpeg audio/x-mpeg audio/mp3 audio/x-mp3 audio/mpeg3 audio/x-mpeg3 audio/mpg audio/x-mpg audio/x-mpegaudio}.include?(type)
+    when 'ARCHIVAL_XML'
+      %Q{text/xml application/xml application/x-xml}.include?(type)
+    else
+      false
+    end
+  end
 end
