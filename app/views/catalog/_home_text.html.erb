@@ -1,7 +1,10 @@
-<h1>Here we are</h1>
+<h1>Tufts Digital Library Admin</h1>
 
 <nav>
-<% if can? :create,  ActiveFedora::Base %>
-  <%= link_to "Create a new object", hydra_editor.new_record_path()%>
-<% end %>
+  <ul>
+    <% if can? :create,  ActiveFedora::Base %>
+      <li><%= link_to "Create a new object", hydra_editor.new_record_path()%></li>
+    <% end %>
+    <li><%= link_to "Unpublished objects", unpublished_index_path()%></li>
+  </ul>
 </nav>
