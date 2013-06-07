@@ -48,15 +48,16 @@ describe AttachmentsController do
       describe "a pdf file to a pdf object" do
         it "should be successful" do
           file = fixture_file_upload('/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf','application/pdf')
-          put :update, record_id: @pdf, id: 'Archival.pdf', files: {'Archival.pdf' => file}
-          flash[:alert].should be_nil
+          put :update, record_id: @pdf, id: 'Archival.pdf', files: {'Archival.pdf' => file}, format: 'json'
+          response.body.should == ' ' # no json message here
         end
       end
       describe "a wav file to a pdf object" do
         it "should give an error saying this is the incorrect type" do
           file = fixture_file_upload('/local_object_store/data01/tufts/central/dca/MISS/archival_sound/MISS.ISS.IPPI.archival.wav','audio/wav')
-          put :update, record_id: @pdf, id: 'Archival.pdf', files: {'Archival.pdf' => file}
-          flash[:alert].should == ["You provided a audio/wav file, which is not a valid type for Archival.pdf"]
+          put :update, record_id: @pdf, id: 'Archival.pdf', files: {'Archival.pdf' => file}, format: 'json'
+          json = JSON.parse(response.body)
+          json["message"].should == "You provided a audio/wav file, which is not a valid type for Archival.pdf"
         end
       end
     end
