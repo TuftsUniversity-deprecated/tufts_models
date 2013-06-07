@@ -11,16 +11,10 @@ module Tufts
 
     def index_sort_fields(solr_doc)
       #CREATOR SORT
-      names = self.creator
-
-      unless names.empty?
-        Solrizer.insert_field(solr_doc, 'author', names[0], :sortable)
-      end
+      Solrizer.insert_field(solr_doc, 'author', creator.first, :sortable) unless creator.empty?
 
       #TITLE SORT
-      if title
-        Solrizer.insert_field(solr_doc, 'title', title, :sortable)
-      end
+      Solrizer.insert_field(solr_doc, 'title', title, :sortable) if title
     end
 
     def create_facets(solr_doc)
@@ -33,37 +27,43 @@ module Tufts
       index_unstemmed_values(solr_doc)
     end
 
+  private
+
   def index_unstemmed_values(solr_doc)
-    titleize_and_index(solr_doc, 'corpname', corpname, :unstemmed_searchable)  
-    titleize_and_index(solr_doc, 'geogname', geogname, :unstemmed_searchable)  
-    titleize_and_index(solr_doc, 'subject_topic', subject, :unstemmed_searchable)  
-    titleize_and_index(solr_doc, 'persname', persname, :unstemmed_searchable)  
-    titleize_and_index(solr_doc, 'author', creator, :unstemmed_searchable)  
-    titleize_and_index(solr_doc, 'title', [title], :unstemmed_searchable)  
+    titleize_and_index_array(solr_doc, 'corpname', corpname, :unstemmed_searchable)  
+    titleize_and_index_array(solr_doc, 'geogname', geogname, :unstemmed_searchable)  
+    titleize_and_index_array(solr_doc, 'subject_topic', subject, :unstemmed_searchable)  
+    titleize_and_index_array(solr_doc, 'persname', persname, :unstemmed_searchable)  
+    titleize_and_index_array(solr_doc, 'author', creator, :unstemmed_searchable)  
+    titleize_and_index_single(solr_doc, 'title', title, :unstemmed_searchable)  
 
   end
 
   def index_names_info(solr_doc)
     [:creator, :persname, :corpname].each do |name_field|
       names = self.send(name_field)
-      titleize_and_index(solr_doc, 'names', names, :facetable)  #names_sim
+      titleize_and_index_array(solr_doc, 'names', names, :facetable)  #names_sim
     end
   end
 
   def index_subject_info(solr_doc)
     [:subject, :corpname, :persname, :geogname].each do |subject_field|
       subjects = self.send(subject_field)
-      titleize_and_index(solr_doc, 'subject', subjects, :facetable)  #subject_sim
+      titleize_and_index_array(solr_doc, 'subject', subjects, :facetable)  #subject_sim
     end
   end
 
 
-  def titleize_and_index(solr_doc, field_prefix, values, index_type)
+  def titleize_and_index_array(solr_doc, field_prefix, values, index_type)
     values.each do |name|
-      if name.present? &&  !name.downcase.include?('unknown')
-        clean_name = Titleize.titleize(name)
-        Solrizer.insert_field(solr_doc, field_prefix, clean_name, index_type)
-      end
+      titleize_and_index_single(solr_doc, field_prefix, name, index_type)
+    end
+  end
+
+  def titleize_and_index_single(solr_doc, field_prefix, name, index_type)
+    if name.present? &&  !name.downcase.include?('unknown')
+      clean_name = Titleize.titleize(name)
+      Solrizer.insert_field(solr_doc, field_prefix, clean_name, index_type)
     end
   end
 

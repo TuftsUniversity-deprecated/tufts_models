@@ -53,6 +53,14 @@ describe TuftsAudio do
         solr_doc['displays_ssi'].should == 'dl'
       end
     end
+    describe "title" do
+      it "should be searchable and facetable" do
+        subject.title = "My title"
+        solr_doc = subject.to_solr
+        solr_doc['title_si'].should == 'My title'
+        solr_doc['title_tesim'].should == ['My title']
+      end
+    end
   end
 
   describe "displays" do
