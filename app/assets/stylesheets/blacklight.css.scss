@@ -2,3 +2,10 @@
 @import 'bootstrap-responsive';
 
 @import 'blacklight/blacklight';
+
+
+.navbar .brand {
+  background: none;
+  width: 100%;
+  text-indent: 0;
+}
