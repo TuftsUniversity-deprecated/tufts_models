@@ -49,7 +49,9 @@ describe AttachmentsController do
         it "should be successful" do
           file = fixture_file_upload('/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf','application/pdf')
           put :update, record_id: @pdf, id: 'Archival.pdf', files: {'Archival.pdf' => file}, format: 'json'
-          response.body.should == ' ' # no json message here
+          json = JSON.parse(response.body)
+          json["message"].should == "Archival.pdf has been added"
+          json["status"].should == "success"
         end
       end
       describe "a wav file to a pdf object" do
@@ -58,6 +60,7 @@ describe AttachmentsController do
           put :update, record_id: @pdf, id: 'Archival.pdf', files: {'Archival.pdf' => file}, format: 'json'
           json = JSON.parse(response.body)
           json["message"].should == "You provided a audio/wav file, which is not a valid type for Archival.pdf"
+          json["status"].should == "error"
         end
       end
     end

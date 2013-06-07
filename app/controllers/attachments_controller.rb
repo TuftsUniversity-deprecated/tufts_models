@@ -12,8 +12,11 @@ class AttachmentsController < ApplicationController
     @record = ActiveFedora::Base.find(params[:record_id], cast: true)
     authorize! :update, @record
     warnings = []
+    messages = []
     params[:files].each do |dsid, file|
-      unless @record.valid_type_for_datastream?(dsid, file.content_type)
+      if @record.valid_type_for_datastream?(dsid, file.content_type)
+        messages << "#{dsid} has been added"
+      else
         warnings << "You provided a #{file.content_type} file, which is not a valid type for #{dsid}"
       end
       @record.store_archival_file(dsid, file)
@@ -24,9 +27,9 @@ class AttachmentsController < ApplicationController
         format.html { redirect_to catalog_path(@record), notice: 'Object was successfully updated.' }
         format.json do
           if warnings.empty? 
-            head :no_content 
+            render json: {message: messages.join(". "), status: 'success'}
           else
-            render json: {message: warnings.join(". ")}
+            render json: {message: warnings.join(". "), status: 'error'}
           end
         end
       else

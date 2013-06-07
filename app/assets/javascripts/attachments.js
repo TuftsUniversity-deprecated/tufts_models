@@ -1,4 +1,10 @@
 $(function () {
+
+    function addSuccessMessage(msg) {
+      $(".flash_messages").append('<div class="alert alert-notice">'+msg+'<a class="close" data-dismiss="alert" href="#">&times;</a></div>')
+
+    }
+
     $('.fileupload').fileupload({
         dataType: 'json',
         progressall: function (e, data) {
@@ -20,8 +26,10 @@ $(function () {
         done: function (e, data) {
             if (data.jqXHR.responseText) {
               result = JSON.parse(data.jqXHR.responseText);
-              if (result.message) {
+              if (result.status == 'error') {
                 alert(result.message);
+              } else {
+                addSuccessMessage(result.message);
               }
             }
             $form = $(this).closest('form');
