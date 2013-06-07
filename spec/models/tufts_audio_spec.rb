@@ -61,6 +61,16 @@ describe TuftsAudio do
         solr_doc['title_tesim'].should == ['My title']
       end
     end
+
+    describe "date added" do
+      before do
+        subject.save(validate: false)
+        @solr_doc = subject.to_solr
+      end
+      it "should be sortable" do
+        @solr_doc['system_create_dtsi'].should_not be_nil
+      end
+    end
   end
 
   describe "displays" do
