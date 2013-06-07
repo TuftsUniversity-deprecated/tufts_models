@@ -4,6 +4,7 @@
 en:
   blacklight:
     application_name: "Tufts Repository Admin"
+    back_to_search: "Back to Search Results"
   hydra:
     field_label:
       identifier: "Permanent URL"
