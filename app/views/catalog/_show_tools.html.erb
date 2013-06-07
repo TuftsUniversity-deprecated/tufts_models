@@ -10,6 +10,11 @@
 -%>
   <ul class="nav nav-list">
       <li class="nav-header"><%= t('blacklight.tools.title') %></li>
+      <% if can? :create,  ActiveFedora::Base %>
+        <li>
+         <%= link_to "Create a new object", hydra_editor.new_record_path()%>
+        </li>
+      <% end %>
       <li>
         <%= link_to "Edit Metadata", hydra_editor.edit_record_path(@document) %>
       </li>
