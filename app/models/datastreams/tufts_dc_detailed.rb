@@ -11,7 +11,6 @@ class TuftsDcDetailed < ActiveFedora::OmDatastream
            "xmlns:dcterms" => "http://purl.org/d/terms/",
            "xmlns:xlink" => "http://www.w3.org/1999/xlink")
     t.identifier
-    t.title(:index_as => :stored_searchable, :label => "Title")
     t.alternative(:namespace_prefix => "dcterms", :index_as => :stored_searchable, :label => "Alternative Title")
     t.creator(:index_as => :stored_searchable, :label => "Creator")
     t.contributor(:namespace_prefix => "dcterms", :index_as => :stored_searchable, :label => "Contributor")
