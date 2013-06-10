@@ -17,7 +17,7 @@
     </div><!-- /well -->
     <%= hidden_field_tag :type, params[:type] %>
     <%= hidden_field_tag :pid, params[:pid] if controller.action_name == 'new'%>
-    <%= f.actions do %>
+    <div class="form-actions floating">
       <%= f.submit 'Save', 'data-disable-with'=>"Saving..." %>
       <% if @record.DCA_META.versions.empty? %>
         <%# if the object was just created (temporary object) delete it if they cancel %>
@@ -25,6 +25,6 @@
       <% else %>
         <%= link_to "Cancel", :back, :class=>'btn cancel' %>
       <% end %>
-    <% end %>
+    </div>
   <% end %>
 </div>
