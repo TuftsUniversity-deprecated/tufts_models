@@ -71,6 +71,14 @@ describe TuftsAudio do
         @solr_doc['system_create_dtsi'].should_not be_nil
       end
     end
+
+    describe "contributor added" do
+      it "should  save it" do
+        subject.contributor = "Michael Jackson"
+        solr_doc = subject.to_solr
+        solr_doc['names_sim'].should == ['Michael Jackson']
+      end
+    end
   end
 
   describe "displays" do

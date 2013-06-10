@@ -40,7 +40,7 @@ module Tufts
   end
 
   def index_names_info(solr_doc)
-    [:creator, :persname, :corpname].each do |name_field|
+    [:creator, :contributor, :persname, :corpname].each do |name_field|
       names = self.send(name_field)
       titleize_and_index_array(solr_doc, 'names', names, :facetable)  #names_sim
     end
