@@ -30,6 +30,7 @@ class RecordsController < ApplicationController
   def publish
     @record = ActiveFedora::Base.find(params[:id], cast: true)
     authorize! :publish, @record
+    @record.audit(current_user, 'pushed to production')
     @record.push_to_production!
     redirect_to catalog_path(@record), notice: "\"#{@record.title}\" has been pushed to production"
   end
@@ -39,6 +40,7 @@ class RecordsController < ApplicationController
     @record.state= "D"
     @record.save(validate: false)
     # only push to production if it's already on production.
+    @record.audit(current_user, 'deleted')
     @record.push_to_production! if @record.published_at
     flash[:notice] = "\"#{@record.title}\" has been purged"
     redirect_to root_path
@@ -50,6 +52,11 @@ class RecordsController < ApplicationController
       @record.destroy
     end
     redirect_to root_path
+  end
+
+  def set_attributes
+    @record.working_user = current_user
+    super
   end
 
   private

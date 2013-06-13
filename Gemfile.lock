@@ -1,10 +1,9 @@
 GIT
   remote: https://github.com/projecthydra/active_fedora.git
-  revision: 7c8f20a48b05087771afdc8b9012dc65b707e217
-  branch: delegate_parameters
+  revision: 0b14b331695618fde0ef19452781af798d043ce3
+  ref: 0b14b33
   specs:
-    active-fedora (6.1.1)
-      activeresource (>= 3.0.0)
+    active-fedora (6.2.0)
       activesupport (>= 3.0.0)
       deprecation
       mediashelf-loggable
@@ -13,20 +12,12 @@ GIT
       rdf
       rdf-rdfxml (~> 1.0.0)
       rsolr
-      rubydora (~> 1.6)
-
-GIT
-  remote: https://github.com/projecthydra/hydra-editor.git
-  revision: 542002061a4df7915f1fae9317dcd5a39e70f4c4
-  ref: 5420020
-  specs:
-    hydra-editor (0.0.1)
-      rails (~> 3.2.13)
+      rubydora (~> 1.6, >= 1.6.5)
 
 GIT
   remote: https://github.com/projecthydra/om.git
-  revision: 10929f7b27fdc4e76c6e4e6f45959f9b6b2e078b
-  branch: fix_serializing_nil
+  revision: d147b1a8ad8e9b2cdbdb6dfdc87f5e6ec515e00c
+  ref: d147b1a
   specs:
     om (2.1.2)
       activemodel
@@ -79,7 +70,7 @@ GEM
       sass-rails
     block_helpers (0.3.3)
       activesupport (>= 2.0)
-    bootstrap-sass (2.3.1.0)
+    bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
     bootstrap_forms (3.0.1)
     builder (3.0.4)
@@ -121,33 +112,29 @@ GEM
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
     fastercsv (1.5.5)
-    fcrepo_admin (0.3.5)
-      active-fedora (~> 6.1)
-      blacklight
-      devise
-      hydra-head (~> 6.0)
-      mime-types (~> 1.19)
-      rails (~> 3.2)
-    ffi (1.8.1)
-    hike (1.2.2)
-    hooks (0.2.2)
-    hydra-access-controls (6.1.1)
+    ffi (1.9.0)
+    hike (1.2.3)
+    hooks (0.3.1)
+    hydra-access-controls (6.2.0)
       active-fedora (~> 6.1)
       activesupport
       blacklight
       cancan
       deprecation
-    hydra-core (6.1.1)
+    hydra-core (6.2.0)
       active-fedora
       blacklight (~> 4.0)
       block_helpers
       deprecation (>= 0.0.5)
-      hydra-access-controls (= 6.1.1)
+      hydra-access-controls (= 6.2.0)
       jettywrapper (>= 1.4.1)
       rails (~> 3.2.3)
-    hydra-head (6.1.1)
-      hydra-access-controls (= 6.1.1)
-      hydra-core (= 6.1.1)
+    hydra-editor (0.0.1)
+      bootstrap_forms
+      rails (~> 3.2.13)
+    hydra-head (6.2.0)
+      hydra-access-controls (= 6.2.0)
+      hydra-core (= 6.2.0)
       rails (>= 3.2.6)
     hydra-role-management (0.0.2)
       bootstrap_forms
@@ -166,7 +153,7 @@ GEM
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    json (1.7.7)
+    json (1.8.0)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -175,15 +162,16 @@ GEM
       addressable (~> 2.3)
     libv8 (3.11.8.17)
     logger (1.2.8)
-    mail (2.5.3)
-      i18n (>= 0.4.0)
+    mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     marc (0.5.0)
     mediashelf-loggable (0.4.9)
     mime-types (1.23)
-    multi_json (1.7.4)
-    nokogiri (1.5.9)
+    mini_portile (0.5.0)
+    multi_json (1.7.6)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     nom-xml (0.5.1)
       activesupport
       i18n
@@ -251,17 +239,17 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
-    rubydora (1.6.4)
+    rubydora (1.6.5)
       activemodel
       activesupport
       deprecation
       equivalent-xml
       fastercsv
-      hooks (~> 0.2.2)
+      hooks (~> 0.3.0)
       mime-types
       nokogiri
       rest-client
-    sass (3.2.8)
+    sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -291,7 +279,7 @@ GEM
     thor (0.18.1)
     tilt (1.4.1)
     titleize (1.3.0)
-    treetop (1.4.12)
+    treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.37)
@@ -323,8 +311,7 @@ DEPENDENCIES
   devise
   disable_assets_logger
   factory_girl_rails
-  fcrepo_admin (= 0.3.5)
-  hydra-editor!
+  hydra-editor (= 0.0.1)
   hydra-head
   hydra-role-management (= 0.0.2)
   jettywrapper

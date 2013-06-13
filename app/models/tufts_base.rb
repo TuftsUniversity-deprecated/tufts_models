@@ -12,12 +12,19 @@ class TuftsBase < ActiveFedora::Base
   has_metadata "DCA-META", type: TuftsDcaMeta
   has_metadata "DC-DETAIL-META", type: TuftsDcDetailed
   has_metadata "DCA-ADMIN", type: DcaAdmin
+  has_metadata "audit_log", type: Audit
 
-  attr_accessor :push_production
+  attr_accessor :push_production, :working_user
 
   before_save do
     self.edited_at = DateTime.now
     self.admin.published_at = edited_at if push_production
+    if content_will_update 
+      self.audit(working_user, "Content updated: #{content_will_update}")
+      self.content_will_update = nil
+    elsif metadata_streams.any? { |ds| ds.changed? }
+      self.audit(working_user, "Metadata updated #{metadata_streams.select { |ds| ds.changed? }.map{ |ds| ds.dsid}.join(', ')}")
+    end
   end
 
   #MK 2011-04-13 - Are we really going to need to access FILE-META from FILE-META.  I'm guessing
@@ -46,6 +53,13 @@ class TuftsBase < ActiveFedora::Base
 
   delegate_to "DCA-ADMIN", [:published_at, :edited_at, :displays], unique: true
   delegate_to "DCA-ADMIN", [:steward, :name, :comment, :retentionPeriod, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note]
+
+  def audit(user, what)
+    return unless user
+    audit_log.who = user.user_key
+    audit_log.what = what
+    audit_log.when = DateTime.now
+  end
 
 
   def datastreams= (ds_data)
@@ -87,8 +101,12 @@ class TuftsBase < ActiveFedora::Base
   end
 
   # a more idiomatic name for the DC-DETAIL-META datastream
-  def descMetadata
+  def detailMetadata
     self.DC_DETAIL_META
+  end
+
+  def descMetadata
+    self.DCA_META
   end
 
   # a more idiomatic name for the DCA-ADMIN datastream

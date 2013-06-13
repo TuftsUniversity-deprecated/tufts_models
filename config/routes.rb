@@ -12,7 +12,7 @@ Tufts::Application.routes.draw do
 
   
   HydraHead.add_routes(self)
-  mount FcrepoAdmin::Engine => '/admin', :as=> 'fcrepo_admin'
+  
   mount HydraEditor::Engine => '/'
   post 'records/:id/publish', to: 'records#publish', as: 'publish_record', constraints: { id: ALLOW_DOTS }
 

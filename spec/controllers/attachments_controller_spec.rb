@@ -52,6 +52,7 @@ describe AttachmentsController do
           json = JSON.parse(response.body)
           json["message"].should == "Archival.pdf has been added"
           json["status"].should == "success"
+          @pdf.reload.audit_log.what.should == ["Content updated: Archival.pdf"]
         end
       end
       describe "a wav file to a pdf object" do

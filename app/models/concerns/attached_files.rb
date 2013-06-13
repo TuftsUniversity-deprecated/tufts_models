@@ -4,6 +4,7 @@ module AttachedFiles
   included do
     class_attribute :original_file_datastreams
     self.original_file_datastreams = []
+    attr_accessor :content_will_update
   end
 
   def create_derivatives
@@ -15,6 +16,7 @@ module AttachedFiles
     File.open(local_path_for(dsid, extension), 'wb') do |f| 
       f.write file.read 
     end
+    self.content_will_update = dsid
 
     ds = datastreams[dsid]
     ds.dsLocation = remote_url_for(dsid, extension)

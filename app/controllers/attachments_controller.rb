@@ -23,6 +23,7 @@ class AttachmentsController < ApplicationController
     end
 
     respond_to do |format|
+      @record.working_user = current_user
       if @record.save(validate: false)
         format.html { redirect_to catalog_path(@record), notice: 'Object was successfully updated.' }
         format.json do
