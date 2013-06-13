@@ -11,11 +11,20 @@ describe DownloadsController do
       @pdf.datastreams["Archival.pdf"].mimeType = "application/pdf"
       @pdf.save!
     end
-    it "should have a filename" do
+    describe "when signed in" do
+      before do
+        sign_in FactoryGirl.create(:admin)
+      end
+      it "should have a filename" do
+        get :show, id: @pdf.pid, datastream_id: "Archival.pdf"
+        options = controller.content_options
+        response.headers['Content-Disposition'].should =="inline; filename=\"MISS.ISS.IPPI.archival.pdf\""
+        response.headers['Content-Type'].should =="application/pdf"
+      end
+    end
+    it "should require sign-in" do
       get :show, id: @pdf.pid, datastream_id: "Archival.pdf"
-      options = controller.content_options
-      response.headers['Content-Disposition'].should =="inline; filename=\"MISS.ISS.IPPI.archival.pdf\""
-      response.headers['Content-Type'].should =="application/pdf"
+      response.should redirect_to new_user_session_path
     end
   end
 end

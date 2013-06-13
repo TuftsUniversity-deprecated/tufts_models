@@ -7,8 +7,13 @@ class ApplicationController < ActionController::Base
   layout 'blacklight'
 
   protect_from_forgery
+  before_filter :authenticate_user!
 
   
+  def after_sign_in_path_for(resource)
+    root_path
+  end
+
   # Catch permission errors
   rescue_from Hydra::AccessDenied, CanCan::AccessDenied do |exception|
     if (exception.action == :edit)

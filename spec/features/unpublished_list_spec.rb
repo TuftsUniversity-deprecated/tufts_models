@@ -9,6 +9,7 @@ feature 'View unpublished documents' do
     @not_production = TuftsAudio.new(title: 'Very unique title', description: 'eh?', creator: 'Fred')
     @not_production.save!
 
+    sign_in :admin
   end
   scenario 'with a TuftsAudio' do
     visit root_path
