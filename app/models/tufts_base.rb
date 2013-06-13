@@ -33,7 +33,7 @@ class TuftsBase < ActiveFedora::Base
 
 
   validates :title, :presence => true
-  validates :displays, :inclusion => { :in => %w(dl tisch aah perseus elections dark), :if => lambda {|f| f.displays.present? } }
+  validate :displays_valid
   
   delegate_to "DCA-META", [:identifier, :creator, :description, :publisher, :source, 
                            :date_created, :date_issued, :date_available, :type,
@@ -51,8 +51,8 @@ class TuftsBase < ActiveFedora::Base
                            :isFormatOf, :hasPart, :isPartOf, :accruralPolicy,
                            :audience, :references, :spatial]
 
-  delegate_to "DCA-ADMIN", [:published_at, :edited_at, :displays], unique: true
-  delegate_to "DCA-ADMIN", [:steward, :name, :comment, :retentionPeriod, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note]
+  delegate_to "DCA-ADMIN", [:published_at, :edited_at], unique: true
+  delegate_to "DCA-ADMIN", [:steward, :name, :comment, :displays, :retentionPeriod, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note]
 
   def audit(user, what)
     return unless user
@@ -165,6 +165,14 @@ class TuftsBase < ActiveFedora::Base
   def valid_type_for_datastream?(dsid, type)
     true
   end
+
+  def displays_valid
+    return unless displays.present?
+    unless displays.all? {|d| %w(dl tisch aah perseus elections dark).include? d }
+      errors.add(:displays, "must be in the list")
+    end
+  end
+  
 end
 
 

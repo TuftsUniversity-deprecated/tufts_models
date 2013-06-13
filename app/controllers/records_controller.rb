@@ -56,6 +56,11 @@ class RecordsController < ApplicationController
 
   def set_attributes
     @record.working_user = current_user
+    if params[@record.class.model_name.underscore][:displays]
+      # this is a hack that allows someone to set fewer values than existed before.
+      # It should probably be fixed in OM
+      @record.displays = nil
+    end
     super
   end
 
