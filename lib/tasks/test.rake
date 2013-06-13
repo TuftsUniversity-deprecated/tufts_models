@@ -59,16 +59,10 @@ task :fixtures => :environment do
     puts("Refreshing #{pid}")
     ActiveFedora::FixtureLoader.delete(pid)
     loader.import_and_index(pid)
-
-    # ENV["pid"] = fixture        
-    # Rake::Task["repo:delete"].reenable
-    # Rake::Task["repo:delete"].invoke
-    # Rake::Task["narm:fixtures:import"].reenable
-    # Rake::Task["narm:fixtures:import"].invoke
   end
 end
 
-task :ci => :jetty do
+task :ci => [:jetty, 'jetty:config'] do
   Jettywrapper.wrap(Jettywrapper.load_config) do
     Rake::Task['spec'].invoke
   end
