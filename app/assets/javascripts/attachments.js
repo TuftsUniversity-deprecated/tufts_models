@@ -5,7 +5,14 @@ $(function () {
 
     }
 
+    $('input#next').click(function(e) {
+      if ($('.fileupload').attr('data-exists') == "false") {
+        return confirm("You have not uploaded a datastream, do you want to continue?");
+      }
+    });
+
     $('.fileupload').fileupload({
+
         dataType: 'json',
         progressall: function (e, data) {
             $form = $(this).closest('form');
@@ -34,6 +41,7 @@ $(function () {
             }
             $form = $(this).closest('form');
             $('.progress', $form).removeClass('active').removeClass('progress-striped');
+            $(this).attr('data-exists', 'yep');
 
             // Enable the save button only if all forms have finished upload
             if ($('.progress.active').length == 0)

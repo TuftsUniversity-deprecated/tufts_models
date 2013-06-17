@@ -1,6 +1,6 @@
 <%= form_for @record, :url=>record_attachment_path(@record, 'ARCHIVAL_WAV') do |f| %>
   <h4>Audio</h4>
-  <input class="fileupload" type="file" name="files[ARCHIVAL_WAV]">
+  <input class="fileupload" type="file" name="files[ARCHIVAL_WAV]" data-exists="<%=!@record.datastreams['ARCHIVAL_WAV'].new?%>">
   <div class="file btn">
     <%= @record.datastreams['ARCHIVAL_WAV'].new? ? 'Upload ARCHIVAL_WAV' : 'Replace ARCHIVAL_WAV' %>
     <i class="icon-upload"></i>
@@ -12,7 +12,7 @@
 
 <%= form_for @record, :url=>record_attachment_path(@record, 'ARCHIVAL_XML') do |f| %>
   <h4>Transcript</h4>
-  <input class="fileupload" type="file" name="files[ARCHIVAL_XML]">
+  <input class="fileupload" type="file" name="files[ARCHIVAL_XML]" data-exists="<%=!@record.datastreams['ARCHIVAL_XML'].new?%>">
   <div class="file btn">
     <%= @record.datastreams['ARCHIVAL_XML'].new? ? 'Upload ARCHIVAL_XML' : 'Replace ARCHIVAL_XML' %>
     <i class="icon-upload"></i>
