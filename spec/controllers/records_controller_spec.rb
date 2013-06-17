@@ -192,8 +192,7 @@ describe RecordsController do
     describe "who goes to the new page" do
       it "should not be allowed" do
         get :new
-        response.should redirect_to( Tufts::Application.routes.url_helpers.root_path)
-        flash[:alert].should == "You are not authorized to access this page."
+        response.status.should == 401
       end
     end
     describe "who goes to the edit page" do
@@ -205,8 +204,7 @@ describe RecordsController do
       end
       it "should not be allowed" do
         get :edit, id: @audio
-        response.should redirect_to( Tufts::Application.routes.url_helpers.catalog_path(@audio))
-        flash[:alert].should == "You do not have sufficient privileges to edit this document."
+        response.status.should == 401
       end
     end
   end
