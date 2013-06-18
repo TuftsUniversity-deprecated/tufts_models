@@ -8,15 +8,21 @@ en:
   hydra:
     field_label:
       identifier: "Permanent URL"
+      alternative: "Alternate Title"
+      tableOfContents: "Table of Contents"
       source: "Alternate Source"
       date_created: "Date Created"
+      dateCopyrighted: "Date Copyrighted"
       date_available: "Date Available"
+      dateSubmitted: "Date Submitted"
+      dateAccepted: "Date Accepted"
       date_issued: "Date Issued"
+      dateModified: "Date Modified"
       bibliographic_citation: "Bibliographic Citation"
       type: "Alternate Type"
       format: "Alternate Format"
-      persname: "Person Name"
-      corpname: "Corporation Name"
+      persname: "Personal Name"
+      corpname: "Corporate Name"
       geogname: "Geographic Name"
       bitdepth: "Bit Depth"
       colorspace: "Color Space"
@@ -35,7 +41,7 @@ en:
       isFormatOf: 'Is Format Of'
       hasPart: 'Has Part'
       isPartOf: 'Is Part Of'
-      accruralPolicy: 'Accrural Policy'
+      accrualPolicy: 'Accrual Policy'
     model_label:
       TuftsPdf: "PDF"
       TuftsAudio: "audio"
