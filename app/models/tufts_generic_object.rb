@@ -28,8 +28,9 @@ class TuftsGenericObject < TuftsBase
   end
 
   def item_attributes=(items)
-    items.each do |key, values|
-      new_item = item(key.to_i)
+    self.item = []  # Remove the old items
+    items.each_with_index do |(key, values), index|
+      new_item = item(index)
       values.each do |name, val|
         new_item.send("#{name}=".to_sym, val)
       end

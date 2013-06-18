@@ -7,7 +7,7 @@ class GenericsController < ApplicationController
 
   def update
     authorize! :update, @generic
-    @generic.update_attributes(params[:generic])
+    @generic.attributes = params[:generic]
     @generic.save(validate: false)
     redirect_to hydra_editor.edit_record_path(@generic)
   end

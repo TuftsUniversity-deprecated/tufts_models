@@ -8,7 +8,7 @@ gem 'sqlite3'
 gem 'hydra-head'
 gem 'hydra-role-management', '0.0.2'
 gem 'active-fedora', git: 'https://github.com/projecthydra/active_fedora.git', ref: '0b14b33'
-gem 'om', git: 'https://github.com/projecthydra/om.git', ref: 'd147b1a'
+gem 'om', git: 'https://github.com/projecthydra/om.git', ref: '6e6459b'
 gem 'hydra-editor', '0.0.1' 
 
 gem 'disable_assets_logger', :group => :development
