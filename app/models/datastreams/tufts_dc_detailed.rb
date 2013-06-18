@@ -53,7 +53,7 @@ class TuftsDcDetailed < ActiveFedora::OmDatastream
     t.isFormatOf(:namespace_prefix => "dcterms", :path => "isFormatOf", :index_as => :stored_searchable, :label => "Is Format Of")
     t.hasPart(:namespace_prefix => "dcterms", :path => "hasPart", :index_as => :stored_searchable, :label => "Has Part")
     t.isPartOf(:namespace_prefix => "dcterms", :path => "isPartOf", :index_as => :stored_searchable, :label => "Is Part Of")
-    t.accruralPolicy(:namespace_prefix => "dcterms", :path => "accrualPolicy", :index_as => :stored_searchable, :label => "Accrual Policy")
+    t.accrualPolicy(:namespace_prefix => "dcterms", :path => "accrualPolicy", :index_as => :stored_searchable, :label => "Accrual Policy")
     t.audience(:namespace_prefix => "dcterms", :index_as => :stored_searchable, :label => "Audience")
     t.references(:namespace_prefix => "dcterms", :index_as => :stored_searchable, :label => "References")
     t.spatial(:namespace_prefix => "dcterms", :path => "spatial", :index_as => :stored_searchable, :label => "Spatial Coverage")
