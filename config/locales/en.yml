@@ -18,6 +18,8 @@ en:
       date_accepted: "Date Accepted"
       date_issued: "Date Issued"
       date_modified: "Date Modified"
+      rights_holder: "Rights Holder"
+      access_rights: "Access Rights"
       bibliographic_citation: "Bibliographic Citation"
       type: "Alternate Type"
       format: "Alternate Format"
