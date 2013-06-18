@@ -7,6 +7,14 @@
     // Create some defaults, extending them with any options that were provided
     var settings = $.extend( { }, options);
 
+    function update_number_in_name(field) {
+        old_name = $(field).prop('name');
+        $(field).prop('name', old_name.replace('0', counter - 1));
+        old_id = $(field).prop('id');
+        $(field).prop('id', old_id.replace('0', counter - 1));
+    }
+
+
     function addField() {
       var $this = $(this);
       var row = $this.closest('tr');
@@ -15,7 +23,8 @@
       tbody.append(newRow);
       
       counter++;
-      var number = newRow.find('.row_num').html(counter);
+      // Update the row to show 
+      newRow.find('.row_num').html(counter);
       // change the add button to a remove button
       var plusbttn = newRow.find('.adder');
       plusbttn.html('<i class="icon-minus"></i><span class="accessible-hidden">remove this row</span>');
@@ -31,9 +40,12 @@
       // }
 
       newRow.find('input[type=text]').each(function() {
-        old_name = $(this).prop('name');
-        $(this).prop('name', old_name.replace('0', counter - 1));
+        update_number_in_name(this, counter);
       });
+      newRow.find('input[type=hidden]').each(function() {
+        update_number_in_name(this, counter);
+      });
+      newRow.find('input#generic_item_attributes_'+ (counter-1) +'_item_id').val(counter);
       newRow.find('input[type=text]').first().focus();
       return false;
     }

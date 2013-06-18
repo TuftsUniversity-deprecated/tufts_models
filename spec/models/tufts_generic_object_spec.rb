@@ -57,8 +57,9 @@ describe TuftsGenericObject do
 
   describe "setting items" do
     it "should accept a hash" do
-      subject.item_attributes = {"0"=>{"link"=>"link one", "mimeType"=>"mime one", "fileName"=>"file one"}, "1"=>{"link"=>"link two", "mimeType"=>"mime two", "fileName"=>"file two"}, "2"=>{"link"=>"link three", "mimeType"=>"mime three", "fileName"=>"file three"}}
+      subject.item_attributes = {"0"=>{"item_id" => '0', "link"=>"link one", "mimeType"=>"mime one", "fileName"=>"file one"}, "1"=>{"item_id" => '1', "link"=>"link two", "mimeType"=>"mime two", "fileName"=>"file two"}, "2"=>{"item_id" => '2', "link"=>"link three", "mimeType"=>"mime three", "fileName"=>"file three"}}
       subject.item(1).link.should == ["link two"]
+      subject.item(2).item_id.should == ["2"]
     end
   end
 end

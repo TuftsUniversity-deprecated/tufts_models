@@ -3,11 +3,12 @@ class TuftsGenericMeta  < ActiveFedora::OmDatastream
   set_terminology do |t|
     t.root(:path=>"content", :xmlns=>"http://www.fedora.info/definitions/",
     "xmlns:xlink"=>"http://www.w3.org/1999/xlink")
-    t.item  {
+    t.item {
+      t.item_id(path: {attribute: 'id'})
       t.link
       t.fileName
       t.mimeType
-      }
+    }
 
   end
 
@@ -15,7 +16,7 @@ class TuftsGenericMeta  < ActiveFedora::OmDatastream
   def self.xml_template
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.content(:version=>"0.1", "xmlns"=>"http://www.fedora.info/definitions/","xmlns:xlink"=>"http://www.w3.org/1999/xlink"){
-          xml.item{
+          xml.item {
             xml.link
             xml.fileName
             xml.mimeType
