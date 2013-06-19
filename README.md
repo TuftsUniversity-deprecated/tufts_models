@@ -1,12 +1,16 @@
-tufts
-=====
+!Tufts Hydra Admin
 
 [![Build Status](https://travis-ci.org/curationexperts/tufts.png?branch=master)](https://travis-ci.org/curationexperts/tufts)
 
-Tufts Admin interface
 
-Setup
-=====
+!!Start background workers
+
+```
+QUEUE=* rake resque:work
+```
+
+!!Setup
+
 ```
 $ cp config/initializer/secret_token.rb.sample config/initializer/secret_token.rb
 !!! Important. Open config/initializer/secret_token.rb and generate a new id
