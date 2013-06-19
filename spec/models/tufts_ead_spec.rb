@@ -20,6 +20,10 @@ describe TuftsEAD do
     end
   end
 
+  it "should have an original_file_datastreams" do
+    TuftsEAD.original_file_datastreams.should == ['Archival.xml']
+  end
+
   describe "to_class_uri" do
     subject {TuftsEAD}
     its(:to_class_uri) {should == 'info:fedora/cm:Text.EAD'}

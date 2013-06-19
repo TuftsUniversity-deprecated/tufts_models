@@ -1,8 +1,5 @@
 class TuftsEAD < TuftsBase
-
-  # Tufts specific needed metadata streams
-  # This is unusual, because it's an external datastream, but it is loaded by fedora
-  has_metadata :name => "Archival.xml", :type => TuftsEADMeta
+  has_file_datastream 'Archival.xml', control_group: 'E', original: true
 
   def self.to_class_uri
     'info:fedora/cm:Text.EAD'

@@ -1,8 +1,0 @@
-<% if @record.external_datastreams.present? %>
-  <% @record.external_datastreams.each do |name, ds| %>
-    <%= bootstrap_text_field_tag("#{@record.class.model_name.underscore}[datastreams][#{name}]", ds.dsLocation, :label=> name, :class=>'input-large') %>
-  <% end %>
-<% else %>
-  There are no defined datastreams for <%= t('hydra.model_label.'+@record.class.model_name).pluralize %>
-
-<% end %>
