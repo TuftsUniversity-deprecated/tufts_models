@@ -52,5 +52,20 @@ describe TuftsAudioText do
     end
   end
 
+  # This tests depends on ffmpeg, so exlude it for travis
+  describe "create_derivatives", :unless=> ENV["TRAVIS"] do
+    before do
+      subject.inner_object.pid = 'tufts:MISS.ISS.IPPI'
+      subject.datastreams["ARCHIVAL_WAV"].dsLocation = "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/archival_sound/MISS.ISS.IPPI.archival.wav"
+    end
+    describe "basic" do
+      before { subject.create_derivatives }
+      it "should create ACCESS_MP3" do
+        File.exists?(subject.local_path_for('ACCESS_MP3', 'mp3')).should be_true
+        subject.datastreams["ACCESS_MP3"].dsLocation.should == "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/access_mp3/MISS.ISS.IPPI.access.mp3"
+        subject.datastreams["ACCESS_MP3"].mimeType.should == "audio/mpeg"
+      end
+    end
+  end
 
 end

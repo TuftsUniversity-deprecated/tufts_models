@@ -37,6 +37,15 @@ module AttachedFiles
     File.join(local_path_root, file_path(name, extension))
   end
 
+  def encode_mp3(input_file, output_path)
+    opts = ""
+    if File.extname(input_file) == '.mp3'
+      # Don't re-encode, just copy
+      FileUtils.cp(input_file, output_path)
+    else
+      self.class.encode(input_file, output_path) #'mp3', 'audio/mp3', opts)
+    end
+  end
 
   private
 
@@ -143,8 +152,20 @@ module AttachedFiles
       self.original_file_datastreams += [args.fetch(:name, 'content')] if args[:original]
     end
 
+    def encode(input_file, output_file)
+      options = '-b:a 192k'
+      command = "#{ffmpeg_path} -y -i \"#{input_file}\" #{options} #{output_file}"
+      stdin, stdout, stderr, wait_thr = Open3.popen3(command)
+      stdin.close
+      out = stdout.read
+      stdout.close
+      err = stderr.read
+      stderr.close
+      raise "Unable to execute command \"#{command}\"\n#{err}" unless wait_thr.value.success?
+    end
+
+    def ffmpeg_path
+      'ffmpeg'
+    end
   end
-
-
-
 end

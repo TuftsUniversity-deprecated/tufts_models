@@ -23,32 +23,6 @@ class TuftsAudio < TuftsBase
 
   end
 
-  def encode_mp3(input_file, output_path)
-    opts = ""
-    if File.extname(input_file) == '.mp3'
-      # Don't re-encode, just copy
-      FileUtils.cp(input_file, output_path)
-    else
-      self.class.encode(input_file, output_path) #'mp3', 'audio/mp3', opts)
-    end
-  end
-
-  def self.encode(input_file, output_file)
-    options = '-b:a 192k'
-    command = "#{ffmpeg_path} -y -i \"#{input_file}\" #{options} #{output_file}"
-    stdin, stdout, stderr, wait_thr = Open3.popen3(command)
-    stdin.close
-    out = stdout.read
-    stdout.close
-    err = stderr.read
-    stderr.close
-    raise "Unable to execute command \"#{command}\"\n#{err}" unless wait_thr.value.success?
-  end
-
-  def self.ffmpeg_path
-    'ffmpeg'
-  end
-
   # Given a datastream name, return the local path where the file can be found.
   # @example
   #   obj.file_path('Archival.tif', 'tif')

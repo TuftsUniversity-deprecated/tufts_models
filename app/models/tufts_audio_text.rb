@@ -4,6 +4,21 @@ class TuftsAudioText < TuftsBase
   has_file_datastream 'ACCESS_MP3', control_group: 'E'
   has_file_datastream 'PRESENT_SMIL', control_group: 'E'
 
+  def create_derivatives
+    make_directory_for_datastream('ACCESS_MP3')
+    # Local path should be able to use the extension from the dsLocation.
+    input_file = local_path_for('ARCHIVAL_WAV')
+    output_path = local_path_for('ACCESS_MP3', 'mp3')
+
+    encode_mp3(input_file, output_path)
+
+    # passing the extension is not necessary, so just plassing mime_type as a placeholder for that.
+    datastreams['ACCESS_MP3'].dsLocation = remote_url_for('ACCESS_MP3', 'mp3')
+    datastreams['ACCESS_MP3'].mimeType = 'audio/mpeg' 
+    output_path
+
+  end
+
   def self.to_class_uri
     'info:fedora/cm:Audio.OralHistory'
   end
