@@ -1,15 +1,15 @@
-!Tufts Hydra Admin
+#Tufts Hydra Admin
 
 [![Build Status](https://travis-ci.org/curationexperts/tufts.png?branch=master)](https://travis-ci.org/curationexperts/tufts)
 
 
-!!Start background workers
+##Start background workers
 
 ```
 QUEUE=* rake resque:work
 ```
 
-!!Setup
+##Setup
 
 ```
 $ cp config/initializer/secret_token.rb.sample config/initializer/secret_token.rb
