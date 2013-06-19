@@ -14,7 +14,7 @@ module Job
     def run
       self.record = ActiveFedora::Base.find(record_id, cast:true)
       record.create_derivatives
-      record.save!
+      record.save(validate: false)
     end
   end
 end
