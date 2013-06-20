@@ -30,7 +30,6 @@ class TuftsImage < TuftsBase
     create_advanced
     create_basic
     create_thumbnail
-    save!
   end
 
   # Advanced Datastream
