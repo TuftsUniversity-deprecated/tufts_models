@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 ruby '2.0.0'
+#ruby-gemset=tufts
+
 gem 'rails', '3.2.13'
 
 gem 'sqlite3'
