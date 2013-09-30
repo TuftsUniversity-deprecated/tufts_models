@@ -4,6 +4,10 @@
 
 ##Initial Setup
 
+### Prerequisites
+* [ImageMagick](http://www.imagemagick.org/)
+* [ffmpeg](http://www.ffmpeg.org/‎)
+
 ```bash
 $ bundle install
 $ cp config/initializers/secret_token.rb.sample config/initializers/secret_token.rb
@@ -16,6 +20,7 @@ $ cp config/fedora.yml.sample config/fedora.yml
 $ rake db:schema:load
 $ rake db:seed
 $ rails g hydra:jetty
+$ rake jetty:config
 ```
 
 ##Start background workers
