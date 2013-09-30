@@ -5,6 +5,9 @@ class Ability
     if current_user.admin?
       can [:create, :show, :add_user, :remove_user, :index], Role
       can [:create, :edit, :update, :publish, :destroy], ActiveFedora::Base
+    elsif current_user.contributor?
+      # TODO: define correct permissions for contributor role
+      can [:create], ActiveFedora::Base
     end
   end
 
