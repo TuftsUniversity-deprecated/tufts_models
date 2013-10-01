@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
   before_filter :authenticate_user!
-  before_filter :must_be_admin
+  #before_filter :must_be_admin
 
   def must_be_admin
     render(file: "public/401", status: :unauthorized, layout: nil) unless devise_controller? || current_user.admin?

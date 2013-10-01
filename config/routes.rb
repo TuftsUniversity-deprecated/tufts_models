@@ -9,6 +9,7 @@ Tufts::Application.routes.draw do
   # This is from Blacklight::Routes#solr_document, but with the constraints added which allows periods in the id
   resources :solr_document,  :path => 'catalog', :controller => 'catalog', :only => [:show, :update] 
   resources :downloads, :only =>[:show], :constraints => { :id => ALLOW_DOTS }
+  resources :self_deposits, :constraints => { :id => ALLOW_DOTS }
 
   
   HydraHead.add_routes(self)

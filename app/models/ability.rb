@@ -7,7 +7,7 @@ class Ability
       can [:create, :edit, :update, :publish, :destroy], ActiveFedora::Base
     elsif current_user.contributor?
       # TODO: define correct permissions for contributor role
-      can [:create], ActiveFedora::Base
+      can [:create, :edit, :update], TuftsSelfDeposit
     end
   end
 

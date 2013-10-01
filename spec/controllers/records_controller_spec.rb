@@ -2,13 +2,16 @@ require 'spec_helper'
 
 describe RecordsController do
   before do
-    @routes = HydraEditor::Engine.routes 
+    @routes = HydraEditor::Engine.routes
+
+
   end
   describe "an admin" do
     before do
       @user = FactoryGirl.create(:admin)
       sign_in @user
     end
+
     describe "who goes to the new page" do
       it "should be successful" do
         get :new
@@ -192,7 +195,9 @@ describe RecordsController do
     describe "who goes to the new page" do
       it "should not be allowed" do
         get :new
-        response.status.should == 401
+        response.status.should == 302
+        # TODO this should actually validate that the non-admin user was redirected to self_deposits
+        #response.should redirect_to Tufts::Application.routes.url_helpers.self_deposits_path
       end
     end
     describe "who goes to the edit page" do
@@ -204,7 +209,9 @@ describe RecordsController do
       end
       it "should not be allowed" do
         get :edit, id: @audio
-        response.status.should == 401
+        response.status.should == 302
+        # TODO this should actually validate that the non-admin user was redirected to self_deposits
+        #response.should redirect_to Tufts::Application.routes.url_helpers.self_deposits_path
       end
     end
   end

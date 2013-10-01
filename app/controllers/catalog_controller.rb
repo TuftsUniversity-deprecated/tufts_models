@@ -12,6 +12,15 @@ class CatalogController < ApplicationController
   # This filters out objects that you want to exclude from search results, like FileAssets
   CatalogController.solr_search_params_logic += [:exclude_unwanted_models]
 
+  # TODO temporary hack to redirect contributors to self_deposits
+  def index
+    if current_user.admin?
+      super
+    elsif current_user.contributor?
+      redirect_to self_deposits_path
+    end
+  end
+
 
   configure_blacklight do |config|
     config.default_solr_params = { 
