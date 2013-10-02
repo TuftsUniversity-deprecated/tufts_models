@@ -2,7 +2,7 @@
 class SelfDepositsController < ApplicationController
   def index
     authorize! :edit, TuftsSelfDeposit
-
+    render :index
   end
 
   def new

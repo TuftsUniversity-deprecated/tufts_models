@@ -3,9 +3,8 @@ require 'spec_helper'
 describe RecordsController do
   before do
     @routes = HydraEditor::Engine.routes
-
-
   end
+
   describe "an admin" do
     before do
       @user = FactoryGirl.create(:admin)
@@ -196,8 +195,8 @@ describe RecordsController do
       it "should not be allowed" do
         get :new
         response.status.should == 302
-        # TODO this should actually validate that the non-admin user was redirected to self_deposits
-        #response.should redirect_to Tufts::Application.routes.url_helpers.self_deposits_path
+        response.should redirect_to Tufts::Application.routes.url_helpers.root_path
+        flash[:alert].should =~ /You are not authorized to access this page/i
       end
     end
     describe "who goes to the edit page" do
@@ -210,8 +209,8 @@ describe RecordsController do
       it "should not be allowed" do
         get :edit, id: @audio
         response.status.should == 302
-        # TODO this should actually validate that the non-admin user was redirected to self_deposits
-        #response.should redirect_to Tufts::Application.routes.url_helpers.self_deposits_path
+        response.should redirect_to Tufts::Application.routes.url_helpers.self_deposits_path
+        flash[:alert].should =~ /You do not have sufficient privileges to edit this document/i
       end
     end
   end

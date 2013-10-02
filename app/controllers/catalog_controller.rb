@@ -17,7 +17,15 @@ class CatalogController < ApplicationController
     if current_user.admin?
       super
     elsif current_user.contributor?
-      redirect_to self_deposits_path
+      redirect_to self_deposits_path #, :alert => "contributors may only use the self-deposit feature of this repository"
+    end
+  end
+
+  def show
+    if current_user.admin?
+      super
+    elsif current_user.contributor?
+      authorize! :create, ActiveFedora::Base
     end
   end
 
