@@ -19,6 +19,10 @@ class DepositTypesController < ApplicationController
     redirect_to deposit_type_path(@deposit_type)
   end
 
+  def edit
+    @deposit_type = TuftsDepositType.find(params[:id])
+  end
+
   private
   def deposit_type_params
     params.require(:deposit_type).permit(:display_name, :deposit_agreement)

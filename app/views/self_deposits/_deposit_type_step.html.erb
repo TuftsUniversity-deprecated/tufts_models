@@ -1,0 +1,2 @@
+<p>Select the Deposit Type</p>
+<%= f.select :rights, TuftsDepositType.all.collect {|p| [ p.display_name ] }, { include_blank: false } %>

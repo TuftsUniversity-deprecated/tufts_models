@@ -1,0 +1,12 @@
+<em>confirmation</em>
+
+<%= f.label :title %>
+<%= f.text_field :title %>
+
+
+<p>
+  <%= f.label :deposit_agreement %>
+  <%= f.text_area :deposit_agreement, :disabled => true, :size => '200x10' %></p>
+
+<%= f.hidden_field :accrualPolicy, value: "Submitted via contributor self-deposit" %>
+<%= f.hidden_field :provenance, value: "This item was contributed to the repository and authorized by #{current_user} on #{Time.now.strftime('%Y-%m-%d at %H:%M:%S %Z')}" %>

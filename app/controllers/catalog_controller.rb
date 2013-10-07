@@ -18,22 +18,10 @@ class CatalogController < ApplicationController
     @my_concern ||= TuftsBase.find(params[:id])
   end
 
-  # TODO temporary hack to redirect contributors to self_deposits
-  # look at https://github.com/ndlib/curate/blob/master/app/controllers/curation_concern/base_controller.rb
-  #
-  #def index
-    #if current_user.admin?
-    #  super
-    #elsif current_user.contributor?
-    #  redirect_to self_deposits_path #, :alert => "contributors may only use the self-deposit feature of this repository"
-    #end
-  #end
-
   def show
     authorize! :show, my_concern
     super
   end
-
 
   configure_blacklight do |config|
     config.default_solr_params = { 

@@ -8,7 +8,7 @@
 
   <% @deposit_types.each do |deposit_type| %>
       <tr>
-        <td><%= deposit_type.display_name %></td>
+        <td><%= link_to deposit_type.display_name, deposit_type_path(deposit_type) %></td>
         <td><%= deposit_type.deposit_agreement %></td>
       </tr>
   <% end %>
