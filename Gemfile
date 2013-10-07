@@ -10,7 +10,8 @@ gem 'sqlite3'
 gem 'hydra-head'
 gem 'hydra-role-management', '0.0.2'
 gem 'active-fedora', '6.4.0.rc1'
-gem 'hydra-editor', '0.0.3' 
+gem 'hydra-editor', '0.0.3'
+gem 'strong_parameters'
 
 gem 'disable_assets_logger', :group => :development
 

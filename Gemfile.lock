@@ -264,6 +264,10 @@ GEM
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.7)
     stomp (1.2.9)
+    strong_parameters (0.2.1)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
+      railties (~> 3.0)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
@@ -316,6 +320,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   settingslogic
   sqlite3
+  strong_parameters
   therubyracer
   titleize
   uglifier (>= 1.0.3)
