@@ -10,8 +10,10 @@ Tufts::Application.routes.draw do
   resources :solr_document,  :path => 'catalog', :controller => 'catalog', :only => [:show, :update] 
   resources :downloads, :only =>[:show], :constraints => { :id => ALLOW_DOTS }
   resources :self_deposits, :constraints => { :id => ALLOW_DOTS }
+  resources :deposit_types, :constraints => { :id => ALLOW_DOTS }
 
-  
+
+
   HydraHead.add_routes(self)
   
   mount HydraEditor::Engine => '/'

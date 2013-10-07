@@ -33,6 +33,19 @@ describe Ability do
     it { should_not be_able_to(:create, Role) }
     it { should_not be_able_to(:show, Role) }
     it { should_not be_able_to(:add_user, Role) }
+
+    # TODO as a contributor, Bob, create a PDF, foo.pdf , and validate that Bob
+    # can view/edit/etc
+    # as another contributor, Alice, ensure Alice cannot edit foo.pdf
+    describe "working on a self-deposit" do
+      before :all do
+        @self_deposit = TuftsSelfDeposit.create!(title: 'test self-deposit')
+      end
+      after :all do
+        @self_deposit.destroy
+      end
+      it { should be_able_to(:create, TuftsSelfDeposit) }
+    end
   end
 
 end

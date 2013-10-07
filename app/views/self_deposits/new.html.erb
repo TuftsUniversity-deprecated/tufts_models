@@ -1,0 +1,24 @@
+<h1>Create a new self-deposit record</h1>
+
+<% @self_deposit = TuftsSelfDeposit.new %>
+
+<p>Select the deposit type</p>
+<%= form_for @self_deposit, :url=>self_deposits_path(@record) do |f| %>
+    <%= f.select :rights, TuftsDepositType.all.collect {|p| [ p.display_name ] }, { include_blank: false } %>
+
+    <p>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </p>
+
+
+    <textarea>Placeholder for deposit agreement text</textarea>
+
+    <%= f.hidden_field :accrualPolicy, value: "Submitted via contributor self-deposit" %>
+    <%= f.hidden_field :provenance, value: "This item was contributed to the repository and authorized by #{current_user} on #{Time.now.strftime('%Y-%m-%d at %H:%M:%S %Z')}" %>
+
+   <br />
+   <%= f.submit 'Create' %>
+
+
+<% end %>
