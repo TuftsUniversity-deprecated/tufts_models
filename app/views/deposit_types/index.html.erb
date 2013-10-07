@@ -1,0 +1,15 @@
+<h1>Deposit Types</h1>
+
+<table>
+  <tr>
+    <th>Display Name</th>
+    <th>Deposit Agreement</th>
+  </tr>
+
+  <% @deposit_types.each do |deposit_type| %>
+      <tr>
+        <td><%= deposit_type.display_name %></td>
+        <td><%= deposit_type.deposit_agreement %></td>
+      </tr>
+  <% end %>
+</table>

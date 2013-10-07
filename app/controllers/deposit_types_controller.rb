@@ -1,5 +1,9 @@
 class DepositTypesController < ApplicationController
 
+  def index
+    @deposit_types = TuftsDepositType.all
+  end
+
   def new
   end
 
