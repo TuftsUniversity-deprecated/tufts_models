@@ -1,0 +1,19 @@
+<h1>Create a new Deposit Type</h1>
+
+<p>Select the deposit type</p>
+<%= form_for :deposit_type, url: deposit_types_path do |f| %>
+    <p>
+      <%= f.label :display_name %>
+      <%= f.text_field :display_name %>
+    </p>
+
+    <p>
+      <%= f.label :deposit_agreement %><br>
+      <%= f.text_area :deposit_agreement %>
+    </p>
+
+   <br />
+   <%= f.submit 'Create' %>
+
+
+<% end %>
