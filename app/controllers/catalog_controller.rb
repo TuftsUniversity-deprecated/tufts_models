@@ -12,21 +12,26 @@ class CatalogController < ApplicationController
   # This filters out objects that you want to exclude from search results, like FileAssets
   CatalogController.solr_search_params_logic += [:exclude_unwanted_models]
 
-  # TODO temporary hack to redirect contributors to self_deposits
-  def index
-    if current_user.admin?
-      super
-    elsif current_user.contributor?
-      redirect_to self_deposits_path #, :alert => "contributors may only use the self-deposit feature of this repository"
-    end
+  before_filter :my_concern, except: [:index]
+
+  def my_concern
+    @my_concern ||= TuftsBase.find(params[:id])
   end
 
+  # TODO temporary hack to redirect contributors to self_deposits
+  # look at https://github.com/ndlib/curate/blob/master/app/controllers/curation_concern/base_controller.rb
+  #
+  #def index
+    #if current_user.admin?
+    #  super
+    #elsif current_user.contributor?
+    #  redirect_to self_deposits_path #, :alert => "contributors may only use the self-deposit feature of this repository"
+    #end
+  #end
+
   def show
-    if current_user.admin?
-      super
-    elsif current_user.contributor?
-      authorize! :create, ActiveFedora::Base
-    end
+    authorize! :show, my_concern
+    super
   end
 
 

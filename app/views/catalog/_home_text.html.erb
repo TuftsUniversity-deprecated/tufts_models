@@ -1,10 +1,18 @@
+
+<% if current_user.admin? %>
 <h1>Tufts Digital Library Admin</h1>
+<% else %>
+<h1>Hi Faculty!</h1>
+<% end %>
 
 <nav>
   <ul>
-    <% if can? :create,  ActiveFedora::Base %>
+    <% if current_user.admin? %>
       <li><%= link_to "Create a new object", hydra_editor.new_record_path()%></li>
+      <li><%= link_to "Unpublished objects", unpublished_index_path()%></li>
+      <li><%= link_to "Create a new self-deposit type", new_deposit_type_path %></li>
+    <% else %>
+        <li><%= link_to "Deposit a new document", self_deposits_path %></li>
     <% end %>
-    <li><%= link_to "Unpublished objects", unpublished_index_path()%></li>
   </ul>
 </nav>

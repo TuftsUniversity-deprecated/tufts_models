@@ -7,7 +7,8 @@ require 'chronic'
 
 module Tufts
   module ModelMethods
-  include TuftsFileAssetsHelper
+    include Hydra::ModelMethods
+    include TuftsFileAssetsHelper
 
     def index_sort_fields(solr_doc)
       #CREATOR SORT

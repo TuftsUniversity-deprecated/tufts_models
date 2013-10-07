@@ -51,7 +51,7 @@ describe RecordsController do
         get :new, :type=>'TuftsAudio', :pid => '123.1231'
         response.should be_successful
         response.should render_template(:choose_type)
-        flash[:error].should == "You have specified an invalid pid. A valid pid must contain a colin (i.e. tufts:1231)"
+        flash[:error].should == "You have specified an invalid pid. A valid pid must contain a colon (i.e. tufts:1231)"
       end
     end
 
@@ -122,7 +122,7 @@ describe RecordsController do
           put :update, :id=>@audio, :tufts_audio=>{:title=>"My title 3"}
           response.should redirect_to("/catalog/#{assigns[:record].pid}") 
           assigns[:record].title.should == 'My title 3'
-          assigns[:record].reload.audit_log.what.should == ['Metadata updated DCA-META, DCA-ADMIN']
+          assigns[:record].reload.audit_log.what.should == ['Metadata updated rightsMetadata, DCA-META, DCA-ADMIN']
         end
         it "should update external datastream paths" do
           put :update, :id=>@audio, :tufts_audio=>{:datastreams=>{"ACCESS_MP3"=>"http://example.com/access.mp3", "ARCHIVAL_SOUND"=>"http://example.com/archival.wav"} }
