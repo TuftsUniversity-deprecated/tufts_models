@@ -19,7 +19,7 @@ class SelfDepositsController < ApplicationController
 
   def create
     authorize! :create, TuftsSelfDeposit
-
+    session[:self_deposit_params] ||= {}
     session[:self_deposit_params].deep_merge!(params[:tufts_self_deposit]) if params[:tufts_self_deposit]
     @self_deposit = TuftsSelfDeposit.new(session[:self_deposit_params])
     @self_deposit.current_step = session[:self_deposit_step]
