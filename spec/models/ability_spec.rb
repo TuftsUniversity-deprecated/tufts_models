@@ -39,7 +39,7 @@ describe Ability do
     # as another contributor, Alice, ensure Alice cannot edit foo.pdf
     describe "working on a self-deposit" do
       before :all do
-        @self_deposit = TuftsSelfDeposit.create!(title: 'test self-deposit')
+        @self_deposit = TuftsSelfDeposit.create!(title: 'test self-deposit', rights: 'TestDepositType')
       end
       after :all do
         @self_deposit.destroy
