@@ -1,15 +1,32 @@
-<h1>Deposit Types</h1>
+<h1>Manage Deposit Types</h1>
 
 <table>
-  <tr>
-    <th>Display Name</th>
-    <th>Deposit Agreement</th>
-  </tr>
+    <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th style="text-align: left">| Type</th>
+    <th style="text-align: left">| Agreement</th>
+    </tr>
 
-  <% @deposit_types.each do |deposit_type| %>
+    <% @deposit_types.each do |deposit_type| %>
       <tr>
-        <td><%= link_to deposit_type.display_name, deposit_type_path(deposit_type) %></td>
-        <td><%= deposit_type.deposit_agreement %></td>
+        <td>| <%= link_to 'Show', deposit_type_path(deposit_type) %>  </td>
+        <td>| <%= link_to 'Edit', edit_deposit_type_path(deposit_type) %>  </td>
+        <td>| <%= link_to 'Destroy', deposit_type_path(deposit_type), :confirm => 'Are you sure?', :method => :delete %></td>
+        <td>| <b><%= deposit_type.display_name %></b></td>
+        <td>| <%= deposit_type.deposit_agreement[0..60]+"... " %>  </td>
       </tr>
-  <% end %>
+    <% end %>
+
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>| <%= link_to '+ Add a New Deposit Type', new_deposit_type_path %></td>
+      <td>|</td>
+    </tr>
+
 </table>
+<br/>
+<p><%= link_to 'Home', root_path %></p>

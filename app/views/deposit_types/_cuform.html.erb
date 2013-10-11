@@ -1,6 +1,4 @@
-<h1>Add a new Deposit Type</h1>
-
-<%= form_for :deposit_type, url: deposit_types_path do |f| %>
+<%= form_for @deposit_type do |f| %>
     <p>
       <%= f.label :display_name %>
       <%= f.text_field :display_name %>
@@ -11,10 +9,9 @@
       <%= f.text_area raw(:deposit_agreement), rows: 5, class: "span8" %>
     </p>
 
-   <br />
-   <%= f.submit 'Create' %>
+    <br />
+    <%= f.submit 'Update' %>
 
-   <%= button_tag "Cancel", name: 'cancel' %>
-
+    <%= button_tag "Cancel", name: 'cancel' %>
 
 <% end %>

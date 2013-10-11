@@ -1,5 +1,11 @@
-<h2>Deposit Display Name</h2>
-<%=@deposit_type.display_name%>
+<h3><em>Deposit Type:</em> <%=@deposit_type.display_name%></h3>
 
-<h2>Deposit Agreement</h2>
-<%=@deposit_type.deposit_agreement%>
+<p><em>Deposit Agreement:</em></p>
+<p>
+    <%= raw @deposit_type.deposit_agreement%>
+</p>
+
+|
+<%= link_to 'Back', deposit_types_path %> |
+<%= link_to 'Edit', edit_deposit_type_path(@deposit_type) %> |
+<%= link_to 'Home', root_path %> |
