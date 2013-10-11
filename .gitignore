@@ -20,11 +20,15 @@ jetty
 # Don't send local rvm config
 .rvmrc
 
+# Don't send system specific config files
 config/initializers/secret_token.rb
 config/database.yml
 config/fedora.yml
 config/solr.yml
 config/redis.yml
+
+# Ignore RubyMine config files
+.idea/
 
 #
 spec/fixtures/local_object_store
