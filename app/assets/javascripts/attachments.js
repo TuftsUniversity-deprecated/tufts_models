@@ -46,7 +46,7 @@ $(function () {
             // Enable the save button only if all forms have finished upload
             if ($('.progress.active').length == 0)
               $('.btn-primary').prop("disabled", false);
-              
+
         },
         fail: function (e, data) {
           $('.progress', $form).removeClass('active').removeClass('progress-striped');
@@ -56,7 +56,7 @@ $(function () {
 
     /** Style the buttons **/
     var wrapper = $('<div/>').css({height:0,width:0,'overflow':'hidden'});
-    var fileInput = $(':file').wrap(wrapper);
+    var fileInput = $('.fileupload').wrap(wrapper);
 
     fileInput.change(function(){
         $form = $(this).closest('form');
