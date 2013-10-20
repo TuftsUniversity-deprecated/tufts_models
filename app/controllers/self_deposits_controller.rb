@@ -21,6 +21,7 @@ class SelfDepositsController < ApplicationController
     authorize! :create, TuftsSelfDeposit
     session[:self_deposit_params] ||= {}
     session[:self_deposit_params].deep_merge!(params[:tufts_self_deposit]) if params[:tufts_self_deposit]
+    session[:self_deposit_params].deep_merge!({'creator'=>current_user.to_s})      #MHB - this is ugly, how do I make it cleaner?
     @self_deposit = TuftsSelfDeposit.new(session[:self_deposit_params])
     @self_deposit.current_step = session[:self_deposit_step]
 

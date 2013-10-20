@@ -7,19 +7,24 @@ describe SelfDepositsController do
     @routes = Tufts::Application.routes
   end
 
-  describe "a contributor" do
+  describe "| A contributor" do
     before do
-      sign_in FactoryGirl.create(:user)
+      @user = FactoryGirl.create(:admin)
+      sign_in @user
     end
 
     describe "who goes to the new page" do
       before :all do
-
+        @test_pid = "TestTest:4321.1234"
       end
 
-      it "should be allowed" do
+      it "should be allowed to create a new deposit item" do
         post :create, :type=>'TuftsSelfDeposit', :tufts_self_deposit=>{:title=>"My self-deposit"}
+      end
 
+      it "should be recorded as the contributor" do
+        post :create, :type=>'TuftsSelfDeposit', :tufts_self_deposit=>{:title=>"My self-deposit"}
+        assigns[:self_deposit].creator.should include @user.to_s
       end
 
     end
