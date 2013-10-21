@@ -15,16 +15,28 @@ describe SelfDepositsController do
 
     describe "who goes to the new page" do
       before :all do
-        @test_pid = "TestTest:4321.1234"
       end
 
       it "should be allowed to create a new deposit item" do
         post :create, :type=>'TuftsSelfDeposit', :tufts_self_deposit=>{:title=>"My self-deposit"}
       end
+    end
+
+    describe "who creates a new deposit" do
 
       it "should be recorded as the contributor" do
         post :create, :type=>'TuftsSelfDeposit', :tufts_self_deposit=>{:title=>"My self-deposit"}
         assigns[:self_deposit].creator.should include @user.to_s
+      end
+
+      it "should list accrual policy as self deposit" do
+        post :create, :type=>'TuftsSelfDeposit', :tufts_self_deposit=>{:title=>"My self-deposit"}
+        assigns[:self_deposit].accrualPolicy.join.should include "self-deposit"
+      end
+
+      it "should include the username in the provenance" do
+        post :create, :type=>'TuftsSelfDeposit', :tufts_self_deposit=>{:title=>"My self-deposit"}
+        assigns[:self_deposit].provenance.join.should include @user.to_s
       end
 
     end
