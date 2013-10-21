@@ -3,7 +3,7 @@
 <%= form_for @self_deposit, :url=>self_deposits_path do |f| %>
     <%= render "#{@self_deposit.current_step}_step", :f => f %>
 
+    <p><%= @self_deposit.last_step? ? f.submit("Agree & Deposit") : f.submit("Continue") %></p>
     <p><%= f.submit "Back", :name => "back_button" unless @self_deposit.first_step? %></p>
-    <p><%= f.submit "Continue" %></p>
 
 <% end %>
