@@ -1,22 +1,22 @@
 <table>
   <tr>
     <td><%= f.label "Title:" %>  </td>
-    <td><%= f.text_field :title, required: true %> </td>
+    <td><%= f.text_field :title %> </td>
   </tr>
 
   <tr>
     <td><%= f.label "Contributor:" %> </td>
-    <td><%= f.text_field :contributor, value: @self_deposit[:creator][0], required: true %> </td>
+    <td><%= f.text_field :contributor, value: @self_deposit[:creator][0] %> </td>
   </tr>
 
   <tr>
     <td><%= f.label "Department:" %> </td>
-    <td><%= f.text_field :subject, value: @self_deposit[:subject][0], required: true %> </td>
+    <td><%= f.text_field :subject, value: @self_deposit[:subject][0] %> </td>
   </tr>
 
   <tr>
     <td><%= f.label "Abstract:" %> </td>
-    <td><%= f.text_field :description, value: @self_deposit[:description][0], required: true %> </td>
+    <td><%= f.text_field :description, value: @self_deposit[:description][0] %> </td>
   </tr>
 
   <tr>

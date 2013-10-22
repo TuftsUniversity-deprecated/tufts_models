@@ -4,4 +4,4 @@
              TuftsDepositType.all.sort_by{|dt| dt.display_name.downcase}.collect{|p|  [p.display_name] }.unshift([@initial_option]),
              :disabled => [@initial_option],
              :selected => [@initial_option],
-             include_blank: :false%>
+             include_blank: false%>

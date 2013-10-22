@@ -35,7 +35,7 @@ class DepositTypesController < ApplicationController
   def update
     @deposit_type = TuftsDepositType.find(params[:id])
 
-    if @deposit_type.update_attributes!(params[:deposit_type].permit(:display_name, :deposit_agreement))
+    if @deposit_type.update_attributes!(params[:deposit_type].permit(:display_name, :deposit_agreement, :deposit_view))
       redirect_to deposit_type_path(@deposit_type), :notice => 'Record was successfully updated.'
     else
       render 'edit'
@@ -44,7 +44,7 @@ class DepositTypesController < ApplicationController
 
   private
   def deposit_type_params
-    params.require(:deposit_type).permit(:display_name, :deposit_agreement)
+    params.require(:deposit_type).permit(:display_name, :deposit_agreement, :deposit_view)
   end
 
   def check_for_cancel
