@@ -1,6 +1,6 @@
 <table>
   <tr>
-    <td><%= f.label "Title:" %>  </td>
+    <td><%= f.label "Capstone Project Title:" %>  </td>
     <td><%= f.text_field :title, required: true %> </td>
   </tr>
 
@@ -18,17 +18,7 @@
     <td><%= f.label "Abstract:" %> </td>
     <td><%= f.text_field :description, value: @self_deposit[:description][0], required: true %> </td>
   </tr>
-
-  <tr>
-    <td><%= f.label "Citation:" %> </td>
-    <td><%= f.text_field :bibliographic_citation, value: @self_deposit[:bibliographic_citation][0] %> </td>
-  </tr>
-
-  <tr>
-    <td><%= f.label "Other authors:" %> </td>
-    <td><%= f.text_field :creator, value: @self_deposit[:creator][1] %> </td>
-  </tr>
- </table>
+</table>
 
 <hr>
 <em><b>DEPOSIT AGREEMENT</b></em><br/>

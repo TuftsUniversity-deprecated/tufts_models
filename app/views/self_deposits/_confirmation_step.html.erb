@@ -1,8 +1,8 @@
 <%= f.label "File to Upload:" %>
 <%= f.file_field :deposit_attachment, required: true %><br/><br/>
 
-<%= render "self_deposits/metadata/faculty_scholarship", :f => f %>
+<%= render "self_deposits/metadata/#{@self_deposit.deposit_type[0].downcase.tr(' ', '_')}", :f => f  %>
 
-<hr/><em><b>ACKNOWLEGEMENT</b></em><br/><br/>
-<%= @self_deposit[:provenance][0] %><br/>
+<hr/><em><b>ACKNOWLEGEMENT</b></em><br/>
+<%= @self_deposit[:provenance][0] %><br/><br/>
 
