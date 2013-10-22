@@ -1,6 +1,7 @@
 <p>Select the Deposit Type</p>
+<% @initial_option = "Please select a deposit option" %>
 <%= f.select :rights,
-             TuftsDepositType.all.sort_by{|dt| dt.display_name.downcase}.collect{|p| [ p.display_name ] }.unshift(['Please select a deposit option']),
-             :disabled => "Please select a deposit option",
-             :selected => "Please select a deposit option",
+             TuftsDepositType.all.sort_by{|dt| dt.display_name.downcase}.collect{|p|  [p.display_name] }.unshift([@initial_option]),
+             :disabled => [@initial_option],
+             :selected => [@initial_option],
              include_blank: :false%>
