@@ -1,5 +1,6 @@
 class TuftsSelfDeposit < TuftsPdf
   attr_writer :current_step
+  attr_accessor :deposit_attachment
   validates_presence_of :rights, :if => lambda { |o| o.current_step == "deposit_type" }
 
   def deposit_type
