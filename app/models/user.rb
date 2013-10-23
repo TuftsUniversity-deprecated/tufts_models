@@ -14,21 +14,12 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  # As currently spec'ed, every registered user is a 'contributor'
-  after_create :add_contributor_role
-
   def to_s
     email
   end
 
-  # Returns true iff the user roles contains 'contributor'
-  def contributor?
-    roles.where(name: 'contributor').exists?
+  def registered?
+    self.groups.include?('registered')
   end
 
-  private
-    # Adds the 'contributor' role to this user
-    def add_contributor_role
-      roles << Role.where(name: 'contributor').first_or_create
-    end
 end
