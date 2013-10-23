@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131002070508) do
+ActiveRecord::Schema.define(:version => 20131022065915) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",     :null => false
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20131002070508) do
     t.text     "deposit_agreement"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "deposit_view"
   end
 
   create_table "users", :force => true do |t|

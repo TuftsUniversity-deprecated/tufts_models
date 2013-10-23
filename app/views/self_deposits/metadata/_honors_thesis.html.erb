@@ -11,7 +11,7 @@
 
   <tr>
     <td><%= f.label "Department:" %> </td>
-    <td><%= f.text_field :subject, value: @self_deposit[:subject][0] %> </td>
+    <td><%= f.select :subject, @self_deposit.tufts_departments.values.sort %> </td>
   </tr>
 
   <tr>

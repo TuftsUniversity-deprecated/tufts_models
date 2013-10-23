@@ -10,8 +10,8 @@
   </tr>
 
   <tr>
-    <td><%= f.label "Department:" %> </td>
-    <td><%= f.text_field :subject, value: @self_deposit[:subject][0] %> </td>
+    <td><%= f.label "Degree:" %> </td>
+    <td><%= f.select :subject, @self_deposit.fletcher_degrees.keys.sort  %> </td>
   </tr>
 
   <tr>
