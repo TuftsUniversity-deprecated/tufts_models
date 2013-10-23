@@ -8,11 +8,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-roles = [
-    "admin",
-    "contributor"
-]
+roles = ["admin"]
 
 roles.each do | name |
-  Role.create( name: name )
+  Role.first_or_create(name: name)
 end
