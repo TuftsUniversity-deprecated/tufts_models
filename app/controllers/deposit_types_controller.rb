@@ -1,9 +1,18 @@
 class DepositTypesController < ApplicationController
 
-  before_filter :check_for_cancel, :only => [:create, :update]
-
   def index
-    @deposit_types = TuftsDepositType.all
+    authorize! :read, TuftsDepositType
+    @deposit_types = TuftsDepositType.accessible_by(current_ability)
+  end
+
+  def export
+    authorize! :export, TuftsDepositType
+    require 'import_export/deposit_type_exporter'
+    exporter = DepositTypeExporter.new
+    exporter.export_to_csv
+    export_file = File.join(exporter.export_dir, exporter.filename)
+    flash[:notice] = "You have successfully exported the deposit types to: #{export_file}"
+    redirect_to deposit_types_path
   end
 
   def new
@@ -47,9 +56,4 @@ class DepositTypesController < ApplicationController
     params.require(:deposit_type).permit(:display_name, :deposit_agreement, :deposit_view)
   end
 
-  def check_for_cancel
-    unless params[:cancel].blank?
-      redirect_to deposit_types_path
-    end
-  end
 end

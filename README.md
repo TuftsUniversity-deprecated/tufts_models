@@ -47,3 +47,25 @@ $ rake jetty:start
 ```bash
 $ rails s
 ```
+
+## Loading Data
+
+### Importing deposit types from a CSV file
+
+The CSV file is expected to have the headers:  
+` display_name,deposit_agreement `
+
+```bash
+$ rake import:deposit_types['/absolute/path/to/import/file.csv']
+```
+
+### Exporting deposit types to a CSV file
+
+The exporter will create a CSV file that contains data from the `tufts_deposit_types` table.
+
+```bash
+$ rake export:deposit_types['/absolute/path/to/export/dir']
+```
+
+You can also export the deposit types data through the UI if you log into the app as an admin user.
+

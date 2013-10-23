@@ -25,6 +25,7 @@ describe Ability do
       it { should be_able_to(:read, TuftsDepositType) }
       it { should be_able_to(:update, TuftsDepositType) }
       it { should be_able_to(:destroy, TuftsDepositType) }
+      it { should be_able_to(:export, TuftsDepositType) }
     end
 
     describe "working on TuftsAudio" do
@@ -58,6 +59,7 @@ describe Ability do
       it { should_not be_able_to(:read, TuftsDepositType) }
       it { should_not be_able_to(:update, TuftsDepositType) }
       it { should_not be_able_to(:destroy, TuftsDepositType) }
+      it { should_not be_able_to(:export, TuftsDepositType) }
     end
 
     describe "working on a self-deposit" do
@@ -99,6 +101,7 @@ describe Ability do
       it { should_not be_able_to(:read, TuftsDepositType) }
       it { should_not be_able_to(:update, TuftsDepositType) }
       it { should_not be_able_to(:destroy, TuftsDepositType) }
+      it { should_not be_able_to(:export, TuftsDepositType) }
     end
 
     describe "working on a self-deposit" do
