@@ -14,13 +14,13 @@ namespace :import do
   end
 
   def confirmation_prompt
-    tdt = TuftsDepositType.all.map(&:display_name)
+    tdt = DepositType.all.map(&:display_name)
     return true if tdt.empty?
 
     puts '-------------------------------------------------------------------'
-    puts 'The table tufts_deposit_types currently contains entries for: '
+    puts 'The table deposit_types currently contains entries for: '
     puts tdt.inspect
-    puts "\nThis script will import data into the tufts_deposit_types table."
+    puts "\nThis script will import data into the deposit_types table."
     puts 'It may overwrite existing data.'
     puts 'Do you wish to continue?  (Anything other than "yes" will abort)'
 

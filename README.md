@@ -61,7 +61,7 @@ $ rake import:deposit_types['/absolute/path/to/import/file.csv']
 
 ### Exporting deposit types to a CSV file
 
-The exporter will create a CSV file that contains data from the `tufts_deposit_types` table.
+The exporter will create a CSV file that contains data from the `deposit_types` table.
 
 ```bash
 $ rake export:deposit_types['/absolute/path/to/export/dir']

@@ -21,11 +21,11 @@ describe Ability do
     end
 
     describe "working on Deposit Type" do
-      it { should be_able_to(:create, TuftsDepositType) }
-      it { should be_able_to(:read, TuftsDepositType) }
-      it { should be_able_to(:update, TuftsDepositType) }
-      it { should be_able_to(:destroy, TuftsDepositType) }
-      it { should be_able_to(:export, TuftsDepositType) }
+      it { should be_able_to(:create, DepositType) }
+      it { should be_able_to(:read, DepositType) }
+      it { should be_able_to(:update, DepositType) }
+      it { should be_able_to(:destroy, DepositType) }
+      it { should be_able_to(:export, DepositType) }
     end
 
     describe "working on TuftsAudio" do
@@ -55,11 +55,11 @@ describe Ability do
     end
 
     describe "working on Deposit Type" do
-      it { should_not be_able_to(:create, TuftsDepositType) }
-      it { should_not be_able_to(:read, TuftsDepositType) }
-      it { should_not be_able_to(:update, TuftsDepositType) }
-      it { should_not be_able_to(:destroy, TuftsDepositType) }
-      it { should_not be_able_to(:export, TuftsDepositType) }
+      it { should_not be_able_to(:create, DepositType) }
+      it { should_not be_able_to(:read, DepositType) }
+      it { should_not be_able_to(:update, DepositType) }
+      it { should_not be_able_to(:destroy, DepositType) }
+      it { should_not be_able_to(:export, DepositType) }
     end
 
     describe "working on a self-deposit" do
@@ -97,11 +97,11 @@ describe Ability do
     end
 
     describe "working on Deposit Type" do
-      it { should_not be_able_to(:create, TuftsDepositType) }
-      it { should_not be_able_to(:read, TuftsDepositType) }
-      it { should_not be_able_to(:update, TuftsDepositType) }
-      it { should_not be_able_to(:destroy, TuftsDepositType) }
-      it { should_not be_able_to(:export, TuftsDepositType) }
+      it { should_not be_able_to(:create, DepositType) }
+      it { should_not be_able_to(:read, DepositType) }
+      it { should_not be_able_to(:update, DepositType) }
+      it { should_not be_able_to(:destroy, DepositType) }
+      it { should_not be_able_to(:export, DepositType) }
     end
 
     describe "working on a self-deposit" do
