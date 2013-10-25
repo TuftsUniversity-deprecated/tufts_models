@@ -15,7 +15,7 @@
         <td>| <%= link_to 'Edit', edit_deposit_type_path(deposit_type) %>  </td>
         <td>| <%= link_to 'Destroy', deposit_type_path(deposit_type), :confirm => 'Are you sure?', :method => :delete %></td>
         <td>| <b><%= deposit_type.display_name %></b></td>
-        <td>| <%= deposit_type.deposit_agreement[0..60]+"... " %>  </td>
+        <td>| <%= truncate(deposit_type.deposit_agreement, length: 60) %>  </td>
       </tr>
     <% end %>
 
@@ -29,4 +29,8 @@
 
 </table>
 <br/>
-<p><%= link_to 'Home', root_path %></p>
+<p>
+  <%= link_to 'Home', root_path %>
+  &middot;
+  <%= link_to 'Export Deposit Type Data', export_deposit_types_path %>
+</p>
