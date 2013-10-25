@@ -7,6 +7,24 @@ class TuftsSelfDeposit < TuftsPdf
     self.rights
   end
 
+  def fletcher_degrees
+    return {'MALD' => 'FL001.002', 'LLM' => 'FL001.001', 'MIB' => 'FL001.003'}
+  end
+
+  def tufts_departments
+    return {
+      'UA005.018' => 'Africa and The New World',
+      'UA005.037' => 'Biopsychology (interdisciplinary major)',
+      'UA005.010' => 'Dept. of Biology',
+      'UA005.019' => 'Dept. of Biomedical Engineering',
+      'UA005.009' => 'Dept. of Child Development',
+      'UA005.040' => 'Dept. of Civil Engineering',
+      'UA005.025' => 'Dept. of Classics',
+      'UA005.036' => 'Dept. of Computer Science',
+      'UA005.026' => 'Dept. of Drama and Dance'
+    }
+  end
+
   def deposit_agreement
     @deposit_type = TuftsDepositType.find_by_display_name(deposit_type)
     @deposit_type.deposit_agreement

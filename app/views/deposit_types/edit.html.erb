@@ -9,6 +9,12 @@
     </p>
 
     <p>
+      <%= f.label :deposit_view %>
+      <%= f.select :deposit_view,
+                   Dir.glob('app/views/self_deposits/metadata/_*.html.erb').collect{|f| File.basename(f,".html.erb")[1..-1]} %>
+    </p>
+
+    <p>
       <%= f.label :deposit_agreement %>
       <%= f.text_area raw(:deposit_agreement), rows: 5, class: "span8" %>
     </p>

@@ -1,0 +1,26 @@
+<table>
+  <tr>
+    <td><%= f.label "Title:" %>  </td>
+    <td><%= f.text_field :title, required: true %> </td>
+  </tr>
+
+  <tr>
+    <td><%= f.label "Contributor:" %> </td>
+    <td><%= f.text_field :contributor, value: @self_deposit[:creator][0] %> </td>
+  </tr>
+
+  <tr>
+    <td><%= f.label "Department:" %> </td>
+    <td><%= f.select :subject, @self_deposit.tufts_departments.values.sort %> </td>
+  </tr>
+
+  <tr>
+    <td><%= f.label "Abstract:" %> </td>
+    <td><%= f.text_field :description, value: @self_deposit[:description][0] %> </td>
+  </tr>
+</table>
+
+<hr>
+<em><b>DEPOSIT AGREEMENT</b></em><br/>
+<%= raw @self_deposit.deposit_agreement %>
+

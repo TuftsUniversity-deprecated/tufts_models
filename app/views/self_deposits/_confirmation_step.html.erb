@@ -1,13 +1,8 @@
-<%= f.label :title %>
-<%= f.text_field :title %>
+<%= f.label "File to Upload:" %>
+<%= f.file_field :deposit_attachment, required: true %><br/><br/>
 
-<%= f.file_field :deposit_attachment %>
+<%= render "self_deposits/metadata/#{TuftsDepositType.find_by_display_name(@self_deposit.deposit_type[0]).deposit_view}", :f => f  %>
 
-<p>
-  <%= f.label :deposit_agreement %>
-  <%= f.text_area :deposit_agreement, :disabled => true, :size => '200x10' %>
-</p>
+<hr/><em><b>ACKNOWLEDGEMENT</b></em><br/>
+<%= @self_deposit[:provenance][0] %><br/><br/>
 
-
-<%= f.hidden_field :accrualPolicy, value: "Submitted via contributor self-deposit" %>
-<%= f.hidden_field :provenance, value: "This item was contributed to the repository and authorized by #{current_user} on #{Time.now.strftime('%Y-%m-%d at %H:%M:%S %Z')}" %>
