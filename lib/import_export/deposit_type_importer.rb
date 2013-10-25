@@ -20,7 +20,7 @@ class DepositTypeImporter
     CSV.foreach(@import_file, import_options) do |row|
       attrs = strip_whitespace(row.to_hash)
       log_row_message(attrs)
-      tdt = TuftsDepositType.where(display_name: attrs['display_name']).first_or_create
+      tdt = DepositType.where(display_name: attrs['display_name']).first_or_create
       tdt.update_attributes!(attrs)
     end
 

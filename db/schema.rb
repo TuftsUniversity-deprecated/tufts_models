@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131022065915) do
+ActiveRecord::Schema.define(:version => 20131025201324) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",     :null => false
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(:version => 20131022065915) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "user_type"
+  end
+
+  create_table "deposit_types", :force => true do |t|
+    t.string   "display_name"
+    t.text     "deposit_agreement"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "deposit_view"
   end
 
   create_table "roles", :force => true do |t|
@@ -43,14 +51,6 @@ ActiveRecord::Schema.define(:version => 20131022065915) do
   end
 
   add_index "searches", ["user_id"], :name => "index_searches_on_user_id"
-
-  create_table "tufts_deposit_types", :force => true do |t|
-    t.string   "display_name"
-    t.text     "deposit_agreement"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-    t.string   "deposit_view"
-  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

@@ -26,7 +26,7 @@ class TuftsSelfDeposit < TuftsPdf
   end
 
   def deposit_agreement
-    @deposit_type = TuftsDepositType.find_by_display_name(deposit_type)
+    @deposit_type = DepositType.find_by_display_name(deposit_type)
     @deposit_type.deposit_agreement
   end
 

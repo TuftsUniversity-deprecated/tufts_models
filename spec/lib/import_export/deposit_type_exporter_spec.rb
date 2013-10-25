@@ -36,11 +36,11 @@ describe DepositTypeExporter do
   it 'exports the deposit types to a csv file' do
     pdf_name = 'PDF Document'
     pdf_agreement = 'Some agreement text for PDF deposits'
-    pdf_type = FactoryGirl.create(:tufts_deposit_type, display_name: pdf_name, deposit_agreement: pdf_agreement)
+    pdf_type = FactoryGirl.create(:deposit_type, display_name: pdf_name, deposit_agreement: pdf_agreement)
 
     audio_name = 'Audio File'
     audio_agreement = 'Some agreement text for Audio deposits'
-    audio_type = FactoryGirl.create(:tufts_deposit_type, display_name: audio_name, deposit_agreement: audio_agreement)
+    audio_type = FactoryGirl.create(:deposit_type, display_name: audio_name, deposit_agreement: audio_agreement)
 
     dir = test_export_dir
     exporter = DepositTypeExporter.new(dir)

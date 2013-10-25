@@ -29,35 +29,35 @@ describe DepositTypeImporter do
   it 'imports CSV data' do
     importer = DepositTypeImporter.new(test_import_file)
 
-    TuftsDepositType.count.should == 0
+    DepositType.count.should == 0
     importer.import_from_csv
-    TuftsDepositType.count.should == 3
+    DepositType.count.should == 3
 
-    pdf = TuftsDepositType.where(display_name: 'PDF Document').first
+    pdf = DepositType.where(display_name: 'PDF Document').first
     pdf.deposit_agreement.should == 'Agreement for a PDF'
-    audio = TuftsDepositType.where(display_name: 'Audio File').first
+    audio = DepositType.where(display_name: 'Audio File').first
     audio.deposit_agreement.should == 'Agreement for Audio'
-    photo = TuftsDepositType.where(display_name: 'Photograph').first
+    photo = DepositType.where(display_name: 'Photograph').first
     photo.deposit_agreement.should == 'Agreement for a Photo'
   end
 
   it 'updates existing deposit types' do
     importer = DepositTypeImporter.new(test_import_file)
-    pdf = FactoryGirl.create(:tufts_deposit_type, display_name: 'PDF Document', deposit_agreement: 'old text')
-    TuftsDepositType.count.should == 1
+    pdf = FactoryGirl.create(:deposit_type, display_name: 'PDF Document', deposit_agreement: 'old text')
+    DepositType.count.should == 1
     importer.import_from_csv
-    TuftsDepositType.count.should == 3
+    DepositType.count.should == 3
     pdf.reload
     pdf.deposit_agreement.should == 'Agreement for a PDF'
   end
 
   it 'doesnt create duplicate deposit types' do
-    TuftsDepositType.count.should == 0
+    DepositType.count.should == 0
     importer = DepositTypeImporter.new(File.join(fixture_path, 'import', 'deposit_types_with_duplicate_entries.csv'))
     importer.import_from_csv
 
-    TuftsDepositType.count.should == 1
-    TuftsDepositType.first.deposit_agreement.should == 'Agreement 3'
+    DepositType.count.should == 1
+    DepositType.first.deposit_agreement.should == 'Agreement 3'
   end
 
   def test_import_file

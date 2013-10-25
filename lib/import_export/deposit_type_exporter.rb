@@ -21,7 +21,7 @@ class DepositTypeExporter
 
     CSV.open(export_file, "w") do |csv|
       csv << columns_to_include_in_export
-      types = TuftsDepositType.all.sort{|a,b| a.display_name <=> b.display_name }
+      types = DepositType.all.sort{|a,b| a.display_name <=> b.display_name }
       types.each do |type|
         csv << [type.display_name, type.deposit_agreement]
       end

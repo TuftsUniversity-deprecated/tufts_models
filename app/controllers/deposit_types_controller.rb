@@ -1,12 +1,12 @@
 class DepositTypesController < ApplicationController
 
   def index
-    authorize! :read, TuftsDepositType
-    @deposit_types = TuftsDepositType.accessible_by(current_ability)
+    authorize! :read, DepositType
+    @deposit_types = DepositType.accessible_by(current_ability)
   end
 
   def export
-    authorize! :export, TuftsDepositType
+    authorize! :export, DepositType
     require 'import_export/deposit_type_exporter'
     exporter = DepositTypeExporter.new
     exporter.export_to_csv
@@ -19,18 +19,18 @@ class DepositTypesController < ApplicationController
   end
 
   def show
-    @deposit_type = TuftsDepositType.find(params[:id])
+    @deposit_type = DepositType.find(params[:id])
   end
 
   def destroy
-    @deposit_type = TuftsDepositType.find(params[:id])
+    @deposit_type = DepositType.find(params[:id])
     @deposit_type.destroy
 
     redirect_to deposit_types_path
   end
 
   def create
-    @deposit_type = TuftsDepositType.new(deposit_type_params)
+    @deposit_type = DepositType.new(deposit_type_params)
 
     @deposit_type.save!
     puts @deposit_type.inspect
@@ -38,11 +38,11 @@ class DepositTypesController < ApplicationController
   end
 
   def edit
-    @deposit_type = TuftsDepositType.find(params[:id])
+    @deposit_type = DepositType.find(params[:id])
   end
 
   def update
-    @deposit_type = TuftsDepositType.find(params[:id])
+    @deposit_type = DepositType.find(params[:id])
 
     if @deposit_type.update_attributes!(params[:deposit_type].permit(:display_name, :deposit_agreement, :deposit_view))
       redirect_to deposit_type_path(@deposit_type), :notice => 'Record was successfully updated.'
