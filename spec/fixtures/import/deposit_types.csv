@@ -1,5 +1,5 @@
-display_name,deposit_agreement
-PDF Document,  Agreement for a PDF
-Audio File   ,Agreement for Audio
+display_name,deposit_agreement,deposit_view
+PDF Document,  Agreement for a PDF,generic_deposit
+Audio File   ,Agreement for Audio,generic_deposit
 
-Photograph,Agreement for a Photo
+Photograph,Agreement for a Photo,generic_deposit
