@@ -2,11 +2,10 @@ require 'spec_helper'
 require 'import_export/deposit_type_exporter'
 
 describe DepositTypesController do
-  before :all do
+  before :each do
     DepositType.destroy_all
     @dt = FactoryGirl.create(:deposit_type, display_name: 'DT')
   end
-  after(:all) { @dt.destroy }
 
   context 'a non-admin user' do
     before do
@@ -94,7 +93,7 @@ describe DepositTypesController do
     describe 'create' do
       it 'succeeds' do
         DepositType.count.should == 1
-        post :create, deposit_type: { display_name: 'New Type' }
+        post :create, deposit_type: { display_name: 'New Type', deposit_view: 'generic_deposit' }
         DepositType.count.should == 2
         new_type = DepositType.where(display_name: 'New Type').first
         response.should redirect_to(deposit_type_path(new_type))
