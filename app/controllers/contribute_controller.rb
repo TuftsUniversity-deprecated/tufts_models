@@ -1,4 +1,7 @@
 class ContributeController < ApplicationController
+
+  skip_before_filter :authenticate_user!, only: [:home, :license]
+
   def home
   end
 

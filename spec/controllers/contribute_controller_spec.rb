@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe ContributeController do
+  before do
+    @user = FactoryGirl.create(:admin)
+    sign_in @user
+  end
 
   describe "GET 'home'" do
     it "returns http success" do

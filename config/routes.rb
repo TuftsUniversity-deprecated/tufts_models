@@ -1,13 +1,6 @@
 ALLOW_DOTS ||= /[a-zA-Z0-9_.:]+/
 
 Tufts::Application.routes.draw do
-  get "contribute/home"
-
-  get "contribute/license"
-
-  get "contribute/new"
-
-  get "contribute/create"
 
   root :to => "catalog#index"
 
@@ -20,6 +13,12 @@ Tufts::Application.routes.draw do
   resources :self_deposits, :constraints => { :id => ALLOW_DOTS }
   resources :deposit_types, :constraints => { :id => ALLOW_DOTS } do
     get 'export', on: :collection
+  end
+
+  resource :contribute, :controller => :contribute, :only => [:home, :license, :new, :create] do
+    get '/', :to => 'contribute#home'
+    get 'home'
+    get 'license'
   end
 
   HydraHead.add_routes(self)
