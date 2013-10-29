@@ -26,9 +26,14 @@ module Tufts
       index_format_info(solr_doc)
       index_pub_date(solr_doc)
       index_unstemmed_values(solr_doc)
+      index_accrual_policy(solr_doc)
     end
 
   private
+
+  def index_accrual_policy(solr_doc)
+    titleize_and_index_array(solr_doc, 'accrual', self.accrualPolicy, :facetable)
+  end
 
   def index_unstemmed_values(solr_doc)
     titleize_and_index_array(solr_doc, 'corpname', corpname, :unstemmed_searchable)  
