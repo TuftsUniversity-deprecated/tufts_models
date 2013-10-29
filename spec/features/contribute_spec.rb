@@ -2,6 +2,16 @@ require 'spec_helper'
 
 describe 'Contribute' do
 
+  before :all do
+    @deposit_type = DepositType.new(:display_name => 'Test Option', :deposit_view => 'generic_deposit', :deposit_agreement => 'Legal links here...')
+    @deposit_type.save!
+  end
+
+  after :all do
+    @deposit_type.destroy
+  end
+
+
   it 'should be default path for unauthenticated users' do
     visit destroy_user_session_path
     visit '/'
@@ -15,14 +25,6 @@ describe 'Contribute' do
   end
 
   describe "Landing Page" do
-    before :all do
-      @deposit_type = DepositType.new(:display_name => 'Test Option', :deposit_view => 'generic_deposit', :deposit_agreement => 'Legal links here...')
-      @deposit_type.save!
-    end
-
-    after :all do
-      @deposit_type.destroy
-    end
 
     describe 'for unauthenticated users' do
       before :all do
@@ -66,4 +68,31 @@ describe 'Contribute' do
       expect(page).to have_content 'Non-Exclusive Deposit License'
     end
   end
+
+  describe 'New contribution page' do
+    it 'should redirect unauthenticated users to the sign-on page' do
+      visit destroy_user_session_path # Force logout, just in case...
+      visit '/contribute/new'
+      current_path.should == new_user_session_path
+    end
+    describe 'for authenticated users' do
+      before :each do
+        sign_in :user     end
+      it 'should redirect the user to the selection page is the deposit type is missing' do
+        visit '/contribute/new'
+        current_path.should == contribute_path
+      end
+      it 'should redirect the user to the selection page is the deposit type is invalid' do
+        visit '/contribute/new?type=bad_deposit_type'
+        current_path.should == contribute_path
+      end
+      it 'should accept valid deposit types' do
+        visit "/contribute/new?type=#{@deposit_type.id}"
+        current_path.should == new_contribute_path
+      end
+
+    end
+  end
+
 end
+

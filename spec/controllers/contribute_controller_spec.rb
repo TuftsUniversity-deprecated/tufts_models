@@ -21,16 +21,16 @@ describe ContributeController do
   end
 
   describe "GET 'new'" do
-    it "returns http success" do
+    it "redirects to contribute home when no deposit type specified" do
       get 'new'
-      response.should be_success
+      response.should redirect_to contribute_path
     end
   end
 
   describe "GET 'create'" do
-    it "returns http success" do
+    it "redirects to contribute new when no deposit type is specified" do
       get 'create'
-      response.should be_success
+      response.should redirect_to new_contribute_path
     end
   end
 

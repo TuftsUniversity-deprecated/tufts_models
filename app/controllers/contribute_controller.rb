@@ -13,8 +13,14 @@ class ContributeController < ApplicationController
   end
 
   def new
+    @deposit_type = DepositType.where(id: params[:type]).first
+
+    # Redirect the user to the selection page is the deposit type is invalid or missing
+    redirect_to action: 'home' if @deposit_type.nil?
+
   end
 
   def create
+    redirect_to action: 'new', type: params[:deposit_type]
   end
 end
