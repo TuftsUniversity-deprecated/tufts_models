@@ -18,6 +18,11 @@ class CatalogController < ApplicationController
     @my_concern ||= TuftsBase.find(params[:id])
   end
 
+  def index
+    redirect_to contribute_path unless current_user.admin?
+    super
+  end
+
   def show
     authorize! :show, my_concern
     super

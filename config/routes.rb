@@ -2,6 +2,10 @@ ALLOW_DOTS ||= /[a-zA-Z0-9_.:]+/
 
 Tufts::Application.routes.draw do
 
+  unauthenticated do
+    root :to => 'contribute#redirect'
+  end
+
   root :to => "catalog#index"
 
   resources :catalog, :only => [:show, :update], :constraints => { :id => ALLOW_DOTS, :format => false }
