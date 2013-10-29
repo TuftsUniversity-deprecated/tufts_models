@@ -1,6 +1,14 @@
 ALLOW_DOTS ||= /[a-zA-Z0-9_.:]+/
 
 Tufts::Application.routes.draw do
+  get "contribute/home"
+
+  get "contribute/license"
+
+  get "contribute/new"
+
+  get "contribute/create"
+
   root :to => "catalog#index"
 
   resources :catalog, :only => [:show, :update], :constraints => { :id => ALLOW_DOTS, :format => false }
