@@ -13,4 +13,11 @@ describe 'Contribute' do
       expect(page).to have_link 'Login'
     end
   end
+
+  describe 'License Page' do
+    it 'should contain the license description' do
+      visit '/contribute/license'
+      expect(page).to have_content 'Non-Exclusive Deposit License'
+    end
+  end
 end
