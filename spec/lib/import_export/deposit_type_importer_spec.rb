@@ -35,10 +35,13 @@ describe DepositTypeImporter do
 
     pdf = DepositType.where(display_name: 'PDF Document').first
     pdf.deposit_agreement.should == 'Agreement for a PDF'
+    pdf.deposit_view.should == 'capstone_project'
     audio = DepositType.where(display_name: 'Audio File').first
     audio.deposit_agreement.should == 'Agreement for Audio'
+    audio.deposit_view.should == 'honors_thesis'
     photo = DepositType.where(display_name: 'Photograph').first
     photo.deposit_agreement.should == 'Agreement for a Photo'
+    photo.deposit_view.should == 'generic_deposit'
   end
 
   it 'updates existing deposit types' do
@@ -49,6 +52,7 @@ describe DepositTypeImporter do
     DepositType.count.should == 3
     pdf.reload
     pdf.deposit_agreement.should == 'Agreement for a PDF'
+    pdf.deposit_view.should == 'capstone_project'
   end
 
   it 'doesnt create duplicate deposit types' do

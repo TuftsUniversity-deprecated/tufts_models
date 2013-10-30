@@ -33,14 +33,25 @@ describe DepositTypeExporter do
     FileUtils.rm_rf(dir, :secure => true)
   end
 
+  it 'knows which columns to export' do
+    column_names = DepositType.columns.map(&:name)
+    excluded_columns = ['id', 'updated_at', 'created_at']
+    expected_cols = column_names - excluded_columns
+
+    cols = DepositTypeExporter.columns_to_include_in_export
+    expected_cols.sort.should == cols.sort
+  end
+
   it 'exports the deposit types to a csv file' do
     pdf_name = 'PDF Document'
     pdf_agreement = 'Some agreement text for PDF deposits'
-    pdf_type = FactoryGirl.create(:deposit_type, display_name: pdf_name, deposit_agreement: pdf_agreement)
+    pdf_view = 'honors_thesis'
+    pdf_type = FactoryGirl.create(:deposit_type, display_name: pdf_name, deposit_agreement: pdf_agreement, deposit_view: pdf_view)
 
     audio_name = 'Audio File'
     audio_agreement = 'Some agreement text for Audio deposits'
-    audio_type = FactoryGirl.create(:deposit_type, display_name: audio_name, deposit_agreement: audio_agreement)
+    audio_view = 'capstone_project'
+    audio_type = FactoryGirl.create(:deposit_type, display_name: audio_name, deposit_agreement: audio_agreement, deposit_view: audio_view)
 
     dir = test_export_dir
     exporter = DepositTypeExporter.new(dir)
@@ -49,10 +60,10 @@ describe DepositTypeExporter do
     file = File.join(exporter.export_dir, exporter.filename)
     contents = File.readlines(file).map(&:strip)
 
-    expected_headers = ['display_name', 'deposit_agreement']
+    expected_headers = ['display_name', 'deposit_agreement', 'deposit_view']
     contents[0].split(',').should == expected_headers
-    contents[1].split(',').should == [audio_name, audio_agreement]
-    contents[2].split(',').should == [pdf_name, pdf_agreement]
+    contents[1].split(',').should == [audio_name, audio_agreement, audio_view]
+    contents[2].split(',').should == [pdf_name, pdf_agreement, pdf_view]
 
     FileUtils.rm_rf(dir, :secure => true)
   end

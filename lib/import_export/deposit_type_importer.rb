@@ -20,8 +20,8 @@ class DepositTypeImporter
     CSV.foreach(@import_file, import_options) do |row|
       attrs = strip_whitespace(row.to_hash)
       log_row_message(attrs)
-      tdt = DepositType.where(display_name: attrs['display_name']).first_or_create
-      tdt.update_attributes!(attrs)
+      dt = DepositType.where(display_name: attrs['display_name']).first_or_create
+      dt.update_attributes!(attrs)
     end
 
     log_end_message
