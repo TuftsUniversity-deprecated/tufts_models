@@ -4,11 +4,6 @@ require 'blacklight/catalog'
 class UnpublishedController < CatalogController  
 
   UnpublishedController.solr_search_params_logic += [:only_changed_models]
-  configure_blacklight do |config|
-    config.default_solr_params = { 
-      :q => '*:*'
-    }
-  end
 
   def only_changed_models(solr_parameters, user_parameters)
     solr_parameters[:fq] ||= []
