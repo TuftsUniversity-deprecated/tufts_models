@@ -1,27 +1,5 @@
 <h1>Edit Deposit Type</h1>
 
-<%# TODO: refactor new and edit views to use single partial - figure out why form_for @deposit_type doesn't work %>
+<%= render 'new_edit_form' %>
 
-<%= form_for :deposit_type, url: deposit_type_path(@deposit_type), method: :put do |f| %>
-    <p>
-      <%= f.label :display_name %>
-      <%= f.text_field :display_name %>
-    </p>
-
-    <p>
-      <%= f.label :deposit_view %>
-      <%= f.select :deposit_view,
-                   Dir.glob('app/views/self_deposits/metadata/_*.html.erb').collect{|f| File.basename(f,".html.erb")[1..-1]} %>
-    </p>
-
-    <p>
-      <%= f.label :deposit_agreement %>
-      <%= f.text_area raw(:deposit_agreement), rows: 5, class: "span8" %>
-    </p>
-
-    <br />
-    <%= f.submit 'Update', class: 'btn-primary btn' %>
-    &nbsp; &nbsp;
-    <%= link_to "Cancel", deposit_types_path %>
-
-<% end %>
+<%= link_to 'Cancel', deposit_type_path %>

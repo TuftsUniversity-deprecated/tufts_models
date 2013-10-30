@@ -1,7 +1,12 @@
-<%= form_for @deposit_type do |f| %>
+<%= form_for :deposit_type, url: deposit_types_path do |f| %>
     <p>
       <%= f.label :display_name %>
       <%= f.text_field :display_name %>
+    </p>
+
+    <p>
+      <%= f.label :deposit_view %>
+      <%= f.select :deposit_view, DepositType.valid_desposit_views %>
     </p>
 
     <p>
@@ -10,8 +15,6 @@
     </p>
 
     <br />
-    <%= f.submit 'Update' %>
-
-    <%= button_tag "Cancel", name: 'cancel' %>
+    <%= f.submit 'Create', class: 'btn-primary btn' %>
 
 <% end %>
