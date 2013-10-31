@@ -1,0 +1,9 @@
+# Generate a secret using this command:
+#   rake secret
+
+development:
+  secret_key: 'ee4ea67ee6a9cf01cab49b305d043a312db74c1f2a6834bb3c139797e6cbcb2036b4cc7f8f856d8776a207500b5f0b40319654d4e3a2b225c5bd34b0b436e9bb'
+test:
+  secret_key: 'ee4ea67ee6a9cf01cab49b305d043a312db74c1f2a6834bb3c139797e6cbcb2036b4cc7f8f856d8776a207500b5f0b40319654d4e3a2b225c5bd34b0b436e9bb'
+production:
+  secret_key:
