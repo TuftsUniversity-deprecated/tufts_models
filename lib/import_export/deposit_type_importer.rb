@@ -55,7 +55,7 @@ protected
 
   def strip_whitespace(hash)
     clean_hash = {}
-    hash.each_pair { |k,v| clean_hash[k] = v.strip }
+    hash.each_pair { |k,v| (clean_hash[k] = v.strip) if v }
     clean_hash
   end
 
