@@ -1,36 +1,22 @@
+<%= link_to 'Add a New Deposit Type', new_deposit_type_path, class: 'btn btn-primary float-right' %>
+
 <h1>Manage Deposit Types</h1>
+<div class='clear'></div>
 
 <table>
+  <tr>
+    <th> Type </th>
+    <th> View </th>
+    <th> Agreement </th>
+  </tr>
+
+  <% @deposit_types.each do |deposit_type| %>
     <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th style="text-align: left">| Type</th>
-    <th style="text-align: left">| Agreement</th>
+      <td> <%= link_to deposit_type.display_name, deposit_type_path(deposit_type) %> </td>
+      <td> <%= deposit_type.deposit_view %> </td>
+      <td> <%= truncate(deposit_type.deposit_agreement, length: 60) %> </td>
     </tr>
-
-    <% @deposit_types.each do |deposit_type| %>
-      <tr>
-        <td>| <%= link_to 'Show', deposit_type_path(deposit_type) %>  </td>
-        <td>| <%= link_to 'Edit', edit_deposit_type_path(deposit_type) %>  </td>
-        <td>| <%= link_to 'Destroy', deposit_type_path(deposit_type), :confirm => 'Are you sure?', :method => :delete %></td>
-        <td>| <b><%= deposit_type.display_name %></b></td>
-        <td>| <%= truncate(deposit_type.deposit_agreement, length: 60) %>  </td>
-      </tr>
-    <% end %>
-
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>| <%= link_to '+ Add a New Deposit Type', new_deposit_type_path %></td>
-      <td>|</td>
-    </tr>
-
+  <% end %>
 </table>
-<br/>
-<p>
-  <%= link_to 'Home', root_path %>
-  &middot;
-  <%= link_to 'Export Deposit Type Data', export_deposit_types_path %>
-</p>
+
+<%= link_to 'Export Deposit Type Data', export_deposit_types_path, class: 'btn' %>
