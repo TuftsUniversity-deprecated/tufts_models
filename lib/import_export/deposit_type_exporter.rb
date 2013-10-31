@@ -20,10 +20,11 @@ class DepositTypeExporter
     Rails.logger.info "Exporting Deposit Types: #{export_file}"
 
     CSV.open(export_file, "w") do |csv|
-      csv << columns_to_include_in_export
-      types = DepositType.all.sort{|a,b| a.display_name <=> b.display_name }
-      types.each do |type|
-        csv << [type.display_name, type.deposit_agreement]
+      column_names = DepositTypeExporter.columns_to_include_in_export
+      csv << column_names
+      types_to_export = DepositType.all.sort{|a,b| a.display_name <=> b.display_name }
+      types_to_export.each do |type|
+        csv << column_names.map{|col_name| type.send(col_name)}
       end
     end
 
@@ -34,8 +35,8 @@ class DepositTypeExporter
     FileUtils.mkdir_p(@export_dir)
   end
 
-  def columns_to_include_in_export
-    ["display_name", "deposit_agreement"]
+  def self.columns_to_include_in_export
+    ["display_name", "deposit_agreement", "deposit_view"]
   end
 
 end
