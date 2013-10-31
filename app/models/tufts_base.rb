@@ -1,6 +1,6 @@
 class TuftsBase < ActiveFedora::Base
   include Tufts::ModelMethods
-  include Hydra::ModelMixins::RightsMetadata
+  include Hydra::AccessControls::Permissions
   include AttachedFiles
   
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
@@ -35,24 +35,26 @@ class TuftsBase < ActiveFedora::Base
   validates :title, :presence => true
   validate :displays_valid
   
-  delegate_to "DCA-META", [:identifier, :creator, :description, :publisher, :source, 
-                           :date_created, :date_issued, :date_available, :type,
-                           :format, :extent,  :persname, :corpname, :geogname,
-                           :subject, :genre, :rights, :bibliographic_citation,
-                           :temporal, :funder, :resolution, :bitdepth,
-                           :colorspace, :filesize]
-  delegate_to "DCA-META", [:title], unique: true
+  has_attributes :identifier, :creator, :description, :publisher, :source, 
+                 :date_created, :date_issued, :date_available, :type,
+                 :format, :extent,  :persname, :corpname, :geogname,
+                 :subject, :genre, :rights, :bibliographic_citation,
+                 :temporal, :funder, :resolution, :bitdepth,
+                 :colorspace, :filesize, datastream: 'DCA-META', multiple: true
+  has_attributes :title, datastream: 'DCA-META', multiple: false
 
-  delegate_to "DC-DETAIL-META", [:alternative, :contributor, :abstract, :toc,
-                           :date, :date_copyrighted, :date_submitted,
-                           :date_accepted, :date_modified, :language, :medium,
-                           :provenance, :access_rights, :rights_holder,
-                           :license, :replaces, :isReplacedBy, :hasFormat,
-                           :isFormatOf, :hasPart, :isPartOf, :accrualPolicy,
-                           :audience, :references, :spatial]
+  has_attributes :alternative, :contributor, :abstract, :toc,
+                 :date, :date_copyrighted, :date_submitted,
+                 :date_accepted, :date_modified, :language, :medium,
+                 :provenance, :access_rights, :rights_holder,
+                 :license, :replaces, :isReplacedBy, :hasFormat,
+                 :isFormatOf, :hasPart, :isPartOf, :accrualPolicy,
+                 :audience, :references, :spatial, datastream: 'DC-DETAIL-META', multiple: true
 
-  delegate_to "DCA-ADMIN", [:published_at, :edited_at], unique: true
-  delegate_to "DCA-ADMIN", [:steward, :name, :comment, :displays, :retentionPeriod, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note]
+  has_attributes :published_at, :edited_at, datastream: 'DCA-ADMIN', multiple: false
+  has_attributes :steward, :name, :comment, :displays, :retentionPeriod, :embargo,
+                 :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note,
+                 datastream: 'DCA-ADMIN', multiple: true
 
   def audit(user, what)
     return unless user

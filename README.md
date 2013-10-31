@@ -26,6 +26,8 @@ $ cp config/database.yml.sample config/database.yml
 $ cp config/solr.yml.sample config/solr.yml
 $ cp config/redis.yml.sample config/redis.yml
 $ cp config/fedora.yml.sample config/fedora.yml
+$ cp config/devise.yml.sample config/devise.yml
+!!! Important. Open config/devise.yml and generate a new id
 
 $ rake db:schema:load
 $ rake db:seed

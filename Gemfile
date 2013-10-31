@@ -3,13 +3,12 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 #ruby-gemset=tufts
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.15'
 
 gem 'sqlite3'
 
-gem 'hydra-head'
+gem 'hydra', '6.1.0.rc8'
 gem 'hydra-role-management', '0.0.2'
-gem 'active-fedora', '6.4.0.rc1'
 gem 'hydra-editor', '0.0.3'
 gem 'strong_parameters'
 
