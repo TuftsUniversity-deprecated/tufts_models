@@ -26,13 +26,15 @@ module Tufts
       index_format_info(solr_doc)
       index_pub_date(solr_doc)
       index_unstemmed_values(solr_doc)
-      index_accrual_policy(solr_doc)
+      index_deposit_method(solr_doc)
     end
 
   private
 
-  def index_accrual_policy(solr_doc)
-    titleize_and_index_array(solr_doc, 'accrual', self.accrualPolicy, :facetable)
+  def index_deposit_method(solr_doc)
+    unless note.empty?
+      Solrizer.insert_field(solr_doc, 'deposit_method', 'self-deposit', :stored_sortable)
+    end
   end
 
   def index_unstemmed_values(solr_doc)

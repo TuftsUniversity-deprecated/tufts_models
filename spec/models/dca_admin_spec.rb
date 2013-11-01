@@ -20,4 +20,11 @@ describe DcaAdmin do
     subject.to_solr.should == {
        "edited_at_dtsi" =>'2013-03-22T12:33:00Z', 'published_at_dtsi' =>'2013-03-22T12:33:00Z'}
   end
+
+  it "should have note" do
+    subject.note = 'self-deposit'
+    expect(subject.note).to eq ['self-deposit']
+    subject.note = 'admin-deposit'
+    expect(subject.note).to eq ['admin-deposit']
+  end
 end
