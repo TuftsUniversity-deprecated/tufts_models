@@ -12,7 +12,7 @@ class CatalogController < ApplicationController
   # This filters out objects that you want to exclude from search results, like FileAssets
   CatalogController.solr_search_params_logic += [:exclude_unwanted_models]
 
-  before_filter :my_concern, except: [:index]
+  before_filter :my_concern, only: [:show]
 
   def my_concern
     @my_concern ||= TuftsBase.find(params[:id])
