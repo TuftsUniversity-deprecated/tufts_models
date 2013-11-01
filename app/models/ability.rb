@@ -10,10 +10,16 @@ class Ability
     end
 
     if current_user.admin?
+      can_read_all_documents
       can [:create, :show, :add_user, :remove_user, :index], Role
       can [:create, :read, :update, :publish, :destroy], ActiveFedora::Base
       can [:create, :read, :update, :destroy, :export], DepositType
     end
+  end
+
+  # Read any document deposited by any user
+  def can_read_all_documents
+    can :read, SolrDocument
   end
 
   def create_permissions

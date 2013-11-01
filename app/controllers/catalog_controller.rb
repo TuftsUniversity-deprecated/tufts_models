@@ -5,18 +5,15 @@ class CatalogController < ApplicationController
 
   include Blacklight::Catalog
   include Hydra::Controller::ControllerBehavior
-  # These before_filters apply the hydra access controls
- # before_filter :enforce_show_permissions, :only=>:show
+
+  # Apply the hydra access controls
+  before_filter :enforce_show_permissions, :only => :show
+
   # This applies appropriate access controls to all solr queries
   #CatalogController.solr_search_params_logic += [:add_access_controls_to_solr_params]
+
   # This filters out objects that you want to exclude from search results, like FileAssets
   CatalogController.solr_search_params_logic += [:exclude_unwanted_models]
-
-  before_filter :my_concern, only: [:show]
-
-  def my_concern
-    @my_concern ||= TuftsBase.find(params[:id])
-  end
 
   def index
     redirect_to contribute_path unless current_user.admin?
@@ -24,7 +21,6 @@ class CatalogController < ApplicationController
   end
 
   def show
-    authorize! :show, my_concern
     super
   end
 
@@ -185,6 +181,7 @@ class CatalogController < ApplicationController
     config.spell_max = 5
   end
 
+protected
 
   def exclude_unwanted_models(solr_parameters, user_parameters)
     solr_parameters[:fq] ||= []

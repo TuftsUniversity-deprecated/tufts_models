@@ -11,6 +11,10 @@ describe Ability do
   describe "an admin user" do
     subject { Ability.new(@admin) }
 
+    describe "using the catalog" do
+      it { should be_able_to(:read, SolrDocument) }
+    end
+
     describe "working on Roles" do
       it { should be_able_to(:index, Role) }
       it { should be_able_to(:create, Role) }
