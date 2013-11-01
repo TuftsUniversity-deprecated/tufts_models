@@ -5,7 +5,6 @@ describe Ability do
   before :all do
     User.delete_all
     @user = FactoryGirl.create(:user, email: 'user@example.com')
-    @another_user = FactoryGirl.create(:user, email: 'another_user@example.com')
     @admin = FactoryGirl.create(:admin, email: 'admin@example.com')
   end
 
@@ -63,24 +62,65 @@ describe Ability do
     end
 
     describe "working on a self-deposit" do
-      before :all do
-        @self_deposit = FactoryGirl.create(:tufts_self_deposit, user: @user)
-        @another_deposit = FactoryGirl.create(:tufts_self_deposit, user: @another_user)
-      end
-      after :all do
-        @self_deposit.destroy
-        @another_deposit.destroy
+      it { should be_able_to(:create, TuftsSelfDeposit) }
+
+      describe "that they own" do
+        before :all do
+          @self_deposit = FactoryGirl.create(:tufts_self_deposit, user: @user)
+        end
+        after :all do
+          @self_deposit.destroy
+        end
+
+        it { should     be_able_to(:read, @self_deposit) }
+        it { should     be_able_to(:update, @self_deposit) }
+        it { should     be_able_to(:destroy, @self_deposit) }
+        it { should_not be_able_to(:publish, @self_deposit) }
       end
 
-      it { should     be_able_to(:create, TuftsSelfDeposit) }
-      it { should     be_able_to(:read, @self_deposit) }
-      it { should_not be_able_to(:read, @another_deposit) }
-      it { should     be_able_to(:update, @self_deposit) }
-      it { should_not be_able_to(:update, @another_deposit) }
-      it { should     be_able_to(:destroy, @self_deposit) }
-      it { should_not be_able_to(:destroy, @another_deposit) }
-      it { should_not be_able_to(:publish, @self_deposit) }
-      it { should_not be_able_to(:publish, @another_deposit) }
+      describe "that they don't own" do
+        before :all do
+          @another_deposit = FactoryGirl.create(:tufts_self_deposit)
+        end
+        after :all do
+          @another_deposit.destroy
+        end
+
+        it { should_not be_able_to(:read, @another_deposit) }
+        it { should_not be_able_to(:update, @another_deposit) }
+        it { should_not be_able_to(:destroy, @another_deposit) }
+        it { should_not be_able_to(:publish, @another_deposit) }
+      end
+    end
+
+    describe "working on TuftsAudio" do
+      it { should_not be_able_to(:create, TuftsAudio) }
+
+      describe "that they own" do
+        before :all do
+          @audio = FactoryGirl.create(:tufts_audio, user: @user)
+        end
+        after :all do
+          @audio.destroy
+        end
+        it { should     be_able_to(:edit, @audio) }
+        it { should     be_able_to(:update, @audio) }
+        it { should_not be_able_to(:publish, @audio) }
+        it { should     be_able_to(:destroy, @audio) }
+      end
+
+      describe "that they don't own" do
+        before :all do
+          @audio = FactoryGirl.create(:tufts_audio)
+        end
+        after :all do
+          @audio.destroy
+        end
+        it { should_not be_able_to(:edit, @audio) }
+        it { should_not be_able_to(:update, @audio) }
+        it { should_not be_able_to(:publish, @audio) }
+        it { should_not be_able_to(:destroy, @audio) }
+      end
     end
   end
 
