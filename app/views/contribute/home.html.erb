@@ -1,44 +1,46 @@
-<h1>Deposit Form for the Tufts Digital Library</h1>
+<div class="span12">
+  <h1>Deposit Form for the Tufts Digital Library</h1>
 
-<%# Diplay the following content if the viewer is not logged in %>
-<% if current_user.nil? %>
-    <p>From this page you may deposit your scholarly work to the Tufts Digital Library. This service is available for:
+  <%# Diplay the following content if the viewer is not logged in %>
+  <% if current_user.nil? %>
+      <p>From this page you may deposit your scholarly work to the Tufts Digital Library. This service is available for:
 
-    <ul>
-      <% DepositType.all.sort_by{|dt| dt.display_name.downcase}.each do |dt| %>
-          <li><%= dt.display_name %></li>
-      <% end %>
-    </ul>
-
-    Depositing your material to the Tufts Digital Library will require you to upload your file(s) and agree to
-    the <a href='contribute/license'>Tufts Digital Library terms and conditions</a>.</p>
-
-    <p>Submission of certain types of materials may be restricted pending approval of the relevant school or department.
-      Please contact your school or department for additional information.</p>
-
-    <p>To submit your scholarship, log in using your Tufts username and password.  </p>
-
-    <p><%= link_to "Login", new_user_session_path, class: 'btn-primary btn' %></p>
-
-    <p><a href="http://uit.tufts.edu/?pid=744">
-      <img src="https://library.tufts.edu/screens/Logo2-35pxNoText.png" alt="Tufts Simplified Sign-On" height="35" width="35" />
-      Tufts Simplified Sign-On Enabled</a></p>
-
-
-<%# Display the following options for logged in users %>
-<% else %>
-    <p>From this page you may deposit your scholarly work to the Tufts Digital Library.
-
-      <%= form_tag contribute_path do %>
-          <%= label_tag(:deposit_type, "Please select a deposit type") -%>
-          <%= select_tag :deposit_type, options_from_collection_for_select(DepositType.all.sort_by{|dt| dt.display_name}, :id, :display_name) %><br/>
-          <%= submit_tag "Begin", class: 'btn-primary btn'  %>
-      <% end %>
+      <ul>
+        <% DepositType.all.sort_by{|dt| dt.display_name.downcase}.each do |dt| %>
+            <li><%= dt.display_name %></li>
+        <% end %>
+      </ul>
 
       Depositing your material to the Tufts Digital Library will require you to upload your file(s) and agree to
       the <a href='contribute/license'>Tufts Digital Library terms and conditions</a>.</p>
 
-    <p>Submission of certain types of materials may be restricted pending approval of the relevant school or department.
-      Please contact your school or department for additional information.</p>
+      <p>Submission of certain types of materials may be restricted pending approval of the relevant school or department.
+        Please contact your school or department for additional information.</p>
 
-<% end %>
+      <p>To submit your scholarship, log in using your Tufts username and password.  </p>
+
+      <p><%= link_to "Login", new_user_session_path, class: 'btn-primary btn' %></p>
+
+      <p><a href="http://uit.tufts.edu/?pid=744">
+        <img src="https://library.tufts.edu/screens/Logo2-35pxNoText.png" alt="Tufts Simplified Sign-On" height="35" width="35" />
+        Tufts Simplified Sign-On Enabled</a></p>
+
+
+  <%# Display the following options for logged in users %>
+  <% else %>
+      <p>From this page you may deposit your scholarly work to the Tufts Digital Library.
+
+        <%= form_tag contribute_path do %>
+            <%= label_tag(:deposit_type, "Please select a deposit type") -%>
+            <%= select_tag :deposit_type, options_from_collection_for_select(DepositType.all.sort_by{|dt| dt.display_name}, :id, :display_name) %><br/>
+            <%= submit_tag "Begin", class: 'btn-primary btn'  %>
+        <% end %>
+
+        Depositing your material to the Tufts Digital Library will require you to upload your file(s) and agree to
+        the <a href='contribute/license'>Tufts Digital Library terms and conditions</a>.</p>
+
+      <p>Submission of certain types of materials may be restricted pending approval of the relevant school or department.
+        Please contact your school or department for additional information.</p>
+
+  <% end %>
+</div>
