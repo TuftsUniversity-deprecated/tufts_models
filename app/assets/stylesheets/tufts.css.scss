@@ -1,5 +1,6 @@
 
 $error_color: #d22;
+$hint_color: #777;
 
 form.button_to {
   display: inline;
@@ -22,4 +23,13 @@ input.input-large {
   background-color: #eee;
   padding: 0.5em 1em 1em 1em;
   margin-bottom: 1em;
+}
+
+.hint {
+  color: $hint_color;
+  font-weight: normal;
+}
+
+label {
+  font-weight: bold;
 }

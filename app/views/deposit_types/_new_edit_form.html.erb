@@ -13,7 +13,10 @@
 
   <p>
     <%= f.label :deposit_agreement %>
-    <%= f.text_area raw(:deposit_agreement), rows: 5, class: "span8" %>
+    <span class='hint'>
+      Use caution when entering HTML tags.  Don't copy-paste HTML text from untrusted sources.
+    </span>
+    <%= f.text_area :deposit_agreement, rows: 5, class: "span8" %>
   </p>
 
   <%= f.submit 'Save', class: 'btn-primary btn' %>
