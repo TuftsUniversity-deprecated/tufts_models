@@ -36,5 +36,7 @@ describe DepositType do
     bad_text = "<script> JS Attack! </script> <a href='/license'>Legitimate Link</a>"
     dt = FactoryGirl.create(:deposit_type, deposit_agreement: bad_text)
     dt.deposit_agreement.match(/script/).should be_nil
+    dt.deposit_agreement.match(/href="\/license"/).should_not be_nil
+    dt.deposit_agreement.match(/<\/a>/).should_not be_nil
   end
 end
