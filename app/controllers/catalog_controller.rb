@@ -188,9 +188,4 @@ protected
     solr_parameters[:fq] << "-#{ActiveFedora::SolrService.solr_name("object_state", :stored_sortable)}:\"D\""
   end
 
-  def enforce_show_permissions
-    return if current_user.admin?  # Allow access to admins
-    super
-  end
-
 end 
