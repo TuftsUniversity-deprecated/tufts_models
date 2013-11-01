@@ -13,7 +13,7 @@ $table_border_color: #ccc;
 .blacklight-deposit_types {
   h1 { margin-bottom: 0.5em; margin-top: 0; }
   .btn { margin-bottom: 1em; }
-  .btn.float-right { margin-top: 0.75em; }
+  .btn.pull-right { margin-top: 0.75em; }
 }
 
 
@@ -21,7 +21,6 @@ $table_border_color: #ccc;
   table {
     margin-top: 1.5em;
     margin-bottom: 1em;
-    width: 100%;
     @include table_style;
 
     th {

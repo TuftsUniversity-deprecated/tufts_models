@@ -3,7 +3,7 @@
 
 en:
   blacklight:
-    application_name: "Tufts Repository Admin"
+    application_name: "Tufts Digital Library"
     back_to_search: "Back to Search Results"
   hydra:
     field_label:

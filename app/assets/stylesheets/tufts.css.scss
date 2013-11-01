@@ -1,6 +1,22 @@
 
+$tufts_blue: #6699CC;
 $error_color: #d22;
 $hint_color: #777;
+
+$main_padding: 20px 20px 10px;
+
+html, body {
+  background: radial-gradient(ellipse farthest-corner at center center , #CEDCE7 0%, #596A72 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#main-container {
+  background-color: #FFFFFF;
+  padding: $main_padding;
+}
 
 form.button_to {
   display: inline;
@@ -15,7 +31,6 @@ input.input-large {
   width: 365px;
 }
 
-.float-right { float: right; }
 .clear { clear: both; }
 
 #error_explanation {
@@ -33,3 +48,33 @@ input.input-large {
 label {
   font-weight: bold;
 }
+
+.blueline {
+  background-color: $tufts_blue;
+  height: 8px;
+  width: 100%;
+}
+
+.blue-footer {
+  background-color: $tufts_blue;
+  padding: $main_padding;
+  margin-bottom: 20px;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  margin-left: auto;
+  margin-right: auto;
+
+  img {
+    border: 0;
+  }
+}
+
+#copyright {
+  color: #ffffff;
+  line-height: 150%;
+}
+
+.navbar-fixed-top {
+  margin-bottom: 0;
+}
+
