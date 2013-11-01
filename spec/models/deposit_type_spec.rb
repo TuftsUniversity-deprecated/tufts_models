@@ -31,4 +31,12 @@ describe DepositType do
   it 'must have a deposit_view that points to a vaild partial' do
     FactoryGirl.build(:deposit_type, deposit_view: 'invalid_view_partial').should_not be_valid
   end
+
+  it 'sanitizes deposit_agreement input' do
+    bad_text = "<script> JS Attack! </script> <a href='/license'>Legitimate Link</a>"
+    dt = FactoryGirl.create(:deposit_type, deposit_agreement: bad_text)
+    dt.deposit_agreement.match(/script/).should be_nil
+    dt.deposit_agreement.match(/href="\/license"/).should_not be_nil
+    dt.deposit_agreement.match(/<\/a>/).should_not be_nil
+  end
 end

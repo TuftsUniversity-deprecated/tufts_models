@@ -11,6 +11,7 @@ gem 'hydra', '6.1.0.rc8'
 gem 'hydra-role-management', '0.0.2'
 gem 'hydra-editor', '0.0.3'
 gem 'strong_parameters'
+gem 'sanitize', '2.0.6'
 
 gem 'disable_assets_logger', :group => :development
 
