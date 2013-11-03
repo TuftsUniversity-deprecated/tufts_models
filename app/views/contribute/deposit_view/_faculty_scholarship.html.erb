@@ -1,0 +1,34 @@
+<div class="control-group">
+    <%= f.label "Title:", class: 'control-label' %>
+    <%= f.text_field :title, class: 'form-control' %>
+</div>
+
+<div class="control-group">
+    <%= f.label "Contributor:", class: 'control-label' %>
+    <%= f.text_field :creator, value: current_user.user_key, class: 'form-control'  %>
+</div>
+
+<div class="control-group">
+    <%= f.label "Department:", class: 'control-label'  %>
+    <%= f.select :subject, options_for_select({'Please select a department'=>'prompt'}.merge(tufts_departments), :disabled => 'prompt', selected: 'prompt'), class: 'form-control' %>
+</div>
+
+<div class="control-group">
+    <%= f.label "Citation:", class: 'control-label'  %>
+    <%= f.text_field :bibliographic_citation, value: '',  class: 'form-control'  %>
+</div>
+
+<div class="control-group">
+    <%= f.label "Other authors:", class: 'control-label'  %>
+    <%= f.text_field :creator, value: '',  class: 'form-control'  %>
+</div>
+
+<div class="control-group">
+    <%= f.label "Abstract:", class: 'control-label'  %>
+    <%= f.text_area :description, value: '', rows: '5', class: 'form-control'  %>
+</div>
+
+
+
+
+

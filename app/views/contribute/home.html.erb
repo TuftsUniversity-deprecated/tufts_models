@@ -30,7 +30,7 @@
   <% else %>
       <p>From this page you may deposit your scholarly work to the Tufts Digital Library.
 
-        <%= form_tag contribute_path, class: 'well' do %>
+        <%= form_tag({controller: :contribute, action: :restful_new}, class: 'well') do %>
           <%= label_tag(:deposit_type, "Please select a deposit type") -%>
           <%= select_tag :deposit_type, options_from_collection_for_select(DepositType.all.sort_by{|dt| dt.display_name}, :id, :display_name), class: 'span5' %><br/>
           <%= submit_tag "Begin", class: 'btn-primary btn'  %>

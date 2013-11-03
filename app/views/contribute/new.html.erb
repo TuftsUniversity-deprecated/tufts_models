@@ -1,2 +1,19 @@
-<h1>Contribute#new</h1>
-<p>Find me in app/views/contribute/new.html.erb</p>
+<h1>Contribute a new document</h1>
+
+<%= form_for @contribution, :url=>contribute_path, multipart: true, :html=>{ class: 'form-horizontal well' } do |f| %>
+    <div class="control-group">
+        <%= f.label :deposit_attachment, "File to Upload:", class: 'control-label' %>
+        <%= f.file_field :deposit_attachment, name: 'deposit_attachment', required: true, class: 'form-control' %>
+    </div>
+
+    <%= render "contribute/deposit_view/#{DepositType.find(params[:deposit_type]).deposit_view}", :f => f  %>
+
+    <h4>DEPOSIT AGREEMENT</h4>
+    <p><%= raw @deposit_type.deposit_agreement %></p>
+
+    <p><%= f.submit 'Agree & Deposit', class: 'btn btn-primary' %></p>
+    <p><%= link_to 'Cancel', contribute_path,  class: 'btn' %></p>
+
+<% end %>
+
+
