@@ -1,0 +1,7 @@
+<%# NOTE: this form uses bootstrap_form_for and bootstrap_forms helpers - see: https://github.com/sethvargo/bootstrap_forms %>
+
+<%= f.text_field :title, label: 'Title:', help_block: '(Please limit titles to 250 characters or less.)' %>
+
+<%= f.text_field :creator, value: current_user.user_key, label: 'Contributor:'  %>
+
+<%= f.text_area :description, value: '', label: 'Abstract:', help_block: '(Please limit abstracts to 2000 characters or less.)', rows: 5, class: 'span8'  %>

@@ -1,5 +1,7 @@
 <h1>Contribute a new document</h1>
 
+<%# NOTE: this form uses bootstrap_form_for and bootstrap_forms helpers - see: https://github.com/sethvargo/bootstrap_forms %>
+
 <%= bootstrap_form_for @contribution, :url=>contribute_path, multipart: true, :html=>{ class: 'form-horizontal well' } do |f| %>
 
     <%= f.file_field :deposit_attachment, name: 'deposit_attachment', label: 'File to upload:'%>
