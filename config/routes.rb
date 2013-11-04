@@ -28,7 +28,6 @@ Tufts::Application.routes.draw do
     get '/', :to => 'contribute#home'
     get 'home'
     get 'license'
-    post 'restful_new'
   end
 
   HydraHead.add_routes(self)
