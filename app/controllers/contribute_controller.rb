@@ -25,6 +25,7 @@ class ContributeController < ApplicationController
     # TODO: add can-can authorize here
     @contribution = TuftsPdf.create(params[:tufts_pdf])
     upload_attachment
+    @contribution.save!
     flash[:notice] = "Your file has been saved!"
     redirect_to contribute_path
   end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ContributeController do
   before do
-    @user = FactoryGirl.create(:admin)
+    @user = FactoryGirl.create(:user)
     sign_in @user
   end
 
@@ -58,6 +58,18 @@ describe ContributeController do
     it "redirects to contribute when no deposit type is specified" do
       get 'redirect'
       response.should redirect_to contribute_path
+    end
+  end
+
+  describe "POST 'create'" do
+    it 'should store file attachments' do
+      file = fixture_file_upload('/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf','application/pdf')
+      post :create, {tufts_pdf: {title: 'Sample', description: 'Description of uploaded file goes here', creator: @user.user_key }, deposit_attachment: file}
+      response.should redirect_to contribute_path
+      flash[:notice].should == 'Your file has been saved!'
+      contribution = TuftsPdf.find(assigns[:contribution].pid)
+      contribution.datastreams['Archival.pdf'].dsLocation.should_not be_nil
+      contribution.datastreams['Archival.pdf'].mimeType.should == 'application/pdf'
     end
   end
 
