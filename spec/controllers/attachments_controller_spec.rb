@@ -2,63 +2,51 @@ require 'spec_helper'
 
 describe AttachmentsController do
   describe "an admin" do
+    let(:user) { FactoryGirl.create(:admin) }
     before do
-      @user = FactoryGirl.create(:admin)
-      sign_in @user
+      sign_in user
     end
     describe "editing a record" do
-      before do
-        @audio = TuftsAudio.new(title: 'My title2')
-        @audio.edit_users = [@user.user_key]
-        @audio.save!
-      end
+      let(:audio) { TuftsAudio.create!(title: 'My title2', edit_users: [user.user_key]) }
       after do
-        @audio.destroy
+        audio.destroy
       end
       it "should be successful" do
-        get :index, :record_id=>@audio.pid
+        get :index, :record_id=>audio.pid
         response.should be_successful
         assigns[:record].title.should == 'My title2'
       end
     end
     describe "editing generic object" do
-      before do
-        @generic = TuftsGenericObject.new(title: 'My title2')
-        @generic.edit_users = [@user.user_key]
-        @generic.save!
-      end
+      let(:generic) { TuftsGenericObject.create!(title: 'My title2', edit_users: [user.user_key]) }
       after do
-        @generic.destroy
+        generic.destroy
       end
       it "should be successful" do
-        get :index, :record_id=>@generic.pid
-        response.should redirect_to edit_generic_path(@generic)
+        get :index, :record_id=>generic.pid
+        response.should redirect_to edit_generic_path(generic)
       end
     end
 
     describe "uploading" do
-      before do
-        @pdf = TuftsPdf.new(title: 'My title2')
-        @pdf.edit_users = [@user.user_key]
-        @pdf.save!
-      end
+      let(:pdf) { TuftsPdf.create!(title: 'My title2', edit_users: [user.user_key]) }
       after do
-        @pdf.destroy
+        pdf.destroy
       end
       describe "a pdf file to a pdf object" do
         it "should be successful" do
           file = fixture_file_upload('/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf','application/pdf')
-          put :update, record_id: @pdf, id: 'Archival.pdf', files: {'Archival.pdf' => file}, format: 'json'
+          put :update, record_id: pdf, id: 'Archival.pdf', files: {'Archival.pdf' => file}, format: 'json'
           json = JSON.parse(response.body)
           json["message"].should == "Archival.pdf has been added"
           json["status"].should == "success"
-          @pdf.reload.audit_log.what.should == ["Content updated: Archival.pdf"]
+          pdf.reload.audit_log.what.should == ["Content updated: Archival.pdf"]
         end
       end
       describe "a wav file to a pdf object" do
         it "should give an error saying this is the incorrect type" do
           file = fixture_file_upload('/local_object_store/data01/tufts/central/dca/MISS/archival_sound/MISS.ISS.IPPI.archival.wav','audio/wav')
-          put :update, record_id: @pdf, id: 'Archival.pdf', files: {'Archival.pdf' => file}, format: 'json'
+          put :update, record_id: pdf, id: 'Archival.pdf', files: {'Archival.pdf' => file}, format: 'json'
           json = JSON.parse(response.body)
           json["message"].should == "You provided a audio/wav file, which is not a valid type for Archival.pdf"
           json["status"].should == "error"
