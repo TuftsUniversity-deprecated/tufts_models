@@ -69,7 +69,7 @@ describe 'Contribute' do
     end
   end
 
-  describe 'New contribution page' do
+  describe 'New file deposit page' do
     it 'should redirect unauthenticated users to the sign-on page' do
       visit destroy_user_session_path # Force logout, just in case...
       visit '/contribute/new'
@@ -87,7 +87,7 @@ describe 'Contribute' do
         current_path.should == contribute_path
       end
       it 'should accept valid deposit types' do
-        visit "/contribute/new?type=#{@deposit_type.id}"
+        visit "/contribute/new?deposit_type=#{@deposit_type.id}"
         current_path.should == new_contribute_path
       end
 

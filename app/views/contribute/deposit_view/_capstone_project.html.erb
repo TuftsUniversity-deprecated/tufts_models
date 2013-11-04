@@ -1,0 +1,15 @@
+<%# NOTE: this form uses bootstrap_form_for and bootstrap_forms helpers - see: https://github.com/sethvargo/bootstrap_forms %>
+
+<%= f.text_field :title, label: 'Capstone project title:', help_block: '(Please limit titles to 250 characters or less.)', class: 'form-control' %>
+
+<%= f.text_field :creator, value: current_user.user_key, label: 'Contributor:'  %>
+
+<%= f.select :subject, options_for_select({'Please select a degree'=>'default'}.merge(fletcher_degrees), :disabled => 'default', selected: 'default'), label: 'Degree:' %>
+
+<%= f.text_area :description, value: '', label: 'Abstract:', help_block: '(Please limit abstracts to 2000 characters or less.)', rows: 5, class: 'span8'  %>
+
+<div class='well'>Technical questions? <a target="_blank" href="http://dca.tufts.edu/contact/">Contact DCA</a>.
+  Other questions? <a target="_blank"href="http://www.library.tufts.edu/ginn/forms/forms.aspx?form=department&department=Reference">
+  Contact Ginn Library</a>.</div>
+<div class='clearfix'></div>
+
