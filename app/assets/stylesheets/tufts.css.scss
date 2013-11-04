@@ -4,7 +4,7 @@ $text_color: #404040;
 $error_color: #d22;
 $hint_color: #777;
 
-$main_padding: 20px 20px 10px;
+$main_padding: 20px 20px 20px 40px;
 
 
 /* ------------------------
@@ -19,6 +19,18 @@ $main_padding: 20px 20px 10px;
   background-color: $tufts_blue;
   height: 8px;
   width: 100%;
+}
+
+.navbar-inner {
+  background-color: #EEEEEE;
+  background-image: -moz-linear-gradient(center top , #F5F5F5 0%, #EEEEEE 100%);
+  border-top: 1px solid #E5E5E5;
+  border-bottom: 1px solid #E5E5E5;
+  margin-left: -40px;
+}
+
+#sidebar {
+  margin-left: 0;
 }
 
 

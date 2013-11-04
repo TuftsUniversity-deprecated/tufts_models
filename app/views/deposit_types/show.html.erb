@@ -1,20 +1,18 @@
-<div class="span12">
-  <%= link_to 'Back to Deposit Types', deposit_types_path %>
+<%= link_to 'Back to Deposit Types', deposit_types_path %>
 
-  <h3>Deposit Type:&nbsp; <%=@deposit_type.display_name%></h3>
+<h3>Deposit Type:&nbsp; <%=@deposit_type.display_name%></h3>
 
-  <%= link_to 'Edit', edit_deposit_type_path(@deposit_type), class: 'btn btn-primary' %>
+<%= link_to 'Edit', edit_deposit_type_path(@deposit_type), class: 'btn btn-primary' %>
 
-  <p>
-    <b>View: </b> &nbsp;
-    <%= @deposit_type.deposit_view %>
-  </p>
+<p>
+  <b>View: </b> &nbsp;
+  <%= @deposit_type.deposit_view %>
+</p>
 
-  <p>
-    <b>Deposit Agreement: </b> <br />
-    <%= raw @deposit_type.deposit_agreement %>
-  </p>
+<p>
+  <b>Deposit Agreement: </b> <br />
+  <%= raw @deposit_type.deposit_agreement %>
+</p>
 
-  <br />
-  <%= link_to 'Destroy', deposit_type_path(@deposit_type), :confirm => "Permanently delete the deposit type: #{@deposit_type.display_name}.  \nAre you sure?", :method => :delete, class: 'btn' %>
-</div>
+<br />
+<%= link_to 'Destroy', deposit_type_path(@deposit_type), :confirm => "Permanently delete the deposit type: #{@deposit_type.display_name}.  \nAre you sure?", :method => :delete, class: 'btn' %>

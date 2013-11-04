@@ -1,24 +1,22 @@
-<div class="span12">
-  <%= link_to 'Add a New Deposit Type', new_deposit_type_path, class: 'btn btn-primary pull-right' %>
+<%= link_to 'Add a New Deposit Type', new_deposit_type_path, class: 'btn btn-primary pull-right' %>
 
-  <h1>Manage Deposit Types</h1>
-  <div class='clearfix'></div>
+<h1>Manage Deposit Types</h1>
+<div class='clearfix'></div>
 
-  <table>
+<table>
+  <tr>
+    <th> Type </th>
+    <th> View </th>
+    <th> Agreement </th>
+  </tr>
+
+  <% @deposit_types.each do |deposit_type| %>
     <tr>
-      <th> Type </th>
-      <th> View </th>
-      <th> Agreement </th>
+      <td> <%= link_to deposit_type.display_name, deposit_type_path(deposit_type) %> </td>
+      <td> <%= deposit_type.deposit_view %> </td>
+      <td> <%= truncate(deposit_type.deposit_agreement, length: 60) %> </td>
     </tr>
+  <% end %>
+</table>
 
-    <% @deposit_types.each do |deposit_type| %>
-      <tr>
-        <td> <%= link_to deposit_type.display_name, deposit_type_path(deposit_type) %> </td>
-        <td> <%= deposit_type.deposit_view %> </td>
-        <td> <%= truncate(deposit_type.deposit_agreement, length: 60) %> </td>
-      </tr>
-    <% end %>
-  </table>
-
-  <%= link_to 'Export Deposit Type Data', export_deposit_types_path, class: 'btn' %>
-</div>
+<%= link_to 'Export Deposit Type Data', export_deposit_types_path, class: 'btn' %>
