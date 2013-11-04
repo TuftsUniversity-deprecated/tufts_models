@@ -2,15 +2,10 @@ require 'spec_helper'
 require "cancan/matchers"
 
 describe SelfDepositsController do
-  before do
-    #@routes = HydraEditor::Engine.routes
-    @routes = Tufts::Application.routes
-  end
-
-  describe "| A contributor" do
+  describe "A contributor" do
+    let (:user) { FactoryGirl.create(:admin) }
     before do
-      @user = FactoryGirl.create(:admin)
-      sign_in @user
+      sign_in user
     end
 
     describe "who goes to the new page" do
@@ -26,19 +21,15 @@ describe SelfDepositsController do
 
       it "should be recorded as the contributor" do
         post :create, :type=>'TuftsSelfDeposit', :tufts_self_deposit=>{:title=>"My self-deposit"}
-        assigns[:self_deposit].creator.should include @user.to_s
+        assigns[:self_deposit].creator.should include user.to_s
       end
 
-      it "should list accrual policy as self deposit" do
+      it "should list deposit_method as self deposit" do
+        now = Time.now
+        Time.stub(:now).and_return(now)
         post :create, :type=>'TuftsSelfDeposit', :tufts_self_deposit=>{:title=>"My self-deposit"}
-        assigns[:self_deposit].accrualPolicy.join.should include "self-deposit"
+        expect(assigns[:self_deposit].note.first).to eq "#{user.user_key} self-deposited on #{now.strftime('%Y-%m-%d at %H:%M:%S %Z')} using the Deposit Form for the Tufts Digital Library"
       end
-
-      it "should include the username in the provenance" do
-        post :create, :type=>'TuftsSelfDeposit', :tufts_self_deposit=>{:title=>"My self-deposit"}
-        assigns[:self_deposit].provenance.join.should include @user.to_s
-      end
-
     end
   end
 end
