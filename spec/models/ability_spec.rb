@@ -147,6 +147,16 @@ describe Ability do
       it { should_not be_able_to(:destroy, DepositType) }
       it { should_not be_able_to(:export, DepositType) }
     end
+    
+    describe "working on a PDF" do
+      let(:pdf) { TuftsPdf.create!(title: 'test pdf', read_groups: ['public'])}
+      after { pdf.destroy }
+
+      it "should be visible to a not-signed-in user" do
+        subject.should be_able_to(:read, pdf.pid)
+      end
+    end
+
 
     describe "working on a self-deposit" do
       before :all do
