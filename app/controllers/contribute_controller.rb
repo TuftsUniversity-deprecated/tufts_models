@@ -13,7 +13,7 @@ class ContributeController < ApplicationController
   end
 
   def new
-    # TODO: add can-can authorize here
+    authorize! :create, Contribution
     @deposit_type = DepositType.where(id: params[:deposit_type]).first
     @contribution = Contribution.new
     # Redirect the user to the selection page is the deposit type is invalid or missing
@@ -21,7 +21,7 @@ class ContributeController < ApplicationController
   end
 
   def create
-    # TODO: add can-can authorize here
+    authorize! :create, Contribution
     @contribution = Contribution.new(params[:contribution])
     if @contribution.save
       flash[:notice] = "Your file has been saved!"
