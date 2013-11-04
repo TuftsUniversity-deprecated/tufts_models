@@ -24,10 +24,10 @@ Tufts::Application.routes.draw do
   end
 
   post 'self_deposits/new', to: 'self_deposits#new'
-  resource :contribute, :controller => :contribute, :only => [:home, :license, :new, :create, :restful_new] do
-    get '/', :to => 'contribute#home'
-    get 'home'
-    get 'license'
+  resources :contribute, as: 'contributions', :controller => :contribute, :only => [:index, :new, :create] do
+    collection do
+      get 'license'
+    end
   end
 
   HydraHead.add_routes(self)

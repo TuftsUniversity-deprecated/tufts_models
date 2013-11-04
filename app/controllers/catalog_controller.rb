@@ -16,7 +16,7 @@ class CatalogController < ApplicationController
   CatalogController.solr_search_params_logic += [:exclude_unwanted_models]
 
   def index
-    redirect_to contribute_path unless current_user.admin?
+    redirect_to contributions_path unless current_user.admin?
     super
   end
 

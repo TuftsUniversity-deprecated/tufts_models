@@ -6,7 +6,7 @@
 
 <%= f.select :subject, options_for_select({'Please select a degree'=>'default'}.merge(fletcher_degrees), :disabled => 'default', selected: 'default'), label: 'Degree:' %>
 
-<%= f.text_area :description, value: '', label: 'Abstract:', help_block: '(Please limit abstracts to 2000 characters or less.)', rows: 5, class: 'span8'  %>
+<%= f.text_area :abstract, value: '', label: 'Abstract:', help_block: '(Please limit abstracts to 2000 characters or less.)', rows: 5, class: 'span8'  %>
 
 <div class='well'>Technical questions? <a target="_blank" href="http://dca.tufts.edu/contact/">Contact DCA</a>.
   Other questions? <a target="_blank"href="http://www.library.tufts.edu/ginn/forms/forms.aspx?form=department&department=Reference">

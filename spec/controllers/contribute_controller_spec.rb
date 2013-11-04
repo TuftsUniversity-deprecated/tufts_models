@@ -1,14 +1,12 @@
 require 'spec_helper'
 
 describe ContributeController do
-  before do
-    @user = FactoryGirl.create(:user)
-    sign_in @user
-  end
+  let(:user) { FactoryGirl.create(:user) }
+  before { sign_in user }
 
-  describe "GET 'home'" do
+  describe "GET '/'" do
     it "returns http success" do
-      get 'home'
+      get :index 
       response.should be_success
     end
   end
@@ -21,17 +19,15 @@ describe ContributeController do
   end
 
   describe "GET 'new'" do
-
     it "redirects to contribute home when no deposit type is specified" do
       get 'new'
-      response.should redirect_to contribute_path
+      response.should redirect_to contributions_path
     end
 
     describe 'with valid deposit_type' do
       before :all do
         # TODO: use factory here
         @deposit_type = DepositType.create(:display_name => 'Test Option', :deposit_view => 'generic_deposit', :deposit_agreement => 'Legal links here...')
-        @contribution = TuftsPdf.new
       end
 
       after :all do
@@ -57,19 +53,24 @@ describe ContributeController do
   describe "GET 'redirect'" do
     it "redirects to contribute when no deposit type is specified" do
       get 'redirect'
-      response.should redirect_to contribute_path
+      response.should redirect_to contributions_path
     end
   end
 
   describe "POST 'create'" do
     it 'should store file attachments' do
       file = fixture_file_upload('/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf','application/pdf')
-      post :create, {tufts_pdf: {title: 'Sample', description: 'Description of uploaded file goes here', creator: @user.user_key }, deposit_attachment: file}
-      response.should redirect_to contribute_path
+      post :create, contribution: {title: 'Sample', abstract: 'Description of uploaded file goes here', creator: user.user_key, attachment: file}
+      response.should redirect_to contributions_path
       flash[:notice].should == 'Your file has been saved!'
-      contribution = TuftsPdf.find(assigns[:contribution].pid)
+      contribution = TuftsPdf.find(assigns[:contribution].tufts_pdf.pid)
       contribution.datastreams['Archival.pdf'].dsLocation.should_not be_nil
       contribution.datastreams['Archival.pdf'].mimeType.should == 'application/pdf'
+    end
+
+    it 'should require a file attachments' do
+      post :create, contribution: {title: 'Sample', abstract: 'Description of uploaded file goes here', creator: user.user_key}
+      response.should render_template('new')
     end
   end
 
