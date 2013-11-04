@@ -1,4 +1,4 @@
-display_name,deposit_agreement,deposit_view
-PDF Document,Agreement 1,generic_deposit
-PDF Document,Agreement 2,generic_deposit
-PDF Document,Agreement 3,generic_deposit
+display_name,license_name,deposit_agreement,deposit_view
+PDF Document,License 1,Agreement 1,generic_deposit
+PDF Document,License 2,Agreement 2,generic_deposit
+PDF Document,License 1,Agreement 3,generic_deposit

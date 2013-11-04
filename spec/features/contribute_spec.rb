@@ -104,4 +104,3 @@ describe 'Contribute' do
   end
 
 end
-
