@@ -6,11 +6,28 @@ $hint_color: #777;
 
 $main_padding: 20px 20px 10px;
 
-html, body {
-  background: radial-gradient(ellipse farthest-corner at center center , #CEDCE7 0%, #596A72 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+
+/* ------------------------
+ *  HEADER / NAV
+ * ------------------------ */
+
+.navbar-fixed-top {
+  margin-bottom: 0;
 }
 
+.blueline {
+  background-color: $tufts_blue;
+  height: 8px;
+  width: 100%;
+}
+
+
+/* ------------------------
+ *  BODY / CONTENT
+ * ------------------------ */
+
 body {
+  background: radial-gradient(ellipse farthest-corner at center center , #CEDCE7 0%, #596A72 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   color: $text_color;
 }
@@ -41,6 +58,11 @@ h3 {
   padding: $main_padding;
 }
 
+
+/* ------------------------
+ *  FORMS
+ * ------------------------ */
+
 form.button_to {
   display: inline;
 
@@ -53,8 +75,6 @@ form.button_to {
 input.input-large {
   width: 365px;
 }
-
-.clear { clear: both; }
 
 #error_explanation {
   border: 3px solid $error_color;
@@ -72,11 +92,10 @@ label {
   font-weight: bold;
 }
 
-.blueline {
-  background-color: $tufts_blue;
-  height: 8px;
-  width: 100%;
-}
+
+/* ------------------------
+ *  FOOTER
+ * ------------------------ */
 
 .blue-footer {
   background-color: $tufts_blue;
@@ -95,9 +114,5 @@ label {
 #copyright {
   color: #ffffff;
   line-height: 150%;
-}
-
-.navbar-fixed-top {
-  margin-bottom: 0;
 }
 
