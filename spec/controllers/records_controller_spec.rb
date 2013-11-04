@@ -209,7 +209,7 @@ describe RecordsController do
       it "should not be allowed" do
         get :edit, id: @audio
         response.status.should == 302
-        response.should redirect_to Tufts::Application.routes.url_helpers.self_deposits_path
+        response.should redirect_to Tufts::Application.routes.url_helpers.contributions_path
         flash[:alert].should =~ /You do not have sufficient privileges to edit this document/i
       end
     end

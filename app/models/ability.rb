@@ -3,10 +3,7 @@ class Ability
 
   def custom_permissions
     if current_user.registered?
-      can [:create], TuftsSelfDeposit
-      # Other permissions for TuftsSelfDeposit
-      # (:read, :update, :destroy, :publish)
-      # are already getting set by one of the upstream gems
+      can [:create], Contribution
     end
 
     if current_user.admin?

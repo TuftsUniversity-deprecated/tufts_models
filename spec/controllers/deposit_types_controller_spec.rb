@@ -33,7 +33,7 @@ describe DepositTypesController do
     it 'denies access to edit deposit types' do
       get :edit, id: @dt.id
       flash[:alert].should =~ /You do not have sufficient privilege/
-      response.should redirect_to(self_deposits_path)
+      response.should redirect_to(contributions_path)
     end
   end
 
