@@ -1,6 +1,6 @@
 class DepositType < ActiveRecord::Base
 
-  PARTIAL_PATH = 'app/views/contribute/metadata'
+  PARTIAL_PATH = 'app/views/contribute/deposit_view'
   attr_accessible :display_name, :deposit_view, :deposit_agreement
 
   validates :display_name, presence: true, uniqueness: true
