@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     if (exception.action == :edit) and current_user.admin?
       redirect_to(catalog_path(params[:id]), :alert => "You do not have sufficient privileges to edit this document.")
     elsif (exception.action == :edit) and current_user.registered?
-      redirect_to(self_deposits_path, :alert => "You do not have sufficient privileges to edit this document.")
+      redirect_to(contributions_path, :alert => "You do not have sufficient privileges to edit this document.")
     elsif current_user and current_user.persisted?
       redirect_to root_url, :alert => exception.message
     else

@@ -66,11 +66,13 @@ describe Ability do
     end
 
     describe "working on a self-deposit" do
-      it { should be_able_to(:create, TuftsSelfDeposit) }
+      it { should be_able_to(:create, Contribution) }
+    end
 
+    describe "working on TuftsPdf" do
       describe "that they own" do
         before :all do
-          @self_deposit = FactoryGirl.create(:tufts_self_deposit, user: @user)
+          @self_deposit = FactoryGirl.create(:tufts_pdf, user: @user)
         end
         after :all do
           @self_deposit.destroy
@@ -84,7 +86,7 @@ describe Ability do
 
       describe "that they don't own" do
         before :all do
-          @another_deposit = FactoryGirl.create(:tufts_self_deposit)
+          @another_deposit = FactoryGirl.create(:tufts_pdf)
         end
         after :all do
           @another_deposit.destroy
@@ -159,18 +161,7 @@ describe Ability do
 
 
     describe "working on a self-deposit" do
-      before :all do
-        @self_deposit = FactoryGirl.create(:tufts_self_deposit, user: @user)
-      end
-      after :all do
-        @self_deposit.destroy
-      end
-
-      it { should_not be_able_to(:create, TuftsSelfDeposit) }
-      it { should_not be_able_to(:read, @self_deposit) }
-      it { should_not be_able_to(:update, @self_deposit) }
-      it { should_not be_able_to(:destroy, @self_deposit) }
-      it { should_not be_able_to(:publish, @self_deposit) }
+      it { should_not be_able_to(:create, Contribution) }
     end
   end
 

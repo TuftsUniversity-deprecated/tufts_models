@@ -1,7 +1,0 @@
-<p>Select the Deposit Type</p>
-<% @initial_option = "Please select a deposit option" %>
-<%= f.collection_select :rights,
-             DepositType.all.sort_by{|dt| dt.display_name}, :display_name, :display_name,
-             :disabled => [@initial_option],
-             :selected => [@initial_option],
-             include_blank: false%>

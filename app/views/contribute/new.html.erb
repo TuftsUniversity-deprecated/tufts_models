@@ -2,17 +2,18 @@
 
 <%# NOTE: this form uses bootstrap_form_for and bootstrap_forms helpers - see: https://github.com/sethvargo/bootstrap_forms %>
 
-<%= bootstrap_form_for @contribution, :url=>contribute_path, multipart: true, :html=>{ class: 'form-horizontal well' } do |f| %>
+<%= bootstrap_form_for @contribution, multipart: true, :html=>{ class: 'form-horizontal well' } do |f| %>
 
-    <%= f.file_field :deposit_attachment, name: 'deposit_attachment', label: 'File to upload:'%>
+    <%= f.file_field :attachment, label: 'File to upload:'%>
 
-    <%= render "contribute/deposit_view/#{DepositType.find(params[:deposit_type]).deposit_view}", :f => f  %>
+    <%= render "contribute/deposit_view/#{@deposit_type.deposit_view}", :f => f  %>
+    <%= hidden_field_tag 'deposit_type', @deposit_type.id %>
 
     <h4>Deposit Agreement</h4>
     <p><%= raw @deposit_type.deposit_agreement %></p>
 
     <p><%= f.submit 'Agree & Deposit', class: 'btn btn-primary' %></p>
-    <p><%= link_to 'Cancel', contribute_path,  class: 'btn' %></p>
+    <p><%= link_to 'Cancel', contributions_path,  class: 'btn' %></p>
 
 <% end %>
 

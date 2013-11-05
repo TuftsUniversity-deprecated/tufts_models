@@ -18,19 +18,17 @@ Tufts::Application.routes.draw do
   # This is from Blacklight::Routes#solr_document, but with the constraints added which allows periods in the id
   resources :solr_document,  :path => 'catalog', :controller => 'catalog', :only => [:show, :update] 
   resources :downloads, :only =>[:show], :constraints => { :id => ALLOW_DOTS }
-  resources :self_deposits, :constraints => { :id => ALLOW_DOTS }
-  resources :deposit_types, :constraints => { :id => ALLOW_DOTS } do
+  resources :deposit_types do
     get 'export', on: :collection
   end
 
-  post 'self_deposits/new', to: 'self_deposits#new'
-  resource :contribute, :controller => :contribute, :only => [:home, :license, :new, :create, :restful_new] do
-    get '/', :to => 'contribute#home'
-    get 'home'
-    get 'license'
+  resources :contribute, as: 'contributions', :controller => :contribute, :only => [:index, :new, :create] do
+    collection do
+      get 'license'
+    end
   end
 
-  HydraHead.add_routes(self)
+  #HydraHead.add_routes(self)
   
   mount HydraEditor::Engine => '/'
   post 'records/:id/publish', to: 'records#publish', as: 'publish_record', constraints: { id: ALLOW_DOTS }

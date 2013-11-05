@@ -11,7 +11,7 @@ describe CatalogController do
 
     it 'denied access to catalog' do
       get :index
-      response.should redirect_to(contribute_path)
+      response.should redirect_to(contributions_path)
     end
 
     it 'denied access to someone elses document' do

@@ -2,18 +2,8 @@ require 'spec_helper'
 
 describe 'Contribute' do
 
-  before :all do
-    @deposit_type = DepositType.new(:display_name => 'Test Option', :deposit_view => 'generic_deposit', :deposit_agreement => 'Legal links here...')
-    @deposit_type.save!
-  end
-
-  after :all do
-    @deposit_type.destroy
-  end
-
-
   it 'should be default path for unauthenticated users' do
-    visit destroy_user_session_path
+    #visit destroy_user_session_path
     visit '/'
     current_path.should == '/contribute'
   end
@@ -32,16 +22,19 @@ describe 'Contribute' do
       end
       it 'should exist' do
         visit '/contribute'
-        current_path.should == contribute_path
+        current_path.should == contributions_path
       end
       it 'should give a login option' do
         visit '/contribute'
         expect(page).to have_content 'Tufts Simplified Sign-On Enabled'
         expect(page).to have_link 'Login'
       end
-      it 'should show configured deposit type options' do
-        visit '/contribute'
-        expect(page).to have_content 'Test Option'
+      describe "with a deposit type" do
+        let!(:deposit_type) { DepositType.create(:display_name => 'Test Option', :deposit_view => 'generic_deposit', :deposit_agreement => 'Legal links here...') }
+        it 'should show configured deposit type options' do
+          visit '/contribute'
+          expect(page).to have_content 'Test Option'
+        end
       end
     end
     describe 'for authenticated users' do
@@ -50,7 +43,7 @@ describe 'Contribute' do
       end
       it 'should exist' do
         visit '/contribute'
-        current_path.should == contribute_path
+        current_path.should == contributions_path
       end
       it 'should let users select a deposit type' do
         visit '/contribute'
@@ -76,19 +69,35 @@ describe 'Contribute' do
       current_path.should == new_user_session_path
     end
     describe 'for authenticated users' do
-      before :each do
-        sign_in :user     end
+      let(:generic_type) { DepositType.create(:display_name => 'Test Option', :deposit_view => 'generic_deposit', :deposit_agreement => 'Legal links here...') }
+      let(:capstone_type) { DepositType.create(:display_name => 'Capstone', :deposit_view => 'capstone_project', :deposit_agreement => 'Legal links here...') }
+      before { sign_in :user } 
       it 'should redirect the user to the selection page is the deposit type is missing' do
         visit '/contribute/new'
-        current_path.should == contribute_path
+        current_path.should == contributions_path
       end
       it 'should redirect the user to the selection page is the deposit type is invalid' do
         visit '/contribute/new?type=bad_deposit_type'
-        current_path.should == contribute_path
+        current_path.should == contributions_path
       end
       it 'should accept valid deposit types' do
-        visit "/contribute/new?deposit_type=#{@deposit_type.id}"
-        current_path.should == new_contribute_path
+        visit "/contribute/new?deposit_type=#{generic_type.id}"
+        current_path.should == new_contribution_path
+      end
+
+      it "should draw capstone form" do
+        visit "/contribute/new?deposit_type=#{capstone_type.id}"
+        select 'MIB', from: 'Degree'
+        click_button "Agree & Deposit"
+        expect(page).to have_content "Title can't be blank"
+        expect(page).to have_content "Abstract can't be blank"
+        expect(page).to have_content "Attachment can't be blank"
+        fill_in 'Capstone project title', with: 'Test title'
+        fill_in 'Abstract', with: 'Test abstract'
+        attach_file 'File to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
+        click_button "Agree & Deposit"
+        expect(page).to have_content "Your file has been saved!"
+
       end
 
     end

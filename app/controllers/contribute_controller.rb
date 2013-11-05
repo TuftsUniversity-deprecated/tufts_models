@@ -1,53 +1,36 @@
 class ContributeController < ApplicationController
 
-  skip_before_filter :authenticate_user!, only: [:home, :license, :redirect]
+  skip_before_filter :authenticate_user!, only: [:index, :license, :redirect]
 
-  def home
+  def index
   end
 
   def redirect # normal users calling '/' should be redirected to ''/contribute'
-    redirect_to action: 'home'
+    redirect_to contributions_path
   end
 
   def license
   end
 
   def new
-    # TODO: add can-can authorize here
+    authorize! :create, Contribution
     @deposit_type = DepositType.where(id: params[:deposit_type]).first
-    @contribution = TuftsPdf.new
-
+    @contribution = Contribution.new
     # Redirect the user to the selection page is the deposit type is invalid or missing
-    redirect_to action: 'home' if @deposit_type.nil?
+    redirect_to contributions_path unless @deposit_type
   end
 
   def create
-    # TODO: add can-can authorize here
-    @contribution = TuftsPdf.create(params[:tufts_pdf])
-    upload_attachment
-    @contribution.save!
-    flash[:notice] = "Your file has been saved!"
-    redirect_to contribute_path
-  end
-
-  def upload_attachment
-    dsid = 'Archival.pdf'
-    file = params[:deposit_attachment]
-
-    warnings = []
-    messages = []
-
-    if @contribution.valid_type_for_datastream?(dsid, file.content_type)
-      messages << "#{dsid} has been added"
+    authorize! :create, Contribution
+    @contribution = Contribution.new(params[:contribution])
+    if @contribution.save
+      flash[:notice] = "Your file has been saved!"
+      redirect_to contributions_path
     else
-      warnings << "You provided a #{file.content_type} file, which is not a valid type for #{dsid}"
+      @deposit_type = DepositType.where(id: params[:deposit_type]).first
+      render :new
     end
-
-    # Persist the object to Fedora, so that we have a valid object and pid before storing the uploaded file
-    # TODO: figure out why mime type isn't getting saved correctly
-    @contribution.store_archival_file(dsid, file)
-
-    #end
   end
+
 
 end
