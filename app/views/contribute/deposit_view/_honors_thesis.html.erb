@@ -1,9 +1,9 @@
 <%# NOTE: this form uses bootstrap_form_for and bootstrap_forms helpers - see: https://github.com/sethvargo/bootstrap_forms %>
 
-<%= f.text_field :title, label: 'Thesis title:', required: 'true', help_block: '(Please limit titles to 250 characters or less.)' %>
+<%= f.text_field :title, label: 'Thesis title:', required: true, help_block: '(Please limit titles to 250 characters or less.)' %>
 
-<%= f.text_field :creator, value: current_user.user_key, label: 'Contributor:'  %>
+<%= f.text_field :creator, value: current_user.user_key, label: 'Contributor:', required: true %>
 
 <%= f.select :subject, options_for_select({'Please select a department'=>'default'}.merge(tufts_departments), disabled: 'default', selected: 'default'), label: 'Department:' %>
 
-<%= f.text_area :abstract,label: 'Abstract:', help_block: '(Please limit abstracts to 2000 characters or less.)', rows: 5, class: 'span8', required: true  %>
+<%= f.text_area :abstract, label: 'Abstract:', help_block: '(Please limit abstracts to 2000 characters or less.)', rows: 5, class: 'span8', required: true  %>

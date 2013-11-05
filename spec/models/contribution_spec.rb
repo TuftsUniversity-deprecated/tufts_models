@@ -30,10 +30,17 @@ describe Contribution do
         subject.should_not be_valid
         subject.errors[:attachment].should == ["can't be blank"]
     end
+
   end
 
   it "should have 'subject'" do
       subject.subject = 'test subject'
       subject.subject.should == 'test subject'
+  end
+
+  it "should record 'other_authors' as creators" do
+    subject.creator = 'Dave'
+    subject.other_authors = 'Jane'
+    subject.tufts_pdf.creator.should == ['Dave', 'Jane']
   end
 end
