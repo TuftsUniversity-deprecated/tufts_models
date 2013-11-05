@@ -12,6 +12,12 @@ describe DepositType do
     FactoryGirl.build(:deposit_type, display_name: nil).should_not be_valid
   end
 
+  it 'requires a license_name' do
+    dt = FactoryGirl.create(:deposit_type)
+    dt.license_name.should include 'Generic Deposit Agreement v1.0'
+    FactoryGirl.build(:deposit_type, license_name: nil).should_not be_valid
+  end
+
   it 'requires a deposit_view' do
     dt = FactoryGirl.create(:deposit_type)
     dt.deposit_view.should == 'generic_deposit'

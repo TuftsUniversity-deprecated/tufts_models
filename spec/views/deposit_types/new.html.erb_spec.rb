@@ -10,6 +10,10 @@ describe 'deposit_types/new.html.erb' do
     rendered.should have_field('deposit_type[display_name]', type: 'text')
   end
 
+  it 'should have a license_name field' do
+    rendered.should have_field('deposit_type[license_name]', type: 'text')
+  end
+
   it 'should have a deposit_view field' do
     rendered.should have_field('deposit_type[deposit_view]', type: 'select')
   end
@@ -23,7 +27,7 @@ describe 'deposit_types/new.html.erb' do
   end
 
   it 'should have a Cancel link' do
-    rendered.should have_link('Cancel', href: deposit_types_path)
+    rendered.should have_link('Back', href: deposit_types_path)
   end
 
 end

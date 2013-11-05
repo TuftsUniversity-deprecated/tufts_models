@@ -1,5 +1,5 @@
-display_name,deposit_agreement,deposit_view
-Faculty Scholarship,I understand and acknowledge that this submission is governed by the <a href='/contribute/license'>Tufts Non-Exclusive Deposit License</a>.,faculty_scholarship
-Fletcher School Capstone Project,I understand and acknowledge that this submission is governed by the <a href='/contribute/license'>Tufts Non-Exclusive Deposit License</a>.,capstone_project
-Graduate School of Arts and Science Education Qualifying Papers,I understand and acknowledge that this submission is governed by the <a href='/contribute/license'>Tufts Non-Exclusive Deposit License</a>.,qualifying_paper
-Undergraduate Honors Thesis,I understand and acknowledge that this submission is governed by the <a href='/contribute/license'>Tufts Non-Exclusive Deposit License</a>.,honors_thesis
+display_name,license_name,deposit_agreement,deposit_view
+Faculty Scholarship,                Tufts Non-Exclusive Deposit License v1.0,           I understand and acknowledge that this submission is governed by the <a href='/contribute/license'>Tufts Non-Exclusive Deposit License</a>.,faculty_scholarship
+Fletcher School Capstone Project,   Tufts Non-Exclusive Deposit License: Fletcher v1.0, I understand and acknowledge that this submission is governed by the <a href='/contribute/license'>Tufts Non-Exclusive Deposit License</a>.,capstone_project
+Graduate School of Arts and Science Education Qualifying Papers,    Tufts Non-Exclusive Deposit License: Graduate Arts & Science v1.0, I understand and acknowledge that this submission is governed by the <a href='/contribute/license'>Tufts Non-Exclusive Deposit License</a>.,qualifying_paper
+Undergraduate Honors Thesis,        Tufts Non-Exclusive Deposit License v1.0,           I understand and acknowledge that this submission is governed by the <a href='/contribute/license'>Tufts Non-Exclusive Deposit License</a>.,honors_thesis

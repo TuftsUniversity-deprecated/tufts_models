@@ -93,7 +93,7 @@ describe DepositTypesController do
     describe 'create' do
       it 'succeeds' do
         DepositType.count.should == 1
-        post :create, deposit_type: { display_name: 'New Type', deposit_view: 'generic_deposit' }
+        post :create, deposit_type: FactoryGirl.attributes_for(:deposit_type, display_name: 'New Type', deposit_view: 'generic_deposit')
         DepositType.count.should == 2
         new_type = DepositType.where(display_name: 'New Type').first
         response.should redirect_to(deposit_type_path(new_type))

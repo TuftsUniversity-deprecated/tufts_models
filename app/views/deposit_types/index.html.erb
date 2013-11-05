@@ -5,14 +5,16 @@
   <tr>
     <th> Type </th>
     <th> View </th>
+    <th> License </th>
     <th> Agreement </th>
   </tr>
 
   <% @deposit_types.each do |deposit_type| %>
     <tr>
-      <td> <%= link_to deposit_type.display_name, deposit_type_path(deposit_type) %> </td>
-      <td> <%= deposit_type.deposit_view %> </td>
-      <td> <%= truncate(deposit_type.deposit_agreement, length: 60) %> </td>
+      <td class='display_name'> <%= link_to deposit_type.display_name, deposit_type_path(deposit_type) %> </td>
+      <td class='deposit_view'> <%= deposit_type.deposit_view %> </td>
+      <td class='license_name'> <%= deposit_type.license_name %> </td>
+      <td class='deposit_agreement'> <%= truncate(deposit_type.deposit_agreement, length: 60) %> </td>
     </tr>
   <% end %>
 </table>
