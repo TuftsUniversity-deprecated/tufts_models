@@ -4,7 +4,7 @@ class Contribution
   extend ActiveModel::Naming
   
 
-  ATTRIBUTES = [:title, :abstract, :creator, :contributor, :bibliographic_citation, :subject, :attachment]
+  ATTRIBUTES = [:title, :abstract, :creator, :contributor, :bibliographic_citation, :subject, :attachment, :other_authors]
   attr_accessor *ATTRIBUTES
 
 
@@ -20,9 +20,10 @@ class Contribution
   def tufts_pdf
     return @tufts_pdf if @tufts_pdf
     @tufts_pdf = TuftsPdf.new
-    (ATTRIBUTES - [:attachment]).each do |attribute|
+    (ATTRIBUTES - [:attachment, :other_authors]).each do |attribute|
       @tufts_pdf.send("#{attribute}=", send(attribute))
     end
+    @tufts_pdf.creator += [other_authors] if other_authors
     @tufts_pdf
   end
 

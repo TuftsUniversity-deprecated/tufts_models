@@ -69,9 +69,8 @@ describe 'Contribute' do
       current_path.should == new_user_session_path
     end
     describe 'for authenticated users' do
-      let(:generic_type) { FactoryGirl.create(:deposit_type, :display_name => 'Test Option', :deposit_view => 'generic_deposit') }
-      let(:capstone_type) { FactoryGirl.create(:deposit_type, :display_name => 'Capstone', :deposit_view => 'capstone_project') }
       before { sign_in :user } 
+
       it 'should redirect the user to the selection page is the deposit type is missing' do
         visit '/contribute/new'
         current_path.should == contributions_path
@@ -80,27 +79,96 @@ describe 'Contribute' do
         visit '/contribute/new?type=bad_deposit_type'
         current_path.should == contributions_path
       end
-      it 'should accept valid deposit types' do
-        visit "/contribute/new?deposit_type=#{generic_type.id}"
-        current_path.should == new_contribution_path
+
+      describe "capstone_project" do
+        let(:capstone_type) { FactoryGirl.create(:deposit_type, deposit_view: 'capstone_project') }
+        it "should draw capstone form" do
+          visit "/contribute/new?deposit_type=#{capstone_type.id}"
+          select 'MIB', from: 'Degree'
+          click_button "Agree & Deposit"
+          expect(page).to have_content "Title can't be blank"
+          expect(page).to have_content "Abstract can't be blank"
+          expect(page).to have_content "Attachment can't be blank"
+          fill_in 'Capstone project title', with: 'Test title'
+          fill_in 'Abstract', with: 'Test abstract'
+          attach_file 'File to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
+          click_button "Agree & Deposit"
+          expect(page).to have_content "Your file has been saved!"
+
+        end
       end
 
-      it "should draw capstone form" do
-        visit "/contribute/new?deposit_type=#{capstone_type.id}"
-        select 'MIB', from: 'Degree'
-        click_button "Agree & Deposit"
-        expect(page).to have_content "Title can't be blank"
-        expect(page).to have_content "Abstract can't be blank"
-        expect(page).to have_content "Attachment can't be blank"
-        fill_in 'Capstone project title', with: 'Test title'
-        fill_in 'Abstract', with: 'Test abstract'
-        attach_file 'File to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
-        click_button "Agree & Deposit"
-        expect(page).to have_content "Your file has been saved!"
+      describe "honors_thesis" do
+        let(:honors_thesis_type) { FactoryGirl.create(:deposit_type, deposit_view: 'honors_thesis') }
+        it "should draw honors_thesis form" do
+          visit "/contribute/new?deposit_type=#{honors_thesis_type.id}"
+          select 'Dept. of Biology', from: 'Department'
+          click_button "Agree & Deposit"
+          expect(page).to have_content "Title can't be blank"
+          expect(page).to have_content "Abstract can't be blank"
+          expect(page).to have_content "Attachment can't be blank"
+          fill_in 'Thesis title', with: 'Test title'
+          fill_in 'Abstract', with: 'Test abstract'
+          attach_file 'File to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
+          click_button "Agree & Deposit"
+          expect(page).to have_content "Your file has been saved!"
 
+        end
       end
 
+      describe "faculty_scholarship" do
+        let(:faculty_scholarship_type) { FactoryGirl.create(:deposit_type, deposit_view: 'faculty_scholarship') }
+
+        it "should draw faculty_scholarship form" do
+          visit "/contribute/new?deposit_type=#{faculty_scholarship_type.id}"
+          select 'Dept. of Biology', from: 'Department'
+          click_button "Agree & Deposit"
+          expect(page).to have_content "Title can't be blank"
+          expect(page).to have_content "Abstract can't be blank"
+          expect(page).to have_content "Attachment can't be blank"
+          fill_in 'Title', with: 'Test title'
+          fill_in 'Abstract', with: 'Test abstract'
+          attach_file 'File to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
+          click_button "Agree & Deposit"
+          expect(page).to have_content "Your file has been saved!"
+
+        end
+      end
+
+      describe "qualifying_paper" do
+        let(:qualifying_paper_type) { FactoryGirl.create(:deposit_type, deposit_view: 'qualifying_paper') }
+
+        it "should draw faculty_scholarship form" do
+          visit "/contribute/new?deposit_type=#{qualifying_paper_type.id}"
+          click_button "Agree & Deposit"
+          expect(page).to have_content "Title can't be blank"
+          expect(page).to have_content "Abstract can't be blank"
+          expect(page).to have_content "Attachment can't be blank"
+          fill_in 'Title', with: 'Test title'
+          fill_in 'Abstract', with: 'Test abstract'
+          attach_file 'File to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
+          click_button "Agree & Deposit"
+          expect(page).to have_content "Your file has been saved!"
+
+        end
+      end
+      describe "generic_deposit" do
+        let(:generic_deposit_type) { FactoryGirl.create(:deposit_type, deposit_view: 'generic_deposit') }
+
+        it "should draw faculty_scholarship form" do
+          visit "/contribute/new?deposit_type=#{generic_deposit_type.id}"
+          click_button "Agree & Deposit"
+          expect(page).to have_content "Title can't be blank"
+          expect(page).to have_content "Abstract can't be blank"
+          expect(page).to have_content "Attachment can't be blank"
+          fill_in 'Title', with: 'Test title'
+          fill_in 'Abstract', with: 'Test abstract'
+          attach_file 'File to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
+          click_button "Agree & Deposit"
+          expect(page).to have_content "Your file has been saved!"
+
+        end
+      end
     end
   end
-
 end
