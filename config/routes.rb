@@ -6,7 +6,7 @@ Tufts::Application.routes.draw do
     root :to => 'contribute#redirect'
   end
 
-  root :to => "catalog#index"
+  root :to => "catalog#index", as: :authenticated_root
 
   resources :catalog, :only => [:show, :update], :constraints => { :id => ALLOW_DOTS, :format => false }
   Blacklight::Routes.new(self, {}).catalog
