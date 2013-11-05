@@ -1,6 +1,7 @@
 class ContributeController < ApplicationController
 
   skip_before_filter :authenticate_user!, only: [:index, :license, :redirect]
+  before_filter :load_deposit_type, only: [:new, :create]
 
   def index
   end
@@ -14,23 +15,33 @@ class ContributeController < ApplicationController
 
   def new
     authorize! :create, Contribution
-    @deposit_type = DepositType.where(id: params[:deposit_type]).first
     @contribution = Contribution.new
-    # Redirect the user to the selection page is the deposit type is invalid or missing
-    redirect_to contributions_path unless @deposit_type
   end
 
   def create
     authorize! :create, Contribution
     @contribution = Contribution.new(params[:contribution])
+    insert_license_data
+
     if @contribution.save
       flash[:notice] = "Your file has been saved!"
       redirect_to contributions_path
     else
-      @deposit_type = DepositType.where(id: params[:deposit_type]).first
       render :new
     end
   end
 
+protected
+
+  def load_deposit_type
+    @deposit_type = DepositType.where(id: params[:deposit_type]).first
+    # Redirect the user to the selection page if the deposit type is invalid or missing
+    redirect_to contributions_path unless @deposit_type
+  end
+
+  def insert_license_data
+    @contribution.license = Array(@contribution.license)
+    @contribution.license << @deposit_type.license_name
+  end
 
 end

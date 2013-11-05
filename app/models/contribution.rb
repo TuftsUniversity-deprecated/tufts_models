@@ -4,7 +4,7 @@ class Contribution
   extend ActiveModel::Naming
   
 
-  ATTRIBUTES = [:title, :abstract, :creator, :contributor, :bibliographic_citation, :subject, :attachment, :other_authors]
+  ATTRIBUTES = [:title, :abstract, :creator, :contributor, :bibliographic_citation, :subject, :attachment, :other_authors, :license]
   attr_accessor *ATTRIBUTES
 
 

@@ -43,4 +43,9 @@ describe Contribution do
     subject.other_authors = 'Jane'
     subject.tufts_pdf.creator.should == ['Dave', 'Jane']
   end
+
+  it "stores the license name" do
+    subject.license = ['License 1', 'License 2']
+    subject.license.should == ['License 1', 'License 2']
+  end
 end
