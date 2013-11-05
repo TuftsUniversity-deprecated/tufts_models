@@ -44,8 +44,7 @@ describe ContributeController do
 
       describe 'with valid deposit_type' do
         before :all do
-          @deposit_type = FactoryGirl.create(:deposit_type, :display_name => 'Test Option', :deposit_view => 'generic_deposit', :deposit_agreement => 'Legal links here...')
-          # @contribution = FactoryGirl.build(:tufts_pdf)
+          @deposit_type = FactoryGirl.create(:deposit_type, :display_name => 'Test Option', :deposit_view => 'generic_deposit')
         end
 
         after :all do

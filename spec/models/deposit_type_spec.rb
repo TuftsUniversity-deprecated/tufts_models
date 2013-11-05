@@ -18,11 +18,6 @@ describe DepositType do
     FactoryGirl.build(:deposit_type, license_name: nil).should_not be_valid
   end
 
-  it 'rejects license_name over 50 characters' do
-    hundred = '1234567890' * 10
-    dt = FactoryGirl.build(:deposit_type, license_name: hundred).should_not be_valid
-  end
-
   it 'requires a deposit_view' do
     dt = FactoryGirl.create(:deposit_type)
     dt.deposit_view.should == 'generic_deposit'

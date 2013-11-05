@@ -30,7 +30,7 @@ describe 'Contribute' do
         expect(page).to have_link 'Login'
       end
       describe "with a deposit type" do
-        let!(:deposit_type) { DepositType.create(:display_name => 'Test Option', :deposit_view => 'generic_deposit', :deposit_agreement => 'Legal links here...') }
+        let!(:deposit_type) { FactoryGirl.create(:deposit_type, :display_name => 'Test Option', :deposit_view => 'generic_deposit') }
         it 'should show configured deposit type options' do
           visit '/contribute'
           expect(page).to have_content 'Test Option'
@@ -69,8 +69,8 @@ describe 'Contribute' do
       current_path.should == new_user_session_path
     end
     describe 'for authenticated users' do
-      let(:generic_type) { DepositType.create(:display_name => 'Test Option', :deposit_view => 'generic_deposit', :deposit_agreement => 'Legal links here...') }
-      let(:capstone_type) { DepositType.create(:display_name => 'Capstone', :deposit_view => 'capstone_project', :deposit_agreement => 'Legal links here...') }
+      let(:generic_type) { FactoryGirl.create(:deposit_type, :display_name => 'Test Option', :deposit_view => 'generic_deposit') }
+      let(:capstone_type) { FactoryGirl.create(:deposit_type, :display_name => 'Capstone', :deposit_view => 'capstone_project') }
       before { sign_in :user } 
       it 'should redirect the user to the selection page is the deposit type is missing' do
         visit '/contribute/new'
