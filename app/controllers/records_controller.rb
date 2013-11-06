@@ -56,11 +56,6 @@ class RecordsController < ApplicationController
 
   def set_attributes
     @record.working_user = current_user
-    if params[@record.class.model_name.underscore][:displays]
-      # this is a hack that allows someone to set fewer values than existed before.
-      # It should probably be fixed in OM
-      @record.displays = nil
-    end
     # set rightsMetadata access controls
     @record.apply_depositor_metadata(current_user)
     super

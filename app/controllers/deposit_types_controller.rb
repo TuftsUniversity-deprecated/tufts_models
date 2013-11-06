@@ -1,4 +1,5 @@
 class DepositTypesController < ApplicationController
+  before_action :load_deposit_type, only: :create
   load_and_authorize_resource
 
   def index
@@ -36,7 +37,7 @@ class DepositTypesController < ApplicationController
   end
 
   def update
-    if @deposit_type.update_attributes(deposit_type_params)
+    if @deposit_type.update(deposit_type_params)
       redirect_to deposit_type_path(@deposit_type), :notice => 'Record was successfully updated.'
     else
       render 'edit'
@@ -45,8 +46,12 @@ class DepositTypesController < ApplicationController
 
 private
 
+  def load_deposit_type
+    @deposit_type = DepositType.new(deposit_type_params)
+  end
+
   def deposit_type_params
-    params.require(:deposit_type).permit(:display_name, :deposit_agreement, :deposit_view)
+    params.require(:deposit_type).permit(:display_name, :deposit_agreement, :deposit_view, :license_name)
   end
 
 end

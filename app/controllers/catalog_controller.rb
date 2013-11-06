@@ -1,6 +1,4 @@
 # -*- encoding : utf-8 -*-
-require 'blacklight/catalog'
-
 class CatalogController < ApplicationController  
 
   include Blacklight::Catalog
@@ -17,10 +15,6 @@ class CatalogController < ApplicationController
 
   def index
     redirect_to contributions_path unless current_user.admin?
-    super
-  end
-
-  def show
     super
   end
 

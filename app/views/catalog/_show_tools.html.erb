@@ -43,7 +43,7 @@
          </li>
       <% end %>
       <li>
-      <%= link_to "Purge", record_path(@document), method: :delete, confirm: "WARNING: this will permanently delete this object from all environments! Are you sure you want to proceed?"%>
+      <%= link_to "Purge", record_path(@document), method: :delete, data: {confirm: "WARNING: this will permanently delete this object from all environments! Are you sure you want to proceed?"} %>
       </li>
   </ul>
 
