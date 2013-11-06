@@ -94,7 +94,7 @@ GEM
     ffi (1.9.3)
     hike (1.2.3)
     hooks (0.3.1)
-    hydra (6.1.0.rc8)
+    hydra (6.1.0)
       active-fedora (~> 6.7.0)
       blacklight (~> 4.5.0)
       hydra-head (~> 6.4.0)
@@ -311,7 +311,7 @@ DEPENDENCIES
   devise
   disable_assets_logger
   factory_girl_rails
-  hydra (= 6.1.0.rc8)
+  hydra (= 6.1.0)
   hydra-editor (= 0.1.0)
   hydra-role-management (= 0.1.0)
   jettywrapper
