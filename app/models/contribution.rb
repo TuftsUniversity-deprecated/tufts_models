@@ -23,6 +23,7 @@ class Contribution
     (ATTRIBUTES - [:attachment, :other_authors]).each do |attribute|
       @tufts_pdf.send("#{attribute}=", send(attribute))
     end
+    @tufts_pdf.note = "#{creator} self-deposited on #{Time.now.strftime('%Y-%m-%d at %H:%M:%S %Z')} using the Deposit Form for the Tufts Digital Library"
     @tufts_pdf.creator += [other_authors] if other_authors
     @tufts_pdf
   end
