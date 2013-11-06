@@ -25,9 +25,13 @@ feature 'View unpublished documents' do
 end
 
 feature "Finding self-deposited documents using facets" do
-  let!(:self_deposit) { FactoryGirl.create(:self_deposit_pdf ) }
-  after { self_deposit.destroy }
-  before { sign_in :admin }
+  before do
+    ActiveFedora::Base.delete_all
+    @self_deposit = FactoryGirl.create(:self_deposit_pdf)
+    FactoryGirl.create(:tufts_pdf)
+    sign_in :admin
+  end
+  after { ActiveFedora::Base.delete_all }
 
   it 'shows only the self-deposited docs' do
     visit unpublished_index_path
@@ -35,7 +39,7 @@ feature "Finding self-deposited documents using facets" do
       click_link 'self-deposit' 
     end
     page.should have_css('#documents .document', count: 1) # filtered out all but one
-    page.should have_link(self_deposit.title, href: catalog_path(self_deposit))
+    page.should have_link(@self_deposit.title, href: catalog_path(@self_deposit))
   end
 end
 
