@@ -6,7 +6,14 @@
 
     <%= f.text_field :bibliographic_citation%>
 
-    <%= f.text_field :other_authors, label: 'Other authors:'  %>
+    <div class="control-group">
+      <%= f.label :other_authors, 'Other authors:', :class => "control-label" %>
+      <div class="controls" id="additional_other_authors_clone">
+        <%= text_field_tag 'contribution[other_authors][]', nil, id: 'contribution_other_authors', :class => 'input-large' %>
+        <%= add_field(:other_authors) %>
+      </div>
+      <div id="additional_other_authors_elements"></div>
+    </div>
 
     <%= f.text_area :abstract, label: 'Abstract:', help_block: '(Please limit abstracts to 2000 characters or less.)', rows: 5, class: 'span8', required: true  %>
 
