@@ -28,8 +28,7 @@ Tufts::Application.routes.draw do
     end
   end
 
-  #HydraHead.add_routes(self)
-  
+  mount Qa::Engine => '/qa'
   mount HydraEditor::Engine => '/'
   post 'records/:id/publish', to: 'records#publish', as: 'publish_record', constraints: { id: ALLOW_DOTS }
 

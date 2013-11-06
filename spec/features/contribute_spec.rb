@@ -102,7 +102,7 @@ describe 'Contribute' do
         let(:honors_thesis_type) { FactoryGirl.create(:deposit_type, deposit_view: 'honors_thesis') }
         it "should draw honors_thesis form" do
           visit "/contribute/new?deposit_type=#{honors_thesis_type.id}"
-          select 'Dept. of Biology', from: 'Department'
+          fill_in 'Department', with: 'Dept. of Biology'
           click_button "Agree & Deposit"
           expect(page).to have_content "Title can't be blank"
           expect(page).to have_content "Abstract can't be blank"
@@ -121,7 +121,7 @@ describe 'Contribute' do
 
         it "should draw faculty_scholarship form" do
           visit "/contribute/new?deposit_type=#{faculty_scholarship_type.id}"
-          select 'Dept. of Biology', from: 'Department'
+          fill_in 'Department', with: 'Dept. of Biology'
           click_button "Agree & Deposit"
           expect(page).to have_content "Title can't be blank"
           expect(page).to have_content "Abstract can't be blank"

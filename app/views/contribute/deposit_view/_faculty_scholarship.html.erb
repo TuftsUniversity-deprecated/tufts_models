@@ -2,7 +2,7 @@
 
     <%= f.text_field :creator, value: current_user.user_key, label: 'Contributor:', required: true  %>
 
-    <%= f.select :subject, options_for_select({'Please select a department'=>'default'}.merge(tufts_departments), :disabled => 'default', selected: 'default'), label: 'Department:' %>
+    <%= f.text_field :subject, label: 'Department', class: 'typeahead', autocomplete: false, data: {provide:"typeahead", source: tufts_department_labels } %>
 
     <%= f.text_field :bibliographic_citation%>
 
