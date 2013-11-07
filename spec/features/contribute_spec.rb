@@ -69,7 +69,7 @@ describe 'Contribute' do
       current_path.should == new_user_session_path
     end
     describe 'for authenticated users' do
-      before { sign_in :user } 
+      before { sign_in :user }
 
       it 'should redirect the user to the selection page is the deposit type is missing' do
         visit '/contribute/new'
@@ -112,7 +112,6 @@ describe 'Contribute' do
           attach_file 'File to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
           click_button "Agree & Deposit"
           expect(page).to have_content "Your file has been saved!"
-
         end
       end
 
@@ -129,9 +128,15 @@ describe 'Contribute' do
           fill_in 'Title', with: 'Test title'
           fill_in 'Abstract', with: 'Test abstract'
           attach_file 'File to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
+
+          # These divs are needed for the javascript multiForm.js from hydra-editor
+          # in order to allow users to add extra input fields for other_authors
+          page.assert_selector('form.editor')
+          page.assert_selector('.control-group #additional_other_authors_clone #additional_other_authors_submit')
+          expect(page).to have_selector('input[name="contribution[other_authors][]"]')
+
           click_button "Agree & Deposit"
           expect(page).to have_content "Your file has been saved!"
-
         end
       end
 
