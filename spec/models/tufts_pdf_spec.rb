@@ -21,4 +21,27 @@ describe TuftsPdf do
       subject.local_path_for('Archival.pdf', 'pdf').should == "#{Rails.root}/spec/fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_pdf/MS054.003.DO.02108.archival.pdf"
     end
   end
+
+  describe "attributes" do
+    it "should have createdby fields" do
+      expect(subject.createdby).to be_nil
+      subject.createdby = Contribution::SELFDEP
+      expect(subject.createdby).to eq Contribution::SELFDEP
+    end
+  end
+
+  describe "to_solr" do
+    before do
+      subject.stub(pid: 'foo:123')
+    end
+    let(:solr_doc) {subject.to_solr}
+    describe "on a self-deposit" do
+      before do
+        subject.createdby = Contribution::SELFDEP
+      end
+      it "should have deposit_method_ssi" do
+        solr_doc['deposit_method_ssi'].should == 'self-deposit'
+      end
+    end
+  end
 end

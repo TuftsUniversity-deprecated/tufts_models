@@ -32,7 +32,8 @@ module Tufts
   private
 
   def index_deposit_method(solr_doc)
-    unless note.empty?
+    case createdby
+    when Contribution::SELFDEP
       Solrizer.insert_field(solr_doc, 'deposit_method', 'self-deposit', :stored_sortable)
     end
   end

@@ -51,7 +51,7 @@ class TuftsBase < ActiveFedora::Base
                  :isFormatOf, :hasPart, :isPartOf, :accrualPolicy,
                  :audience, :references, :spatial, datastream: 'DC-DETAIL-META', multiple: true
 
-  has_attributes :published_at, :edited_at, datastream: 'DCA-ADMIN', multiple: false
+  has_attributes :published_at, :edited_at, :createdby, datastream: 'DCA-ADMIN', multiple: false
   has_attributes :steward, :name, :comment, :displays, :retentionPeriod, :embargo,
                  :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note,
                  datastream: 'DCA-ADMIN', multiple: true

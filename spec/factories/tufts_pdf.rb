@@ -15,6 +15,7 @@ FactoryGirl.define do
     ignore do
       user { FactoryGirl.create(:user) }
     end
+    createdby Contribution::SELFDEP
     after(:build) do |deposit, evaluator|
       deposit.note = "#{evaluator.user.user_key} self-deposited on #{Time.now.strftime('%Y-%m-%d at %H:%M:%S %Z')} using the Deposit Form for the Tufts Digital Library"
     end
