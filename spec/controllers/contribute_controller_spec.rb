@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe ContributeController do
 
+  before do
+    TuftsPdf.destroy_all
+  end
+
   describe "for a not-signed in user" do
     describe "new" do
       it "should redirect to sign in" do
@@ -95,14 +99,14 @@ describe ContributeController do
             post :create, contribution: {title: 'Sample', abstract: 'Description goes here', 
                                          creator: user.user_key, attachment: file},
                           deposit_type: deposit_type
+            response.should redirect_to contributions_path
+            flash[:notice].should == 'Your file has been saved!'
+            assigns(:deposit_type).should == deposit_type
+            contribution = TuftsPdf.find(assigns[:contribution].tufts_pdf.pid)
+            contribution.datastreams['Archival.pdf'].dsLocation.should_not be_nil
+            contribution.datastreams['Archival.pdf'].mimeType.should == 'application/pdf'
+            contribution.license.should == [deposit_type.license_name]
           }.to change { TuftsPdf.count }.by(1)
-          response.should redirect_to contributions_path
-          flash[:notice].should == 'Your file has been saved!'
-          assigns(:deposit_type).should == deposit_type
-          contribution = TuftsPdf.find(assigns[:contribution].tufts_pdf.pid)
-          contribution.datastreams['Archival.pdf'].dsLocation.should_not be_nil
-          contribution.datastreams['Archival.pdf'].mimeType.should == 'application/pdf'
-          contribution.license.should == [deposit_type.license_name]
         end
 
         it 'should automatically populate static fields' do
@@ -120,7 +124,7 @@ describe ContributeController do
         it "should list deposit_method as self deposit" do
           now = Time.now
           Time.stub(:now).and_return(now)
-           post :create, contribution: {title: 'Sample', abstract: 'Description of goes here',
+          post :create, contribution: {title: 'Sample', abstract: 'Description of goes here',
                                         creator: 'Mickey Mouse', attachment: file},
                          deposit_type: deposit_type
           contribution = TuftsPdf.find(assigns[:contribution].tufts_pdf.pid)

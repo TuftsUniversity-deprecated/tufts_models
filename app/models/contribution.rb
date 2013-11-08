@@ -21,7 +21,7 @@ class Contribution
 
   def tufts_pdf
     return @tufts_pdf if @tufts_pdf
-    @tufts_pdf = TuftsPdf.new
+    @tufts_pdf = TuftsPdf.new(pid: Sequence.next_val)
     (ATTRIBUTES - [:attachment, :other_authors]).each do |attribute|
       @tufts_pdf.send("#{attribute}=", send(attribute))
     end
