@@ -1,5 +1,5 @@
-display_name,license_name,deposit_agreement,deposit_view
-PDF Document,  PDF License v1.0, Agreement for a PDF,capstone_project
-Audio File   , License, Agreement for Audio,honors_thesis
+display_name,license_name,deposit_agreement,deposit_view,source
+PDF Document,  PDF License v1.0, Agreement for a PDF,capstone_project, source 1
+Audio File   , License, Agreement for Audio,honors_thesis, source 2
 
-Photograph,License for Photos 2,Agreement for a Photo,generic_deposit
+Photograph,License for Photos 2,Agreement for a Photo,generic_deposit, source 3

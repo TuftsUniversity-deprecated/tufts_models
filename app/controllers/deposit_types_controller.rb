@@ -51,7 +51,7 @@ private
   end
 
   def deposit_type_params
-    params.require(:deposit_type).permit(:display_name, :deposit_agreement, :deposit_view, :license_name)
+    params.require(:deposit_type).permit(:display_name, :deposit_agreement, :deposit_view, :license_name, :source)
   end
 
 end
