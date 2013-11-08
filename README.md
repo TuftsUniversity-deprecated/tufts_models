@@ -35,6 +35,26 @@ $ rails g hydra:jetty
 $ rake jetty:config
 ```
 
+##Configure Authentication services
+The application includes a basic devise implementation for user management and authentication.  Integrating the 
+application with your local authentication system is beyone the scope of this document; please consult the 
+relevant devise documentation.
+
+If you wish to supply a specific format for the text used in displaying user names, please modify the display_name 
+method on the user model:
+```
+# app/models/user.rb
+
+class User < ActiveRecord::Base
+...
+  def display_name   #update this method to return the string you would like used for the user name stored in fedora objects.
+    self.user_key 
+  end
+....
+end
+
+```
+
 ##Start background workers
 
 ```bash

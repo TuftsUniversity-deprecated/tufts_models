@@ -86,7 +86,7 @@ describe ContributeController do
 
     describe "POST 'create'" do
       it "redirects when no deposit type is specified" do
-        post :create, contribution: { title: 'Sample', abstract: 'Description', creator: user.user_key }
+        post :create, contribution: { title: 'Sample', abstract: 'Description', creator: user.display_name }
         response.should redirect_to contributions_path
       end
 
@@ -97,7 +97,7 @@ describe ContributeController do
         it 'succeeds and stores file attachments' do
           expect {
             post :create, contribution: {title: 'Sample', abstract: 'Description goes here', 
-                                         creator: user.user_key, attachment: file},
+                                         creator: user.display_name, attachment: file},
                           deposit_type: deposit_type
             response.should redirect_to contributions_path
             flash[:notice].should == 'Your file has been saved!'
@@ -135,7 +135,7 @@ describe ContributeController do
        end
 
         it 'should require a file attachments' do
-          post :create, contribution: {title: 'Sample', abstract: 'Description of uploaded file goes here', creator: user.user_key}, deposit_type: deposit_type
+          post :create, contribution: {title: 'Sample', abstract: 'Description of uploaded file goes here', creator: user.display_name}, deposit_type: deposit_type
           response.should render_template('new')
         end
       end

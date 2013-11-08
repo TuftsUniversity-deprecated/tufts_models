@@ -5,7 +5,7 @@ FactoryGirl.define do
     end
     sequence(:title) {|n| "Title #{n}" }
     after(:build) { |deposit, evaluator|
-      deposit.apply_depositor_metadata(evaluator.user.user_key)
+      deposit.apply_depositor_metadata(evaluator.user.display_name)
     }
     rights { 'http://dca.tufts.edu/ua/access/rights-creator.html' }
 
@@ -17,7 +17,7 @@ FactoryGirl.define do
     end
     createdby Contribution::SELFDEP
     after(:build) do |deposit, evaluator|
-      deposit.note = "#{evaluator.user.user_key} self-deposited on #{Time.now.strftime('%Y-%m-%d at %H:%M:%S %Z')} using the Deposit Form for the Tufts Digital Library"
+      deposit.note = "#{evaluator.user.display_name} self-deposited on #{Time.now.strftime('%Y-%m-%d at %H:%M:%S %Z')} using the Deposit Form for the Tufts Digital Library"
     end
   end
 end

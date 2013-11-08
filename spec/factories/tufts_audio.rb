@@ -5,7 +5,7 @@ FactoryGirl.define do
     end
     sequence(:title) {|n| "Title #{n}" }
     after(:build) { |deposit, evaluator|
-      deposit.apply_depositor_metadata(evaluator.user.user_key)
+      deposit.apply_depositor_metadata(evaluator.user.display_name)
     }
   end
 end

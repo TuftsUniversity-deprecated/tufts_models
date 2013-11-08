@@ -2,7 +2,7 @@
 
 <%= f.text_field :title, label: 'Thesis title:', required: true, help_block: '(Please limit titles to 250 characters or less.)' %>
 
-<%= f.text_field :creator, value: current_user.user_key, label: 'Contributor:', required: true %>
+<%= f.text_field :creator, value: current_user.display_name, label: 'Contributor:', required: true %>
 
 <%= f.text_field :subject, label: 'Department', class: 'typeahead', autocomplete: false, data: {provide:"typeahead", source: tufts_department_labels } %>
 

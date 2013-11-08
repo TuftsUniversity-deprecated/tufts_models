@@ -2,6 +2,6 @@
 
 <%= f.text_field :title, label: 'Title:', help_block: '(Please limit titles to 250 characters or less.)', required: true %>
 
-<%= f.text_field :creator, value: current_user.user_key, label: 'Contributor:', required: true %>
+<%= f.text_field :creator, value: current_user.display_name, label: 'Contributor:', required: true %>
 
 <%= f.text_area :abstract, label: 'Abstract:', help_block: '(Please limit abstracts to 2000 characters or less.)', rows: 5, class: 'span8', required: true  %>

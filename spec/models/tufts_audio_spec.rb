@@ -178,7 +178,7 @@ describe TuftsAudio do
         subject.audit(user, 'updated stuff')
       end
       it "should get an entry" do
-        subject.audit_log.who.should == [user.user_key]
+        subject.audit_log.who.should == [user.display_name]
       end
     end
     describe "when content is updated" do
