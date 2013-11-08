@@ -116,7 +116,7 @@ describe ContributeController do
           contribution = TuftsPdf.find(assigns[:contribution].tufts_pdf.pid)
           expect(contribution.steward).to eq ['dca']
           expect(contribution.displays).to eq ['dl']
-          expect(contribution.publisher).to eq ['Digital Collections and Archives, Tufts University']
+          expect(contribution.publisher).to eq ['Tufts University. Digital Collections and Archives.']
           expect(contribution.rights).to eq ['http://dca.tufts.edu/ua/access/rights-creator.html']
           expect(contribution.format).to eq ['application/pdf']
         end
