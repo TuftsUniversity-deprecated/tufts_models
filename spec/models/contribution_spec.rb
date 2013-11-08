@@ -13,14 +13,14 @@ describe Contribution do
         subject.errors[:title].should == ["can't be blank"]
       end
     end
-    it "shouldn't permit an abstract longer than 2000 chars" do
-        subject.abstract = "Small batch street art jean shorts umami Terry Richardson chia. Readymade stumptown kogi Cosby sweater hashtag scenester. Semiotics beard fap High Life. Quinoa mustache salvia deep v, Shoreditch Tonx gluten-free forage banh mi Truffaut selfies Odd Future" * 8
+    it "shouldn't permit an description longer than 2000 chars" do
+        subject.description = "Small batch street art jean shorts umami Terry Richardson chia. Readymade stumptown kogi Cosby sweater hashtag scenester. Semiotics beard fap High Life. Quinoa mustache salvia deep v, Shoreditch Tonx gluten-free forage banh mi Truffaut selfies Odd Future" * 8
         subject.should_not be_valid
-        subject.errors[:abstract].should == ['is too long (maximum is 2000 characters)']
+        subject.errors[:description].should == ['is too long (maximum is 2000 characters)']
     end
-    it "should require an abstract" do
+    it "should require an description" do
         subject.should_not be_valid
-        subject.errors[:abstract].should == ["can't be blank"]
+        subject.errors[:description].should == ["can't be blank"]
     end
     it "should require a creator" do
         subject.should_not be_valid

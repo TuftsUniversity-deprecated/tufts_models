@@ -86,7 +86,7 @@ describe ContributeController do
 
     describe "POST 'create'" do
       it "redirects when no deposit type is specified" do
-        post :create, contribution: { title: 'Sample', abstract: 'Description', creator: user.display_name }
+        post :create, contribution: { title: 'Sample', description: 'Description', creator: user.display_name }
         response.should redirect_to contributions_path
       end
 
@@ -96,7 +96,7 @@ describe ContributeController do
 
         it 'succeeds and stores file attachments' do
           expect {
-            post :create, contribution: {title: 'Sample', abstract: 'Description goes here', 
+            post :create, contribution: {title: 'Sample', description: 'Description goes here', 
                                          creator: user.display_name, attachment: file},
                           deposit_type: deposit_type
             response.should redirect_to contributions_path
@@ -110,7 +110,7 @@ describe ContributeController do
         end
 
         it 'should automatically populate static fields' do
-          post :create, contribution: {title: 'Sample', abstract: 'User supplied brief description',
+          post :create, contribution: {title: 'Sample', description: 'User supplied brief description',
                                        creator: 'John Doe', attachment: file},
                deposit_type: deposit_type
           contribution = TuftsPdf.find(assigns[:contribution].tufts_pdf.pid)
@@ -124,7 +124,7 @@ describe ContributeController do
         it "should list deposit_method as self deposit" do
           now = Time.now
           Time.stub(:now).and_return(now)
-          post :create, contribution: {title: 'Sample', abstract: 'Description of goes here',
+          post :create, contribution: {title: 'Sample', description: 'Description of goes here',
                                         creator: 'Mickey Mouse', attachment: file},
                          deposit_type: deposit_type
           contribution = TuftsPdf.find(assigns[:contribution].tufts_pdf.pid)
@@ -135,7 +135,7 @@ describe ContributeController do
        end
 
         it 'should require a file attachments' do
-          post :create, contribution: {title: 'Sample', abstract: 'Description of uploaded file goes here', creator: user.display_name}, deposit_type: deposit_type
+          post :create, contribution: {title: 'Sample', description: 'Description of uploaded file goes here', creator: user.display_name}, deposit_type: deposit_type
           response.should render_template('new')
         end
       end

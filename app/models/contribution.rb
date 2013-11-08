@@ -4,12 +4,12 @@ class Contribution
   extend ActiveModel::Naming
   
 
-  ATTRIBUTES = [:title, :abstract, :creator, :contributor, :bibliographic_citation, :subject, :attachment, :other_authors, :license]
+  ATTRIBUTES = [:title, :description, :creator, :contributor, :bibliographic_citation, :subject, :attachment, :other_authors, :license]
   attr_accessor *ATTRIBUTES
 
 
   validates :title, presence: true, length: {maximum: 250}
-  validates :abstract, presence: true, length: {maximum: 2000}
+  validates :description, presence: true, length: {maximum: 2000}
   validates :creator, presence: true
   validates :attachment, presence: true
 

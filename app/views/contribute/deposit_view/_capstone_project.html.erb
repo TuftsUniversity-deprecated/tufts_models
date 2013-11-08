@@ -6,10 +6,9 @@
 
 <%= f.select :subject, options_for_select(fletcher_degrees), prompt: 'Please select a degree', label: 'Degree:' %>
 
-<%= f.text_area :abstract, label: 'Abstract:', help_block: '(Please limit abstracts to 2000 characters or less.)', rows: 5, class: 'span8'  %>
+<%= f.text_area :description, label: 'Short description:', help_block: '(Please limit description to 2000 characters or less.)', rows: 5, class: 'span8'  %>
 
 <div class='well'>Technical questions? <a target="_blank" href="http://dca.tufts.edu/contact/">Contact DCA</a>.
   Other questions? <a target="_blank"href="http://www.library.tufts.edu/ginn/forms/forms.aspx?form=department&department=Reference">
   Contact Ginn Library</a>.</div>
 <div class='clearfix'></div>
-
