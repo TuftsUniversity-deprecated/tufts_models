@@ -36,7 +36,7 @@ class DepositTypeExporter
   end
 
   def self.columns_to_include_in_export
-    ["display_name", "deposit_view", "license_name", "deposit_agreement"]
+    ["display_name", "deposit_view", "license_name", "deposit_agreement", "source"]
   end
 
 end
