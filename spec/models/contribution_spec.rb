@@ -48,4 +48,19 @@ describe Contribution do
     subject.license = ['License 1', 'License 2']
     subject.license.should == ['License 1', 'License 2']
   end
+
+  describe "saving" do
+    before do
+      path = '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf'
+      subject.attachment = Rack::Test::UploadedFile.new("#{fixture_path}#{path}", 'application/pdf', false)
+      subject.title = 'test title'
+      subject.stub(:valid? => true)
+    end
+    it "should use the sequence for the pid" do
+      pid = Sequence.next_val
+      Sequence.should_receive(:next_val).and_return(pid)
+      subject.save
+      expect(subject.tufts_pdf.pid).to eq pid
+    end
+  end
 end

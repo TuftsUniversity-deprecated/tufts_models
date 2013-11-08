@@ -54,6 +54,10 @@ ActiveRecord::Schema.define(version: 20131108160033) do
 
   add_index "searches", ["user_id"], name: "index_searches_on_user_id"
 
+  create_table "sequences", force: true do |t|
+    t.integer "value", default: 0
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
