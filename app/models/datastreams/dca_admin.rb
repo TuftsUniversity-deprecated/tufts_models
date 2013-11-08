@@ -14,6 +14,7 @@ class DcaAdmin < ActiveFedora::OmDatastream
     t.qrStatus index_as: :stored_searchable
     t.rejectionReason index_as: :stored_searchable
     t.note index_as: :stored_searchable
+    t.createdby
 
     t.published_at(:path => "publishedAt", :type=>:time, index_as: :stored_sortable)
     t.edited_at(:path => "editedAt", :type=>:time, index_as: :stored_sortable)
