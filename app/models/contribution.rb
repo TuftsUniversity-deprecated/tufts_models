@@ -28,6 +28,13 @@ class Contribution
     @tufts_pdf.note = "#{creator} self-deposited on #{Time.now.strftime('%Y-%m-%d at %H:%M:%S %Z')} using the Deposit Form for the Tufts Digital Library"
     @tufts_pdf.creator += [other_authors] if other_authors
     @tufts_pdf.createdby = SELFDEP
+    @tufts_pdf.steward = 'dca'
+    @tufts_pdf.displays = 'dl'
+    @tufts_pdf.publisher = 'Digital Collections and Archives, Tufts University'
+    @tufts_pdf.rights = 'http://dca.tufts.edu/ua/access/rights-creator.html'
+    @tufts_pdf.format = 'application/pdf'
+    @tufts_pdf.date_available = Time.now.to_s
+
     @tufts_pdf
   end
 

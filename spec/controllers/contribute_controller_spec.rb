@@ -105,6 +105,18 @@ describe ContributeController do
           contribution.license.should == [deposit_type.license_name]
         end
 
+        it 'should automatically populate static fields' do
+          post :create, contribution: {title: 'Sample', abstract: 'User supplied brief description',
+                                       creator: 'John Doe', attachment: file},
+               deposit_type: deposit_type
+          contribution = TuftsPdf.find(assigns[:contribution].tufts_pdf.pid)
+          expect(contribution.steward).to eq ['dca']
+          expect(contribution.displays).to eq ['dl']
+          expect(contribution.publisher).to eq ['Digital Collections and Archives, Tufts University']
+          expect(contribution.rights).to eq ['http://dca.tufts.edu/ua/access/rights-creator.html']
+          expect(contribution.format).to eq ['application/pdf']
+        end
+
         it "should list deposit_method as self deposit" do
           now = Time.now
           Time.stub(:now).and_return(now)
@@ -113,6 +125,7 @@ describe ContributeController do
                          deposit_type: deposit_type
           contribution = TuftsPdf.find(assigns[:contribution].tufts_pdf.pid)
           expect(contribution.note.first).to eq "Mickey Mouse self-deposited on #{now.strftime('%Y-%m-%d at %H:%M:%S %Z')} using the Deposit Form for the Tufts Digital Library"
+          expect(contribution.date_available).to eq [now.to_s]
           expect(contribution.createdby).to eq Contribution::SELFDEP
        end
 
