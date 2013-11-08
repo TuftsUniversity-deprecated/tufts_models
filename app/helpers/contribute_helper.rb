@@ -7,11 +7,9 @@ module ContributeHelper
   # Hashes used for selections will display in the order listed here unless further sorting is applied in the view.
 
   def fletcher_degrees
-     {
-        :LLM =>'FL001.001',
-        :MALD=>'FL001.002',
-        :MIB=>'FL001.003'
-    }
+    Qa::Authorities::Local.sub_authority('fletcher_degrees').terms.map do |element|
+      [element[:term], element[:id]]
+    end
   end
 
   def tufts_department_labels
