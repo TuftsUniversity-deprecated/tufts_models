@@ -33,7 +33,7 @@ class Contribution
     @tufts_pdf.publisher = 'Digital Collections and Archives, Tufts University'
     @tufts_pdf.rights = 'http://dca.tufts.edu/ua/access/rights-creator.html'
     @tufts_pdf.format = 'application/pdf'
-    @tufts_pdf.date_available = Time.now.to_s
+    @tufts_pdf.date_available = @tufts_pdf.date_submitted = Time.now.to_s
 
     @tufts_pdf
   end
