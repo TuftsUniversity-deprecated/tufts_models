@@ -4,7 +4,7 @@
 
 <%= f.text_field :creator, value: current_user.user_key, label: 'Contributor:'  %>
 
-<%= f.select :subject, options_for_select({'Please select a degree'=>'default'}.merge(fletcher_degrees), :disabled => 'default', selected: 'default'), label: 'Degree:' %>
+<%= f.select :subject, options_for_select(fletcher_degrees), prompt: 'Please select a degree', label: 'Degree:' %>
 
 <%= f.text_area :abstract, label: 'Abstract:', help_block: '(Please limit abstracts to 2000 characters or less.)', rows: 5, class: 'span8'  %>
 
