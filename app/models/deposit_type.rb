@@ -14,6 +14,14 @@ class DepositType < ActiveRecord::Base
     return Dir.glob("#{PARTIAL_PATH}/_*.html.erb").collect{|f| File.basename(f,".html.erb")[1..-1]}
   end
 
+  def contribution_class
+    begin
+      deposit_view.classify.constantize
+    rescue NameError
+      Contribution
+    end
+  end
+
 protected
 
   # Since we are allowing HTML input and using the

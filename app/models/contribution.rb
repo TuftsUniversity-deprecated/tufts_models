@@ -3,11 +3,6 @@ class Contribution
   include ActiveModel::Conversion
   extend ActiveModel::Naming
   
-
-  ATTRIBUTES = [:title, :description, :creator, :contributor, :bibliographic_citation, :subject, :attachment, :other_authors, :license]
-  attr_accessor *ATTRIBUTES
-
-
   validates :title, presence: true, length: {maximum: 250}
   validates :description, presence: true, length: {maximum: 2000}
   validates :creator, presence: true
@@ -30,16 +25,13 @@ class Contribution
                     rights: 'http://dca.tufts.edu/ua/access/rights-creator.html',
                     date_available: now.to_s, date_submitted: now.to_s, note: note)
 
-    (ATTRIBUTES - [:attachment, :other_authors]).each do |attribute|
-      @tufts_pdf.send("#{attribute}=", send(attribute))
-    end
-    @tufts_pdf.creator += [other_authors] if other_authors
+    copy_attributes
     @tufts_pdf
   end
 
-  def initialize(attributes = {})
-    ATTRIBUTES.each do |attribute|
-      send("#{attribute}=", attributes[attribute])
+  def initialize(data = {})
+    self.class.attributes.each do |attribute|
+      send("#{attribute}=", data[attribute])
     end
   end
 
@@ -55,5 +47,27 @@ class Contribution
     form = self.new(attrs)
     form.save
   end
+
+  protected
+
+  def copy_attributes
+    (self.class.attributes - self.class.ignore_attributes).each do |attribute|
+      @tufts_pdf.send("#{attribute}=", send(attribute))
+    end
+    @tufts_pdf.creator += [other_authors] if other_authors
+  end
+  
+  def self.ignore_attributes
+    [:attachment, :other_authors]
+  end
+
+  def self.attributes
+    [:title, :description, :creator, :contributor, :bibliographic_citation, :subject, :attachment, :other_authors, :license]
+  end
+
+  public
+  attr_accessor *attributes
+
+
 
 end
