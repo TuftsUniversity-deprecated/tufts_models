@@ -21,20 +21,19 @@ class Contribution
 
   def tufts_pdf
     return @tufts_pdf if @tufts_pdf
-    @tufts_pdf = TuftsPdf.new(pid: Sequence.next_val)
+    now = Time.now
+
+    note = "#{creator} self-deposited on #{now.strftime('%Y-%m-%d at %H:%M:%S %Z')} using the Deposit Form for the Tufts Digital Library"
+    @tufts_pdf = TuftsPdf.new(pid: Sequence.next_val, createdby: SELFDEP, 
+                    steward: 'dca', displays: 'dl', format: 'application/pdf',
+                    publisher: 'Tufts University. Digital Collections and Archives.',
+                    rights: 'http://dca.tufts.edu/ua/access/rights-creator.html',
+                    date_available: now.to_s, date_submitted: now.to_s, note: note)
+
     (ATTRIBUTES - [:attachment, :other_authors]).each do |attribute|
       @tufts_pdf.send("#{attribute}=", send(attribute))
     end
-    @tufts_pdf.note = "#{creator} self-deposited on #{Time.now.strftime('%Y-%m-%d at %H:%M:%S %Z')} using the Deposit Form for the Tufts Digital Library"
     @tufts_pdf.creator += [other_authors] if other_authors
-    @tufts_pdf.createdby = SELFDEP
-    @tufts_pdf.steward = 'dca'
-    @tufts_pdf.displays = 'dl'
-    @tufts_pdf.publisher = 'Digital Collections and Archives, Tufts University'
-    @tufts_pdf.rights = 'http://dca.tufts.edu/ua/access/rights-creator.html'
-    @tufts_pdf.format = 'application/pdf'
-    @tufts_pdf.date_available = @tufts_pdf.date_submitted = Time.now.to_s
-
     @tufts_pdf
   end
 
