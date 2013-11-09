@@ -38,12 +38,6 @@ describe Contribution do
       subject.subject.should == 'test subject'
   end
 
-  it "should record 'other_authors' as creators" do
-    subject.creator = 'Dave'
-    subject.other_authors = 'Jane'
-    subject.tufts_pdf.creator.should == ['Dave', 'Jane']
-  end
-
   it "stores the license name" do
     subject.license = ['License 1', 'License 2']
     subject.license.should == ['License 1', 'License 2']

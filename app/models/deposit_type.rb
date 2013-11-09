@@ -15,11 +15,7 @@ class DepositType < ActiveRecord::Base
   end
 
   def contribution_class
-    begin
-      deposit_view.classify.constantize
-    rescue NameError
-      Contribution
-    end
+    deposit_view.classify.constantize
   end
 
 protected
