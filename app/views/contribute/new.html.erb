@@ -4,7 +4,7 @@
 
 <%= bootstrap_form_for @contribution, multipart: true, :html=>{ class: 'form-horizontal well editor' } do |f| %>
 
-    <%= f.file_field :attachment, label: 'File to upload:'%>
+    <%= f.file_field :attachment, label: 'PDF to upload:', accept: 'application/pdf'%>
 
     <%= render "contribute/deposit_view/#{@deposit_type.deposit_view}", :f => f  %>
     <%= hidden_field_tag 'deposit_type', @deposit_type.id %>

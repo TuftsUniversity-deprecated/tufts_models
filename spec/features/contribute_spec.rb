@@ -91,7 +91,7 @@ describe 'Contribute' do
           expect(page).to have_content "Attachment can't be blank"
           fill_in 'Capstone project title', with: 'Test title'
           fill_in 'Abstract', with: 'Test abstract'
-          attach_file 'File to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
+          attach_file 'PDF to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
           click_button "Agree & Deposit"
           expect(page).to have_content "Your file has been saved!"
 
@@ -109,7 +109,7 @@ describe 'Contribute' do
           expect(page).to have_content "Attachment can't be blank"
           fill_in 'Thesis title', with: 'Test title'
           fill_in 'Abstract', with: 'Test abstract'
-          attach_file 'File to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
+          attach_file 'PDF to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
           click_button "Agree & Deposit"
           expect(page).to have_content "Your file has been saved!"
         end
@@ -126,7 +126,7 @@ describe 'Contribute' do
           expect(page).to have_content "Attachment can't be blank"
           fill_in 'Title', with: 'Test title'
           fill_in 'Abstract', with: 'Test abstract'
-          attach_file 'File to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
+          attach_file 'PDF to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
 
           # These divs are needed for the javascript multiForm.js from hydra-editor
           # in order to allow users to add extra input fields for other_authors
@@ -150,7 +150,7 @@ describe 'Contribute' do
           expect(page).to have_content "Attachment can't be blank"
           fill_in 'Title', with: 'Test title'
           fill_in 'Abstract', with: 'Test abstract'
-          attach_file 'File to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
+          attach_file 'PDF to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
           click_button "Agree & Deposit"
           expect(page).to have_content "Your file has been saved!"
 
@@ -167,7 +167,7 @@ describe 'Contribute' do
           expect(page).to have_content "Attachment can't be blank"
           fill_in 'Title', with: 'Test title'
           fill_in 'Abstract', with: 'Test abstract'
-          attach_file 'File to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
+          attach_file 'PDF to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
           click_button "Agree & Deposit"
           expect(page).to have_content "Your file has been saved!"
 
