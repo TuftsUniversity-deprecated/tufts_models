@@ -9,7 +9,7 @@ gem 'sqlite3'
 gem 'hydra', '6.1.0'
 gem 'hydra-role-management', '0.1.0'
 gem 'hydra-editor', '0.1.0'
-gem 'qa', '0.0.2'
+gem 'qa', '0.0.3'
 gem 'sanitize', '2.0.6'
 
 gem 'disable_assets_logger', :group => :development
