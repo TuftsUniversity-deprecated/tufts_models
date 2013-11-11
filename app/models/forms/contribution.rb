@@ -8,6 +8,13 @@ class Contribution
   validates :creator, presence: true
   validates :attachment, presence: true
 
+  class_attribute :ignore_attributes, :attributes
+  
+  self.ignore_attributes = [:attachment]
+
+  self.attributes = [:title, :description, :creator, :contributor, 
+                     :bibliographic_citation, :subject, :attachment, :license]
+
   SELFDEP = 'selfdep'.freeze
 
   def persisted?
@@ -37,7 +44,6 @@ class Contribution
 
   def save
     return false unless valid?
-    tufts_pdf.save!
     tufts_pdf.store_archival_file('Archival.pdf', attachment)
     tufts_pdf.save!
     tufts_pdf
@@ -54,20 +60,7 @@ class Contribution
     (self.class.attributes - self.class.ignore_attributes).each do |attribute|
       @tufts_pdf.send("#{attribute}=", send(attribute))
     end
-    @tufts_pdf.creator += [other_authors] if other_authors
   end
-  
-  def self.ignore_attributes
-    [:attachment, :other_authors]
-  end
-
-  def self.attributes
-    [:title, :description, :creator, :contributor, :bibliographic_citation, :subject, :attachment, :other_authors, :license]
-  end
-
   public
   attr_accessor *attributes
-
-
-
 end

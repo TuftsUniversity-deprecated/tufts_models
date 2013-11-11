@@ -1,0 +1,2 @@
+class GenericDeposit < Contribution
+end

@@ -1,0 +1,2 @@
+class QualifyingPaper < Contribution
+end
