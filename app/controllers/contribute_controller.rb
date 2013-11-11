@@ -15,12 +15,12 @@ class ContributeController < ApplicationController
 
   def new
     authorize! :create, Contribution
-    @contribution = Contribution.new
+    @contribution = @deposit_type.contribution_class.new
   end
 
   def create
     authorize! :create, Contribution
-    @contribution = Contribution.new(params[:contribution])
+    @contribution = @deposit_type.contribution_class.new(params[:contribution])
     insert_license_data
 
     if @contribution.save

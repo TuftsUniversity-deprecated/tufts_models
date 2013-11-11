@@ -4,6 +4,6 @@
 
 <%= f.text_field :creator, value: current_user.display_name, label: 'Contributor:', required: true %>
 
-<%= f.text_field :subject, label: 'Department', class: 'typeahead', autocomplete: false, data: {provide:"typeahead", source: tufts_department_labels } %>
+<%= f.text_field :department, label: 'Department', class: 'typeahead', autocomplete: false, data: {provide:"typeahead", source: tufts_department_labels } %>
 
 <%= f.text_area :description, label: 'Short description:', help_block: '(Please limit description to 2000 characters or less.)', rows: 5, class: 'span8', required: true  %>

@@ -2,7 +2,7 @@
 
 <%# NOTE: this form uses bootstrap_form_for and bootstrap_forms helpers - see: https://github.com/sethvargo/bootstrap_forms %>
 
-<%= bootstrap_form_for @contribution, multipart: true, :html=>{ class: 'form-horizontal well editor' } do |f| %>
+<%= bootstrap_form_for @contribution, url: contributions_path, as: 'contribution', multipart: true, :html=>{ class: 'form-horizontal well editor' } do |f| %>
 
     <%= f.file_field :attachment, label: 'PDF to upload:', accept: 'application/pdf'%>
 
