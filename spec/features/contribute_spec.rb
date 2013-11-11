@@ -85,6 +85,7 @@ describe 'Contribute' do
         it "should draw capstone form" do
           visit "/contribute/new?deposit_type=#{capstone_type.id}"
           select 'Masters of International Business', from: 'Degree'
+          expect(page).to have_selector 'select[required]'
           click_button "Agree & Deposit"
           expect(page).to have_content "Title can't be blank"
           expect(page).to have_content "Description can't be blank"
