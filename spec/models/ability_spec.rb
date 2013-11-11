@@ -4,8 +4,8 @@ require "cancan/matchers"
 describe Ability do
   before :all do
     User.delete_all
-    @user = FactoryGirl.create(:user, email: 'user@example.com')
-    @admin = FactoryGirl.create(:admin, email: 'admin@example.com')
+    @user = FactoryGirl.create(:user)
+    @admin = FactoryGirl.create(:admin)
   end
 
   describe "an admin user" do
