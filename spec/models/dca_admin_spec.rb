@@ -34,4 +34,9 @@ describe DcaAdmin do
     subject.createdby = 'admin-deposit'
     expect(subject.createdby).to eq ['admin-deposit']
   end
+
+  it "should have creatordept" do
+    subject.creatordept = 'Dept. of Biology'
+    expect(subject.creatordept).to eq ['Dept. of Biology']
+  end
 end

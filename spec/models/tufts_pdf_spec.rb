@@ -28,6 +28,13 @@ describe TuftsPdf do
       subject.createdby = Contribution::SELFDEP
       expect(subject.createdby).to eq Contribution::SELFDEP
     end
+    it "should have creatordept" do
+      
+      expect(subject.creatordept).to be_nil
+      subject.creatordept = 'UA005.014'
+      expect(subject.creatordept).to eq 'UA005.014'
+    end
+
   end
 
   describe "to_solr" do
