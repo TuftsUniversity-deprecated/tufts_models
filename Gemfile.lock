@@ -181,9 +181,10 @@ GEM
       solrizer (~> 3.1.0)
     orm_adapter (0.4.0)
     polyglot (0.3.3)
-    qa (0.0.2)
+    qa (0.0.3)
       activerecord-import (>= 0.4.0)
       curb
+      deprecation
       nokogiri (~> 1.6.0)
       rails (~> 4.0.0)
       rest-client
@@ -327,7 +328,7 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails
   launchy
-  qa (= 0.0.2)
+  qa (= 0.0.3)
   rails (= 4.0.1)
   resque
   rmagick (= 2.13.2)
