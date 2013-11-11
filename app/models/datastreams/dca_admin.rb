@@ -18,6 +18,7 @@ class DcaAdmin < ActiveFedora::OmDatastream
 
     t.published_at(:path => "publishedAt", :type=>:time, index_as: :stored_sortable)
     t.edited_at(:path => "editedAt", :type=>:time, index_as: :stored_sortable)
+    t.creatordept
   end
 
   # BUG?  Extra solr fields are generated when there is a default namespace (xmlns) declared on the root.

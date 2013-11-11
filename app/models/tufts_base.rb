@@ -41,6 +41,7 @@ class TuftsBase < ActiveFedora::Base
                  :subject, :genre, :rights, :bibliographic_citation,
                  :temporal, :funder, :resolution, :bitdepth,
                  :colorspace, :filesize, datastream: 'DCA-META', multiple: true
+
   has_attributes :title, datastream: 'DCA-META', multiple: false
 
   has_attributes :alternative, :contributor, :abstract, :toc,
@@ -49,9 +50,12 @@ class TuftsBase < ActiveFedora::Base
                  :provenance, :access_rights, :rights_holder,
                  :license, :replaces, :isReplacedBy, :hasFormat,
                  :isFormatOf, :hasPart, :isPartOf, :accrualPolicy,
-                 :audience, :references, :spatial, datastream: 'DC-DETAIL-META', multiple: true
+                 :audience, :references, :spatial,
+                 datastream: 'DC-DETAIL-META', multiple: true
 
-  has_attributes :published_at, :edited_at, :createdby, datastream: 'DCA-ADMIN', multiple: false
+  has_attributes :published_at, :edited_at, :createdby, :creatordept,
+                 datastream: 'DCA-ADMIN', multiple: false
+
   has_attributes :steward, :name, :comment, :displays, :retentionPeriod, :embargo,
                  :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note,
                  datastream: 'DCA-ADMIN', multiple: true

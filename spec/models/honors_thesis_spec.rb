@@ -10,4 +10,22 @@ describe HonorsThesis do
     end
   end
 
+  describe "setting creatordept" do
+    describe "when the supplied value is a member of the list" do
+      before do
+        subject.department = 'Dept. of German, Russian, and Asian Languages and Literature'
+      end
+      it "should be the corresponding code" do
+        subject.tufts_pdf.creatordept.should == 'UA005.014'
+      end
+    end
+    describe "when the supplied value is not a member of the list" do
+      before do
+        subject.department = 'German'
+      end
+      it "should be marked as NEEDS FIXING" do
+        subject.tufts_pdf.creatordept.should == 'NEEDS FIXING'
+      end
+    end
+  end
 end
