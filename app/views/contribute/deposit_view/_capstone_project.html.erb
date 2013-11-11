@@ -4,7 +4,7 @@
 
 <%= f.text_field :creator, value: current_user.display_name, label: 'Contributor:'  %>
 
-<%= f.select :degree, options_for_select(fletcher_degrees), prompt: 'Please select a degree', label: 'Degree:' %>
+<%= f.select :degree, options_for_select(fletcher_degrees), {prompt: 'Please select a degree', label: 'Degree:'}, {required: true} %>
 
 <%= f.text_area :description, label: 'Short description:', help_block: '(Please limit description to 2000 characters or less.)', rows: 5, class: 'span8'  %>
 
