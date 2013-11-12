@@ -1,20 +1,6 @@
 require 'spec_helper'
-require 'nokogiri'
 
 describe TuftsPdf do
-
-  it 'has relationships for collection and ead in rels-ext' do
-    ua071 = 'info:fedora/tufts:UA069.001.DO.UA071'
-    ua072 = 'info:fedora/tufts:UA069.001.DO.UA072'
-    subject.add_relationship(:is_member_of, ua071)
-    subject.add_relationship(:has_description, ua072)
-    subject.rels_ext.serialize!
-
-    rels_ext = Nokogiri::XML(subject.rels_ext.content)
-
-    rels_ext.xpath('//rdf:Description/ns0:isMemberOf').first.attributes['resource'].value.should == ua071
-    rels_ext.xpath('//rdf:Description/ns0:hasDescription').first.attributes['resource'].value.should == ua072
-  end
 
   describe "to_class_uri" do
     subject { TuftsPdf }
