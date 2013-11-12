@@ -50,7 +50,11 @@ module AttachedFiles
   private
 
   def collection_code
-    pid.sub(/.+:([^.]+).*/, '\1')
+    if collection_id 
+      collection_id.sub(/.+\.([^.]+)$/, '\1')
+    else
+      pid.sub(/.+:([^.]+).*/, '\1')
+    end
   end
 
   def pid_without_namespace
