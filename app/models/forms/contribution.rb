@@ -33,10 +33,13 @@ class Contribution
                     date_available: now.to_s, date_submitted: now.to_s, note: note)
 
     copy_attributes
+    @tufts_pdf.license = license_data(@tufts_pdf)
+    insert_collection_and_ead_relationships
     @tufts_pdf
   end
 
   def initialize(data = {})
+    @deposit_type = data.delete(:deposit_type)
     self.class.attributes.each do |attribute|
       send("#{attribute}=", data[attribute])
     end
@@ -54,13 +57,31 @@ class Contribution
     form.save
   end
 
-  protected
+protected
 
   def copy_attributes
     (self.class.attributes - self.class.ignore_attributes).each do |attribute|
       @tufts_pdf.send("#{attribute}=", send(attribute))
     end
   end
+
+  def parent_pid
+    "tufts:UA069.001.DO.#{@deposit_type.source}"
+  end
+
+  def license_data(contribution)
+    return contribution.license unless @deposit_type
+    contribution.license = Array(contribution.license)
+    contribution.license << @deposit_type.license_name
+  end
+
+  def insert_collection_and_ead_relationships
+    return unless @deposit_type && @tufts_pdf
+    @tufts_pdf.add_relationship(:is_member_of, parent_pid)
+    @tufts_pdf.add_relationship(:has_description, parent_pid)
+    @tufts_pdf.rels_ext.serialize!
+  end
+
   public
   attr_accessor *attributes
 end

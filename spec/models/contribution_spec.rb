@@ -57,4 +57,28 @@ describe Contribution do
       expect(subject.tufts_pdf.pid).to eq pid
     end
   end
+
+  describe "with deposit_type" do
+    before do
+      @deposit_type = FactoryGirl.create(:deposit_type)
+      attrs = FactoryGirl.attributes_for(:tufts_pdf).merge(deposit_type: @deposit_type, license: 'blerg')
+      @contribution = Contribution.new(attrs)
+      @contribution.save
+    end
+
+    it 'adds license data to the deposit' do
+      expected_data = [@deposit_type.license_name, 'blerg'].sort
+      @contribution.tufts_pdf.license.sort.should == expected_data
+    end
+
+    it 'adds collection and ead relationships' do
+      expected_collection = /^.*isMemberOf rdf:resource=.tufts:UA069\.001\.DO\.#{@deposit_type.source}.*$/
+      expected_ead = /^.*hasDescription rdf:resource=.tufts:UA069\.001\.DO\.#{@deposit_type.source}.*$/
+
+      rels_ext = @contribution.tufts_pdf.rels_ext.content
+      rels_ext.should =~ expected_collection
+      rels_ext.should =~ expected_ead
+    end
+  end
+
 end

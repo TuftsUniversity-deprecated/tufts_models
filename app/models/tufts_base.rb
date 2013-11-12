@@ -6,7 +6,7 @@ class TuftsBase < ActiveFedora::Base
   # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
   has_metadata "rightsMetadata", type: Hydra::Datastream::RightsMetadata
 
-  belongs_to :ead, :property => :has_description
+  belongs_to :ead, :property => :has_description, :class_name=>'TuftsEAD'
 
   # Tufts specific needed metadata streams
   has_metadata "DCA-META", type: TuftsDcaMeta

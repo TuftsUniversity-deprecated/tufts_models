@@ -8,7 +8,6 @@ FactoryGirl.define do
       deposit.apply_depositor_metadata(evaluator.user.display_name)
     }
     rights { 'http://dca.tufts.edu/ua/access/rights-creator.html' }
-
   end
 
   factory :self_deposit_pdf, parent: :tufts_pdf do
