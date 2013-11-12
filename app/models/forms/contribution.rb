@@ -33,8 +33,6 @@ class Contribution
                     date_available: now.to_s, date_submitted: now.to_s, note: note)
 
     copy_attributes
-    @tufts_pdf.license = license_data(@tufts_pdf)
-    insert_collection_and_ead_relationships
     @tufts_pdf
   end
 
@@ -63,6 +61,8 @@ protected
     (self.class.attributes - self.class.ignore_attributes).each do |attribute|
       @tufts_pdf.send("#{attribute}=", send(attribute))
     end
+    @tufts_pdf.license = license_data(@tufts_pdf)
+    insert_collection_and_ead_relationships
   end
 
   def parent
