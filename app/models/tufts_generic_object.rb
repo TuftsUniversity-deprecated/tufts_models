@@ -23,7 +23,7 @@ class TuftsGenericObject < TuftsBase
   #   obj.file_path('GENERIC-CONTENT')
   #   # => /local_object_store/data01/tufts/central/dca/MS054/generic
   def directory_for(name)
-    File.join(collection_id, 'generic')
+    File.join(collection_code, 'generic')
   end
 
   def item_attributes=(items)

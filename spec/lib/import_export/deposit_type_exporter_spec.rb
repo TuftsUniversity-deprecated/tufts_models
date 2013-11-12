@@ -47,14 +47,14 @@ describe DepositTypeExporter do
     pdf_agreement = 'Some agreement text for PDF deposits'
     pdf_license = 'A license for PDFs'
     pdf_view = 'honors_thesis'
-    pdf_source = 'pdf source'
+    pdf_source = 'pdf_source'
     pdf_type = FactoryGirl.create(:deposit_type, display_name: pdf_name, deposit_agreement: pdf_agreement, deposit_view: pdf_view, license_name: pdf_license, source: pdf_source)
 
     audio_name = 'Audio File'
     audio_agreement = 'Some agreement text for Audio deposits'
     audio_license = 'Generic License'
     audio_view = 'capstone_project'
-    audio_source = 'audio source'
+    audio_source = 'audio_source'
     audio_type = FactoryGirl.create(:deposit_type, display_name: audio_name, deposit_agreement: audio_agreement, license_name: audio_license, deposit_view: audio_view, source: audio_source)
 
     dir = test_export_dir

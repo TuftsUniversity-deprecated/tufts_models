@@ -7,6 +7,7 @@ class TuftsBase < ActiveFedora::Base
   has_metadata "rightsMetadata", type: Hydra::Datastream::RightsMetadata
 
   belongs_to :ead, :property => :has_description, :class_name=>'TuftsEAD'
+  belongs_to :collection, :property => :is_member_of, :class_name=>'TuftsEAD'
 
   # Tufts specific needed metadata streams
   has_metadata "DCA-META", type: TuftsDcaMeta

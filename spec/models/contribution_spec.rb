@@ -72,8 +72,8 @@ describe Contribution do
     end
 
     it 'adds collection and ead relationships' do
-      expected_collection = /^.*isMemberOf rdf:resource=.tufts:UA069\.001\.DO\.#{@deposit_type.source}.*$/
-      expected_ead = /^.*hasDescription rdf:resource=.tufts:UA069\.001\.DO\.#{@deposit_type.source}.*$/
+      expected_collection = /^.*isMemberOf rdf:resource="info:fedora\/tufts:UA069\.001\.DO\.#{@deposit_type.source}.*$/
+      expected_ead = /^.*hasDescription rdf:resource="info:fedora\/tufts:UA069\.001\.DO\.#{@deposit_type.source}.*$/
 
       rels_ext = @contribution.tufts_pdf.rels_ext.content
       rels_ext.should =~ expected_collection

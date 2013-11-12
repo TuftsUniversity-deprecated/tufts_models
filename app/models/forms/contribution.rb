@@ -65,8 +65,8 @@ protected
     end
   end
 
-  def parent_pid
-    "tufts:UA069.001.DO.#{@deposit_type.source}"
+  def parent
+    ActiveFedora::Base.find("tufts:UA069.001.DO.#{@deposit_type.source}", cast: true)
   end
 
   def license_data(contribution)
@@ -77,8 +77,8 @@ protected
 
   def insert_collection_and_ead_relationships
     return unless @deposit_type && @tufts_pdf
-    @tufts_pdf.add_relationship(:is_member_of, parent_pid)
-    @tufts_pdf.add_relationship(:has_description, parent_pid)
+    @tufts_pdf.collection = parent
+    @tufts_pdf.ead = parent
     @tufts_pdf.rels_ext.serialize!
   end
 
