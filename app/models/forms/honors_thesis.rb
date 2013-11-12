@@ -21,4 +21,8 @@ class HonorsThesis < Contribution
       'NEEDS FIXING'
     end
   end
+
+  def source
+    'UA005'
+  end
 end

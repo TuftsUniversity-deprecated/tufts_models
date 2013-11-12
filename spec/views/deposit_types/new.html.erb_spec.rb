@@ -10,10 +10,6 @@ describe 'deposit_types/new.html.erb' do
     rendered.should have_field('deposit_type[display_name]', type: 'text')
   end
 
-  it 'should have a source field' do
-    rendered.should have_field('deposit_type[source]', type: 'text')
-  end
-
   it 'should have a license_name field' do
     rendered.should have_field('deposit_type[license_name]', type: 'text')
   end

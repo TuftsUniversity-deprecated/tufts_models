@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe CapstoneProject do
+  before :all do
+    create_ead('UA015')
+  end
+
+  it_behaves_like 'rels-ext collection and ead correspond to source value', 'UA015'
+
   describe "validation" do
     describe "on degree" do
       it "should require a degree" do
@@ -14,8 +20,8 @@ describe CapstoneProject do
     before do
       subject.degree = 'LLM'
       subject.description = 'student provided description'
-      
     end
+
     it "should get prefixed" do
       expect(subject.tufts_pdf.description).to eq ["Submitted in partial fulfillment of the degree Masters of Law in International Law at the Fletcher School of Law and Diplomacy. Abstract: student provided description"]
     end

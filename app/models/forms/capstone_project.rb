@@ -17,4 +17,8 @@ class CapstoneProject < Contribution
   def long_degree
     Qa::Authorities::Local.sub_authority('fletcher_degrees').full_record(degree)[:term]
   end
+
+  def source
+    'UA015'
+  end
 end
