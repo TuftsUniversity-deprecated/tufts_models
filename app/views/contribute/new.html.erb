@@ -4,6 +4,10 @@
 
 <%= bootstrap_form_for @contribution, url: contributions_path, as: 'contribution', multipart: true, :html=>{ class: 'form-horizontal well editor' } do |f| %>
 
+    <p> <strong> Note: </strong> &nbsp;
+      All fields are required unless marked optional.  Please fill in all required fields.
+    </p> <br />
+
     <%= f.file_field :attachment, label: 'PDF to upload:', accept: 'application/pdf'%>
 
     <%= render "contribute/deposit_view/#{@deposit_type.deposit_view}", :f => f  %>
@@ -16,5 +20,3 @@
     <p><%= link_to 'Cancel', contributions_path,  class: 'btn' %></p>
 
 <% end %>
-
-
