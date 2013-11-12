@@ -20,8 +20,7 @@ class ContributeController < ApplicationController
 
   def create
     authorize! :create, Contribution
-    @contribution = @deposit_type.contribution_class.new(params[:contribution])
-    insert_license_data
+    @contribution = @deposit_type.contribution_class.new(params[:contribution].merge(:deposit_type => @deposit_type))
 
     if @contribution.save
       flash[:notice] = "Your file has been saved!"
@@ -37,11 +36,6 @@ protected
     @deposit_type = DepositType.where(id: params[:deposit_type]).first
     # Redirect the user to the selection page if the deposit type is invalid or missing
     redirect_to contributions_path unless @deposit_type
-  end
-
-  def insert_license_data
-    @contribution.license = Array(@contribution.license)
-    @contribution.license << @deposit_type.license_name
   end
 
 end
