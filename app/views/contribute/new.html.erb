@@ -8,7 +8,7 @@
       All fields are required unless marked optional.  Please fill in all required fields.
     </p> <br />
 
-    <%= f.file_field :attachment, label: 'PDF to upload:', accept: 'application/pdf'%>
+    <%= f.file_field :attachment, label: 'PDF to upload', accept: 'application/pdf'%>
 
     <%= render "contribute/deposit_view/#{@deposit_type.deposit_view}", :f => f  %>
     <%= hidden_field_tag 'deposit_type', @deposit_type.id %>
