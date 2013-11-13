@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'nokogiri'
 
 describe Contribution do
   before :all do
@@ -54,11 +55,20 @@ describe Contribution do
       subject.title = 'test title'
       subject.stub(:valid? => true)
     end
+
     it "should use the sequence for the pid" do
       pid = Sequence.next_val
       Sequence.should_receive(:next_val).and_return(pid)
       subject.save
       expect(subject.tufts_pdf.pid).to eq pid
+    end
+
+    it "has OAI item ID in the rels-ext" do
+      expected_value = "oai:#{subject.tufts_pdf.pid}"
+      rels_ext = Nokogiri::XML(subject.tufts_pdf.rels_ext.content)
+      namespace = "http://www.openarchives.org/OAI/2.0/"
+      prefix = rels_ext.namespaces.key(namespace).match(/xmlns:(.*)/)[1]
+      rels_ext.xpath("//rdf:Description/#{prefix}:itemID").text.should == expected_value
     end
   end
 

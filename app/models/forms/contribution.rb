@@ -62,7 +62,7 @@ protected
       @tufts_pdf.send("#{attribute}=", send(attribute))
     end
     @tufts_pdf.license = license_data(@tufts_pdf)
-    insert_collection_and_ead_relationships
+    insert_rels_ext_relationships
   end
 
   def source
@@ -79,10 +79,11 @@ protected
     contribution.license << @deposit_type.license_name
   end
 
-  def insert_collection_and_ead_relationships
+  def insert_rels_ext_relationships
     return unless @tufts_pdf
     @tufts_pdf.collection = parent
     @tufts_pdf.ead = parent
+    @tufts_pdf.add_relationship(:oai_item_id, "oai:#{@tufts_pdf.pid}", true)
     @tufts_pdf.rels_ext.serialize!
   end
 
