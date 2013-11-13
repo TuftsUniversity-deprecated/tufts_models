@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131108160033) do
+ActiveRecord::Schema.define(version: 20131112202506) do
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id",     null: false
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20131108160033) do
     t.datetime "updated_at",        null: false
     t.string   "deposit_view"
     t.string   "license_name"
-    t.string   "source"
   end
 
   create_table "roles", force: true do |t|

@@ -82,6 +82,7 @@ describe 'Contribute' do
 
       describe "capstone_project" do
         let(:capstone_type) { FactoryGirl.create(:deposit_type, deposit_view: 'capstone_project') }
+        before { create_ead('UA015') }
         it "should draw capstone form" do
           visit "/contribute/new?deposit_type=#{capstone_type.id}"
           select 'Masters of International Business', from: 'Degree'
@@ -101,6 +102,8 @@ describe 'Contribute' do
 
       describe "honors_thesis" do
         let(:honors_thesis_type) { FactoryGirl.create(:deposit_type, deposit_view: 'honors_thesis') }
+        before { create_ead('UA005') }
+
         it "should draw honors_thesis form" do
           visit "/contribute/new?deposit_type=#{honors_thesis_type.id}"
           fill_in 'Department', with: 'Dept. of Biology'
@@ -118,6 +121,7 @@ describe 'Contribute' do
 
       describe "faculty_scholarship" do
         let(:faculty_scholarship_type) { FactoryGirl.create(:deposit_type, deposit_view: 'faculty_scholarship') }
+        before { create_ead('PB') }
 
         it "should draw faculty_scholarship form" do
           visit "/contribute/new?deposit_type=#{faculty_scholarship_type.id}"
@@ -142,6 +146,7 @@ describe 'Contribute' do
 
       describe "qualifying_paper" do
         let(:qualifying_paper_type) { FactoryGirl.create(:deposit_type, deposit_view: 'qualifying_paper') }
+        before { create_ead('UA071') }
 
         it "should draw faculty_scholarship form" do
           visit "/contribute/new?deposit_type=#{qualifying_paper_type.id}"
@@ -154,11 +159,11 @@ describe 'Contribute' do
           attach_file 'PDF to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
           click_button "Agree & Deposit"
           expect(page).to have_content "Your file has been saved!"
-
         end
       end
       describe "generic_deposit" do
         let(:generic_deposit_type) { FactoryGirl.create(:deposit_type, deposit_view: 'generic_deposit') }
+        before { create_ead('PB') }
 
         it "should draw faculty_scholarship form" do
           visit "/contribute/new?deposit_type=#{generic_deposit_type.id}"

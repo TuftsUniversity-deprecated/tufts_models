@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Contribution do
+  before :all do
+    create_ead('PB')
+  end
+
   describe "validation" do
     describe "on title" do
       it "shouldn't permit a title longer than 250 chars" do
@@ -70,15 +74,8 @@ describe Contribution do
       expected_data = [@deposit_type.license_name, 'blerg'].sort
       @contribution.tufts_pdf.license.sort.should == expected_data
     end
-
-    it 'adds collection and ead relationships' do
-      expected_collection = /^.*isMemberOf rdf:resource="info:fedora\/tufts:UA069\.001\.DO\.#{@deposit_type.source}.*$/
-      expected_ead = /^.*hasDescription rdf:resource="info:fedora\/tufts:UA069\.001\.DO\.#{@deposit_type.source}.*$/
-
-      rels_ext = @contribution.tufts_pdf.rels_ext.content
-      rels_ext.should =~ expected_collection
-      rels_ext.should =~ expected_ead
-    end
   end
+
+  it_behaves_like 'rels-ext collection and ead correspond to source value', 'PB'
 
 end

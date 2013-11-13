@@ -2,7 +2,6 @@
 
 <%= bootstrap_form_for @deposit_type, :html=>{ class: 'form-horizontal well'} do |f| %>
   <%= f.text_field :display_name %>
-  <%= f.text_field :source %>
   <%= f.select :deposit_view, DepositType.valid_desposit_views %>
   <%= f.text_field :license_name %>
   <%= f.text_area :deposit_agreement, rows: 5, class: "span8", help_block: "Use caution when entering HTML tags in the deposit agreement field.  Don't copy-paste HTML text from untrusted sources." %>

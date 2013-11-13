@@ -5,7 +5,6 @@ class DepositType < ActiveRecord::Base
   validates :display_name, presence: true, uniqueness: true
   validates :deposit_view, presence: true
   validates :license_name, presence: true
-  validates :source, presence: true
   validates_each(:deposit_view) {|record, attr, value| record.errors.add(attr, "must name a valid partial in #{PARTIAL_PATH}") unless valid_desposit_views.include? value}
 
   before_save :sanitize_deposit_agreement
