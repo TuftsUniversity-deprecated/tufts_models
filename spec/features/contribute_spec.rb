@@ -161,6 +161,7 @@ describe 'Contribute' do
           expect(page).to have_content "Your file has been saved!"
         end
       end
+
       describe "generic_deposit" do
         let(:generic_deposit_type) { FactoryGirl.create(:deposit_type, deposit_view: 'generic_deposit') }
         before { create_ead('PB') }
@@ -176,9 +177,18 @@ describe 'Contribute' do
           attach_file 'PDF to upload', File.join(fixture_path, '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf')
           click_button "Agree & Deposit"
           expect(page).to have_content "Your file has been saved!"
+        end
 
+        it "displays error if file content type is invalid" do
+          visit "/contribute/new?deposit_type=#{generic_deposit_type.id}"
+          not_a_pdf_file = File.join(fixture_path, 'tufts_RCR00001.foxml.xml')
+          attach_file 'PDF to upload', not_a_pdf_file
+          click_button "Agree & Deposit"
+          error = /is a .* file. It must be a PDF file./
+          expect(page).to have_content(error)
         end
       end
+
     end
   end
 end

@@ -7,6 +7,7 @@ class Contribution
   validates :description, presence: true, length: {maximum: 2000}
   validates :creator, presence: true
   validates :attachment, presence: true
+  validate  :attachment_has_valid_content_type
 
   class_attribute :ignore_attributes, :attributes
   
@@ -55,6 +56,10 @@ class Contribution
     form.save
   end
 
+  def valid_type_for_datastream?(dsid, type)
+    %Q{application/pdf application/x-pdf application/acrobat applications/vnd.pdf text/pdf text/x-pdf}.include?(type)
+  end
+
 protected
 
   def copy_attributes
@@ -84,6 +89,13 @@ protected
     @tufts_pdf.collection = parent
     @tufts_pdf.ead = parent
     @tufts_pdf.rels_ext.serialize!
+  end
+
+  def attachment_has_valid_content_type
+    return unless attachment
+    unless valid_type_for_datastream?(nil, attachment.content_type)
+      errors.add(:attachment, "is a #{attachment.content_type} file. It must be a PDF file.")
+    end
   end
 
   public
