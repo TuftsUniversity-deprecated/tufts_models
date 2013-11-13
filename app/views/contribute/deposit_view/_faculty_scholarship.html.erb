@@ -1,17 +1,19 @@
-<%= f.text_field :title, label: 'Title:', help_block: '(Please limit titles to 250 characters or less.)', required: true %>
+<%# NOTE: this form uses bootstrap_form_for and bootstrap_forms helpers - see: https://github.com/sethvargo/bootstrap_forms %>
 
-<%= f.text_field :creator, value: current_user.display_name, label: 'Contributor:', required: true  %>
+<%= f.text_field :title, help_block: 'Please limit titles to 250 characters or less.', required: true %>
 
-<%= f.text_field :bibliographic_citation, help_block: 'This field is optional and may be left blank' %>
+<%= f.text_field :creator, value: current_user.display_name, label: 'Contributor', required: true  %>
+
+<%= f.text_field :bibliographic_citation, help_block: 'Bibliographic citation is optional and may be left blank' %>
 
 <div class="control-group">
-  <%= f.label :other_authors, 'Other authors:', :class => "control-label" %>
+  <%= f.label :other_authors, :class => "control-label" %>
   <div class="controls" id="additional_other_authors_clone">
     <%= text_field_tag 'contribution[other_authors][]', nil, id: 'contribution_other_authors', :class => 'input-large' %>
     <%= add_field(:other_authors) %>
-    <span class="help-block"> This field is optional and may be left blank </span>
+    <span class="help-block"> The other authors field is optional and may be left blank </span>
   </div>
   <div id="additional_other_authors_elements"></div>
 </div>
 
-<%= f.text_area :description, label: 'Short description:', help_block: '(Please limit description to 2000 characters or less.)', rows: 5, class: 'span8', required: true %>
+<%= f.text_area :description, label: 'Short description', help_block: 'Please limit description to 2000 characters or less.', rows: 5, class: 'span8', required: true %>
