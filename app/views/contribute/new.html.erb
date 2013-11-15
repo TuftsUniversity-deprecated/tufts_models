@@ -5,7 +5,7 @@
 <%= bootstrap_form_for @contribution, url: contributions_path, as: 'contribution', multipart: true, :html=>{ class: 'form-horizontal well editor', novalidate: true } do |f| %>
 
     <p> <strong> Note: </strong> &nbsp;
-      All fields are required unless marked optional.  Please fill in all required fields.
+      All fields are required unless marked optional.
     </p> <br />
 
     <%= f.file_field :attachment, label: 'PDF to upload', accept: 'application/pdf'%>
