@@ -8,8 +8,9 @@ Tufts::Application.routes.draw do
 
   root :to => "catalog#index", as: :authenticated_root
 
-  resources :catalog, :only => [:show, :update], :constraints => { :id => ALLOW_DOTS, :format => false }
   Blacklight::Routes.new(self, {}).catalog
+  resources :catalog, :only => [:show, :update], :constraints => { :id => ALLOW_DOTS, :format => false }
+
   resources :unpublished, :only => [:index] do
     member do
       get 'facet'
