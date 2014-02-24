@@ -74,8 +74,10 @@ $ rails s
 
 ### Load some fixture data into your dev environment
 
+Make sure jetty is running, then run the rake task:
+
 ```bash
-rake db:fixtures:load
+rake fixtures
 ```
 
 ### Importing deposit types from a CSV file

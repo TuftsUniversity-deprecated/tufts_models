@@ -1,5 +1,6 @@
 require 'jettywrapper'
 
+desc 'Load fixture data'
 task :fixtures => :environment do
   FIXTURES = %w(tufts:WP0001
     tufts:UA069.001.DO.UP029
