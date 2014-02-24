@@ -72,6 +72,12 @@ $ rails s
 
 ## Loading Data
 
+### Load some fixture data into your dev environment
+
+```bash
+rake db:fixtures:load
+```
+
 ### Importing deposit types from a CSV file
 
 The CSV file is expected to have the headers:  
