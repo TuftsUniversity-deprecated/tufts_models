@@ -64,6 +64,7 @@ describe Contribution do
     end
 
     it "has OAI item ID in the rels-ext" do
+      subject.save
       expected_value = "oai:#{subject.tufts_pdf.pid}"
       rels_ext = Nokogiri::XML(subject.tufts_pdf.rels_ext.content)
       namespace = "http://www.openarchives.org/OAI/2.0/"
