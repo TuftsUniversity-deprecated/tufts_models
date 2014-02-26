@@ -144,7 +144,7 @@ class TuftsBase < ActiveFedora::Base
     if save
       # Now copy to prod
       # Rubydora::FedoraInvalidRequest
-      foxml = self.inner_object.repository.export(pid: pid, context: 'archive')
+      foxml = self.inner_object.repository.api.export(pid: pid, context: 'archive')
       # You can't ingest to a pid that already exists, so try to purge it first
       production_fedora_connection.purge_object(pid: pid) rescue RestClient::ResourceNotFound
       production_fedora_connection.ingest(file: foxml)
