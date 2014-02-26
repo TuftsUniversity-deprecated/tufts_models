@@ -18,7 +18,6 @@ class TuftsBase < ActiveFedora::Base
   attr_accessor :push_production, :working_user
 
   before_save do
-
     self.edited_at = DateTime.now
     self.admin.published_at = edited_at if push_production
 
@@ -32,6 +31,8 @@ class TuftsBase < ActiveFedora::Base
     # Don't change existing OAI IDs, but for any objects with a display portal of 'dl', generate an OAI ID
     if displays.include?('dl') && !object_relations.has_predicate?(:oai_item_id)
       self.add_relationship(:oai_item_id, "oai:#{pid}", true)
+      # we didn't use .serialize! here because it would mark the model as clean and then
+      # never actually save to Fedora
       self.rels_ext.content = rels_ext.to_rels_ext()
     end
   end
