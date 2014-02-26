@@ -84,7 +84,6 @@ protected
     return unless @tufts_pdf
     @tufts_pdf.collection = parent
     @tufts_pdf.ead = parent
-    @tufts_pdf.add_relationship(:oai_item_id, "oai:#{@tufts_pdf.pid}", true)
     @tufts_pdf.rels_ext.serialize!
   end
 
