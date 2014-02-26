@@ -20,11 +20,20 @@ class TuftsBase < ActiveFedora::Base
   before_save do
     self.edited_at = DateTime.now
     self.admin.published_at = edited_at if push_production
+
     if content_will_update 
       self.audit(working_user, "Content updated: #{content_will_update}")
       self.content_will_update = nil
     elsif metadata_streams.any? { |ds| ds.changed? }
       self.audit(working_user, "Metadata updated #{metadata_streams.select { |ds| ds.changed? }.map{ |ds| ds.dsid}.join(', ')}")
+    end
+
+    # Don't change existing OAI IDs, but for any objects with a display portal of 'dl', generate an OAI ID
+    if displays.include?('dl') && !object_relations.has_predicate?(:oai_item_id)
+      self.add_relationship(:oai_item_id, "oai:#{pid}", true)
+      # we didn't use .serialize! here because it would mark the model as clean and then
+      # never actually save to Fedora
+      self.rels_ext.content = rels_ext.to_rels_ext()
     end
   end
 
