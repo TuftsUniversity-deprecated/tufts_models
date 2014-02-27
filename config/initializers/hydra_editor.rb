@@ -1,1 +1,1 @@
-HydraEditor.models = ['TuftsPdf', 'TuftsAudio', 'TuftsImage', 'TuftsEAD', 'TuftsAudioText', 'TuftsGenericObject']
+HydraEditor.models = ['TuftsPdf', 'TuftsAudio', 'TuftsImage', 'TuftsEAD', 'TuftsAudioText', 'TuftsGenericObject', 'TuftsTemplate']

@@ -7,11 +7,13 @@ describe RecordsHelper do
        "Collection guide" => "TuftsEAD",
        "Generic object" => "TuftsGenericObject",
        'Image' => 'TuftsImage',
-       'PDF' => 'TuftsPdf'}
+       'PDF' => 'TuftsPdf',
+       'Template' => 'TuftsTemplate'}
   end
 
   it "should have model_labels" do
     helper.model_label('TuftsAudio').should == 'audio'
     helper.model_label('TuftsPdf').should == 'PDF'
+    helper.model_label('TuftsTemplate').should == 'Template'
   end
 end

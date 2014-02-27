@@ -315,6 +315,8 @@ module Tufts
         pid.starts_with?("tufts:UP") ? "Periodicals" : "Text"
       when "info:fedora/cm:Object.Generic","info:fedora/afmodel:TuftsGenericObject"
         "Generic Objects"
+      when "info:fedora/afmodel:TuftsTemplate"
+        "Template"
       else
         COLLECTION_ERROR_LOG.error "Could not determine Format for : #{pid} with model #{model.inspect}"
       end

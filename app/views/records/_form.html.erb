@@ -1,6 +1,7 @@
 <div id="descriptions_display">
-    <%= bootstrap_form_for @record, :url=>hydra_editor.record_path(@record), html: {:class => 'form-inline editor'} do |f| %>
+  <%= bootstrap_form_for @record, :url=>hydra_editor.record_path(@record), html: {:class => 'form-inline editor'} do |f| %>
     <h2 class="non lower">Descriptions <small class="pull-right"><span class="error">*</span> indicates required fields</small> </h2>
+
     <div class="well">
       <div class="control-group">
         PID: <%=@record.pid %>
@@ -9,14 +10,17 @@
         <%= render :partial => "edit_field", :locals => {:f =>f, :render_req => true, :key => term } %>
       <% end %>
     </div><!-- /well -->
+
     <h3>Admin metadata</h3>
     <div class="well">
       <% @record.admin_display_fields.each do |term| %>
         <%= render :partial => "edit_field", :locals => {:f =>f, :render_req => true, :key => term } %>
       <% end %>
     </div><!-- /well -->
+
     <%= hidden_field_tag :type, params[:type] %>
     <%= hidden_field_tag :pid, params[:pid] if controller.action_name == 'new'%>
+
     <div class="form-actions floating">
       <%= f.submit 'Save', 'data-disable-with'=>"Saving..." %>
       <% if @record.DCA_META.versions.empty? %>

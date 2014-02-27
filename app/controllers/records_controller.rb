@@ -19,7 +19,7 @@ class RecordsController < ApplicationController
       else
         @record = params[:type].constantize.new(args)
         @record.save(validate: false)
-        redirect_to record_attachments_path(@record)
+        redirect_to next_page
       end
     else
       flash[:error] = "You have specified an invalid pid. A valid pid must contain a colon (i.e. tufts:1231)"
@@ -65,6 +65,14 @@ class RecordsController < ApplicationController
 
   def load_object
     @record = ActiveFedora::Base.find(params[:id], cast: true)
+  end
+
+  def next_page
+    if @record.is_a?(TuftsTemplate)
+      hydra_editor.edit_record_path(@record)
+    else
+      record_attachments_path(@record)
+    end
   end
 
 end

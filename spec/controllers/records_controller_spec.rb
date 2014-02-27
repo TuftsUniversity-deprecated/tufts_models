@@ -17,12 +17,26 @@ describe RecordsController do
         response.should be_successful
         response.should render_template(:choose_type)
       end
+
       it "should be successful without a pid" do
         get :new, :type=>'TuftsAudio'
         assigns[:record].should be_kind_of TuftsAudio
         assigns[:record].should_not be_new_object
         response.should redirect_to Tufts::Application.routes.url_helpers.record_attachments_path(assigns[:record]) 
       end
+
+      describe 'with type TuftsTemplate' do
+        before { get :new, :type=>'TuftsTemplate' }
+
+        it 'creates a new template' do
+          assigns[:record].should be_kind_of TuftsTemplate
+        end
+
+        it 'redirects to allow you to edit the new template' do
+          response.should redirect_to HydraEditor::Engine.routes.url_helpers.edit_record_path(assigns[:record])
+        end
+      end
+
       describe "with a pid" do
         before do
           begin
@@ -39,6 +53,7 @@ describe RecordsController do
           assigns[:record].pid.should == 'tufts:123.1231'
         end
       end
+
       describe "with the pid of an existing object" do
         let(:record) { TuftsAudio.create(title: "existing") }
         it "should redirect to the edit page and give a warning" do
@@ -47,6 +62,7 @@ describe RecordsController do
           flash[:alert].should == "A record with the pid \"#{record.id}\" already exists."
         end
       end
+
       it "should be an error with an invalid pid" do
         get :new, :type=>'TuftsAudio', :pid => '123.1231'
         response.should be_successful
