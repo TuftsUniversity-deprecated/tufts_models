@@ -22,6 +22,23 @@ feature 'View unpublished documents' do
     page.should have_link('Very unique title', href: catalog_path(@not_production) )
     page.should_not have_link('Very unique title', href: catalog_path(@production) )
   end
+
+  context 'with a TuftsTemplate' do
+    before do
+      TuftsTemplate.destroy_all
+      @template = TuftsTemplate.new(title: 'My Template')
+      @template.save!
+      visit root_path
+      click_link 'Unpublished objects'
+    end
+
+    after { @template.delete }
+
+    it 'does not include the template in the results' do
+      page.should have_link('Very unique title', href: catalog_path(@not_production) )
+      page.should_not have_link('My Template', href: catalog_path(@template) )
+    end
+  end
 end
 
 feature "Finding self-deposited documents using facets" do
