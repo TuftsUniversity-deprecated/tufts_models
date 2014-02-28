@@ -27,13 +27,13 @@
     <%= link_to "Manage Datastreams", record_attachments_path(@document) %>
   </li>
 
-  <% if  @document.published? %>
-    <li class="disabled">
-      <%= link_to "Publish", '#' %>
+  <% if @document.publishable? %>
+    <li>
+      <%= link_to "Publish", publish_record_path(@document), method: :post %>
     </li>
   <% else %>
-    <li>
-      <%= link_to "Publish", publish_record_path(@document), method: :post%>
+    <li class="disabled">
+      <%= link_to "Publish", '#' %>
     </li>
   <% end %>
 

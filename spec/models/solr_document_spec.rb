@@ -31,4 +31,22 @@ describe SolrDocument do
     end
   end
 
+  describe 'Templates' do
+    before do
+      edit_date_key = Solrizer.solr_name("edited_at", :stored_sortable, type: :date)
+      @template = SolrDocument.new('active_fedora_model_ssi' => 'TuftsTemplate', edit_date_key => Time.now)
+      @pdf = SolrDocument.new('active_fedora_model_ssi' => 'TuftsPdf', edit_date_key => Time.now)
+    end
+
+    it 'knows whether or not an object is a template' do
+      @template.template?.should be_true
+      @pdf.template?.should be_false
+    end
+
+    it 'are not publishable' do
+      @template.publishable?.should be_false
+      @pdf.publishable?.should be_true
+    end
+  end
+
 end

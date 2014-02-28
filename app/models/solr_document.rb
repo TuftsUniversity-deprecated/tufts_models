@@ -10,6 +10,14 @@ class SolrDocument
       self[Solrizer.solr_name("published_at", :stored_sortable, type: :date)]
   end
 
+  def publishable?
+    !published? && !template?
+  end
+
+  def template?
+    self['active_fedora_model_ssi'] == 'TuftsTemplate'
+  end
+
   def preview_fedora_path
     Settings.preview_fedora_url + "/objects/#{id}" 
   end
@@ -21,4 +29,5 @@ class SolrDocument
       return nil
     end
   end
+
 end
