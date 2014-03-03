@@ -58,6 +58,9 @@ GEM
       sass (~> 3.2)
     bootstrap_forms (4.0.1)
     builder (3.1.4)
+    byebug (2.6.0)
+      columnize (~> 0.3)
+      debugger-linecache (~> 1.2)
     cancan (1.6.10)
     capybara (2.2.1)
       mime-types (>= 1.16)
@@ -75,8 +78,10 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    columnize (0.3.6)
     curb (0.8.5)
     daemons (1.1.9)
+    debugger-linecache (1.2.0)
     deprecation (0.1.0)
       activesupport
     devise (3.2.3)
@@ -323,6 +328,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   bootstrap_forms
+  byebug
   capybara
   chronic
   coffee-rails (~> 4.0.0)

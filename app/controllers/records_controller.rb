@@ -58,6 +58,10 @@ class RecordsController < ApplicationController
     @record.working_user = current_user
     # set rightsMetadata access controls
     @record.apply_depositor_metadata(current_user)
+
+    # pull out because it's not a real attribute (it's derived, but still updatable)
+    @record.stored_collection_id = params[ActiveModel::Naming.singular(@record)].delete(:stored_collection_id).try(&:first)
+
     super
   end
 

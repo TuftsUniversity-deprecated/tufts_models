@@ -70,6 +70,25 @@ module BaseModel
 
   end  # end "included" section
 
+  # If the ead this object belongs to doesn't exist, ActiveFedora won't load it.
+  # We give access to that value manually, here.
+  def stored_collection_id
+    is_member_of = object_relations.uri_predicate(:is_member_of)
+    has_description = object_relations.uri_predicate(:has_description)
+    collection_id ||
+      ead_id ||
+      object_relations.relationships[is_member_of].first.try{|m| m.gsub("info:fedora/", "")} ||
+      object_relations.relationships[has_description].first.try{|m| m.gsub("info:fedora/", "")}
+  end
+
+  def stored_collection_id=(pid)
+    [:has_description, :is_member_of].each do |predicate_name|
+      predicate = object_relations.uri_predicate(predicate_name)
+      clear_relationship(predicate)
+      add_relationship(predicate, 'info:fedora/' + pid) if pid.present?
+    end
+    self.rels_ext.content = rels_ext.to_rels_ext()
+  end
 
   def audit(user, what)
     return unless user
