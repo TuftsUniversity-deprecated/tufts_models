@@ -146,6 +146,10 @@ describe RecordsController do
           assigns[:record].datastreams['ACCESS_MP3'].dsLocation.should == 'http://example.com/access.mp3'
           assigns[:record].datastreams['ARCHIVAL_SOUND'].dsLocation.should == 'http://example.com/archival.wav'
         end
+        it 'should update the collection id' do
+          put :update, :id=>@audio, :tufts_audio=>{:stored_collection_id=>["updated_id"]}
+          assigns[:record].stored_collection_id.should == 'updated_id'
+        end
       end
       
       describe "with an image" do

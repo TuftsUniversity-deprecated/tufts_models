@@ -40,6 +40,7 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'factory_girl_rails'
+  gem 'byebug', require: false
 end
 
 gem 'chronic' # for lib/tufts/model_methods.rb
