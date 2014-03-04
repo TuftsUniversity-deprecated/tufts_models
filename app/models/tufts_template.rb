@@ -19,13 +19,37 @@ class TuftsTemplate < ActiveFedora::Base
     false
   end
 
+  def queue_jobs_to_apply_template(user_id, record_ids)
+    attrs = attributes_to_update
+    return if attrs.empty?
+
+    record_ids.each do |id|
+      job = Job::ApplyTemplate.new(user_id, id, attrs)
+      Tufts.queue.push(job)
+    end
+  end
+
+  def attributes_to_update
+    terms_for_editing.inject({}) do |attrs, attribute|
+      value_of_attr = self.send(attribute)
+      unless attr_empty?(value_of_attr)
+        attrs.merge!(attribute => value_of_attr)
+      end
+      attrs
+    end
+  end
+
+private
+
+  def attr_empty?(value)
+    Array(value).all?{|x| x.blank? }
+  end
+
 end
 
 
 class UnpublishableModelError < StandardError
-
   def message
     'Templates cannot be pushed to production'
   end
-
 end

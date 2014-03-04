@@ -200,4 +200,22 @@ module BaseModel
     true
   end
 
+  def apply_attributes(attributes, user_id = nil)
+    # For attributes that can have multiple values, we want to
+    # add the new value to the existing values, not overwrite
+    # the existing values.
+    attrs_for_update = {}
+    attributes.each do |key, value|
+      if self.class.multiple?(key)
+        attrs_for_update[key] = self.send(key)
+        attrs_for_update[key] << value
+      else
+        attrs_for_update[key] = value
+      end
+    end
+
+    self.working_user = User.where(id: user_id).first
+    update_attributes(attrs_for_update)
+  end
+
 end
