@@ -31,6 +31,15 @@ RSpec.configure do |config|
   #     --seed 1234
   #
   config.order = "random"
+
+  config.before(:all) do
+    clean_fedora_and_solr
+  end
+
+  config.after(:all) do
+    clean_fedora_and_solr
+  end
+
 end
 
 def create_ead(source)
@@ -39,3 +48,10 @@ def create_ead(source)
     TuftsEAD.create!(pid: pid, title: "Test #{source}")
   end
 end
+
+def clean_fedora_and_solr
+  ActiveFedora::Base.delete_all
+  solr = ActiveFedora::SolrService.instance.conn
+  solr.delete_by_query("*:*", params: { commit: true })
+end
+
