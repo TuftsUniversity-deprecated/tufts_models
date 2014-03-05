@@ -30,13 +30,19 @@ class TuftsTemplate < ActiveFedora::Base
   end
 
   def attributes_to_update
-    terms_for_editing.inject({}) do |attrs, attribute|
+    attrs = terms_for_editing.inject({}) do |attrs, attribute|
       value_of_attr = self.send(attribute)
       unless attr_empty?(value_of_attr)
         attrs.merge!(attribute => value_of_attr)
       end
       attrs
     end
+
+    unless attr_empty?(stored_collection_id)
+      attrs.merge!(stored_collection_id: stored_collection_id)
+    end
+
+    attrs
   end
 
 private

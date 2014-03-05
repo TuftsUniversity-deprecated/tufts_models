@@ -39,11 +39,20 @@ describe TuftsTemplate do
       result.include?(:discover_users).should be_false
     end
 
+    it 'includes stored_collection_id' do
+      attrs = { stored_collection_id: 'collection:123',
+                filesize: ['57 MB'] }
+      template = TuftsTemplate.new(attrs)
+      result = template.attributes_to_update
+      result.include?(:stored_collection_id).should be_true
+    end
+
     it 'removes empty attributes from the list' do
       attrs = { title: '',
                 filesize: [''],
                 toc: nil,
                 genre: [],
+                stored_collection_id: '',
                 description: ['a description'] }
       template = TuftsTemplate.new(attrs)
       result = template.attributes_to_update
@@ -51,6 +60,7 @@ describe TuftsTemplate do
       result.include?(:filesize).should be_false
       result.include?(:toc).should be_false
       result.include?(:genre).should be_false
+      result.include?(:stored_collection_id).should be_false
       result.include?(:description).should be_true
     end
   end

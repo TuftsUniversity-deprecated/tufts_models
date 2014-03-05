@@ -70,6 +70,7 @@ module BaseModel
 
   end  # end "included" section
 
+
   # If the ead this object belongs to doesn't exist, ActiveFedora won't load it.
   # We give access to that value manually, here.
   def stored_collection_id
@@ -110,7 +111,7 @@ module BaseModel
   # The list of all fields on this object that can be edited.
   # this governs the values that will be accepted from the form submission
   def terms_for_editing
-    terms_for_display 
+    terms_for_display
   end
 
   def terms_for_display
@@ -201,10 +202,14 @@ module BaseModel
   end
 
   def apply_attributes(attributes, user_id = nil)
+    # stored_collection_id is a special case because it's
+    # not a defined attribute in active-fedora; it's a
+    # derived attribute.
+    attrs_for_update = { stored_collection_id: attributes.delete(:stored_collection_id) }
+
     # For attributes that can have multiple values, we want to
     # add the new value to the existing values, not overwrite
     # the existing values.
-    attrs_for_update = {}
     attributes.each do |key, value|
       if self.class.multiple?(key)
         attrs_for_update[key] = self.send(key)

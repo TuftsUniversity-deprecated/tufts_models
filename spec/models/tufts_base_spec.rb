@@ -143,6 +143,12 @@ describe TuftsBase do
       @obj.description.should == ['old desc 1', 'old desc 2', 'new desc']
     end
 
+    it 'handles derived attribute stored_collection_id' do
+      @obj.apply_attributes(stored_collection_id: 'hello:123')
+      @obj.reload
+      @obj.stored_collection_id.should == 'hello:123'
+    end
+
     it 'adds new attributes if they didnt exist' do
       @obj.toc.should be_empty
       @obj.apply_attributes(toc: 'new toc')
