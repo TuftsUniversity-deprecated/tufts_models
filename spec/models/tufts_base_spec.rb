@@ -143,6 +143,12 @@ describe TuftsBase do
       @obj.description.should == ['old desc 1', 'old desc 2', 'new desc']
     end
 
+    it 'doesnt duplicate multi-value entries' do
+      @obj.apply_attributes(description: ['old desc 1'])
+      @obj.reload
+      @obj.description.should == ['old desc 1', 'old desc 2']
+    end
+
     it 'handles derived attribute stored_collection_id' do
       @obj.apply_attributes(stored_collection_id: 'hello:123')
       @obj.reload

@@ -212,8 +212,7 @@ module BaseModel
     # the existing values.
     attributes.each do |key, value|
       if self.class.multiple?(key)
-        attrs_for_update[key] = self.send(key)
-        attrs_for_update[key] << value
+        attrs_for_update[key] = (self.send(key) + Array(value)).uniq
       else
         attrs_for_update[key] = value
       end
