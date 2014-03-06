@@ -222,4 +222,7 @@ module BaseModel
     update_attributes(attrs_for_update)
   end
 
+  def has_thumbnail?
+    false
+  end
 end

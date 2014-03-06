@@ -94,6 +94,9 @@ class TuftsImage < TuftsBase
     output_path
   end
 
+  def has_thumbnail?
+    true
+  end
 
   def load_image_transformer
     #TODO tif may not be the only valid extension, 

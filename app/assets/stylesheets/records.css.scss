@@ -12,6 +12,9 @@
 
 #descriptions_display {
   h3 {
-    small { font-size: 17.5px; }
+    small {
+      font-size: 17.5px;
+      clear: right; // make sure this appears below any thumbnails
+    }
   }
 }
