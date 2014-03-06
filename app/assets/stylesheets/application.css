@@ -11,6 +11,7 @@
  *= require_self
  *= require_tree .
  *= require hydra-editor/hydra-editor
+ *= require batch_edit
  */
 
 .bar {

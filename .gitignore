@@ -35,3 +35,6 @@ config/devise.yml
 
 #
 spec/fixtures/local_object_store
+
+# Ignore ctags files
+tags

@@ -19,5 +19,6 @@
 //= require bootstrap-typeahead
 //= require hydra-editor/hydra-editor
 //= require jquery-fileupload/basic
+//= require batch_edit
 //= require_tree .
 //

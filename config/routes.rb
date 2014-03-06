@@ -11,6 +11,8 @@ Tufts::Application.routes.draw do
   Blacklight::Routes.new(self, {}).catalog
   resources :catalog, :only => [:show, :update], :constraints => { :id => ALLOW_DOTS, :format => false }
 
+  Hydra::BatchEdit.add_routes(self)
+
   resources :unpublished, :only => [:index] do
     member do
       get 'facet'
