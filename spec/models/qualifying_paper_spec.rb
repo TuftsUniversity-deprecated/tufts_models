@@ -1,11 +1,8 @@
 require 'spec_helper'
 
 describe QualifyingPaper do
-  before :all do
-    create_ead('UA071')
-  end
 
-  it_behaves_like 'rels-ext collection and ead correspond to source value', 'UA071'
+  it_behaves_like 'rels-ext collection and ead correspond to parent collection'
 
   describe "description" do
     before do

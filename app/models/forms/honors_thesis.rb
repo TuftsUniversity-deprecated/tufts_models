@@ -22,7 +22,7 @@ class HonorsThesis < Contribution
     end
   end
 
-  def source
-    'UA005'
+  def parent_collection
+    'tufts:UA069.001.DO.UA005'
   end
 end

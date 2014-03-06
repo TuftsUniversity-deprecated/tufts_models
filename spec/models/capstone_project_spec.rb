@@ -1,11 +1,8 @@
 require 'spec_helper'
 
 describe CapstoneProject do
-  before :all do
-    create_ead('UA015')
-  end
 
-  it_behaves_like 'rels-ext collection and ead correspond to source value', 'UA015'
+  it_behaves_like 'rels-ext collection and ead correspond to parent collection'
 
   describe "validation" do
     describe "on degree" do

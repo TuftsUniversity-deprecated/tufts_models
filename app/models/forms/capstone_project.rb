@@ -18,7 +18,7 @@ class CapstoneProject < Contribution
     Qa::Authorities::Local.sub_authority('fletcher_degrees').full_record(degree)[:term]
   end
 
-  def source
-    'UA015'
+  def parent_collection
+    'tufts:UA069.001.DO.UA015'
   end
 end

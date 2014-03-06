@@ -42,10 +42,11 @@ RSpec.configure do |config|
 
 end
 
-def create_ead(source)
-  pid = "tufts:UA069.001.DO.#{source}"
-  unless TuftsEAD.exists?(pid)
-    TuftsEAD.create!(pid: pid, title: "Test #{source}")
+def find_or_create_ead(pid)
+  if TuftsEAD.exists?(pid)
+    TuftsEAD.find(pid)
+  else
+    TuftsEAD.create!(pid: pid, title: "Test #{pid}")
   end
 end
 

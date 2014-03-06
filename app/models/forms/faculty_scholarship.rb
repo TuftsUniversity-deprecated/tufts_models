@@ -8,4 +8,8 @@ class FacultyScholarship < Contribution
     super
     @tufts_pdf.creator += [other_authors] if other_authors
   end
+
+  def parent_collection
+    'tufts:UA069.001.DO.PB'
+  end
 end

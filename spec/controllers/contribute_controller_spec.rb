@@ -5,9 +5,6 @@ describe ContributeController do
   before do
     TuftsPdf.destroy_all
   end
-  before :all do
-    create_ead('PB')
-  end
 
   describe "for a not-signed in user" do
     describe "new" do
