@@ -2,9 +2,8 @@ require 'spec_helper'
 require 'nokogiri'
 
 describe Contribution do
-  before :all do
-    create_ead('PB')
-  end
+
+  default_collection = 'tufts:UA069.001.DO.PB'
 
   describe "validation" do
     describe "on title" do
@@ -71,6 +70,16 @@ describe Contribution do
       prefix = rels_ext.namespaces.key(namespace).match(/xmlns:(.*)/)[1]
       rels_ext.xpath("//rdf:Description/#{prefix}:itemID").text.should == expected_value
     end
+
+    it 'sets a parent collection' do
+      subject.tufts_pdf.stored_collection_id == 'tufts:UA069.001.DO.PB'
+    end
+
+    it "sets ead and collection relationships if collection object exists" do
+      ead = create_ead('PB')
+      subject.tufts_pdf.ead == ead
+      subject.tufts_pdf.collection == ead
+    end
   end
 
   describe "with deposit_type" do
@@ -84,6 +93,10 @@ describe Contribution do
     it 'adds license data to the deposit' do
       expected_data = [@deposit_type.license_name, 'blerg'].sort
       @contribution.tufts_pdf.license.sort.should == expected_data
+    end
+
+    it 'sets a parent collection' do
+      @contribution.tufts_pdf.stored_collection_id == 'tufts:UA069.001.DO.PB'
     end
   end
 

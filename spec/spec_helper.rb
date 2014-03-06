@@ -44,7 +44,9 @@ end
 
 def create_ead(source)
   pid = "tufts:UA069.001.DO.#{source}"
-  unless TuftsEAD.exists?(pid)
+  if TuftsEAD.exists?(pid)
+    TuftsEAD.find(pid)
+  else
     TuftsEAD.create!(pid: pid, title: "Test #{source}")
   end
 end
