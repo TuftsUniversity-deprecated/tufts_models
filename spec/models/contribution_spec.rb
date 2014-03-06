@@ -3,8 +3,6 @@ require 'nokogiri'
 
 describe Contribution do
 
-  default_collection = 'tufts:UA069.001.DO.PB'
-
   describe "validation" do
     describe "on title" do
       it "shouldn't permit a title longer than 250 chars" do
@@ -47,6 +45,16 @@ describe Contribution do
     subject.license.should == ['License 1', 'License 2']
   end
 
+  it 'sets a parent collection' do
+    subject.tufts_pdf.stored_collection_id.should == 'tufts:UA069.001.DO.PB'
+  end
+
+  it "returns ead and collection relationships when the collection object exists" do
+    ead = find_or_create_ead('tufts:UA069.001.DO.PB')
+    subject.tufts_pdf.ead.should == ead
+    subject.tufts_pdf.collection.should == ead
+  end
+
   describe "saving" do
     before do
       path = '/local_object_store/data01/tufts/central/dca/MISS/archival_pdf/MISS.ISS.IPPI.archival.pdf'
@@ -71,15 +79,6 @@ describe Contribution do
       rels_ext.xpath("//rdf:Description/#{prefix}:itemID").text.should == expected_value
     end
 
-    it 'sets a parent collection' do
-      subject.tufts_pdf.stored_collection_id == 'tufts:UA069.001.DO.PB'
-    end
-
-    it "sets ead and collection relationships if collection object exists" do
-      ead = create_ead('PB')
-      subject.tufts_pdf.ead == ead
-      subject.tufts_pdf.collection == ead
-    end
   end
 
   describe "with deposit_type" do
@@ -96,10 +95,10 @@ describe Contribution do
     end
 
     it 'sets a parent collection' do
-      @contribution.tufts_pdf.stored_collection_id == 'tufts:UA069.001.DO.PB'
+      @contribution.tufts_pdf.stored_collection_id.should == 'tufts:UA069.001.DO.PB'
     end
   end
 
-  it_behaves_like 'rels-ext collection and ead correspond to source value', 'PB'
+  it_behaves_like 'rels-ext collection and ead correspond to parent collection'
 
 end
