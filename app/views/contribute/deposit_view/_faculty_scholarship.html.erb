@@ -6,14 +6,6 @@
 
 <%= f.text_field :bibliographic_citation, help_block: '<b>Optional</b> - the bibliographic citation field may be left blank'.html_safe %>
 
-<div class="control-group">
-  <%= f.label :other_authors, :class => "control-label" %>
-  <div class="controls" id="additional_other_authors_clone">
-    <%= text_field_tag 'contribution[other_authors][]', nil, id: 'contribution_other_authors', :class => 'input-large' %>
-    <%= add_field(:other_authors) %>
-    <span class="help-block"> <b>Optional</b> - the other authors field may be left blank </span>
-  </div>
-  <div id="additional_other_authors_elements"></div>
-</div>
+<%= other_authors_fields(@contribution, f) %>
 
 <%= f.text_area :description, label: 'Short description', help_block: 'Please limit description to 2000 characters or less.', rows: 5, class: 'span8', required: true %>
