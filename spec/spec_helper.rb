@@ -23,7 +23,15 @@ RSpec.configure do |config|
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
-  config.before(:suite) { User.destroy_all}
+
+  config.before(:suite) do
+    User.destroy_all
+    clean_fedora_and_solr
+  end
+
+  config.after(:suite) do
+    clean_fedora_and_solr
+  end
 
   # Run specs in random order to surface order dependencies. If you find an
   # order dependency and want to debug it, you can fix the order by providing
@@ -31,14 +39,6 @@ RSpec.configure do |config|
   #     --seed 1234
   #
   config.order = "random"
-
-  config.before(:all) do
-    clean_fedora_and_solr
-  end
-
-  config.after(:all) do
-    clean_fedora_and_solr
-  end
 
 end
 
