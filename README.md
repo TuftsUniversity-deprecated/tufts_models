@@ -74,15 +74,7 @@ $ rails s
 
 ### Load some fixture data into your dev environment
 
-Make sure jetty is running before you run the rake tasks.
-
-Load the 4 base types of EADs:
-
-```bash
-rake db:dev:seed
-```
-
-Load some file from the spec directory:
+Make sure jetty is running, then run the rake task:
 
 ```bash
 rake fixtures
