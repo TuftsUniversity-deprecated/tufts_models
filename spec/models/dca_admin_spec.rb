@@ -1,6 +1,13 @@
 require 'spec_helper'
 
 describe DcaAdmin do
+
+  it 'has template_title' do
+    title = 'Title for a Template'
+    subject.template_title = title
+    subject.template_title.should == [title]
+  end
+
   it "should have a published date" do
     time = DateTime.parse('2013-03-22T12:33:00Z')
     subject.published_at = time

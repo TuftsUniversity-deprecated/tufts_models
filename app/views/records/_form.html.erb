@@ -3,6 +3,10 @@
       <div class="control-group">
         PID: <%=@record.pid %>
       </div>
+      <div class='clearfix'> </div>
+
+    <%= render :partial => "template_fields", :locals => {:f => f } %>
+
     <h3 class="non lower"> Descriptive Metadata <small class="pull-right"><span class="error">*</span> indicates required fields</small> </h3>
 
     <div class="well">

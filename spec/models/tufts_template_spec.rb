@@ -2,9 +2,20 @@ require 'spec_helper'
 
 describe TuftsTemplate do
 
-  it 'has no required fields' do
+  it 'most metadata attributes are not required' do
     subject.required?(:title).should be_false
     subject.required?(:displays).should be_false
+  end
+
+  describe 'template_title attribute' do
+    it 'getter and setter methods exist' do
+      subject.template_title = 'Title #1'
+      subject.template_title.should == 'Title #1'
+    end
+
+    it 'is required' do
+      subject.required?(:template_title).should be_true
+    end
   end
 
   describe 'publishing' do

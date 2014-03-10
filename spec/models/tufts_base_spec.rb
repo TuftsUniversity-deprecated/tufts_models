@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe TuftsBase do
 
+  it 'knows which fields to display for admin metadata' do
+    subject.admin_display_fields.should == [:steward, :name, :comment, :retentionPeriod, :displays, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note, :createdby, :creatordept]
+  end
+
   describe 'OAI ID' do
 
     it "assigns an OAI ID to an object with a 'dl' display" do

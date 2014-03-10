@@ -26,7 +26,7 @@ feature 'View unpublished documents' do
   context 'with a TuftsTemplate' do
     before do
       TuftsTemplate.destroy_all
-      @template = TuftsTemplate.new(title: 'My Template')
+      @template = TuftsTemplate.new(template_title: 'My Template')
       @template.save!
       visit root_path
       click_link 'Unpublished objects'

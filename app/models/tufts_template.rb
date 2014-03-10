@@ -1,10 +1,8 @@
 class TuftsTemplate < ActiveFedora::Base
   include BaseModel
 
-  # Fields can be left blank in a template.
-  def required?(key)
-    false
-  end
+  has_attributes :template_title, datastream: 'DCA-ADMIN', multiple: false
+  validates :template_title, presence: true
 
   def push_to_production!
     # Templates should never be pushed to the production
