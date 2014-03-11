@@ -4,7 +4,7 @@ describe TuftsAudio do
   
   describe "with access rights" do
     before do
-      @audio = TuftsAudio.new(title: 'foo')
+      @audio = TuftsAudio.new(title: 'foo', displays: ['dl'])
       @audio.read_groups = ['public']
       @audio.save!
     end
@@ -89,9 +89,6 @@ describe TuftsAudio do
   describe "displays" do
     it "should only allow one of the approved values" do
       subject.title = 'test title' #make it valid
-      subject.should be_valid # no value
-      subject.displays = 'fake'
-      subject.should_not be_valid
       subject.displays = 'dl'
       subject.should be_valid
       subject.displays = 'tisch'
@@ -104,6 +101,8 @@ describe TuftsAudio do
       subject.should be_valid
       subject.displays = 'dark'
       subject.should be_valid
+      subject.displays = 'fake'
+      subject.should_not be_valid
     end
   end
 
@@ -121,7 +120,7 @@ describe TuftsAudio do
 
   describe "push_to_production!" do
     before do
-      @audio = TuftsAudio.new(title: 'foo')
+      @audio = TuftsAudio.new(title: 'foo', displays: ['dl'])
       @audio.read_groups = ['public']
       @audio.save!
     end

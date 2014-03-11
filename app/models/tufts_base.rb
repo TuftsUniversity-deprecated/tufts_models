@@ -2,6 +2,7 @@ class TuftsBase < ActiveFedora::Base
   include BaseModel
 
   validates :title, presence: true
+  validates :displays, presence: true
   validate :displays_valid
 
   has_attributes :batch_id, datastream: 'DCA-ADMIN', multiple: true

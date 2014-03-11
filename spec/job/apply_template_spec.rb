@@ -51,7 +51,7 @@ describe Job::ApplyTemplate do
     end
 
     it 'updates the record' do
-      object = TuftsPdf.new(title: 'old title', toc: 'old toc')
+      object = TuftsPdf.new(title: 'old title', toc: 'old toc', displays: ['dl'])
       object.save!
       job = Job::ApplyTemplate.new(1, object.id, {toc: 'new toc'})
       job.run

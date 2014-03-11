@@ -4,7 +4,7 @@ describe TuftsFacultyPublication do
   
   describe "with access rights" do
     before do
-      @audio = TuftsFacultyPublication.new(title: 'test facpub')
+      @audio = TuftsFacultyPublication.new(title: 'test facpub', displays: ['dl'])
       @audio.read_groups = ['public']
       @audio.save!
     end

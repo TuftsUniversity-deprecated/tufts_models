@@ -24,7 +24,7 @@ describe "Overrides of ActiveFedora" do
 
   describe "roundtrip object from fedora" do
     it "should be cast to the correct class" do
-      obj = TuftsAudio.create!(title: "an audio")
+      obj = TuftsAudio.create!(title: "an audio", displays: ['dl'])
       ActiveFedora::Base.find(obj.pid, cast:true).should == obj
     end
   end

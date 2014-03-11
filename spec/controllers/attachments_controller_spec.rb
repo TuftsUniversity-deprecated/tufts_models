@@ -7,7 +7,7 @@ describe AttachmentsController do
       sign_in user
     end
     describe "editing a record" do
-      let(:audio) { TuftsAudio.create!(title: 'My title2', edit_users: [user.display_name]) }
+      let(:audio) { TuftsAudio.create!(title: 'My title2', edit_users: [user.display_name], displays: ['dl']) }
       after do
         audio.destroy
       end
@@ -18,7 +18,7 @@ describe AttachmentsController do
       end
     end
     describe "editing generic object" do
-      let(:generic) { TuftsGenericObject.create!(title: 'My title2', edit_users: [user.display_name]) }
+      let(:generic) { TuftsGenericObject.create!(title: 'My title2', edit_users: [user.display_name], displays: ['dl']) }
       after do
         generic.destroy
       end
@@ -29,7 +29,7 @@ describe AttachmentsController do
     end
 
     describe "uploading" do
-      let(:pdf) { TuftsPdf.create!(title: 'My title2', edit_users: [user.display_name]) }
+      let(:pdf) { TuftsPdf.create!(title: 'My title2', edit_users: [user.display_name], displays: ['dl']) }
       after do
         pdf.destroy
       end

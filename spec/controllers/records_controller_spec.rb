@@ -55,7 +55,7 @@ describe RecordsController do
       end
 
       describe "with the pid of an existing object" do
-        let(:record) { TuftsAudio.create(title: "existing") }
+        let(:record) { TuftsAudio.create(title: "existing", displays: ['dl']) }
         it "should redirect to the edit page and give a warning" do
           get :new, :type=>'TuftsAudio', :pid=>record.id
           response.should redirect_to HydraEditor::Engine.routes.url_helpers.edit_record_path(record.id)
@@ -73,7 +73,7 @@ describe RecordsController do
 
     describe "creating a new record" do
       it "should be successful" do
-        post :create, :type=>'TuftsAudio', :tufts_audio=>{:title=>"My title"}
+        post :create, :type=>'TuftsAudio', :tufts_audio=>{:title=>"My title", displays: ['dl']}
         response.should redirect_to("/catalog/#{assigns[:record].pid}") 
         assigns[:record].title.should == 'My title'
       end
@@ -81,7 +81,7 @@ describe RecordsController do
 
     describe "editing a record" do
       before do
-        @audio = TuftsAudio.new(title: 'My title2')
+        @audio = TuftsAudio.new(title: 'My title2', displays: ['dl'])
         @audio.edit_users = [@user.email]
         @audio.save!
       end
@@ -112,7 +112,7 @@ describe RecordsController do
 
       describe "on an object with an existing version of DCA-META" do
         before do
-          @audio = TuftsAudio.new(title: "My title2")
+          @audio = TuftsAudio.new(title: "My title2", displays: ['dl'])
           @audio.edit_users = [@user.email]
           @audio.save!
         end
@@ -127,7 +127,7 @@ describe RecordsController do
     describe "updating a record" do
       describe "with an audio" do
         before do
-          @audio = TuftsAudio.new(title: 'My title2')
+          @audio = TuftsAudio.new(title: 'My title2', displays: ['dl'])
           @audio.edit_users = [@user.email]
           @audio.save!
         end
@@ -154,7 +154,7 @@ describe RecordsController do
       
       describe "with an image" do
         before do
-          @image = TuftsImage.new(title: "test image")
+          @image = TuftsImage.new(title: "test image", displays: ['dl'])
           @image.edit_users = [@user.email]
           @image.save!
         end
@@ -176,7 +176,7 @@ describe RecordsController do
     describe "publish a record" do
       before do
         @routes = Tufts::Application.routes 
-        @audio = TuftsAudio.new(title: 'My title2')
+        @audio = TuftsAudio.new(title: 'My title2', displays: ['dl'])
         @audio.edit_users = [@user.email]
         @audio.save!
       end
@@ -193,7 +193,7 @@ describe RecordsController do
 
     describe "destroying a record" do
       before do
-        @audio = TuftsAudio.new(title: 'My title2')
+        @audio = TuftsAudio.new(title: 'My title2', displays: ['dl'])
         @audio.edit_users = [@user.email]
         @audio.save!
         @routes = Tufts::Application.routes 
@@ -221,7 +221,7 @@ describe RecordsController do
     end
     describe "who goes to the edit page" do
       before do
-        @audio = TuftsAudio.create!(title: 'My title2')
+        @audio = TuftsAudio.create!(title: 'My title2', displays: ['dl'])
       end
       after do
         @audio.destroy

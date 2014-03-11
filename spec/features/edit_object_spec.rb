@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Admin user edits document' do
   before do
-    @audio = TuftsAudio.new(title: 'Test title', description: 'eh?', creator: 'Fred')
+    @audio = TuftsAudio.new(title: 'Test title', description: 'eh?', creator: 'Fred', displays: ['dl'])
     @audio.save!
     sign_in :admin
   end

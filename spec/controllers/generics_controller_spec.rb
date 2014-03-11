@@ -5,7 +5,7 @@ describe GenericsController do
     before do
       @user = FactoryGirl.create(:admin)
       sign_in @user
-      @generic = TuftsGenericObject.new(title: 'My title2')
+      @generic = TuftsGenericObject.new(title: 'My title2', displays: ['dl'])
       @generic.edit_users = [@user.email]
       @generic.save!
     end

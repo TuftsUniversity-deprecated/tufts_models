@@ -10,6 +10,17 @@ describe TuftsBase do
     subject.terms_for_editing.include?(:batch_id).should be_false
   end
 
+
+  describe 'required fields:' do
+    it 'requires a title' do
+      subject.required?(:title).should be_true
+    end
+
+    it 'requires displays' do
+      subject.required?(:displays).should be_true
+    end
+  end
+
   describe 'OAI ID' do
 
     it "assigns an OAI ID to an object with a 'dl' display" do
@@ -92,8 +103,8 @@ describe TuftsBase do
 
   describe '.stored_collection_id=' do
     subject do
-      c = TuftsEAD.create(title: 'collection')
-      m = TuftsBase.new(title: 't', collection: c)
+      c = TuftsEAD.create(title: 'collection', displays: ['dl'])
+      m = TuftsBase.new(title: 't', collection: c, displays: ['dl'])
       m.save! # savign to make it write rels_ext.content
       expect(m.rels_ext.to_rels_ext).to match(/isMemberOf.+resource="info:fedora\/#{c.pid}"/)
       m
@@ -120,11 +131,11 @@ describe TuftsBase do
       # make sure this doesn't exist because we don't truncate our db before running the tests
       TuftsEAD.find(pid).destroy if TuftsEAD.exists?(pid)
 
-      m = TuftsBase.new(title: 't')
+      m = TuftsBase.new(title: 't', displays: ['dl'])
       m.stored_collection_id = pid
       m.save!
       expect(m.collection).to be_nil
-      c = TuftsEAD.create(title: 'collection', pid: pid)
+      c = TuftsEAD.create(title: 'collection', pid: pid, displays: ['dl'])
       m.reload
       expect(m.collection).to eq c
     end
@@ -133,7 +144,7 @@ describe TuftsBase do
 
   describe '#apply_attributes' do
     before do
-      @obj = TuftsBase.new(title: 'old title',
+      @obj = TuftsBase.new(title: 'old title', displays: ['dl'],
                            createdby: 'old createdby',
                            description: ['old desc 1', 'old desc 2'])
       @obj.save!

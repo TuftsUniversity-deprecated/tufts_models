@@ -4,7 +4,7 @@ describe TuftsRCR do
   
   describe "with access rights" do
     before do
-      @rcr = TuftsRCR.new(title: 'test rcr')
+      @rcr = TuftsRCR.new(title: 'test rcr', displays: ['dl'])
       @rcr.read_groups = ['public']
       @rcr.save!
     end
