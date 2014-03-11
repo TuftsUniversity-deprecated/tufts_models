@@ -161,6 +161,13 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('batch') do |field|
+      field.solr_local_parameters = {
+        :qf => 'batch_id_ssim',
+        :pf => 'batch_id_ssim'
+      }
+    end
+
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc

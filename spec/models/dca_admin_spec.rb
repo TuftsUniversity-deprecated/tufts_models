@@ -46,4 +46,10 @@ describe DcaAdmin do
     subject.creatordept = 'Dept. of Biology'
     expect(subject.creatordept).to eq ['Dept. of Biology']
   end
+
+  it 'has batch_id' do
+    subject.batch_id = ['1', '2', '3']
+    expect(subject.batch_id).to eq ['1', '2', '3']
+  end
+
 end

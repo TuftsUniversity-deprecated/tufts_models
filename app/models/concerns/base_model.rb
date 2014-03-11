@@ -133,7 +133,7 @@ module BaseModel
 
   # The list of fields to edit from the DCA_ADMIN datastream
   def admin_display_fields
-    admin.class.terminology.terms.keys  - [:admin, :published_at, :edited_at, :template_title]
+    admin.class.terminology.terms.keys  - [:admin, :published_at, :edited_at, :template_title, :batch_id]
   end
 
   # a more idiomatic name for the DC-DETAIL-META datastream

@@ -6,6 +6,10 @@ describe TuftsBase do
     subject.admin_display_fields.should == [:steward, :name, :comment, :retentionPeriod, :displays, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note, :createdby, :creatordept]
   end
 
+  it 'batch_id is not editable by users' do
+    subject.terms_for_editing.include?(:batch_id).should be_false
+  end
+
   describe 'OAI ID' do
 
     it "assigns an OAI ID to an object with a 'dl' display" do
@@ -182,6 +186,14 @@ describe TuftsBase do
       @obj.apply_attributes({description: 'new desc'}, user.id)
       @obj.reload
       @obj.audit_log.who.include?(user.user_key).should be_true
+    end
+  end
+
+
+  describe 'Batch operations' do
+    it 'has a field for batch_id' do
+      subject.batch_id = ['1', '2', '3']
+      subject.batch_id.should == ['1', '2', '3']
     end
   end
 
