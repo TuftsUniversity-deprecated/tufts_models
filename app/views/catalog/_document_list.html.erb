@@ -1,0 +1,7 @@
+<% # container for all documents in index view -%>
+<div id="documents">
+  <%= check_box_tag 'check_all', 'yes', @all_checked  %>
+  <%= button_tag "Update Selected", :class=>"btn btn-update btn-primary hidden submits-batches", 'data-behavior'=>'batch-edit', :id=>'batch-edit' %>
+
+  <%= render documents, :as => :document %>
+</div>

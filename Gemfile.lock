@@ -124,6 +124,12 @@ GEM
       blacklight (~> 4.7)
       cancan
       deprecation
+    hydra-batch-edit (1.1.1)
+      blacklight
+      hydra-collections
+    hydra-collections (1.1.0)
+      blacklight
+      hydra-head
     hydra-core (6.5.0)
       active-fedora (~> 6.7)
       blacklight (~> 4.7)
@@ -336,6 +342,7 @@ DEPENDENCIES
   disable_assets_logger
   factory_girl_rails
   hydra (= 6.2.0.rc1)
+  hydra-batch-edit (= 1.1.1)
   hydra-editor (= 0.1.0)
   hydra-role-management (= 0.1.0)
   jettywrapper
