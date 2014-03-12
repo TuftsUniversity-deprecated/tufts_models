@@ -7,9 +7,7 @@ describe 'catalog/index.html.erb' do
     view.stub current_user: double(admin?: true),
       has_search_parameters?: true,
       render_grouped_response?: false,
-      blacklight_config: double(:blacklight_config,
-                              document_index_view_types: {},
-                              index: double(:index, show_link: '', record_display_type: nil)),
+      blacklight_config: CatalogController.new.blacklight_config,
       link_to_document: '',
       render_index_doc_actions: '',
       render_document_partial: ''
