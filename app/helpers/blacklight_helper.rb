@@ -5,14 +5,14 @@ module BlacklightHelper
     field = if document[:template_title_tesim]
               :template_title_tesim
             else
-              super  # super from blacklight
+              super
             end
   end
 
   def document_heading(document=nil)
     document ||= @document
     label = document[:template_title_tesim]
-    label ||= super  # super from blacklight
+    label ||= super
   end
 
 end
