@@ -1,6 +1,5 @@
-require Blacklight::Engine.root.join('app/helpers/blacklight_helper')
-
 module BlacklightHelper
+  include Hydra::BlacklightHelperBehavior
 
   def document_show_link_field(document=nil)
     field = if document[:template_title_tesim]
