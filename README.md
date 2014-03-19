@@ -66,6 +66,11 @@ $ QUEUE=* rake resque:work
 $ rake jetty:start
 ```
 
+## Start redis
+```bash
+redis-server
+```
+
 ```bash
 $ rails s
 ```

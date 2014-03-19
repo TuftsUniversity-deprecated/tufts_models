@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112202506) do
+ActiveRecord::Schema.define(version: 20140317145954) do
+
+  create_table "batches", force: true do |t|
+    t.integer "creator_id"
+    t.string  "template_id"
+    t.string  "type"
+    t.text    "pids"
+  end
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id",     null: false

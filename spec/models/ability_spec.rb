@@ -23,6 +23,11 @@ describe Ability do
       it { should be_able_to(:remove_user, Role) }
     end
 
+    describe "batch operations" do
+      it { should be_able_to(:new, Batch) }
+      it { should be_able_to(:create, Batch) }
+    end
+
     describe "working on Deposit Type" do
       it { should be_able_to(:create, DepositType) }
       it { should be_able_to(:read, DepositType) }
@@ -55,6 +60,11 @@ describe Ability do
       it { should_not be_able_to(:show, Role) }
       it { should_not be_able_to(:add_user, Role) }
       it { should_not be_able_to(:remove_user, Role) }
+    end
+
+    describe "batch operations" do
+      it { should_not be_able_to(:new, Batch) }
+      it { should_not be_able_to(:create, Batch) }
     end
 
     describe "working on Deposit Type" do

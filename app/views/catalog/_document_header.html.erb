@@ -2,7 +2,9 @@
 <div class="documentHeader clearfix">
 
   <div class="document-checkbox pull-left">
-    <%= batch_edit_select(document) %>
+    <div data-behavior="batch-add-button">
+      <%= check_box_tag "batch[pids][]", document.id, false, class:"batch_document_selector", id: "batch_document_#{document.id}" %>
+    </div>
   </div>
 
   <%- # main title container for doc partial view -%>

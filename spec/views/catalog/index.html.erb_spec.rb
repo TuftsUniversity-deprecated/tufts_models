@@ -13,7 +13,7 @@ describe 'catalog/index.html.erb' do
     stub_template 'catalog/_search_sidebar.html.erb' => '',
       'catalog/_search_header.html.erb' => '',
       'catalog/_results_pagination.html.erb' => ''
-    @response = double(:response, empty?: false, params: {})
+    assign :response, double(:response, empty?: false, params: {})
   end
 
   describe 'checkboxes' do
@@ -21,17 +21,23 @@ describe 'catalog/index.html.erb' do
       view.stub render_document_partial: ''
       render
     end
-    it 'submits to the right spot' do
-      expect(rendered).to have_selector("form[action*='#{edit_batch_edits_path}']")
-    end
     it 'has a box to select all documents' do
       expect(rendered).to have_selector("input#check_all[type=checkbox]")
     end
-    it 'has an edit button' do
-      expect(rendered).to have_selector("button#batch-edit")
-    end
     it 'lets you select individual documents' do
-      expect(rendered).to have_selector("input[type=checkbox][name='batch_document_ids[]'][value='#{@document_list.first.id}']")
+      expect(rendered).to have_selector("input[type=checkbox][name='batch[pids][]'][value='#{@document_list.first.id}']")
+    end
+  end
+
+  describe 'batch operations' do
+    it 'submits to batch#new' do
+      render
+      rendered.should have_selector("form[method=get][action='#{new_batch_path}']")
+    end
+
+    it 'displays the form to apply a template' do
+      render
+      expect(rendered).to have_selector("button[type=submit][name='batch[type]'][value=BatchTemplateUpdate]")
     end
   end
 

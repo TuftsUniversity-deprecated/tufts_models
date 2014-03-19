@@ -11,6 +11,7 @@ class Ability
       can [:create, :show, :add_user, :remove_user, :index], Role
       can [:create, :read, :update, :publish, :destroy], ActiveFedora::Base
       can [:create, :read, :update, :destroy, :export], DepositType
+      can [:new, :create], Batch
     end
   end
 
