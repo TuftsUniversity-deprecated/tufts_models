@@ -2,6 +2,8 @@ ALLOW_DOTS ||= /[a-zA-Z0-9_.:]+/
 
 Tufts::Application.routes.draw do
 
+  resources :batches, only: [:new, :create, :show]
+
   unauthenticated do
     root :to => 'contribute#redirect'
   end
@@ -10,8 +12,6 @@ Tufts::Application.routes.draw do
 
   Blacklight::Routes.new(self, {}).catalog
   resources :catalog, :only => [:show, :update], :constraints => { :id => ALLOW_DOTS, :format => false }
-
-  Hydra::BatchEdit.add_routes(self)
 
   resources :unpublished, :only => [:index] do
     member do
