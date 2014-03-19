@@ -25,7 +25,7 @@ describe 'catalog/index.html.erb' do
       expect(rendered).to have_selector("input#check_all[type=checkbox]")
     end
     it 'lets you select individual documents' do
-      expect(rendered).to have_selector("input[type=checkbox][name='batch[pids][]'][value='#{@document_list.first.id}']")
+      expect(rendered).to have_selector("input.batch_document_selector[type=checkbox][name='batch[pids][]'][value='#{@document_list.first.id}']")
     end
   end
 
@@ -37,7 +37,7 @@ describe 'catalog/index.html.erb' do
 
     it 'displays the form to apply a template' do
       render
-      expect(rendered).to have_selector("button[type=submit][name='batch[type]'][value=BatchTemplateUpdate]")
+      expect(rendered).to have_selector("button[type=submit][name='batch[type]'][value=BatchTemplateUpdate][data-behavior=batch-create]")
     end
   end
 
