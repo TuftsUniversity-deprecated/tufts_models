@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe BatchesController do
+  let(:batch_template_update) { FactoryGirl.create(:batch_template_update, pids: docs.map(&:id)) }
+  let(:docs) { [FactoryGirl.create(:tufts_pdf)] }
 
   describe "non admin" do
     it 'denies access to new' do
@@ -9,6 +11,10 @@ describe BatchesController do
     end
     it 'denies access to create' do
       post :create
+      response.should redirect_to(new_user_session_path)
+    end
+    it 'denies access to show' do
+      get :show, id: batch_template_update.id
       response.should redirect_to(new_user_session_path)
     end
   end
@@ -127,6 +133,28 @@ describe BatchesController do
             expect(assigns[:batch].template_id).to eq attributes[:template_id]
             expect(assigns[:batch].new_record?).to be_true
           end
+        end
+      end
+    end
+
+    describe "GET 'show'" do
+      describe 'happy path' do
+        before do
+          get :show, id: batch_template_update.id
+        end
+
+        it "returns http success" do
+          response.should be_success
+        end
+
+        it 'should render the new template' do
+          response.should render_template(:show)
+        end
+
+        it 'assigns @batch, @documents, and @jobs' do
+          expect(assigns[:batch].id).to eq batch_template_update.id
+          expect(assigns[:documents].map(&:id).sort).to eq docs.map(&:id).sort
+          expect(assigns[:jobs].map(&:id).sort).to eq jobs.map(&:id).sort
         end
       end
     end

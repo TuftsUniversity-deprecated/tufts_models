@@ -26,6 +26,7 @@ describe Ability do
     describe "batch operations" do
       it { should be_able_to(:new, Batch) }
       it { should be_able_to(:create, Batch) }
+      it { should be_able_to(:show, Batch) }
     end
 
     describe "working on Deposit Type" do
@@ -65,6 +66,7 @@ describe Ability do
     describe "batch operations" do
       it { should_not be_able_to(:new, Batch) }
       it { should_not be_able_to(:create, Batch) }
+      it { should_not be_able_to(:show, Batch) }
     end
 
     describe "working on Deposit Type" do

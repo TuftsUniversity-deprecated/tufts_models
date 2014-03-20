@@ -1,5 +1,6 @@
 class BatchesController < ApplicationController
-  before_filter :load_batch, only: [:new, :create]
+  before_filter :build_batch, only: [:new, :create]
+  load_resource only: [:show]
   authorize_resource
 
   def new
@@ -26,9 +27,14 @@ class BatchesController < ApplicationController
     end
   end
 
+  def show
+    @documents = ActiveFedora::Base.find(@batch.pids, cast: true)
+    @jobs = []
+  end
+
   private
 
-  def load_batch
+  def build_batch
     @batch = Batch.new(params.require(:batch).permit(:template_id, {pids: []}, :type))
   end
 end

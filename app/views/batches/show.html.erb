@@ -1,0 +1,15 @@
+<div class="span12">
+  <h1>Batch Status</h1>
+
+  <div class="batch_info">
+    <%= make_dl "Batch id", @batch.id, "batch_id" %>
+    <%= make_dl "Job Count", @jobs.count, "job_count" %>
+    <%= make_dl "Creator", @batch.creator.display_name, "creator" %>
+    <%= make_dl "Created at", @batch.created_at, "created_at" %>
+    <%= make_dl "Status", (@jobs.map(&:finished?).all? ? "Complete" : "In Progress"), "status" %>
+    <%# make_dl "Review Status", (@documents.map(&:reviewed?).all? ? "Complete" : "Incomplete"), "review_status" %>
+  </div>
+
+  <div class="jobs">
+  </div>
+</div>
