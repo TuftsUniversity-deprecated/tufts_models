@@ -1,10 +1,10 @@
-<% if @record.respond_to?(:template_title) %>
+<% if @record.respond_to?(:template_name) %>
   <h3 class="non lower">
     Template Metadata
     <small class="pull-right"><span class="error">*</span> indicates required fields</small>
   </h3>
   <div class="well">
-    <% f.object.template_title = [''] if f.object[:template_title].empty? %>
-    <%= render :partial => "edit_field", :locals => {:f => f, :render_req => true, :key => :template_title } %>
+    <% f.object.template_name = [''] if f.object[:template_name].empty? %>
+    <%= render :partial => "edit_field", :locals => {:f => f, :render_req => true, :key => :template_name } %>
   </div>
 <% end %>

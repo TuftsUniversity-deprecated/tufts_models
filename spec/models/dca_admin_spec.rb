@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe DcaAdmin do
 
-  it 'has template_title' do
+  it 'has template_name' do
     title = 'Title for a Template'
-    subject.template_title = title
-    subject.template_title.should == [title]
+    subject.template_name = title
+    subject.template_name.should == [title]
   end
 
   it "should have a published date" do

@@ -8,9 +8,9 @@ describe BlacklightHelper do
   end
 
   describe '#document_show_link_field' do
-    it 'for a template object, it displays the template_title' do
-      doc = SolrDocument.new('template_title_tesim' => ['My Template'])
-      helper.document_show_link_field(doc).should == :template_title_tesim
+    it 'for a template object, it displays the template_name' do
+      doc = SolrDocument.new('template_name_tesim' => ['My Template'])
+      helper.document_show_link_field(doc).should == :template_name_tesim
     end
 
     it 'for a non-template object, it falls back to normal blacklight behavior' do
@@ -21,8 +21,8 @@ describe BlacklightHelper do
   end
 
   describe '#document_heading' do
-    it 'for a template object, it displays the temlate_title' do
-      doc = SolrDocument.new('template_title_tesim' => ['My Template'])
+    it 'for a template object, it displays the temlate_name' do
+      doc = SolrDocument.new('template_name_tesim' => ['My Template'])
       helper.document_heading(doc).should == ['My Template']
     end
 
