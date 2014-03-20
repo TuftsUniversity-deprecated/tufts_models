@@ -13,7 +13,7 @@ describe 'catalog/index.html.erb' do
     stub_template 'catalog/_search_sidebar.html.erb' => '',
       'catalog/_search_header.html.erb' => '',
       'catalog/_results_pagination.html.erb' => ''
-    assign :response, double(:response, empty?: false, params: {})
+    assign :response, double(:response, empty?: false, params: {}, total: 0, start: 0, limit_value: 10)
   end
 
   describe 'checkboxes' do

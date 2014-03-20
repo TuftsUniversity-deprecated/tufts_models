@@ -2,7 +2,7 @@ class DcaAdmin < ActiveFedora::OmDatastream
   set_terminology do |t|
     t.root(:path => "admin", 'xmlns'=>"http://nils.lib.tufts.edu/dcaadmin/", 'xmlns:ac'=>"http://purl.org/dc/dcmitype/")
 
-    t.template_title index_as: :stored_searchable, path: 'templateTitle'
+    t.template_name index_as: :stored_searchable, path: 'templateName'
     t.steward index_as: :stored_searchable
     t.name namespace_prefix: "ac", index_as: :stored_searchable
     t.comment namespace_prefix: "ac", index_as: :stored_searchable
