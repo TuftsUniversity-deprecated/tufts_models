@@ -5,10 +5,10 @@ module RecordsHelper
   # edit page for an object.
   # If the object is a template, override the title that would
   # normally come from hydra-editor and display the
-  # template_title instead.
+  # template_name instead.
   def render_record_title
-    if @record.respond_to?(:template_title)
-      @record.template_title
+    if @record.respond_to?(:template_name)
+      @record.template_name
     else
       super
     end

@@ -12,8 +12,8 @@ describe 'records/edit.html.erb' do
       expect(rendered).to have_content('Edit My Document')
     end
 
-    it "displays the template_title if the object is a template" do
-      record = double(template_title: 'My Template', title: 'My Document', has_thumbnail?: false, id: 'pid:123')
+    it "displays the template_name if the object is a template" do
+      record = double(template_name: 'My Template', title: 'My Document', has_thumbnail?: false, id: 'pid:123')
       assign :record, record
       render
       expect(rendered).to have_content('Edit My Template')

@@ -1,8 +1,8 @@
 class TuftsTemplate < ActiveFedora::Base
   include BaseModel
 
-  has_attributes :template_title, datastream: 'DCA-ADMIN', multiple: false
-  validates :template_title, presence: true
+  has_attributes :template_name, datastream: 'DCA-ADMIN', multiple: false
+  validates :template_name, presence: true
 
   def push_to_production!
     # Templates should never be pushed to the production
