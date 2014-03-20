@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Batch Edits routes: ' do
+describe 'Batch routes: ' do
   it 'routes to new' do
     expect(get: 'batches/new').to route_to(
       controller: 'batches',

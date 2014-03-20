@@ -1,3 +1,7 @@
+<% if @record.is_a?(TuftsTemplate) %>
+  <%= link_to 'Index of Templates', templates_path, class: 'pull-right' %>
+<% end %>
+
 <% if @record.has_thumbnail? %>
   <div class="document-thumbnail">
     <img src="<%= download_path(@record.id, datastream_id: 'Thumbnail.png') %>">
