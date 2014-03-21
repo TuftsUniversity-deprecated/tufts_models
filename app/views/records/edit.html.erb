@@ -1,13 +1,18 @@
-<% if @record.is_a?(TuftsTemplate) %>
-  <%= link_to 'Index of Templates', templates_path, class: 'pull-right' %>
-<% end %>
+<% # container for a single doc -%>
+<% doc = SolrDocument.new( @record.to_solr ) %>
+<div class="document <%= render_document_class doc %>">
 
-<% if @record.has_thumbnail? %>
-  <div class="document-thumbnail">
-    <img src="<%= download_path(@record.id, datastream_id: 'Thumbnail.png') %>">
-  </div>  
-<% end %>
+    <% if @record.is_a?(TuftsTemplate) %>
+      <%= link_to 'Index of Templates', templates_path, class: 'pull-right' %>
+    <% end %>
 
-<h1><%= edit_record_title %></h1>
-<%= render :partial=>'records/form', locals: {record: @record}  %>
+    <% if @record.has_thumbnail? %>
+      <div class="document-thumbnail">
+        <img src="<%= download_path(@record.id, datastream_id: 'Thumbnail.png') %>">
+      </div>
+    <% end %>
 
+    <h1><%= edit_record_title %></h1>
+    <%= render :partial=>'records/form', locals: {record: @record}  %>
+
+</div>
