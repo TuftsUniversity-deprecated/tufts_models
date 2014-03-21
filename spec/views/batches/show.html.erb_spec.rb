@@ -16,7 +16,7 @@ describe "batches/show.html.erb" do
       pending "reviews working on documents"
       render
       expect(rendered).to have_selector(".batch_id", text: subject.id)
-      expect(rendered).to have_selector(".job_count", text: jobs.count)
+      expect(rendered).to have_selector(".record_count", text: docs.count)
       expect(rendered).to have_selector(".creator", text: subject.creator.display_name)
       expect(rendered).to have_selector(".created_at", text: subject.created_at)
       expect(rendered).to have_selector(".status", text: 'Complete')
@@ -24,18 +24,22 @@ describe "batches/show.html.erb" do
     end
 
     it "shows document pids" do
+      pending "the addition of documents to the Batch#show page"
       expect(rendered).to have_selector(".document_pid", text: docs.first.pid)
     end
 
     it "shows document titles" do
+      pending "the addition of documents to the Batch#show page"
       expect(rendered).to have_selector(".document_title", text: docs.first.title)
     end
 
     it "shows document status" do
+      pending "the addition of documents to the Batch#show page"
       expect(rendered).to have_selector(".document_status", text: "FIXME")
     end
 
     it "shows review status of each document" do
+      pending "the addition of documents to the Batch#show page"
       expect(rendered).to have_selector(".document_reviewed_status", text: "Reviewed")
     end
 
@@ -43,11 +47,12 @@ describe "batches/show.html.erb" do
       let(:docs) do
         d1 = FactoryGirl.create(:tufts_audio)
         d2 = FactoryGirl.create(:tufts_pdf)
-        d1.reviewed!
+        # d1.reviewed!
         [d1, d2]
       end
 
       it "shows aa complete status when all docs have been reviewed" do
+        pending "reviews working on documents"
         render
         expect(rendered).to have_selector(".status", text: subject.id)
       end
@@ -56,11 +61,12 @@ describe "batches/show.html.erb" do
     context "with all documents reviewed" do
       let(:docs) do
         doc = FactoryGirl.create(:tufts_pdf)
-        doc.reviewed!
+        # doc.reviewed!
         [doc]
       end
 
       it "shows an incomplete status when some docs haven't been reviewed" do
+        pending "reviews working on documents"
         render
         expect(rendered).to have_selector(".status", text: subject.id)
       end

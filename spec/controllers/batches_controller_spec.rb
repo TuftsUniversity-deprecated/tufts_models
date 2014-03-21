@@ -154,6 +154,7 @@ describe BatchesController do
         it 'assigns @batch, @documents, and @jobs' do
           expect(assigns[:batch].id).to eq batch_template_update.id
           expect(assigns[:documents].map(&:id).sort).to eq docs.map(&:id).sort
+          pending "ability to query jobs"
           expect(assigns[:jobs].map(&:id).sort).to eq jobs.map(&:id).sort
         end
       end
