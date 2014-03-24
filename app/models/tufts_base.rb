@@ -1,5 +1,6 @@
 class TuftsBase < ActiveFedora::Base
   include BaseModel
+  include AttachedFiles
 
   validates :title, presence: true
   validates :displays, presence: true

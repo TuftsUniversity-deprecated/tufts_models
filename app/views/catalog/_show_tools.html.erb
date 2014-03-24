@@ -23,9 +23,7 @@
     <%= link_to "Edit Metadata", hydra_editor.edit_record_path(@document) %>
   </li>
 
-  <li>
-    <%= link_to "Manage Datastreams", record_attachments_path(@document) %>
-  </li>
+  <%= li_manage_datastreams_link(@document) %>
 
   <% if @document.publishable? %>
     <li>

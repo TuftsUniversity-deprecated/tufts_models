@@ -4,7 +4,6 @@ module BaseModel
   included do
     include Tufts::ModelMethods
     include Hydra::AccessControls::Permissions
-    include AttachedFiles
 
     # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
     has_metadata "rightsMetadata", type: Hydra::Datastream::RightsMetadata
@@ -36,7 +35,7 @@ module BaseModel
     before_save :update_audit_log
 
     def update_audit_log
-      if content_will_update
+      if respond_to?(:content_will_update) && content_will_update
         self.audit(working_user, "Content updated: #{content_will_update}")
         self.content_will_update = nil
       elsif metadata_streams.any? { |ds| ds.changed? }
