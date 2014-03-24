@@ -49,6 +49,11 @@ describe 'catalog/index.html.erb' do
       render
       expect(rendered).to have_selector("button[type=submit][name='batch[type]'][value=BatchPublish][data-behavior=batch-create]")
     end
+
+    it 'has the div needed by javascript to display the number of documents that are currently selected' do
+      render
+      expect(rendered).to have_selector("#selected_documents_count")
+    end
   end
 
   describe 'with a document that is an image' do

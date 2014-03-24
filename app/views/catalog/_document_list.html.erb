@@ -6,5 +6,7 @@
 
   <%= button_tag "Publish", type: :submit, name: 'batch[type]', value: "BatchPublish", class: "btn btn-primary", 'data-behavior'=>'batch-create'%>
 
+  <div id='selected_documents_count'> <br /> </div>
+
   <%= render documents, :as => :document %>
 </div>
