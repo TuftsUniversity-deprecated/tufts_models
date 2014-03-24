@@ -30,8 +30,7 @@ class RecordsController < ApplicationController
   def publish
     @record = ActiveFedora::Base.find(params[:id], cast: true)
     authorize! :publish, @record
-    @record.audit(current_user, 'pushed to production')
-    @record.push_to_production!
+    @record.publish!(current_user.id)
     redirect_to catalog_path(@record), notice: "\"#{@record.title}\" has been pushed to production"
   end
 

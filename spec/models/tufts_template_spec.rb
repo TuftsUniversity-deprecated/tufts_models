@@ -20,6 +20,7 @@ describe TuftsTemplate do
 
   describe 'publishing' do
     it 'cannot be pushed to the production environment' do
+      expect{ subject.publish! }.to raise_error(UnpublishableModelError)
       expect{ subject.push_to_production! }.to raise_error(UnpublishableModelError)
     end
 

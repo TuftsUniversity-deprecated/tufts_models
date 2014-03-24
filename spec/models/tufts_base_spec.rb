@@ -10,7 +10,6 @@ describe TuftsBase do
     subject.terms_for_editing.include?(:batch_id).should be_false
   end
 
-
   describe 'required fields:' do
     it 'requires a title' do
       subject.required?(:title).should be_true
@@ -200,11 +199,66 @@ describe TuftsBase do
     end
   end
 
-
   describe 'Batch operations' do
     it 'has a field for batch_id' do
       subject.batch_id = ['1', '2', '3']
       subject.batch_id.should == ['1', '2', '3']
+    end
+  end
+
+  describe '#publish!' do
+    let(:user) { FactoryGirl.create(:user) }
+
+    before do
+      @obj = TuftsBase.new(title: 'My title', displays: ['dl'])
+      @obj.save!
+
+      prod = Rubydora.connect(ActiveFedora.data_production_credentials)
+      prod.should_receive(:purge_object).with(pid: @obj.pid)
+      prod.should_receive(:ingest)
+      @obj.stub(:production_fedora_connection) { prod }
+    end
+
+    after do
+      @obj.delete if @obj
+    end
+
+    it 'adds an entry to the audit log' do
+      @obj.publish!(user.id)
+      @obj.reload
+      @obj.audit_log.who.include?(user.user_key).should be_true
+      @obj.audit_log.what.should == ['Pushed to production']
+    end
+
+    it 'publishes the record to the production fedora' do
+      @obj.publish!
+      @obj.reload
+      @obj.published?.should be_true
+    end
+  end
+
+  describe 'audit log' do
+    let(:user) { FactoryGirl.create(:user) }
+    before do
+      subject.title = 'Some Title'
+      subject.displays = ['dl']
+      subject.working_user = user
+    end
+    after { subject.delete if subject.persisted? }
+
+    it 'adds an entry if the content changes' do
+      subject.stub(:content_will_update) { 'hello content' }
+      subject.save!
+      subject.audit_log.who.include?(user.user_key).should be_true
+      subject.audit_log.what.include?('Content updated: hello content').should be_true
+    end
+
+    it 'adds an entry if the metadata changes' do
+      subject.admin.stub(:changed?) { true }
+      subject.save!
+      subject.audit_log.who.include?(user.user_key).should be_true
+      messages = subject.audit_log.what.select {|x| x.match(/Metadata updated/)}
+      messages.any?{|msg| msg.match(/DCA-ADMIN/)}.should be_true
     end
   end
 

@@ -1,29 +1,15 @@
 class BatchesController < ApplicationController
-  before_filter :build_batch, only: [:new, :create]
+  before_filter :build_batch, only: [:create]
   load_resource only: [:show]
   authorize_resource
 
-  def new
-    if @batch.pids.present?
-    else
-      flash[:error] = 'Please select some documents to do batch updates.'
-      redirect_to (request.referer || root_path)
-    end
-  end
-
   def create
-    @batch.creator = current_user
-    if @batch.save
-      if @batch.run
-        redirect_to batch_path(@batch)
-      else
-        flash[:error] = "Unable to run batch, please try again later."
-        @batch.delete
-        @batch = Batch.new @batch.attributes.except('id')
-        render :new
-      end
+    if !@batch.pids.present?
+      no_pids_selected
+    elsif next?
+      render_next_page_of_form
     else
-      render :new
+      create_and_run_batch
     end
   end
 
@@ -32,9 +18,56 @@ class BatchesController < ApplicationController
     @jobs = []
   end
 
-  private
+
+private
 
   def build_batch
     @batch = Batch.new(params.require(:batch).permit(:template_id, {pids: []}, :type))
   end
+
+  def create_and_run_batch
+    @batch.creator = current_user
+
+    if @batch.save
+      if @batch.run
+        set_flash_for_success
+        redirect_to batch_path(@batch)
+      else
+        flash[:error] = "Unable to run batch, please try again later."
+        @batch.delete
+        @batch = Batch.new @batch.attributes.except('id')
+        render_or_redirect
+      end
+    else
+      render_or_redirect
+    end
+  end
+
+  def render_or_redirect
+    if @batch.type == 'BatchTemplateUpdate'
+      render :new
+    else
+      redirect_to (request.referer || root_path)
+    end
+  end
+
+  def no_pids_selected
+    flash[:error] = 'Please select some documents to do batch updates.'
+    redirect_to (request.referer || root_path)
+  end
+
+  def next?
+    params[:batch_form_page].present? && @batch.type == 'BatchTemplateUpdate' && @batch.template_id.nil?
+  end
+
+  def render_next_page_of_form
+    render_or_redirect
+  end
+
+  def set_flash_for_success
+    if @batch.type == 'BatchPublish'
+      flash[:notice] = "Publish to production: #{@batch.pids.count} objects have been queued to be published."
+    end
+  end
+
 end

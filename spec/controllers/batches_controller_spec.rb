@@ -5,10 +5,6 @@ describe BatchesController do
   let(:docs) { [FactoryGirl.create(:tufts_pdf)] }
 
   describe "non admin" do
-    it 'denies access to new' do
-      get :new
-      response.should redirect_to(new_user_session_path)
-    end
     it 'denies access to create' do
       post :create
       response.should redirect_to(new_user_session_path)
@@ -25,52 +21,102 @@ describe BatchesController do
       sign_in @user
     end
 
-    describe "GET 'new'" do
-      describe 'happy path' do
-        before do
+
+    describe "POST 'create'" do
+
+      describe 'error path - no pids were selected:' do
+        it 'redirects to previous page' do
           allow(controller.request).to receive(:referer) { catalog_index_path }
-          get :new, batch: {pids: ["tufts:1"]}
-        end
-
-        it "returns http success" do
-          response.should be_success
-        end
-
-        it 'should render the new template' do
-          response.should render_template(:new)
-        end
-
-        it 'assigns @batch' do
-          assigns[:batch].pids.should == ["tufts:1"]
-        end
-      end
-
-      describe 'with no referer and no pids' do
-        it 'should redirect to root' do
-          get :new, batch: {pids: []}
-          response.should redirect_to(root_path)
-        end
-      end
-
-      describe 'with no pids' do
-        it "redirects to previous page" do
-          allow(controller.request).to receive(:referer) { catalog_index_path }
-          get :new, batch: {pids: []}
+          post :create, batch: { pids: [] }
           response.should redirect_to(request.referer)
         end
 
-        it "sets the flash" do
-          get :new, batch: {pids: []}
+        it 'redirects to root if there is no referer' do
+          post :create, batch: { pids: [] }
+          response.should redirect_to(root_path)
+        end
+
+        it 'sets the flash' do
+          post :create, batch: { pids: [] }
           flash[:error].should == 'Please select some documents to do batch updates.'
         end
       end
-    end
 
-    describe "POST 'create'" do
+
+      describe 'error path - batch fails to run:' do
+        it 'sets the flash' do
+          BatchPublish.any_instance.stub(:save) { true }
+          BatchPublish.any_instance.stub(:run) { false }
+          post :create, batch: { pids: ['pid:1'], type: 'BatchPublish' }
+          flash[:error].should == 'Unable to run batch, please try again later.'
+        end
+
+        it "doesn't create a batch object" do
+          batch_count = Batch.count
+          BatchPublish.any_instance.stub(:run) { false }
+          post 'create', batch: FactoryGirl.attributes_for(:batch_publish)
+          expect(Batch.count).to eq batch_count
+        end
+
+        it 'still assigns @batch' do
+          BatchPublish.any_instance.stub(:run) { false }
+          attributes = FactoryGirl.attributes_for(:batch_publish)
+          post 'create', batch: attributes
+          expect(assigns[:batch].pids).to eq attributes[:pids]
+          expect(assigns[:batch].new_record?).to be_true
+        end
+      end
+
+
+      describe "for batch publishing - happy path:" do
+        it 'creates a batch' do
+          BatchPublish.any_instance.stub(:run) { true }
+          batch_count = Batch.count
+          post 'create', batch: FactoryGirl.attributes_for(:batch_publish)
+          expect(Batch.count).to eq batch_count + 1
+        end
+
+        it 'assigns @batch' do
+          BatchPublish.any_instance.stub(:run) { true }
+          post 'create', batch: FactoryGirl.attributes_for(:batch_publish)
+          expect(assigns[:batch].class).to eq BatchPublish
+        end
+
+        it "runs the batch" do
+          batch = Batch.new(FactoryGirl.attributes_for(:batch_publish))
+          allow(Batch).to receive(:new) { batch }
+          expect(batch).to receive(:run) { true }
+          post 'create', batch: FactoryGirl.attributes_for(:batch_publish)
+        end
+
+        it "redirects to batch#show" do
+          BatchPublish.any_instance.stub(:run) { true }
+          post 'create', batch: FactoryGirl.attributes_for(:batch_publish)
+          response.should redirect_to(batch_path(assigns[:batch]))
+        end
+
+        it 'sets the flash' do
+          BatchPublish.any_instance.stub(:run) { true }
+          post 'create', batch: { type: 'BatchPublish', pids: ['pid:1', 'pid:2'] }
+          flash[:notice].should == "Publish to production: 2 objects have been queued to be published."
+        end
+      end
+
+      describe "for batch publishing - error path:" do
+        it "redirects to previous page" do
+          BatchPublish.any_instance.stub(:save) { true }
+          BatchPublish.any_instance.stub(:run) { false }
+          allow(controller.request).to receive(:referer) { catalog_index_path }
+          post :create, batch: { pids: ['pid:1'], type: 'BatchPublish' }
+          response.should redirect_to(request.referer)
+        end
+      end
+
+
       describe "for template updates" do
         def post_create(overrides={})
           BatchTemplateUpdate.any_instance.stub(:run) { true }
-          post 'create', batch: FactoryGirl.attributes_for(:batch_template_update, type: 'BatchTemplateUpdate').merge(overrides)
+          post 'create', batch: FactoryGirl.attributes_for(:batch_template_update).merge(overrides)
         end
 
         before do
@@ -94,10 +140,11 @@ describe BatchesController do
         end
 
         it "runs the batch" do
-          batch = Batch.new
+          batch = Batch.new({type: "BatchTemplateUpdate", pids: ['pid:1'], template_id: "tufts:3", id: '1'})
+          expect(batch).to receive(:save) { true }
           expect(batch).to receive(:run) { true }
           allow(Batch).to receive(:new) { batch }
-          post 'create', batch: {type: "BatchTemplateUpdate", pids: [], template_id: "tufts:3"}
+          post 'create', batch: { type: "BatchTemplateUpdate" }
         end
 
         it "assigns @batch" do
@@ -105,34 +152,25 @@ describe BatchesController do
           expect(assigns[:batch].class).to eq BatchTemplateUpdate
         end
 
-        it "renders new when there are form errors" do
-          post_create(template_id: nil)
+        it 'renders new (the 2nd page of the form) to select the template' do
+          post 'create', batch: { type: 'BatchTemplateUpdate', template_id: nil, pids: ['pid:1'] }, batch_form_page: '1'
           expect(flash).to be_empty
+          expect(assigns(:batch).errors).to be_empty
           response.should render_template(:new)
         end
 
-        describe "when batch fails to run" do
-          it "renders new and sets the flash" do
-            BatchTemplateUpdate.any_instance.stub(:save) { true }
-            BatchTemplateUpdate.any_instance.stub(:run) { false }
-            post 'create', batch: {type: "BatchTemplateUpdate"}
-            expect(flash[:error]).to eq "Unable to run batch, please try again later."
-            response.should render_template(:new)
-          end
+        it "renders new when there are form errors" do
+          post_create(template_id: nil)
+          expect(flash).to be_empty
+          assigns(:batch).errors[:template_id].include?("can't be blank").should be_true
+          response.should render_template(:new)
+        end
 
-          it "doesn't create a batch object" do
-            BatchTemplateUpdate.any_instance.stub(:run) { false }
-            post 'create', batch: FactoryGirl.attributes_for(:batch_template_update, type: 'BatchTemplateUpdate')
-            expect(Batch.count).to eq @batch_count
-          end
-
-          it "still assigns @batch" do
-            BatchTemplateUpdate.any_instance.stub(:run) { false }
-            attributes = FactoryGirl.attributes_for(:batch_template_update, type: 'BatchTemplateUpdate')
-            post 'create', batch: attributes
-            expect(assigns[:batch].template_id).to eq attributes[:template_id]
-            expect(assigns[:batch].new_record?).to be_true
-          end
+        it 'renders new when batch fails to run' do
+          BatchTemplateUpdate.any_instance.stub(:save) { true }
+          BatchTemplateUpdate.any_instance.stub(:run) { false }
+          post 'create', batch: {type: "BatchTemplateUpdate", pids: ['pid:1']}
+          response.should render_template(:new)
         end
       end
     end

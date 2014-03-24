@@ -30,14 +30,24 @@ describe 'catalog/index.html.erb' do
   end
 
   describe 'batch operations' do
-    it 'submits to batch#new' do
+    it 'submits to batch#create' do
       render
-      rendered.should have_selector("form[method=get][action='#{new_batch_path}']")
+      rendered.should have_selector("form[method=post][action='#{batches_path}']")
     end
 
-    it 'displays the form to apply a template' do
+    it 'sends the form page as a hidden field' do
+      render
+      expect(rendered).to have_selector("input[type=hidden][name='batch_form_page'][value='1']")
+    end
+
+    it 'displays the button to apply a template' do
       render
       expect(rendered).to have_selector("button[type=submit][name='batch[type]'][value=BatchTemplateUpdate][data-behavior=batch-create]")
+    end
+
+    it 'displays the button to publish' do
+      render
+      expect(rendered).to have_selector("button[type=submit][name='batch[type]'][value=BatchPublish][data-behavior=batch-create]")
     end
   end
 

@@ -19,7 +19,8 @@
 
       <%= render 'search_header' %>
 
-      <%= form_tag new_batch_path, method: :get do %>
+      <%= form_tag batches_path, method: :post do %>
+        <%= hidden_field_tag :batch_form_page, '1' %>
 
         <h2 class="hide-text"><%= t('blacklight.search.search_results') %></h2>
 

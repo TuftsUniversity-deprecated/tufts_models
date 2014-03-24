@@ -4,5 +4,7 @@
 
   <%= button_tag "Apply Template", type: :submit, name: 'batch[type]', value: "BatchTemplateUpdate", class: "btn btn-primary", 'data-behavior'=>'batch-create'%>
 
+  <%= button_tag "Publish", type: :submit, name: 'batch[type]', value: "BatchPublish", class: "btn btn-primary", 'data-behavior'=>'batch-create'%>
+
   <%= render documents, :as => :document %>
 </div>

@@ -4,12 +4,16 @@ class TuftsTemplate < ActiveFedora::Base
   has_attributes :template_name, datastream: 'DCA-ADMIN', multiple: false
   validates :template_name, presence: true
 
+  # Templates should never be pushed to the production
+  # environment.  They are meant to be used by admin users
+  # to ingest files in bulk and apply the same metadata to
+  # many files.  There should be no need for them to be
+  # visible to general users.
+  def publish!(user_id = nil)
+    raise UnpublishableModelError.new
+  end
+
   def push_to_production!
-    # Templates should never be pushed to the production
-    # environment.  They are meant to be used by admin users
-    # to ingest files in bulk and apply the same metadata to
-    # many files.  There should be no need for them to be
-    # visible to general users.
     raise UnpublishableModelError.new
   end
 
