@@ -94,12 +94,6 @@ describe BatchesController do
           post 'create', batch: FactoryGirl.attributes_for(:batch_publish)
           response.should redirect_to(batch_path(assigns[:batch]))
         end
-
-        it 'sets the flash' do
-          BatchPublish.any_instance.stub(:run) { true }
-          post 'create', batch: { type: 'BatchPublish', pids: ['pid:1', 'pid:2'] }
-          flash[:notice].should == "Publish to production: 2 objects have been queued to be published."
-        end
       end
 
       describe "for batch publishing - error path:" do

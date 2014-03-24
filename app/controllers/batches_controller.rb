@@ -30,7 +30,6 @@ private
 
     if @batch.save
       if @batch.run
-        set_flash_for_success
         redirect_to batch_path(@batch)
       else
         flash[:error] = "Unable to run batch, please try again later."
@@ -62,12 +61,6 @@ private
 
   def render_next_page_of_form
     render_or_redirect
-  end
-
-  def set_flash_for_success
-    if @batch.type == 'BatchPublish'
-      flash[:notice] = "Publish to production: #{@batch.pids.count} objects have been queued to be published."
-    end
   end
 
 end
