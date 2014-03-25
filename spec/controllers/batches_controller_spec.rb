@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe BatchesController do
-  let(:batch_template_update) { FactoryGirl.create(:batch_template_update, pids: docs.map(&:id)) }
-  let(:docs) { [FactoryGirl.create(:tufts_pdf)] }
+  let(:batch_template_update) { FactoryGirl.create(:batch_template_update, pids: records.map(&:id)) }
+  let(:records) { [FactoryGirl.create(:tufts_pdf)] }
 
   describe "non admin" do
     it 'denies access to create' do
@@ -38,7 +38,7 @@ describe BatchesController do
 
         it 'sets the flash' do
           post :create, batch: { pids: [] }
-          flash[:error].should == 'Please select some documents to do batch updates.'
+          flash[:error].should == 'Please select some records to do batch updates.'
         end
       end
 
@@ -183,9 +183,9 @@ describe BatchesController do
           response.should render_template(:show)
         end
 
-        it 'assigns @batch, @documents, and @jobs' do
+        it 'assigns @batch, @records, and @jobs' do
           expect(assigns[:batch].id).to eq batch_template_update.id
-          expect(assigns[:documents].map(&:id).sort).to eq docs.map(&:id).sort
+          expect(assigns[:records].map(&:id).sort).to eq records.map(&:id).sort
           pending "ability to query jobs"
           expect(assigns[:jobs].map(&:id).sort).to eq jobs.map(&:id).sort
         end

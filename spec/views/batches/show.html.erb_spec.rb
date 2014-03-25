@@ -8,12 +8,12 @@ describe "batches/show.html.erb" do
 
     before do
       assign :batch, subject
-      assign :documents, docs
+      assign :records, docs
       assign :jobs, jobs
     end
 
     it "shows general information" do
-      pending "reviews working on documents"
+      pending "reviews working on records"
       render
       expect(rendered).to have_selector(".batch_id", text: subject.id)
       expect(rendered).to have_selector(".record_count", text: docs.count)
@@ -23,27 +23,27 @@ describe "batches/show.html.erb" do
       expect(rendered).to have_selector(".review_status", text: 'Complete')
     end
 
-    it "shows document pids" do
-      pending "the addition of documents to the Batch#show page"
-      expect(rendered).to have_selector(".document_pid", text: docs.first.pid)
+    it "shows record pids" do
+      pending "the addition of records to the Batch#show page"
+      expect(rendered).to have_selector(".record_pid", text: docs.first.pid)
     end
 
-    it "shows document titles" do
-      pending "the addition of documents to the Batch#show page"
-      expect(rendered).to have_selector(".document_title", text: docs.first.title)
+    it "shows record titles" do
+      pending "the addition of records to the Batch#show page"
+      expect(rendered).to have_selector(".record_title", text: docs.first.title)
     end
 
-    it "shows document status" do
-      pending "the addition of documents to the Batch#show page"
-      expect(rendered).to have_selector(".document_status", text: "FIXME")
+    it "shows record status" do
+      pending "the addition of records to the Batch#show page"
+      expect(rendered).to have_selector(".record_status", text: "FIXME")
     end
 
-    it "shows review status of each document" do
-      pending "the addition of documents to the Batch#show page"
-      expect(rendered).to have_selector(".document_reviewed_status", text: "Reviewed")
+    it "shows review status of each record" do
+      pending "the addition of records to the Batch#show page"
+      expect(rendered).to have_selector(".record_reviewed_status", text: "Reviewed")
     end
 
-    context "with some documents reviewed" do
+    context "with some records reviewed" do
       let(:docs) do
         d1 = FactoryGirl.create(:tufts_audio)
         d2 = FactoryGirl.create(:tufts_pdf)
@@ -52,13 +52,13 @@ describe "batches/show.html.erb" do
       end
 
       it "shows aa complete status when all docs have been reviewed" do
-        pending "reviews working on documents"
+        pending "reviews working on records"
         render
         expect(rendered).to have_selector(".status", text: subject.id)
       end
     end
 
-    context "with all documents reviewed" do
+    context "with all records reviewed" do
       let(:docs) do
         doc = FactoryGirl.create(:tufts_pdf)
         # doc.reviewed!
@@ -66,7 +66,7 @@ describe "batches/show.html.erb" do
       end
 
       it "shows an incomplete status when some docs haven't been reviewed" do
-        pending "reviews working on documents"
+        pending "reviews working on records"
         render
         expect(rendered).to have_selector(".status", text: subject.id)
       end
