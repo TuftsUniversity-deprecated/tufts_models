@@ -29,6 +29,13 @@ describe SolrDocument do
       before { subject['displays_ssi'] = 'tisch'}
       its(:preview_dl_path) {should == nil}
     end
+    describe "when the object is a template" do
+      before do
+        subject['displays_ssi'] = 'dl'
+        subject['active_fedora_model_ssi'] = 'TuftsTemplate'
+      end
+      its(:preview_dl_path) {should == nil}
+    end
   end
 
   describe 'Templates' do

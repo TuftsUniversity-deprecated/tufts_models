@@ -23,6 +23,7 @@ class SolrDocument
   end
   
   def preview_dl_path
+    return nil if template?
     if self['displays_ssi'].blank? || self['displays_ssi'] == 'dl'
       Settings.preview_dl_url + "/catalog/#{id}" 
     else
