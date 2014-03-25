@@ -6,33 +6,34 @@ describe Job::Publish do
   subject { Job::Publish.new(user_id, record_id) }
 
   it 'uses the "publish" queue' do
-    subject.queue_name.should == :publish
+    expect(Job::Publish.queue).to eq :publish
   end
 
-  describe '#initialize' do
-    it 'sets the user key' do
-      subject.user_id.should == user_id
+  describe '::create' do
+    it 'requires the user id' do
+      expect{Job::Publish.create('record_id' => '1')}.to raise_exception(ArgumentError)
     end
 
-    it 'sets the record id' do
-      subject.record_id.should == record_id
+    it 'requires the record id' do
+      expect{Job::Publish.create('user_id' => '1')}.to raise_exception(ArgumentError)
     end
   end
 
-  describe '#run' do
+  describe '#perform' do
     it 'raises an error if it fails to find the object' do
-      TuftsPdf.find(record_id).destroy if TuftsPdf.exists?(record_id)
-      expect {
-        subject.run
-      }.to raise_error(ActiveFedora::ObjectNotFoundError)
+      obj_id = 'tufts:1'
+      TuftsPdf.find(obj_id).destroy if TuftsPdf.exists?(obj_id)
+
+      job = Job::Publish.new('uuid', 'user_id' => 1, 'record_id' => obj_id)
+      expect{job.perform}.to raise_error(ActiveFedora::ObjectNotFoundError)
     end
 
     it 'publishes the record' do
       record = FactoryGirl.create(:tufts_pdf)
       ActiveFedora::Base.should_receive(:find).with(record.id, cast: true).and_return(record)
-      job = Job::Publish.new(user_id, record.id)
+      job = Job::Publish.new('uuid', 'user_id' => 1, 'record_id' => record.id)
       record.should_receive(:push_to_production!).once
-      job.run
+      job.perform
       record.delete
     end
   end

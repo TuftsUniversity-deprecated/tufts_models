@@ -25,9 +25,8 @@ class TuftsTemplate < ActiveFedora::Base
     attrs = attributes_to_update
     return if attrs.empty?
 
-    record_ids.each do |id|
-      job = Job::ApplyTemplate.new(user_id, id, attrs)
-      Tufts.queue.push(job)
+    record_ids.map do |id|
+      Job::ApplyTemplate.create(user_id: user_id, record_id: id, attributes: attrs)
     end
   end
 

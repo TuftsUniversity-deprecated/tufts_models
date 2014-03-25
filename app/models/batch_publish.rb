@@ -8,9 +8,8 @@ class BatchPublish < Batch
 
   def run
     return false unless ready?
-    pids.each do |pid|
-      job = Job::Publish.new(creator.id, pid)
-      Tufts.queue.push(job)
+    pids.map do |pid|
+      job = Job::Publish.create(user_id: creator.id, record_id: pid)
     end
   end
 

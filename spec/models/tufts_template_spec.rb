@@ -84,8 +84,7 @@ describe TuftsTemplate do
       attrs = { filesize: ['57 MB'] }
       template = TuftsTemplate.new(attrs)
       record_ids.each do |n|
-        Job::ApplyTemplate.should_receive(:new).ordered.with(user_id, n, attrs).and_return("Job #{n}")
-        Tufts.queue.should_receive(:push).ordered.with("Job #{n}")
+        Job::ApplyTemplate.should_receive(:create).ordered.with(user_id: user_id, record_id: n, attributes: attrs).and_return("Job #{n}")
       end
 
       template.queue_jobs_to_apply_template(user_id, record_ids)
@@ -96,10 +95,19 @@ describe TuftsTemplate do
       template = TuftsTemplate.new(attrs)
 
       error = "This method should not get called"
-      Job::ApplyTemplate.stub(:new).and_raise(error + ' 1')
-      Tufts.queue.stub(:push).and_raise(error + ' 2')
+      Job::ApplyTemplate.stub(:create).and_raise(error + ' 1')
 
       template.queue_jobs_to_apply_template(1, [1, 2])
+    end
+
+    it "returns a list of job ids" do
+      user_id = 1
+      record_ids = [1, 2, 3]
+      attrs = { filesize: ['57 MB'] }
+      template = TuftsTemplate.new(attrs)
+      allow(Job::ApplyTemplate).to receive(:create).and_return(:a, :b, :c)
+
+      expect(template.queue_jobs_to_apply_template(user_id, record_ids)).to eq [:a, :b, :c]
     end
   end
 

@@ -25,11 +25,12 @@ describe BatchTemplateUpdate do
     expect(subject.ready?).to be_true
   end
 
-  it 'starts processing' do
+  it 'starts processing and returns the job UUIDs' do
     template = TuftsTemplate.find(subject.template_id)
     allow(TuftsTemplate).to receive(:find).with(template.id) { template }
-    expect(template).to receive(:queue_jobs_to_apply_template).with(subject.creator.id, subject.pids)
-    subject.run
+    job_ids = [1, 2]
+    expect(template).to receive(:queue_jobs_to_apply_template).with(subject.creator.id, subject.pids) { job_ids }
+    expect(subject.run).to eq job_ids
     template.delete
   end
 
