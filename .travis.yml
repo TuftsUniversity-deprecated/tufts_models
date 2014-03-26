@@ -18,3 +18,5 @@ before_script:
   - cp config/devise.yml.sample config/devise.yml
   - cp config/initializers/secret_token.rb.sample config/initializers/secret_token.rb
 
+services:
+  - redis-server
