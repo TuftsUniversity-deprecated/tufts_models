@@ -10,10 +10,6 @@ describe BatchPublish do
     expect(subject.errors[:pids]).to eq ["can't be blank"]
   end
 
-  it 'serializes the pids on save' do
-    subject.save!
-  end
-
   it "knows if it's ready to run" do
     invalid_batch = BatchPublish.new
     expect(invalid_batch.ready?).to be_false
@@ -45,10 +41,11 @@ describe BatchPublish do
     obj2.delete
   end
 
-  it "returns a list of job ids" do
-    batch = FactoryGirl.build(:batch_publish, pids: [1, 2, 3])
+  it "saves the job ids" do
+    batch = FactoryGirl.create(:batch_publish, pids: [1, 2, 3])
     allow(Job::Publish).to receive(:create).and_return(:a, :b, :c)
 
-    expect(batch.run).to eq [:a, :b, :c]
+    batch.run
+    expect(batch.job_ids).to eq [:a, :b, :c]
   end
 end

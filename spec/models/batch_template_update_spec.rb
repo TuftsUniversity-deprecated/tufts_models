@@ -25,21 +25,19 @@ describe BatchTemplateUpdate do
     expect(subject.ready?).to be_true
   end
 
-  it 'starts processing and returns the job UUIDs' do
+  it 'starts processing and saves the job UUIDs' do
     template = TuftsTemplate.find(subject.template_id)
     allow(TuftsTemplate).to receive(:find).with(template.id) { template }
     job_ids = [1, 2]
     expect(template).to receive(:queue_jobs_to_apply_template).with(subject.creator.id, subject.pids) { job_ids }
-    expect(subject.run).to eq job_ids
+    subject.save
+    subject.run
+    expect(subject.job_ids).to eq job_ids
     template.delete
   end
 
   it "only runs when it's ready" do
     b = BatchTemplateUpdate.new
     expect(b.run).to be_false
-  end
-
-  it "saves successfully (ensures that :pids gets serialized)" do
-    subject.save!
   end
 end

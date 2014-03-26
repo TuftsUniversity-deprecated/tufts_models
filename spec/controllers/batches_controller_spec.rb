@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe BatchesController do
-  let(:batch_template_update) { FactoryGirl.create(:batch_template_update, pids: records.map(&:id)) }
+  let(:batch_template_update) { FactoryGirl.create(:batch_template_update,
+                                                   pids: records.map(&:id)) }
   let(:records) { [FactoryGirl.create(:tufts_pdf)] }
 
   describe "non admin" do
@@ -183,11 +184,10 @@ describe BatchesController do
           response.should render_template(:show)
         end
 
-        it 'assigns @batch, @records, and @jobs' do
+        it 'assigns @batch and @records' do
           expect(assigns[:batch].id).to eq batch_template_update.id
-          expect(assigns[:records].map(&:id).sort).to eq records.map(&:id).sort
-          pending "ability to query jobs"
-          expect(assigns[:jobs].map(&:id).sort).to eq jobs.map(&:id).sort
+          expected = records.reduce({}){|acc, r| acc.merge(r.pid => r)}
+          expect(assigns[:records_by_pid]).to eq expected
         end
       end
     end

@@ -25,8 +25,9 @@ class BatchesController < ApplicationController
   end
 
   def show
-    @records = ActiveFedora::Base.find(@batch.pids, cast: true)
-    @jobs = []
+    @records_by_pid = ActiveFedora::Base.find(@batch.pids, cast: true).reduce({}) do |acc, record|
+      acc.merge(record.id => record)
+    end
   end
 
 

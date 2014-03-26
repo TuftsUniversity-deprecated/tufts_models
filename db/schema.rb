@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320192134) do
+ActiveRecord::Schema.define(version: 20140325210817) do
 
   create_table "batches", force: true do |t|
     t.integer  "creator_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140320192134) do
     t.string   "type"
     t.text     "pids"
     t.datetime "created_at"
+    t.text     "job_ids"
   end
 
   create_table "bookmarks", force: true do |t|
