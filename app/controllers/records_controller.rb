@@ -1,7 +1,8 @@
 class RecordsController < ApplicationController
   include RecordsControllerBehavior
 
-  before_filter :load_object, only: [:publish, :destroy, :cancel]
+  before_filter :load_object, only: [:review, :publish, :destroy, :cancel]
+  authorize_resource only: [:review]
 
   def new
     authorize! :create, ActiveFedora::Base
@@ -27,8 +28,22 @@ class RecordsController < ApplicationController
     end
   end
 
+  def review
+    if @record.respond_to?(:reviewed)
+      @record.reviewed
+      if @record.save
+        flash[:notice] = "\"#{@record.title}\" has been marked as reviewed."
+      else
+        flash[:error] = "Unable to mark \"#{@record.title}\" as reviewed."
+      end
+
+    else
+      flash[:error] = "Unable to mark \"#{@record.title}\" as reviewed."
+    end
+    redirect_to catalog_path(@record)
+  end
+
   def publish
-    @record = ActiveFedora::Base.find(params[:id], cast: true)
     authorize! :publish, @record
     @record.publish!(current_user.id)
     redirect_to catalog_path(@record), notice: "\"#{@record.title}\" has been pushed to production"

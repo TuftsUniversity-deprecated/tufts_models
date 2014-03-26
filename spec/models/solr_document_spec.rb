@@ -56,4 +56,39 @@ describe SolrDocument do
     end
   end
 
+  describe 'Reviewing an object:' do
+    before do
+      @doc = SolrDocument.new(
+        'active_fedora_model_ssi' => 'TuftsPdf',
+        'batch_id_ssim' => ['1'])
+    end
+
+    it 'knows if an object has been reviewed already' do
+      @doc.reviewed?.should be_false
+      @doc['qrStatus_tesim'] = Reviewable.batch_review_text
+      @doc.reviewed?.should be_true
+    end
+
+    it 'knows if an object is reviewable' do
+      @doc.reviewable?.should be_true
+    end
+
+    it 'an object that has already been reviewed is not reviewable' do
+      @doc['qrStatus_tesim'] = Reviewable.batch_review_text
+      @doc.reviewed?.should be_true
+      @doc.reviewable?.should be_false
+    end
+
+    it 'templates are not reviewable' do
+      @doc['active_fedora_model_ssi'] = 'TuftsTemplate'
+      @doc.reviewable?.should be_false
+    end
+
+    it 'an object that is not in a batch is not reviewable' do
+      @doc['batch_id_ssim'] = nil
+      @doc.reviewable?.should be_false
+    end
+
+  end
+
 end

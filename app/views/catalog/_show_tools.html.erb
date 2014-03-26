@@ -25,6 +25,8 @@
 
   <%= li_manage_datastreams_link(@document) %>
 
+  <%= li_review_link(@document) %>
+
   <% if @document.publishable? %>
     <li>
       <%= link_to "Publish", publish_record_path(@document), method: :post %>

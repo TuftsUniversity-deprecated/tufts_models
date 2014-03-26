@@ -5,6 +5,14 @@ class SolrDocument
 
   # self.unique_key = 'id'
   
+  def reviewed?
+    Array(self['qrStatus_tesim']).include?(Reviewable.batch_review_text)
+  end
+
+  def reviewable?
+    !template? && !reviewed? && !Array(self['batch_id_ssim']).empty?
+  end
+
   def published?
     self[Solrizer.solr_name("edited_at", :stored_sortable, type: :date)] == 
       self[Solrizer.solr_name("published_at", :stored_sortable, type: :date)]

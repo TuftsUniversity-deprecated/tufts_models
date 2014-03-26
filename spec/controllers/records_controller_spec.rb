@@ -1,9 +1,6 @@
 require 'spec_helper'
 
 describe RecordsController do
-  before do
-    @routes = HydraEditor::Engine.routes
-  end
 
   describe "an admin" do
     before do
@@ -11,7 +8,58 @@ describe RecordsController do
       sign_in @user
     end
 
+    describe 'reviews a record - happy path:' do
+      before do
+        @record = FactoryGirl.create(:tufts_pdf)
+        put :review, id: @record
+      end
+      after { @record.delete }
+
+      it 'assigns @record' do
+        expect(assigns(:record)).to eq @record
+      end
+
+      it 'redirects to the record show page' do
+        response.should redirect_to catalog_path(@record)
+      end
+
+      it 'marks the record as reviewed' do
+        expect(@record.reload.reviewed?).to be_true
+      end
+
+      it 'sets the flash' do
+        expect(flash[:notice]).to eq "\"#{@record.title}\" has been marked as reviewed."
+      end
+    end
+
+    describe 'reviews a record - when it fails to save:' do
+      before do
+        @record = FactoryGirl.create(:tufts_pdf)
+        TuftsPdf.any_instance.should_receive(:save) { false }
+        put :review, id: @record
+      end
+      after { @record.delete }
+
+      it 'sets the flash' do
+        expect(flash[:error]).to eq "Unable to mark \"#{@record.title}\" as reviewed."
+      end
+    end
+
+    describe "reviews a record - when it's not a reviewable record :" do
+      before do
+        @record = FactoryGirl.create(:tufts_template)
+        put :review, id: @record
+      end
+      after { @record.delete }
+
+      it 'does not mark the record as reviewed' do
+        expect(flash[:error]).to eq "Unable to mark \"#{@record.title}\" as reviewed."
+      end
+    end
+
     describe "who goes to the new page" do
+      before { @routes = HydraEditor::Engine.routes }
+
       it "should be successful" do
         get :new
         response.should be_successful
@@ -72,6 +120,8 @@ describe RecordsController do
     end
 
     describe "creating a new record" do
+      before { @routes = HydraEditor::Engine.routes }
+
       it "should be successful" do
         post :create, :type=>'TuftsAudio', :tufts_audio=>{:title=>"My title", displays: ['dl']}
         response.should redirect_to("/catalog/#{assigns[:record].pid}") 
@@ -81,6 +131,7 @@ describe RecordsController do
 
     describe "editing a record" do
       before do
+        @routes = HydraEditor::Engine.routes
         @audio = TuftsAudio.new(title: 'My title2', displays: ['dl'])
         @audio.edit_users = [@user.email]
         @audio.save!
@@ -96,9 +147,6 @@ describe RecordsController do
     end
 
     describe 'cancel' do
-      before do
-        @routes = Tufts::Application.routes
-      end
       describe "on an object with no existing versions of DCA-META" do
         before do
           @audio = TuftsAudio.new()
@@ -125,6 +173,8 @@ describe RecordsController do
     end
 
     describe "updating a record" do
+      before { @routes = HydraEditor::Engine.routes }
+
       describe "with an audio" do
         before do
           @audio = TuftsAudio.new(title: 'My title2', displays: ['dl'])
@@ -175,7 +225,6 @@ describe RecordsController do
 
     describe "publish a record" do
       before do
-        @routes = Tufts::Application.routes 
         @audio = TuftsAudio.new(title: 'My title2', displays: ['dl'])
         @audio.edit_users = [@user.email]
         @audio.save!
@@ -196,7 +245,6 @@ describe RecordsController do
         @audio = TuftsAudio.new(title: 'My title2', displays: ['dl'])
         @audio.edit_users = [@user.email]
         @audio.save!
-        @routes = Tufts::Application.routes 
       end
       it "should be successful with a pid" do
         delete :destroy, :id=>@audio
@@ -211,7 +259,10 @@ describe RecordsController do
     before do
       sign_in FactoryGirl.create(:user)
     end
+
     describe "who goes to the new page" do
+      before { @routes = HydraEditor::Engine.routes }
+
       it "should not be allowed" do
         get :new
         response.status.should == 302
@@ -219,8 +270,10 @@ describe RecordsController do
         flash[:alert].should =~ /You are not authorized to access this page/i
       end
     end
+
     describe "who goes to the edit page" do
       before do
+        @routes = HydraEditor::Engine.routes
         @audio = TuftsAudio.create!(title: 'My title2', displays: ['dl'])
       end
       after do
@@ -233,5 +286,20 @@ describe RecordsController do
         flash[:alert].should =~ /You do not have sufficient privileges to edit this document/i
       end
     end
+
+    describe 'reviews a record' do
+      before do
+        @record = FactoryGirl.create(:tufts_pdf)
+        put :review, id: @record
+      end
+      after { @record.delete }
+
+      it 'should not be allowed' do
+        response.status.should == 302
+        response.should redirect_to Tufts::Application.routes.url_helpers.root_path
+        flash[:alert].should =~ /You are not authorized to access this page/i
+      end
+    end
   end
+
 end

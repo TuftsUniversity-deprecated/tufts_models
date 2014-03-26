@@ -14,4 +14,20 @@ module ApplicationHelper
     end
   end
 
+  def li_review_link(document)
+    if document.reviewable?
+      path = review_record_path(document)
+      klass = ''
+      method = :put
+    else
+      path = '#'
+      klass = 'disabled'
+      method = :get
+    end
+
+    content_tag :li, :class => klass do
+      link_to "Mark as Reviewed", path, method: method
+    end
+  end
+
 end
