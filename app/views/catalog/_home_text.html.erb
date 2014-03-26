@@ -1,20 +1,18 @@
-
 <% if current_user.admin? %>
-<h1>Tufts Digital Library Admin</h1>
-<% else %>
-<h1>Contributor Deposit</h1>
-<% end %>
+  <h1>Tufts Digital Library Admin</h1>
+  <nav>
+    <ul>
+      <li><%= link_to 'Create a new object', hydra_editor.new_record_path %></li>
+      <li><%= link_to 'Unpublished objects', unpublished_index_path %></li>
+      <li><%= link_to 'Manage metadata templates', templates_path %></li>
+      <li>Batch Import</li>
+      <li><%= link_to 'Manage self-deposit types', deposit_types_path %></li>
+      <li><%= link_to 'Contribute a new Self-Deposit item', contributions_path %></li>
+    </ul>
+  </nav>
 
-<nav>
-  <ul>
-    <% if current_user.admin? %>
-      <li><%= link_to "Create a new object", hydra_editor.new_record_path()%></li>
-      <li><%= link_to "Unpublished objects", unpublished_index_path()%></li>
-      <li><%= link_to "Manage self-deposit types", deposit_types_path %></li>
-      <li><%= link_to "Contribute a new Self-Deposit item", contributions_path %></li>
-    <% else %>
-        <%# Plain-old-users should never be able to reach this page, but just in case... %>
-        <li><%= link_to "Deposit a new document", contributions_path %></li>
-    <% end %>
-  </ul>
-</nav>
+<% else %>
+  <%# Plain-old-users should never be able to reach this page, but just in case... %>
+  <h1>Redirecting to Contributor Deposit</h1>
+  <%= redirect_to contributions_path %>
+<% end %>
