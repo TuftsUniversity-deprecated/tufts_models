@@ -30,8 +30,6 @@ describe "batches/show.html.erb" do
       expect(rendered).to have_selector(".creator", text: subject.creator.display_name)
       expect(rendered).to have_selector(".created_at", text: subject.created_at)
       expect(rendered).to have_selector(".status", text: 'Queued')
-      pending "reviews working on records"
-      expect(rendered).to have_selector(".review_status", text: 'Complete')
     end
 
     it "shows record pids" do
@@ -49,38 +47,36 @@ describe "batches/show.html.erb" do
       expect(rendered).to have_selector(".record_status", text: "Queued")
     end
 
-    it "shows review status of each record" do
-      render
-      pending "reviews working on records"
-      expect(rendered).to have_selector(".record_reviewed_status", text: "FIXME")
-    end
-
     context "with some records reviewed" do
       let(:records) do
         d1 = FactoryGirl.create(:tufts_audio)
         d2 = FactoryGirl.create(:tufts_pdf)
-        # d1.reviewed!
+        d1.reviewed
         [d1, d2]
       end
 
-      it "shows aa complete status when all records have been reviewed" do
-        pending "reviews working on records"
+      it "shows a complete reviewed status" do
         render
-        expect(rendered).to have_selector(".status", text: subject.id)
+        expect(rendered).to have_selector(".review_status", text: "Incomplete")
+      end
+
+      it "shows review status of each record" do
+        render
+        expect(rendered).to have_selector(".record_reviewed_status input[type=checkbox][disabled=disabled][checked=checked]")
+        expect(rendered).to have_selector(".record_reviewed_status input[type=checkbox][disabled=disabled]:not([checked=checked])")
       end
     end
 
     context "with all records reviewed" do
       let(:records) do
         doc = FactoryGirl.create(:tufts_pdf)
-        # doc.reviewed!
+        doc.reviewed
         [doc]
       end
 
-      it "shows an incomplete status when some records haven't been reviewed" do
-        pending "reviews working on records"
+      it "shows an incomplete reviewed status" do
         render
-        expect(rendered).to have_selector(".status", text: subject.id)
+        expect(rendered).to have_selector(".review_status", text: "Complete")
       end
     end
 
