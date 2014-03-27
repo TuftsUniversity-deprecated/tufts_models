@@ -7,7 +7,7 @@
     <%= make_dl "Creator", @batch.creator.display_name, "creator" %>
     <%= make_dl "Created at", @batch.created_at, "created_at" %>
     <%= make_dl "Status", batch_status_text(@batch), "status" %>
-    <%= make_dl "Review Status", (@records_by_pid.values.all?(&:reviewed?) ? "Complete" : "Incomplete"), "review_status" %>
+    <%= make_dl "Review Status", (@records_by_pid.values.all?{|m| m.try(:reviewed?)} ? "Complete" : "Incomplete"), "review_status" %>
   </div>
 
   <div class="jobs">
@@ -26,7 +26,7 @@
           <td class="record_title"><%= record.try(&:title) %></td>
           <td class="record_status"><%= job_status_text(@batch, job) %></td>
           <td class="record_reviewed_status">
-            <%= check_box_tag :reviewed, :reviewed, record.try(&:reviewed?), type: :checkbox, disabled: true  %>
+            <%= check_box_tag :reviewed, :reviewed, record.try(:reviewed?), type: :checkbox, disabled: true  %>
           </td>
         </tr>
       <% end %>
