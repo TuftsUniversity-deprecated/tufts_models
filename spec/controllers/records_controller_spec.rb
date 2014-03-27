@@ -168,12 +168,41 @@ describe RecordsController do
           expect { delete :cancel, id: @audio}.to_not change{TuftsAudio.count}
         end
       end
+
+      describe "for a template" do
+        before do
+          @template = TuftsTemplate.new(template_name: 'My Template', title:'Populate DCA-META')
+          @template.save!
+        end
+        after do
+          @template.destroy
+        end
+        it "redirects back to the template index" do
+         delete :cancel, id: @template
+         response.should redirect_to(Tufts::Application.routes.url_helpers.templates_path)
+        end
+      end
+
       it "should not remove the record if there are no existing versions of the dca-META" do
       end
     end
 
     describe "updating a record" do
       before { @routes = HydraEditor::Engine.routes }
+
+      describe "for a template" do
+        before do
+          @template = TuftsTemplate.new(template_name: 'My Template')
+          @template.save!
+        end
+        after do
+          @template.destroy
+        end
+        it "redirects back to the template index" do
+          put :update, :id=>@template, tufts_template: {template_name: "My Updated Template"}
+          response.should redirect_to(Tufts::Application.routes.url_helpers.templates_path)
+        end
+      end
 
       describe "with an audio" do
         before do
@@ -252,7 +281,20 @@ describe RecordsController do
         @audio.reload.state.should == 'D' 
       end
     end
+
+    describe "destroying a template" do
+      before do
+        @template = TuftsTemplate.new(template_name: 'My Template')
+        @template.save!
+      end
+      it "routes back to the template index" do
+        delete :destroy, :id=>@template
+        response.should redirect_to(Tufts::Application.routes.url_helpers.templates_path)
+      end
+    end
+
   end
+
 
 
   describe "a non-admin" do
