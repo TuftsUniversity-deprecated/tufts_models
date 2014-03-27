@@ -7,6 +7,12 @@ describe TuftsTemplate do
     subject.required?(:displays).should be_false
   end
 
+  it 'has a unique pid namespace' do
+    template = TuftsTemplate.new(template_name: 'Template #1')
+    template.save
+    template.pid.should match /^template:/
+  end
+
   describe 'template_name attribute' do
     it 'getter and setter methods exist' do
       subject.template_name = 'Title #1'
