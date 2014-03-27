@@ -19,7 +19,6 @@ jetty
 
 # Don't send local rvm config
 .rvmrc
-.ruby-version
 .ruby-gemset
 
 # Don't send system specific config files
