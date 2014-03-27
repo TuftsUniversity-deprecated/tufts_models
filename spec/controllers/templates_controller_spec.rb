@@ -21,6 +21,7 @@ describe TemplatesController do
 
     context 'with some objects' do
       before :all do
+        TuftsTemplate.destroy_all
         FactoryGirl.create(:tufts_template)
         FactoryGirl.create(:tufts_template)
         FactoryGirl.create(:tufts_pdf)
@@ -29,7 +30,7 @@ describe TemplatesController do
 
       it 'returns only templates' do
         get :index
-        expect(assigns[:document_list].count).should == 2
+        expect(assigns[:document_list].count).to eq 2
       end
 
     end

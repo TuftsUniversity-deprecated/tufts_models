@@ -1,16 +1,30 @@
-<div id="content" class="span9">
+<h1>Manage Metadata Templates</h1>
+<small><%= link_to "< Back to Menu", '/', id: "Home" %></small>
 
-  <% @page_title = t('blacklight.search.title', :application_name => application_name) %>
+<table class="table">
+  <thead>
+  <tr>
+    <th><%= link_to "Add", new_template_path, class: "btn btn-mini btn-primary" %></th>
+    <th>PID</th>
+    <th>Template Name</th>
+    <th>Modified</th>
+    <th>By</th>
+    <th></th>
+  </tr>
+  </thead>
 
-  <%= render :partial => 'did_you_mean' %>
+  <tbody>
 
-  <%= render :partial => 'constraints' %>
+  <%= render partial: 'template', collection: @document_list, as: :template %>
 
-  <%= render 'sort_and_per_page' %>
+  <tr>
+    <td><%= link_to "Add", new_template_path, class: "btn btn-mini btn-primary" %></td>
+    <td></td>
+    <td><%= link_to "Create a new Metadata Template", new_template_path %> </td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  </tbody>
 
-  <%= render_document_index %>
-
-  <%= render 'results_pagination' %>
-
-</div>
-
+</table>
