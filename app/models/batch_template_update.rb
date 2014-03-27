@@ -9,7 +9,7 @@ class BatchTemplateUpdate < Batch
 
   def run
     ready? &&
-      (ids = TuftsTemplate.find(template_id).queue_jobs_to_apply_template(creator.id, pids)) &&
+      (ids = TuftsTemplate.find(template_id).queue_jobs_to_apply_template(creator.id, pids, id)) &&
       update_attribute(:job_ids, ids)
   end
 

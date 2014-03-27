@@ -29,8 +29,9 @@ describe BatchTemplateUpdate do
     template = TuftsTemplate.find(subject.template_id)
     allow(TuftsTemplate).to receive(:find).with(template.id) { template }
     job_ids = [1, 2]
-    expect(template).to receive(:queue_jobs_to_apply_template).with(subject.creator.id, subject.pids) { job_ids }
     subject.save
+
+    expect(template).to receive(:queue_jobs_to_apply_template).with(subject.creator.id, subject.pids, subject.id) { job_ids }
     subject.run
     expect(subject.job_ids).to eq job_ids
     template.delete

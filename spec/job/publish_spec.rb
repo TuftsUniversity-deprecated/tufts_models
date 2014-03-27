@@ -1,21 +1,29 @@
 require 'spec_helper'
 
 describe Job::Publish do
-  let(:user_id) { '1' }
-  let(:record_id) { 'pid:123' }
-  subject { Job::Publish.new(user_id, record_id) }
 
   it 'uses the "publish" queue' do
     expect(Job::Publish.queue).to eq :publish
   end
 
   describe '::create' do
+    let(:opts) { { record_id: '1',
+                   user_id: '1',
+                   batch_id: '1' } }
+
     it 'requires the user id' do
-      expect{Job::Publish.create('record_id' => '1')}.to raise_exception(ArgumentError)
+      opts.delete(:user_id)
+      expect{Job::Publish.create(opts)}.to raise_exception(ArgumentError, /user_id/)
     end
 
     it 'requires the record id' do
-      expect{Job::Publish.create('user_id' => '1')}.to raise_exception(ArgumentError)
+      opts.delete(:record_id)
+      expect{Job::Publish.create(opts)}.to raise_exception(ArgumentError, /record_id/)
+    end
+
+    it 'requires the batch id' do
+      opts.delete(:batch_id)
+      expect{Job::Publish.create(opts)}.to raise_exception(ArgumentError, /batch_id/)
     end
   end
 
@@ -43,5 +51,18 @@ describe Job::Publish do
       allow(job).to receive(:tick).and_raise(Resque::Plugins::Status::Killed)
       expect{job.perform}.to raise_exception(Resque::Plugins::Status::Killed)
     end
+
+    it 'runs the job as a batch item' do
+      pdf = FactoryGirl.create(:tufts_pdf)
+      batch_id = '10'
+      job = Job::Publish.new('uuid', 'record_id' => pdf.id, 'user_id' => '1', 'batch_id' => batch_id)
+
+      job.perform
+      pdf.reload
+      expect(pdf.batch_id).to eq [batch_id]
+
+      pdf.delete
+    end
+
   end
 end

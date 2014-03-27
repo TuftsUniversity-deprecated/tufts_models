@@ -21,12 +21,12 @@ class TuftsTemplate < ActiveFedora::Base
     false
   end
 
-  def queue_jobs_to_apply_template(user_id, record_ids)
+  def queue_jobs_to_apply_template(user_id, record_ids, batch_id)
     attrs = attributes_to_update
     return if attrs.empty?
 
     record_ids.map do |id|
-      Job::ApplyTemplate.create(user_id: user_id, record_id: id, attributes: attrs)
+      Job::ApplyTemplate.create(user_id: user_id, record_id: id, attributes: attrs, batch_id: batch_id)
     end
   end
 
