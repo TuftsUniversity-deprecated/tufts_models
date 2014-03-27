@@ -31,12 +31,7 @@ module Tufts
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
   end
-
-  def self.queue
-    @queue ||= Resque::Queue.new('derivatives')
-  end
 end
-require 'queue/resque'
 
 if Rails.env.development? and ENV['EXPLAIN_PARTIALS']
   module ActionView

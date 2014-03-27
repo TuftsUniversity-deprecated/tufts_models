@@ -61,6 +61,12 @@ end
 $ QUEUE=* rake resque:work
 ```
 
+### Optional: start resque-web
+
+```bash
+resque-web config/resque_conf.rb
+```
+
 ## Start hydra-jetty
 ```bash
 $ rake jetty:start

@@ -1,6 +1,5 @@
 class BatchPublish < Batch
   validates :pids, presence: true
-  serialize :pids
 
   def ready?
     valid?
@@ -8,10 +7,10 @@ class BatchPublish < Batch
 
   def run
     return false unless ready?
-    pids.each do |pid|
-      job = Job::Publish.new(creator.id, pid)
-      Tufts.queue.push(job)
+    ids = pids.map do |pid|
+      job = Job::Publish.create(user_id: creator.id, record_id: pid)
     end
+    update_attribute(:job_ids, ids)
   end
 
 end

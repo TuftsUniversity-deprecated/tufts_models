@@ -3,13 +3,31 @@
 
   <div class="batch_info">
     <%= make_dl "Batch id", @batch.id, "batch_id" %>
-    <%= make_dl "Record Count", @documents.count, "record_count" %>
+    <%= make_dl "Record Count", @records_by_pid.count, "record_count" %>
     <%= make_dl "Creator", @batch.creator.display_name, "creator" %>
     <%= make_dl "Created at", @batch.created_at, "created_at" %>
-    <%= make_dl "Status", (@jobs.map(&:finished?).all? ? "Complete" : "In Progress"), "status" %>
-    <%# make_dl "Review Status", (@documents.map(&:reviewed?).all? ? "Complete" : "Incomplete"), "review_status" %>
+    <%= make_dl "Status", batch_status_text(@batch), "status" %>
+    <%# make_dl "Review Status", (@records_by_pid.values.map(&:reviewed?).all? ? "Complete" : "Incomplete"), "review_status" %>
   </div>
 
   <div class="jobs">
+    <table class="table">
+      <tr>
+        <th>PID</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Reviewed Status</th>
+      </tr>
+      <% @batch.jobs.each do |job| %>
+        <% job_options = job.try(&:options) || {} %>
+        <% record = @records_by_pid[job_options['record_id']] %>
+        <tr>
+          <td class="record_pid"><%= job_options['record_id'] %></td>
+          <td class="record_title"><%= record.try(&:title) %></td>
+          <td class="record_status"><%= job_status_text(@batch, job) %></td>
+          <td class="record_reviewed_status">Reviewed status</td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>

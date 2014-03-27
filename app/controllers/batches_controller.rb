@@ -25,8 +25,9 @@ class BatchesController < ApplicationController
   end
 
   def show
-    @documents = ActiveFedora::Base.find(@batch.pids, cast: true)
-    @jobs = []
+    @records_by_pid = ActiveFedora::Base.find(@batch.pids, cast: true).reduce({}) do |acc, record|
+      acc.merge(record.id => record)
+    end
   end
 
 
@@ -62,7 +63,7 @@ private
   end
 
   def no_pids_selected
-    flash[:error] = 'Please select some documents to do batch updates.'
+    flash[:error] = 'Please select some records to do batch updates.'
     redirect_to (request.referer || root_path)
   end
 

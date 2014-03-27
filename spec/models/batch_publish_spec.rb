@@ -10,10 +10,6 @@ describe BatchPublish do
     expect(subject.errors[:pids]).to eq ["can't be blank"]
   end
 
-  it 'serializes the pids on save' do
-    subject.save!
-  end
-
   it "knows if it's ready to run" do
     invalid_batch = BatchPublish.new
     expect(invalid_batch.ready?).to be_false
@@ -35,11 +31,8 @@ describe BatchPublish do
     job1 = double
     job2 = double
 
-    expect(Job::Publish).to receive(:new).with(batch.creator.id, obj1.id) { job1 }
-    expect(Job::Publish).to receive(:new).with(batch.creator.id, obj2.id) { job2 }
-
-    expect(Tufts.queue).to receive(:push).with(job1)
-    expect(Tufts.queue).to receive(:push).with(job2)
+    expect(Job::Publish).to receive(:create).with(user_id: batch.creator.id, record_id: obj1.id) { job1 }
+    expect(Job::Publish).to receive(:create).with(user_id: batch.creator.id, record_id: obj2.id) { job2 }
 
     return_value = batch.run
     expect(return_value).to be_true
@@ -48,4 +41,11 @@ describe BatchPublish do
     obj2.delete
   end
 
+  it "saves the job ids" do
+    batch = FactoryGirl.create(:batch_publish, pids: [1, 2, 3])
+    allow(Job::Publish).to receive(:create).and_return(:a, :b, :c)
+
+    batch.run
+    expect(batch.job_ids).to eq [:a, :b, :c]
+  end
 end

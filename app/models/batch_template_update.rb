@@ -3,14 +3,14 @@ class BatchTemplateUpdate < Batch
   validates :pids,        presence: true
   validate :template_not_empty
 
-  serialize :pids
-
   def ready?
     valid?
   end
 
   def run
-    ready? && TuftsTemplate.find(template_id).queue_jobs_to_apply_template(creator.id, pids)
+    ready? &&
+      (ids = TuftsTemplate.find(template_id).queue_jobs_to_apply_template(creator.id, pids)) &&
+      update_attribute(:job_ids, ids)
   end
 
   protected
