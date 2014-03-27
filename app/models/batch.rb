@@ -10,6 +10,13 @@ class Batch < ActiveRecord::Base
   serialize :pids
   serialize :job_ids
 
+  before_destroy do |batch|
+    batch.jobs.each do |job|
+      Resque::Plugins::Status::Hash.kill(job.uuid)
+      Resque::Plugins::Status::Hash.remove(job.uuid)
+    end
+  end
+
   def jobs
     job_ids? ? job_ids.map{|job_id| Resque::Plugins::Status::Hash.get(job_id)} : []
   end

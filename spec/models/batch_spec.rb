@@ -41,7 +41,18 @@ describe Batch do
     expect(Batch.find(id).job_ids).to eq job_ids
   end
 
-  it "deletes the statuses for its jobs when deleted"
+  context "with some pids" do
+    let(:pids) { ['tufts:1'] }
+    let(:job_ids) { ['uuid:1'] }
+    it "deletes related jobs and statuses when destroyed" do
+      jobs.each do |job|
+        expect(Resque::Plugins::Status::Hash).to receive(:kill).with(job.uuid)
+        expect(Resque::Plugins::Status::Hash).to receive(:remove).with(job.uuid)
+      end
+      subject.save
+      subject.destroy
+    end
+  end
 
   describe "#jobs" do
     let(:pids) { ['tufts:1'] }

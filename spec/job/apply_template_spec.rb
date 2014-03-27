@@ -38,5 +38,15 @@ describe Job::ApplyTemplate do
       object.reload
       object.toc.should == ['old toc', 'new toc']
     end
+
+    it "can be killed" do
+      object = TuftsPdf.new(title: 'old title', toc: 'old toc', displays: ['dl'])
+      object.save!
+      job = Job::ApplyTemplate.new('uuid', 'user_id' => 1, 'record_id' => object.id, 'attributes' => {toc: 'new toc'})
+      allow(job).to receive(:tick).and_raise(Resque::Plugins::Status::Killed)
+      expect{job.perform}.to raise_exception(Resque::Plugins::Status::Killed)
+      object.reload
+      expect(object.toc).to eq ['old toc']
+    end
   end
 end

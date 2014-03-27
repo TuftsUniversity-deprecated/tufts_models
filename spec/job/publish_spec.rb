@@ -36,6 +36,12 @@ describe Job::Publish do
       job.perform
       record.delete
     end
-  end
 
+    it 'can be killed' do
+      record = FactoryGirl.create(:tufts_pdf)
+      job = Job::Publish.new('uuid', 'user_id' => 1, 'record_id' => record.id)
+      allow(job).to receive(:tick).and_raise(Resque::Plugins::Status::Killed)
+      expect{job.perform}.to raise_exception(Resque::Plugins::Status::Killed)
+    end
+  end
 end

@@ -13,6 +13,7 @@ module Job
     end
 
     def perform
+      tick # give resque-status a chance to kill this
       record = ActiveFedora::Base.find(options['record_id'], cast: true)
       record.apply_attributes(options['attributes'], options['user_id'])
     end
