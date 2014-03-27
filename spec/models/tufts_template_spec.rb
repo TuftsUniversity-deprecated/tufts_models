@@ -111,4 +111,9 @@ describe TuftsTemplate do
     end
   end
 
+  describe "#apply_attributes" do
+    it 'raises an error' do
+      expect{subject.apply_attributes(description: 'new desc')}.to raise_exception(CannotApplyTemplateError)
+    end
+  end
 end

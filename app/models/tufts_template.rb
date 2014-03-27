@@ -46,6 +46,10 @@ class TuftsTemplate < ActiveFedora::Base
     attrs
   end
 
+  def apply_attributes(*args)
+    raise CannotApplyTemplateError.new
+  end
+
 private
 
   def attr_empty?(value)
@@ -54,6 +58,14 @@ private
 
 end
 
+class CannotApplyTemplateError < StandardError
+  def message
+    'Templates cannot be updated by templates'
+  end
+  def to_s
+    self.class.to_s + ": " + message
+  end
+end
 
 class UnpublishableModelError < StandardError
   def message
