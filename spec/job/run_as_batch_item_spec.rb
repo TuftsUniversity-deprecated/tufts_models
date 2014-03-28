@@ -43,6 +43,15 @@ describe Job::RunAsBatchItem do
       @pdf.reload
       expect(@pdf.qrStatus).to eq [@old_status]
     end
+
+    it "if the job itself marks the object as reviewed, the batch wrapper shouldn't clobber that status" do
+      @job.run_as_batch_item(@pdf.id, @batch_id) do |record|
+        record.reviewed
+        record.save!
+      end
+      @pdf.reload
+      expect(@pdf.qrStatus).to eq [@old_status, Reviewable.batch_review_text]
+    end
   end
 
 end
