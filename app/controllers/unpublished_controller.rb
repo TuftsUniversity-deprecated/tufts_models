@@ -3,7 +3,7 @@ require 'blacklight/catalog'
 
 class UnpublishedController < CatalogController  
 
-  UnpublishedController.solr_search_params_logic += [:only_changed_models, :non_templates]
+  UnpublishedController.solr_search_params_logic += [:only_changed_models]
 
   def only_changed_models(solr_parameters, user_parameters)
     solr_parameters[:fq] ||= []
@@ -12,9 +12,4 @@ class UnpublishedController < CatalogController
     solr_parameters[:fq] << "{!frange l=0 incl=false}sub(#{changed},#{published})"
   end
 
-  def non_templates(solr_parameters, user_parameters)
-    solr_parameters[:fq] ||= []
-    solr_parameters[:fq] << "NOT active_fedora_model_ssi:TuftsTemplate"
-  end
-
-end 
+end
