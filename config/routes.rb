@@ -37,7 +37,6 @@ Tufts::Application.routes.draw do
 
   post 'records/:id/publish', to: 'records#publish', as: 'publish_record', constraints: { id: ALLOW_DOTS }
   put 'records/:id/review', to: 'records#review', as: 'review_record', constraints: { id: ALLOW_DOTS }
-  get 'records/new?type=TuftsTemplate', to: 'records#new', as: 'new_template'
 
   resources :records, only: [:destroy], constraints: { id: ALLOW_DOTS } do
     member do
