@@ -82,12 +82,13 @@ describe TuftsTemplate do
       user_id = 1
       record_ids = [1, 2, 3]
       attrs = { filesize: ['57 MB'] }
+      batch_id = '10'
       template = TuftsTemplate.new(attrs)
       record_ids.each do |n|
-        Job::ApplyTemplate.should_receive(:create).ordered.with(user_id: user_id, record_id: n, attributes: attrs).and_return("Job #{n}")
+        Job::ApplyTemplate.should_receive(:create).ordered.with(user_id: user_id, record_id: n, attributes: attrs, batch_id: batch_id).and_return("Job #{n}")
       end
 
-      template.queue_jobs_to_apply_template(user_id, record_ids)
+      template.queue_jobs_to_apply_template(user_id, record_ids, batch_id)
     end
 
     it "doesn't queue any jobs if there is nothing to update" do
@@ -97,7 +98,7 @@ describe TuftsTemplate do
       error = "This method should not get called"
       Job::ApplyTemplate.stub(:create).and_raise(error + ' 1')
 
-      template.queue_jobs_to_apply_template(1, [1, 2])
+      template.queue_jobs_to_apply_template(1, [1, 2], 10)
     end
 
     it "returns a list of job ids" do
@@ -107,7 +108,7 @@ describe TuftsTemplate do
       template = TuftsTemplate.new(attrs)
       allow(Job::ApplyTemplate).to receive(:create).and_return(:a, :b, :c)
 
-      expect(template.queue_jobs_to_apply_template(user_id, record_ids)).to eq [:a, :b, :c]
+      expect(template.queue_jobs_to_apply_template(user_id, record_ids, 10)).to eq [:a, :b, :c]
     end
   end
 

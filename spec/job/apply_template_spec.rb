@@ -7,16 +7,29 @@ describe Job::ApplyTemplate do
   end
 
   describe '::create' do
+    let(:opts) { { record_id: '1',
+                   user_id: '1',
+                   attributes: {},
+                   batch_id: '1' } }
+
     it 'requires the user id' do
-      expect{Job::ApplyTemplate.create('record_id' => '1', 'attributes' => {})}.to raise_exception(ArgumentError)
+      opts.delete(:user_id)
+      expect{Job::ApplyTemplate.create(opts)}.to raise_exception(ArgumentError, /user_id/)
     end
 
     it 'requires the record id' do
-      expect{Job::ApplyTemplate.create('user_id' => '1', 'attributes' => {})}.to raise_exception(ArgumentError)
+      opts.delete(:record_id)
+      expect{Job::ApplyTemplate.create(opts)}.to raise_exception(ArgumentError, /record_id/)
     end
 
     it 'requires the attributes for update' do
-      expect{Job::ApplyTemplate.create('user_id' => '1', 'record_id' => '1')}.to raise_exception(ArgumentError)
+      opts.delete(:attributes)
+      expect{Job::ApplyTemplate.create(opts)}.to raise_exception(ArgumentError, /attributes/)
+    end
+
+    it 'requires the batch id' do
+      opts.delete(:batch_id)
+      expect{Job::ApplyTemplate.create(opts)}.to raise_exception(ArgumentError, /batch_id/)
     end
   end
 
@@ -47,6 +60,19 @@ describe Job::ApplyTemplate do
       expect{job.perform}.to raise_exception(Resque::Plugins::Status::Killed)
       object.reload
       expect(object.toc).to eq ['old toc']
+    end
+
+    it 'runs the job as a batch item' do
+      pdf = FactoryGirl.create(:tufts_pdf)
+      batch_id = '10'
+      job = Job::ApplyTemplate.new('uuid', 'record_id' => pdf.id, 'user_id' => '1', 'batch_id' => batch_id, 'attributes' => {title: 'new title 123'})
+
+      job.perform
+      pdf.reload
+      expect(pdf.title).to eq 'new title 123'
+      expect(pdf.batch_id).to eq [batch_id]
+
+      pdf.delete
     end
   end
 end

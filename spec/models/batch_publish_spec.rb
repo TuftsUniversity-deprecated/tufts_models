@@ -31,8 +31,8 @@ describe BatchPublish do
     job1 = double
     job2 = double
 
-    expect(Job::Publish).to receive(:create).with(user_id: batch.creator.id, record_id: obj1.id) { job1 }
-    expect(Job::Publish).to receive(:create).with(user_id: batch.creator.id, record_id: obj2.id) { job2 }
+    expect(Job::Publish).to receive(:create).with(user_id: batch.creator.id, batch_id: batch.id, record_id: obj1.id) { job1 }
+    expect(Job::Publish).to receive(:create).with(user_id: batch.creator.id, batch_id: batch.id, record_id: obj2.id) { job2 }
 
     return_value = batch.run
     expect(return_value).to be_true
