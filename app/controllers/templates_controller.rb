@@ -11,4 +11,6 @@ class TemplatesController < CatalogController
     solr_parameters[:fq] << "active_fedora_model_ssi:TuftsTemplate"
   end
 
+  def filter_templates
+  end
 end

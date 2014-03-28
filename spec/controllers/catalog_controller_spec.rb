@@ -48,6 +48,25 @@ describe CatalogController do
       response.should be_successful
       response.should render_template(:show)
     end
+
+    context 'viewing templates' do
+      before { @excluded = FactoryGirl.create(:tufts_template) }
+      after { @excluded.destroy }
+
+      it 'filters from index' do
+        get :index
+        pid_list = assigns[:document_list].map {|doc| doc.id}
+        expect(pid_list).not_to include(@excluded.pid)
+      end
+
+      pending it 'filters from show' do
+      # 3/27/2014 Need to determine if this is really the desired functionality
+        get :show, id: @excluded.pid
+        expect(response.status).to eq(404)
+        expect(response).to redirect_to(app_root)
+      end
+    end
+
   end
 
 end
