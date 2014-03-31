@@ -25,6 +25,7 @@ describe "batches/show.html.erb" do
 
     it "shows batch information" do
       render
+      expect(rendered).to have_selector(".type", text: subject.display_name)
       expect(rendered).to have_selector(".batch_id", text: subject.id)
       expect(rendered).to have_selector(".record_count", text: records.count)
       expect(rendered).to have_selector(".creator", text: subject.creator.display_name)
