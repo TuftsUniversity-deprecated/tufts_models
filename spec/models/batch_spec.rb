@@ -77,7 +77,8 @@ describe Batch do
         [:killed, :completed, :queued, :working] => :working,
         [:killed, :completed, :queued] => :queued,
         [:killed, :completed] => :completed,
-        [:killed] => :killed
+        [:killed] => :killed,
+        [] => :completed,
       }.each do |statuses, expected|
         allow(subject).to receive(:jobs) { statuses.map{|s| s.nil? ? nil : double(status: s)} }
         expect(subject.status).to eq(expected), "expected = #{expected.inspect}, job statuses = #{statuses.inspect}"

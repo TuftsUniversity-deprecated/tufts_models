@@ -3,6 +3,10 @@ class BatchTemplateUpdate < Batch
   validates :pids,        presence: true
   validate :template_not_empty
 
+  def display_name
+    "Update"
+  end
+
   def ready?
     valid?
   end

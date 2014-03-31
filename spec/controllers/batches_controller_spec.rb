@@ -11,6 +11,10 @@ describe BatchesController do
       response.should redirect_to(new_user_session_path)
     end
     it 'denies access to show' do
+      get :index
+      response.should redirect_to(new_user_session_path)
+    end
+    it 'denies access to show' do
       get :show, id: batch_template_update.id
       response.should redirect_to(new_user_session_path)
     end
@@ -166,6 +170,32 @@ describe BatchesController do
           BatchTemplateUpdate.any_instance.stub(:run) { false }
           post 'create', batch: {type: "BatchTemplateUpdate", pids: ['pid:1']}
           response.should render_template(:new)
+        end
+      end
+    end
+
+    describe "GET 'index'" do
+      describe 'happy path' do
+        let(:batches) do
+          [FactoryGirl.create(:batch_template_update, created_at: 2.days.ago),
+           FactoryGirl.create(:batch_publish, created_at: 1.day.ago)]
+        end
+        before do
+          Batch.delete_all
+          batches
+          get :index
+        end
+
+        it "returns http success" do
+          response.should be_success
+        end
+
+        it 'should render the index template' do
+          response.should render_template(:index)
+        end
+
+        it 'assigns @batches' do
+          expect(assigns[:batches]).to eq batches.sort_by(&:created_at).reverse
         end
       end
     end

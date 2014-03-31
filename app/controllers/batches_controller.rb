@@ -1,8 +1,11 @@
 class BatchesController < ApplicationController
   before_filter :build_batch, only: [:create]
-  load_resource only: [:show]
+  load_resource only: [:index, :show]
   authorize_resource
 
+  def index
+    @batches = @batches.order(created_at: :desc)
+  end
 
   # Note: This method is called 'create', but it actually has a
   # mixture of 'new' and 'create' behavior.

@@ -8,6 +8,13 @@ describe 'Batch routes: ' do
     )
   end
 
+  it 'routes to index' do
+    expect(get: 'batches').to route_to(
+      controller: 'batches',
+      action: 'index'
+    )
+  end
+
   it 'routes to show' do
     expect(get: 'batches/1').to route_to(
       controller: 'batches',

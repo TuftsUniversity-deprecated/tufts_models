@@ -1,6 +1,7 @@
 <div class="span12">
   <h1>Batch Status</h1>
 
+  <%= link_to "Back to index", batches_path %>
   <div class="batch_info">
     <%= make_dl "Batch id", @batch.id, "batch_id" %>
     <%= make_dl "Record Count", @records_by_pid.count, "record_count" %>

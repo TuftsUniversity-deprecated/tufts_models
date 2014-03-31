@@ -29,11 +29,17 @@ class Batch < ActiveRecord::Base
       completed: 4,
       killed:    5,
     }
-    if jobs.any?(&:nil?)
+    if jobs.empty?
+      :completed
+    elsif jobs.any?(&:nil?)
       :not_available
     else
       jobs.min_by{|s| order[s.status]}.status
     end
+  end
+
+  def display_name
+    raise NotImplementedError.new
   end
 
   def ready?
