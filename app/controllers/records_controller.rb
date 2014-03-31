@@ -56,8 +56,13 @@ class RecordsController < ApplicationController
     # only push to production if it's already on production.
     @record.audit(current_user, 'deleted')
     @record.push_to_production! if @record.published_at
-    flash[:notice] = "\"#{@record.title}\" has been purged"
-    redirect_to root_path
+    if @record.is_a?(TuftsTemplate)
+      flash[:notice] = "\"#{@record.template_name}\" has been purged"
+      redirect_to templates_path
+    else
+      flash[:notice] = "\"#{@record.title}\" has been purged"
+      redirect_to root_path
+    end
   end
 
   def cancel
@@ -65,7 +70,19 @@ class RecordsController < ApplicationController
       authorize! :destroy, @record
       @record.destroy
     end
-    redirect_to root_path
+    if @record.is_a?(TuftsTemplate)
+      redirect_to templates_path
+    else
+      redirect_to root_path
+    end
+  end
+
+  def redirect_after_update
+    if @record.is_a?(TuftsTemplate)
+      templates_path
+    else
+      main_app.catalog_path @record
+    end
   end
 
   def set_attributes

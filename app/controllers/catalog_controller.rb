@@ -189,7 +189,11 @@ protected
 
   def exclude_unwanted_models(solr_parameters, user_parameters)
     solr_parameters[:fq] ||= []
-    solr_parameters[:fq] << "-#{ActiveFedora::SolrService.solr_name("object_state", :stored_sortable)}:\"D\""
+    solr_parameters[:fq] << "NOT #{ActiveFedora::SolrService.solr_name("object_state", :stored_sortable)}:\"D\""
+    solr_parameters[:fq] << filter_templates
   end
 
+  def filter_templates
+    "NOT active_fedora_model_ssi:TuftsTemplate"
+  end
 end 
