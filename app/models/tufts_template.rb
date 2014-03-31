@@ -4,6 +4,11 @@ class TuftsTemplate < ActiveFedora::Base
   has_attributes :template_name, datastream: 'DCA-ADMIN', multiple: false
   validates :template_name, presence: true
 
+  # Initialize and set the default namespace to use when creating templates;
+  # If a PID is supplied, the PID namespace will override the default
+  # If no PID is supplied, the next sequential PID will be assigned in the default namespace
+  # Here templates override fedora's install default and use 'template' as their namespace
+
   def initialize(attributes = {})
     attributes = {namespace: 'template'}.merge(attributes)
     super

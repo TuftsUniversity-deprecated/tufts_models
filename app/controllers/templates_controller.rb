@@ -12,5 +12,6 @@ class TemplatesController < CatalogController
   end
 
   def filter_templates
+    # Clears the Template filter set in the CatalogController
   end
 end
