@@ -43,6 +43,33 @@ describe Job::ApplyTemplate do
       expect{job.perform}.to raise_error(ActiveFedora::ObjectNotFoundError)
     end
 
+    it 'clears out the batch reviewed status marker' do
+      object = TuftsPdf.new(title: 'old title', displays: ['dl'], qrStatus: [Reviewable.batch_review_text, 'status 2'])
+      object.save!
+      job = Job::ApplyTemplate.new('uuid', 'user_id' => 1, 'record_id' => object.id, 'attributes' => {toc: 'new toc'})
+
+      job.perform
+      object.reload
+      expect(object.qrStatus).to eq ['status 2']
+
+      object.delete
+    end
+
+    context 'if the template itself marks the object as reviewed' do
+      before do
+        @object = TuftsPdf.new(title: 'old title', displays: ['dl'], qrStatus: ['status 2'])
+        @object.save!
+        @job = Job::ApplyTemplate.new('uuid', 'user_id' => 1, 'record_id' => @object.id, 'attributes' => { qrStatus: Reviewable.batch_review_text })
+      end
+      after { @object.delete }
+
+      it "doesn't clobber that status" do
+        @job.perform
+        @object.reload
+        expect(@object.qrStatus).to eq ['status 2', Reviewable.batch_review_text]
+      end
+    end
+
     it 'updates the record' do
       object = TuftsPdf.new(title: 'old title', toc: 'old toc', displays: ['dl'])
       object.save!

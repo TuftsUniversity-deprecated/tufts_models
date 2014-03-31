@@ -17,6 +17,7 @@ module Job
       tick # give resque-status a chance to kill this
 
       run_as_batch_item(options['record_id'], options['batch_id']) do |record|
+        record.clear_batch_review_text
         record.apply_attributes(options['attributes'], options['user_id'])
       end
     end
