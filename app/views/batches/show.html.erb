@@ -11,6 +11,20 @@
     <%= make_dl "Review Status", (@records_by_pid.values.all?{|m| m.try(:reviewed?)} ? "Complete" : "Incomplete"), "review_status" %>
   </div>
 
+  <div class="batch-actions">
+    <%= form_tag batches_path, method: :post do %>
+      <% @batch.pids.each do |pid| %>
+        <%= hidden_field_tag :batch_pids, pid, multiple: true, name: 'batch[pids][]' %>
+      <% end %>
+
+      <%= button_tag "Publish Batch", type: :submit,
+        name: 'batch[type]', value: "BatchPublish",
+        disabled: @batch.status != 'completed',
+        confirm: "#{@batch.pids.count} objects will be published to production. Do you wish to proceed?",
+        class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
   <div class="jobs">
     <table class="table">
       <tr>

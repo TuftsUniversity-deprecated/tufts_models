@@ -112,5 +112,29 @@ describe "batches/show.html.erb" do
         expect(rendered).to have_selector(".record_status", text: "Status expired")
       end
     end
+
+    describe 'batch actions: ' do
+      context 'a batch with status "completed"' do
+        before do
+          allow_any_instance_of(BatchTemplateUpdate).to receive(:status) { 'completed' }
+          render
+        end
+
+        it 'displays the form to publish the batch' do
+          expect(rendered).to have_selector("form[method=post][action='#{batches_path}']")
+          expect(rendered).to have_selector("input[type=hidden][name='batch[pids][]'][value='#{subject.pids.first}']")
+          expect(rendered).to have_selector("button[type=submit][name='batch[type]'][value=BatchPublish]")
+        end
+      end
+
+      context 'a batch status that is anything but "completed"' do
+        before { render }
+
+        it 'disables the button to publish the batch' do
+          expect(subject.status).to eq 'queued'
+          expect(rendered).to have_selector("button[type=submit][name='batch[type]'][value=BatchPublish][disabled=disabled]")
+        end
+      end
+    end
   end
 end
