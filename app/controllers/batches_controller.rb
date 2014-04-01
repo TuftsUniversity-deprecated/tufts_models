@@ -10,7 +10,9 @@ class BatchesController < ApplicationController
   def create
     case params['batch']['type']
     when 'BatchPublish'
-      handle_batch_publish
+      require_pids_and_run_batch
+    when 'BatchPurge'
+      require_pids_and_run_batch
     when 'BatchTemplateUpdate'
       handle_apply_template
     else
@@ -62,7 +64,7 @@ private
     redirect_to (request.referer || root_path)
   end
 
-  def handle_batch_publish
+  def require_pids_and_run_batch
     if !@batch.pids.present?
       no_pids_selected
     else

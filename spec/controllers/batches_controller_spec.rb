@@ -62,6 +62,22 @@ describe BatchesController do
         end
       end
 
+      describe "batch purge" do
+        it_should_behave_like 'requires a list of pids', :batch_purge
+        it_should_behave_like 'batch creation happy path', BatchPurge
+        it_should_behave_like 'batch run failure recovery', BatchPurge
+      end
+
+      describe "batch purge - error path:" do
+        it "redirects to previous page" do
+          BatchPurge.any_instance.stub(:save) { true }
+          BatchPurge.any_instance.stub(:run) { false }
+          allow(controller.request).to receive(:referer) { catalog_index_path }
+          post :create, batch: { pids: ['pid:1'], type: 'BatchPurge' }
+          response.should redirect_to(request.referer)
+        end
+      end
+
       describe "template updates" do
         it_should_behave_like 'requires a list of pids', :batch_template_update
         it_should_behave_like 'batch creation happy path', BatchTemplateUpdate

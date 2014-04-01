@@ -195,6 +195,11 @@ module BaseModel
     end
   end
 
+  def purge!
+    production_fedora_connection.purge_object(pid: pid) rescue RestClient::ResourceNotFound
+    update_attributes(state: "D")
+  end
+
   def production_fedora_connection
     @prod_repo ||= Rubydora.connect(ActiveFedora.data_production_credentials)
   end

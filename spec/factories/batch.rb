@@ -15,4 +15,11 @@ FactoryGirl.define do
     created_at 2.minutes.ago
     pids ["tufts:1", "tufts:2"]
   end
+
+  factory :batch_purge do
+    type 'BatchPurge'
+    association :creator, factory: :admin
+    created_at 3.minutes.ago
+    pids ["tufts:1", "tufts:2"]
+  end
 end
