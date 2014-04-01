@@ -10,7 +10,7 @@ describe BatchesController do
       post :create
       response.should redirect_to(new_user_session_path)
     end
-    it 'denies access to show' do
+    it 'denies access to index' do
       get :index
       response.should redirect_to(new_user_session_path)
     end
@@ -26,82 +26,33 @@ describe BatchesController do
       sign_in @user
     end
 
-
     describe "POST 'create'" do
 
-      describe 'error path - no pids were selected:' do
+      describe 'error path - no batch type selected' do
         it 'redirects to previous page' do
           allow(controller.request).to receive(:referer) { catalog_index_path }
-          post :create, batch: { pids: [] }
+          post :create, batch: { type: nil }
           response.should redirect_to(request.referer)
         end
 
         it 'redirects to root if there is no referer' do
-          post :create, batch: { pids: [] }
+          post :create, batch: { type: nil }
           response.should redirect_to(root_path)
         end
 
         it 'sets the flash' do
-          post :create, batch: { pids: [] }
-          flash[:error].should == 'Please select some records to do batch updates.'
+          post :create, batch: { type: nil }
+          flash[:error].should == 'Unable to handle batch request.'
         end
       end
 
-
-      describe 'error path - batch fails to run:' do
-        it 'sets the flash' do
-          BatchPublish.any_instance.stub(:save) { true }
-          BatchPublish.any_instance.stub(:run) { false }
-          post :create, batch: { pids: ['pid:1'], type: 'BatchPublish' }
-          flash[:error].should == 'Unable to run batch, please try again later.'
-        end
-
-        it "doesn't create a batch object" do
-          batch_count = Batch.count
-          BatchPublish.any_instance.stub(:run) { false }
-          post 'create', batch: FactoryGirl.attributes_for(:batch_publish)
-          expect(Batch.count).to eq batch_count
-        end
-
-        it 'still assigns @batch' do
-          BatchPublish.any_instance.stub(:run) { false }
-          attributes = FactoryGirl.attributes_for(:batch_publish)
-          post 'create', batch: attributes
-          expect(assigns[:batch].pids).to eq attributes[:pids]
-          expect(assigns[:batch].new_record?).to be_true
-        end
+      describe "batch publishing" do
+        it_should_behave_like 'requires a list of pids', :batch_publish
+        it_should_behave_like 'batch creation happy path', BatchPublish
+        it_should_behave_like 'batch run failure recovery', BatchPublish
       end
 
-
-      describe "for batch publishing - happy path:" do
-        it 'creates a batch' do
-          BatchPublish.any_instance.stub(:run) { true }
-          batch_count = Batch.count
-          post 'create', batch: FactoryGirl.attributes_for(:batch_publish)
-          expect(Batch.count).to eq batch_count + 1
-        end
-
-        it 'assigns @batch' do
-          BatchPublish.any_instance.stub(:run) { true }
-          post 'create', batch: FactoryGirl.attributes_for(:batch_publish)
-          expect(assigns[:batch].class).to eq BatchPublish
-        end
-
-        it "runs the batch" do
-          batch = Batch.new(FactoryGirl.attributes_for(:batch_publish))
-          allow(Batch).to receive(:new) { batch }
-          expect(batch).to receive(:run) { true }
-          post 'create', batch: FactoryGirl.attributes_for(:batch_publish)
-        end
-
-        it "redirects to batch#show" do
-          BatchPublish.any_instance.stub(:run) { true }
-          post 'create', batch: FactoryGirl.attributes_for(:batch_publish)
-          response.should redirect_to(batch_path(assigns[:batch]))
-        end
-      end
-
-      describe "for batch publishing - error path:" do
+      describe "batch publishing - error path:" do
         it "redirects to previous page" do
           BatchPublish.any_instance.stub(:save) { true }
           BatchPublish.any_instance.stub(:run) { false }
@@ -111,44 +62,14 @@ describe BatchesController do
         end
       end
 
+      describe "template updates" do
+        it_should_behave_like 'requires a list of pids', :batch_template_update
+        it_should_behave_like 'batch creation happy path', BatchTemplateUpdate
+        it_should_behave_like 'batch run failure recovery', BatchTemplateUpdate
 
-      describe "for template updates" do
         def post_create(overrides={})
           BatchTemplateUpdate.any_instance.stub(:run) { true }
           post 'create', batch: FactoryGirl.attributes_for(:batch_template_update).merge(overrides)
-        end
-
-        before do
-          @batch_count = Batch.count
-        end
-
-        it "redirects to batch#show" do
-          post_create
-          response.should redirect_to(batch_path(assigns[:batch]))
-        end
-
-        it "creates a batch object" do
-          post_create
-          expect(Batch.count).to eq @batch_count + 1
-        end
-
-        it "assigns the current user as the creator" do
-          root_user = FactoryGirl.create(:user)
-          post_create creator_id: root_user.id
-          expect(assigns[:batch].creator).to eq @user
-        end
-
-        it "runs the batch" do
-          batch = Batch.new({type: "BatchTemplateUpdate", pids: ['pid:1'], template_id: "tufts:3", id: '1'})
-          expect(batch).to receive(:save) { true }
-          expect(batch).to receive(:run) { true }
-          allow(Batch).to receive(:new) { batch }
-          post 'create', batch: { type: "BatchTemplateUpdate" }
-        end
-
-        it "assigns @batch" do
-          post_create
-          expect(assigns[:batch].class).to eq BatchTemplateUpdate
         end
 
         it 'renders new (the 2nd page of the form) to select the template' do
@@ -173,6 +94,7 @@ describe BatchesController do
         end
       end
     end
+
 
     describe "GET 'index'" do
       describe 'happy path' do
