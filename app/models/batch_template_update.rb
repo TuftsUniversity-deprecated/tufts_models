@@ -7,13 +7,9 @@ class BatchTemplateUpdate < Batch
     "Update"
   end
 
-  def ready?
-    valid?
-  end
-
   def run
-    ready? &&
-      (ids = TuftsTemplate.find(template_id).queue_jobs_to_apply_template(creator.id, pids, id)) &&
+    return false unless valid?
+    (ids = TuftsTemplate.find(template_id).queue_jobs_to_apply_template(creator.id, pids, id)) &&
       update_attribute(:job_ids, ids)
   end
 

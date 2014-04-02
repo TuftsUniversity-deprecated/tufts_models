@@ -25,7 +25,7 @@ describe Ability do
 
     describe "batch operations" do
       it { should be_able_to(:index, Batch) }
-      it { should be_able_to(:new, Batch) }
+      it { should be_able_to(:new_template_import, Batch) }
       it { should be_able_to(:create, Batch) }
       it { should be_able_to(:show, Batch) }
     end
@@ -66,7 +66,8 @@ describe Ability do
     end
 
     describe "batch operations" do
-      it { should_not be_able_to(:new, Batch) }
+      it { should_not be_able_to(:index, Batch) }
+      it { should_not be_able_to(:new_template_import, Batch) }
       it { should_not be_able_to(:create, Batch) }
       it { should_not be_able_to(:show, Batch) }
     end

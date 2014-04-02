@@ -7,6 +7,10 @@ class BatchesController < ApplicationController
     @batches = @batches.order(created_at: :desc)
   end
 
+  def new_template_import
+    @batch = BatchTemplateImport.new
+  end
+
   def create
     case params['batch']['type']
     when 'BatchPublish'
@@ -15,6 +19,8 @@ class BatchesController < ApplicationController
       require_pids_and_run_batch
     when 'BatchTemplateUpdate'
       handle_apply_template
+    when 'BatchTemplateImport'
+      handle_template_import
     else
       flash[:error] = 'Unable to handle batch request.'
       redirect_to (request.referer || root_path)
@@ -31,7 +37,7 @@ class BatchesController < ApplicationController
 private
 
   def build_batch
-    @batch = Batch.new(params.require(:batch).permit(:template_id, {pids: []}, :type))
+    @batch = Batch.new(params.require(:batch).permit(:template_id, {pids: []}, :type, :record_type))
   end
 
   def create_and_run_batch
@@ -79,6 +85,16 @@ private
       render :new
     else
       create_and_run_batch
+    end
+  end
+
+  def handle_template_import
+    @batch.creator = current_user
+
+    if @batch.save
+      redirect_to edit_batch_path(@batch)
+    else
+      render :new_template_import
     end
   end
 

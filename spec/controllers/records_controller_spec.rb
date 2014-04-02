@@ -66,6 +66,10 @@ describe RecordsController do
         response.should render_template(:choose_type)
       end
 
+      it 'only allows valid types' do
+        pending "We probably shouldn't allow it to create any type of fedora object.  Limit it to a valid whitelist, such as HydraEditor.models"
+      end
+
       it "should be successful without a pid" do
         get :new, :type=>'TuftsAudio'
         assigns[:record].should be_kind_of TuftsAudio

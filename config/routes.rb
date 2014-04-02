@@ -2,7 +2,10 @@ ALLOW_DOTS ||= /[a-zA-Z0-9_.:]+/
 
 Tufts::Application.routes.draw do
 
-  resources :batches, only: [:index, :create, :show]
+  resources :batches, only: [:index, :create, :show, :edit, :update] do
+    get :new_template_import, on: :collection
+  end
+
   resources :templates, only: [:index]
 
   unauthenticated do

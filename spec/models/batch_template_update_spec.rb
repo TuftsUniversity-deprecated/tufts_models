@@ -20,11 +20,6 @@ describe BatchTemplateUpdate do
     expect(subject.valid?).to be_false
   end
 
-  it "knows if it's ready to run" do
-    expect(BatchTemplateUpdate.new.ready?).to be_false
-    expect(subject.ready?).to be_true
-  end
-
   it 'starts processing and saves the job UUIDs' do
     template = TuftsTemplate.find(subject.template_id)
     allow(TuftsTemplate).to receive(:find).with(template.id) { template }
@@ -37,8 +32,9 @@ describe BatchTemplateUpdate do
     template.delete
   end
 
-  it "only runs when it's ready" do
+  it "only runs when it's valid" do
     b = BatchTemplateUpdate.new
+    expect(b.valid?).to be_false
     expect(b.run).to be_false
   end
 end

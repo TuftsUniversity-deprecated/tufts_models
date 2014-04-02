@@ -5,12 +5,8 @@ class BatchPublish < Batch
     "Publish"
   end
 
-  def ready?
-    valid?
-  end
-
   def run
-    return false unless ready?
+    return false unless valid?
     ids = pids.map do |pid|
       job = Job::Publish.create(user_id: creator.id, record_id: pid, batch_id: id)
     end
