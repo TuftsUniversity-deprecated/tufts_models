@@ -1,3 +1,8 @@
-<% if @batch.type == 'BatchTemplateUpdate' %>
-  <%= render 'batches/form_batch_template_update' %>
+<%= bootstrap_form_for @batch, as: :batch, url: batches_path do |f| %>
+  <%= f.hidden_field :type %>
+  <% @batch.pids.each do |pid| %>
+    <%= f.hidden_field :pids, multiple: true, value: pid %>
+  <% end %>
+  <%= f.select :template_id, options_from_collection_for_select(TuftsTemplate.all, :id, :template_name, @batch.template_id), prompt: 'Select a Template' %>
+  <%= f.submit "Apply Template" %>
 <% end %>
