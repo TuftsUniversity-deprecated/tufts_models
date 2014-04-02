@@ -5,9 +5,17 @@
       <li><%= link_to 'Create a new object', hydra_editor.new_record_path %></li>
       <li><%= link_to 'Unpublished objects', unpublished_index_path %></li>
       <li><%= link_to 'Manage metadata templates', templates_path %></li>
-      <li><%= link_to 'Batch Import', batches_path %></li>
       <li><%= link_to 'Manage self-deposit types', deposit_types_path %></li>
       <li><%= link_to 'Contribute a new Self-Deposit item', contributions_path %></li>
+    </ul>
+  </nav>
+
+  <h2> Batch Operations </h2>
+  <nav>
+    <ul>
+      <li> <%= link_to 'Batch Status', batches_path %> </li>
+      <li> <%= link_to 'Start a template-based batch import', '#' %> </li>
+      <li> <%= link_to 'Start an XML-based batch import', '#' %> </li>
     </ul>
   </nav>
 
