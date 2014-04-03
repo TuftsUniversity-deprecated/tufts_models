@@ -31,4 +31,10 @@ FactoryGirl.define do
     record_type 'TuftsPdf'
   end
 
+  factory :batch_xml_import do
+    type 'BatchXmlImport'
+    association :creator, factory: :admin
+    metadata_file { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'SimplifiedMetaData.xml')) }
+  end
+
 end

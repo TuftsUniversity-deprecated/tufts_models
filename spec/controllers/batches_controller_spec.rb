@@ -22,6 +22,10 @@ describe BatchesController do
       get :new_template_import
       response.should redirect_to(new_user_session_path)
     end
+    it 'denies access to new_xml_import' do
+      get :new_xml_import
+      response.should redirect_to(new_user_session_path)
+    end
   end
 
   describe "an admin" do
@@ -47,6 +51,22 @@ describe BatchesController do
 
       it 'assigns @templates' do
         pending 'Currently in the view we are using TuftsTemplate.all, but that is a problem because it also shows deleted templates in the drop-down.  We need to change it to filter out deleted ones.'
+      end
+    end
+
+    describe "GET 'new_xml_import'" do
+      before { get :new_xml_import }
+
+      it "returns http success" do
+        response.should be_success
+      end
+
+      it 'should render the form' do
+        response.should render_template(:new_xml_import)
+      end
+
+      it 'assigns @batch' do
+        expect(assigns[:batch].class).to eq BatchXmlImport
       end
     end
 
@@ -100,6 +120,40 @@ describe BatchesController do
           it 'renders :new_template_import form' do
             post 'create', batch: { type: 'BatchTemplateImport'}
             expect(response).to render_template :new_template_import
+          end
+        end
+      end
+
+      describe 'xml import' do
+        describe 'happy path' do
+          it 'assigns the current user as the creator' do
+            different_user = FactoryGirl.create(:admin)
+            attrs = FactoryGirl.attributes_for(:batch_xml_import, creator_id: different_user.id)
+            post 'create', batch: attrs
+            expect(assigns[:batch].creator).to eq controller.current_user
+          end
+
+          it 'creates a batch' do
+            batch_count = Batch.count
+            post 'create', batch: FactoryGirl.attributes_for(:batch_xml_import)
+            expect(Batch.count).to eq batch_count + 1
+          end
+
+          it 'assigns @batch' do
+            post 'create', batch: FactoryGirl.attributes_for(:batch_xml_import)
+            expect(assigns[:batch].class).to eq BatchXmlImport
+          end
+
+          it 'redirects to the batch edit page' do
+            post 'create', batch: FactoryGirl.attributes_for(:batch_xml_import)
+            expect(response).to redirect_to(edit_batch_path(assigns[:batch]))
+          end
+        end
+
+        describe 'error path' do
+          it 'renders :new_xml_import form' do
+            post 'create', batch: { type: 'BatchXmlImport'}
+            expect(response).to render_template :new_xml_import
           end
         end
       end

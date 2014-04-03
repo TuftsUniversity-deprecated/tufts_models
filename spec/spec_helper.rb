@@ -8,6 +8,10 @@ require 'rspec/autorun'
 # in spec/support/ and its subdirectories.
 Dir["./spec/support/**/*.rb"].sort.each {|f| require f}
 
+def clean_up_carrierwave_files
+  FileUtils.rm_rf(CarrierWave::Uploader::Base.root)
+end
+
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   
@@ -31,6 +35,7 @@ RSpec.configure do |config|
 
   config.after(:suite) do
     clean_fedora_and_solr
+    clean_up_carrierwave_files
   end
 
   # Run specs in random order to surface order dependencies. If you find an

@@ -11,6 +11,10 @@ class BatchesController < ApplicationController
     @batch = BatchTemplateImport.new
   end
 
+  def new_xml_import
+    @batch = BatchXmlImport.new
+  end
+
   def create
     case params['batch']['type']
     when 'BatchPublish'
@@ -20,7 +24,9 @@ class BatchesController < ApplicationController
     when 'BatchTemplateUpdate'
       handle_apply_template
     when 'BatchTemplateImport'
-      handle_template_import
+      handle_import(:new_template_import)
+    when 'BatchXmlImport'
+      handle_import(:new_xml_import)
     else
       flash[:error] = 'Unable to handle batch request.'
       redirect_to (request.referer || root_path)
@@ -37,7 +43,7 @@ class BatchesController < ApplicationController
 private
 
   def build_batch
-    @batch = Batch.new(params.require(:batch).permit(:template_id, {pids: []}, :type, :record_type))
+    @batch = Batch.new(params.require(:batch).permit(:template_id, {pids: []}, :type, :record_type, :metadata_file))
   end
 
   def create_and_run_batch
@@ -88,13 +94,13 @@ private
     end
   end
 
-  def handle_template_import
+  def handle_import(form_view)
     @batch.creator = current_user
 
     if @batch.save
       redirect_to edit_batch_path(@batch)
     else
-      render :new_template_import
+      render form_view
     end
   end
 
