@@ -5,4 +5,5 @@
   <%= f.select :template_id, options_from_collection_for_select(TuftsTemplate.all, :id, :template_name, @batch.template_id), prompt: 'Select a Template' %>
   <%= f.select :record_type, object_type_options.reject{|k,v| v == 'TuftsTemplate'}, prompt: 'Select a Record Type' %>
   <%= f.submit 'Next' %>
+  <%= link_to "Cancel", :back, :class=>'btn cancel' %>
 <% end %>
