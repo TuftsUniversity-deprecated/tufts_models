@@ -29,6 +29,8 @@ describe Ability do
       it { should be_able_to(:new_xml_import, Batch) }
       it { should be_able_to(:create, Batch) }
       it { should be_able_to(:show, Batch) }
+      it { should be_able_to(:edit, Batch) }
+      it { should be_able_to(:update, Batch) }
     end
 
     describe "working on Deposit Type" do
@@ -72,6 +74,8 @@ describe Ability do
       it { should_not be_able_to(:new_xml_import, Batch) }
       it { should_not be_able_to(:create, Batch) }
       it { should_not be_able_to(:show, Batch) }
+      it { should_not be_able_to(:edit, Batch) }
+      it { should_not be_able_to(:update, Batch) }
     end
 
     describe "working on Deposit Type" do
