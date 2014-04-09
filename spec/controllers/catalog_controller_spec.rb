@@ -49,6 +49,35 @@ describe CatalogController do
       response.should render_template(:show)
     end
 
+    it 'fix me' do
+      pending
+    end
+#    describe 'GET show JSON' do
+#      it 'returns a json document' do
+#        record = FactoryGirl.create(:tufts_pdf, user: @admin)
+#        get :show, id: record.pid, format: :json
+#
+#        expect(response).to be_successful
+#
+#        puts '--------------'
+#        pp JSON.parse(response.body)
+#
+#        json = JSON.parse(response.body)['files'].first
+#        expect(json['id']).to eq record.pid
+#        expect(json['name']).to eq record.title
+#        expect(json['url']).to eq catalog_path(record.pid)
+#
+#        record.delete
+#      end
+#
+#      it 'request a non-existent record returns not found' do
+#        pid = 'fake_pid:123'
+#        ActiveFedora::Base.delete(pid) if ActiveFedora::Base.exists?(pid)
+#        get :show, id: pid, format: :json
+#        expect(response).to be_not_found
+#      end
+#    end
+
     context 'viewing templates' do
       before { @excluded = FactoryGirl.create(:tufts_template) }
       after { @excluded.destroy }

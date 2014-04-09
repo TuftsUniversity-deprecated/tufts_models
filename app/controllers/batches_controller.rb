@@ -137,7 +137,7 @@ private
       template = TuftsTemplate.find(@batch.template_id)
       attrs = template.attributes_to_update
 
-      params[:documents].each do |doc|
+      records = params[:documents].map do |doc|
         record = record_class.new(attrs)
         record.working_user = current_user
         record.save
@@ -150,15 +150,45 @@ private
         if !record.valid_type_for_datastream?(dsid, doc.content_type)
           warnings << "You provided a #{doc.content_type} file, which is not a valid type: #{doc.original_filename}"
         end
+        record
       end
 
       @batch.pids = (@batch.pids || []) + pids
-      @batch.save
+      batch_saved = @batch.save
+      success = batch_saved && records.map(&:persisted?).all?
+      success = false
 
       flash[:alert] = warnings.join(', ') unless warnings.empty?
 
-      redirect_to batch_path(@batch)
+      respond_to do |format|
+        format.html { redirect_to batch_path(@batch) }
+        format.json {
+          if success
+            redirect_to catalog_path(pids.first, 'json_format' => 'jquery-file-uploader')
+          else
+            flash[:error] = 'flash error'
+            @batch.errors.add(:title, 'bad title!')
+            records.first.errors.add(:base, 'record error')
+
+            error_msgs = @batch.errors.full_messages +
+              records.map{|r| r.errors.full_messages }.flatten +
+              [flash[:error]]
+
+            doc = { title_tesim: params[:documents].first.original_filename,
+                    size: params[:documents].first.size }
+            json = { files: [
+              { pid: records.first.id,
+                name: records.first.title,
+                error: error_msgs }]
+            }.to_json
+
+            render json: json
+          end
+        }
+      end
+
 #    else
+# no documents have been passed in
 #      render :edit
     end
   end
