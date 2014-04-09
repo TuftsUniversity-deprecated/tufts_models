@@ -1,3 +1,18 @@
 // Place all the styles related to the batches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#select_files {
+  position: relative;
+  overflow: hidden;
+
+  // Used by javascript to add an invisible file input over the select files button.
+  .overlay-select-files {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+}

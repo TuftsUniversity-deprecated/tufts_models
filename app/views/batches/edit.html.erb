@@ -1,1 +1,97 @@
-<h1> Placeholder for file uploads form </h1>
+<h1> Upload files </h1>
+
+<%= bootstrap_form_for @batch, as: :batch, url: batch_path(@batch), :html => { :multipart => true, :id => 'fileupload' } do |f| %>
+
+  <div class="fileupload-buttonbar">
+    <span type="button" class="btn btn-success" id="select_files">
+      <div class='js-only hidden'>
+        <i class="icon-plus icon-white"></i>
+        Select Files
+      </div>
+      <%= file_field_tag :documents, multiple: true, name: 'documents[]', id: 'documents_file_field' %>
+    </span>
+
+    <%= f.button type: 'submit', id: 'start_upload', class: 'btn btn-primary start' do %>
+      <i class="icon-upload icon-white"></i>
+      Start Upload
+    <% end %>
+
+    <%= f.button type: 'submit', name: 'cancel_upload', value: 'true', class: 'btn btn-warning' do %>
+      <i class="icon-ban-circle icon-white"></i>
+      Cancel Upload
+    <% end %>
+  </div>
+
+
+  <!-- Table used by jQuery-File-Upload to list the files -->
+  <table id="file-table" class="table table-striped">
+    <tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
+  </table>
+
+  <!-- Templates to fill in the table of files -->
+
+  <script id="template-upload" type="text/x-jquery-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+
+      <tr class="template-upload fade">
+        <td class="preview"><span class="fade"></span></td>
+        <td class="name"><span>{%=file.name%}</span></td>
+        <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+        {% if (file.error) { %}
+          <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
+          {% } else if (o.files.valid && !i) { %}
+          <td>
+            <div class="progress progress-success progress-striped active"><div class="bar" style="width:0%;"></div></div>
+          </td>
+          <td class="start">{% if (!o.options.autoUpload) { %}
+            <button class="btn btn-primary hide">
+              <i class="icon-upload icon-white"></i>
+              <span>{%=locale.fileupload.start%}</span>
+            </button>
+            {% } %}</td>
+          {% } else { %}
+          <td colspan="2"></td>
+          {% } %}
+        <td class="cancel">{% if (!i) { %}
+          <button class="btn btn-warning">
+            <i class="icon-ban-circle icon-white"></i>
+            <span>{%=locale.fileupload.cancel%}</span>
+          </button>
+          {% } %}</td>
+      </tr>
+      {% } %}
+  </script>
+
+  <script id="template-download" type="text/x-jquery-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+      <tr class="template-download fade">
+        {% if (file.error) { %}
+          <td><span></span></td>
+          <td class="name"><span>{%=file.name%}</span></td>
+          <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+          <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
+          {% } else { %}
+          <td class="preview">
+            {% if (file.thumbnail_url) { %} <span class="label label-success">Success</span> {% } %}
+          </td>
+          <td class="name">
+            {%=file.name%}
+            <!--a href="{%=file.url%}" title="{%=file.name%}" rel="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}" target="_blank">{%=file.name%}</a-->
+          </td>
+          <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+          <td colspan="2"></td>
+          {% } %}
+      </tr>
+      {% } %}
+  </script>
+
+<% end %>
+
+
+<script type="text/javascript">
+  $(function() {
+    setupFileUpload({ uploadForm: '#fileupload',
+                      selectFilesButton: '#select_files',
+    });
+  });
+</script>
