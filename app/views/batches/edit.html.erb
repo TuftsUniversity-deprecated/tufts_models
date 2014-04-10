@@ -15,11 +15,6 @@
       <i class="icon-upload icon-white"></i>
       Start Upload
     <% end %>
-
-    <%= f.button type: 'submit', name: 'cancel_upload', value: 'true', class: 'btn btn-warning' do %>
-      <i class="icon-ban-circle icon-white"></i>
-      Cancel Upload
-    <% end %>
   </div>
 
 
@@ -95,6 +90,7 @@
 <% end %>
 
 <%= link_to "Next", batch_path(@batch), class: 'js-only hidden disabled btn btn-primary', id: 'next_button' %>
+<%= link_to "Cancel", batches_path, class: 'btn btn-default' %>
 
 <script type="text/javascript">
   $(function() {
