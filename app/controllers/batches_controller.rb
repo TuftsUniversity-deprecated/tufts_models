@@ -156,7 +156,7 @@ private
       @batch.pids = (@batch.pids || []) + pids
       batch_saved = @batch.save
       success = batch_saved && records.map(&:persisted?).all?
-      success = false
+#      success = false
 
       flash[:alert] = warnings.join(', ') unless warnings.empty?
 
@@ -166,9 +166,9 @@ private
           if success
             redirect_to catalog_path(pids.first, 'json_format' => 'jquery-file-uploader')
           else
-            flash[:error] = 'flash error'
-            @batch.errors.add(:title, 'bad title!')
-            records.first.errors.add(:base, 'record error')
+#            flash[:error] = 'flash error'
+#            @batch.errors.add(:title, 'bad title!')
+#            records.first.errors.add(:base, 'record error')
 
             error_msgs = @batch.errors.full_messages +
               records.map{|r| r.errors.full_messages }.flatten +

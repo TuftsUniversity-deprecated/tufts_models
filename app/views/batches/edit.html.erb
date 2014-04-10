@@ -94,11 +94,13 @@
 
 <% end %>
 
+<%= link_to "Next", batch_path(@batch), class: 'js-only hidden disabled btn btn-primary', id: 'next_button' %>
 
 <script type="text/javascript">
   $(function() {
     setupFileUpload({ uploadForm: '#fileupload',
                       selectFilesButton: '#select_files',
+                      nextButton: '#next_button'
     });
   });
 </script>
