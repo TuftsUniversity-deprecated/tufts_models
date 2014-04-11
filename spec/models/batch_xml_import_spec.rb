@@ -12,4 +12,5 @@ describe BatchXmlImport do
     expect(subject).to_not be_valid
   end
 
+  it 'requires the metadata file to be valid'
 end
