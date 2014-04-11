@@ -47,6 +47,7 @@ describe MetadataXmlParser do
     it "gets the content for attributes when a private method exists with the attribute's name"
         #TODO TuftsDcaMeta.new.format was a problem, use this as a test case
   end
+
   describe "::get_pid" do
     it "gets the pid"
     it "raises if the pid already exists"
@@ -58,8 +59,49 @@ describe MetadataXmlParser do
   end
 
   describe "::get_record_class" do
-    it "raises if <hasModel> doesn't exist"
-    it "raises if the given name doesn't correspond to a record class"
-    it "returns a class"
+    it "raises if <hasModel> doesn't exist" do
+      expect{
+        MetadataXmlParser.get_record_class(node_with_no_model)
+      }.to raise_error(HasModelNodeNotFoundError)
+    end
+
+    it "raises if the given model uri doesn't correspond to a record class" do
+      expect{
+        MetadataXmlParser.get_record_class(node_with_bad_model)
+      }.to raise_error(HasModelNodeInvalidError)
+    end
+
+    it "returns a class" do
+      record_class = MetadataXmlParser.get_record_class(pdf_node)
+      expect(record_class).to eq TuftsPdf
+    end
   end
 end
+
+def node_with_no_model
+  doc = Nokogiri::XML(<<-no_model)
+<digitalObject xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+  <pid>tufts:1</pid>
+</digitalObject>
+  no_model
+  node = doc.at_xpath("//digitalObject")
+end
+
+def node_with_bad_model
+  doc = Nokogiri::XML(<<-bad_model)
+<digitalObject xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+  <rel:hasModel>info:fedora/cm:Text.SomethingBad</rel:hasModel>
+</digitalObject>
+  bad_model
+  node = doc.at_xpath("//digitalObject")
+end
+
+def pdf_node
+  doc = Nokogiri::XML(<<-pdf)
+<digitalObject xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+  <rel:hasModel>info:fedora/cm:Text.PDF</rel:hasModel>
+</digitalObject>
+  pdf
+  node = doc.at_xpath("//digitalObject")
+end
+

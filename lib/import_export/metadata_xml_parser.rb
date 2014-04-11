@@ -4,9 +4,16 @@ class MetadataXmlParserError < StandardError
     super(message)
   end
 end
+
 class HasModelNodeNotFoundError < MetadataXmlParserError
   def message
     "Could not find <rel:hasModel> node for object at line #{@line}"
+  end
+end
+
+class HasModelNodeInvalidError < MetadataXmlParserError
+  def message
+    "Invalid data in <rel:hasModel> for object at line #{@line}"
   end
 end
 
@@ -87,9 +94,9 @@ module MetadataXmlParser
       end
     end
 
-    def get_node_content(node, xpath, namespaces={}, multiple?=false)
+    def get_node_content(node, xpath, namespaces={}, multiple=false)
       content = node.xpath(xpath, namespaces).map(&:content)
-      multiple? ? content : content.first
+      multiple ? content : content.first
     end
 
     def get_pid(node)
@@ -101,9 +108,15 @@ module MetadataXmlParser
     end
 
     def get_record_class(node)
-      has_model_node = get_node_content(node, "./rel:hasModel", "rel" => "info:fedora/fedora-system:def/relations-external#")
-      raise HasModelNodeNotFoundError.new(node.line) unless has_model_node.present?
-      ActiveFedora::Model.from_class_uri(has_model_node.content)
+      class_uri = get_node_content(node, "./rel:hasModel", "rel" => "info:fedora/fedora-system:def/relations-external#")
+      raise HasModelNodeNotFoundError.new(node.line) unless class_uri
+      record_class = ActiveFedora::Model.from_class_uri(class_uri)
+      raise HasModelNodeInvalidError.new(node.line) unless valid_record_types.include?(record_class.to_s)
+      record_class
+    end
+
+    def valid_record_types
+      HydraEditor.models - ['TuftsTemplate']
     end
   end
 end
