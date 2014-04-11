@@ -23,6 +23,12 @@ class HasModelNodeInvalidError < MetadataXmlParserError
   end
 end
 
+class InvalidPidError < MetadataXmlParserError
+  def message
+    "A record with this PID already exists for object at line #{@line}"
+  end
+end
+
 # #create
 # errors = MetadataXmlParser.validate_file(file)
 # flash[:errors] = errors.join('<br/>') if errors.any?
@@ -106,7 +112,9 @@ module MetadataXmlParser
     end
 
     def get_pid(node)
-      get_node_content(node, "./pid")
+      pid = get_node_content(node, "./pid")
+      raise InvalidPidError.new(node.line) if pid && ActiveFedora::Base.exists?(pid)
+      pid
     end
 
     def get_file(node)

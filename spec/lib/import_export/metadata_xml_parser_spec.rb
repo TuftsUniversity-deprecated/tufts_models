@@ -49,8 +49,23 @@ describe MetadataXmlParser do
   end
 
   describe "::get_pid" do
-    it "gets the pid"
-    it "raises if the pid already exists"
+    it "gets the pid" do
+      pid = MetadataXmlParser.get_pid(node_with_only_pid)
+      expect(pid).to eq 'tufts:1'
+    end
+
+    it "raises if the pid already exists" do
+      pid = 'tufts:1'
+      unless ActiveFedora::Base.exists?(pid)
+        attrs = FactoryGirl.attributes_for(:tufts_pdf)
+        TuftsPdf.create(attrs.merge(pid: pid))
+      end
+      expect(ActiveFedora::Base.exists?(pid)).to be_true
+
+      expect{
+        MetadataXmlParser.get_pid(node_with_only_pid)
+      }.to raise_error(InvalidPidError, /A record with this PID already exists for object at line \d+/)
+    end
   end
 
   describe "::get_file" do
