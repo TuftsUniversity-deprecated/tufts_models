@@ -2,7 +2,7 @@ require 'spec_helper'
 require_relative '../../../lib/import_export/metadata_xml_parser'
 
 describe MetadataXmlParser do
-  describe "::file_valid?" do
+  describe "::validate_file" do
     it "doesn't allow duplicate file names"
     it "finds ActiveFedora errors for each record"
     it "requires a model type (hasModel)"
@@ -54,15 +54,22 @@ describe MetadataXmlParser do
   end
 
   describe "::get_file" do
-    it "gets the filename"
-    it "raises if <file> doesn't exist"
+    it "gets the filename" do
+      expect(MetadataXmlParser.get_file(pdf_node)).to eq 'anatomicaltables00ches.pdf'
+    end
+
+    it "raises if <file> doesn't exist" do
+      expect{
+        MetadataXmlParser.get_file(node_with_only_pid)
+      }.to raise_error(NodeNotFoundError, /Could not find <file> node for object at line \d+/)
+    end
   end
 
   describe "::get_record_class" do
     it "raises if <hasModel> doesn't exist" do
       expect{
-        MetadataXmlParser.get_record_class(node_with_no_model)
-      }.to raise_error(HasModelNodeNotFoundError)
+        MetadataXmlParser.get_record_class(node_with_only_pid)
+      }.to raise_error(NodeNotFoundError, /Could not find <rel:hasModel> node for object at line \d+/)
     end
 
     it "raises if the given model uri doesn't correspond to a record class" do
@@ -78,12 +85,12 @@ describe MetadataXmlParser do
   end
 end
 
-def node_with_no_model
-  doc = Nokogiri::XML(<<-no_model)
+def node_with_only_pid
+  doc = Nokogiri::XML(<<-empty_except_pid)
 <digitalObject xmlns:rel="info:fedora/fedora-system:def/relations-external#">
   <pid>tufts:1</pid>
 </digitalObject>
-  no_model
+  empty_except_pid
   node = doc.at_xpath("//digitalObject")
 end
 
@@ -99,6 +106,8 @@ end
 def pdf_node
   doc = Nokogiri::XML(<<-pdf)
 <digitalObject xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+  <pid>tufts:1</pid>
+  <file>anatomicaltables00ches.pdf</file>
   <rel:hasModel>info:fedora/cm:Text.PDF</rel:hasModel>
 </digitalObject>
   pdf

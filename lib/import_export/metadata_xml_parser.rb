@@ -5,9 +5,15 @@ class MetadataXmlParserError < StandardError
   end
 end
 
-class HasModelNodeNotFoundError < MetadataXmlParserError
+class NodeNotFoundError < MetadataXmlParserError
+  def initialize(line, element)
+    @line = line
+    @element = element
+    super(message)
+  end
+
   def message
-    "Could not find <rel:hasModel> node for object at line #{@line}"
+    "Could not find #{@element} node for object at line #{@line}"
   end
 end
 
@@ -104,12 +110,14 @@ module MetadataXmlParser
     end
 
     def get_file(node)
-      get_node_content(node, "./file")
+      filename = get_node_content(node, "./file")
+      raise NodeNotFoundError.new(node.line, '<file>') unless filename
+      filename
     end
 
     def get_record_class(node)
       class_uri = get_node_content(node, "./rel:hasModel", "rel" => "info:fedora/fedora-system:def/relations-external#")
-      raise HasModelNodeNotFoundError.new(node.line) unless class_uri
+      raise NodeNotFoundError.new(node.line, '<rel:hasModel>') unless class_uri
       record_class = ActiveFedora::Model.from_class_uri(class_uri)
       raise HasModelNodeInvalidError.new(node.line) unless valid_record_types.include?(record_class.to_s)
       record_class
