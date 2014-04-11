@@ -22,6 +22,11 @@ $(function () {
                 progress + '%'
             );
         },
+
+        // Setting these to null so that jquery-fileupload-ui doesn't try to use templates
+        uploadTemplateId: null,
+        downloadTemplateId: null,
+
         add: function (e, data) {
             $form = $(this).closest('form');
             $('.progress', $form).removeClass('hidden').addClass('active').addClass('progress-striped');

@@ -228,6 +228,64 @@ describe BatchesController do
     end
 
 
+    describe "GET 'edit'" do
+      let(:batch) { FactoryGirl.create(:batch_template_import) }
+
+      before do
+        get :edit, id: batch.id
+      end
+
+      it 'assigns @batch' do
+        expect(assigns[:batch].id).to eq batch.id
+      end
+
+      it 'should render the new template' do
+        response.should render_template(:edit)
+      end
+
+      it "returns http success" do
+        response.should be_success
+      end
+    end
+
+
+    describe "PATCH 'update'" do
+      let(:batch) { FactoryGirl.create(:batch_template_import) }
+
+      describe 'happy path' do
+        before do
+          TuftsPdf.delete_all
+          file1 = Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'hello.pdf'))
+          file2 = Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'hello.pdf'))
+          patch :update, id: batch.id, documents: [file1, file2], batch: {}
+        end
+
+        it 'assigns @batch' do
+          expect(assigns[:batch].id).to eq batch.id
+        end
+
+        it 'creates the records and adds the PIDs' do
+          expect(TuftsPdf.count).to eq 2
+          expect(assigns[:batch].pids.sort).to eq TuftsPdf.all.map(&:pid).sort
+        end
+      end
+
+      describe 'error path' do
+        before do
+          patch :update, id: batch.id, documents: [nil], batch: {}
+        end
+
+        it 'renders the form' do
+          response.should render_template(:edit)
+        end
+
+        it 'assigns @batch' do
+          expect(assigns[:batch].id).to eq batch.id
+        end
+      end
+    end
+
+
     describe "GET 'index'" do
       describe 'happy path' do
         let(:batches) do
