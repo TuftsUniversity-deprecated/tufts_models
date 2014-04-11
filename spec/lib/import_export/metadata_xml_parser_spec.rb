@@ -36,13 +36,25 @@ describe MetadataXmlParser do
       expect(ActiveFedora::VERSION.split('.').first).to be < 7.to_s
     end
 
+    it "merges in the pid if it exists"
     it "returns the record class for a given node"
+  end
 
+  describe "::get_node_content" do
     it "gets the content for attributes from the given node"
         #TODO TuftsDcaMeta.new.description has multiples, use this as a test case
 
     it "gets the content for attributes when a private method exists with the attribute's name"
         #TODO TuftsDcaMeta.new.format was a problem, use this as a test case
+  end
+  describe "::get_pid" do
+    it "gets the pid"
+    it "raises if the pid already exists"
+  end
+
+  describe "::get_file" do
+    it "gets the filename"
+    it "raises if <file> doesn't exist"
   end
 
   describe "::get_record_class" do
