@@ -41,8 +41,22 @@ describe MetadataXmlParser do
   end
 
   describe "::get_node_content" do
-    it "gets the content for attributes from the given node"
-        #TODO TuftsDcaMeta.new.description has multiples, use this as a test case
+    it "gets the content for a multi-value attribute from the given node" do
+      d1 = 'Title page printed in red.'
+      d2 = 'Several woodcuts signed by the monogrammist "b" appeared first in the Bible of 1490 translated into Italian by Niccol Malermi.'
+      namespaces = {"oxns"=>"http://purl.org/dc/elements/1.1/"}
+      xpath = ".//oxns:description"
+      desc = MetadataXmlParser.get_node_content(pdf_node, xpath, namespaces, true)
+      expect(desc).to eq [d1, d2]
+    end
+
+    it "gets the content for a single-value attribute from the given node" do
+      expected_title = 'Anatomical tables of the human body.'
+      namespaces = {"oxns"=>"http://purl.org/dc/elements/1.1/"}
+      xpath = ".//oxns:title"
+      title = MetadataXmlParser.get_node_content(pdf_node, xpath, namespaces)
+      expect(title).to eq expected_title
+    end
 
     it "gets the content for attributes when a private method exists with the attribute's name"
         #TODO TuftsDcaMeta.new.format was a problem, use this as a test case
@@ -120,11 +134,16 @@ end
 
 def pdf_node
   doc = Nokogiri::XML(<<-pdf)
-<digitalObject xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+<digitalObject xmlns:dc="http://purl.org/dc/elements/1.1/"
+               xmlns:rel="info:fedora/fedora-system:def/relations-external#">
   <pid>tufts:1</pid>
   <file>anatomicaltables00ches.pdf</file>
   <rel:hasModel>info:fedora/cm:Text.PDF</rel:hasModel>
+  <dc:title>Anatomical tables of the human body.</dc:title>
+  <dc:description>Title page printed in red.</dc:description>
+  <dc:description>Several woodcuts signed by the monogrammist "b" appeared first in the Bible of 1490 translated into Italian by Niccol Malermi.</dc:description>
 </digitalObject>
+
   pdf
   node = doc.at_xpath("//digitalObject")
 end
