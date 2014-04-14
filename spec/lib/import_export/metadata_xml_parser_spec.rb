@@ -2,25 +2,74 @@ require 'spec_helper'
 require_relative '../../../lib/import_export/metadata_xml_parser'
 
 describe MetadataXmlParser do
-  describe "::validate_file" do
-    it "doesn't allow duplicate file names"
-    it "finds ActiveFedora errors for each record"
-    it "requires a model type (hasModel)"
-    it "requires valid xml"
-    it "returns an array of human readable error messages"
+  describe "::validate" do
+    it "returns an empty array when there are no errors" do
+      expect(MetadataXmlParser.validate(build_node.to_xml)).to eq []
+    end
+
+    it "finds ActiveFedora errors for each record" do
+      xml = build_node('dc:title' => [], 'admin:displays' => []).to_xml
+      errors = MetadataXmlParser.validate(xml).map(&:message)
+      expect(errors).to eq ["Title can't be blank for node at line 1",
+                            "Displays can't be blank for node at line 1"]
+    end
+
+    it "requires valid xml" do
+      errors = MetadataXmlParser.validate('<foo></bar').map(&:message)
+      expect(errors).to eq ["expected '>'", "Opening and ending tag mismatch: foo line 1 and bar"]
+    end
+
+    it "requires a model type (hasModel)" do
+      errors = MetadataXmlParser.validate(build_node('rel:hasModel' => []).to_xml).map(&:message)
+      expect(errors.first).to eq "Could not find <rel:hasModel> node for object at line 1"
+    end
+
+    it "requires a filename" do
+      errors = MetadataXmlParser.validate(build_node('file' => []).to_xml).map(&:message)
+      expect(errors.first).to eq "Could not find <file> node for object at line 1"
+    end
+
+    it "doesn't allow duplicate file names" do
+      xml = "<input>" +
+        build_node('file' => ['foo.pdf']).to_xml +
+        build_node('file' => ['foo.pdf']).to_xml +
+        "</input>"
+      errors = MetadataXmlParser.validate(xml).map(&:message)
+      expect(errors.first).to match /Duplicate filename found at line \d+/
+    end
   end
 
-  describe "::parse_file" do
-    it "returns the correct number of records"
-    it "returns the record class, attributes and line number for each node"
+  describe "::build_record" do
+    it "builds a record that has the given filename" do
+      attributes = {
+        'pid' => ['tufts:1'],
+        'file' => ['somefile.pdf'],
+        'dc:title' => ['some title'],
+        'dc:description' => ['desc 1', 'desc 2']
+      }
+      m = MetadataXmlParser.build_record(build_node(attributes).to_xml, attributes['file'].first)
+      expect(m.pid).to eq attributes['pid'].first
+      expect(m.title).to eq attributes['dc:title'].first
+      expect(m.description).to eq attributes['dc:description']
+    end
   end
 
   describe "::get_namespaces" do
-    it "converts datastream namespaces to the format Nokogiri wants"
+    it "converts datastream namespaces to the format Nokogiri wants" do
+      ns = MetadataXmlParser.get_namespaces(TuftsDcaMeta)
+      expect(ns["dca_dc"]).to eq TuftsDcaMeta.ox_namespaces["xmlns:dca_dc"]
+      expect(ns["dcatech"]).to eq TuftsDcaMeta.ox_namespaces["xmlns:dcatech"]
+    end
 
     # if the typos in the namespaces get fixed, we can remove this test and
     # the corresponding code
-    it "doesn't modify namespaces if they have been fixed in the project"
+    it "doesn't modify namespaces if they have been fixed in the project" do
+      ns = MetadataXmlParser.get_namespaces(TuftsDcaMeta)
+      expect(ns["dcadesc"]).to eq TuftsDcaMeta.ox_namespaces["xmlns:dcadec"]
+      ns = MetadataXmlParser.get_namespaces(TuftsDcDetailed)
+      expect(ns["dcadesc"]).to eq TuftsDcDetailed.ox_namespaces["xmlns:dcadec"]
+      expect(ns["dcterms"]).to eq "http://purl.org/dc/terms/"
+    end
   end
 
   describe "::get_record_attributes" do
@@ -36,8 +85,20 @@ describe MetadataXmlParser do
       expect(ActiveFedora::VERSION.split('.').first).to be < 7.to_s
     end
 
-    it "merges in the pid if it exists"
-    it "returns the record class for a given node"
+    it "merges in the pid if it exists" do
+      attributes = MetadataXmlParser.get_record_attributes(build_node(pid: ['tufts:1']), TuftsPdf)
+      expect(attributes[:pid]).to eq 'tufts:1'
+    end
+
+    it "sets attributes even if a private method exists with the the attribute's name" do
+      attributes = MetadataXmlParser.get_record_attributes(build_node('oxns:format' => ['foo']), TuftsPdf)
+      expect(attributes['format']).to eq ['foo']
+    end
+
+    it "only returns attributes that were found" do
+      attributes = MetadataXmlParser.get_record_attributes(build_node('oxns:format' => []), TuftsPdf)
+      expect(attributes.has_key?('format')).to be_false
+    end
   end
 
   describe "::get_node_content" do
@@ -46,7 +107,7 @@ describe MetadataXmlParser do
       d2 = 'Several woodcuts signed by the monogrammist "b" appeared first in the Bible of 1490 translated into Italian by Niccol Malermi.'
       namespaces = {"oxns"=>"http://purl.org/dc/elements/1.1/"}
       xpath = ".//oxns:description"
-      desc = MetadataXmlParser.get_node_content(pdf_node, xpath, namespaces, true)
+      desc = MetadataXmlParser.get_node_content(build_node, xpath, namespaces, true)
       expect(desc).to eq [d1, d2]
     end
 
@@ -54,16 +115,14 @@ describe MetadataXmlParser do
       expected_title = 'Anatomical tables of the human body.'
       namespaces = {"oxns"=>"http://purl.org/dc/elements/1.1/"}
       xpath = ".//oxns:title"
-      title = MetadataXmlParser.get_node_content(pdf_node, xpath, namespaces)
+      title = MetadataXmlParser.get_node_content(build_node, xpath, namespaces)
       expect(title).to eq expected_title
     end
-
-    it "gets the content for attributes when a private method exists with the attribute's name"
-        #TODO TuftsDcaMeta.new.format was a problem, use this as a test case
   end
 
   describe "::get_pid" do
     it "gets the pid" do
+      ActiveFedora::Base.delete(pid) if ActiveFedora::Base.exists?('tufts:1')
       pid = MetadataXmlParser.get_pid(node_with_only_pid)
       expect(pid).to eq 'tufts:1'
     end
@@ -84,7 +143,7 @@ describe MetadataXmlParser do
 
   describe "::get_file" do
     it "gets the filename" do
-      expect(MetadataXmlParser.get_file(pdf_node)).to eq 'anatomicaltables00ches.pdf'
+      expect(MetadataXmlParser.get_file(build_node)).to eq 'anatomicaltables00ches.pdf'
     end
 
     it "raises if <file> doesn't exist" do
@@ -108,7 +167,7 @@ describe MetadataXmlParser do
     end
 
     it "returns a class" do
-      record_class = MetadataXmlParser.get_record_class(pdf_node)
+      record_class = MetadataXmlParser.get_record_class(build_node)
       expect(record_class).to eq TuftsPdf
     end
   end
@@ -132,19 +191,29 @@ def node_with_bad_model
   node = doc.at_xpath("//digitalObject")
 end
 
-def pdf_node
-  doc = Nokogiri::XML(<<-pdf)
-<digitalObject xmlns:dc="http://purl.org/dc/elements/1.1/"
-               xmlns:rel="info:fedora/fedora-system:def/relations-external#">
-  <pid>tufts:1</pid>
-  <file>anatomicaltables00ches.pdf</file>
-  <rel:hasModel>info:fedora/cm:Text.PDF</rel:hasModel>
-  <dc:title>Anatomical tables of the human body.</dc:title>
-  <dc:description>Title page printed in red.</dc:description>
-  <dc:description>Several woodcuts signed by the monogrammist "b" appeared first in the Bible of 1490 translated into Italian by Niccol Malermi.</dc:description>
-</digitalObject>
+def build_node(overrides={})
+  attributes = {
+    "pid" => ["tufts:1"],
+    "file" => ["anatomicaltables00ches.pdf"],
+    "rel:hasModel" => ["info:fedora/cm:Text.PDF"],
+    "dc:title" => ["Anatomical tables of the human body."],
+    "admin:displays" => ["dl"],
+    "dc:description" => ["Title page printed in red.",
+                         "Several woodcuts signed by the monogrammist \"b\" appeared first in the Bible of 1490 translated into Italian by Niccol Malermi."],
+  }.merge(overrides)
 
-  pdf
-  node = doc.at_xpath("//digitalObject")
+  attribute_xml = attributes.map do |attribute, values|
+    values.map do |value|
+      "<#{attribute}>#{value}</#{attribute}>"
+    end.join("\n")
+  end.join("\n")
+
+  Nokogiri::XML('
+<digitalObject xmlns:dc="http://purl.org/dc/elements/1.1/"
+               xmlns:admin="http://nils.lib.tufts.edu/dcaadmin/"
+               xmlns:rel="info:fedora/fedora-system:def/relations-external#"
+               xmlns:oxns="http://purl.org/dc/elements/1.1/">
+' + attribute_xml + '
+</digitalObject>').at_xpath("//digitalObject")
 end
 

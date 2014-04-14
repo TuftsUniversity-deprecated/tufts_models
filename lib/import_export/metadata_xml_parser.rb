@@ -7,9 +7,8 @@ end
 
 class NodeNotFoundError < MetadataXmlParserError
   def initialize(line, element)
-    @line = line
     @element = element
-    super(message)
+    super(line)
   end
 
   def message
@@ -29,6 +28,23 @@ class InvalidPidError < MetadataXmlParserError
   end
 end
 
+class DuplicateFilenameError < MetadataXmlParserError
+  def message
+    "Duplicate filename found at line #{@line}"
+  end
+end
+
+class ModelValidationError < MetadataXmlParserError
+  def initialize(line, error_message)
+    @error_message = error_message
+    super(line)
+  end
+
+  def message
+    "#{@error_message} for node at line #{@line}"
+  end
+end
+
 # #create
 # errors = MetadataXmlParser.validate_file(file)
 # flash[:errors] = errors.join('<br/>') if errors.any?
@@ -44,18 +60,24 @@ end
 
 module MetadataXmlParser
   class << self
-    def validate_file(file)
-      doc = Nokogiri::XML(File.open(file))
-      errors = []
+    def validate(xml)
+      doc = Nokogiri::XML(xml)
+      errors = doc.errors
+      files = doc.xpath("//digitalObject/file/text()")
+      files.group_by(&:content).values.map{|nodes| nodes.drop(1)}.flatten.each do |duplicate|
+        errors << DuplicateFilenameError.new(duplicate.line)
+      end
       doc.xpath('//digitalObject').map do |digital_object|
-        begin
-          record_class = get_record_class(digital_object)
-          get_record_attributes(digital_object, record_class)
-        rescue MetadataXmlParserError => e
-          errors << e
+        if get_node_content(digital_object, "./file").nil?
+          errors << NodeNotFoundError.new(digital_object.line, '<file>')
         end
         begin
-          get_file(digital_object)
+          record_class = get_record_class(digital_object)
+          m = record_class.new(get_record_attributes(digital_object, record_class))
+          m.valid?
+          m.errors.full_messages.each do |message|
+            errors << ModelValidationError.new(digital_object.line, message)
+          end
         rescue MetadataXmlParserError => e
           errors << e
         end
@@ -63,9 +85,9 @@ module MetadataXmlParser
       errors
     end
 
-    def build_record(metadata_filename, document_filename)
-      doc = Nokogiri::XML(File.open(file))
-      node = doc.at_xpath("//digitalObject[file=#{document_filename}]")
+    def build_record(metadata, document_filename)
+      doc = Nokogiri::XML(metadata)
+      node = doc.at_xpath("//digitalObject[child::file/text()='#{document_filename}']")
       record_class = get_record_class(node)
       record_class.new(get_record_attributes(node, record_class))
     end
@@ -91,7 +113,9 @@ module MetadataXmlParser
     end
 
     def get_record_attributes(node, record_class)
-      record_class.defined_attributes.reduce({}) do |result, attribute|
+      pid = get_node_content(node, "./pid")
+      result = pid.present? ? {:pid => pid} : {}
+      record_class.defined_attributes.reduce(result) do |result, attribute|
         attribute_name, definition = attribute
         datastream_class = record_class.datastream_class_for_name(definition[:dsid])
         namespaces = get_namespaces(datastream_class)
@@ -100,7 +124,7 @@ module MetadataXmlParser
 
         # query the node for this attribute
         xpath = "." + datastream_class.new.public_send(attribute_name).xpath
-        content = get_node_content(node, xpath, namespaces, record_class.multiple?)
+        content = get_node_content(node, xpath, namespaces, record_class.multiple?(attribute_name))
 
         content.blank? ? result : result.merge(attribute_name => content)
       end
