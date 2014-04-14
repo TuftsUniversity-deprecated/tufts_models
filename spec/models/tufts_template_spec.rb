@@ -123,4 +123,21 @@ describe TuftsTemplate do
       expect{subject.apply_attributes(description: 'new desc')}.to raise_exception(CannotApplyTemplateError)
     end
   end
+
+  describe 'deleted templates' do
+    before do
+      TuftsTemplate.delete_all
+      subject.template_name = 'Name'
+      subject.save!
+      @deleted_template = FactoryGirl.create(:tufts_template)
+      @deleted_template.purge!
+    end
+
+    it "don't appear in the list of all active templates" do
+      expect(subject.state).to eq 'A'
+      expect(@deleted_template.state).to eq 'D'
+      expect(TuftsTemplate.count).to eq 2
+      expect(TuftsTemplate.active).to eq [subject]
+    end
+  end
 end

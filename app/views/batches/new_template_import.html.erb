@@ -2,7 +2,7 @@
 
 <%= bootstrap_form_for @batch, as: :batch, url: batches_path do |f| %>
   <%= f.hidden_field :type %>
-  <%= f.select :template_id, options_from_collection_for_select(TuftsTemplate.all, :id, :template_name, @batch.template_id), prompt: 'Select a Template' %>
+  <%= f.select :template_id, options_from_collection_for_select(TuftsTemplate.active, :id, :template_name, @batch.template_id), prompt: 'Select a Template' %>
   <%= f.select :record_type, object_type_options.reject{|k,v| v == 'TuftsTemplate'}, prompt: 'Select a Record Type' %>
   <%= f.submit 'Next', class: 'btn btn-primary' %>
   <%= link_to "Cancel", root_path, :class=>'btn btn-default' %>

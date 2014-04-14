@@ -48,10 +48,6 @@ describe BatchesController do
       it 'assigns @batch' do
         expect(assigns[:batch].class).to eq BatchTemplateImport
       end
-
-      it 'assigns @templates' do
-        pending 'Currently in the view we are using TuftsTemplate.all, but that is a problem because it also shows deleted templates in the drop-down.  We need to change it to filter out deleted ones.'
-      end
     end
 
     describe "GET 'new_xml_import'" do
@@ -198,10 +194,6 @@ describe BatchesController do
         def post_create(overrides={})
           BatchTemplateUpdate.any_instance.stub(:run) { true }
           post 'create', batch: FactoryGirl.attributes_for(:batch_template_update).merge(overrides)
-        end
-
-        it 'assigns @templates' do
-          pending 'Currently in the view we are using TuftsTemplate.all, but that is a problem because it also shows deleted templates in the drop-down.  We need to change it to filter out deleted ones.'
         end
 
         it 'renders new (the 2nd page of the form) to select the template' do
