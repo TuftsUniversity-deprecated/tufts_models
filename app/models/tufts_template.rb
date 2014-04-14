@@ -14,6 +14,10 @@ class TuftsTemplate < ActiveFedora::Base
     super
   end
 
+  def self.active
+    TuftsTemplate.where('object_state_ssi:A')
+  end
+
   # Templates should never be pushed to the production
   # environment.  They are meant to be used by admin users
   # to ingest files in bulk and apply the same metadata to

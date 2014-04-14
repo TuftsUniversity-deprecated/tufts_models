@@ -11,6 +11,10 @@ class BatchTemplateImport < Batch
     'Template Import'
   end
 
+  def template
+    TuftsTemplate.find(template_id)
+  end
+
 protected
 
   def template_creates_valid_object
