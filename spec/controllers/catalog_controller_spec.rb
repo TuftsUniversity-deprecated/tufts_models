@@ -71,13 +71,6 @@ describe CatalogController do
         pid_list = assigns[:document_list].map {|doc| doc.id}
         expect(pid_list).not_to include(@excluded.pid)
       end
-
-      pending it 'filters from show' do
-      # 3/27/2014 Need to determine if this is really the desired functionality
-        get :show, id: @excluded.pid
-        expect(response.status).to eq(404)
-        expect(response).to redirect_to(app_root)
-      end
     end
 
   end
