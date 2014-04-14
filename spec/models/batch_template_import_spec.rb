@@ -13,6 +13,11 @@ describe BatchTemplateImport do
     expect(subject.errors[:template_id]).to eq ["can't be blank"]
   end
 
+  it 'has a getter method for its template' do
+    template = TuftsTemplate.find(subject.template_id)
+    expect(subject.template).to eq template
+  end
+
   it 'requires a record type' do
     subject.record_type = nil
     expect(subject.valid?).to be_false
