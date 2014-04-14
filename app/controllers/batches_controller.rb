@@ -159,6 +159,7 @@ private
       @batch.pids = (@batch.pids || []) + pids
       batch_saved = @batch.save
 
+      warnings = warnings.compact
       flash[:alert] = warnings.join(', ') unless warnings.empty?
 
       respond_to do |format|
