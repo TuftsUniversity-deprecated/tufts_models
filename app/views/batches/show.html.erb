@@ -31,7 +31,7 @@
     <% end %>
   </div>
 
-  <div class="jobs">
+  <div class="batch-items">
     <table class="table">
       <tr>
         <th>PID</th>
@@ -39,13 +39,14 @@
         <th>Status</th>
         <th>Reviewed Status</th>
       </tr>
-      <% @batch.jobs.each do |job| %>
-        <% job_options = job.try(&:options) || {} %>
-        <% record = @records_by_pid[job_options['record_id']] %>
+
+      <% @batch.pids.each do |pid| %>
+        <% record = @records_by_pid[pid] %>
+        <% job = @batch.jobs.select {|job| job && job.options && (job.options['record_id'] == pid) }.first %>
         <tr>
-          <td class="record_pid"><%= job_options['record_id'] %></td>
+          <td class="record_pid"><%= pid %></td>
           <td class="record_title"><%= record.try(&:title) %></td>
-          <td class="record_status"><%= job_status_text(@batch, job) %></td>
+          <td class="record_status"><%= line_item_status(@batch, job, pid) %></td>
           <td class="record_reviewed_status">
             <%= check_box_tag :reviewed, :reviewed, record.try(:reviewed?), type: :checkbox, disabled: true  %>
           </td>
@@ -53,4 +54,5 @@
       <% end %>
     </table>
   </div>
+
 </div>

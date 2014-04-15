@@ -21,4 +21,14 @@ module BatchesHelper
       job.status.capitalize
     end
   end
+
+  def line_item_status(batch, job, record_id=nil)
+    if batch.is_a?(BatchTemplateImport) || batch.is_a?(BatchXmlImport)
+      record_exists = ActiveFedora::Base.exists?(record_id)
+      record_exists ? 'Completed' : 'Status not available'
+    else
+      job_status_text(@batch, job)
+    end
+  end
+
 end
