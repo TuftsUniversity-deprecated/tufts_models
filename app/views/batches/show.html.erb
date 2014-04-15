@@ -20,7 +20,7 @@
 
       <%= button_tag "Publish Batch", type: :submit,
         name: 'batch[type]', value: "BatchPublish",
-        disabled: @batch.status != 'completed',
+        disabled: @batch.status != :completed,
         data: { confirm: "#{pluralize(@batch.pids.count, 'object')} objects will be published to production. Do you wish to proceed?" },
         class: "btn btn-primary" %>
 
