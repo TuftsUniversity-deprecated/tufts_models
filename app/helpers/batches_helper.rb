@@ -31,4 +31,14 @@ module BatchesHelper
     end
   end
 
+  def item_count(batch)
+    if batch.job_ids
+      batch.job_ids.count
+    elsif batch.pids
+      batch.pids.count
+    else
+      0
+    end
+  end
+
 end
