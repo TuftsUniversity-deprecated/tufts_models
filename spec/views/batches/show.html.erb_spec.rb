@@ -1,6 +1,19 @@
 require 'spec_helper'
 
 describe "batches/show.html.erb" do
+
+  describe 'a batch with no pids' do
+    subject { FactoryGirl.create(:batch_template_import, pids: nil) }
+    before do
+      assign :batch, subject
+      assign :records_by_pid, {}
+    end
+
+    it "displays gracefully" do
+      expect { render }.to_not raise_error
+    end
+  end
+
   describe 'apply_template' do
     subject { FactoryGirl.create(:batch_template_update,
                                  pids: records.map(&:id),
