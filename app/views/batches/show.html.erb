@@ -1,6 +1,8 @@
 <div class="span12">
   <h1>Batch Status</h1>
 
+  <% @batch.pids = [] unless @batch.pids %>
+
   <%= link_to "Back to index", batches_path %>
   <div class="batch_info">
     <%= make_dl "Batch Type", @batch.display_name, "type" %>

@@ -432,6 +432,19 @@ describe BatchesController do
           expect(assigns[:records_by_pid]).to eq expected
         end
       end
+
+      describe 'with no pids (yet)' do
+        before do
+          @batch = FactoryGirl.create(:batch_template_import, pids: nil)
+          get :show, id: @batch.id
+        end
+
+        after { @batch.delete }
+
+        it 'gracefully sets @records_by_pid empty' do
+          expect(assigns[:records_by_pid]).to eq({})
+        end
+      end
     end
   end
 end
