@@ -12,5 +12,20 @@ describe BatchXmlImport do
     expect(subject).to_not be_valid
   end
 
-  it 'requires the metadata file to be valid'
+  it 'requires the metadata file to be valid' do
+    xml = "<input><digitalObject></digitalObject></input>"
+    allow(subject.metadata_file).to receive(:read) { xml }
+    expect(subject).to_not be_valid
+    MetadataXmlParser.validate(xml).each do |error|
+      expect(subject.errors.full_messages).to include error.message
+    end
+  end
+
+  it 'calls read on the UploadedFile' do
+    xml = "<input><digitalObject></digitalObject></input>"
+    # we need it to call read here because Nokogiri won't correctly parse an
+    # ActionDispatch::Http::UploadedFile
+    expect(subject.metadata_file).to receive(:read) { xml }.once
+    subject.valid?
+  end
 end
