@@ -29,6 +29,9 @@ module BatchesHelper
     else
       job_status_text(@batch, job)
     end
+  rescue => e
+    Rails.logger.info("ERROR in line_item_status: #{e.message}")
+    'Status not available'
   end
 
   def item_count(batch)
