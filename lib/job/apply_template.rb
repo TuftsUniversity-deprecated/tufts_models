@@ -18,7 +18,8 @@ module Job
 
       run_as_batch_item(options['record_id'], options['batch_id']) do |record|
         record.clear_batch_review_text
-        record.apply_attributes(options['attributes'], options['user_id'])
+        batch = Batch.find(options['batch_id'])
+        record.apply_attributes(options['attributes'], options['user_id'], batch.overwrite?)
       end
     end
 

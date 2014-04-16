@@ -62,7 +62,7 @@ class BatchesController < ApplicationController
 private
 
   def build_batch
-    @batch = Batch.new(params.require(:batch).permit(:template_id, {pids: []}, :type, :record_type, :metadata_file))
+    @batch = Batch.new(params.require(:batch).permit(:template_id, {pids: []}, :type, :record_type, :metadata_file, :behavior))
   end
 
   def load_batch
