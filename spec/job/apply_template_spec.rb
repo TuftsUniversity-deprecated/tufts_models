@@ -92,11 +92,11 @@ describe Job::ApplyTemplate do
     it 'runs the job as a batch item' do
       pdf = FactoryGirl.create(:tufts_pdf)
       batch_id = '10'
-      job = Job::ApplyTemplate.new('uuid', 'record_id' => pdf.id, 'user_id' => '1', 'batch_id' => batch_id, 'attributes' => {title: 'new title 123'})
+      job = Job::ApplyTemplate.new('uuid', 'record_id' => pdf.id, 'user_id' => '1', 'batch_id' => batch_id, 'attributes' => {toc: 'new toc 123'})
 
       job.perform
       pdf.reload
-      expect(pdf.title).to eq 'new title 123'
+      expect(pdf.toc).to eq ['new toc 123']
       expect(pdf.batch_id).to eq [batch_id]
 
       pdf.delete

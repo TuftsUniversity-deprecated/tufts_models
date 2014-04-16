@@ -140,65 +140,6 @@ describe TuftsBase do
     end
   end
 
-
-  describe '#apply_attributes' do
-    before do
-      @obj = TuftsBase.new(title: 'old title', displays: ['dl'],
-                           createdby: 'old createdby',
-                           description: ['old desc 1', 'old desc 2'])
-      @obj.save!
-    end
-
-    it 'overwrites single-value attributes' do
-      @obj.apply_attributes(createdby: 'new createdby')
-      @obj.reload
-      @obj.createdby.should == 'new createdby'
-    end
-
-    it 'adds entries for multi-value attributes' do
-      @obj.apply_attributes(description: 'new desc')
-      @obj.reload
-      @obj.description.should == ['old desc 1', 'old desc 2', 'new desc']
-    end
-
-    it 'doesnt duplicate multi-value entries' do
-      @obj.apply_attributes(description: ['old desc 1'])
-      @obj.reload
-      @obj.description.should == ['old desc 1', 'old desc 2']
-    end
-
-    it 'handles derived attribute stored_collection_id' do
-      @obj.apply_attributes(stored_collection_id: 'hello:123')
-      @obj.reload
-      @obj.stored_collection_id.should == 'hello:123'
-    end
-
-    it 'adds new attributes if they didnt exist' do
-      @obj.toc.should be_empty
-      @obj.apply_attributes(toc: 'new toc')
-      @obj.reload
-      @obj.toc.should == ['new toc']
-    end
-
-    it 'returns true if the record successfully saved' do
-      result = @obj.apply_attributes(description: 'new desc')
-      result.should be_true
-    end
-
-    it 'returns false if the record failed to save' do
-      @obj.should_receive(:save).and_return(false)
-      result = @obj.apply_attributes(description: 'new desc')
-      result.should be_false
-    end
-
-    it 'adds an entry to the audit log' do
-      user = FactoryGirl.create(:user)
-      @obj.apply_attributes({description: 'new desc'}, user.id)
-      @obj.reload
-      @obj.audit_log.who.include?(user.user_key).should be_true
-    end
-  end
-
   describe 'Batch operations' do
     it 'has a field for batch_id' do
       subject.batch_id = ['1', '2', '3']

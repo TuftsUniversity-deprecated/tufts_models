@@ -122,9 +122,10 @@ describe MetadataXmlParser do
 
   describe "::get_pid" do
     it "gets the pid" do
-      ActiveFedora::Base.delete(pid) if ActiveFedora::Base.exists?('tufts:1')
+      pid = 'tufts:1'
+      ActiveFedora::Base.delete(pid) if ActiveFedora::Base.exists?(pid)
       pid = MetadataXmlParser.get_pid(node_with_only_pid)
-      expect(pid).to eq 'tufts:1'
+      expect(pid).to eq pid
     end
 
     it "raises if the pid already exists" do
