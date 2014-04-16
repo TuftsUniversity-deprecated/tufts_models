@@ -42,7 +42,7 @@ describe BatchesHelper do
       end
 
       it "has a default value if it can't figure out status" do
-        status = helper.line_item_status(@batch, nil, 'non_existent_pid')
+        status = helper.line_item_status(@batch, nil, 'non_existent_pid:1')
         expect(status).to match /Status not available/i
       end
     end
