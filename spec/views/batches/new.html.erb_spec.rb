@@ -25,6 +25,9 @@ describe "batches/new.html.erb" do
       @templates.each do |t|
         rendered.should have_selector("option[value='#{t.id}']")
       end
+
+      expect(rendered).to have_selector("input[type=radio][value='#{BatchTemplateUpdate::PRESERVE}'][name='batch[behavior]'][checked='checked']")
+      expect(rendered).to have_selector("input[type=radio][value='#{BatchTemplateUpdate::OVERWRITE}'][name='batch[behavior]']")
     end
   end
 end

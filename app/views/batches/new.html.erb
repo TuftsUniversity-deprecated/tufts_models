@@ -3,6 +3,21 @@
   <% @batch.pids.each do |pid| %>
     <%= f.hidden_field :pids, multiple: true, value: pid %>
   <% end %>
+
   <%= f.select :template_id, options_from_collection_for_select(TuftsTemplate.active, :id, :template_name, @batch.template_id), prompt: 'Select a Template' %>
-  <%= f.submit "Apply Template" %>
+
+  <%= f.label :behavior, 'Template Behavior' %>
+
+  <%= f.radio_button :behavior, BatchTemplateUpdate::PRESERVE, checked: true %>
+  <strong> Preserve: </strong> &nbsp;
+  Apply the template and keep any existing data; update blank and repeating fields using the template.
+  <br />
+
+  <%= f.radio_button :behavior, BatchTemplateUpdate::OVERWRITE %>
+  <strong> Overwrite: </strong> &nbsp;
+  Apply the template and overwrite any exisiting data with data from the template. Use this option with caution.
+  <br /> <br />
+
+  <%= f.submit "Apply Template", class: 'btn btn-primary' %>
+  <%= link_to "Cancel", :back, :class=>'btn btn-default' %>
 <% end %>

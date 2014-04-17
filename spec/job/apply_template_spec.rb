@@ -46,7 +46,8 @@ describe Job::ApplyTemplate do
     it 'clears out the batch reviewed status marker' do
       object = TuftsPdf.new(title: 'old title', displays: ['dl'], qrStatus: [Reviewable.batch_review_text, 'status 2'])
       object.save!
-      job = Job::ApplyTemplate.new('uuid', 'user_id' => 1, 'record_id' => object.id, 'attributes' => {toc: 'new toc'})
+      batch = FactoryGirl.create(:batch_template_update)
+      job = Job::ApplyTemplate.new('uuid', 'user_id' => 1, 'record_id' => object.id, 'batch_id' => batch.id, 'attributes' => {toc: 'new toc'})
 
       job.perform
       object.reload
@@ -59,7 +60,8 @@ describe Job::ApplyTemplate do
       before do
         @object = TuftsPdf.new(title: 'old title', displays: ['dl'], qrStatus: ['status 2'])
         @object.save!
-        @job = Job::ApplyTemplate.new('uuid', 'user_id' => 1, 'record_id' => @object.id, 'attributes' => { qrStatus: Reviewable.batch_review_text })
+        batch = FactoryGirl.create(:batch_template_update)
+        @job = Job::ApplyTemplate.new('uuid', 'user_id' => 1, 'record_id' => @object.id, 'batch_id' => batch.id, 'attributes' => { qrStatus: Reviewable.batch_review_text })
       end
       after { @object.delete }
 
@@ -73,7 +75,8 @@ describe Job::ApplyTemplate do
     it 'updates the record' do
       object = TuftsPdf.new(title: 'old title', toc: 'old toc', displays: ['dl'])
       object.save!
-      job = Job::ApplyTemplate.new('uuid', 'user_id' => 1, 'record_id' => object.id, 'attributes' => {toc: 'new toc'})
+      batch = FactoryGirl.create(:batch_template_update)
+      job = Job::ApplyTemplate.new('uuid', 'user_id' => 1, 'record_id' => object.id, 'batch_id' => batch.id,  'attributes' => {toc: 'new toc'})
       job.perform
       object.reload
       object.toc.should == ['old toc', 'new toc']
@@ -91,15 +94,36 @@ describe Job::ApplyTemplate do
 
     it 'runs the job as a batch item' do
       pdf = FactoryGirl.create(:tufts_pdf)
-      batch_id = '10'
-      job = Job::ApplyTemplate.new('uuid', 'record_id' => pdf.id, 'user_id' => '1', 'batch_id' => batch_id, 'attributes' => {toc: 'new toc 123'})
+      batch = FactoryGirl.create(:batch_template_update)
+      job = Job::ApplyTemplate.new('uuid', 'record_id' => pdf.id, 'user_id' => '1', 'batch_id' => batch.id, 'attributes' => {toc: 'new toc 123'})
 
       job.perform
       pdf.reload
       expect(pdf.toc).to eq ['new toc 123']
-      expect(pdf.batch_id).to eq [batch_id]
+      expect(pdf.batch_id).to eq [batch.id.to_s]
 
       pdf.delete
+    end
+
+    describe 'overwrite behavior' do
+      before do
+        @batch = FactoryGirl.create(:batch_template_update, behavior: BatchTemplateUpdate::PRESERVE)
+        @pdf = FactoryGirl.create(:tufts_pdf, title: 'old title')
+        new_attrs = { title: 'new title' }
+        @job = Job::ApplyTemplate.new('uuid', 'record_id' => @pdf.id, 'user_id' => '1', 'batch_id' => @batch.id, 'attributes' => new_attrs)
+      end
+
+      it 'passes the overwrite value to apply_attributes' do
+        @job.perform
+        @pdf.reload
+        expect(@pdf.title).to eq 'old title'
+
+        @batch.behavior = BatchTemplateUpdate::OVERWRITE
+        @batch.save!
+        @job.perform
+        @pdf.reload
+        expect(@pdf.title).to eq 'new title'
+      end
     end
   end
 end

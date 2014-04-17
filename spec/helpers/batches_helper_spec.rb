@@ -42,7 +42,15 @@ describe BatchesHelper do
       end
 
       it "has a default value if it can't figure out status" do
-        status = helper.line_item_status(@batch, nil, 'non_existent_pid')
+        pid = 'tufts:1'
+        ActiveFedora::Base.delete(pid) if ActiveFedora::Base.exists?(pid)
+        status = helper.line_item_status(@batch, nil, pid)
+        expect(status).to match /Status not available/i
+      end
+
+      it 'rescues and returns default value' do
+        allow(ActiveFedora::Base).to receive(:exists?).and_raise(Rubydora::FedoraInvalidRequest.new)
+        status = helper.line_item_status(@batch, nil, 'tufts:1')
         expect(status).to match /Status not available/i
       end
     end
