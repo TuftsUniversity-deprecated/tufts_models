@@ -50,6 +50,10 @@ GEM
       rails (>= 3.2.6, < 5)
       rsolr (~> 1.0.6)
       sass-rails
+    blacklight_advanced_search (2.2.0)
+      blacklight (~> 4.0)
+      parslet
+    blankslate (2.1.2.4)
     block_helpers (0.3.3)
       activesupport (>= 2.0)
     bootstrap-sass (2.3.2.2)
@@ -196,6 +200,8 @@ GEM
       nokogiri (>= 1.4.2)
       solrizer (~> 3.1.0)
     orm_adapter (0.5.0)
+    parslet (1.5.0)
+      blankslate (~> 2.0)
     polyglot (0.3.4)
     qa (0.0.3)
       activerecord-import (>= 0.4.0)
@@ -335,6 +341,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  blacklight_advanced_search (~> 2.2)
   bootstrap-sass
   bootstrap_forms
   byebug

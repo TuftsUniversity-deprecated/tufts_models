@@ -29,6 +29,8 @@ gem 'bootstrap_forms'
 gem 'rmagick', '2.13.2', require: 'RMagick'
 gem 'resque-status'
 
+gem 'blacklight_advanced_search', '~> 2.2'
+
 group :development do
   gem 'unicorn'
   gem 'jettywrapper'
