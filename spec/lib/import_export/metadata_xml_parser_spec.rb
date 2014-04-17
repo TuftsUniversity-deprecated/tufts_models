@@ -52,6 +52,15 @@ describe MetadataXmlParser do
       expect(m.title).to eq attributes['dc:title'].first
       expect(m.description).to eq attributes['dc:description']
     end
+
+    context "with a filename that's not in the metadata" do
+      it "raises an error" do
+        attributes = {
+        'file' => ['somefile.pdf'],
+        }
+        expect{MetadataXmlParser.build_record(build_node(attributes).to_xml, "fail")}.to raise_exception(FileNotFoundError)
+      end
+    end
   end
 
   describe "::get_namespaces" do

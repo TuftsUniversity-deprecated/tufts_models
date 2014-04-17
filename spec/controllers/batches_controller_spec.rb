@@ -325,10 +325,37 @@ describe BatchesController do
         it_behaves_like 'an import error path (wrong file format)'
         it_behaves_like 'an import error path (failed to save batch)'
 
-        context "duplicate file upload" do
-          it "displays a warning"
-          it "only saves one of the files"
-          it "saves all other files"
+        context "with duplicate file upload" do
+          let(:file3) { file1 }
+          before do
+            TuftsPdf.delete_all
+            patch :update, id: batch.id, documents: [file1, file2, file3], batch: {}
+          end
+
+          it "displays a warning" do
+            pending "duplicate file upload working"
+            expect(flash[:alert]).to match "#{file3.original_filename} has already been uploaded"
+          end
+
+          it "doesn't save the duplicate file" do
+            expect(TuftsPdf.count).to eq 2
+          end
+        end
+
+        context "with a file that isn't in the metadata" do
+          let(:file1) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'tufts_WP0001.foxml.xml')) }
+          before do
+            TuftsPdf.delete_all
+            patch :update, id: batch.id, documents: [file1], batch: {}
+          end
+
+          it "displays a warning" do
+            expect(flash[:error]).to match "#{file1.original_filename} doesn't exist in the metadata file"
+          end
+
+          it "doesn't save the file" do
+            expect(TuftsPdf.count).to eq 0
+          end
         end
 
         describe 'JSON request' do
@@ -336,6 +363,33 @@ describe BatchesController do
           after { TuftsPdf.delete_all }
 
           it_behaves_like 'a JSON import'
+
+          context "with duplicate file upload" do
+            let(:file3) { file1 }
+            before do
+              TuftsPdf.delete_all
+              patch :update, id: batch.id, documents: [file1, file2, file3], batch: {}, format: :json
+            end
+
+            it "displays a warning" do
+              pending "duplicate file upload working"
+              json = JSON.parse(response.body)['files'].first
+              expect(json['warning']).to eq "#{file3.original_filename} has already been uploaded"
+            end
+          end
+
+          context "with a file that isn't in the metadata" do
+          let(:file1) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'tufts_WP0001.foxml.xml')) }
+            before do
+              TuftsPdf.delete_all
+              patch :update, id: batch.id, documents: [file1], batch: {}, format: :json
+            end
+
+            it "displays a warning" do
+              json = JSON.parse(response.body)['files'].first
+              expect(json['error']).to eq ["#{file1.original_filename} doesn't exist in the metadata file"]
+            end
+          end
 
           describe 'error path (failed to save batch)' do
             before do

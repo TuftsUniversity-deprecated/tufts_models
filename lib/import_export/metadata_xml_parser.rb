@@ -1,5 +1,5 @@
 class MetadataXmlParserError < StandardError
-  def initialize(line)
+  def initialize(line=nil)
     @line = line
     super(message)
   end
@@ -45,6 +45,17 @@ class ModelValidationError < MetadataXmlParserError
   end
 end
 
+class FileNotFoundError < MetadataXmlParserError
+  def initialize(filename)
+    @filename = filename
+    super()
+  end
+
+  def message
+    "#{@filename} doesn't exist in the metadata file"
+  end
+end
+
 module MetadataXmlParser
   class << self
     def validate(xml)
@@ -75,6 +86,7 @@ module MetadataXmlParser
     def build_record(metadata, document_filename)
       doc = Nokogiri::XML(metadata)
       node = doc.at_xpath("//digitalObject[child::file/text()='#{document_filename}']")
+      raise FileNotFoundError.new(document_filename) if node.nil?
       record_class = get_record_class(node)
       record_class.new(get_record_attributes(node, record_class))
     end

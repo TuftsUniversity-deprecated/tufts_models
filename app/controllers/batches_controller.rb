@@ -127,16 +127,15 @@ private
     end
   end
 
-  def collect_warning(record, dsid, doc)
+  def collect_warning(record, doc)
+    dsid = record.class.original_file_datastreams.first
     if !record.valid_type_for_datastream?(dsid, doc.content_type)
       "You provided a #{doc.content_type} file, which is not a valid type: #{doc.original_filename}"
     end
   end
 
-  def collect_errors(records)
-    (@batch.errors.full_messages +
-        records.map{|r| r.errors.full_messages }.flatten +
-        [flash[:error]]).compact
+  def collect_errors(batch, records)
+    (batch.errors.full_messages + records.map{|r| r.errors.full_messages }.flatten).compact
   end
 
   # TODO: Take a look at the handle_update_for_template_import method, handle_update_for_xml_import method and attachments_controller update method, and see if we can pull out any common code.
@@ -147,25 +146,26 @@ private
       flash[:error] = "Please select some files to upload."
       render :edit
     else
-      warnings = []
-      errors = []
-      records = params[:documents].map do |doc|
+
+      records_with_messages = params[:documents].map do |doc|
+        record, warning, error = nil, nil, nil
         begin
           record = MetadataXmlParser.build_record(@batch.metadata_file.read, doc.original_filename)
-          dsid = record.class.original_file_datastreams.first
-          record = save_record_with_document(record, dsid, doc)
-          w = collect_warning(record, dsid, doc)
-          warnings << w if w.present?
-          record
+          save_record_with_document(record, doc)
+          warning = collect_warning(record, doc)
         rescue MetadataXmlParserError => e
-          errors << e.message
+          error = e.message
         end
+        [record, warning, error]
       end
+      records, warnings, errors = records_with_messages.transpose
 
-      @batch.pids = (@batch.pids || []) + records.map(&:pid)
-      successful = @batch.save && records.map(&:persisted?).all?
+      @batch.pids = (@batch.pids || []) + records.compact.map(&:pid)
+      successful = @batch.save &&  # our batch saved
+        errors.compact.empty? &&   # we have no errors from building records
+        records.all?(&:persisted?) # all our records saved
 
-      respond_to_import(records, successful, warnings, errors)
+      respond_to_import(successful, @batch, records_with_messages)
     end
   end
 
@@ -180,34 +180,34 @@ private
       attrs = @batch.template.attributes_to_update
       record_class = @batch.record_type.constantize
 
-      warnings = []
-      errors = []
-      records = params[:documents].map do |doc|
+      records_with_messages = params[:documents].map do |doc|
         record = record_class.new(attrs)
-        dsid = record.class.original_file_datastreams.first
-        record = save_record_with_document(record, dsid, doc)
-        w = collect_warning(record, dsid, doc)
-        warnings << w if w.present?
-        record
+        save_record_with_document(record, doc)
+        [record, collect_warning(record, doc), nil]
       end
+      records, warnings, errors = records_with_messages.transpose
 
-      @batch.pids = (@batch.pids || []) + records.map(&:pid)
-      successful = @batch.save && records.map(&:persisted?).all?
+      @batch.pids = (@batch.pids || []) + records.compact.map(&:pid)
+      successful = @batch.save &&  # our batch saved
+        errors.compact.empty? &&   # we have no errors from building records
+        records.all?(&:persisted?) # all our records saved
 
-      respond_to_import(records, successful, warnings, errors)
+      respond_to_import(successful, @batch, records_with_messages)
     end
   end
 
-  def save_record_with_document(record, dsid, doc)
+  def save_record_with_document(record, doc)
+    dsid = record.class.original_file_datastreams.first
     record.working_user = current_user
     record.save
     record.store_archival_file(dsid, doc)
     record.save
-    record
   end
 
-  def respond_to_import(records, successful, warnings, errors)
-    flash[:alert] = warnings.join(', ') unless warnings.empty?
+  def respond_to_import(successful, batch, records_with_messages)
+    records, warnings, errors = records_with_messages.transpose.map(&:compact)
+    flash[:alert] = warnings.join(', ')
+    flash[:error] = errors.join(', ')
     respond_to do |format|
       format.html do
         if successful
@@ -219,14 +219,18 @@ private
 
       format.json do
         if successful
-          redirect_to catalog_path(records.first, 'json_format' => 'jquery-file-uploader')
+          redirect_to catalog_path(records.first.id, 'json_format' => 'jquery-file-uploader')
         else
           json = {
-            files: [{
-              pid: records.first.id,
-              name: records.first.title,
-              error: collect_errors(records)
-            }]
+            files: records_with_messages.map do |record, warning, error|
+              msg = {}
+              msg[:pid] = record.id if record.present?
+              msg[:name] = record.title if record.present?
+              msg[:warning] = warning if warning.present?
+              msg[:error] = collect_errors(batch, records)
+              msg[:error] << error if error.present?
+              msg
+            end
           }.to_json
 
           render json: json
