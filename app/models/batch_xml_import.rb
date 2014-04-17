@@ -13,8 +13,10 @@ class BatchXmlImport < Batch
   private
 
   def metadata_file_must_be_valid
-    MetadataXmlParser.validate(metadata_file.read).each do |error|
-      errors.add(:base, error.message)
+    if metadata_file_changed?
+      MetadataXmlParser.validate(metadata_file.read).each do |error|
+        errors.add(:base, error.message)
+      end
     end
   end
 end

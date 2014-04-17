@@ -9,7 +9,7 @@
                   xmlns:ac="http://purl.org/dc/dcmitype/"
                   xmlns:rel="info:fedora/fedora-system:def/relations-external#">
       <pid>tufts:1</pid>
-      <file>anatomicaltables00ches.pdf</file>
+      <file>hello.pdf</file>
       <rel:hasModel>info:fedora/cm:Text.PDF</rel:hasModel>
       <dc:title>Anatomical tables of the human body.</dc:title>
       <dc:creator>Cheselden, William, 1688-1752.</dc:creator>
@@ -26,6 +26,7 @@
       <admin:displays>tisch</admin:displays>
       <admin:displays>dl</admin:displays>
    </digitalObject>
+
    <digitalObject xmlns:dc="http://purl.org/dc/elements/1.1/"
                   xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/"
                   xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/"
@@ -33,7 +34,7 @@
                   xmlns:admin="http://nils.lib.tufts.edu/dcaadmin/"
                   xmlns:ac="http://purl.org/dc/dcmitype/"
                   xmlns:rel="info:fedora/fedora-system:def/relations-external#">
-      <file>catalogussanctor00nata.pdf</file>
+      <file>hello2.pdf</file>
       <rel:hasModel>info:fedora/cm:Text.PDF</rel:hasModel>
       <dc:title>Catalogus sanctorum [et] gestorum eoru[m] ex diuersis voluminibus collectus: editus a reuere[n]dissimo in [Christo] patre domino Petro de natalibus de venetijs dei gratia e[pisco]po Equilino.</dc:title>
       <dc:creator>Natalibus, Petrus de, active 1370-1400.</dc:creator>
@@ -66,6 +67,7 @@
       <admin:displays>tisch</admin:displays>
       <admin:displays>dl</admin:displays>
    </digitalObject>
+
    <digitalObject xmlns:dc="http://purl.org/dc/elements/1.1/"
                   xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/"
                   xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/"
@@ -90,6 +92,7 @@
       <admin:displays>tisch</admin:displays>
       <admin:displays>dl</admin:displays>
    </digitalObject>
+
    <digitalObject xmlns:dc="http://purl.org/dc/elements/1.1/"
                   xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/"
                   xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/"
@@ -116,6 +119,7 @@
       <admin:displays>tisch</admin:displays>
       <admin:displays>dl</admin:displays>
    </digitalObject>
+
    <digitalObject xmlns:dc="http://purl.org/dc/elements/1.1/"
                   xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/"
                   xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/"

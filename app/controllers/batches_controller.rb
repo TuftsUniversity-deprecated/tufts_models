@@ -50,8 +50,8 @@ class BatchesController < ApplicationController
     case @batch.type
     when 'BatchTemplateImport'
       handle_update_for_template_import
-#    when 'BatchXmlImport'
-#      handle_update_for_xml_import
+   when 'BatchXmlImport'
+     handle_update_for_xml_import
     else
       flash[:error] = 'Unable to handle batch request.'
       redirect_to (request.referer || root_path)
@@ -127,7 +127,7 @@ private
     end
   end
 
-  def collect_warnings(record, dsid, doc)
+  def collect_warning(record, dsid, doc)
     if !record.valid_type_for_datastream?(dsid, doc.content_type)
       "You provided a #{doc.content_type} file, which is not a valid type: #{doc.original_filename}"
     end
@@ -141,55 +141,97 @@ private
 
   # TODO: Take a look at the handle_update_for_template_import method, handle_update_for_xml_import method and attachments_controller update method, and see if we can pull out any common code.
 
-  def handle_update_for_template_import
-    if params[:documents] && !params[:documents].empty?
-      warnings = []
-      record_class = @batch.record_type.constantize
-      dsid = record_class.original_file_datastreams.first
-      attrs = @batch.template.attributes_to_update
-
-      records = params[:documents].map do |doc|
-        record = record_class.new(attrs)
-        record.working_user = current_user
-        record.save
-        record.store_archival_file(dsid, doc)
-        record.save
-        warnings << collect_warnings(record, dsid, doc)
-        record
-      end
-
-      pids = records.map(&:pid)
-      @batch.pids = (@batch.pids || []) + pids
-      batch_saved = @batch.save
-
-      warnings = warnings.compact
-      flash[:alert] = warnings.join(', ') unless warnings.empty?
-
-      respond_to do |format|
-        format.html { redirect_to batch_path(@batch) }
-        format.json {
-          success = batch_saved && records.map(&:persisted?).all?
-          if success
-            redirect_to catalog_path(pids.first, 'json_format' => 'jquery-file-uploader')
-          else
-            json = { files: [
-              { pid: records.first.id,
-                name: records.first.title,
-                error: collect_errors(records) }]
-            }.to_json
-
-            render json: json
-          end
-        }
-      end
-
-    else  # no documents have been passed in
+  def handle_update_for_xml_import
+    if params[:documents].blank?
+      # no documents have been passed in
       flash[:error] = "Please select some files to upload."
       render :edit
+    else
+      warnings = []
+      errors = []
+      records = params[:documents].map do |doc|
+        begin
+          record = MetadataXmlParser.build_record(@batch.metadata_file.read, doc.original_filename)
+          dsid = record.class.original_file_datastreams.first
+          record = save_record_with_document(record, dsid, doc)
+          w = collect_warning(record, dsid, doc)
+          warnings << w if w.present?
+          record
+        rescue MetadataXmlParserError => e
+          errors << e.message
+        end
+      end
+
+      @batch.pids = (@batch.pids || []) + records.map(&:pid)
+      successful = @batch.save && records.map(&:persisted?).all?
+
+      respond_to_import(records, successful, warnings, errors)
     end
   end
 
-#  def handle_update_for_xml_import
-#  end
+  #TODO add transaction around batch. Is this needed?
+  #TODO add transaction around everything? Is this possible?
+  def handle_update_for_template_import
+    if params[:documents].blank?
+      # no documents have been passed in
+      flash[:error] = "Please select some files to upload."
+      render :edit
+    else
+      attrs = @batch.template.attributes_to_update
+      record_class = @batch.record_type.constantize
 
+      warnings = []
+      errors = []
+      records = params[:documents].map do |doc|
+        record = record_class.new(attrs)
+        dsid = record.class.original_file_datastreams.first
+        record = save_record_with_document(record, dsid, doc)
+        w = collect_warning(record, dsid, doc)
+        warnings << w if w.present?
+        record
+      end
+
+      @batch.pids = (@batch.pids || []) + records.map(&:pid)
+      successful = @batch.save && records.map(&:persisted?).all?
+
+      respond_to_import(records, successful, warnings, errors)
+    end
+  end
+
+  def save_record_with_document(record, dsid, doc)
+    record.working_user = current_user
+    record.save
+    record.store_archival_file(dsid, doc)
+    record.save
+    record
+  end
+
+  def respond_to_import(records, successful, warnings, errors)
+    flash[:alert] = warnings.join(', ') unless warnings.empty?
+    respond_to do |format|
+      format.html do
+        if successful
+          redirect_to batch_path(@batch)
+        else
+          render :edit
+        end
+      end
+
+      format.json do
+        if successful
+          redirect_to catalog_path(records.first, 'json_format' => 'jquery-file-uploader')
+        else
+          json = {
+            files: [{
+              pid: records.first.id,
+              name: records.first.title,
+              error: collect_errors(records)
+            }]
+          }.to_json
+
+          render json: json
+        end
+      end
+    end
+  end
 end

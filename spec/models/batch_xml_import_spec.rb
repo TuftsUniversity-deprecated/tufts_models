@@ -21,6 +21,13 @@ describe BatchXmlImport do
     end
   end
 
+  it 'only checks the validity of the metadata file if it has changed' do
+    expect(MetadataXmlParser).to receive(:validate).once { [] }
+    subject.save
+    expect(MetadataXmlParser).to receive(:validate).never
+    subject.save
+  end
+
   it 'calls read on the UploadedFile' do
     xml = "<input><digitalObject></digitalObject></input>"
     # we need it to call read here because Nokogiri won't correctly parse an

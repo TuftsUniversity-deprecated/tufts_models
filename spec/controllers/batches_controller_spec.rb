@@ -243,7 +243,7 @@ describe BatchesController do
 
     describe "PATCH 'update'" do
 
-      describe 'error path (wrong batch type) :' do
+      describe 'error path (wrong batch type)' do
         # A batch type that isn't handled in the update action
         let(:batch) { FactoryGirl.create(:batch_publish) }
 
@@ -268,80 +268,26 @@ describe BatchesController do
             patch :update, id: batch.id, documents: [file1, file2], batch: {}
           end
 
-          it 'assigns @batch' do
-            expect(assigns[:batch].id).to eq batch.id
-          end
-
-          it 'HTML response redirects to batch show page' do
-            expect(response).to redirect_to(batch_path(batch))
-          end
+          it_behaves_like 'an import happy path'
 
           it 'creates the records with the template attributes' do
             expect(TuftsPdf.count).to eq 2
             expect(TuftsPdf.first.title).to eq batch.template.title
           end
 
-          it 'adds an audit log' do
-            expect(TuftsPdf.first.audit_log.who).to include @user.user_key
-          end
-
-          it 'attaches the files to the records' do
-            pdf = TuftsPdf.first.datastreams['Archival.pdf']
-            expect(pdf.has_content?).to be_true
-            expect(pdf.mimeType).to eq file1.content_type
-          end
-
-          it 'adds new PIDs without deleting existing PIDs' do
-            expected_pids = TuftsPdf.all.map(&:pid) + ['oldpid:123']
-            expect(assigns[:batch].pids.sort).to eq expected_pids.sort
-          end
         end
 
-        describe 'error path (no documents uploaded) :' do
-          before do
-            patch :update, id: batch.id, documents: []
-          end
-
-          it 'renders the form' do
-            response.should render_template(:edit)
-          end
-
-          it 'displays a flash message' do
-            expect(flash[:error]).to match /please select some files/i
-          end
-
-          it 'assigns @batch' do
-            expect(assigns[:batch].id).to eq batch.id
-          end
-        end
-
-        describe 'error path (wrong file format)' do
-          before do
-            TuftsPdf.delete_all
-            allow_any_instance_of(TuftsPdf).to receive(:valid_type_for_datastream?) { false }
-            patch :update, id: batch.id, documents: [file1]
-          end
-
-          it 'displays a warning message, but still creates the record' do
-            expect(TuftsPdf.count).to eq 1
-            record = TuftsPdf.first
-            expect(assigns[:batch].pids.sort).to eq [record.pid, 'oldpid:123'].sort
-            expect(flash[:alert]).to match /#{file1.content_type} file, which is not a valid type: #{file1.original_filename}/i
-          end
-        end
+        it_behaves_like 'an import error path (no documents uploaded)'
+        it_behaves_like 'an import error path (wrong file format)'
+        it_behaves_like 'an import error path (failed to save batch)'
 
         describe 'JSON request' do
           before { TuftsPdf.delete_all }
           after { TuftsPdf.delete_all }
 
-          describe 'happy path' do
-            it 'redirects to get the JSON response for the new record' do
-              patch :update, id: batch.id, documents: [file1], format: :json
-              expect(response).to redirect_to(catalog_path(TuftsPdf.first, json_format: 'jquery-file-uploader'))
-            end
-          end
+          it_behaves_like 'a JSON import'
 
-          describe 'error path (failed to save batch) :' do
+          describe 'error path (failed to save batch)' do
             before do
               allow(Batch).to receive(:find) { batch }
               allow(batch).to receive(:save) { false }
@@ -357,27 +303,56 @@ describe BatchesController do
               expect(json['error']).to eq [@batch_error]
             end
           end
+        end  # JSON request
+      end  # template import section
 
-          describe 'error path (failed to create record) :' do
+      describe 'for xml import' do
+        let(:batch) { FactoryGirl.create(:batch_xml_import, pids: ['oldpid:123']) }
+        let(:file1) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'hello.pdf')) }
+        let(:file2) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'hello2.pdf')) }
+
+        describe 'happy path' do
+          before do
+            TuftsPdf.delete_all
+            patch :update, id: batch.id, documents: [file1, file2], batch: {}
+          end
+
+          it_behaves_like 'an import happy path'
+
+        end
+
+        it_behaves_like 'an import error path (no documents uploaded)'
+        it_behaves_like 'an import error path (wrong file format)'
+        it_behaves_like 'an import error path (failed to save batch)'
+
+        context "duplicate file upload" do
+          it "displays a warning"
+          it "only saves one of the files"
+          it "saves all other files"
+        end
+
+        describe 'JSON request' do
+          before { TuftsPdf.delete_all }
+          after { TuftsPdf.delete_all }
+
+          it_behaves_like 'a JSON import'
+
+          describe 'error path (failed to save batch)' do
             before do
-              # A record with errors
-              @pdf = FactoryGirl.create(:tufts_pdf)
-              @error1 = 'Record error 1'
-              @error2 = 'Record error 2'
-              @pdf.errors.add(:base, @error1)
-              @pdf.errors.add(:base, @error2)
-              allow(@pdf).to receive(:valid?) { true }
-              allow(@pdf).to receive(:persisted?) { false }
-              allow(TuftsPdf).to receive(:new) { @pdf }
-
+              allow(Batch).to receive(:find) { batch }
+              allow(batch).to receive(:save) { false }
+              @batch_error = 'Batch Error 1'
+              batch.errors.add(:base, @batch_error)
               patch :update, id: batch.id, documents: [file1], format: :json
             end
 
             it 'returns JSON data needed by the view template' do
               json = JSON.parse(response.body)['files'].first
-              expect(json['pid']).to eq @pdf.pid
-              expect(json['name']).to eq @pdf.title
-              expect(json['error']).to eq [@error1, @error2]
+              expect(json['pid']).to eq TuftsPdf.first.pid
+              doc = Nokogiri::XML(batch.metadata_file.read)
+              title = doc.at_xpath("//digitalObject[child::file/text()='#{file1.original_filename}']/*[local-name()='title']").content
+              expect(json['name']).to eq title
+              expect(json['error']).to eq [@batch_error]
             end
           end
 

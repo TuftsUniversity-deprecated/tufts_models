@@ -45,19 +45,6 @@ class ModelValidationError < MetadataXmlParserError
   end
 end
 
-# #create
-# errors = MetadataXmlParser.validate_file(file)
-# flash[:errors] = errors.join('<br/>') if errors.any?
-
-# #update
-# begin
-# record = MetadataXmlParser.build_record(@batch.metadata_file, params[:file].filename)
-# record.datasream.whatever(params[:file])
-# record.save
-# rescue
-#   render json: {errors: e.message}
-# end
-
 module MetadataXmlParser
   class << self
     def validate(xml)
