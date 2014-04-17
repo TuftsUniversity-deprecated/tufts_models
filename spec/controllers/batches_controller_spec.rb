@@ -389,6 +389,11 @@ describe BatchesController do
               json = JSON.parse(response.body)['files'].first
               expect(json['error']).to eq ["#{file1.original_filename} doesn't exist in the metadata file"]
             end
+
+            it "displays the filename" do
+              json = JSON.parse(response.body)['files'].first
+              expect(json['name']).to eq file1.original_filename
+            end
           end
 
           describe 'error path (failed to save batch)' do

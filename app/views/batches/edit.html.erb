@@ -48,12 +48,14 @@
         {% } else { %}
           <td colspan="2"></td>
         {% } %}
-        <td class="cancel">{% if (!i) { %}
-          <button class="btn btn-warning">
-            <i class="icon-ban-circle icon-white"></i>
-            <span>{%=locale.fileupload.cancel%}</span>
-          </button>
-          {% } %}</td>
+        <td class="cancel">
+          {% if (!i) { %}
+            <button class="btn btn-warning">
+              <i class="icon-ban-circle icon-white"></i>
+              <span>{%=locale.fileupload.cancel%}</span>
+            </button>
+          {% } %}
+        </td>
       </tr>
     {% } %}
   </script>
@@ -64,7 +66,7 @@
         {% if (file.error) { %}
           <td><span></span></td>
           <td class="name"><span>{%= file.name %}</span></td>
-          <td class="error" colspan="2">
+          <td class="error" colspan="4">
             <span class="label label-important">{%=locale.fileupload.error%}</span>
             {% if (file.error instanceof Array) { %}
               {% for (var j=0, e; e=file.error[j]; j++) { %}

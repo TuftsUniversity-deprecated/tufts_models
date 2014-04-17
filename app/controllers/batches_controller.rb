@@ -147,7 +147,7 @@ private
       render :edit
     else
 
-      records_with_messages = params[:documents].map do |doc|
+      document_statuses = params[:documents].map do |doc|
         record, warning, error = nil, nil, nil
         begin
           record = MetadataXmlParser.build_record(@batch.metadata_file.read, doc.original_filename)
@@ -156,16 +156,16 @@ private
         rescue MetadataXmlParserError => e
           error = e.message
         end
-        [record, warning, error]
+        [doc, record, warning, error]
       end
-      records, warnings, errors = records_with_messages.transpose
+      docs, records, warnings, errors = document_statuses.transpose
 
       @batch.pids = (@batch.pids || []) + records.compact.map(&:pid)
       successful = @batch.save &&  # our batch saved
         errors.compact.empty? &&   # we have no errors from building records
         records.all?(&:persisted?) # all our records saved
 
-      respond_to_import(successful, @batch, records_with_messages)
+      respond_to_import(successful, @batch, document_statuses)
     end
   end
 
@@ -180,19 +180,19 @@ private
       attrs = @batch.template.attributes_to_update
       record_class = @batch.record_type.constantize
 
-      records_with_messages = params[:documents].map do |doc|
+      document_statuses = params[:documents].map do |doc|
         record = record_class.new(attrs)
         save_record_with_document(record, doc)
-        [record, collect_warning(record, doc), nil]
+        [doc, record, collect_warning(record, doc), nil]
       end
-      records, warnings, errors = records_with_messages.transpose
+      docs, records, warnings, errors = document_statuses.transpose
 
       @batch.pids = (@batch.pids || []) + records.compact.map(&:pid)
       successful = @batch.save &&  # our batch saved
         errors.compact.empty? &&   # we have no errors from building records
         records.all?(&:persisted?) # all our records saved
 
-      respond_to_import(successful, @batch, records_with_messages)
+      respond_to_import(successful, @batch, document_statuses)
     end
   end
 
@@ -204,8 +204,8 @@ private
     record.save
   end
 
-  def respond_to_import(successful, batch, records_with_messages)
-    records, warnings, errors = records_with_messages.transpose.map(&:compact)
+  def respond_to_import(successful, batch, document_statuses)
+    docs, records, warnings, errors = document_statuses.transpose.map(&:compact)
     flash[:alert] = warnings.join(', ')
     flash[:error] = errors.join(', ')
     respond_to do |format|
@@ -222,10 +222,11 @@ private
           redirect_to catalog_path(records.first.id, 'json_format' => 'jquery-file-uploader')
         else
           json = {
-            files: records_with_messages.map do |record, warning, error|
+            files: document_statuses.map do |doc, record, warning, error|
               msg = {}
               msg[:pid] = record.id if record.present?
-              msg[:name] = record.title if record.present?
+              # msg[:name] = record.title if record.present?
+              msg[:name] = (record.present? ? record.title : doc.original_filename)
               msg[:warning] = warning if warning.present?
               msg[:error] = collect_errors(batch, records)
               msg[:error] << error if error.present?
