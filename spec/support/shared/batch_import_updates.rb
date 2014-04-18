@@ -23,6 +23,12 @@ shared_examples 'an import happy path' do
     expected_pids = TuftsPdf.all.map(&:pid) + ['oldpid:123']
     expect(assigns[:batch].pids.sort).to eq expected_pids.sort
   end
+
+  it 'adds the batch id to the new records' do
+    TuftsPdf.all.each do |pdf|
+      expect(pdf.batch_id).to eq [assigns[:batch].id.to_s]
+    end
+  end
 end
 
 shared_examples 'an import error path (no documents uploaded)' do
