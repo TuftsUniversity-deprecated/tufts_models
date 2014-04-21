@@ -7,6 +7,23 @@ describe BatchXmlImport do
     expect(subject.display_name).to eq 'Xml Import'
   end
 
+  it "saves uploaded_files correctly" do
+    uploaded_files = {"foo.jpg" => "tufts:1"}
+    id = FactoryGirl.create(:batch_xml_import, uploaded_files: uploaded_files).id
+    expect(Batch.find(id).uploaded_files).to eq uploaded_files
+  end
+
+  it "gets pids from the uploaded_files" do
+    m = FactoryGirl.build(:batch_xml_import)
+    expect(m.pids).to eq []
+    m.uploaded_files = {"foo.jpg" => "tufts:1"}
+    expect(m.pids).to eq ["tufts:1"]
+  end
+
+  it "doesn't let you assign pids directly" do
+    expect{FactoryGirl.build(:batch_xml_import).pids = []}.to raise_exception(NotImplementedError)
+  end
+
   it 'requires a metadata file' do
     subject.remove_metadata_file!
     expect(subject).to_not be_valid

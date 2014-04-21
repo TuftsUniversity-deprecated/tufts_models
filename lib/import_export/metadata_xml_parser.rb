@@ -41,7 +41,7 @@ class ModelValidationError < MetadataXmlParserError
   end
 
   def message
-    "#{@error_message} for node at line #{@line}"
+    "#{@error_message} for object at line #{@line}"
   end
 end
 

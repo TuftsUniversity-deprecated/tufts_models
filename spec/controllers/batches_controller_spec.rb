@@ -307,9 +307,9 @@ describe BatchesController do
       end  # template import section
 
       describe 'for xml import' do
-        let(:batch) { FactoryGirl.create(:batch_xml_import, pids: ['oldpid:123']) }
-        let(:file1) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'hello.pdf')) }
-        let(:file2) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'hello2.pdf')) }
+        let(:batch) { FactoryGirl.create(:batch_xml_import, uploaded_files: {'file.jpg' => 'oldpid:123'}) }
+        let(:file1) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'hello.pdf'), "application/pdf") }
+        let(:file2) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'hello2.pdf'), "application/pdf") }
 
         describe 'happy path' do
           before do
@@ -319,13 +319,21 @@ describe BatchesController do
 
           it_behaves_like 'an import happy path'
 
+          it "remembers what uploaded files map to what pids" do
+            expected_filenames = ['file.jpg'] + [file1, file2].map(&:original_filename)
+            expect(assigns[:batch].uploaded_files.keys.sort).to eq expected_filenames.sort
+            specified_pid = "tufts:1"
+            generated_pid = (TuftsPdf.all.map(&:pid) - [specified_pid]).first
+            expect(assigns[:batch].uploaded_files[file1.original_filename]).to eq "tufts:1"
+            expect(assigns[:batch].uploaded_files[file2.original_filename]).to eq generated_pid
+          end
         end
 
         it_behaves_like 'an import error path (no documents uploaded)'
         it_behaves_like 'an import error path (wrong file format)'
         it_behaves_like 'an import error path (failed to save batch)'
 
-        context "with duplicate file upload" do
+        context "uploading two of the same file" do
           let(:file3) { file1 }
           before do
             TuftsPdf.delete_all
@@ -333,12 +341,36 @@ describe BatchesController do
           end
 
           it "displays a warning" do
-            pending "duplicate file upload working"
             expect(flash[:alert]).to match "#{file3.original_filename} has already been uploaded"
           end
 
           it "doesn't save the duplicate file" do
             expect(TuftsPdf.count).to eq 2
+          end
+        end
+
+        context "adding a file that was uploaded previously" do
+          let(:record) do
+            r = FactoryGirl.create(:tufts_pdf)
+            r.store_archival_file(TuftsPdf.original_file_datastreams.first, file1)
+            r
+          end
+          let(:batch) do
+            FactoryGirl.create(:batch_xml_import, uploaded_files: {'hello.pdf' => record.pid})
+          end
+          before do
+            TuftsPdf.delete_all
+            record # force creation of existing record
+            @pdf_count = TuftsPdf.count
+            patch :update, id: batch.id, documents: [file1], batch: {}
+          end
+
+          it "displays a warning" do
+            expect(flash[:alert]).to match "#{file1.original_filename} has already been uploaded"
+          end
+
+          it "doesn't save the duplicate file" do
+            expect(TuftsPdf.count).to eq @pdf_count
           end
         end
 
@@ -350,7 +382,7 @@ describe BatchesController do
           end
 
           it "displays a warning" do
-            expect(flash[:error]).to match "#{file1.original_filename} doesn't exist in the metadata file"
+            expect(flash[:alert]).to match "#{file1.original_filename} doesn't exist in the metadata file"
           end
 
           it "doesn't save the file" do
@@ -365,16 +397,23 @@ describe BatchesController do
           it_behaves_like 'a JSON import'
 
           context "with duplicate file upload" do
-            let(:file3) { file1 }
+            let(:record) do
+              r = FactoryGirl.create(:tufts_pdf)
+              r.store_archival_file(TuftsPdf.original_file_datastreams.first, file1)
+              r
+            end
+            let(:batch) do
+              FactoryGirl.create(:batch_xml_import, uploaded_files: {'hello.pdf' => record.pid})
+            end
             before do
               TuftsPdf.delete_all
-              patch :update, id: batch.id, documents: [file1, file2, file3], batch: {}, format: :json
+              record # force creation of existing record
+              patch :update, id: batch.id, documents: [file1], batch: {}, format: :json
             end
 
             it "displays a warning" do
-              pending "duplicate file upload working"
               json = JSON.parse(response.body)['files'].first
-              expect(json['warning']).to eq "#{file3.original_filename} has already been uploaded"
+              expect(json['error']).to eq ["#{file1.original_filename} has already been uploaded"]
             end
           end
 

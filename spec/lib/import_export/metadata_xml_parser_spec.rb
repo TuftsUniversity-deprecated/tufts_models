@@ -10,8 +10,8 @@ describe MetadataXmlParser do
     it "finds ActiveFedora errors for each record" do
       xml = build_node('dc:title' => [], 'admin:displays' => []).to_xml
       errors = MetadataXmlParser.validate(xml).map(&:message)
-      expect(errors).to eq ["Title can't be blank for node at line 1",
-                            "Displays can't be blank for node at line 1"]
+      expect(errors).to eq ["Title can't be blank for object at line 1",
+                            "Displays can't be blank for object at line 1"]
     end
 
     it "requires valid xml" do
@@ -132,7 +132,7 @@ describe MetadataXmlParser do
   describe "::get_pid" do
     it "gets the pid" do
       pid = 'tufts:1'
-      ActiveFedora::Base.delete(pid) if ActiveFedora::Base.exists?(pid)
+      ActiveFedora::Base.find(pid).destroy if ActiveFedora::Base.exists?(pid)
       pid = MetadataXmlParser.get_pid(node_with_only_pid)
       expect(pid).to eq pid
     end

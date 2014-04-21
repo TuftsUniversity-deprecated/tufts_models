@@ -149,19 +149,25 @@ private
 
       document_statuses = params[:documents].map do |doc|
         record, warning, error = nil, nil, nil
-        begin
-          record = MetadataXmlParser.build_record(@batch.metadata_file.read, doc.original_filename)
-          record.batch_id = @batch.id.to_s
-          save_record_with_document(record, doc)
-          warning = collect_warning(record, doc)
-        rescue MetadataXmlParserError => e
-          error = e.message
+        if @batch.uploaded_files.keys.include? doc.original_filename
+          [doc, record, warning, "#{doc.original_filename} has already been uploaded"]
+        else
+          begin
+            record = MetadataXmlParser.build_record(@batch.metadata_file.read, doc.original_filename)
+            record.batch_id = @batch.id.to_s
+            saved = save_record_with_document(record, doc)
+            warning = collect_warning(record, doc)
+            if saved
+              @batch.uploaded_files[doc.original_filename] = record.pid
+            end
+          rescue MetadataXmlParserError => e
+            error = e.message
+          end
+          [doc, record, warning, error]
         end
-        [doc, record, warning, error]
       end
       docs, records, warnings, errors = document_statuses.transpose
 
-      @batch.pids = (@batch.pids || []) + records.compact.map(&:pid)
       successful = @batch.save &&  # our batch saved
         errors.compact.empty? &&   # we have no errors from building records
         records.all?(&:persisted?) # all our records saved
@@ -200,17 +206,19 @@ private
   def save_record_with_document(record, doc)
     dsid = record.class.original_file_datastreams.first
     record.working_user = current_user
-    record.save
-    record.store_archival_file(dsid, doc)
-    record.save
+    if record.save
+      record.store_archival_file(dsid, doc)
+      record.save
+    else
+      false
+    end
   end
 
   def respond_to_import(successful, batch, document_statuses)
     docs, records, warnings, errors = document_statuses.transpose.map(&:compact)
-    flash[:alert] = warnings.join(', ')
-    flash[:error] = errors.join(', ')
     respond_to do |format|
       format.html do
+        flash[:alert] = (warnings + errors).join(', ')
         if successful
           redirect_to batch_path(@batch)
         else
@@ -226,7 +234,6 @@ private
             files: document_statuses.map do |doc, record, warning, error|
               msg = {}
               msg[:pid] = record.id if record.present?
-              # msg[:name] = record.title if record.present?
               msg[:name] = (record.present? ? record.title : doc.original_filename)
               msg[:warning] = warning if warning.present?
               msg[:error] = collect_errors(batch, records)

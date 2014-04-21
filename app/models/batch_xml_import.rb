@@ -6,8 +6,18 @@ class BatchXmlImport < Batch
   validates :metadata_file, presence: true
   validate :metadata_file_must_be_valid
 
+  serialize :uploaded_files
+
   def display_name
     "Xml Import"
+  end
+
+  def pids=(*args)
+    raise NotImplementedError.new("Use uploaded files to set the pids for batch uploads.")
+  end
+
+  def pids
+    (uploaded_files || {}).values
   end
 
   private

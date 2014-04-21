@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416160011) do
+ActiveRecord::Schema.define(version: 20140418153039) do
 
   create_table "batches", force: true do |t|
     t.integer  "creator_id"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20140416160011) do
     t.string   "record_type"
     t.string   "metadata_file"
     t.string   "behavior"
+    t.text     "uploaded_files"
   end
 
   create_table "bookmarks", force: true do |t|
