@@ -91,6 +91,10 @@ module MetadataXmlParser
       record_class.new(get_record_attributes(node, record_class))
     end
 
+    def get_filenames(xml)
+      Nokogiri::XML(xml).xpath('//digitalObject/file').map(&:content)
+    end
+
     def get_namespaces(datastream_class)
       namespaces = datastream_class.ox_namespaces.reduce({}) do |result, pair|
         k,v = pair

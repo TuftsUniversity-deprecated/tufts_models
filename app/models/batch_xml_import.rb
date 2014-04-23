@@ -12,6 +12,15 @@ class BatchXmlImport < Batch
     "Xml Import"
   end
 
+  def uploaded_files
+    self['uploaded_files'] ||= {}
+    super
+  end
+
+  def missing_files
+    MetadataXmlParser.get_filenames(metadata_file.read) - uploaded_files.keys
+  end
+
   def pids=(*args)
     raise NotImplementedError.new("Use uploaded files to set the pids for batch uploads.")
   end

@@ -63,6 +63,16 @@ describe MetadataXmlParser do
     end
   end
 
+  describe "::get_filenames" do
+    it "finds all the filenames" do
+      xml = "<input>" +
+        build_node('file' => ['foo.pdf']).to_xml +
+        build_node('file' => ['bar.pdf']).to_xml +
+        "</input>"
+      expect(MetadataXmlParser.get_filenames(xml)).to eq ['foo.pdf', 'bar.pdf']
+    end
+  end
+
   describe "::get_namespaces" do
     it "converts datastream namespaces to the format Nokogiri wants" do
       ns = MetadataXmlParser.get_namespaces(TuftsDcaMeta)

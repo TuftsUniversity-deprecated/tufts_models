@@ -321,7 +321,7 @@ describe BatchesController do
 
           it "remembers what uploaded files map to what pids" do
             expected_filenames = ['file.jpg'] + [file1, file2].map(&:original_filename)
-            expect(assigns[:batch].uploaded_files.keys.sort).to eq expected_filenames.sort
+            expect(assigns[:batch].reload.uploaded_files.keys.sort).to eq expected_filenames.sort
             specified_pid = "tufts:1"
             generated_pid = (TuftsPdf.all.map(&:pid) - [specified_pid]).first
             expect(assigns[:batch].uploaded_files[file1.original_filename]).to eq "tufts:1"

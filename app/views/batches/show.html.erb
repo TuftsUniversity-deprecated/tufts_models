@@ -4,6 +4,19 @@
   <% @batch.pids = [] unless @batch.pids %>
 
   <%= link_to "Back to index", batches_path %>
+
+  <% if @batch.type == "BatchXmlImport" && missing = @batch.missing_files %>
+    <div class="alert">
+      Metadata exists for the following files that have not been updated:<br/>
+      <ul>
+        <% missing.each do |file| %>
+          <li><%= file %></li>
+        <% end %>
+      </ul>
+      <%= link_to "add additional files to this batch", edit_batch_path(@batch) %>
+    </div>
+  <% end %>
+
   <div class="batch_info">
     <%= make_dl "Batch Type", @batch.display_name, "type" %>
     <%= make_dl "Batch id", @batch.id, "batch_id" %>
