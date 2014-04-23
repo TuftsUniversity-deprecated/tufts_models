@@ -95,6 +95,10 @@ module MetadataXmlParser
       Nokogiri::XML(xml).xpath('//digitalObject/file').map(&:content)
     end
 
+    def get_pids(xml)
+      Nokogiri::XML(xml).xpath('//digitalObject/pid').map(&:content)
+    end
+
     def get_namespaces(datastream_class)
       namespaces = datastream_class.ox_namespaces.reduce({}) do |result, pair|
         k,v = pair

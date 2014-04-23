@@ -75,6 +75,7 @@
                   xmlns:admin="http://nils.lib.tufts.edu/dcaadmin/"
                   xmlns:ac="http://purl.org/dc/dcmitype/"
                   xmlns:rel="info:fedora/fedora-system:def/relations-external#">
+      <pid>tufts:3</pid>
       <file>compendioussyste00brya.pdf</file>
       <rel:hasModel>info:fedora/cm:Text.PDF</rel:hasModel>
       <dc:title>A compendious system of astronomy, in a course of familiar lectures; in which the principles of that science are clearly elucidated, so as to be intelligible to those who have not studied the mathematics. Also trigonometrical and celestial problems, with a key to the ephemeris, and a vocabulary of the terms of science used in the lectures; which latter are explained agreeably to their application in them. By Margaret Bryan ...</dc:title>

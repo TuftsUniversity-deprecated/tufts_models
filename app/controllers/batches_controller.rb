@@ -1,3 +1,5 @@
+require 'import_export/metadata_xml_parser'
+
 class BatchesController < ApplicationController
   before_filter :build_batch, only: [:create]
   load_resource only: [:index, :show, :edit]
@@ -44,6 +46,10 @@ class BatchesController < ApplicationController
   end
 
   def edit
+    if @batch.metadata_file.present?
+      pids_in_file = MetadataXmlParser.get_pids(@batch.metadata_file.read)
+      @pids_that_already_exist = pids_in_file.select {|pid| ActiveFedora::Base.exists?(pid)}
+    end
   end
 
   def update

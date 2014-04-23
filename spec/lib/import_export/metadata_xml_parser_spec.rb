@@ -73,6 +73,16 @@ describe MetadataXmlParser do
     end
   end
 
+  describe "::get_pids" do
+    it "finds all the pids" do
+      xml = "<input>" +
+        build_node('pid' => ['tufts:1']).to_xml +
+        build_node('pid' => ['tufts:2']).to_xml +
+        "</input>"
+      expect(MetadataXmlParser.get_pids(xml)).to eq ['tufts:1', 'tufts:2']
+    end
+  end
+
   describe "::get_namespaces" do
     it "converts datastream namespaces to the format Nokogiri wants" do
       ns = MetadataXmlParser.get_namespaces(TuftsDcaMeta)

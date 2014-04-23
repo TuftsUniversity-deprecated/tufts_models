@@ -221,22 +221,38 @@ describe BatchesController do
 
 
     describe "GET 'edit'" do
-      let(:batch) { FactoryGirl.create(:batch_template_import) }
+      context "template import" do
+        let(:batch) { FactoryGirl.create(:batch_template_import) }
 
-      before do
-        get :edit, id: batch.id
+        before do
+          get :edit, id: batch.id
+        end
+
+        it 'assigns @batch' do
+          expect(assigns[:batch].id).to eq batch.id
+        end
+
+        it 'should render the form' do
+          response.should render_template(:edit)
+        end
+
+        it "returns http success" do
+          response.should be_success
+        end
       end
 
-      it 'assigns @batch' do
-        expect(assigns[:batch].id).to eq batch.id
-      end
+      context "xml import" do
+        let(:batch) { FactoryGirl.create(:batch_xml_import) }
 
-      it 'should render the form' do
-        response.should render_template(:edit)
-      end
+        before do
+          TuftsPdf.delete_all
+          TuftsPdf.create(FactoryGirl.attributes_for(:tufts_pdf, pid: 'tufts:1'))
+          get :edit, id: batch.id
+        end
 
-      it "returns http success" do
-        response.should be_success
+        it 'assigns @pids_that_already_exist' do
+          expect(assigns[:pids_that_already_exist]).to eq ['tufts:1']
+        end
       end
     end
 

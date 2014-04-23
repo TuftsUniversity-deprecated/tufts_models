@@ -1,5 +1,16 @@
 <h1> Upload files </h1>
 
+<% if @pids_that_already_exist.present? %>
+  <div class="alert">
+    Warning: The following PIDs are already in use. Uploading files for them will overwrite them.
+    <ul>
+      <% @pids_that_already_exist.each do |pid| %>
+        <li><%= pid %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= bootstrap_form_for @batch, as: :batch, url: batch_path(@batch), :html => { :multipart => true, :id => 'fileupload' } do |f| %>
 
   <div class="fileupload-buttonbar">
