@@ -3,7 +3,7 @@
 
   <% @batch.pids = [] unless @batch.pids %>
 
-  <%= link_to "Back to index", batches_path %>
+  <%= link_to "All batches", batches_path %>
 
   <% if @batch.type == "BatchXmlImport" && missing = @batch.missing_files %>
     <div class="alert">
