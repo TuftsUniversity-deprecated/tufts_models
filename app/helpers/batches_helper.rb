@@ -21,4 +21,27 @@ module BatchesHelper
       job.status.capitalize
     end
   end
+
+  def line_item_status(batch, job, record_id=nil)
+    if batch.is_a?(BatchTemplateImport) || batch.is_a?(BatchXmlImport)
+      record_exists = record_id && ActiveFedora::Base.exists?(record_id)
+      record_exists ? 'Completed' : 'Status not available'
+    else
+      job_status_text(@batch, job)
+    end
+  rescue => e
+    Rails.logger.info("ERROR in line_item_status: #{e.message}")
+    'Status not available'
+  end
+
+  def item_count(batch)
+    if batch.job_ids
+      batch.job_ids.count
+    elsif batch.pids
+      batch.pids.count
+    else
+      0
+    end
+  end
+
 end

@@ -20,11 +20,6 @@ describe BatchTemplateUpdate do
     expect(subject.valid?).to be_false
   end
 
-  it "knows if it's ready to run" do
-    expect(BatchTemplateUpdate.new.ready?).to be_false
-    expect(subject.ready?).to be_true
-  end
-
   it 'starts processing and saves the job UUIDs' do
     template = TuftsTemplate.find(subject.template_id)
     allow(TuftsTemplate).to receive(:find).with(template.id) { template }
@@ -37,8 +32,39 @@ describe BatchTemplateUpdate do
     template.delete
   end
 
-  it "only runs when it's ready" do
+  it "only runs when it's valid" do
     b = BatchTemplateUpdate.new
+    expect(b.valid?).to be_false
     expect(b.run).to be_false
+  end
+
+  describe 'template behavior rules:' do
+    it 'has a list of valid behavior rules' do
+      expect(BatchTemplateUpdate.behavior_rules).to eq [BatchTemplateUpdate::PRESERVE, BatchTemplateUpdate::OVERWRITE]
+    end
+
+    it 'validates behavior with a white list of rules' do
+      valid_rules = [BatchTemplateUpdate::PRESERVE, BatchTemplateUpdate::OVERWRITE]
+
+      b = FactoryGirl.build(:batch_template_update)
+      valid_rules.each do |rule|
+        b.behavior = rule
+        expect(b.valid?).to be_true
+      end
+
+      b.behavior = 'something invalid'
+      expect(b.valid?).to be_false
+
+      b.behavior = nil
+      expect(b.valid?).to be_true
+    end
+
+    it 'knows if the template will overwrite existing values' do
+      b = FactoryGirl.build(:batch_template_update)
+      b.behavior = BatchTemplateUpdate::PRESERVE
+      expect(b.overwrite?).to be_false
+      b.behavior = BatchTemplateUpdate::OVERWRITE
+      expect(b.overwrite?).to be_true
+    end
   end
 end

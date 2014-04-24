@@ -1,5 +1,3 @@
-class BatchNotRunnableException < StandardError; end
-
 class Batch < ActiveRecord::Base
   # Note: This class is using Single Table Inheritance
   # http://api.rubyonrails.org/classes/ActiveRecord/Base.html#class-ActiveRecord::Base-label-Single+table+inheritance
@@ -39,10 +37,6 @@ class Batch < ActiveRecord::Base
   end
 
   def display_name
-    raise NotImplementedError.new
-  end
-
-  def ready?
     raise NotImplementedError.new
   end
 

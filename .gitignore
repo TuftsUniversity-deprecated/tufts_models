@@ -38,3 +38,6 @@ spec/fixtures/local_object_store
 
 # Ignore ctags files
 tags
+
+# ignore carrierwave uploads
+uploads

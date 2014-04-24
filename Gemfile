@@ -28,6 +28,7 @@ gem "devise"
 gem 'bootstrap_forms'
 gem 'rmagick', '2.13.2', require: 'RMagick'
 gem 'resque-status'
+gem 'carrierwave', '~> 0.10.0'
 
 gem 'blacklight_advanced_search', '~> 2.2'
 

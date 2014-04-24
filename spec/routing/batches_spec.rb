@@ -22,4 +22,35 @@ describe 'Batch routes: ' do
       id: '1'
     )
   end
+
+  it 'routes to new_template_import' do
+    expect(get: 'batches/new_template_import').to route_to(
+      controller: 'batches',
+      action: 'new_template_import'
+    )
+  end
+
+  it 'routes to new_xml_import' do
+    expect(get: 'batches/new_xml_import').to route_to(
+      controller: 'batches',
+      action: 'new_xml_import'
+    )
+  end
+
+  it 'routes to edit' do
+    expect(get: 'batches/1/edit').to route_to(
+      controller: 'batches',
+      action: 'edit',
+      id: '1'
+    )
+  end
+
+  it 'routes to update' do
+    expect(patch: 'batches/1').to route_to(
+      controller: 'batches',
+      action: 'update',
+      id: '1'
+    )
+  end
+
 end

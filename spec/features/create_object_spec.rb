@@ -13,7 +13,7 @@ feature 'Admin user creates document' do
     visit root_path
     click_link 'Create a new object'
 
-    select "Audio", from: 'Type' 
+    select "Audio", from: 'Select an object type'
     fill_in 'Pid', with: 'tufts:001.102.201'
     click_button 'Next'
 

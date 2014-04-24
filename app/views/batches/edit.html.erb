@@ -1,0 +1,129 @@
+<h1> Upload files </h1>
+
+<% if @pids_that_already_exist.present? %>
+  <div class="alert">
+    <strong>Warning:</strong> The following PIDs are already in use. Uploading files for them will overwrite them.
+    <ul>
+      <% @pids_that_already_exist.each do |pid| %>
+        <li><%= pid %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if @batch.type == "BatchXmlImport" && missing = @batch.missing_files %>
+  <div class="well">
+    The following files in this batch still need to be uploaded:<br/>
+    <ul>
+      <% missing.each do |file| %>
+        <li><%= file %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= bootstrap_form_for @batch, as: :batch, url: batch_path(@batch), :html => { :multipart => true, :id => 'fileupload' } do |f| %>
+
+  <div class="fileupload-buttonbar">
+    <span type="button" class="btn btn-success" id="select_files">
+      <div class='js-only hidden'>
+        <i class="icon-plus icon-white"></i>
+        Select Files
+      </div>
+      <%= file_field_tag :documents, multiple: true, name: 'documents[]', id: 'documents_file_field' %>
+    </span>
+
+    <%= f.button type: 'submit', id: 'start_upload', class: 'btn btn-primary start' do %>
+      <i class="icon-upload icon-white"></i>
+      Start Upload
+    <% end %>
+  </div>
+
+
+  <!-- Table used by jQuery-File-Upload to list the files -->
+  <table id="file-table" class="table table-striped">
+    <thead>
+      <tr>
+        <td class="span2" />
+        <td class="span4" />
+        <td class="span3" />
+      </tr>
+    </thead>
+    <tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
+  </table>
+
+  <!-- Templates to fill in the table of files -->
+
+  <script id="template-upload" type="text/x-jquery-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+      <tr class="template-upload fade">
+        <td class="name"><span>{%= file.name %} ({%= file.size %} bytes)</span></td>
+        {% if (file.error) { %}
+          <td class="error"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error %}</td>
+        {% } else if (o.files.valid && !i) { %}
+          <td>
+            <div class="progress progress-success progress-striped active"><div class="bar" style="width:0%;"></div></div>
+            <div class="start">
+              {% if (!o.options.autoUpload) { %}
+                <button class="btn btn-primary hide">
+                  <i class="icon-upload icon-white"></i>
+                  <span>{%=locale.fileupload.start%}</span>
+                </button>
+              {% } %}
+            </div>
+          </td>
+        {% } else { %}
+          <td></td>
+        {% } %}
+        <td class="cancel">
+          {% if (!i) { %}
+            <button class="btn btn-warning">
+              <i class="icon-ban-circle icon-white"></i>
+              <span>{%=locale.fileupload.cancel%}</span>
+            </button>
+          {% } %}
+        </td>
+      </tr>
+    {% } %}
+  </script>
+
+  <script id="template-download" type="text/x-jquery-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+      <tr class="template-download fade">
+        {% if (file.error) { %}
+          <td class="name" colspan="2"><span>{%= file.name %}</span></td>
+          <td class="error">
+            <span class="label label-important">{%=locale.fileupload.error%}</span>
+            {% if (file.error instanceof Array) { %}
+              {% for (var j=0, e; e=file.error[j]; j++) { %}
+                <br />
+                {%=locale.fileupload.errors[e] || e %}
+              {% } %}
+            {% } else { %}
+              {%=locale.fileupload.errors[file.error] || file.error %}
+            {% } %}
+          </td>
+        {% } else { %}
+          <td class="id"><span>{%= file.pid %}</span></td>
+          <td class="name"><span>{%= file.name %}</span></td>
+          <td class="status">
+            <span class="label label-success">Success</span>
+          </td>
+        {% } %}
+      </tr>
+    {% } %}
+  </script>
+
+<% end %>
+
+<%= link_to "Next", batch_path(@batch), class: 'js-only hidden disabled btn btn-primary', id: 'next_button' %>
+<%= link_to "Cancel", root_path, class: 'btn btn-default' %>
+
+<script type="text/javascript">
+  $(function() {
+    setupFileUpload({ uploadForm: '#fileupload',
+                      selectFilesButton: '#select_files',
+                      nextButton: '#next_button'
+    });
+  });
+</script>

@@ -17,7 +17,7 @@
           <td class="display_name"><%= batch.display_name %></td>
           <td class="creator"><%= batch.creator.display_name %></td>
           <td class="created_at"><%= time_ago_in_words(batch.created_at) %> ago</td>
-          <td class="item_count"><%= batch.job_ids.try(&:count) || 0 %></td>
+          <td class="item_count"><%= item_count(batch) %></td>
           <td class="status"><%= batch_status_text(batch) %></td>
         </tr>
       <% end %>

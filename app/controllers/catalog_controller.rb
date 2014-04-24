@@ -18,6 +18,22 @@ class CatalogController < ApplicationController
     super
   end
 
+  def show
+    if request.format == :json && params['json_format'] == 'jquery-file-uploader'
+      @response, @document = get_solr_response_for_doc_id
+
+      # Format json for jQuery-File-Upload template
+      files = { files: [
+        { pid: @document.id,
+          name: @document['title_tesim'].first
+      }]
+      }.to_json
+      render json: files
+    else
+      super
+    end
+  end
+
   configure_blacklight do |config|
     config.default_solr_params = { 
       :qt => 'search',

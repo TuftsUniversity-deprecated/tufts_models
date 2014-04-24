@@ -1,0 +1,7 @@
+<h1> Xml-based Batch Import </h1>
+
+<%= bootstrap_form_for @batch, as: :batch, url: batches_path do |f| %>
+  <%= f.hidden_field :type %>
+  <%= f.file_field :metadata_file %>
+  <%= f.submit 'Next' %>
+<% end %>

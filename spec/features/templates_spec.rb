@@ -20,7 +20,7 @@ describe 'Templates' do
 
     it 'has link to add templates' do
       visit templates_path
-      expect(page).to have_selector("a[href='#{hydra_editor.new_record_path(type: 'Template')}']" )
+      expect(page).to have_selector("a[href='#{hydra_editor.new_record_path(type: 'TuftsTemplate')}']", count: 3 )
     end
 
     it 'has link to homepage' do

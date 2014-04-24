@@ -23,4 +23,22 @@ module ActiveFedora
     end
   end
 
+  module Attributes
+    module ClassMethods
+      # This patch is to store the dsid on the defined attributes. We need this to look up so we know how attributes are stored for this model. This is used in the xml import stuff in metadata_xml_parser.rb.
+      def create_attribute_reader_with_dsid_storage(field, dsid, args)
+        self.defined_attributes[field] ||= {}
+        self.defined_attributes[field][:dsid] = dsid
+        create_attribute_reader_without_dsid_storage(field, dsid, args)
+      end
+      alias_method_chain :create_attribute_reader, :dsid_storage
+
+      def create_attribute_setter_with_dsid_storage(field, dsid, args)
+        self.defined_attributes[field] ||= {}
+        self.defined_attributes[field][:dsid] = dsid
+        create_attribute_setter_without_dsid_storage(field, dsid, args)
+      end
+      alias_method_chain :create_attribute_setter, :dsid_storage
+    end
+  end
 end

@@ -26,7 +26,7 @@ end
 
 shared_examples 'batch creation happy path' do |batch_class|
   let(:factory_name) { batch_class.to_s.underscore.to_sym }
-  let(:different_user) { FactoryGirl.create(:user) }
+  let(:different_user) { FactoryGirl.create(:admin) }
 
   it 'assigns the current user as the creator' do
     batch_class.any_instance.stub(:run) { true }

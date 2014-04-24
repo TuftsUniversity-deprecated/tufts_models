@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "batches/index.html.erb" do
   let(:batches) do
     [FactoryGirl.create(:batch_template_update, job_ids: [1, 2]),
-      FactoryGirl.create(:batch_publish)]
+      FactoryGirl.create(:batch_template_import, job_ids: nil, pids: nil)]
   end
 
   before do

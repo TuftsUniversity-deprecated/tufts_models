@@ -1,6 +1,7 @@
 require 'factory_girl'
 
 FactoryGirl.define do
+
   factory :batch_template_update do
     type 'BatchTemplateUpdate'
     association :creator, factory: :admin
@@ -22,4 +23,18 @@ FactoryGirl.define do
     created_at 3.minutes.ago
     pids ["tufts:1", "tufts:2"]
   end
+
+  factory :batch_template_import do
+    type 'BatchTemplateImport'
+    association :creator, factory: :admin
+    template_id { FactoryGirl.create(:template_with_required_attributes).id }
+    record_type 'TuftsPdf'
+  end
+
+  factory :batch_xml_import do
+    type 'BatchXmlImport'
+    association :creator, factory: :admin
+    metadata_file { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'MIRABatchUpload_valid.xml')) }
+  end
+
 end

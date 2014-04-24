@@ -10,15 +10,9 @@ describe BatchPurge do
     expect(subject.errors[:pids]).to eq ["can't be blank"]
   end
 
-  it "knows if it's ready to run" do
+  it "only runs when it's valid, returns false if not valid" do
     invalid_batch = BatchPurge.new
-    expect(invalid_batch.ready?).to be_false
-    expect(subject.ready?).to be_true
-  end
-
-  it "only runs when it's ready, returns false if not ready" do
-    invalid_batch = BatchPurge.new
-    expect(invalid_batch.ready?).to be_false
+    expect(invalid_batch.valid?).to be_false
     expect(invalid_batch.run).to be_false
   end
 
