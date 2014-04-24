@@ -29,13 +29,19 @@ end
 
 class InvalidPidError < MetadataXmlParserError
   def message
-    "A record with this PID already exists for record beginning at line #{@line}" + append_details
+    "The PID for the record beginning at line #{@line} already exists in the repository" + append_details
   end
 end
 
 class DuplicateFilenameError < MetadataXmlParserError
   def message
     "Duplicate filename found at line #{@line}" + append_details
+  end
+end
+
+class DuplicatePidError < MetadataXmlParserError
+  def message
+    "Multiple PIDs defined for record beginning at line #{@line}" + append_details
   end
 end
 
@@ -66,10 +72,19 @@ module MetadataXmlParser
     def validate(xml)
       doc = Nokogiri::XML(xml)
       errors = doc.errors
+
+      # check for duplicate filenames
       files = doc.xpath("//digitalObject/file/text()")
       files.group_by(&:content).values.map{|nodes| nodes.drop(1)}.flatten.each do |duplicate|
         errors << DuplicateFilenameError.new(duplicate.line, error_details(duplicate))
       end
+
+      # check for duplicate pids
+      pids = doc.xpath("//digitalObject/pid/text()")
+      pids.group_by(&:content).values.map{|nodes| nodes.drop(1)}.flatten.each do |duplicate|
+        errors << DuplicatePidError.new(duplicate.line, error_details(duplicate))
+      end
+
       doc.xpath('//digitalObject').map do |digital_object|
         if get_node_content(digital_object, "./file").nil?
           errors << NodeNotFoundError.new(digital_object.line, '<file>', error_details(digital_object))

@@ -37,6 +37,15 @@ describe MetadataXmlParser do
       errors = MetadataXmlParser.validate(xml).map(&:message)
       expect(errors.first).to match /Duplicate filename found at line \d+/
     end
+
+    it "doesn't allow duplicate pids" do
+      xml = "<input>" +
+        build_node('pid' => ['tufts:2'], 'file' => ['foo1.pdf']).to_xml +
+        build_node('pid' => ['tufts:2'], 'file' => ['foo2.pdf']).to_xml +
+        "</input>"
+      errors = MetadataXmlParser.validate(xml).map(&:message)
+      expect(errors.first).to match /Multiple PIDs defined for record beginning at line \d+/
+    end
   end
 
   describe "::build_record" do
@@ -167,7 +176,7 @@ describe MetadataXmlParser do
 
       expect{
         MetadataXmlParser.get_pid(node_with_only_pid)
-      }.to raise_error(InvalidPidError, /A record with this PID already exists for record beginning at line \d+/)
+      }.to raise_error(InvalidPidError, /The PID .* already exists in the repository/)
     end
   end
 
