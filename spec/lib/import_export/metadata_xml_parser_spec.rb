@@ -10,8 +10,8 @@ describe MetadataXmlParser do
     it "finds ActiveFedora errors for each record" do
       xml = build_node('dc:title' => [], 'admin:displays' => []).to_xml
       errors = MetadataXmlParser.validate(xml).map(&:message)
-      expect(errors).to eq ["Title can't be blank for object at line 1",
-                            "Displays can't be blank for object at line 1"]
+      expect(errors.sort.first).to match("Displays can't be blank for record beginning at line 1.*")
+      expect(errors.sort.second).to match("Title can't be blank for record beginning at line 1.*")
     end
 
     it "requires valid xml" do
@@ -21,12 +21,12 @@ describe MetadataXmlParser do
 
     it "requires a model type (hasModel)" do
       errors = MetadataXmlParser.validate(build_node('rel:hasModel' => []).to_xml).map(&:message)
-      expect(errors.first).to eq "Could not find <rel:hasModel> node for object at line 1"
+      expect(errors.first).to match "Could not find <rel:hasModel> .* line 1 .*"
     end
 
     it "requires a filename" do
       errors = MetadataXmlParser.validate(build_node('file' => []).to_xml).map(&:message)
-      expect(errors.first).to eq "Could not find <file> node for object at line 1"
+      expect(errors.first).to match "Could not find <file> .* line 1"
     end
 
     it "doesn't allow duplicate file names" do
@@ -167,7 +167,7 @@ describe MetadataXmlParser do
 
       expect{
         MetadataXmlParser.get_pid(node_with_only_pid)
-      }.to raise_error(InvalidPidError, /A record with this PID already exists for object at line \d+/)
+      }.to raise_error(InvalidPidError, /A record with this PID already exists for record beginning at line \d+/)
     end
   end
 
@@ -179,7 +179,7 @@ describe MetadataXmlParser do
     it "raises if <file> doesn't exist" do
       expect{
         MetadataXmlParser.get_file(node_with_only_pid)
-      }.to raise_error(NodeNotFoundError, /Could not find <file> node for object at line \d+/)
+      }.to raise_error(NodeNotFoundError, /Could not find <file> .* line \d+/)
     end
   end
 
@@ -187,7 +187,7 @@ describe MetadataXmlParser do
     it "raises if <hasModel> doesn't exist" do
       expect{
         MetadataXmlParser.get_record_class(node_with_only_pid)
-      }.to raise_error(NodeNotFoundError, /Could not find <rel:hasModel> node for object at line \d+/)
+      }.to raise_error(NodeNotFoundError, /Could not find <rel:hasModel> attribute for record beginning at line \d+/)
     end
 
     it "raises if the given model uri doesn't correspond to a record class" do

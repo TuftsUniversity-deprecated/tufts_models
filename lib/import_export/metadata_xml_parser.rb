@@ -1,58 +1,63 @@
 class MetadataXmlParserError < StandardError
-  def initialize(line=nil)
+  def initialize(line=nil, details={})
     @line = line
+    @details = details
     super(message)
+  end
+
+  def append_details
+    @details.empty? ? "" : " (" + @details.map{|k,v| "#{k}: #{v}"}.join(", ") + ")"
   end
 end
 
 class NodeNotFoundError < MetadataXmlParserError
-  def initialize(line, element)
+  def initialize(line, element, details={})
     @element = element
-    super(line)
+    super(line, details)
   end
 
   def message
-    "Could not find #{@element} node for object at line #{@line}"
+    "Could not find #{@element} attribute for record beginning at line #{@line}" + append_details
   end
 end
 
 class HasModelNodeInvalidError < MetadataXmlParserError
   def message
-    "Invalid data in <rel:hasModel> for object at line #{@line}"
+    "Invalid data in <rel:hasModel> for record beginning at line #{@line}" + append_details
   end
 end
 
 class InvalidPidError < MetadataXmlParserError
   def message
-    "A record with this PID already exists for object at line #{@line}"
+    "A record with this PID already exists for record beginning at line #{@line}" + append_details
   end
 end
 
 class DuplicateFilenameError < MetadataXmlParserError
   def message
-    "Duplicate filename found at line #{@line}"
+    "Duplicate filename found at line #{@line}" + append_details
   end
 end
 
 class ModelValidationError < MetadataXmlParserError
-  def initialize(line, error_message)
+  def initialize(line, error_message, details={})
     @error_message = error_message
-    super(line)
+    super(line, details)
   end
 
   def message
-    "#{@error_message} for object at line #{@line}"
+    "#{@error_message} for record beginning at line #{@line}" + append_details
   end
 end
 
 class FileNotFoundError < MetadataXmlParserError
-  def initialize(filename)
+  def initialize(filename, details={})
     @filename = filename
-    super()
+    super(details)
   end
 
   def message
-    "#{@filename} doesn't exist in the metadata file"
+    "#{@filename} doesn't exist in the metadata file" + append_details
   end
 end
 
@@ -63,24 +68,32 @@ module MetadataXmlParser
       errors = doc.errors
       files = doc.xpath("//digitalObject/file/text()")
       files.group_by(&:content).values.map{|nodes| nodes.drop(1)}.flatten.each do |duplicate|
-        errors << DuplicateFilenameError.new(duplicate.line)
+        errors << DuplicateFilenameError.new(duplicate.line, error_details(duplicate))
       end
       doc.xpath('//digitalObject').map do |digital_object|
         if get_node_content(digital_object, "./file").nil?
-          errors << NodeNotFoundError.new(digital_object.line, '<file>')
+          errors << NodeNotFoundError.new(digital_object.line, '<file>', error_details(digital_object))
         end
         begin
           record_class = get_record_class(digital_object)
           m = record_class.new(get_record_attributes(digital_object, record_class))
           m.valid?
           m.errors.full_messages.each do |message|
-            errors << ModelValidationError.new(digital_object.line, message)
+            errors << ModelValidationError.new(digital_object.line, message, error_details(digital_object))
           end
         rescue MetadataXmlParserError => e
           errors << e
         end
       end
       errors
+    end
+
+    def error_details(node)
+      record = node.at_xpath('ancestor-or-self::digitalObject')
+      details = {}
+      details[:file] = record.at_xpath('file').content if record.at_xpath('file').present?
+      details[:pid] = record.at_xpath('pid').content if record.at_xpath('pid').present?
+      details
     end
 
     def build_record(metadata, document_filename)
@@ -152,21 +165,21 @@ module MetadataXmlParser
 
     def get_pid(node)
       pid = get_node_content(node, "./pid")
-      raise InvalidPidError.new(node.line) if pid && ActiveFedora::Base.exists?(pid)
+      raise InvalidPidError.new(node.line, error_details(node)) if pid && ActiveFedora::Base.exists?(pid)
       pid
     end
 
     def get_file(node)
       filename = get_node_content(node, "./file")
-      raise NodeNotFoundError.new(node.line, '<file>') unless filename
+      raise NodeNotFoundError.new(node.line, '<file>', error_details(node)) unless filename
       filename
     end
 
     def get_record_class(node)
       class_uri = get_node_content(node, "./rel:hasModel", "rel" => "info:fedora/fedora-system:def/relations-external#")
-      raise NodeNotFoundError.new(node.line, '<rel:hasModel>') unless class_uri
+      raise NodeNotFoundError.new(node.line, '<rel:hasModel>', error_details(node)) unless class_uri
       record_class = ActiveFedora::Model.from_class_uri(class_uri)
-      raise HasModelNodeInvalidError.new(node.line) unless valid_record_types.include?(record_class.to_s)
+      raise HasModelNodeInvalidError.new(node.line, error_details(node)) unless valid_record_types.include?(record_class.to_s)
       record_class
     end
 

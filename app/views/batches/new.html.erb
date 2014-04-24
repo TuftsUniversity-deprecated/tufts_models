@@ -10,7 +10,7 @@
 
   <%= f.radio_button :behavior, BatchTemplateUpdate::PRESERVE, checked: true %>
   <strong> Preserve: </strong> &nbsp;
-  Apply the template and keep any existing data; update blank and repeating fields using the template.
+  Append template metadata to blank and multivalued fields.
   <br />
 
   <%= f.radio_button :behavior, BatchTemplateUpdate::OVERWRITE %>
