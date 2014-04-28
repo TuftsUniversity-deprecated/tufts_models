@@ -61,7 +61,7 @@
         <% record = @records_by_pid[pid] %>
         <% job = @batch.jobs.select {|job| job && job.options && (job.options['record_id'] == pid) }.first %>
         <tr>
-          <td class="record_pid"><%= pid %></td>
+          <td class="record_pid"><%= link_to pid, catalog_path(pid) %></td>
           <td class="record_title"><%= record.try(&:title) %></td>
           <td class="record_status"><%= line_item_status(@batch, job, pid) %></td>
           <td class="record_reviewed_status">

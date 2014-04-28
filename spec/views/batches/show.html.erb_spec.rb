@@ -48,7 +48,7 @@ describe "batches/show.html.erb" do
 
     it "shows record pids" do
       render
-      expect(rendered).to have_selector(".record_pid", text: records.first.pid)
+      expect(rendered).to have_link(records.first.pid, catalog_path(records.first))
     end
 
     it "shows record titles" do
