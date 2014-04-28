@@ -147,7 +147,7 @@ describe "batches/show.html.erb" do
         before { render }
 
         it 'disables the button to publish the batch' do
-          expect(subject.status).to eq 'queued'
+          expect(subject.status).to eq :queued
           expect(rendered).to have_selector("button[type=submit][name='batch[type]'][value=BatchPublish][disabled=disabled]")
         end
       end

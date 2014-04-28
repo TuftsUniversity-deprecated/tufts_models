@@ -80,5 +80,14 @@ describe Batch do
         expect(subject.status).to eq(expected), "expected = #{expected.inspect}, job statuses = #{statuses.inspect}"
       end
     end
+
+    it 'handles the case where some statuses are strings' do
+      {
+        [:killed, 'completed', :queued, 'working', 'failed'] => :failed,
+      }.each do |statuses, expected|
+        allow(subject).to receive(:jobs) { statuses.map{|s| s.nil? ? nil : double(status: s)} }
+        expect(subject.status).to eq(expected), "expected = #{expected.inspect}, job statuses = #{statuses.inspect}"
+      end
+    end
   end
 end

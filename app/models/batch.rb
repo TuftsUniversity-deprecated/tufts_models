@@ -32,7 +32,7 @@ class Batch < ActiveRecord::Base
     elsif jobs.any?(&:nil?)
       :not_available
     else
-      jobs.min_by{|s| order[s.status]}.status
+      jobs.min_by{|s| order[s.status.to_sym]}.status.to_sym
     end
   end
 
