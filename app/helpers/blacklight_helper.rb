@@ -23,4 +23,12 @@ module BlacklightHelper
     label ||= super
   end
 
+  def render_review_status(options={})
+    return nil unless options && options[:document]
+    return nil unless options[:document].respond_to?(:reviewed?)
+
+    review_status = options[:document].reviewed?
+    check_box_tag :reviewed, :reviewed, review_status, type: :checkbox, disabled: true
+  end
+
 end
