@@ -33,6 +33,8 @@
         <%= hidden_field_tag :batch_pids, pid, multiple: true, name: 'batch[pids][]' %>
       <% end %>
 
+      <%= link_to 'Review Batch', catalog_index_path(search_field: 'batch', q: @batch.id), class: 'btn btn-primary' %>
+
       <%= button_tag "Publish Batch", type: :submit,
         name: 'batch[type]', value: "BatchPublish",
         disabled: @batch.status != :completed,

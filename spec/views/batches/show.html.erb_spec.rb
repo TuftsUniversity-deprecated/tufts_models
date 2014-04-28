@@ -137,6 +137,7 @@ describe "batches/show.html.erb" do
         it 'displays the form to publish the batch' do
           expect(rendered).to have_selector("form[method=post][action='#{batches_path}']")
           expect(rendered).to have_selector("input[type=hidden][name='batch[pids][]'][value='#{subject.pids.first}']")
+          expect(rendered).to have_link('Review Batch', href: catalog_index_path(search_field: 'batch', q: subject.id.to_s))
           expect(rendered).to have_selector("button[type=submit][name='batch[type]'][value=BatchPublish]")
           expect(rendered).to have_selector("button[type=submit][name='batch[type]'][value=BatchPurge]")
         end
