@@ -91,11 +91,6 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name('dateCreated', :stored_searchable), :label => 'Date Created:'
     config.add_index_field solr_name('dateAvailable', :stored_searchable), :label => 'Date Available:'
 
-    config.add_index_field("qrStatus_tesim") do |field|
-      field.label = 'Review Status: '
-      field.helper_method = :render_review_status
-    end
-
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display 
     config.add_show_field 'id', :label => 'Pid:'

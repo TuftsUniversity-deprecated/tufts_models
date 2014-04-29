@@ -10,7 +10,11 @@ class SolrDocument
   end
 
   def reviewable?
-    !template? && !reviewed? && !Array(self['batch_id_ssim']).empty?
+    !template? && !reviewed? && in_a_batch?
+  end
+
+  def in_a_batch?
+    !Array(self['batch_id_ssim']).empty?
   end
 
   def published?

@@ -23,12 +23,14 @@ module BlacklightHelper
     label ||= super
   end
 
-  def render_review_status(options={})
-    return nil unless options && options[:document]
-    return nil unless options[:document].respond_to?(:reviewed?)
+  def render_review_status(solr_doc)
+    return nil unless solr_doc.in_a_batch?
 
-    review_status = options[:document].reviewed?
-    check_box_tag :reviewed, :reviewed, review_status, type: :checkbox, disabled: true
+    label = content_tag(:dt, 'Review Status:')
+    status_box = check_box_tag(:reviewed, :reviewed, solr_doc.reviewed?, type: :checkbox, disabled: true)
+    value = content_tag(:dd, status_box)
+
+    label + value
   end
 
 end

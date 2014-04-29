@@ -33,38 +33,41 @@ describe BlacklightHelper do
   end
 
   describe '#render_review_status' do
-    let(:doc) { SolrDocument.new('qrStatus_tesim' => status) }
-    let(:opts) {{ field: 'qrStatus_tesim', document: doc }}
+    let(:doc) { SolrDocument.new('qrStatus_tesim' => status, 'batch_id_ssim' => batch_id) }
 
-    context 'when the object has been marked as reviewed' do
-      let(:status) { Reviewable.batch_review_text }
+    context 'when the object is part of a batch' do
+      let(:batch_id) { '1' }
 
-      it 'returns a checked checkbox that is disabled' do
-        display = helper.render_review_status(opts)
-        expect(display).to match /checkbox/
-        expect(display).to match /checked/
-        expect(display).to match /disabled/
+      context 'when the object has been marked as reviewed' do
+        let(:status) { Reviewable.batch_review_text }
+
+        it 'returns a checked checkbox that is disabled' do
+          display = helper.render_review_status(doc)
+          expect(display).to match /checkbox/
+          expect(display).to match /checked/
+          expect(display).to match /disabled/
+        end
+      end
+
+      context 'when the object has not been reviewed' do
+        let(:status) { 'some other status' }
+
+        it 'returns an unchecked checkbox that is disabled' do
+          display = helper.render_review_status(doc)
+          expect(display).to     match /checkbox/
+          expect(display).to_not match /checked/
+          expect(display).to     match /disabled/
+        end
       end
     end
 
-    context 'when the object has not been reviewed' do
+    context "when the object isn't part of a batch" do
+      let(:batch_id) { nil }
       let(:status) { 'some other status' }
 
-      it 'returns an unchecked checkbox that is disabled' do
-        display = helper.render_review_status(opts)
-        expect(display).to     match /checkbox/
-        expect(display).to_not match /checked/
-        expect(display).to     match /disabled/
-      end
-    end
-
-    context "when it can't determine the review status" do
       it 'returns nil' do
-        status = helper.render_review_status(nil)
-        expect(status).to be_nil
-
-        status = helper.render_review_status({ document: {} })
-        expect(status).to be_nil
+        display = helper.render_review_status(doc)
+        expect(display).to be_nil
       end
     end
   end

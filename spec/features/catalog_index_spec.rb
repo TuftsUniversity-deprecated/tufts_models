@@ -9,6 +9,7 @@ feature 'View catalog index' do
   let!(:reviewed_pdf) {
     pdf = FactoryGirl.create(:tufts_pdf) 
     pdf.reviewed
+    pdf.batch_id = ['1']
     pdf.save!
     pdf
   }
@@ -16,7 +17,7 @@ feature 'View catalog index' do
   scenario 'easily see which objects have been marked as reviewed' do
     visit root_path
     click_button 'Search'
-    expect(page).to have_selector('.document dt.blacklight-qrstatus_tesim', count: 1)
+    expect(page).to have_selector('.document input[type=checkbox][name=reviewed]', count: 1)
   end
 
 end

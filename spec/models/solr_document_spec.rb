@@ -3,6 +3,12 @@ require 'spec_helper'
 describe SolrDocument do
   before { subject['id'] = 'tufts:7'}
 
+  it 'knows if the object is part of a batch' do
+    expect(subject.in_a_batch?).to be_false
+    subject['batch_id_ssim'] = ['1']
+    expect(subject.in_a_batch?).to be_true
+  end
+
   describe "#preview_fedora_path" do
     describe "should always have link to fedora object" do
       before { subject['displays_ssi'] = nil }
