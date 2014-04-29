@@ -16,4 +16,15 @@ describe RecordsHelper do
     helper.model_label('TuftsPdf').should == 'PDF'
     helper.model_label('TuftsTemplate').should == 'Template'
   end
+
+  it 'has sorted object types' do
+    options = helper.sorted_object_types
+    expect(options).to eq [["Audio", "TuftsAudio"],
+                           ["Audio text", "TuftsAudioText"],
+                           ["Collection guide", "TuftsEAD"],
+                           ["Generic object", "TuftsGenericObject"],
+                           ["Image", "TuftsImage"],
+                           ["PDF", "TuftsPdf"],
+                           ["Template", "TuftsTemplate"]]
+  end
 end

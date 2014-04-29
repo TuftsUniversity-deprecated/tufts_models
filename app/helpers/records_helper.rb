@@ -14,4 +14,8 @@ module RecordsHelper
     end
   end
 
+  def sorted_object_types
+    object_type_options.to_a.sort{|a,b| a.first <=> b.first }
+  end
+
 end

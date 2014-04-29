@@ -7,7 +7,7 @@
 <%= bootstrap_form_for @batch, as: :batch, url: batches_path do |f| %>
   <%= f.hidden_field :type %>
   <%= f.select :template_id, options_from_collection_for_select(TuftsTemplate.active, :id, :template_name, @batch.template_id), prompt: 'Select a Template' %>
-  <%= f.select :record_type, object_type_options.reject{|k,v| v == 'TuftsTemplate'}, prompt: 'Select an object type' %>
+  <%= f.select :record_type, options_for_select(sorted_object_types.delete_if{|x| x.any? {|t| t == 'TuftsTemplate'}}), prompt: 'Select an object type' %>
   <%= f.submit 'Next', class: 'btn btn-primary' %>
   <%= link_to "Cancel", root_path, :class=>'btn btn-default' %>
 <% end %>
