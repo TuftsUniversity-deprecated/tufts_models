@@ -8,6 +8,7 @@ describe "batches/index.html.erb" do
 
   before do
     assign :batches, batches
+    expect(view).to receive(:paginate) { 'pagination links' }
     render
   end
 

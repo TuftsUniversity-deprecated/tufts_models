@@ -3,6 +3,7 @@ require 'import_export/metadata_xml_parser'
 class BatchesController < ApplicationController
   before_filter :build_batch, only: [:create]
   load_resource only: [:index, :show, :edit]
+  before_filter :paginate, only: :index
   before_filter :load_batch, only: [:update]
   authorize_resource
 
@@ -73,6 +74,10 @@ private
 
   def load_batch
     @batch = Batch.find(params.require(:id))
+  end
+
+  def paginate
+    @batches = @batches.order('created_at DESC').page(params[:page]).per(10)
   end
 
   def create_and_run_batch
