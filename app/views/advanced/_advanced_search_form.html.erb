@@ -4,21 +4,22 @@
 
   <div class="input_columns row">
 
-      <div class="query_column span6">
-        <h4>Find items that match <%= select_tag(:op, options_for_select({'all'=>'AND','any'=>'OR'}.sort,'all'), :class => 'input-small') %> of the fields below:</h4>
+    <div class="query_column span6">
+      <h4>Find items that match <%= select_tag(:op, options_for_select({'all'=>'AND','any'=>'OR'}.sort,'all'), :class => 'input-small') %> of the fields below:</h4>
 
-        <div id="advanced_search">
-          <%= render 'advanced/advanced_search_fields' %>
-        </div>
+      <div id="advanced_search">
+        <%= render 'advanced/advanced_search_fields' %>
       </div>
-           <div class="limit_column offset1 span4">
-        <h4><strong>AND</strong> have these attributes:</h4>
+    </div>
 
-        <div id="advanced_search_facets" class="limit_input">
-          <%= render 'advanced_search_facets' %>
-          <%= render "advanced_search_help" %>
-        </div>
+    <div class="limit_column offset1 span4">
+      <h4><strong>AND</strong> have these attributes:</h4>
+
+      <div id="advanced_search_facets" class="limit_input">
+        <%= render 'advanced_search_facets' %>
+        <%= render "advanced_search_help" %>
       </div>
+    </div>
   </div>
 
   <% unless (search_context_str = render_search_to_s( advanced_search_context)).blank? %>
@@ -29,15 +30,16 @@
   <% end %>
 
 
-  <div class="sort_submit_buttons well clearfix floating form-actions">
-    <div class="">
-	<%= label_tag(:sort, "Sort results by") %>
-    <%= select_tag(:sort, options_for_select(sort_fields, h(params[:sort])), class: 'input-medium') %>
-	<%= hidden_field_tag(:search_field, blacklight_config.advanced_search[:url_key]) %>
-</div>
-<div class="pull-right">
-    <%= submit_tag 'Search', :class=>'btn btn-primary', :id=>'advanced_search' %>
-	<%= link_to "Start over", {:controller => "advanced", :action => "index"}, :class =>"reset btn" %>
-</div>
+  <div id='advanced_submit', class="sort_submit_buttons well clearfix form-actions">
+    <div>
+      <%= label_tag(:sort, "Sort results by") %>
+      <%= select_tag(:sort, options_for_select(sort_fields, h(params[:sort])), class: 'input-medium') %>
+      <%= hidden_field_tag(:search_field, blacklight_config.advanced_search[:url_key]) %>
+    </div>
+    <div>
+      <%= submit_tag 'Search', :class=>'btn btn-primary', :id=>'advanced_search' %>
+      <%= link_to "Start over", {:controller => "advanced", :action => "index"}, :class =>"reset btn" %>
+    </div>
   </div>
+
 <% end %>
