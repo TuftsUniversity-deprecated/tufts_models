@@ -222,4 +222,16 @@ module BaseModel
     false
   end
 
+  module ClassMethods
+    def revert_to_production(pid)
+      prod = Rubydora.connect(ActiveFedora.data_production_credentials)
+      begin
+        foxml = prod.api.export(pid: pid)
+      rescue RestClient::ResourceNotFound
+        raise ActiveFedora::ObjectNotFoundError.new("Could not find pid #{pid} on production server")
+      end
+      connection_for_pid(pid).purge_object(pid: pid) rescue RestClient::ResourceNotFound
+      connection_for_pid(pid).ingest(file: foxml)
+    end
+  end
 end

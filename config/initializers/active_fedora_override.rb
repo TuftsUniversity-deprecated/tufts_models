@@ -1,6 +1,11 @@
 module ActiveFedora
   class << self
-    attr_accessor :data_production_credentials
+    attr_writer :data_production_credentials
+
+    def data_production_credentials
+      ActiveFedora.config unless @data_production_credentials.present?
+      @data_production_credentials
+    end
   end
   class Config
     # Override so that we use data_stage as the key rather than the top level

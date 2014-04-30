@@ -25,6 +25,8 @@ class BatchesController < ApplicationController
       require_pids_and_run_batch
     when 'BatchPurge'
       require_pids_and_run_batch
+    when 'BatchRevert'
+      require_pids_and_run_batch
     when 'BatchTemplateUpdate'
       handle_apply_template
     when 'BatchTemplateImport'

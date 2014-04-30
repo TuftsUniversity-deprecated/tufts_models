@@ -24,6 +24,13 @@ FactoryGirl.define do
     pids ["tufts:1", "tufts:2"]
   end
 
+  factory :batch_revert do
+    type 'BatchRevert'
+    association :creator, factory: :admin
+    created_at 2.minutes.ago
+    pids ["tufts:1", "tufts:2"]
+  end
+
   factory :batch_template_import do
     type 'BatchTemplateImport'
     association :creator, factory: :admin

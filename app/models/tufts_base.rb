@@ -9,7 +9,7 @@ class TuftsBase < ActiveFedora::Base
   validate :displays_valid
 
   has_attributes :batch_id, datastream: 'DCA-ADMIN', multiple: true
-  
+
 protected
 
   def displays_valid

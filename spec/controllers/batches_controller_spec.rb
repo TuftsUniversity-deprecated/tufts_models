@@ -186,6 +186,22 @@ describe BatchesController do
         end
       end
 
+      describe "batch revert" do
+        it_should_behave_like 'requires a list of pids', :batch_revert
+        it_should_behave_like 'batch creation happy path', BatchRevert
+        it_should_behave_like 'batch run failure recovery', BatchRevert
+      end
+
+      describe "batch revert - error path:" do
+        it "redirects to previous page" do
+          BatchRevert.any_instance.stub(:save) { true }
+          BatchRevert.any_instance.stub(:run) { false }
+          allow(controller.request).to receive(:referer) { catalog_index_path }
+          post :create, batch: { pids: ['pid:1'], type: 'BatchRevert' }
+          response.should redirect_to(request.referer)
+        end
+      end
+
       describe "template updates" do
         it_should_behave_like 'requires a list of pids', :batch_template_update
         it_should_behave_like 'batch creation happy path', BatchTemplateUpdate

@@ -178,9 +178,67 @@ describe TuftsBase do
     end
   end
 
+  describe '.revert_to_production' do
+    let(:user) { FactoryGirl.create(:user) }
+    after do
+      @model.delete if @model
+    end
+
+    context "record exists on prod and staging (normal case)" do
+      before do
+        @model = FactoryGirl.create(:tufts_pdf, title: "prod title")
+        @model.publish!(user.id)
+        @model.title = "staging title"
+        @model.save!
+      end
+
+      it 'replaces the record with the one in production' do
+        TuftsBase.revert_to_production(@model.pid)
+        expect(@model.reload.title).to eq "prod title"
+      end
+
+      it 'saves the object as published' do
+        published_at = @model.published_at
+        @model.published_at = 2.days.ago
+        @model.save!
+        TuftsBase.revert_to_production(@model.pid)
+        @model.reload
+        expect(@model.published?).to be_true
+        # using greater than because published_at seems to be re-set instead of copied
+        # when publish! is called. It is often off by one second.
+        expect(@model.published_at).to be > (published_at - 1.hour)
+      end
+    end
+
+    context "record exists on prod, but not on staging" do
+      before do
+        model = FactoryGirl.create(:tufts_pdf, title: "prod title")
+        model.publish!(user.id)
+        @pid = model.pid
+        model.delete
+        TuftsBase.revert_to_production(@pid)
+      end
+      it 'copys the record from production' do
+        expect(TuftsPdf.exists?(@pid)).to be_true
+        expect(TuftsPdf.find(@pid).title).to eq "prod title"
+      end
+    end
+
+    context "record doesn't exist on prod, exists on staging" do
+      before do
+        @model = FactoryGirl.create(:tufts_pdf, title: "prod title")
+        @model.purge!
+      end
+      it 'raises an error' do
+        expect{TuftsBase.revert_to_production(@model.pid)}.to raise_error(ActiveFedora::ObjectNotFoundError)
+      end
+    end
+  end
+
   describe "#purge!" do
     subject { TuftsBase.create(title: 'some title') }
     before do
+      TuftsPdf.connection_for_pid('tufts:1')
       @prod = Rubydora.connect(ActiveFedora.data_production_credentials)
       allow(subject).to receive(:production_fedora_connection) { @prod }
     end
