@@ -46,4 +46,10 @@ feature 'Advanced Search' do
     page.should_not have_link('Space Detectives', href: catalog_path(@fiction))
   end
 
+  scenario 'facets are displayed' do
+    visit root_path
+    click_link 'Advanced Search'
+    page.should have_selector('#facets .blacklight-object_type_sim')
+  end
+
 end
