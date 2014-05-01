@@ -27,9 +27,9 @@ module AdvancedSearchFields
       # Facets for advanced search form
       config.advanced_search ||= {}
       config.advanced_search[:form_solr_parameters] = {
-        "facet.field" => ['names_sim', 'object_type_sim', 'subject_sim', 'year_sim', 'deposit_method_ssi'],
+        "facet.field" => ['names_sim', 'object_type_sim', 'subject_sim', 'year_sim', 'deposit_method_ssi', 'qrStatus_sim'],
         "facet.limit" => -1,     # return all facet values
-        "facet.sort" => "index"  # sort by byte order of values
+        "facet.sort" => 'count'
       }
     end  # configure blacklight
 
