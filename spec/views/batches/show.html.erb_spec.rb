@@ -61,6 +61,15 @@ describe "batches/show.html.erb" do
       expect(rendered).to have_selector(".record_status", text: "Queued")
     end
 
+    context "with missing records" do
+      it "should render successfully" do
+        pid = records.first.pid
+        records.first.destroy
+        render
+        expect(rendered).to have_selector(".record_pid", text: pid)
+      end
+    end
+
     context "with some records reviewed" do
       let(:records) do
         d1 = FactoryGirl.create(:tufts_audio)
