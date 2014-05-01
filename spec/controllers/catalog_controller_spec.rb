@@ -49,19 +49,6 @@ describe CatalogController do
       response.should render_template(:show)
     end
 
-    describe 'GET show JSON' do
-      it 'returns JSON data needed by the view template (jquery file uploader template)' do
-        record = FactoryGirl.create(:tufts_pdf, user: @admin)
-        get :show, id: record.pid, format: :json, json_format: 'jquery-file-uploader'
-
-        expect(response).to be_successful
-        json = JSON.parse(response.body)['files'].first
-        expect(json['pid']).to eq record.pid
-        expect(json['name']).to eq record.title
-        record.delete
-      end
-    end
-
     context 'viewing templates' do
       before { @excluded = FactoryGirl.create(:tufts_template) }
       after { @excluded.destroy }

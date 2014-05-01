@@ -108,6 +108,13 @@
           <td class="name"><span>{%= file.name %}</span></td>
           <td class="status">
             <span class="label label-success">Success</span>
+
+            {% if (file.warning) { %}
+              <br />
+              <span class="label label-warning">Warning</span>
+              <span> {%= file.warning %} </span>
+            {% } %}
+
           </td>
         {% } %}
       </tr>

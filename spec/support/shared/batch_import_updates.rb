@@ -80,9 +80,34 @@ end
 
 shared_examples 'a JSON import' do
   describe 'happy path' do
-    it 'redirects to get the JSON response for the new record' do
+    it 'returns JSON data needed by the view template' do
       patch :update, id: batch.id, documents: [file1], format: :json
-      expect(response).to redirect_to(catalog_path(TuftsPdf.first, json_format: 'jquery-file-uploader'))
+      json = JSON.parse(response.body)['files'].first
+      expect(json['pid']).to eq TuftsPdf.first.pid
+      expect(json['name']).to eq TuftsPdf.first.title
+      expect(json['warning']).to be_nil
+      expect(json['error']).to be_nil
+    end
+  end
+
+  describe 'warning path (wrong file format)' do
+    before do
+      TuftsPdf.delete_all
+      allow_any_instance_of(TuftsPdf).to receive(:valid_type_for_datastream?) { false }
+      patch :update, id: batch.id, documents: [file1], format: :json
+    end
+
+    it 'displays a warning message, but still creates the record' do
+      expect(TuftsPdf.count).to eq 1
+      record = TuftsPdf.first
+
+      expect(assigns[:batch].pids.sort).to eq [record.pid, 'oldpid:123'].sort
+
+      json = JSON.parse(response.body)['files'].first
+      expect(json['pid']).to eq record.pid
+      expect(json['name']).to eq record.title
+      expect(json['warning']).to eq "You provided a #{file1.content_type} file, which is not a valid type: #{file1.original_filename}"
+      expect(json['error']).to be_nil
     end
   end
 
