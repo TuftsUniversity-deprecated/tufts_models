@@ -40,10 +40,12 @@ class BatchesController < ApplicationController
   end
 
   def show
-    @records_by_pid = {}
-    if @batch.pids
-      @records_by_pid = ActiveFedora::Base.find(@batch.pids, cast: true).reduce({}) do |acc, record|
-        acc.merge(record.id => record)
+    @records_by_pid = (@batch.pids || []).reduce({}) do |acc, pid|
+      begin
+        r = ActiveFedora::Base.find(pid, cast: true)
+        acc.merge(r.pid => r)
+      rescue ActiveFedora::ObjectNotFoundError
+        acc
       end
     end
   end
