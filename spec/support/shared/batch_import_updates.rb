@@ -84,7 +84,8 @@ shared_examples 'a JSON import' do
       patch :update, id: batch.id, documents: [file1], format: :json
       json = JSON.parse(response.body)['files'].first
       expect(json['pid']).to eq TuftsPdf.first.pid
-      expect(json['name']).to eq TuftsPdf.first.title
+      expect(json['title']).to eq TuftsPdf.first.title
+      expect(json['name']).to eq file1.original_filename
       expect(json['warning']).to be_nil
       expect(json['error']).to be_nil
     end
@@ -105,7 +106,8 @@ shared_examples 'a JSON import' do
 
       json = JSON.parse(response.body)['files'].first
       expect(json['pid']).to eq record.pid
-      expect(json['name']).to eq record.title
+      expect(json['name']).to eq file1.original_filename
+      expect(json['title']).to eq record.title
       expect(json['warning']).to eq "You provided a #{file1.content_type} file, which is not a valid type: #{file1.original_filename}"
       expect(json['error']).to be_nil
     end
@@ -131,7 +133,8 @@ shared_examples 'a JSON import' do
     it 'returns JSON data needed by the view template' do
       json = JSON.parse(response.body)['files'].first
       expect(json['pid']).to eq @pdf.pid
-      expect(json['name']).to eq @pdf.title
+      expect(json['title']).to eq @pdf.title
+      expect(json['name']).to eq file1.original_filename
       expect(json['error']).to eq [@error1, @error2]
     end
   end

@@ -104,8 +104,11 @@
             {% } %}
           </td>
         {% } else { %}
-          <td class="id"><span>{%= file.pid %}</span></td>
           <td class="name"><span>{%= file.name %}</span></td>
+          <td class="id">
+            <span>{%= file.pid %}</span> <br />
+            <span>{%= file.title %}</span>
+          </td>
           <td class="status">
             <span class="label label-success">Success</span>
 
