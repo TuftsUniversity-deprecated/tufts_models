@@ -12,13 +12,18 @@
         <div class="span3">
           <%= link_to image_tag('mira.png', :class => "brand", :alt => 'Home'), root_path %>
         </div>
+
         <div class="span6 clearfix" id="searchbar">
-          <%= render_search_bar unless controller_name.in?(['contribute','templates','records']) %>
+          <% unless controller_name.in?(['contribute','templates','records']) %>
+            <%= render_search_bar %>
+            <div id='search_link'>
+              <%= link_to 'Advanced Search', advanced_search_path %>
+            </div>
+          <% end %>
         </div>
 
         <div class="span3 nav-collapse">
           <%= render :partial => '/user_util_links' %>
-
         </div>
 
       </div>

@@ -12,7 +12,7 @@ class DcaAdmin < ActiveFedora::OmDatastream
     t.status index_as: :stored_searchable
     t.startDate index_as: :stored_searchable
     t.expDate index_as: :stored_searchable
-    t.qrStatus index_as: :stored_searchable
+    t.qrStatus index_as: [:stored_searchable, :facetable]
     t.rejectionReason index_as: :stored_searchable
     t.note index_as: :stored_searchable
     t.createdby
