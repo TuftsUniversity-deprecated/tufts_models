@@ -61,9 +61,6 @@ describe ContributeController do
           response.should render_template('contribute/deposit_view/_generic_deposit')
         end
 
-        it 'should include a title input'
-        it 'should include a file upload input'
-
         it 'should include deposit license text' do
           get 'new', {deposit_type: @deposit_type.id}
           response.body.should have_content @deposit_type.deposit_agreement
