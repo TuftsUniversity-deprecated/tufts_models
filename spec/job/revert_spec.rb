@@ -30,22 +30,63 @@ describe Job::Revert do
   end
 
   describe '#perform' do
-    it 'raises an error if it fails to find the object in production' do
-      pid = 'tufts:1'
-      prod = Rubydora.connect(ActiveFedora.data_production_credentials)
-      prod.purge_object(pid: pid) rescue RestClient::ResourceNotFound
+    let(:prod) { Rubydora.connect(ActiveFedora.data_production_credentials) }
+    context 'record exists on staging and production' do
+      it 'copys from production' do
+        # exists on staging
+        record = FactoryGirl.create(:tufts_pdf, title: "orig title")
+        # exists on production
+        record.publish!
 
-      job = Job::Revert.new('uuid', 'record_id' => pid)
-      expect{job.perform}.to raise_error(ActiveFedora::ObjectNotFoundError)
+        # make sure it reverts
+        record.title = "changed title"
+        record.save!
+        Job::Revert.new('uuid', 'record_id' => record.pid).perform
+        expect(record.reload.title).to eq "orig title"
+      end
     end
 
-    it 'reverts the record' do
-      record = FactoryGirl.create(:tufts_pdf)
-      record.publish!
-      job = Job::Revert.new('uuid', 'record_id' => record.id)
-      expect(TuftsBase).to receive(:revert_to_production).once
-      job.perform
-      record.delete
+    context 'record exists on staging, missing on production' do
+      it 'hard deletes' do
+        # exists on staging
+        record = FactoryGirl.create(:tufts_pdf, title: "orig title")
+        pid = record.pid
+        # missing on production
+        prod.purge_object(pid: pid) rescue RestClient::ResourceNotFound
+
+        # make sure it hard deletes
+        Job::Revert.new('uuid', 'record_id' => pid).perform
+        expect(TuftsPdf.exists?(pid)).to be_false
+      end
+    end
+
+    context 'record missing on staging, exists on production' do
+      it 'copys from production' do
+        # exists on production
+        record = FactoryGirl.create(:tufts_pdf, title: "orig title")
+        pid = record.pid
+        record.publish!
+        # missing on staging
+        record.destroy
+
+        # make sure it reverts
+        Job::Revert.new('uuid', 'record_id' => pid).perform
+        expect(TuftsPdf.find(pid).title).to eq "orig title"
+      end
+    end
+
+    context 'record missing on staging and production' do
+      it 'succeeds and does nothing' do
+        pid = 'tufts:1'
+        # missing on production
+        prod.purge_object(pid: pid) rescue RestClient::ResourceNotFound
+        # missing on staging
+        TuftsPdf.find(pid).destroy if TuftsPdf.exists?(pid)
+
+        # make sure it does nothing
+        Job::Revert.new('uuid', 'record_id' => pid).perform
+        expect(TuftsPdf.exists?(pid)).to be_false
+      end
     end
 
     it 'can be killed' do

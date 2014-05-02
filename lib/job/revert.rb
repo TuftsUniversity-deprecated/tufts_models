@@ -16,9 +16,14 @@ module Job
     def perform
       tick # give resque-status a chance to kill this
 
-      TuftsBase.revert_to_production(options['record_id'])
-      run_as_batch_item(options['record_id'], options['batch_id']) do |record|
-        record.save!
+      begin
+        TuftsBase.revert_to_production(options['record_id'])
+        run_as_batch_item(options['record_id'], options['batch_id']) do |record|
+          record.save!
+        end
+      rescue ActiveFedora::ObjectNotFoundError
+        # doesn't exist on production, hard delete it on staging
+        TuftsBase.find(options['record_id']).destroy if TuftsBase.exists?(options['record_id'])
       end
     end
 
