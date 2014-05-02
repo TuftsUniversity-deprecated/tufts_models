@@ -9,3 +9,25 @@
   margin-top: 0;
   margin-bottom: 1.5em;
 }
+
+.advanced_search_field {
+  clear: both;
+
+  label {
+    text-align: right;
+    padding-top: 4px;
+    font-weight: normal;
+    margin-right: 2%;
+    width: 23%;
+    float: left;
+  }
+
+  input {
+    width: 75%;
+    float: right;
+  }
+}
+
+form.advanced {
+  h4 { margin-bottom: 1em; }
+}
