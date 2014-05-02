@@ -182,7 +182,9 @@ module BaseModel
 
   def push_to_production!
     self.push_production = true
-    if save
+    save_succeeded = save
+    self.push_production = false
+    if save_succeeded
       # Now copy to prod
       # Rubydora::FedoraInvalidRequest
       foxml = self.inner_object.repository.api.export(pid: pid, context: 'archive')

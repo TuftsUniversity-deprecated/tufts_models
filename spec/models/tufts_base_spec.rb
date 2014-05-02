@@ -176,6 +176,13 @@ describe TuftsBase do
       @obj.reload
       @obj.published?.should be_true
     end
+
+    it 'only updates the published_at time when actually published' do
+      expect(@obj.published_at).to eq nil
+      expect(@obj.admin).to receive(:published_at=).once
+      @obj.publish!(user.id)
+      @obj.save!
+    end
   end
 
   describe '.revert_to_production' do
@@ -199,14 +206,17 @@ describe TuftsBase do
 
       it 'saves the object as published' do
         published_at = @model.published_at
+        # setting this both places to make sure both get updated
         @model.published_at = 2.days.ago
+        @model.admin.published_at = 2.days.ago
         @model.save!
+
         TuftsBase.revert_to_production(@model.pid)
+
         @model.reload
         expect(@model.published?).to be_true
-        # using greater than because published_at seems to be re-set instead of copied
-        # when publish! is called. It is often off by one second.
-        expect(@model.published_at).to be > (published_at - 1.hour)
+        expect(@model.published_at).to eq published_at
+        expect(@model.admin.published_at.first).to eq published_at
       end
 
       it "uses the 'archive' context so we can save the pid correctly" do
