@@ -46,10 +46,23 @@ feature 'Advanced Search' do
     page.should_not have_link('Space Detectives', href: catalog_path(@fiction))
   end
 
-  scenario 'facets are displayed' do
+  scenario "templates don't appear in facets" do
+    FactoryGirl.create(:tufts_template)
     visit root_path
     click_link 'Advanced Search'
-    page.should have_selector('#facets .blacklight-object_type_sim')
+    within('#facets .blacklight-object_type_sim') do
+      expect(page).to have_content('Text (2)')
+      expect(page).to_not have_content('Template')
+    end
+  end
+
+  scenario "purged objects don't appear in facets" do
+    @history.purge!
+    visit root_path
+    click_link 'Advanced Search'
+    within('#facets .blacklight-object_type_sim') do
+      expect(page).to have_content('Text (1)')
+    end
   end
 
 end
