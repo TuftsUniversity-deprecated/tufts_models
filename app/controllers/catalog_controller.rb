@@ -59,6 +59,7 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name('subject', :facetable), :label => 'Subject', :limit => 7 
     config.add_facet_field solr_name('object_type', :facetable), :label => 'Format', :limit => 7
     config.add_facet_field solr_name('deposit_method', :stored_sortable), :label => 'Deposit Method', :limit => 7
+    config.add_facet_field solr_name('qrStatus', :facetable), :label => 'QR Status', :limit => 7
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -168,6 +169,8 @@ class CatalogController < ApplicationController
         :pf => 'batch_id_ssim'
       }
     end
+
+    include AdvancedSearchFields
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and

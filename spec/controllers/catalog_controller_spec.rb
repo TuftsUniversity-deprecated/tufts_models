@@ -36,10 +36,21 @@ describe CatalogController do
       response.should be_successful
     end
 
-    it 'gets catalog' do
-      get :index
-      response.should be_successful
-      response.should render_template(:index)
+    describe 'GET index' do
+      it 'gets catalog' do
+        get :index
+        response.should be_successful
+        response.should render_template(:index)
+      end
+
+      it "handles advanced searches with a 'format'" do
+        good = FactoryGirl.create(:tufts_pdf, format: 'some format')
+        bad  = FactoryGirl.create(:tufts_pdf, format: 'other format')
+        get :index, search_field: :advanced, format_attr: 'some format'
+        found = assigns[:document_list].map(&:id)
+        expect(found).to include good.id
+        expect(found).to_not include bad.id
+      end
     end
 
     it 'can view someone elses document' do
