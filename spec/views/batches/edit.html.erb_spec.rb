@@ -20,7 +20,6 @@ describe "batches/edit.html.erb" do
     it 'has input fields' do
       expect(rendered).to have_selector("input[type=file][name='documents[]'][multiple=multiple]")
       expect(rendered).to have_selector("button[type=submit]")
-      expect(rendered).to have_link('Cancel', href: root_path)
     end
 
   end
