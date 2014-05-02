@@ -242,23 +242,20 @@ private
       end
 
       format.json do
-        if successful
-          redirect_to catalog_path(records.first.id, 'json_format' => 'jquery-file-uploader')
-        else
-          json = {
-            files: document_statuses.map do |doc, record, warning, error|
-              msg = {}
-              msg[:pid] = record.id if record.present?
-              msg[:name] = (record.present? ? record.title : doc.original_filename)
-              msg[:warning] = warning if warning.present?
-              msg[:error] = collect_errors(batch, records)
-              msg[:error] << error if error.present?
-              msg
-            end
-          }.to_json
+        json = {
+          files: document_statuses.map do |doc, record, warning, error|
+            msg = {}
+            msg[:pid] = record.id if record.present?
+            msg[:name] = (record.present? ? record.title : doc.original_filename)
+            msg[:warning] = warning if warning.present?
+            errors = collect_errors(batch, records)
+            errors << error if error.present?
+            msg[:error] = errors unless errors.empty?
+            msg
+          end
+        }.to_json
 
-          render json: json
-        end
+        render json: json
       end
     end
   end

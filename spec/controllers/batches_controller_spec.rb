@@ -291,7 +291,7 @@ describe BatchesController do
 
       describe 'for template import' do
         let(:batch) { FactoryGirl.create(:batch_template_import, pids: ['oldpid:123']) }
-        let(:file1) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'hello.pdf')) }
+        let(:file1) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'hello.pdf'), 'application/pdf') }
         let(:file2) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'fixtures', 'hello.pdf')) }
 
         describe 'happy path' do
