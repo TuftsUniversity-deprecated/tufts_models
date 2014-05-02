@@ -32,8 +32,8 @@ describe Job::Revert do
   describe '#perform' do
     it 'raises an error if it fails to find the object in production' do
       pid = 'tufts:1'
-      # TuftsPdf.find(obj_id).destroy if TuftsPdf.exists?(obj_id)
-      ActiveFedora.production_fedora_connection.purge_object(pid: pid) rescue RestClient::ResourceNotFound
+      prod = Rubydora.connect(ActiveFedora.data_production_credentials)
+      prod.purge_object(pid: pid) rescue RestClient::ResourceNotFound
 
       job = Job::Revert.new('uuid', 'record_id' => pid)
       expect{job.perform}.to raise_error(ActiveFedora::ObjectNotFoundError)

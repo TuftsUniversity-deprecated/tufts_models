@@ -208,6 +208,17 @@ describe TuftsBase do
         # when publish! is called. It is often off by one second.
         expect(@model.published_at).to be > (published_at - 1.hour)
       end
+
+      it "uses the 'archive' context so we can save the pid correctly" do
+        @model.save!
+        api = double
+        allow(Rubydora).to receive(:connect) { double(api: api) }
+        allow(TuftsBase).to receive(:connection_for_pid) { double(purge_object: true, ingest: true) }
+        expect(api).to receive(:export) do |data|
+          expect(data[:context]).to eq 'archive'
+        end
+        TuftsBase.revert_to_production(@model.pid)
+      end
     end
 
     context "record exists on prod, but not on staging" do
