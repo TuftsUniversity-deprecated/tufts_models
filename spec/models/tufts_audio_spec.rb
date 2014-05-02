@@ -170,9 +170,11 @@ describe TuftsAudio do
     end
   end
 
+  # Per Mark, the audit history can be found by using fedora versioning to see the audit entries on previous versions of the object.
   describe "auditing" do
+    let (:user) { FactoryGirl.create(:user) }
+
     describe "when metadata is updated" do
-      let (:user) { FactoryGirl.create(:user) }
       before do
         subject.audit(user, 'updated stuff')
       end
@@ -180,11 +182,20 @@ describe TuftsAudio do
         subject.audit_log.who.should == [user.display_name]
       end
     end
+
     describe "when content is updated" do
-      it "should get an entry"
-    end
-    describe "when the object is deleted" do
-      it "should get an entry"
+      before do
+        subject.stub(:content_will_update) { '123' }
+        subject.stub(:working_user) { user }
+        subject.title = 'title'
+        subject.displays = ['dl']
+        subject.save!
+      end
+
+      it "should get an entry" do
+        expect(subject.audit_log.who).to eq [user.display_name]
+        expect(subject.audit_log.what.first).to match /Content updated: 123/i
+      end
     end
   end
 end
