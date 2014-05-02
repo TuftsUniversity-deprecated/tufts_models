@@ -1,5 +1,0 @@
-How do we generate PRESENT_SMIL for AudioText?
-
-In generic file, why are we storing an inline datastream that points to a file? We could use a external instead.
-
-Need log rotation
