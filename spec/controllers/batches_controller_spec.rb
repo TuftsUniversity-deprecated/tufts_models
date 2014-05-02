@@ -331,7 +331,8 @@ describe BatchesController do
             it 'returns JSON data needed by the view template' do
               json = JSON.parse(response.body)['files'].first
               expect(json['pid']).to eq TuftsPdf.first.pid
-              expect(json['name']).to eq batch.template.title
+              expect(json['title']).to eq batch.template.title
+              expect(json['name']).to eq file1.original_filename
               expect(json['error']).to eq [@batch_error]
             end
           end
@@ -481,7 +482,8 @@ describe BatchesController do
               expect(json['pid']).to eq TuftsPdf.first.pid
               doc = Nokogiri::XML(batch.metadata_file.read)
               title = doc.at_xpath("//digitalObject[child::file/text()='#{file1.original_filename}']/*[local-name()='title']").content
-              expect(json['name']).to eq title
+              expect(json['title']).to eq title
+              expect(json['name']).to eq file1.original_filename
               expect(json['error']).to eq [@batch_error]
             end
           end

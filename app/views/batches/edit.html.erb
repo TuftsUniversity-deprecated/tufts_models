@@ -104,8 +104,11 @@
             {% } %}
           </td>
         {% } else { %}
-          <td class="id"><span>{%= file.pid %}</span></td>
           <td class="name"><span>{%= file.name %}</span></td>
+          <td class="id">
+            <span>{%= file.pid %}</span> <br />
+            <span>{%= file.title %}</span>
+          </td>
           <td class="status">
             <span class="label label-success">Success</span>
 
@@ -123,8 +126,7 @@
 
 <% end %>
 
-<%= link_to "Next", batch_path(@batch), class: 'js-only hidden disabled btn btn-primary', id: 'next_button' %>
-<%= link_to "Cancel", root_path, class: 'btn btn-default' %>
+<%= link_to "Batch Summary", batch_path(@batch), class: 'js-only hidden disabled btn btn-primary', id: 'next_button' %>
 
 <script type="text/javascript">
   $(function() {

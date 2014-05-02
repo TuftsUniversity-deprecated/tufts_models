@@ -245,8 +245,11 @@ private
         json = {
           files: document_statuses.map do |doc, record, warning, error|
             msg = {}
-            msg[:pid] = record.id if record.present?
-            msg[:name] = (record.present? ? record.title : doc.original_filename)
+            if record.present?
+              msg[:pid] = record.id
+              msg[:title] = record.title
+            end
+            msg[:name] = doc.original_filename
             msg[:warning] = warning if warning.present?
             errors = collect_errors(batch, records)
             errors << error if error.present?
