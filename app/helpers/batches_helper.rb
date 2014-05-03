@@ -22,17 +22,6 @@ module BatchesHelper
     end
   end
 
-  def revert_button_message(batch, records_by_pid)
-    docs = batch.pids.map{|pid| records_by_pid[pid]}
-    published_count = docs.compact.select(&:published?).count
-    unpublished_count = docs.compact.reject(&:published?).count
-    nonexistent_count = docs.select(&:nil?).count
-    if unpublished_count > 0
-      unpublished = "\n#{unpublished_count} objects have not been published and will not be changed."
-    end
-    "#{published_count} objects items in this batch will reset to their Published version.#{unpublished}\naThis action cannot be undone, are you sure?"
-  end
-
   def line_item_status(batch, job, record_id=nil)
     if batch.is_a?(BatchTemplateImport) || batch.is_a?(BatchXmlImport)
       record_exists = record_id && ActiveFedora::Base.exists?(record_id)

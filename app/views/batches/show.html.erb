@@ -49,7 +49,7 @@
       <%= button_tag "Revert", type: :submit,
         name: 'batch[type]', value: "BatchRevert",
         disabled: @batch.status != :completed,
-        data: { confirm: revert_button_message(@batch, @records_by_pid) },
+        data: { confirm: "#{pluralize(@batch.pids.count, 'object')} will be reverted to match production. This action cannot be undone, are you sure?" },
         class: "btn btn-primary" %>
     <% end %>
   </div>
