@@ -17,10 +17,7 @@
 
     <h3>Relationships</h3>
     <div class="well">
-      <div class="control-group">
-        <%= f.label :stored_collection_id, 'Collection', :class=>"control-label"%>
-        <%= render_edit_field_partial(:stored_collection_id, f:f,  v: f.object.stored_collection_id, index: 0, render_req: true) %>
-      </div><!-- /control-group -->
+      <%= relationship_fields(f, @record) %>
     </div>
 
     <h3>Admin Metadata</h3>

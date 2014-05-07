@@ -40,4 +40,20 @@ describe 'records/edit.html.erb' do
     end
   end
 
+  describe 'relationship fields' do
+    let!(:pdf) { FactoryGirl.create(:tufts_pdf) }
+    after { pdf.destroy }
+
+    before do
+      assign :record, pdf
+      render
+    end
+
+    it 'contains selectors needed for the javascript' do
+      expect(rendered).to have_selector('#additional_relationship_attributes_clone')
+      expect(rendered).to have_selector('#additional_relationship_attributes_elements')
+      expect(rendered).to have_selector('#additional_relationship_attributes_clone button.adder')
+    end
+  end
+
 end
