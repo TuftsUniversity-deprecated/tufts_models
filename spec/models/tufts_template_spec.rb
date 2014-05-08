@@ -57,20 +57,12 @@ describe TuftsTemplate do
       result.include?(:discover_users).should be_false
     end
 
-    it 'includes stored_collection_id' do
-      attrs = { stored_collection_id: 'collection:123',
-                filesize: ['57 MB'] }
-      template = TuftsTemplate.new(attrs)
-      result = template.attributes_to_update
-      result.include?(:stored_collection_id).should be_true
-    end
-
     it 'removes empty attributes from the list' do
       attrs = { title: '',
                 filesize: [''],
                 toc: nil,
                 genre: [],
-                stored_collection_id: '',
+                relationship_attributes: [],
                 description: ['a description'] }
       template = TuftsTemplate.new(attrs)
       result = template.attributes_to_update
@@ -78,8 +70,19 @@ describe TuftsTemplate do
       result.include?(:filesize).should be_false
       result.include?(:toc).should be_false
       result.include?(:genre).should be_false
-      result.include?(:stored_collection_id).should be_false
+      result.include?(:relationship_attributes).should be_false
       result.include?(:description).should be_true
+    end
+
+    it 'contains rels-ext attributes' do
+      template = TuftsTemplate.new
+      pid = 'pid:123'
+      template.add_relationship(:is_part_of, "info:fedora/#{pid}")
+      attrs = template.attributes_to_update
+      expect(attrs[:relationship_attributes].length).to eq 1
+      relation = attrs[:relationship_attributes].first
+      expect(relation['relationship_name']).to eq(:is_part_of)
+      expect(relation['relationship_value']).to eq pid
     end
   end
 

@@ -3,6 +3,11 @@ require 'spec_helper'
 describe BatchUpdate do
 
   describe '#apply_attributes' do
+    let(:old_pid) { "old:123" }
+    let(:old_uri) { "info:fedora/#{old_pid}" }
+
+    let(:new_pid) { "new:123" }
+    let(:new_uri) { "info:fedora/#{new_pid}" }
 
     describe 'when overwrite = false,' do
 
@@ -57,29 +62,34 @@ describe BatchUpdate do
         end
       end  # multi-value attributes
 
-      describe 'derived attribute stored_collection_id' do
-        it 'sets the value if it is empty' do
-          obj = TuftsBase.new(title: 'Title',  displays: ['dl'])
-          obj.save!
-          obj.stored_collection_id.should be_nil
-          obj.apply_attributes(stored_collection_id: 'new:123')
-          obj.reload
-          obj.stored_collection_id.should == 'new:123'
-          obj.delete
+      describe 'for rels-ext attributes' do
+        let(:pdf) { FactoryGirl.build(:tufts_pdf) }
+        after { pdf.delete }
+
+        let(:new_attrs) { { 'relationship_attributes' => [
+            { "relationship_name" => :is_part_of,
+              "relationship_value" => new_pid },
+            { "relationship_name" => :is_member_of_collection,
+              "relationship_value" => new_pid } ]} }
+
+        before do
+          pdf.add_relationship(:is_part_of, old_uri)
+          pdf.add_relationship(:is_subset_of, old_uri)
+          pdf.save!
         end
 
-        it 'preserves the existing value' do
-          existing_id = 'existing:123'
-          obj = TuftsBase.new(title: 'Title',  displays: ['dl'], stored_collection_id: existing_id)
-          obj.save!
-          obj.stored_collection_id.should == existing_id
-          obj.apply_attributes(stored_collection_id: 'new:123')
-          obj.reload
-          obj.stored_collection_id.should == existing_id
-          obj.delete
-        end
-      end  # stored_collection_id
+        it 'adds new values and keeps existing values' do
+          pdf.apply_attributes(new_attrs, nil, false)
 
+          is_subset_of = pdf.ids_for_outbound(:is_subset_of)
+          is_part_of = pdf.ids_for_outbound(:is_part_of)
+          is_member_of = pdf.ids_for_outbound(:is_member_of_collection)
+
+          expect(is_subset_of).to eq [old_pid]
+          expect(is_part_of).to   eq [old_pid, new_pid]
+          expect(is_member_of).to eq [new_pid]
+        end
+      end  # rels-ext attributes
     end  # when overwrite = false
 
 
@@ -132,29 +142,44 @@ describe BatchUpdate do
         end
       end  # multi-value attributes
 
-      describe 'derived attribute stored_collection_id' do
-        it 'sets the value if it is empty' do
-          obj = TuftsBase.new(title: 'Title',  displays: ['dl'])
-          obj.save!
-          obj.stored_collection_id.should be_nil
-          obj.apply_attributes({stored_collection_id: 'new:123'}, nil, true)
-          obj.reload
-          obj.stored_collection_id.should == 'new:123'
-          obj.delete
+      describe 'for rels-ext attributes' do
+        let(:pdf) { FactoryGirl.build(:tufts_pdf) }
+        after { pdf.delete }
+
+        before do
+          pdf.add_relationship(:is_part_of, old_uri)
+          pdf.add_relationship(:has_subset, old_uri)
+          pdf.save!
         end
 
-        it 'overwrites existing value' do
-          existing_id = 'existing:123'
-          obj = TuftsBase.new(title: 'Title',  displays: ['dl'], stored_collection_id: existing_id)
-          obj.save!
-          obj.stored_collection_id.should == existing_id
-          obj.apply_attributes({stored_collection_id: 'new:123'}, nil, true)
-          obj.reload
-          obj.stored_collection_id.should == 'new:123'
-          obj.delete
-        end
-      end  # stored_collection_id
+        it 'adds new values and overwrites existing values' do
+          new_attrs = { 'relationship_attributes' => [
+            { "relationship_name" => :is_part_of,
+              "relationship_value" => new_pid },
+            { "relationship_name" => :is_member_of_collection,
+              "relationship_value" => new_pid } ]}
 
+          pdf.apply_attributes(new_attrs, @user.id, true)
+
+          expect(pdf.ids_for_outbound(:is_part_of)).to eq [new_pid]
+          expect(pdf.ids_for_outbound(:is_member_of_collection)).to eq [new_pid]
+          expect(pdf.ids_for_outbound(:has_subset)).to eq [old_pid]
+        end
+
+        it 'gracefully handles strings or symbols' do
+          string_name = 'is_part_of'
+          symbol_name = :has_subset
+          new_attrs = { 'relationship_attributes' => [
+            { "relationship_name" => string_name,
+              "relationship_value" => new_pid },
+            { "relationship_name" => symbol_name,
+              "relationship_value" => new_pid } ]}
+
+          pdf.apply_attributes(new_attrs, @user.id, true)
+          expect(pdf.ids_for_outbound(:has_subset)).to eq [new_pid]
+          expect(pdf.ids_for_outbound(:is_part_of)).to eq [new_pid]
+        end
+      end  # rels-ext attributes
     end  # when overwrite = true
 
 

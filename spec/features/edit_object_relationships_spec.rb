@@ -2,8 +2,8 @@ require 'spec_helper'
 
 feature "Edit an object's rels-ext fields:" do
 
-  let(:old_pid) { 'pid:1' }
-  let(:new_pid) { 'pid:2' }
+  let(:old_pid) { 'old:1' }
+  let(:new_pid) { 'new:1' }
 
   let(:old_uri) { "info:fedora/#{old_pid}" }
   let(:new_uri) { "info:fedora/#{new_pid}" }
@@ -36,7 +36,9 @@ feature "Edit an object's rels-ext fields:" do
     reloaded_pdf = TuftsPdf.find(pdf.pid)
     part_predicate = reloaded_pdf.object_relations.uri_predicate(:has_part)
     has_part = reloaded_pdf.object_relations.relationships[part_predicate]
-    expect(has_part).to eq [old_uri, new_uri]
+    expect(has_part.length).to eq 2
+    expect(has_part.include?(old_uri)).to be_true
+    expect(has_part.include?(new_uri)).to be_true
   end
 
   scenario 'change the type of an existing relationship' do
