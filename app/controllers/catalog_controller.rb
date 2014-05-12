@@ -80,7 +80,7 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display 
     config.add_show_field 'id', :label => 'Pid:'
-    config.add_show_field solr_name("object_state", :stored_sortable), :label => 'Fedora Object State', :helper_method => :pretty_object_state
+    config.add_show_field solr_name("object_state", :stored_sortable), :label => 'Fedora Object State', :helper_method => :fedora_object_state
     config.add_show_field solr_name('creator', :stored_searchable), :label => 'Creator:'
     config.add_show_field solr_name('source2', :stored_searchable), :label => 'Source:'
     config.add_show_field solr_name('description', :stored_searchable), :label => 'Description:'

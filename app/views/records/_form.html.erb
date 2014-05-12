@@ -1,9 +1,17 @@
 <div id="descriptions_display">
   <%= bootstrap_form_for @record, :url=>hydra_editor.record_path(@record), html: {:class => 'form-inline editor'} do |f| %>
-      <div class="control-group">
-        PID: <%=@record.pid %>
-      </div>
-      <div class='clearfix'> </div>
+
+    <div>
+      <dl class="control-group dl-horizontal dl-invert">
+        <dt> Fedora Object State: </dt>
+        <dd> <%= pretty_object_state(@record.state) %> </dd>
+      </dl>
+      <dl class="control-group dl-horizontal dl-invert">
+        <dt> PID: </dt>
+        <dd> <%= @record.pid %> </dd>
+      </dl>
+    </div>
+    <div class='clearfix'> </div>
 
     <%= render :partial => "template_fields", :locals => {:f => f } %>
 

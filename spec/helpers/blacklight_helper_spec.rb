@@ -72,23 +72,23 @@ describe BlacklightHelper do
     end
   end
 
-  describe '#pretty_object_state' do
+  describe '#fedora_object_state' do
     let(:solr_doc) { SolrDocument.new(id: 'some_id:123', object_state_ssi: 'A') }
     let(:blacklight_options_hash) {
       { :field => "object_state_ssi", :document => solr_doc }
     }
 
     it 'returns a human-readable state' do
-      state = helper.pretty_object_state(blacklight_options_hash)
+      state = helper.fedora_object_state(blacklight_options_hash)
       expect(state).to eq 'Active'
     end
 
     it 'gracefully handles unexpected states' do
       solr_doc[:object_state_ssi] = nil
-      expect(helper.pretty_object_state(blacklight_options_hash)).to be_nil
+      expect(helper.fedora_object_state(blacklight_options_hash)).to be_nil
 
       solr_doc[:object_state_ssi] = 'something unexpected'
-      expect(helper.pretty_object_state(blacklight_options_hash)).to eq 'something unexpected'
+      expect(helper.fedora_object_state(blacklight_options_hash)).to eq 'something unexpected'
     end
   end
 

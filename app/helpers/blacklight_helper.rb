@@ -33,11 +33,14 @@ module BlacklightHelper
     label + value
   end
 
-  def pretty_object_state(options)
+  def fedora_object_state(options)
     state_field = options[:field]
     object_state = options[:document][state_field]
+    pretty_object_state(object_state)
+  end
 
-    case object_state
+  def pretty_object_state(state)
+    case state
     when 'A'
       'Active'
     when 'D'
@@ -45,7 +48,7 @@ module BlacklightHelper
     when 'I'
       'Inactive'
     else
-      object_state
+      state
     end
   end
 
