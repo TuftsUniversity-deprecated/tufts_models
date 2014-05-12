@@ -137,6 +137,12 @@ describe MetadataXmlParser do
       attributes = MetadataXmlParser.get_record_attributes(build_node('oxns:format' => []), TuftsPdf)
       expect(attributes.has_key?('format')).to be_false
     end
+
+    it "includes rels_ext attributes" do
+      attributes = MetadataXmlParser.get_record_attributes(build_node("rel:hasEquivalent" => ["eq:1", "eq:2"]), TuftsPdf)
+      eq_pids = attributes['relationship_attributes'].select{|x| x['relationship_name'] == :has_equivalent}.map{|x| x['relationship_value']}
+      expect(eq_pids.sort).to eq ["eq:1", "eq:2"]
+    end
   end
 
   describe "::get_node_content" do
@@ -208,6 +214,18 @@ describe MetadataXmlParser do
     it "returns a class" do
       record_class = MetadataXmlParser.get_record_class(build_node)
       expect(record_class).to eq TuftsPdf
+    end
+  end
+
+  describe "::get_rels_ext" do
+    let(:eq_pid_1) { "eq:1" }
+    let(:eq_pid_2) { "eq:2" }
+
+    it 'returns rels_ext in a format to build the record' do
+      node = build_node("rel:hasEquivalent" => [eq_pid_1, eq_pid_2])
+      rels_ext = MetadataXmlParser.get_rels_ext(node)
+      eq_pids = rels_ext['relationship_attributes'].select{|x| x['relationship_name'] == :has_equivalent}.map{|x| x['relationship_value']}
+      expect(eq_pids.sort).to eq [eq_pid_1, eq_pid_2].sort
     end
   end
 end

@@ -124,6 +124,9 @@ module BaseModel
 
     attrs = attrs.reject{|e| e['relationship_name'].blank? || e['relationship_value'].blank? }
 
+    # Only accept fields that users are allowed to edit
+    attrs = attrs.reject{|e| !rels_ext_edit_fields.include?(e['relationship_name'].to_sym) }
+
     attrs.each do |attr|
       predicate_name = attr['relationship_name'].to_sym
       pred = ActiveFedora::Predicates.find_graph_predicate(predicate_name)

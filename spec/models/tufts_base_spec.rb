@@ -104,16 +104,13 @@ describe TuftsBase do
       it "user shouldn't be able to edit has_model" do
         expect(subject.rels_ext_edit_fields.include?(:has_model)).to be_false
 
-        predicate = subject.object_relations.uri_predicate(:has_model)
-        existing_model = subject.object_relations.relationships[predicate].first
-        expect(existing_model).to eq "info:fedora/afmodel:TuftsBase"
-
         new_values = [{ "relationship_name" => "has_model",
                         "relationship_value" => fake_pid }]
         subject.relationship_attributes = new_values
 
-        new_model = subject.object_relations.relationships[predicate].first
-        expect(new_model).to eq existing_model
+        predicate = subject.object_relations.uri_predicate(:has_model)
+        new_model = subject.object_relations.relationships[predicate]
+        expect(new_model).to eq ["info:fedora/afmodel:TuftsBase"]
       end
     end
   end

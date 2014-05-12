@@ -157,20 +157,19 @@ module MetadataXmlParser
     def get_record_attributes(node, record_class)
       pid = get_node_content(node, "./pid")
       result = pid.present? ? {:pid => pid} : {}
-      record_class.defined_attributes.reduce(result) do |result, attribute|
+      attributes = record_class.defined_attributes.reduce(result) do |result, attribute|
         attribute_name, definition = attribute
 
         path_info = get_attribute_path(record_class, attribute_name)
         namespaces = path_info[:namespaces]
         xpath = "." + path_info[:xpath]
 
-        #TODO add a test for stored_collection_id; are we going to have rels_ext attributes?
-
         # query the node for this attribute
         content = get_node_content(node, xpath, namespaces, record_class.multiple?(attribute_name))
 
         content.blank? ? result : result.merge(attribute_name => content)
       end
+      attributes.merge(get_rels_ext(node))
     end
 
     def get_node_content(node, xpath, namespaces={}, multiple=false)
@@ -200,6 +199,14 @@ module MetadataXmlParser
 
     def valid_record_types
       HydraEditor.models - ['TuftsTemplate']
+    end
+
+    def get_rels_ext(node)
+      rels_ext = node.xpath("./rel:*", {"rel" => "info:fedora/fedora-system:def/relations-external#"}).map do |element|
+        { 'relationship_name' => element.name.underscore.to_sym,
+          'relationship_value' => element.content }
+      end
+      { 'relationship_attributes' => rels_ext }
     end
   end
 end
