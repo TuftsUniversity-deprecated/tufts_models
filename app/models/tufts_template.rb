@@ -46,7 +46,7 @@ class TuftsTemplate < ActiveFedora::Base
   end
 
   def attributes_to_update
-    attrs = terms_for_editing.inject({}) do |attrs, attribute|
+    updates = terms_for_editing.inject({}) do |attrs, attribute|
       value_of_attr = self.send(attribute)
       unless attr_empty?(value_of_attr)
         attrs.merge!(attribute => value_of_attr)
@@ -54,11 +54,15 @@ class TuftsTemplate < ActiveFedora::Base
       attrs
     end
 
-    unless attr_empty?(stored_collection_id)
-      attrs.merge!(stored_collection_id: stored_collection_id)
+    rels_ext_attrs = relationship_attributes.map do |attr|
+      { 'relationship_name'  => attr.relationship_name,
+        'relationship_value' => attr.relationship_value }
+    end
+    unless rels_ext_attrs.blank?
+      updates.merge!(relationship_attributes: rels_ext_attrs)
     end
 
-    attrs
+    updates
   end
 
   def apply_attributes(*args)

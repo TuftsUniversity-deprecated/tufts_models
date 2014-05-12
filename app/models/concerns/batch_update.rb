@@ -4,14 +4,8 @@ module BatchUpdate
   def apply_attributes(attributes, user_id = nil, overwrite = false)
     self.working_user = User.where(id: user_id).first if user_id
 
-    # stored_collection_id is a special case because it's
-    # not a defined attribute in active-fedora; it's a
-    # derived attribute.
-    collection = attributes.delete(:stored_collection_id)
-    can_set_collection = overwrite || stored_collection_id.blank?
-    if collection && can_set_collection
-      self.stored_collection_id = collection
-    end
+    new_rels_ext = attributes.delete('relationship_attributes') || []
+    apply_rels_ext_attributes(new_rels_ext, overwrite)
 
     attrs_for_update = {}
     attributes.each do |key, value|
@@ -26,6 +20,26 @@ module BatchUpdate
       end
     end
     update_attributes(attrs_for_update)
+  end
+
+  def apply_rels_ext_attributes(new_rels_ext, overwrite = false)
+    existing_rels_ext = relationship_attributes.map do |builder|
+      { 'relationship_name'  => builder.relationship_name,
+        'relationship_value' => builder.relationship_value }
+    end
+
+    if overwrite
+      # Remove existing value from the list if there is
+      # a new value to replace it
+      new_keys = new_rels_ext.map{ |h| h['relationship_name'].to_sym }
+      existing_rels_ext.delete_if {|rel| new_keys.include?(rel['relationship_name']) }
+    end
+
+    rels_ext_attrs = existing_rels_ext + new_rels_ext
+
+    unless rels_ext_attrs.blank?
+      self.relationship_attributes = rels_ext_attrs
+    end
   end
 
 end

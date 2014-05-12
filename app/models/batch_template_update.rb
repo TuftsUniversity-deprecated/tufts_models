@@ -9,7 +9,7 @@ class BatchTemplateUpdate < Batch
 
   validates :template_id, presence: true
   validates :pids,        presence: true
-  validate :template_not_empty
+  validate  :template_not_empty
   validates :behavior, allow_blank: true,
         inclusion: { in: BatchTemplateUpdate.behavior_rules,
         message: "%{value} is not a valid template behavior" }

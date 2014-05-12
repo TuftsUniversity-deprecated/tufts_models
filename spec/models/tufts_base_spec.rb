@@ -20,6 +20,102 @@ describe TuftsBase do
     end
   end
 
+
+  describe 'getting and setting relationships' do
+    let(:pdf) { FactoryGirl.create(:tufts_pdf) }
+    let(:fake_pid) {
+      pid = 'fake:123'
+      ActiveFedora::Base.find(pid).destroy if ActiveFedora::Base.exists?(pid)
+      pid
+    }
+
+    it 'can set a relationship to an object that exists' do
+      new_value = [ { "relationship_name" => "has_annotation",
+                      "relationship_value" => pdf.pid } ]
+      subject.relationship_attributes = new_value
+      pids = subject.ids_for_outbound(:has_annotation)
+      expect(pids).to eq [pdf.pid]
+    end
+
+    it 'can set a relationship to an object that does not exist' do
+      new_value = [ { "relationship_name" => "has_annotation",
+                      "relationship_value" => fake_pid } ]
+      subject.relationship_attributes = new_value
+
+      pids = subject.ids_for_outbound(:has_annotation)
+      expect(pids).to eq [fake_pid]
+    end
+
+    it 'gracefully ignores empty values' do
+      missing_name = [ { "relationship_name" => "",
+                         "relationship_value" => fake_pid } ]
+      expect {
+        subject.relationship_attributes = missing_name
+      }.to_not raise_exception
+    end
+
+    it 'returns an empty array when there are no (editable) relationships' do
+      expect(subject.relationship_attributes).to eq []
+    end
+
+    context 'with relationships in rels-ext' do
+      let(:existing_uri)     { "info:fedora/#{pdf.pid}" }
+      let(:non_existing_uri) { "info:fedora/#{fake_pid}" }
+
+      before do
+        subject.title = 'title'
+        subject.displays = ['dl']
+        subject.add_relationship(:has_annotation, existing_uri)
+        subject.add_relationship(:has_subset, non_existing_uri)
+        subject.save!
+      end
+
+      it 'deletes old values and adds new values' do
+        pids = subject.ids_for_outbound(:has_annotation)
+        expect(pids).to eq [pdf.pid]
+
+        pid_123 = 'newpid:123'
+        new_values = [{ "relationship_name" => "has_annotation",
+                        "relationship_value" => pid_123 }]
+        subject.relationship_attributes = new_values
+
+        pids = subject.ids_for_outbound(:has_annotation)
+        expect(pids).to eq [pid_123]
+      end
+
+      it 'returns an array of relationship builders for the edit form' do
+        # A second annotation
+        another_pid = 'pid:876'
+        another_uri = "info:fedora/#{another_pid}"
+        subject.add_relationship(:has_annotation, another_uri)
+
+        builders = subject.relationship_attributes
+        expect(builders.length).to eq 3
+
+        annotation_1 = builders.select{ |b| b.relationship_name == :has_annotation && b.relationship_value == another_pid }
+        annotation_2 = builders.select{ |b| b.relationship_name == :has_annotation && b.relationship_value == pdf.pid }
+        subset = builders.select{ |b| b.relationship_name == :has_subset && b.relationship_value == fake_pid }
+
+        expect(annotation_1.length).to eq 1
+        expect(annotation_2.length).to eq 1
+        expect(subset.length).to eq 1
+      end
+
+      it "user shouldn't be able to edit has_model" do
+        expect(subject.rels_ext_edit_fields.include?(:has_model)).to be_false
+
+        new_values = [{ "relationship_name" => "has_model",
+                        "relationship_value" => fake_pid }]
+        subject.relationship_attributes = new_values
+
+        predicate = subject.object_relations.uri_predicate(:has_model)
+        new_model = subject.object_relations.relationships[predicate]
+        expect(new_model).to eq ["info:fedora/afmodel:TuftsBase"]
+      end
+    end
+  end
+
+
   describe 'OAI ID' do
 
     it "assigns an OAI ID to an object with a 'dl' display" do

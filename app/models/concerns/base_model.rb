@@ -98,6 +98,43 @@ module BaseModel
     self.rels_ext.content = rels_ext.to_rels_ext()
   end
 
+  def relationship_attributes
+    rels = []
+    rels_ext_edit_fields.each do |rel|
+      predicate = object_relations.uri_predicate(rel)
+      uris = object_relations.relationships[predicate]
+      unless uris.empty?
+        rel_pids = uris.map {|uri| uri.gsub("info:fedora/", "")}
+        rel_pids.each do |pid|
+          builder = RelationshipBuilder.new(rel, pid)
+          rels << builder
+        end
+      end
+    end
+    rels
+  end
+
+  # Set rels-ext according to what the user entered on the edit form
+  def relationship_attributes=(attrs)
+    # Clear out old relationships
+    rels_ext_edit_fields.each do |predicate_name|
+      pred = ActiveFedora::Predicates.find_graph_predicate(predicate_name)
+      clear_relationship(pred)
+    end
+
+    attrs = attrs.reject{|e| e['relationship_name'].blank? || e['relationship_value'].blank? }
+
+    # Only accept fields that users are allowed to edit
+    attrs = attrs.reject{|e| !rels_ext_edit_fields.include?(e['relationship_name'].to_sym) }
+
+    attrs.each do |attr|
+      predicate_name = attr['relationship_name'].to_sym
+      pred = ActiveFedora::Predicates.find_graph_predicate(predicate_name)
+      add_relationship(pred, 'info:fedora/' + attr['relationship_value'])
+    end
+    self.rels_ext.content = rels_ext.to_rels_ext()
+  end
+
   def audit(user, what)
     return unless user
     audit_log.who = user.user_key
@@ -123,6 +160,20 @@ module BaseModel
 
   def terms_for_display
     descMetadata_display_fields + admin_display_fields
+  end
+
+  def rels_ext_edit_fields
+    [:has_equivalent,
+     :is_annotation_of, :has_annotation,
+     :is_constituent_of, :has_constituent,
+     :is_dependent_of, :has_dependent,
+     :is_derivation_of, :has_derivation,
+     :is_description_of, :has_description,
+     :is_member_of, :has_member,
+     :is_member_of_collection, :has_collection_member,
+     :is_metadata_for, :has_metadata,
+     :is_part_of, :has_part,
+     :is_subset_of, :has_subset]
   end
 
   # The list of fields to edit from the DCA_META datastream
