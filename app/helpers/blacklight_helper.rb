@@ -33,4 +33,20 @@ module BlacklightHelper
     label + value
   end
 
+  def pretty_object_state(options)
+    state_field = options[:field]
+    object_state = options[:document][state_field]
+
+    case object_state
+    when 'A'
+      'Active'
+    when 'D'
+      'Deleted'
+    when 'I'
+      'Inactive'
+    else
+      object_state
+    end
+  end
+
 end
