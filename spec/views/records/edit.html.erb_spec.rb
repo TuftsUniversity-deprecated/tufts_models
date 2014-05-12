@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'records/edit.html.erb' do
 
   describe 'the page title' do
-    before { stub_template 'records/_form' => '' }
+    before { stub_template 'records/_form.html.erb' => '' }
 
     it "displays the object's title" do
       record = double(title: 'My Document', has_thumbnail?: false, id: 'pid:123', to_solr: {})
@@ -22,7 +22,7 @@ describe 'records/edit.html.erb' do
 
 
   describe 'Link to template index' do
-    before { stub_template 'records/_form' => '' }
+    before { stub_template 'records/_form.html.erb' => '' }
 
     it 'is displayed if the object is a template' do
       record = double(template_name: 'My Template', title: 'My Document', has_thumbnail?: false, id: 'pid:123', to_solr: {})
