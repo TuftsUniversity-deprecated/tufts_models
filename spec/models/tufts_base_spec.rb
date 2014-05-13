@@ -21,7 +21,7 @@ describe TuftsBase do
   end
 
 
-  describe 'getting and setting relationships' do
+  describe 'getting and setting relationships:' do
     let(:pdf) { FactoryGirl.create(:tufts_pdf) }
     let(:fake_pid) {
       pid = 'fake:123'
@@ -112,8 +112,29 @@ describe TuftsBase do
         new_model = subject.object_relations.relationships[predicate]
         expect(new_model).to eq ["info:fedora/afmodel:TuftsBase"]
       end
+    end  # 'with relationships in rels-ext'
+
+    describe 'validating relationships:' do
+      let(:bad_pid) { 'pid with spaces' }
+      let(:new_rels) {[ { "relationship_name" => "has_annotation",
+                          "relationship_value" => bad_pid } ]}
+      let(:attrs) { { title: 'Title', displays: ['dl'],
+                      relationship_attributes: new_rels } }
+      let(:record) { TuftsBase.new(attrs) }
+
+      it 'has errors for invalid relationships' do
+        expect(record.valid?).to be_false
+        expect(record.errors[:base].first).to eq "Invalid relationship: \"Has Annotation\" : \"#{bad_pid}\""
+      end
+
+      it 'keeps track of invalid relationships so they can be displayed on edit form' do
+        rel = record.relationship_attributes.first
+        expect(rel.relationship_name).to eq 'has_annotation'
+        expect(rel.relationship_value).to eq bad_pid
+        expect(record.relationship_attributes.length).to eq 1
+      end
     end
-  end
+  end  # 'getting and setting relationships'
 
 
   describe 'OAI ID' do

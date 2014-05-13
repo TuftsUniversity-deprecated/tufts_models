@@ -5,6 +5,8 @@ module BaseModel
     include Tufts::ModelMethods
     include Hydra::AccessControls::Permissions
 
+    validate :relationships_have_parseable_uris
+
     # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
     has_metadata "rightsMetadata", type: Hydra::Datastream::RightsMetadata
 
@@ -111,11 +113,20 @@ module BaseModel
         end
       end
     end
+    # Include invalid relationships for displaying errors on the edit form
+    rels = rels + @invalid_rels unless @invalid_rels.blank?
     rels
   end
 
   # Set rels-ext according to what the user entered on the edit form
   def relationship_attributes=(attrs)
+
+    # Don't try to set relationships that fail validation
+    validate_relationships(attrs)
+    @invalid_rels.each do |rel|
+      attrs = attrs.reject{|a| a['relationship_name'] == rel.relationship_name && a['relationship_value'] == rel.relationship_value }
+    end
+
     # Clear out old relationships
     rels_ext_edit_fields.each do |predicate_name|
       pred = ActiveFedora::Predicates.find_graph_predicate(predicate_name)
@@ -134,6 +145,43 @@ module BaseModel
     end
     self.rels_ext.content = rels_ext.to_rels_ext()
   end
+
+  # The way validation normally works, the value of an
+  # attribute is set first, and then it is validated.  But we
+  # have a case where we can't set the value first because
+  # setting the value raises an error.
+  # (When there is a PID that won't parse into a URI, calling
+  # relationship_attributes= raises URI::InvalidURIError)
+  # Later when validation is called, all errors are cleared
+  # at the beginning of validation, so the URI::InvalidURIError
+  # messages are lost.
+  #
+  # This is a kludge to keep track of those invalid inputs
+  # and their corresponding error messages so that they can
+  # be displayed to the user on the edit form.
+  #
+  def validate_relationships(attrs)
+    @invalid_rels = []
+    @invalid_rels_errors = []
+
+    attrs.each do |rel|
+      begin
+        URI.parse rel['relationship_value']
+      rescue URI::InvalidURIError
+        @invalid_rels << RelationshipBuilder.new(rel['relationship_name'], rel['relationship_value'])
+        @invalid_rels_errors << "Invalid relationship: \"#{rel['relationship_name'].titleize}\" : \"#{rel['relationship_value']}\""
+      end
+    end
+  end
+  protected :validate_relationships
+
+  def relationships_have_parseable_uris
+    @invalid_rels_errors ||= []
+    @invalid_rels_errors.each do |err|
+      errors.add(:base, err)
+    end
+  end
+  protected :relationships_have_parseable_uris
 
   def audit(user, what)
     return unless user
