@@ -116,7 +116,7 @@ describe TuftsBase do
 
     describe 'validating relationships:' do
       let(:bad_pid) { 'pid with spaces' }
-      let(:new_rels) {[ { "relationship_name" => "has_annotation",
+      let(:new_rels) {[ { "relationship_name" => :has_annotation,
                           "relationship_value" => bad_pid } ]}
       let(:attrs) { { title: 'Title', displays: ['dl'],
                       relationship_attributes: new_rels } }
@@ -129,7 +129,7 @@ describe TuftsBase do
 
       it 'keeps track of invalid relationships so they can be displayed on edit form' do
         rel = record.relationship_attributes.first
-        expect(rel.relationship_name).to eq 'has_annotation'
+        expect(rel.relationship_name).to eq :has_annotation
         expect(rel.relationship_value).to eq bad_pid
         expect(record.relationship_attributes.length).to eq 1
       end

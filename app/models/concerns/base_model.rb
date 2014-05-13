@@ -169,7 +169,7 @@ module BaseModel
         URI.parse rel['relationship_value']
       rescue URI::InvalidURIError
         @invalid_rels << RelationshipBuilder.new(rel['relationship_name'], rel['relationship_value'])
-        @invalid_rels_errors << "Invalid relationship: \"#{rel['relationship_name'].titleize}\" : \"#{rel['relationship_value']}\""
+        @invalid_rels_errors << "Invalid relationship: \"#{rel['relationship_name'].to_s.titleize}\" : \"#{rel['relationship_value']}\""
       end
     end
   end
