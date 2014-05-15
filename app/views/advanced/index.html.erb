@@ -3,5 +3,15 @@
   $(document).ready(function(){$("form.advanced input:first").focus();});
 </script>
 
-<h1 class="advanced">More Search Options</h1>
+<h1 class="advanced">Advanced Search</h1>
+<div id="sidebar" class="span3">
+  <% unless (search_context_str = render_search_to_s(advanced_search_context)).blank? %>
+    <div class="constraints">
+      <h4>Within search:</h4>
+      <%= search_context_str %>
+    </div>
+  <% end %>
+
+  <%= render 'search_sidebar' %>
+</div>
 <%= render 'advanced_search_form' %>

@@ -51,7 +51,9 @@ feature 'Advanced Search' do
     visit root_path
     click_link 'Advanced Search'
     within('#facets .blacklight-object_type_sim') do
-      expect(page).to have_content('Text (2)')
+      expect(page).to have_selector('li', count: 1)
+      expect(page).to have_selector('li .facet_select', text: "Text")
+      expect(page).to have_selector('li .count', text: 2)
       expect(page).to_not have_content('Template')
     end
   end
@@ -61,7 +63,9 @@ feature 'Advanced Search' do
     visit root_path
     click_link 'Advanced Search'
     within('#facets .blacklight-object_type_sim') do
-      expect(page).to have_content('Text (1)')
+      expect(page).to have_selector('li', count: 1)
+      expect(page).to have_selector('li .facet_select', text: "Text")
+      expect(page).to have_selector('li .count', text: 1)
     end
   end
 
