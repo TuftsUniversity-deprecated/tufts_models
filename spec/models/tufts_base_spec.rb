@@ -20,6 +20,63 @@ describe TuftsBase do
     end
   end
 
+  describe 'namespace' do
+    it 'correctly prefixes DC terms' do
+      dc_attributes = [:title, :creator, :source, :description,
+                       :date_created, :date_available, :date_issued,
+                       :identifier, :rights, :bibliographic_citation,
+                       :publisher, :type, :format, :extent, :temporal]
+      dc_attributes.each do |attrib|
+        dsid = subject.class.defined_attributes[attrib][:dsid]
+        namespace = subject.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
+        expect(namespace).to eq('dc'),
+         "wrong namespace for :#{attrib.to_s}\n  expected: 'dc'\n       got: '#{namespace}"
+      end
+    end
+
+    it 'correctly prefixes DCADESC terms' do
+      desc_attributes = [:persname, :corpname, :geogname, :genre, :subject, :funder]
+      desc_attributes.each do |attrib|
+        dsid = subject.class.defined_attributes[attrib][:dsid]
+        namespace = subject.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
+        expect(namespace).to eq('dcadesc'),
+                             "wrong namespace for :#{attrib.to_s}\n  expected: 'dcadesc'\n       got: '#{namespace}"
+      end
+    end
+
+    it 'correctly prefixes DCATECH terms' do
+      tech_attributes = [:resolution, :bitdepth, :colorspace, :filesize]
+      tech_attributes.each do |attrib|
+        dsid = subject.class.defined_attributes[attrib][:dsid]
+        namespace = subject.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
+        expect(namespace).to eq('dcatech'),
+                             "wrong namespace for :#{attrib.to_s}\n  expected: 'dcatech'\n       got: '#{namespace}"
+      end
+    end
+
+    it 'correctly prefixes DCAADMIN terms' do
+      admin_attributes = [:template_name, :steward, :retentionPeriod, :displays,
+                       :embargo, :status, :startDate, :expDate, :qrStatus,
+                       :rejectionReason, :note, :createdby, :published_at, :batch_id]
+      admin_attributes.each do |attrib|
+        dsid = subject.class.defined_attributes[attrib][:dsid]
+        namespace = subject.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
+        expect(namespace).to eq('local'),
+                             "wrong namespace for :#{attrib.to_s}\n  expected: 'local'\n       got: '#{namespace}"
+      end
+    end
+
+    it 'correctly prefixes DCMITYPE terms' do
+      dcmi_attributes = [:name, :comment]
+      dcmi_attributes.each do |attrib|
+        dsid = subject.class.defined_attributes[attrib][:dsid]
+        namespace = subject.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
+        expect(namespace).to eq('ac'),
+                             "wrong namespace for :#{attrib.to_s}\n  expected: 'ac'\n       got: '#{namespace}"
+      end
+    end
+  end
+
 
   describe 'getting and setting relationships:' do
     let(:pdf) { FactoryGirl.create(:tufts_pdf) }
