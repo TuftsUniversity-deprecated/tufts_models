@@ -184,10 +184,19 @@ describe Ability do
       end
     end
 
-
     describe "working on a self-deposit" do
       it { should_not be_able_to(:create, Contribution) }
     end
-  end
 
+    describe "viewing a public audio file" do
+      let(:audio) do
+        audio = TuftsAudio.new(title: 'foo', displays: ['dl'])
+        audio.read_groups = ['public']
+        audio.save!
+        audio
+      end
+
+      it { should be_able_to(:read, audio) }
+    end
+  end
 end

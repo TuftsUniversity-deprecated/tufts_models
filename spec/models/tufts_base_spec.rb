@@ -55,9 +55,10 @@ describe TuftsBase do
     end
 
     it 'correctly prefixes DCAADMIN terms' do
-      admin_attributes = [:template_name, :steward, :retentionPeriod, :displays,
+      admin_attributes = [:steward, :retentionPeriod, :displays,
                        :embargo, :status, :startDate, :expDate, :qrStatus,
-                       :rejectionReason, :note, :createdby, :published_at, :batch_id]
+                       :rejectionReason, :note, :createdby, :published_at, :edited_at,
+                       :creatordept, :batch_id]
       admin_attributes.each do |attrib|
         dsid = subject.class.defined_attributes[attrib][:dsid]
         namespace = subject.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
@@ -73,6 +74,19 @@ describe TuftsBase do
         namespace = subject.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
         expect(namespace).to eq('ac'),
                              "wrong namespace for :#{attrib.to_s}\n  expected: 'ac'\n       got: '#{namespace}"
+      end
+    end
+
+    it "has namespacesed attributes for all models" do
+      HydraEditor.models.each do |model_str|
+        model = model_str.constantize
+        model.defined_attributes.each do |attrib_str, attrib_info|
+          attrib = attrib_str.to_sym
+          dsid = attrib_info[:dsid]
+          namespace = model.new.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
+          expect(namespace).to_not be_blank,
+                                   "wrong namespace for #{model_str}.#{attrib.to_s}\n  expected: 'ac'\n       got: '#{namespace}"
+        end
       end
     end
   end
