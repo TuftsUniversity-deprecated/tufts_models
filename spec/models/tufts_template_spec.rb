@@ -3,8 +3,8 @@ require 'spec_helper'
 describe TuftsTemplate do
 
   it 'most metadata attributes are not required' do
-    subject.required?(:title).should be_false
-    subject.required?(:displays).should be_false
+    subject.required?(:title).should be_falsey
+    subject.required?(:displays).should be_falsey
   end
 
   it 'has a unique pid namespace' do
@@ -20,7 +20,7 @@ describe TuftsTemplate do
     end
 
     it 'is required' do
-      subject.required?(:template_name).should be_true
+      subject.required?(:template_name).should be_truthy
     end
   end
 
@@ -31,7 +31,7 @@ describe TuftsTemplate do
     end
 
     it 'is never published' do
-      subject.published?.should be_false
+      subject.published?.should be_falsey
     end
   end
 
@@ -44,17 +44,17 @@ describe TuftsTemplate do
 
       # This test assumes that :discover_users is not included
       # in terms_for_editing, but the other attributes are
-      template.terms_for_editing.include?(:title).should be_true
-      template.terms_for_editing.include?(:filesize).should be_true
-      template.terms_for_editing.include?(:discover_users).should be_false
+      template.terms_for_editing.include?(:title).should be_truthy
+      template.terms_for_editing.include?(:filesize).should be_truthy
+      template.terms_for_editing.include?(:discover_users).should be_falsey
 
       # Any attributes that aren't in terms_for_editing should
       # not be included in our result
       result = template.attributes_to_update
       result.class.should == Hash
-      result.include?(:title).should be_true
-      result.include?(:filesize).should be_true
-      result.include?(:discover_users).should be_false
+      result.include?(:title).should be_truthy
+      result.include?(:filesize).should be_truthy
+      result.include?(:discover_users).should be_falsey
     end
 
     it 'removes empty attributes from the list' do
@@ -66,12 +66,12 @@ describe TuftsTemplate do
                 description: ['a description'] }
       template = TuftsTemplate.new(attrs)
       result = template.attributes_to_update
-      result.include?(:title).should be_false
-      result.include?(:filesize).should be_false
-      result.include?(:toc).should be_false
-      result.include?(:genre).should be_false
-      result.include?(:relationship_attributes).should be_false
-      result.include?(:description).should be_true
+      result.include?(:title).should be_falsey
+      result.include?(:filesize).should be_falsey
+      result.include?(:toc).should be_falsey
+      result.include?(:genre).should be_falsey
+      result.include?(:relationship_attributes).should be_falsey
+      result.include?(:description).should be_truthy
     end
 
     it 'contains rels-ext attributes' do

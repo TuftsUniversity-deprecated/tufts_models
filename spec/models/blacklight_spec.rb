@@ -15,8 +15,8 @@ describe 'Version check for Blacklight' do
       #   * Any files in app/views/advanced may need updates
       #   * Update this test with the correct versions
 
-      expect(Blacklight::VERSION).to match(/^4\./)
-      expect(BlacklightAdvancedSearch::VERSION).to match(/^2\.2\./)
+      expect(Blacklight::VERSION).to match(/^5\./)
+      expect(BlacklightAdvancedSearch::VERSION).to match(/^5\.0\./)
     end
   end
 end

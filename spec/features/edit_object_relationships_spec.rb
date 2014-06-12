@@ -37,8 +37,8 @@ feature "Edit an object's rels-ext fields:" do
     part_predicate = reloaded_pdf.object_relations.uri_predicate(:has_part)
     has_part = reloaded_pdf.object_relations.relationships[part_predicate]
     expect(has_part.length).to eq 2
-    expect(has_part.include?(old_uri)).to be_true
-    expect(has_part.include?(new_uri)).to be_true
+    expect(has_part.include?(old_uri)).to be_truthy
+    expect(has_part.include?(new_uri)).to be_truthy
   end
 
   scenario 'change the type of an existing relationship' do

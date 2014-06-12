@@ -89,7 +89,7 @@ shared_examples 'batch run failure recovery' do |batch_class|
     it 'still assigns @batch' do
       post 'create', batch: attrs
       expect(assigns[:batch].pids).to eq attrs[:pids]
-      expect(assigns[:batch].new_record?).to be_true
+      expect(assigns[:batch].new_record?).to be_truthy
     end
   end
 end

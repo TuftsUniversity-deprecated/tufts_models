@@ -24,7 +24,7 @@ describe RecordsController do
       end
 
       it 'marks the record as reviewed' do
-        expect(@record.reload.reviewed?).to be_true
+        expect(@record.reload.reviewed?).to be_truthy
       end
 
       it 'sets the flash' do

@@ -9,7 +9,7 @@ describe BatchTemplateImport do
 
   it 'requires a template_id' do
     subject.template_id = nil
-    expect(subject.valid?).to be_false
+    expect(subject.valid?).to be_falsey
     expect(subject.errors[:template_id]).to eq ["can't be blank"]
   end
 
@@ -20,7 +20,7 @@ describe BatchTemplateImport do
 
   it 'requires a record type' do
     subject.record_type = nil
-    expect(subject.valid?).to be_false
+    expect(subject.valid?).to be_falsey
     expect(subject.errors[:record_type]).to eq ["can't be blank"]
   end
 
@@ -30,7 +30,7 @@ describe BatchTemplateImport do
 
   it 'is invalid if record type is invalid' do
     subject.record_type = 'TuftsTemplate'
-    expect(subject.valid?).to be_false
+    expect(subject.valid?).to be_falsey
     expect(subject.errors[:base]).to eq ["The template does not have the required attributes for the selected record type."]
   end
 
@@ -38,7 +38,7 @@ describe BatchTemplateImport do
     subject.record_type = 'TuftsPdf'
     template = TuftsTemplate.find(subject.template_id)
     template.update_attributes(title: nil)  # title is required on TuftsPdf
-    expect(subject.valid?).to be_false
+    expect(subject.valid?).to be_falsey
     expect(subject.errors[:base]).to eq ["The template does not have the required attributes for the selected record type."]
   end
 

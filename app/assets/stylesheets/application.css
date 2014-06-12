@@ -13,6 +13,7 @@
  *= require hydra-editor/hydra-editor
  *= require batch_edit
  *= require 'blacklight_advanced_search'
+ *= require typeaheadjs
  */
 
 .bar {

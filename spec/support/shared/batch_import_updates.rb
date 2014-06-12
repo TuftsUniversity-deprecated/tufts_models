@@ -15,7 +15,7 @@ shared_examples 'an import happy path' do
 
   it 'attaches the files to the records' do
     pdf = TuftsPdf.first.datastreams['Archival.pdf']
-    expect(pdf.has_content?).to be_true
+    expect(pdf.has_content?).to be_truthy
     expect(pdf.mimeType).to eq file1.content_type
   end
 

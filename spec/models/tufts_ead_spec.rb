@@ -16,7 +16,7 @@ describe TuftsEAD do
     let (:ability) {  Ability.new(nil) }
 
     it "should be visible to a not-signed-in user" do
-      ability.can?(:read, @ead.pid).should be_true
+      ability.can?(:read, @ead.pid).should be_truthy
     end
   end
 
@@ -26,7 +26,9 @@ describe TuftsEAD do
 
   describe "to_class_uri" do
     subject {TuftsEAD}
-    its(:to_class_uri) {should == 'info:fedora/cm:Text.EAD'}
+    it "has sets the class_uri" do
+      expect(subject.to_class_uri).to eq 'info:fedora/cm:Text.EAD'
+    end
   end
 
 end

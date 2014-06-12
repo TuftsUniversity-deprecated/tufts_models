@@ -27,9 +27,9 @@ describe DepositTypeExporter do
   it 'creates the export dir if it doesnt already exist' do
     dir = test_export_dir
     exporter = DepositTypeExporter.new(dir)
-    File.exist?(dir).should be_false
+    File.exist?(dir).should be_falsey
     exporter.create_export_dir
-    File.exist?(dir).should be_true
+    File.exist?(dir).should be_truthy
     FileUtils.rm_rf(dir, :secure => true)
   end
 

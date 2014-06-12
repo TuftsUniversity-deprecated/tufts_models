@@ -15,7 +15,7 @@ Tufts::Application.routes.draw do
 
   root :to => "catalog#index", as: :authenticated_root
 
-  Blacklight::Routes.new(self, {}).catalog
+  blacklight_for :catalog
   resources :catalog, :only => [:show, :update], :constraints => { :id => ALLOW_DOTS, :format => false }
   get 'advanced/facet' => 'advanced#facet', :as => 'facet_advanced_search'
 

@@ -6,14 +6,14 @@ describe BatchPurge do
 
   it 'requires a list of pids' do
     subject.pids = nil
-    expect(subject.valid?).to be_false
+    expect(subject.valid?).to be_falsey
     expect(subject.errors[:pids]).to eq ["can't be blank"]
   end
 
   it "only runs when it's valid, returns false if not valid" do
     invalid_batch = BatchPurge.new
-    expect(invalid_batch.valid?).to be_false
-    expect(invalid_batch.run).to be_false
+    expect(invalid_batch.valid?).to be_falsey
+    expect(invalid_batch.run).to be_falsey
   end
 
   it 'queues a purge job for each pid' do
@@ -29,7 +29,7 @@ describe BatchPurge do
     expect(Job::Purge).to receive(:create).with(user_id: batch.creator.id, batch_id: batch.id, record_id: obj2.id) { job2 }
 
     return_value = batch.run
-    expect(return_value).to be_true
+    expect(return_value).to be_truthy
 
     obj1.delete
     obj2.delete

@@ -222,7 +222,7 @@ describe BatchesController do
         it "renders new when there are form errors" do
           post_create(template_id: nil)
           expect(flash).to be_empty
-          assigns(:batch).errors[:template_id].include?("can't be blank").should be_true
+          assigns(:batch).errors[:template_id].include?("can't be blank").should be_truthy
           response.should render_template(:new)
         end
 

@@ -16,13 +16,15 @@ describe TuftsFacultyPublication do
     let (:ability) {  Ability.new(nil) }
 
     it "should be visible to a not-signed-in user" do
-      ability.can?(:read, @audio.pid).should be_true
+      ability.can?(:read, @audio.pid).should be_truthy
     end
   end
 
   describe "to_class_uri" do
     subject {TuftsFacultyPublication}
-    its(:to_class_uri) {should == 'info:fedora/cm:Text.FacPub'}
+    it "has sets the class_uri" do
+      expect(subject.to_class_uri).to eq 'info:fedora/cm:Text.FacPub'
+    end
   end
 
   it "should have an original_file_datastream" do

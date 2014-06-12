@@ -8,9 +8,9 @@ describe Reviewable do
   end
 
   it 'knows if the object has been marked as reviewed' do
-    expect(subject.reviewed?).to be_false
+    expect(subject.reviewed?).to be_falsey
     subject.qrStatus = Reviewable.batch_review_text
-    expect(subject.reviewed?).to be_true
+    expect(subject.reviewed?).to be_truthy
   end
 
   it 'marks an object as reviewed' do

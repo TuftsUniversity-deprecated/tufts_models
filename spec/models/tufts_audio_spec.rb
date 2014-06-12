@@ -16,20 +16,22 @@ describe TuftsAudio do
     let (:ability) {  Ability.new(nil) }
 
     it "should be visible to a not-signed-in user" do
-      ability.can?(:read, @audio.pid).should be_true
+      ability.can?(:read, @audio.pid).should be_truthy
     end
   end
 
   describe "terms_for_editing" do
-    its(:terms_for_editing) { should == [:identifier, :title, :alternative, :creator, :contributor, :description, :abstract, :toc, :publisher, :source, :date, :date_created, :date_copyrighted, :date_submitted, :date_accepted, :date_issued, :date_available, :date_modified, :language, :type, :format, :extent, :medium, :persname, :corpname, :geogname, :subject, :genre, :provenance, :rights, :access_rights, :rights_holder, :license, :replaces, :isReplacedBy, :hasFormat, :isFormatOf, :hasPart, :isPartOf, :accrualPolicy, :audience, :references, :spatial, :bibliographic_citation, :temporal, :funder, :resolution, :bitdepth, :colorspace, :filesize, :steward, :name, :comment, :retentionPeriod, :displays, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note, :createdby, :creatordept]}
+    it "has the correct values" do
+      expect(subject.terms_for_editing).to eq [:identifier, :title, :alternative, :creator, :contributor, :description, :abstract, :toc, :publisher, :source, :date, :date_created, :date_copyrighted, :date_submitted, :date_accepted, :date_issued, :date_available, :date_modified, :language, :type, :format, :extent, :medium, :persname, :corpname, :geogname, :subject, :genre, :provenance, :rights, :access_rights, :rights_holder, :license, :replaces, :isReplacedBy, :hasFormat, :isFormatOf, :hasPart, :isPartOf, :accrualPolicy, :audience, :references, :spatial, :bibliographic_citation, :temporal, :funder, :resolution, :bitdepth, :colorspace, :filesize, :steward, :name, :comment, :retentionPeriod, :displays, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note, :createdby, :creatordept]
+    end
   end
 
   describe "required terms" do
     it "should be required" do
-       subject.required?(:title).should be_true
-       # subject.required?(:creator).should be_true
-       # subject.required?(:description).should be_true
-       subject.required?(:source2).should be_false
+       subject.required?(:title).should be_truthy
+       # subject.required?(:creator).should be_truthy
+       # subject.required?(:description).should be_truthy
+       subject.required?(:source2).should be_falsey
     end
   end
 
@@ -108,7 +110,9 @@ describe TuftsAudio do
 
   describe "to_class_uri" do
     subject {TuftsAudio}
-    its(:to_class_uri) {should == 'info:fedora/cm:Audio'}
+    it "has sets the class_uri" do
+      expect(subject.to_class_uri).to eq 'info:fedora/cm:Audio'
+    end
   end
 
   describe "external_datastreams" do
@@ -163,7 +167,7 @@ describe TuftsAudio do
     describe "basic" do
       before { subject.create_derivatives }
       it "should create ACCESS_MP3" do
-        File.exists?(subject.local_path_for('ACCESS_MP3', 'mp3')).should be_true
+        File.exists?(subject.local_path_for('ACCESS_MP3', 'mp3')).should be_truthy
         subject.datastreams["ACCESS_MP3"].dsLocation.should == "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/access_mp3/MISS.ISS.IPPI.access.mp3"
         subject.datastreams["ACCESS_MP3"].mimeType.should == "audio/mpeg"
       end

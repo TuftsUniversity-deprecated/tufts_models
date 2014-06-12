@@ -111,18 +111,6 @@ describe MetadataXmlParser do
   end
 
   describe "::get_record_attributes" do
-    # We're patching ActiveFedora to store the dsid on ActiveFedora::Base#defined attributes.
-    # We need this to look up so we know how attributes are stored for each of the defined
-    # models. This is used in the xml import stuff in metadata_xml_parser.rb.
-    it "should patch ActiveFedora until we upgrade to version 7" do
-      # If this test is failing, you can:
-      # * remove the ActiveFedora::Attributes::ClassMethods.create_attribute_reader monkeypatch
-      # * remove the ActiveFedora::Attributes::ClassMethods.create_attribute_setter monkeypatch
-      # * update MetadataXmlParser to use .dsid instead of [:dsid], and
-      # * remove this test.
-      expect(ActiveFedora::VERSION.split('.').first).to be < 7.to_s
-    end
-
     it "merges in the pid if it exists" do
       attributes = MetadataXmlParser.get_record_attributes(build_node(pid: ['tufts:1']), TuftsPdf)
       expect(attributes[:pid]).to eq 'tufts:1'
@@ -135,7 +123,7 @@ describe MetadataXmlParser do
 
     it "only returns attributes that were found" do
       attributes = MetadataXmlParser.get_record_attributes(build_node('oxns:format' => []), TuftsPdf)
-      expect(attributes.has_key?('format')).to be_false
+      expect(attributes.has_key?('format')).to be_falsey
     end
 
     it "includes rels_ext attributes" do
@@ -178,7 +166,7 @@ describe MetadataXmlParser do
         attrs = FactoryGirl.attributes_for(:tufts_pdf)
         TuftsPdf.create(attrs.merge(pid: pid))
       end
-      expect(ActiveFedora::Base.exists?(pid)).to be_true
+      expect(ActiveFedora::Base.exists?(pid)).to be_truthy
 
       expect{
         MetadataXmlParser.get_pid(node_with_only_pid)

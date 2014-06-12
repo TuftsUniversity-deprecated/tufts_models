@@ -56,7 +56,7 @@ describe Job::Revert do
 
         # make sure it hard deletes
         Job::Revert.new('uuid', 'record_id' => pid).perform
-        expect(TuftsPdf.exists?(pid)).to be_false
+        expect(TuftsPdf.exists?(pid)).to be_falsey
       end
     end
 
@@ -85,7 +85,7 @@ describe Job::Revert do
 
         # make sure it does nothing
         Job::Revert.new('uuid', 'record_id' => pid).perform
-        expect(TuftsPdf.exists?(pid)).to be_false
+        expect(TuftsPdf.exists?(pid)).to be_falsey
       end
     end
 

@@ -16,13 +16,15 @@ describe TuftsGenericObject do
     let (:ability) {  Ability.new(nil) }
 
     it "should be visible to a not-signed-in user" do
-      ability.can?(:read, @generic_object.pid).should be_true
+      ability.can?(:read, @generic_object.pid).should be_truthy
     end
   end
 
   describe "to_class_uri" do
     subject {TuftsGenericObject}
-    its(:to_class_uri) {should == 'info:fedora/cm:Object.Generic'}
+    it "has sets the class_uri" do
+      expect(subject.to_class_uri).to eq 'info:fedora/cm:Object.Generic'
+    end
   end
 
   # it "should have an original_file_datastream" do

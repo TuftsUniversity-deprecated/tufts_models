@@ -15,13 +15,15 @@ describe TuftsAudioText do
     let (:ability) {  Ability.new(nil) }
 
     it "should be visible to a not-signed-in user" do
-      ability.can?(:read, @audio_text.pid).should be_true
+      ability.can?(:read, @audio_text.pid).should be_truthy
     end
   end
 
   describe "to_class_uri" do
     subject {TuftsAudioText}
-    its(:to_class_uri) {should == 'info:fedora/cm:Audio.OralHistory'}
+    it "has sets the class_uri" do
+      expect(subject.to_class_uri).to eq 'info:fedora/cm:Audio.OralHistory'
+    end
   end
 
   it "should have an original_file_datastreams" do
@@ -61,7 +63,7 @@ describe TuftsAudioText do
     describe "basic" do
       before { subject.create_derivatives }
       it "should create ACCESS_MP3" do
-        File.exists?(subject.local_path_for('ACCESS_MP3', 'mp3')).should be_true
+        File.exists?(subject.local_path_for('ACCESS_MP3', 'mp3')).should be_truthy
         subject.datastreams["ACCESS_MP3"].dsLocation.should == "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/access_mp3/MISS.ISS.IPPI.access.mp3"
         subject.datastreams["ACCESS_MP3"].mimeType.should == "audio/mpeg"
       end

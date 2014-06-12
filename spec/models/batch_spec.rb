@@ -18,7 +18,7 @@ describe Batch do
   end
 
   it "requires a creator" do
-    expect(subject.valid?).to be_false
+    expect(subject.valid?).to be_falsey
   end
 
   it "requires children to implement run" do

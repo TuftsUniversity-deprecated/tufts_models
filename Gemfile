@@ -4,7 +4,8 @@ gem 'rails', '4.0.5'
 
 gem 'sqlite3'
 
-gem 'hydra', '6.2.0'
+# gem 'hydra', '6.2.0'
+gem 'hydra', '7.0.0'
 gem 'hydra-role-management', '0.1.0'
 gem 'hydra-editor', '0.1.0'
 gem 'hydra-batch-edit', '1.1.1'
@@ -30,7 +31,9 @@ gem 'rmagick', '2.13.2', require: 'RMagick'
 gem 'resque-status'
 gem 'carrierwave', '~> 0.10.0'
 
-gem 'blacklight_advanced_search', '~> 2.2'
+# gem 'blacklight_advanced_search', '~> 2.2'
+gem 'blacklight_advanced_search', '~> 5.0.1'
+# gem 'blacklight-gallery'
 
 group :development do
   gem 'unicorn'

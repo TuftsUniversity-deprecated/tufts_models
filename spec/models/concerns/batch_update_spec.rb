@@ -194,20 +194,20 @@ describe BatchUpdate do
 
       it 'returns true if the record successfully saved' do
         result = @obj.apply_attributes(description: 'new desc')
-        result.should be_true
+        result.should be_truthy
       end
 
       it 'returns false if the record failed to save' do
         @obj.should_receive(:save).and_return(false)
         result = @obj.apply_attributes(description: 'new desc')
-        result.should be_false
+        result.should be_falsey
       end
 
       it 'adds an entry to the audit log' do
         user = FactoryGirl.create(:user)
         @obj.apply_attributes({description: 'new desc'}, user.id)
         @obj.reload
-        @obj.audit_log.who.include?(user.user_key).should be_true
+        @obj.audit_log.who.include?(user.user_key).should be_truthy
       end
     end
 

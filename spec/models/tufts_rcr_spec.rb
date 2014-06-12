@@ -16,7 +16,7 @@ describe TuftsRCR do
     let (:ability) {  Ability.new(nil) }
 
     it "should be visible to a not-signed-in user" do
-      ability.can?(:read, @rcr.pid).should be_true
+      ability.can?(:read, @rcr.pid).should be_truthy
     end
   end
 

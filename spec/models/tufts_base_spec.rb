@@ -7,16 +7,16 @@ describe TuftsBase do
   end
 
   it 'batch_id is not editable by users' do
-    subject.terms_for_editing.include?(:batch_id).should be_false
+    subject.terms_for_editing.include?(:batch_id).should be_falsey
   end
 
   describe 'required fields:' do
     it 'requires a title' do
-      subject.required?(:title).should be_true
+      subject.required?(:title).should be_truthy
     end
 
     it 'requires displays' do
-      subject.required?(:displays).should be_true
+      subject.required?(:displays).should be_truthy
     end
   end
 
@@ -27,7 +27,7 @@ describe TuftsBase do
                        :identifier, :rights, :bibliographic_citation,
                        :publisher, :type, :format, :extent, :temporal]
       dc_attributes.each do |attrib|
-        dsid = subject.class.defined_attributes[attrib][:dsid]
+        dsid = subject.class.defined_attributes[attrib].dsid
         namespace = subject.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
         expect(namespace).to eq('dc'),
          "wrong namespace for :#{attrib.to_s}\n  expected: 'dc'\n       got: '#{namespace}"
@@ -37,7 +37,7 @@ describe TuftsBase do
     it 'correctly prefixes DCADESC terms' do
       desc_attributes = [:persname, :corpname, :geogname, :genre, :subject, :funder]
       desc_attributes.each do |attrib|
-        dsid = subject.class.defined_attributes[attrib][:dsid]
+        dsid = subject.class.defined_attributes[attrib].dsid
         namespace = subject.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
         expect(namespace).to eq('dcadesc'),
                              "wrong namespace for :#{attrib.to_s}\n  expected: 'dcadesc'\n       got: '#{namespace}"
@@ -47,7 +47,7 @@ describe TuftsBase do
     it 'correctly prefixes DCATECH terms' do
       tech_attributes = [:resolution, :bitdepth, :colorspace, :filesize]
       tech_attributes.each do |attrib|
-        dsid = subject.class.defined_attributes[attrib][:dsid]
+        dsid = subject.class.defined_attributes[attrib].dsid
         namespace = subject.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
         expect(namespace).to eq('dcatech'),
                              "wrong namespace for :#{attrib.to_s}\n  expected: 'dcatech'\n       got: '#{namespace}"
@@ -60,7 +60,7 @@ describe TuftsBase do
                        :rejectionReason, :note, :createdby, :published_at, :edited_at,
                        :creatordept, :batch_id]
       admin_attributes.each do |attrib|
-        dsid = subject.class.defined_attributes[attrib][:dsid]
+        dsid = subject.class.defined_attributes[attrib].dsid
         namespace = subject.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
         expect(namespace).to eq('local'),
                              "wrong namespace for :#{attrib.to_s}\n  expected: 'local'\n       got: '#{namespace}"
@@ -70,7 +70,7 @@ describe TuftsBase do
     it 'correctly prefixes DCMITYPE terms' do
       dcmi_attributes = [:name, :comment]
       dcmi_attributes.each do |attrib|
-        dsid = subject.class.defined_attributes[attrib][:dsid]
+        dsid = subject.class.defined_attributes[attrib].dsid
         namespace = subject.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
         expect(namespace).to eq('ac'),
                              "wrong namespace for :#{attrib.to_s}\n  expected: 'ac'\n       got: '#{namespace}"
@@ -80,9 +80,12 @@ describe TuftsBase do
     it "has namespacesed attributes for all models" do
       HydraEditor.models.each do |model_str|
         model = model_str.constantize
-        model.defined_attributes.each do |attrib_str, attrib_info|
+        attribute_definitions = model.defined_attributes.select do |name, definition|
+          definition.dsid != "RELS-EXT"
+        end
+        attribute_definitions.each do |attrib_str, attrib_info|
           attrib = attrib_str.to_sym
-          dsid = attrib_info[:dsid]
+          dsid = attrib_info.dsid
           namespace = model.new.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
           expect(namespace).to_not be_blank,
                                    "wrong namespace for #{model_str}.#{attrib.to_s}\n  expected: 'ac'\n       got: '#{namespace}"
@@ -173,7 +176,7 @@ describe TuftsBase do
       end
 
       it "user shouldn't be able to edit has_model" do
-        expect(subject.rels_ext_edit_fields.include?(:has_model)).to be_false
+        expect(subject.rels_ext_edit_fields.include?(:has_model)).to be_falsey
 
         new_values = [{ "relationship_name" => "has_model",
                         "relationship_value" => fake_pid }]
@@ -194,7 +197,7 @@ describe TuftsBase do
       let(:record) { TuftsBase.new(attrs) }
 
       it 'has errors for invalid relationships' do
-        expect(record.valid?).to be_false
+        expect(record.valid?).to be_falsey
         expect(record.errors[:base].first).to eq "Invalid relationship: \"Has Annotation\" : \"#{bad_pid}\""
       end
 
@@ -293,18 +296,22 @@ describe TuftsBase do
       c = TuftsEAD.create(title: 'collection', displays: ['dl'])
       m = TuftsBase.new(title: 't', collection: c, displays: ['dl'])
       m.save! # savign to make it write rels_ext.content
-      expect(m.rels_ext.to_rels_ext).to match(/isMemberOf.+resource="info:fedora\/#{c.pid}"/)
+      expect(m.rels_ext.to_rels_ext).to match(/isMemberOf.+resource='info:fedora\/#{c.pid}'/)
       m
     end
+
     it "updates the rels_ext.content" do
       c = subject.collection
       subject.stored_collection_id = 'changed'
+      require 'byebug'
+      debugger
       subject.save! # saving to make sure no other hooks overwrite the rels_ext.content
+      debugger
       expect(subject.rels_ext.content).to match(/hasDescription.+resource="info:fedora\/changed"/)
       expect(subject.rels_ext.content).to match(/isMemberOf.+resource="info:fedora\/changed"/)
       expect(subject.rels_ext.content).to_not match(/isMemberOf.+resource="info:fedora\/#{c.pid}"/)
     end
-    
+
     it "deletes a relationship" do
       c = subject.collection
       subject.stored_collection_id = nil
@@ -355,14 +362,14 @@ describe TuftsBase do
     it 'adds an entry to the audit log' do
       @obj.publish!(user.id)
       @obj.reload
-      @obj.audit_log.who.include?(user.user_key).should be_true
+      @obj.audit_log.who.include?(user.user_key).should be_truthy
       @obj.audit_log.what.should == ['Pushed to production']
     end
 
     it 'publishes the record to the production fedora' do
       @obj.publish!
       @obj.reload
-      @obj.published?.should be_true
+      @obj.published?.should be_truthy
     end
 
     it 'only updates the published_at time when actually published' do
@@ -402,7 +409,7 @@ describe TuftsBase do
         TuftsBase.revert_to_production(@model.pid)
 
         @model.reload
-        expect(@model.published?).to be_true
+        expect(@model.published?).to be_truthy
         expect(@model.published_at).to eq published_at
         expect(@model.admin.published_at.first).to eq published_at
       end
@@ -428,7 +435,7 @@ describe TuftsBase do
         TuftsBase.revert_to_production(@pid)
       end
       it 'copys the record from production' do
-        expect(TuftsPdf.exists?(@pid)).to be_true
+        expect(TuftsPdf.exists?(@pid)).to be_truthy
         expect(TuftsPdf.find(@pid).title).to eq "prod title"
       end
     end
@@ -474,16 +481,16 @@ describe TuftsBase do
     it 'adds an entry if the content changes' do
       subject.stub(:content_will_update) { 'hello content' }
       subject.save!
-      subject.audit_log.who.include?(user.user_key).should be_true
-      subject.audit_log.what.include?('Content updated: hello content').should be_true
+      subject.audit_log.who.include?(user.user_key).should be_truthy
+      subject.audit_log.what.include?('Content updated: hello content').should be_truthy
     end
 
     it 'adds an entry if the metadata changes' do
       subject.admin.stub(:changed?) { true }
       subject.save!
-      subject.audit_log.who.include?(user.user_key).should be_true
+      subject.audit_log.who.include?(user.user_key).should be_truthy
       messages = subject.audit_log.what.select {|x| x.match(/Metadata updated/)}
-      messages.any?{|msg| msg.match(/DCA-ADMIN/)}.should be_true
+      messages.any?{|msg| msg.match(/DCA-ADMIN/)}.should be_truthy
     end
   end
 

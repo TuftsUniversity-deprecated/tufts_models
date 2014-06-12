@@ -148,8 +148,7 @@ module MetadataXmlParser
     end
 
     def get_attribute_path(record_class, attribute_name)
-      dsid = record_class.defined_attributes[attribute_name][:dsid]
-      ds_class = record_class.datastream_class_for_name(dsid)
+      ds_class = record_class.defined_attributes[attribute_name].datastream_class
       {namespaces: get_namespaces(ds_class),
         xpath: ds_class.new.public_send(attribute_name).xpath}
     end
@@ -157,7 +156,11 @@ module MetadataXmlParser
     def get_record_attributes(node, record_class)
       pid = get_node_content(node, "./pid")
       result = pid.present? ? {:pid => pid} : {}
-      attributes = record_class.defined_attributes.reduce(result) do |result, attribute|
+      # remove attributes that are relationships
+      attribute_definitions = record_class.defined_attributes.select do |name, definition|
+        definition.dsid != "RELS-EXT"
+      end
+      attributes = attribute_definitions.reduce(result) do |result, attribute|
         attribute_name, definition = attribute
 
         path_info = get_attribute_path(record_class, attribute_name)
