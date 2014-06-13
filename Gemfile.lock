@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/projectblacklight/blacklight-gallery.git
+  revision: 2f9f342518585a6e48d93a8e4ed5621afcf918a7
+  ref: 2f9f342518
+  specs:
+    blacklight-gallery (0.0.1)
+      blacklight (>= 5.0.0.pre4, < 6.0)
+      bootstrap-sass (~> 3.0)
+      rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -406,6 +416,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  blacklight-gallery!
   blacklight_advanced_search (~> 5.0.1)
   bootstrap-sass
   bootstrap_forms

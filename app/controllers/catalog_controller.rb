@@ -187,6 +187,11 @@ class CatalogController < ApplicationController
 
     # Add larger pagination options per Tufts request
     config.per_page = [10,20,50,100,500,1000]
+
+    # the method for generating thumbnails
+    config.index.thumbnail_method = :make_thumbnail
+
+    config.view[:slideshow] = false
   end
 
 protected
@@ -200,4 +205,9 @@ protected
   def filter_templates
     "NOT active_fedora_model_ssi:TuftsTemplate"
   end
+
+  def make_thumbnail(document, image_options={})
+    view_context.image_tag download_path(document.id, datastream_id: 'Thumbnail.png')
+  end
+  helper_method :make_thumbnail
 end 

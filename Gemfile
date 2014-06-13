@@ -33,7 +33,7 @@ gem 'carrierwave', '~> 0.10.0'
 
 # gem 'blacklight_advanced_search', '~> 2.2'
 gem 'blacklight_advanced_search', '~> 5.0.1'
-# gem 'blacklight-gallery'
+gem 'blacklight-gallery', git: 'https://github.com/projectblacklight/blacklight-gallery.git', ref: '2f9f342518'
 
 group :development do
   gem 'unicorn'

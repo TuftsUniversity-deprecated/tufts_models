@@ -4,7 +4,7 @@ class DownloadsController < ApplicationController
     true #current_user.admin? alternatively, allow if admin or owner/creator?
   end 
 
-  def send_content(asset)
+  def send_content
     send_file asset.local_path_for(params[:datastream_id]), content_options
   end    
 
