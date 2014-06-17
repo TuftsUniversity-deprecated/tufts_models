@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe QualifyingPaper do
 
-  it_behaves_like 'rels-ext collection and ead correspond to parent collection'
+  it_behaves_like 'rels-ext collection and ead are the same'
 
   describe "description" do
     before do

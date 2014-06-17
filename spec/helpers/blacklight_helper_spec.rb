@@ -23,12 +23,12 @@ describe BlacklightHelper do
   describe '#document_heading' do
     it 'for a template object, it displays the temlate_name' do
       doc = SolrDocument.new('template_name_tesim' => ['My Template'])
-      helper.document_heading(doc).should == ['My Template']
+      helper.document_heading(doc).should == 'My Template'
     end
 
     it 'for a non-template object, it falls back to normal blacklight behavior' do
       doc = SolrDocument.new('title_tesim' => ['My Title'])
-      helper.document_heading(doc).should == ['My Title']
+      helper.document_heading(doc).should == 'My Title'
     end
   end
 

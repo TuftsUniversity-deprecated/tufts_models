@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe HonorsThesis do
 
-  it_behaves_like 'rels-ext collection and ead correspond to parent collection'
+  it_behaves_like 'rels-ext collection and ead are the same'
 
   describe "validation" do
     describe "on department" do

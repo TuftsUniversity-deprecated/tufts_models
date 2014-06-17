@@ -92,22 +92,8 @@ module BaseModel
   end
 
   def stored_collection_id=(pid)
-    # require 'byebug'
-    # debugger
-    #WORKING HERE
-    #run this in debugger: rels_ext.class_eval "def content=(c)\ndebugger\ntrue\nend"
-    #run this in debugger: object_relations.class_eval "def dirty=(c)\ndebugger\n@dirty = c\nend"
-    #the breakpoint inside save! is where your content is being reset
-    #jcoyne says check this out: https://github.com/projecthydra/active_fedora/blob/master/lib/active_fedora/indexing.rb#L55
-    [:has_description, :is_member_of].each do |predicate_name|
-      predicate = object_relations.uri_predicate(predicate_name)
-      clear_relationship(predicate)
-      add_relationship(predicate, 'info:fedora/' + pid) if pid.present?
-    end
-    # self.rels_ext.content = rels_ext.to_rels_ext()
-    serialize_datastreams
-    # debugger
-    # true
+    self.collection_id = pid
+    self.ead_id = pid
   end
 
   def relationship_attributes

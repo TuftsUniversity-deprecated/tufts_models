@@ -1,11 +1,10 @@
 require 'spec_helper'
 
-shared_examples 'rels-ext collection and ead correspond to parent collection' do
+shared_examples 'rels-ext collection and ead are the same' do
 
-  it 'collection and ead correspond to source' do
+  it 'collection and ead are the same' do
     ead = find_or_create_ead(subject.tufts_pdf.stored_collection_id)
-    subject.tufts_pdf.ead.should == ead
-    subject.tufts_pdf.collection.should == ead
+    expect(subject.tufts_pdf.ead).to eq subject.tufts_pdf.collection
   end
 
 end

@@ -303,10 +303,7 @@ describe TuftsBase do
     it "updates the rels_ext.content" do
       c = subject.collection
       subject.stored_collection_id = 'changed'
-      require 'byebug'
-      debugger
       subject.save! # saving to make sure no other hooks overwrite the rels_ext.content
-      debugger
       expect(subject.rels_ext.content).to match(/hasDescription.+resource="info:fedora\/changed"/)
       expect(subject.rels_ext.content).to match(/isMemberOf.+resource="info:fedora\/changed"/)
       expect(subject.rels_ext.content).to_not match(/isMemberOf.+resource="info:fedora\/#{c.pid}"/)
@@ -317,6 +314,15 @@ describe TuftsBase do
       subject.stored_collection_id = nil
       subject.save! # saving to make sure no other hooks overwrite the rels_ext.content
       expect(subject.rels_ext.content).to_not match(/isMemberOf.+resource="info:fedora\/#{c.pid}"/)
+    end
+
+    it "doesn't remove existing relationships" do
+      subject.relationship_attributes = [
+        {"relationship_name"=>"has_equivalent", "relationship_value"=>"same"}
+      ]
+      subject.stored_collection_id = 'collection'
+      rel = subject.relationship_attributes.find{|r| r.relationship_name == :has_equivalent}
+      expect(rel.relationship_value).to eq "same"
     end
 
     it "lets you create a category after creating the relationship" do

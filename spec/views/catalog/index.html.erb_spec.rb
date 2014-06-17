@@ -18,7 +18,6 @@ describe 'catalog/index.html.erb' do
 
   describe 'checkboxes' do
     before do
-      view.stub render_document_partial: ''
       render
     end
     it 'has a box to select all documents' do

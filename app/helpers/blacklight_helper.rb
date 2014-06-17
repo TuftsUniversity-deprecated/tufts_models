@@ -19,7 +19,7 @@ module BlacklightHelper
   # config and display the template_name_tesim instead.
   def document_heading(document=nil)
     document ||= @document
-    label = document[:template_name_tesim]
+    label = document[:template_name_tesim].try(&:first)
     label ||= super
   end
 
@@ -37,6 +37,10 @@ module BlacklightHelper
     state_field = options[:field]
     object_state = options[:document][state_field]
     pretty_object_state(object_state)
+  end
+
+  def make_thumbnail(document, image_options={})
+    image_tag download_path(document.id, datastream_id: 'Thumbnail.png')
   end
 
   def pretty_object_state(state)

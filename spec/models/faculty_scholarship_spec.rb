@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe FacultyScholarship do
 
-  it_behaves_like 'rels-ext collection and ead correspond to parent collection'
+  it_behaves_like 'rels-ext collection and ead are the same'
 
   it "should record 'other_authors' as creators" do
     subject.creator = 'Dave'

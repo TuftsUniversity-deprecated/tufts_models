@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe DcaAdmin do
 
+  subject { DcaAdmin.new(nil, 'DCA-ADMIN') }
+
   it 'has template_name' do
     title = 'Title for a Template'
     subject.template_name = title
