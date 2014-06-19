@@ -1,28 +1,22 @@
 @import 'bootstrap';
-@import 'bootstrap-responsive';
-
 @import 'blacklight/blacklight';
 
-.navbar .brand {
+.navbar .navbar-brand {
   background: none;
-  width: 100%;
+  width: 216px;
   text-indent: 0;
-  padding-top: 0;
-  margin-left: 0;
-  margin-right: 10px;
+  padding: 0;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 0.7em;
 }
 
-#header-navbar-fixed-top .brand {
-  background: none;
-  width: 100%;
-}
-
-.nav-collapse {
-  padding-top: 5px;
+.navbar-collapse {
+  padding-top: 1em;
 }
 
 #searchbar {
-  padding-top: 10px;
+  padding-top: 0.5em;
 
   form {
     width: 450px;
@@ -33,4 +27,5 @@
 #search_link {
   width: 100%;
   text-align: center;
+  padding-bottom: 0.5em;
 }

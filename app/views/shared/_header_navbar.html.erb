@@ -3,17 +3,17 @@
   <div class="navbar-inner">
     <div class="container">
       <div class="row">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <a class="btn navbar-btn" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
 
-        <div class="span3">
-          <%= link_to image_tag('mira.png', :class => "brand", :alt => 'Home'), root_path %>
+        <div class="col-md-3">
+          <%= link_to image_tag('mira.png', :class => "navbar-brand", :alt => 'Home'), root_path %>
         </div>
 
-        <div class="span6 clearfix" id="searchbar">
+        <div class="col-md-6 clearfix" id="searchbar">
           <% unless controller_name.in?(['contribute','templates','records']) %>
             <%= render_search_bar %>
             <div id='search_link'>
@@ -22,7 +22,7 @@
           <% end %>
         </div>
 
-        <div class="span3 nav-collapse">
+        <div class="col-md-3 navbar-collapse">
           <%= render :partial => '/user_util_links' %>
         </div>
 
