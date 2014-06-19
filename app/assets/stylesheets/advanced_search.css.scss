@@ -2,12 +2,28 @@
 #advanced_submit {
   position: fixed;
   bottom: 0;
-  left: 250px;
+  left: 30%;
   border: 1px solid #d0d0d0;
   background-color: #e8e8e8;
   border-radius: 10px;
   margin-top: 0;
   margin-bottom: 1.5em;
+  z-index: 1000;
+}
+
+.advanced-search-actions {
+  margin-right: 2em;
+  margin-top: 0.75em;
+}
+
+.advanced-help {
+  padding-left: 1.5em;
+
+  li { padding: 0.4em 0; }
+}
+
+.limit-criteria-heading {
+  margin-top: 0;
 }
 
 .advanced_search_field {
@@ -30,4 +46,10 @@
 
 form.advanced {
   h4 { margin-bottom: 1em; }
+}
+
+.search_history .constraint {
+  padding: 0.25em;
+
+  .filterName { margin-right: 1em; }
 }

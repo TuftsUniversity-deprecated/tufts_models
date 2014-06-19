@@ -50,7 +50,7 @@ feature 'Advanced Search' do
     FactoryGirl.create(:tufts_template)
     visit root_path
     click_link 'Advanced Search'
-    within('#facets .blacklight-object_type_sim') do
+    within('#advanced_search_facets .blacklight-object_type_sim') do
       expect(page).to have_selector('li', count: 1)
       expect(page).to have_selector('li .facet_select', text: "Text")
       expect(page).to have_selector('li .facet-count', text: 2)
@@ -62,7 +62,7 @@ feature 'Advanced Search' do
     @history.purge!
     visit root_path
     click_link 'Advanced Search'
-    within('#facets .blacklight-object_type_sim') do
+    within('#advanced_search_facets .blacklight-object_type_sim') do
       expect(page).to have_selector('li', count: 1)
       expect(page).to have_selector('li .facet_select', text: "Text")
       expect(page).to have_selector('li .facet-count', text: 1)

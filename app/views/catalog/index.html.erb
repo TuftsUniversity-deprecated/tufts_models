@@ -1,12 +1,12 @@
 <% content_for(:head) do -%>
-    <%= render_opensearch_response_metadata %>
+  <%= render_opensearch_response_metadata %>
 <% end %>
 
-<div id="sidebar" class="span3">
+<div id="sidebar" class="col-md-3">
   <%= render 'search_sidebar' %>
 </div>
 
-<div id="content" class="span9">
+<div id="content" class="col-md-9">
 
     <% unless has_search_parameters? %>
       <%# if there are no input/search related params, display the "home" partial -%>
