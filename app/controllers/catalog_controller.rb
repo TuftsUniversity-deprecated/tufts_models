@@ -15,6 +15,8 @@ class CatalogController < ApplicationController
 
   def index
     redirect_to contributions_path unless current_user.admin?
+    @curated_collection_to_create = CuratedCollection.new
+    @curated_collections = CuratedCollection.all
     super
   end
 
@@ -29,6 +31,9 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = 'title_tesim'
     config.index.display_type_field = 'has_model_ssim'
+
+    # the method for generating thumbnails
+    config.index.thumbnail_method = :make_thumbnail
 
     # solr field configuration for document/show views
     config.show.title_field = 'title_tesim'

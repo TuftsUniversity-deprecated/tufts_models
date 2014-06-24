@@ -1,0 +1,6 @@
+<h1>CuratedCollections#create</h1>
+<%= bootstrap_form_for @curated_collection do |f| %>
+  <%= hidden_field_tag :return_url, params[:return_url] %>
+  <%= f.text_field :title %>
+  <%= f.submit %>
+<% end %>

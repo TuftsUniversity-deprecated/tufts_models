@@ -2,6 +2,10 @@ ALLOW_DOTS ||= /[a-zA-Z0-9_.:]+/
 
 Tufts::Application.routes.draw do
 
+  resources :curated_collections, only: [:create] do
+    patch :append_to, on: :member
+  end
+
   resources :batches, only: [:index, :create, :show, :edit, :update] do
     get :new_template_import, on: :collection
     get :new_xml_import, on: :collection

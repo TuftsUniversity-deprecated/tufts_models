@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require 'blacklight_advanced_search'
 //
 // Required by Blacklight

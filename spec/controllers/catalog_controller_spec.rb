@@ -51,6 +51,13 @@ describe CatalogController do
         expect(found).to include good.id
         expect(found).to_not include bad.id
       end
+
+      it 'shows curated collections' do
+        c = CuratedCollection.create(title: 'foo')
+        get :index
+        expect(assigns[:curated_collection_to_create]).to be_present
+        expect(assigns[:curated_collections]).to include(c)
+      end
     end
 
     it 'can view someone elses document' do

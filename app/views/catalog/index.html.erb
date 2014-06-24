@@ -4,6 +4,11 @@
 
 <div id="sidebar" class="span3">
   <%= render 'search_sidebar' %>
+
+  <%# only display the collection list if we've done a search %>
+  <% if has_search_parameters? %>
+    <%= render 'curated_collection_list' %>
+  <% end %>
 </div>
 
 <div id="content" class="span9">
