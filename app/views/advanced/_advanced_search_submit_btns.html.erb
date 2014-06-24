@@ -1,0 +1,12 @@
+<div id='advanced_submit', class="sort_submit_buttons well clearfix form-actions">
+  <div>
+    <%= label_tag(:sort, "Sort results by") %>
+    <%= select_tag(:sort, options_for_select(sort_fields, h(params[:sort])), class: 'input-medium form-control sort-select') %>
+    <%= hidden_field_tag(:search_field, blacklight_config.advanced_search[:url_key]) %>
+  </div>
+
+  <div class='advanced-search-actions'>
+    <%= link_to "Clear form", {:controller => "advanced", :action => "index"}, :class =>"reset btn" %>
+    <%= submit_tag 'Search', :class=>'btn btn-primary pull-right advanced-search-submit', :id=>'advanced_search' %>
+  </div>
+</div>
