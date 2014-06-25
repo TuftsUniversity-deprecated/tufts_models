@@ -9,4 +9,8 @@ class Audit < ActiveFedora::OmDatastream
   def self.xml_template
     Nokogiri::XML('<audit />')
   end
+
+  def prefix
+    "audit_log__"
+  end
 end
