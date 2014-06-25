@@ -26,6 +26,10 @@ class TuftsGenericMeta  < ActiveFedora::OmDatastream
     return builder.doc
   end
 
+  def prefix
+    ""
+  end
+
 end
 
 # Example: 

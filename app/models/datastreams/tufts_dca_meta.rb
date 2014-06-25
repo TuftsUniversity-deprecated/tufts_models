@@ -56,7 +56,7 @@ class TuftsDcaMeta < ActiveFedora::OmDatastream
   end
 
   def prefix
-    "dca_meta__"
+    ""
   end
 
 end

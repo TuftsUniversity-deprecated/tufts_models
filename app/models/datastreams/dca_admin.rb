@@ -31,7 +31,7 @@ class DcaAdmin < ActiveFedora::OmDatastream
   end
 
   def prefix
-    "dca_admin__"
+    ""
   end
 
 end
