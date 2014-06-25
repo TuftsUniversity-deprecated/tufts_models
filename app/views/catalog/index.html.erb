@@ -15,7 +15,11 @@
 
     <% unless has_search_parameters? %>
       <%# if there are no input/search related params, display the "home" partial -%>
-      <%= render 'home' %>
+      <% if Tufts::Application.mira? %>
+        <%= render 'home_text' %>
+      <% else %>
+        <%= render 'home_til' %>
+      <% end %>
     <% else %>
 
       <h2 class="hide-text top-content-title"><%= t('blacklight.search.search_results_header') %></h2>
@@ -24,23 +28,15 @@
 
       <%= render 'search_header' %>
 
-      <%= form_tag batches_path, method: :post do %>
-        <%= hidden_field_tag :batch_form_page, '1' %>
+      <% if Tufts::Application.mira? %>
+        <%= form_tag batches_path, method: :post do %>
+          <%= hidden_field_tag :batch_form_page, '1' %>
 
-        <h2 class="hide-text"><%= t('blacklight.search.search_results') %></h2>
-
-        <%- if @response.empty? %>
-          <%= render "zero_results" %>
-        <%- elsif render_grouped_response? %>
-          <%= render_grouped_document_index %>
-        <%- else %>
-          <%= render_document_index %>
-        <%- end %>
-
-        <%= render 'results_pagination' %>
-
+          <%= render 'results' %>
+        <% end %>
+      <% else %>
+          <%= render 'results' %>
       <% end %>
-
     <% end %>
 
 </div>
