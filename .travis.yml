@@ -1,14 +1,10 @@
 language: ruby
 rvm:
-  - "2.1.1"
+  - 2.1
 
 notifications:
   email:
     - justin@curationexperts.com
-
-script:
-  - bundle exec rake db:reset
-  - bundle exec rake
 
 before_script:
   - cp config/database.yml.sample config/database.yml
@@ -17,6 +13,13 @@ before_script:
   - cp config/redis.yml.sample config/redis.yml
   - cp config/devise.yml.sample config/devise.yml
   - cp config/initializers/secret_token.rb.sample config/initializers/secret_token.rb
+
+env:
+  matrix:
+    - "HYDRA_APP_NAME=TIL"
+    - "HYDRA_APP_NAME=MIRA"
+  global:
+    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 
 services:
   - redis-server
