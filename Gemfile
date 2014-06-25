@@ -6,7 +6,7 @@ gem 'sqlite3'
 
 # gem 'hydra', '6.2.0'
 gem 'hydra', '7.0.0'
-gem 'hydra-role-management', '0.1.0'
+gem 'hydra-role-management', git: 'https://github.com/projecthydra/hydra-role-management.git', ref: '24a62eaabaa4c7f40fc57a6bf8a2de5a0be876af'
 gem 'hydra-editor', '0.1.0'
 gem 'hydra-batch-edit', '1.1.1'
 gem 'qa', '0.0.3'
@@ -26,7 +26,7 @@ gem 'jquery-rails'
 gem "jquery-fileupload-rails"
 
 gem "devise"
-gem 'bootstrap_forms'
+gem 'bootstrap_form'
 gem 'rmagick', '2.13.2', require: 'RMagick'
 gem 'resque-status'
 gem 'carrierwave', '~> 0.10.0'
