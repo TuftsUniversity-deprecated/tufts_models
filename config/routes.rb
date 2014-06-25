@@ -2,8 +2,10 @@ ALLOW_DOTS ||= /[a-zA-Z0-9_.:]+/
 
 Tufts::Application.routes.draw do
 
-  resources :curated_collections, only: [:create] do
-    patch :append_to, on: :member
+  if Tufts::Application.til?
+    resources :curated_collections, only: [:create] do
+      patch :append_to, on: :member
+    end
   end
 
   resources :batches, only: [:index, :create, :show, :edit, :update] do
@@ -14,16 +16,16 @@ Tufts::Application.routes.draw do
   resources :templates, only: [:index]
 
   unauthenticated do
-    root :to => 'contribute#redirect'
+    root to: 'contribute#redirect'
   end
 
-  root :to => "catalog#index", as: :authenticated_root
+  root to: "catalog#index", as: :authenticated_root
 
   blacklight_for :catalog
-  resources :catalog, :only => [:show, :update], :constraints => { :id => ALLOW_DOTS, :format => false }
+  resources :catalog, only: [:show, :update], constraints: { id: ALLOW_DOTS, format: false }
   get 'advanced/facet' => 'advanced#facet', :as => 'facet_advanced_search'
 
-  resources :unpublished, :only => [:index] do
+  resources :unpublished, only: [:index] do
     member do
       get 'facet'
     end

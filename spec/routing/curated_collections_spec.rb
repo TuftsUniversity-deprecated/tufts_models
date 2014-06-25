@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'CuratedCollection routes: ' do
+describe 'CuratedCollection routes:', if: Tufts::Application.til? do
   it 'routes to create' do
     expect(post: 'curated_collections').to route_to(
       controller: 'curated_collections',

@@ -31,6 +31,21 @@ module Tufts
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    #
+
+    MIRA = 'MIRA'.freeze
+    TIL = 'TIL'.freeze
+    config.application_mode = ENV['HYDRA_APP_NAME']
+    raise "The environment variable HYDRA_APP_NAME was not specified. It must be set to '#{MIRA}' or '#{TIL}'" unless config.application_mode
+    raise "The environment variable HYDRA_APP_NAME was not valid. It must be set to '#{MIRA}' or '#{TIL}'" unless [MIRA, TIL].include? config.application_mode
+
+    def self.mira?
+      config.application_mode == MIRA
+    end
+
+    def self.til?
+      config.application_mode == TIL
+    end
   end
 end
 

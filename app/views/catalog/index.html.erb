@@ -6,7 +6,7 @@
   <%= render 'search_sidebar' %>
 
   <%# only display the collection list if we've done a search %>
-  <% if has_search_parameters? %>
+  <% if Tufts::Application.til? && has_search_parameters? %>
     <%= render 'curated_collection_list' %>
   <% end %>
 </div>
