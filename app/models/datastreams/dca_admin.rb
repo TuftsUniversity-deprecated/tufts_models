@@ -30,4 +30,8 @@ class DcaAdmin < ActiveFedora::OmDatastream
     Nokogiri::XML('<admin xmlns:local="http://nils.lib.tufts.edu/dcaadmin/" xmlns:ac="http://purl.org/dc/dcmitype/"/>')
   end
 
+  def prefix
+    "dca_admin__"
+  end
+
 end

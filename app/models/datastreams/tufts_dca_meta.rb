@@ -54,4 +54,9 @@ class TuftsDcaMeta < ActiveFedora::OmDatastream
 
     builder.doc
   end
+
+  def prefix
+    "dca_meta__"
+  end
+
 end

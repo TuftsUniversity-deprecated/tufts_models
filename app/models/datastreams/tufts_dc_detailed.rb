@@ -86,4 +86,8 @@ class TuftsDcDetailed < ActiveFedora::OmDatastream
     end
     builder.doc
   end
+
+  def prefix
+    "dc_detail_meta__"
+  end
 end
