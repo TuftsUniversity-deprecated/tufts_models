@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ContributeController do
+describe ContributeController, if: Tufts::Application.mira? do
 
   before do
     TuftsPdf.destroy_all

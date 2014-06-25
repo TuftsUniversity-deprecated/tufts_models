@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Admin user purges document' do
+feature 'Admin user purges document', if: Tufts::Application.mira? do
   before do
     TuftsAudio.where(title: "Very unique title").destroy_all
     @audio = TuftsAudio.new(title: 'Very unique title', description: 'eh?', creator: 'Fred', displays: ['dl'])

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RecordsController do
+describe RecordsController, if: Tufts::Application.mira? do
 
   describe "an admin" do
     before do

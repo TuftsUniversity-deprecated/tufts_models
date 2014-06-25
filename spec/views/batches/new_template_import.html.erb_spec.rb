@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "batches/new_template_import.html.erb" do
+describe "batches/new_template_import.html.erb", if: Tufts::Application.mira? do
   before do
     @templates = [
       FactoryGirl.create(:tufts_template),

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'deposit_types/new.html.erb' do
+describe 'deposit_types/new.html.erb', if: Tufts::Application.mira? do
   before :each do
     assign :deposit_type, DepositType.new
     render

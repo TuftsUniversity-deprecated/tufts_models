@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'records/edit.html.erb' do
+describe 'records/edit.html.erb', if: Tufts::Application.mira? do
 
   describe 'the page title' do
     before { stub_template 'records/_form.html.erb' => '' }

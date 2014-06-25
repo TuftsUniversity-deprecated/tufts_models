@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "batches/show.html.erb" do
+describe "batches/show.html.erb", if: Tufts::Application.mira? do
 
   describe 'a batch with no pids' do
     subject { FactoryGirl.create(:batch_template_import, pids: nil) }

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "contribute/new.html.erb" do
+describe "contribute/new.html.erb", if: Tufts::Application.mira? do
 
   context 'with valid deposit_type' do
     let(:deposit_type) { FactoryGirl.create(:deposit_type, :deposit_view => 'generic_deposit') }

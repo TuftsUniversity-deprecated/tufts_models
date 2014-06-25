@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe GenericsController do
+describe GenericsController, if: Tufts::Application.mira? do
   describe "an admin" do
     before do
       @user = FactoryGirl.create(:admin)

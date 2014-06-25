@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'View unpublished documents' do
+feature 'View unpublished documents', if: Tufts::Application.mira? do
   before do
     TuftsAudio.where(title: "Very unique title").destroy_all
     @production = TuftsAudio.new(title: 'Very unique title', description: 'eh?', creator: 'Fred', displays: ['dl'])
@@ -41,7 +41,7 @@ feature 'View unpublished documents' do
   end
 end
 
-feature "Finding self-deposited documents using facets" do
+feature "Finding self-deposited documents using facets", if: Tufts::Application.mira? do
   before do
     ActiveFedora::Base.delete_all
     @self_deposit = FactoryGirl.create(:self_deposit_pdf)

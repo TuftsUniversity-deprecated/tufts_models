@@ -14,9 +14,12 @@ class CatalogController < ApplicationController
   CatalogController.solr_search_params_logic += [:exclude_unwanted_models]
 
   def index
-    redirect_to contributions_path unless current_user.admin?
-    @curated_collection_to_create = CuratedCollection.new
-    @curated_collections = CuratedCollection.all
+    if Tufts::Application.mira?
+      redirect_to contributions_path unless current_user.admin?
+    elsif Tufts::Application.til?
+      @curated_collection_to_create = CuratedCollection.new
+      @curated_collections = CuratedCollection.all
+    end
     super
   end
 

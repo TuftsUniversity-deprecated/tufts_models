@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Contribute' do
+describe 'Contribute', if: Tufts::Application.mira? do
 
   it 'should be default path for unauthenticated users' do
     #visit destroy_user_session_path

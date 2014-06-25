@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "batches/index.html.erb" do
+describe "batches/index.html.erb", if: Tufts::Application.mira? do
   let(:batches) do
     [FactoryGirl.create(:batch_template_update, job_ids: [1, 2]),
       FactoryGirl.create(:batch_template_import, job_ids: nil, pids: nil)]

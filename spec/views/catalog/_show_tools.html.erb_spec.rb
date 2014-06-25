@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'catalog/_show_tools.html.erb' do
+describe 'catalog/_show_tools.html.erb', if: Tufts::Application.mira? do
   before do
     view.stub(:can?) { true }
   end

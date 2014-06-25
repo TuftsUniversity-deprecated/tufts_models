@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Admin user creates document' do
+feature 'Admin user creates document', if: Tufts::Application.mira? do
   before do
     sign_in :admin
     begin

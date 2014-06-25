@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe BatchesController do
+describe BatchesController, if: Tufts::Application.mira? do
   let(:batch_template_update) { FactoryGirl.create(:batch_template_update,
                                                    pids: records.map(&:id)) }
   let(:records) { [FactoryGirl.create(:tufts_pdf)] }

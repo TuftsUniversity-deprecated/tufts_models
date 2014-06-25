@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature "Edit an object's rels-ext fields:" do
+feature "Edit an object's rels-ext fields:", if: Tufts::Application.mira? do
 
   let(:old_pid) { 'old:1' }
   let(:new_pid) { 'new:1' }

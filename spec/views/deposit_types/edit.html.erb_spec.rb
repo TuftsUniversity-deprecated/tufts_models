@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'deposit_types/edit.html.erb' do
+describe 'deposit_types/edit.html.erb', if: Tufts::Application.mira? do
   before :each do
     @dt = FactoryGirl.create(:deposit_type)
     assign :deposit_type, @dt

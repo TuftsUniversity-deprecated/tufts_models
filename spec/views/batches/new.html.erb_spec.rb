@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "batches/new.html.erb" do
+describe "batches/new.html.erb", if: Tufts::Application.mira? do
   describe 'apply_template' do
     before do
       @templates = [

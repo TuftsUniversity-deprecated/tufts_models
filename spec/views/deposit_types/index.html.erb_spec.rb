@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'deposit_types/index.html.erb' do
+describe 'deposit_types/index.html.erb', if: Tufts::Application.mira? do
   before :all do
     deposit_type_options = ['Option #1', 'Another Option','The last option']
     deposit_type_options.each do |name|

@@ -2,9 +2,6 @@ ALLOW_DOTS ||= /[a-zA-Z0-9_.:]+/
 
 Tufts::Application.routes.draw do
 
-
-  resources :templates, only: [:index]
-
   blacklight_for :catalog
   resources :catalog, only: [:show, :update], constraints: { id: ALLOW_DOTS, format: false }
   get 'advanced/facet' => 'advanced#facet', as: 'facet_advanced_search'
@@ -14,6 +11,9 @@ Tufts::Application.routes.draw do
   resources :downloads, only: [:show], constraints: { id: ALLOW_DOTS }
 
   if Tufts::Application.mira?
+
+
+    resources :templates, only: [:index]
     unauthenticated do
       root to: 'contribute#redirect'
     end

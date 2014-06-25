@@ -9,7 +9,7 @@ describe CatalogController do
   context 'a non-admin user' do
     before { sign_in @user }
 
-    it 'denied access to catalog' do
+    it 'denied access to catalog', if: Tufts::Application.mira? do
       get :index
       response.should redirect_to(contributions_path)
     end

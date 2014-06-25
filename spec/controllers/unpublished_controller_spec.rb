@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe UnpublishedController do
+describe UnpublishedController, if: Tufts::Application.mira? do
   before do
     sign_in FactoryGirl.create(:admin)
   end

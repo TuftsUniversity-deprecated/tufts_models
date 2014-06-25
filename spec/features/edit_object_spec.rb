@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Admin user edits document' do
+feature 'Admin user edits document', if: Tufts::Application.mira? do
   before do
     @audio = TuftsAudio.new(title: 'Test title', description: 'eh?', creator: 'Fred', displays: ['dl'])
     @audio.save!

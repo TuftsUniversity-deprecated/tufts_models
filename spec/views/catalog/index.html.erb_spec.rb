@@ -35,7 +35,7 @@ describe 'catalog/index.html.erb' do
       allow(view).to receive(:has_search_parameters?) { true }
     end
 
-    describe 'checkboxes' do
+    describe 'checkboxes', if: Tufts::Application.mira? do
       before do
         render
       end
@@ -47,7 +47,7 @@ describe 'catalog/index.html.erb' do
       end
     end
 
-    describe 'batch operations' do
+    describe 'batch operations', if: Tufts::Application.mira? do
       it 'submits to batch#create' do
         render
         expect(rendered).to have_selector("form[method=post][action='#{batches_path}']")

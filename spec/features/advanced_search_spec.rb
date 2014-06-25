@@ -46,7 +46,7 @@ feature 'Advanced Search' do
     page.should_not have_link('Space Detectives', href: catalog_path(@fiction))
   end
 
-  scenario "templates don't appear in facets" do
+  scenario "templates don't appear in facets", if: Tufts::Application.mira? do
     FactoryGirl.create(:tufts_template)
     visit root_path
     click_link 'Advanced Search'
@@ -58,7 +58,7 @@ feature 'Advanced Search' do
     end
   end
 
-  scenario "purged objects don't appear in facets" do
+  scenario "purged objects don't appear in facets", if: Tufts::Application.mira? do
     @history.purge!
     visit root_path
     click_link 'Advanced Search'
