@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "routes" do
+describe "routes", if: Tufts::Application.mira? do
   it "should have routes without periods" do
     expect(:put => "/records/tufts:001.102.201/attachments/ARCHIVAL_WAV").to route_to(
       :action=>"update",

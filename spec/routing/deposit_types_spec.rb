@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Routes for deposit type: ' do
+describe 'Routes for deposit type:', if: Tufts::Application.mira? do
 
   it 'has an export route' do
     expect( get: 'deposit_types/export' ).to(
