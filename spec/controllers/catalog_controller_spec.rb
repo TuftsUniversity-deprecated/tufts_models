@@ -52,7 +52,7 @@ describe CatalogController do
         expect(found).to_not include bad.id
       end
 
-      it 'shows curated collections' do
+      it 'shows curated collections', if: Tufts::Application.til? do
         c = CuratedCollection.create(title: 'foo')
         get :index
         expect(assigns[:curated_collection_to_create]).to be_present
