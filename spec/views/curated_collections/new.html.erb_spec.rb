@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'curated_collections/new.html.erb' do
+describe 'curated_collections/new.html.erb', if: Tufts::Application.til? do
   it 'shows a form for creating new collections' do
     @curated_collection = CuratedCollection.new
     render

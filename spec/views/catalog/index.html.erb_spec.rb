@@ -98,6 +98,9 @@ describe 'catalog/index.html.erb' do
         src = download_path(@document_list.first.id, datastream_id: 'Thumbnail.png')
         expect(rendered).to have_selector("#documents.gallery .document .thumbnail img[src='#{src}']")
       end
+    end
+
+    describe "showing collections", if: Tufts::Application.til? do
 
       it 'shows a form for creating new collections' do
         render

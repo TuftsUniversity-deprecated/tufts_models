@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CuratedCollectionsController do
+describe CuratedCollectionsController, if: Tufts::Application.til? do
 
   describe "for a not-signed in user" do
     describe "create" do
