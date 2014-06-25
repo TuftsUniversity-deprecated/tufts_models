@@ -12,7 +12,7 @@ gem 'hydra-batch-edit', '1.1.1'
 gem 'qa', '0.0.3'
 gem 'sanitize', '2.0.6'
 
-gem 'disable_assets_logger', :group => :development
+gem 'disable_assets_logger', group: :development
 
 gem 'sass-rails',   '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -35,16 +35,18 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'blacklight_advanced_search', '~> 5.0.1'
 gem 'blacklight-gallery', git: 'https://github.com/projectblacklight/blacklight-gallery.git', ref: '2f9f342518'
 
-group :development do
-  gem 'unicorn'
-  gem 'jettywrapper'
-end
-
 group :development, :test do
+  gem 'jettywrapper'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'launchy'
   gem 'factory_girl_rails'
+end
+
+gem 'unicorn', group: :development
+
+group :debug do
+  gem 'unicorn'
+  gem 'launchy'
   gem 'byebug', require: false
 end
 
