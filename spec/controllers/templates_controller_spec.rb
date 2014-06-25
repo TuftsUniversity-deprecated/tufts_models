@@ -32,9 +32,6 @@ describe TemplatesController do
         get :index
         expect(assigns[:document_list].count).to eq 2
       end
-
     end
-
   end
-
 end

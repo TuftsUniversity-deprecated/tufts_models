@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Job::Purge do
+describe Job::Purge, if: Tufts::Application.til? do
 
   it 'uses the "purge" queue' do
     expect(Job::Purge.queue).to eq :purge
