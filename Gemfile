@@ -45,7 +45,6 @@ end
 gem 'unicorn', group: :development
 
 group :debug do
-  gem 'unicorn'
   gem 'launchy'
   gem 'byebug', require: false
 end
