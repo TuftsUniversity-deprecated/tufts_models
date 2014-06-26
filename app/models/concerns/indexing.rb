@@ -1,14 +1,17 @@
 # COPIED From https://github.com/mkorcy/tdl_hydra_head/blob/master/lib/tufts/model_methods.rb
 require 'chronic'
 
-# MISCNOTES:
-# There will be no facet for RCR. There will be no way to reach RCR via browse.
-# 3. There will be a facet for "collection guides", namely EAD, namely the landing page view we discussed on Friday.
+module Indexing
+  extend ActiveSupport::Concern
 
-module Tufts
-  module ModelMethods
-    include Hydra::ModelMethods
+  def to_solr(solr_doc=Hash.new)
+    super.tap do |solr_doc|
+      create_facets solr_doc
+      index_sort_fields solr_doc
+    end
+  end
 
+  private
     def index_sort_fields(solr_doc)
       #CREATOR SORT
       Solrizer.insert_field(solr_doc, 'author', creator.first, :sortable) unless creator.empty?
@@ -17,6 +20,9 @@ module Tufts
       Solrizer.insert_field(solr_doc, 'title', title, :sortable) if title
     end
 
+    # MISCNOTES:
+    # There will be no facet for RCR. There will be no way to reach RCR via browse.
+    # 3. There will be a facet for "collection guides", namely EAD, namely the landing page view we discussed on Friday.
     def create_facets(solr_doc)
       index_names_info(solr_doc)
       index_subject_info(solr_doc)
@@ -28,7 +34,6 @@ module Tufts
       index_deposit_method(solr_doc)
     end
 
-  private
 
   def index_deposit_method(solr_doc)
     case createdby
@@ -331,6 +336,5 @@ module Tufts
         Solrizer.insert_field(solr_doc, 'object_type', 'Text', :facetable) 
       end
     end
-  end
-end
 
+end

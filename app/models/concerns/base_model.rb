@@ -2,8 +2,9 @@ module BaseModel
   extend ActiveSupport::Concern
 
   included do
-    include Tufts::ModelMethods
+    include Hydra::ModelMethods
     include Hydra::AccessControls::Permissions
+    include Indexing
 
     validate :relationships_have_parseable_uris
 
@@ -299,13 +300,6 @@ module BaseModel
 
   def production_fedora_connection
     @prod_repo ||= Rubydora.connect(ActiveFedora.data_production_credentials)
-  end
-
-  def to_solr(solr_doc=Hash.new, opts={})
-    solr_doc = super
-    create_facets solr_doc
-    index_sort_fields solr_doc
-    solr_doc
   end
 
   # override this method if you want to restrict the accepted formats to a particular mime-type

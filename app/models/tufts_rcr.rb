@@ -5,11 +5,4 @@ class TuftsRCR < TuftsBase
   has_metadata :name => "FILE-META", :type => TuftsFileMeta
 
   has_metadata :name => "RCR-CONTENT", :type => TuftsRcrMeta
-
-  def to_solr(solr_doc=Hash.new, opts={})
-    super
-    index_sort_fields solr_doc
-    return solr_doc
-  end
-
 end

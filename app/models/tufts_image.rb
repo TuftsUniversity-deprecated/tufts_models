@@ -9,27 +9,35 @@ class TuftsImage < TuftsBase
     'Basic.jpg'
   end
 
-  def to_solr(solr_doc=Hash.new, opts={})
-    #prefilter perseus and art history objects
-    if ['perseus','aah'].any? { |word| pid.include?(word) }
-      return solr_doc
+  def to_solr(solr_doc=Hash.new)
+    #prefilter perseus, art history objects, year book pages and election images
+    if perseus? || art_history? || year_book_page? || election_image?
+      solr_doc
+    else
+      super
     end
-
-    #also filter year book pages and election images
-    if ['tufts:UP150','tufts:MS115.001'].any? { |word| pid.starts_with?(word) }
-          return solr_doc
-    end
-
-    solr_doc = super
-    index_sort_fields solr_doc
-    return solr_doc
   end
-
 
   def create_derivatives
     create_advanced
     create_basic
     create_thumbnail
+  end
+
+  def perseus?
+    pid.include? 'perseus'
+  end
+
+  def art_history?
+    pid.include? 'aah'
+  end
+
+  def year_book_page?
+    pid.starts_with? 'tufts:UP150'
+  end
+
+  def election_image?
+    pid.starts_with? 'tufts:MS115.001'
   end
 
   # Advanced Datastream
