@@ -2,14 +2,18 @@ class CollectionMetadata < ActiveFedora::NtriplesRDFDatastream
 
   property :member_list, predicate: RDF::DC.relation, class_name: 'ActiveFedora::Rdf::List'
 
-  def members
+  def members(force_reload = false)
+    reset if force_reload
     @target ||= CollectionProxy.new(member_ids)
   end
 
-  def members=(objects)
-    pids = objects.map(&:pid)
-    self.member_ids = pids
+  def reset
     @target = nil
+  end
+
+  def members=(objects)
+    reset
+    self.member_ids = objects.map(&:pid)
   end
 
   def member_ids

@@ -38,7 +38,7 @@ describe CuratedCollection do
         expect(subject.members).to eq [img1, img2]
         subject.member_ids << img3.pid
         subject.save!
-        expect(subject.members).to eq [img1, img2, img3]
+        expect(subject.members(true)).to eq [img1, img2, img3]
       end
     end
   end
