@@ -13,6 +13,8 @@ class Ability
       can [:create, :read, :update, :destroy, :export], DepositType
       can [:index, :new_template_import, :new_xml_import, :create, :show, :edit, :update], Batch
     end
+
+    can :download, ActiveFedora::Datastream
   end
 
   # Read any document deposited by any user

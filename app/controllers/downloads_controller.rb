@@ -1,9 +1,5 @@
 class DownloadsController < ApplicationController
   include Hydra::Controller::DownloadBehavior
-  def can_download?
-    true #current_user.admin? alternatively, allow if admin or owner/creator?
-  end 
-
   def send_content
     send_file asset.local_path_for(params[:datastream_id]), content_options
   end    
