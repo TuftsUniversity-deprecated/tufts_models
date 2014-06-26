@@ -3,6 +3,7 @@ class CatalogController < ApplicationController
 
   include Blacklight::Catalog
   include Hydra::Controller::ControllerBehavior
+  include BlacklightAdvancedSearch::Controller
 
   # Apply the hydra access controls
   before_filter :enforce_show_permissions, :only => :show

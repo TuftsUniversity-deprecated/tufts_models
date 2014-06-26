@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/projectblacklight/blacklight-gallery.git
+  remote: git://github.com/projectblacklight/blacklight-gallery.git
   revision: 2f9f342518585a6e48d93a8e4ed5621afcf918a7
   ref: 2f9f342518
   specs:
@@ -7,6 +7,15 @@ GIT
       blacklight (>= 5.0.0.pre4, < 6.0)
       bootstrap-sass (~> 3.0)
       rails
+
+GIT
+  remote: git://github.com/projectblacklight/blacklight_advanced_search.git
+  revision: 6b68e93ae80f0e0d4bbfcf3ed92db1dacc7ce66b
+  branch: generate_overrides
+  specs:
+    blacklight_advanced_search (5.1.0)
+      blacklight (>= 5.2, < 6.0)
+      parslet
 
 GEM
   remote: https://rubygems.org/
@@ -57,9 +66,6 @@ GEM
       nokogiri (~> 1.6)
       rails (>= 3.2.6, < 5)
       rsolr (~> 1.0.6)
-    blacklight_advanced_search (5.0.1)
-      blacklight (>= 5.1, < 6.0)
-      parslet
     blankslate (2.1.2.4)
     block_helpers (0.3.3)
       activesupport (>= 2.0)
@@ -419,7 +425,7 @@ PLATFORMS
 
 DEPENDENCIES
   blacklight-gallery!
-  blacklight_advanced_search (~> 5.0.1)
+  blacklight_advanced_search!
   bootstrap-sass
   bootstrap_form
   byebug

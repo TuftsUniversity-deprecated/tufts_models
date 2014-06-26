@@ -31,9 +31,8 @@ gem 'rmagick', '2.13.2', require: 'RMagick'
 gem 'resque-status'
 gem 'carrierwave', '~> 0.10.0'
 
-# gem 'blacklight_advanced_search', '~> 2.2'
-gem 'blacklight_advanced_search', '~> 5.0.1'
-gem 'blacklight-gallery', git: 'https://github.com/projectblacklight/blacklight-gallery.git', ref: '2f9f342518'
+gem 'blacklight_advanced_search', github: 'projectblacklight/blacklight_advanced_search', branch: 'generate_overrides'
+gem 'blacklight-gallery', github: 'projectblacklight/blacklight-gallery', ref: '2f9f342518'
 
 group :development, :test do
   gem 'jettywrapper'
