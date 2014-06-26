@@ -34,6 +34,10 @@ class SolrDocument
     self['active_fedora_model_ssi'] == 'TuftsImage'
   end
 
+  def collection?
+    self['active_fedora_model_ssi'] == 'CuratedCollection'
+  end
+
   def preview_fedora_path
     Settings.preview_fedora_url + "/objects/#{id}" 
   end
@@ -44,6 +48,15 @@ class SolrDocument
       Settings.preview_dl_url + "/catalog/#{id}" 
     else
       return nil
+    end
+  end
+
+  def to_model
+    if collection?
+      m = ActiveFedora::Base.load_instance_from_solr(id, self)
+      m.class == ActiveFedora::Base ? self : m
+    else
+      self
     end
   end
 

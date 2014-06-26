@@ -1,4 +1,5 @@
 class CuratedCollection < ActiveFedora::Base
+  include Hydra::ModelMethods
   include Hydra::AccessControls::Permissions
   include WithValidDisplays
 

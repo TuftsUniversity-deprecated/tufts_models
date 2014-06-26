@@ -1,0 +1,11 @@
+<h1><%=@curated_collection.title %></h1>
+<% if @curated_collection.members.size == 0 %>
+  <h2>This collection does not have any members</h2>
+<% else %>
+  <h2>Members:</h2>
+  <ol>
+  <% @curated_collection.members.each do |member| %>
+    <li><%= link_to member.title, catalog_path(member.id) %></li>
+  <% end %>
+  </ol>
+<% end %>

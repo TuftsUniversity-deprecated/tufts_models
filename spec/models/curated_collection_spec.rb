@@ -48,4 +48,11 @@ describe CuratedCollection do
       expect(subject.read_groups).to eq ['public']
     end
   end
+
+  describe "apply_depositor_metadata" do
+    it "should set the depositor" do
+      subject.apply_depositor_metadata('jcoyne')
+      expect(subject.edit_users).to eq ['jcoyne']
+    end
+  end
 end

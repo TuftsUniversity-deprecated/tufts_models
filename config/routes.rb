@@ -48,7 +48,7 @@ Tufts::Application.routes.draw do
     end
   elsif Tufts::Application.til?
     root to: "catalog#index"
-    resources :curated_collections, only: [:create] do
+    resources :curated_collections, only: [:create, :show] do
       patch :append_to, on: :member
     end
   end

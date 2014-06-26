@@ -34,13 +34,24 @@ describe CuratedCollectionsController, if: Tufts::Application.til? do
       end
     end
 
-    describe "PATCH 'create'" do
-      it "returns http success" do
-        collection = CuratedCollection.create(title: 'foo')
-        patch 'append_to', id: collection.id
-        expect(response).to be_successful
-        pending "need to implement :member_ids on CuratedCollection"
-        expect(collection.reload.member_ids).to include('new:member')
+    context "on an existing collection" do
+      let(:collection) { FactoryGirl.create(:curated_collection, user: user) }
+
+      describe "GET 'show'" do
+        it "returns http success" do
+          get :show, id: collection.id
+          expect(response).to be_successful
+          expect(assigns[:curated_collection]).to eq collection
+        end
+      end
+
+      describe "PATCH 'append_to'" do
+        it "returns http success" do
+          patch 'append_to', id: collection.id
+          expect(response).to be_successful
+          pending "need to implement :member_ids on CuratedCollection"
+          expect(collection.reload.member_ids).to include('new:member')
+        end
       end
     end
   end

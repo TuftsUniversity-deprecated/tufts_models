@@ -55,5 +55,7 @@ class CollectionProxy
     ids.map { |pid| ActiveFedora::Base.find(pid.to_s) }
   end
 
+  delegate :each, :size, to: :to_ary
+
 end
 
