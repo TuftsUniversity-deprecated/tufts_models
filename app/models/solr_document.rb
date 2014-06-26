@@ -30,6 +30,10 @@ class SolrDocument
     self['active_fedora_model_ssi'] == 'TuftsTemplate'
   end
 
+  def image?
+    self['active_fedora_model_ssi'] == 'TuftsImage'
+  end
+
   def preview_fedora_path
     Settings.preview_fedora_url + "/objects/#{id}" 
   end

@@ -93,6 +93,7 @@ class CatalogController < ApplicationController
     config.add_show_field solr_name('description', :stored_searchable), :label => 'Description'
     config.add_show_field solr_name('identifier', :stored_searchable), :label => 'Identifier'
     config.add_show_field solr_name('dateCreated', :stored_searchable), :label => 'Date Created'
+    config.add_show_field solr_name('date_created', :stored_searchable), :label => 'Date Created'
     config.add_show_field solr_name('dateAvailable', :stored_searchable), :label => 'Date Available'
     config.add_show_field solr_name('dateIssued', :stored_searchable), :label => 'Date Issued'
     config.add_show_field solr_name('rights', :stored_searchable), :label => 'Rights'
