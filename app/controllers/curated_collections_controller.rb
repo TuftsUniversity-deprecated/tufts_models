@@ -1,5 +1,4 @@
 class CuratedCollectionsController < ApplicationController
-  # before_filter :load_object, only: [:append_to]
   load_and_authorize_resource only: [:show, :append_to]
 
   def create
@@ -19,9 +18,4 @@ class CuratedCollectionsController < ApplicationController
     render json: {status: "Need to add pid #{params[:pid]} to #{@curated_collection.title} collection (#{@curated_collection.pid})"}
   end
 
-  private
-
-  def load_object
-    @curated_collection = CuratedCollection.find(params[:id])
-  end
 end
