@@ -22,6 +22,11 @@ class CollectionMetadata < ActiveFedora::NtriplesRDFDatastream
     end
   end
 
+  def serialize!
+    member_ids.resource.persist! #https://github.com/projecthydra/active_fedora/issues/444
+    super
+  end
+
 end
 
 
