@@ -110,4 +110,10 @@ class RecordsController < ApplicationController
     end
   end
 
+  # Override method from hydra-editor to include rels-ext fields
+  def set_attributes
+    rels_ext_fields = { relationship_attributes: params[ActiveModel::Naming.singular(resource)]['relationship_attributes'] }
+    resource.attributes = collect_form_attributes.merge(rels_ext_fields)
+  end
+
 end

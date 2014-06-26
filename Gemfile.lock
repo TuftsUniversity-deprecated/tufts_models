@@ -11,7 +11,7 @@ GIT
 GIT
   remote: https://github.com/projecthydra/hydra-role-management.git
   revision: 24a62eaabaa4c7f40fc57a6bf8a2de5a0be876af
-  ref: 24a62eaabaa4c7f40fc57a6bf8a2de5a0be876af
+  ref: 24a62eaabaa4c7f40fc57a6bf8a2de5a0be
   specs:
     hydra-role-management (0.1.0)
       blacklight
@@ -76,7 +76,6 @@ GEM
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     bootstrap_form (2.1.1)
-    bootstrap_forms (4.0.1)
     builder (3.1.4)
     byebug (3.1.2)
       columnize (~> 0.8)
@@ -168,9 +167,11 @@ GEM
       hydra-access-controls (= 7.0.2)
       jettywrapper (>= 1.4.1)
       rails (>= 3.2.3, < 5)
-    hydra-editor (0.1.0)
+    hydra-editor (0.3.0)
       active-fedora (>= 6.3.0)
-      bootstrap_forms
+      bootstrap_form (~> 2.1.1)
+      cancancan
+      deprecation
       rails (>= 3.2.13, < 5.0)
     hydra-head (7.0.2)
       hydra-access-controls (= 7.0.2)
@@ -437,7 +438,7 @@ DEPENDENCIES
   factory_girl_rails
   hydra (= 7.0.0)
   hydra-batch-edit (= 1.1.1)
-  hydra-editor (= 0.1.0)
+  hydra-editor (= 0.3.0)
   hydra-role-management!
   jettywrapper
   jquery-fileupload-rails
