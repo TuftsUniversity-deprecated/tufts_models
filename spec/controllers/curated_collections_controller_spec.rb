@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe CuratedCollectionsController, if: Tufts::Application.til? do
 
+  let(:image) { FactoryGirl.create(:image) }
+
   describe "for a not-signed in user" do
     describe "create" do
       it "redirects to sign in" do
@@ -47,10 +49,9 @@ describe CuratedCollectionsController, if: Tufts::Application.til? do
 
       describe "PATCH 'append_to'" do
         it "returns http success" do
-          patch 'append_to', id: collection.id
+          patch 'append_to', id: collection.id, pid: image.pid
           expect(response).to be_successful
-          pending "need to implement :member_ids on CuratedCollection"
-          expect(collection.reload.member_ids).to include('new:member')
+          expect(collection.reload.members).to eq [image]
         end
       end
     end

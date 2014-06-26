@@ -15,7 +15,10 @@ class CuratedCollectionsController < ApplicationController
   end
 
   def append_to
-    render json: {status: "Need to add pid #{params[:pid]} to #{@curated_collection.title} collection (#{@curated_collection.pid})"}
+    record = ActiveFedora::Base.find(params[:pid])
+    @curated_collection.members << record
+    status = @curated_collection.save ? 'success' : 'error'
+    render json: { status: status }
   end
 
 end
