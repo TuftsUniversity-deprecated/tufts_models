@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Advanced Search' do
+feature 'Advanced Search', if: Tufts::Application.mira? do
 
   before do
     ActiveFedora::Base.delete_all

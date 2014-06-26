@@ -43,7 +43,7 @@ describe CatalogController do
         response.should render_template(:index)
       end
 
-      it "handles advanced searches with a 'format'" do
+      it "handles advanced searches with a 'format'", if: Tufts::Application.mira? do
         good = FactoryGirl.create(:tufts_pdf, format: 'some format')
         bad  = FactoryGirl.create(:tufts_pdf, format: 'other format')
         get :index, search_field: :advanced, format_attr: 'some format'

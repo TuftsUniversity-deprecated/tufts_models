@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'View catalog index' do
+feature 'View catalog index', if: Tufts::Application.mira? do
   before do
     ActiveFedora::Base.delete_all
     sign_in :admin
