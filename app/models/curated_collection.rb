@@ -1,4 +1,5 @@
 class CuratedCollection < ActiveFedora::Base
+  include Hydra::AccessControls::Permissions
   include WithValidDisplays
 
   validates :title, presence: true

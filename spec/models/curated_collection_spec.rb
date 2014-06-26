@@ -41,4 +41,11 @@ describe CuratedCollection do
       expect(subject.save).to be true
     end
   end
+
+  describe "groups" do
+    it "should have read_groups" do
+      subject.read_groups = ['public']
+      expect(subject.read_groups).to eq ['public']
+    end
+  end
 end
