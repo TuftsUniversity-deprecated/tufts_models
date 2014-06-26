@@ -6,7 +6,7 @@ gem 'sqlite3'
 
 # gem 'hydra', '6.2.0'
 gem 'hydra', '7.0.0'
-gem 'hydra-role-management', git: 'https://github.com/projecthydra/hydra-role-management.git', ref: '24a62eaabaa4c7f40fc57a6bf8a2de5a0be'
+gem 'hydra-role-management', '0.2.0'
 gem 'hydra-editor', '0.3.0'
 gem 'hydra-batch-edit', '1.1.1'
 gem 'qa', '0.0.3'

@@ -8,16 +8,6 @@ GIT
       bootstrap-sass (~> 3.0)
       rails
 
-GIT
-  remote: https://github.com/projecthydra/hydra-role-management.git
-  revision: 24a62eaabaa4c7f40fc57a6bf8a2de5a0be876af
-  ref: 24a62eaabaa4c7f40fc57a6bf8a2de5a0be
-  specs:
-    hydra-role-management (0.1.0)
-      blacklight
-      bootstrap_form
-      cancancan
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -177,6 +167,10 @@ GEM
       hydra-access-controls (= 7.0.2)
       hydra-core (= 7.0.2)
       rails (>= 3.2.6)
+    hydra-role-management (0.2.0)
+      blacklight
+      bootstrap_form
+      cancancan
     i18n (0.6.9)
     jettywrapper (1.7.0)
       activesupport (>= 3.0.0)
@@ -439,7 +433,7 @@ DEPENDENCIES
   hydra (= 7.0.0)
   hydra-batch-edit (= 1.1.1)
   hydra-editor (= 0.3.0)
-  hydra-role-management!
+  hydra-role-management (= 0.2.0)
   jettywrapper
   jquery-fileupload-rails
   jquery-rails
