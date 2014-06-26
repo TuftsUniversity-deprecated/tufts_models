@@ -18,16 +18,27 @@ describe CuratedCollection do
     context "when it's not empty" do
       let(:img1) { FactoryGirl.create('tufts_image') }
       let(:img2) { FactoryGirl.create('tufts_image') }
+      let(:img3) { FactoryGirl.create('tufts_image') }
+
       before do
         subject.members << img1
         subject.members << img2
       end
+
       it "lists the members" do
         expect(subject.members).to eq [img1, img2]
       end
 
       it "lists the members_ids" do
         expect(subject.member_ids).to eq [img1.id, img2.id]
+      end
+
+      it "adding members persists when saved" do
+        subject.save!
+        expect(subject.members).to eq [img1, img2]
+        subject.member_ids << img3.pid
+        subject.save!
+        expect(subject.members).to eq [img1, img2, img3]
       end
     end
   end
