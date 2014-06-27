@@ -13,47 +13,45 @@
 
   <li class="nav-header"><%= t('blacklight.tools.title') %></li>
 
-  <% if Tufts::Application.mira? %>
-    <% if can? :create,  ActiveFedora::Base %>
-      <li>
-        <%= link_to "Create a new object", hydra_editor.new_record_path()%>
-      </li>
-    <% end %>
-
+  <% if can? :create,  ActiveFedora::Base %>
     <li>
-      <%= link_to "Edit Metadata", hydra_editor.edit_record_path(@document) %>
-    </li>
-
-    <%= li_manage_datastreams_link(@document) %>
-
-    <%= li_review_link(@document) %>
-
-    <% if @document.publishable? %>
-      <li>
-        <%= link_to "Publish", publish_record_path(@document), method: :post %>
-      </li>
-    <% else %>
-      <li class="disabled">
-        <%= link_to "Publish", '#' %>
-      </li>
-    <% end %>
-
-    <li>
-      <%= link_to "View in Fedora", @document.preview_fedora_path%>
-    </li>
-
-    <% if  @document.preview_dl_path.present? %>
-      <li>
-        <%= link_to "Preview in DL", @document.preview_dl_path%>
-      </li>
-    <% else %>
-      <li class="disabled">
-        <%= link_to "Preview in DL", '#' %>
-      </li>
-    <% end %>
-
-    <li>
-      <%= link_to "Purge", record_path(@document), method: :delete, data: {confirm: "WARNING: this will permanently delete this object from all environments! Are you sure you want to proceed?"} %>
+      <%= link_to "Create a new object", hydra_editor.new_record_path()%>
     </li>
   <% end %>
+
+  <li>
+    <%= link_to "Edit Metadata", hydra_editor.edit_record_path(@document) %>
+  </li>
+
+  <%= li_manage_datastreams_link(@document) %>
+
+  <%= li_review_link(@document) %>
+
+  <% if @document.publishable? %>
+    <li>
+      <%= link_to "Publish", publish_record_path(@document), method: :post %>
+    </li>
+  <% else %>
+    <li class="disabled">
+      <%= link_to "Publish", '#' %>
+    </li>
+  <% end %>
+
+  <li>
+    <%= link_to "View in Fedora", @document.preview_fedora_path%>
+  </li>
+
+  <% if  @document.preview_dl_path.present? %>
+    <li>
+      <%= link_to "Preview in DL", @document.preview_dl_path%>
+    </li>
+  <% else %>
+    <li class="disabled">
+      <%= link_to "Preview in DL", '#' %>
+    </li>
+  <% end %>
+
+  <li>
+    <%= link_to "Purge", record_path(@document), method: :delete, data: {confirm: "WARNING: this will permanently delete this object from all environments! Are you sure you want to proceed?"} %>
+  </li>
 </ul>
