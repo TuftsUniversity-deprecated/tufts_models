@@ -3,6 +3,8 @@ class CuratedCollectionsController < ApplicationController
 
   def create
     @curated_collection = CuratedCollection.new(params.require(:curated_collection).permit(:title))
+    @curated_collection.apply_depositor_metadata(current_user)
+    @curated_collection.read_groups = ['public']
     @curated_collection.displays = ['tdil']
     if @curated_collection.save
       redirect_to (params[:return_url] || root_path)
