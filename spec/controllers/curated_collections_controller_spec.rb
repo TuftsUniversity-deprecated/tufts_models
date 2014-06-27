@@ -19,10 +19,12 @@ describe CuratedCollectionsController, if: Tufts::Application.til? do
 
     describe "POST 'create'" do
       it "redirects" do
-        count = CuratedCollection.count
-        post 'create', curated_collection: {title: 'foo'}
-        expect(CuratedCollection.count).to eq (count + 1)
+        expect {
+          post 'create', curated_collection: {title: 'foo'}
+        }.to change {CuratedCollection.count }.by(1)
         expect(response.status).to eq 302
+        expect(assigns[:curated_collection].read_groups).to eq ['public']
+        expect(assigns[:curated_collection].edit_users).to eq [user.user_key]
       end
 
       context 'with a bad title' do
