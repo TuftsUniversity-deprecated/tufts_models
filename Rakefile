@@ -1,16 +1,27 @@
-#!/usr/bin/env rake
-# Add your own tasks in files placed in lib/tasks ending in .rake,
-# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
+begin
+  require 'bundler/setup'
+rescue LoadError
+  puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
+end
 
-require File.expand_path('../config/application', __FILE__)
+Bundler::GemHelper.install_tasks
 
-Tufts::Application.load_tasks
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec)
 
-# Get rid of the default task (was spec)
-task :default => []; Rake::Task[:default].clear
+require 'jettywrapper'
 
-task :default => [:ci]
+require 'engine_cart/rake_task'
+task :ci => ['engine_cart:generate', 'jetty:clean'] do
+  ENV['environment'] = "test"
+  jetty_params = Jettywrapper.load_config
+  jetty_params[:startup_wait]= 90
 
-require 'resque/tasks'
+  Jettywrapper.wrap(jetty_params) do
+    # run the tests
+    Rake::Task["spec"].invoke
+  end
+end
 
-task "resque:setup" => :environment
+
+task default: :ci

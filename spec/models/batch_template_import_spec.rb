@@ -24,8 +24,13 @@ describe BatchTemplateImport do
     expect(subject.errors[:record_type]).to eq ["can't be blank"]
   end
 
-  it 'white lists the record types' do
-    expect(BatchTemplateImport.valid_record_types).to_not be_empty
+  describe "valid_record_types" do
+    before do
+      allow(HydraEditor).to receive(:models).and_return ["FooModel"]
+    end
+    it 'white lists the record types' do
+      expect(BatchTemplateImport.valid_record_types).to_not be_empty
+    end
   end
 
   it 'is invalid if record type is invalid' do

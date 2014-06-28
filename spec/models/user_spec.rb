@@ -9,11 +9,4 @@ describe User do
     user.registered?.should be_truthy
   end
 
-  describe "an admin" do
-    subject { FactoryGirl.create(:admin) }
-    it "is in the admin group" do
-      expect(subject.groups).to include('admin')
-    end
-  end
-
 end

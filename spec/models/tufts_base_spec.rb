@@ -386,7 +386,7 @@ describe TuftsBase do
     end
   end
 
-  describe '.revert_to_production', if: Tufts::Application.mira? do
+  describe '.revert_to_production' do
     let(:user) { FactoryGirl.create(:user) }
     after do
       @model.delete if @model

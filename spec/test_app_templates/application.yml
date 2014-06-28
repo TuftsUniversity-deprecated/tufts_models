@@ -1,0 +1,43 @@
+# config/application.yml
+defaults: &defaults
+  tdl_feedback_address: "brian.goodmon@tufts.edu"
+  tdl_feedback_subject: "TDL Content Feedback"
+  trim_bucket_url: "http://bucket01.lib.tufts.edu"
+  processing_url: "http://processing01.lib.tufts.edu:8080"
+  repository_url: "http://repository01.lib.tufts.edu:8080"
+    #/tdr/dcadata02/tufts/central/dca/
+  object_store_root: '/tdr/dcadata02/tufts/central/dca/fake_bucket'
+  object_store_base: 'data01/tufts'
+  object_store_dca: 'central/dca'
+  object_store_tisch: 'sas'
+  preview_fedora_url: 'http://hydraadmin-dev.uit.tufts.edu:8080/fedora'
+  preview_dl_url: 'http://dev-dl.lib.tufts.edu'
+development:
+  <<: *defaults
+  neat_setting: 800
+  object_store_root: "<%=Rails.root%>/tmp/local_object_store"
+  processing_url: "SKIP"
+  repository_url: "http://localhost:8983/"
+  preview_fedora_url: 'http://localhost:8983/fedora'
+tdldev:
+  <<: *defaults
+  object_store_root: "/tdr/dcadata02/tufts/central/dca/fake_bucket"
+  processing_url: "http://dev-processing01.lib.tufts.edu:8080"
+  repository_url: "http://dev-repository01.lib.tufts.edu:8080"
+stage:
+  <<: *defaults
+  object_store_root: "/tdr/dcadata02/tufts/central/dca/fake_bucket"
+  processing_url: "http://stage-processing01.lib.tufts.edu:8080"
+  repository_url: "http://stage-repository01.lib.tufts.edu:8080"
+test:
+  <<: *defaults
+  object_store_root: "<%= File.expand_path("../fixtures/local_object_store", Rails.root) %>"
+  processing_url: "SKIP"
+  repository_url: "http://stage-repository01.lib.tufts.edu:8080"
+  preview_fedora_url: 'http://localhost:8983/fedora'
+production:
+  <<: *defaults
+  tdl_feedback_address: "deborah.kaplan@tufts.edu"
+  object_store_root: "/tdr/dcadata02/tufts/central/dca/fake_bucket"
+  processing_url: "http://processing01.lib.tufts.edu:8080"
+  repository_url: "http://repository01.lib.tufts.edu:8080"

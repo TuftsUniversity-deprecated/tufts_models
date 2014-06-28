@@ -35,15 +35,15 @@ describe TuftsPdf do
       subject.remote_url_for('Archival.pdf', 'pdf').should == 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/archival_pdf/MS054.003.DO.02108.archival.pdf'
     end
     it "should give a local_path" do
-      subject.local_path_for('Archival.pdf', 'pdf').should == "#{Rails.root}/spec/fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_pdf/MS054.003.DO.02108.archival.pdf"
+      subject.local_path_for('Archival.pdf', 'pdf').should == File.expand_path("../../fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_pdf/MS054.003.DO.02108.archival.pdf", __FILE__)
     end
   end
 
   describe "attributes" do
     it "should have createdby fields" do
       expect(subject.createdby).to be_nil
-      subject.createdby = Contribution::SELFDEP
-      expect(subject.createdby).to eq Contribution::SELFDEP
+      subject.createdby = 'selfdep' 
+      expect(subject.createdby).to eq 'selfdep'
     end
     it "should have creatordept" do
       
@@ -61,7 +61,7 @@ describe TuftsPdf do
     let(:solr_doc) {subject.to_solr}
     describe "on a self-deposit" do
       before do
-        subject.createdby = Contribution::SELFDEP
+        subject.createdby = 'selfdep'
       end
       it "should have deposit_method_ssi" do
         solr_doc['deposit_method_ssi'].should == 'self-deposit'

@@ -37,7 +37,7 @@ module Indexing
 
   def index_deposit_method(solr_doc)
     case createdby
-    when Contribution::SELFDEP
+    when 'selfdep' #Contribution::SELFDEP
       Solrizer.insert_field(solr_doc, 'deposit_method', 'self-deposit', :stored_sortable)
     end
   end

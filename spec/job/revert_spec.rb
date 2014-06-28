@@ -29,7 +29,7 @@ describe Job::Revert do
     end
   end
 
-  describe '#perform', if: Tufts::Application.mira? do
+  describe '#perform' do
     let(:prod) { Rubydora.connect(ActiveFedora.data_production_credentials) }
     context 'record exists on staging and production' do
       it 'copys from production' do

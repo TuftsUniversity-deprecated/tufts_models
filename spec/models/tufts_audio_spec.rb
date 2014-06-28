@@ -2,24 +2,6 @@ require 'spec_helper'
 
 describe TuftsAudio do
   
-  describe "with access rights" do
-    before do
-      @audio = TuftsAudio.new(title: 'foo', displays: ['dl'])
-      @audio.read_groups = ['public']
-      @audio.save!
-    end
-
-    after do
-      @audio.destroy
-    end
-
-    let (:ability) {  Ability.new(nil) }
-
-    it "should be visible to a not-signed-in user" do
-      ability.can?(:read, @audio.pid).should be_truthy
-    end
-  end
-
   describe "terms_for_editing" do
     it "has the correct values" do
       expect(subject.terms_for_editing).to eq [:identifier, :title, :alternative, :creator, :contributor, :description, :abstract, :toc, :publisher, :source, :date, :date_created, :date_copyrighted, :date_submitted, :date_accepted, :date_issued, :date_available, :date_modified, :language, :type, :format, :extent, :medium, :persname, :corpname, :geogname, :subject, :genre, :provenance, :rights, :access_rights, :rights_holder, :license, :replaces, :isReplacedBy, :hasFormat, :isFormatOf, :hasPart, :isPartOf, :accrualPolicy, :audience, :references, :spatial, :bibliographic_citation, :temporal, :funder, :resolution, :bitdepth, :colorspace, :filesize, :steward, :name, :comment, :retentionPeriod, :displays, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note, :createdby, :creatordept]
@@ -153,7 +135,7 @@ describe TuftsAudio do
       subject.remote_url_for('ARCHIVAL_SOUND', 'mp3').should == 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3'
     end
     it "should give a local_path" do
-      subject.local_path_for('ARCHIVAL_SOUND', 'mp3').should == "#{Rails.root}/spec/fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3"
+      subject.local_path_for('ARCHIVAL_SOUND', 'mp3').should == File.expand_path("../../fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3", __FILE__)
     end
   end
 

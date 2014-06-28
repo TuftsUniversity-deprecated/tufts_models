@@ -15,9 +15,6 @@ before_script:
   - cp config/initializers/secret_token.rb.sample config/initializers/secret_token.rb
 
 env:
-  matrix:
-    - "HYDRA_APP_NAME=TIL"
-    - "HYDRA_APP_NAME=MIRA"
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 

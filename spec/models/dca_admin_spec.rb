@@ -38,8 +38,8 @@ describe DcaAdmin do
   end
 
   it "should have createdby" do
-    subject.createdby = Contribution::SELFDEP
-    expect(subject.createdby).to eq [Contribution::SELFDEP]
+    subject.createdby = 'selfdep' 
+    expect(subject.createdby).to eq ['selfdep']
     subject.createdby = 'admin-deposit'
     expect(subject.createdby).to eq ['admin-deposit']
   end

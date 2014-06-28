@@ -1,23 +1,6 @@
 require 'spec_helper'
 
 describe TuftsAudioText do
-  describe "with access rights" do
-    before do
-      @audio_text = TuftsAudioText.new(title: 'new audio text', displays: ['dl'])
-      @audio_text.read_groups = ['public']
-      @audio_text.save!
-    end
-
-    after do
-      @audio_text.destroy
-    end
-
-    let (:ability) {  Ability.new(nil) }
-
-    it "should be visible to a not-signed-in user" do
-      ability.can?(:read, @audio_text.pid).should be_truthy
-    end
-  end
 
   describe "to_class_uri" do
     subject {TuftsAudioText}
@@ -38,19 +21,19 @@ describe TuftsAudioText do
       subject.remote_url_for('ARCHIVAL_WAV', 'wav').should == 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/archival_wav/MS054.003.DO.02108.archival.wav'
     end
     it "should give a local_path" do
-      subject.local_path_for('ARCHIVAL_WAV', 'wav').should == "#{Rails.root}/spec/fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_wav/MS054.003.DO.02108.archival.wav"
+      subject.local_path_for('ARCHIVAL_WAV', 'wav').should == File.expand_path("../../fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_wav/MS054.003.DO.02108.archival.wav", __FILE__)
     end
     it "should give a remote url" do
       subject.remote_url_for('ARCHIVAL_XML', 'xml').should == 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/archival_xml/MS054.003.DO.02108.archival.xml'
     end
     it "should give a local_path" do
-      subject.local_path_for('ARCHIVAL_XML', 'xml').should == "#{Rails.root}/spec/fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_xml/MS054.003.DO.02108.archival.xml"
+      subject.local_path_for('ARCHIVAL_XML', 'xml').should == File.expand_path("../../fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_xml/MS054.003.DO.02108.archival.xml", __FILE__)
     end
     it "should give a remote url" do
       subject.remote_url_for('ACCESS_MP3', 'mp3').should == 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/access_mp3/MS054.003.DO.02108.access.mp3'
     end
     it "should give a local_path" do
-      subject.local_path_for('ACCESS_MP3', 'mp3').should == "#{Rails.root}/spec/fixtures/local_object_store/data01/tufts/central/dca/MS054/access_mp3/MS054.003.DO.02108.access.mp3"
+      subject.local_path_for('ACCESS_MP3', 'mp3').should == File.expand_path("../../fixtures/local_object_store/data01/tufts/central/dca/MS054/access_mp3/MS054.003.DO.02108.access.mp3", __FILE__)
     end
   end
 

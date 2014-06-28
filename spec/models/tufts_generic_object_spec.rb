@@ -1,25 +1,6 @@
 require 'spec_helper'
 
 describe TuftsGenericObject do
-  
-  describe "with access rights" do
-    before do
-      @generic_object = TuftsGenericObject.new(title: 'test generic', displays: ['dl'])
-      @generic_object.read_groups = ['public']
-      @generic_object.save!
-    end
-
-    after do
-      @generic_object.destroy
-    end
-
-    let (:ability) {  Ability.new(nil) }
-
-    it "should be visible to a not-signed-in user" do
-      ability.can?(:read, @generic_object.pid).should be_truthy
-    end
-  end
-
   describe "to_class_uri" do
     subject {TuftsGenericObject}
     it "has sets the class_uri" do
@@ -53,7 +34,7 @@ describe TuftsGenericObject do
       subject.remote_url_for('GENERIC-CONTENT', 'zip').should == 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/generic/MS054.003.DO.02108.zip'
     end
     it "should give a local_path" do
-      subject.local_path_for('GENERIC-CONTENT', 'zip').should == "#{Rails.root}/spec/fixtures/local_object_store/data01/tufts/central/dca/MS054/generic/MS054.003.DO.02108.zip"
+      subject.local_path_for('GENERIC-CONTENT', 'zip').should == File.expand_path("../../fixtures/local_object_store/data01/tufts/central/dca/MS054/generic/MS054.003.DO.02108.zip", __FILE__)
     end
   end
 

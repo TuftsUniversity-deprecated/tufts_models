@@ -127,7 +127,7 @@ describe TuftsTemplate do
     end
   end
 
-  describe 'deleted templates', if: Tufts::Application.mira? do
+  describe 'deleted templates' do
     before do
       TuftsTemplate.delete_all
       subject.template_name = 'Name'

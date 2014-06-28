@@ -24,23 +24,18 @@ jetty
 .rvmrc
 .ruby-gemset
 
-# Don't send system specific config files
-config/initializers/secret_token.rb
-config/database.yml
-config/fedora.yml
-config/solr.yml
-config/redis.yml
-config/devise.yml
-
 # Ignore RubyMine config files
 .idea/
 
 #
 spec/fixtures/local_object_store
+spec/internal
 
 # Ignore ctags files
 tags
 
 # ignore carrierwave uploads
 uploads
+
+Gemfile.lock
 

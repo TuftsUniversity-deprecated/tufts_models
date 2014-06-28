@@ -6,7 +6,7 @@ FactoryGirl.define do
     displays { ['dl'] }
     sequence(:title) {|n| "Title #{n}" }
     after(:build) { |deposit, evaluator|
-      deposit.apply_depositor_metadata(evaluator.user.display_name)
+      deposit.apply_depositor_metadata(evaluator.user.email)
     }
   end
 end

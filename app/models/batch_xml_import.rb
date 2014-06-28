@@ -1,4 +1,7 @@
 require 'import_export/metadata_xml_parser'
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
+
 
 class BatchXmlImport < Batch
   mount_uploader :metadata_file, MetadataFileUploader

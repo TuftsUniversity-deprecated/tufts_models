@@ -1,5 +1,0 @@
-en:
-  blacklight_advanced_search:
-    form:
-      title: Advanced Search
-      query_criteria_heading_html: "Find items that match %{select_menu} of the fields below"

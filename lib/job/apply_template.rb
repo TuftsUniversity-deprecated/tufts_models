@@ -1,3 +1,4 @@
+require 'resque/status'
 module Job
   class ApplyTemplate
     include Resque::Plugins::Status
