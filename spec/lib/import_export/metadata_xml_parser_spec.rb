@@ -2,6 +2,10 @@ require 'spec_helper'
 require_relative '../../../lib/import_export/metadata_xml_parser'
 
 describe MetadataXmlParser do
+  before do
+    allow(HydraEditor).to receive(:models).and_return(['TuftsPdf'])
+  end
+
   describe "::validate" do
     it "returns an empty array when there are no errors" do
       expect(MetadataXmlParser.validate(build_node.to_xml)).to eq []
@@ -110,24 +114,24 @@ describe MetadataXmlParser do
     end
   end
 
-  describe "::get_record_attributes" do
+  describe ".record_attributes" do
     it "merges in the pid if it exists" do
-      attributes = MetadataXmlParser.get_record_attributes(build_node(pid: ['tufts:1']), TuftsPdf)
+      attributes = MetadataXmlParser.record_attributes(build_node(pid: ['tufts:1']), TuftsPdf)
       expect(attributes[:pid]).to eq 'tufts:1'
     end
 
     it "sets attributes even if a private method exists with the the attribute's name" do
-      attributes = MetadataXmlParser.get_record_attributes(build_node('oxns:format' => ['foo']), TuftsPdf)
+      attributes = MetadataXmlParser.record_attributes(build_node('oxns:format' => ['foo']), TuftsPdf)
       expect(attributes['format']).to eq ['foo']
     end
 
     it "only returns attributes that were found" do
-      attributes = MetadataXmlParser.get_record_attributes(build_node('oxns:format' => []), TuftsPdf)
+      attributes = MetadataXmlParser.record_attributes(build_node('oxns:format' => []), TuftsPdf)
       expect(attributes.has_key?('format')).to be_falsey
     end
 
     it "includes rels_ext attributes" do
-      attributes = MetadataXmlParser.get_record_attributes(build_node("rel:hasEquivalent" => ["eq:1", "eq:2"]), TuftsPdf)
+      attributes = MetadataXmlParser.record_attributes(build_node("rel:hasEquivalent" => ["eq:1", "eq:2"]), TuftsPdf)
       eq_pids = attributes['relationship_attributes'].select{|x| x['relationship_name'] == :has_equivalent}.map{|x| x['relationship_value']}
       expect(eq_pids.sort).to eq ["eq:1", "eq:2"]
     end
@@ -186,21 +190,21 @@ describe MetadataXmlParser do
     end
   end
 
-  describe "::get_record_class" do
+  describe ".valid_record_class" do
     it "raises if <hasModel> doesn't exist" do
       expect{
-        MetadataXmlParser.get_record_class(node_with_only_pid)
+        MetadataXmlParser.valid_record_class(node_with_only_pid)
       }.to raise_error(NodeNotFoundError, /Could not find <rel:hasModel> attribute for record beginning at line \d+/)
     end
 
     it "raises if the given model uri doesn't correspond to a record class" do
       expect{
-        MetadataXmlParser.get_record_class(node_with_bad_model)
+        MetadataXmlParser.valid_record_class(node_with_bad_model)
       }.to raise_error(HasModelNodeInvalidError)
     end
 
     it "returns a class" do
-      record_class = MetadataXmlParser.get_record_class(build_node)
+      record_class = MetadataXmlParser.valid_record_class(build_node)
       expect(record_class).to eq TuftsPdf
     end
   end

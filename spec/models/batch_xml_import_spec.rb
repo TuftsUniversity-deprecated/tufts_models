@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe BatchXmlImport do
+  before do
+    allow(HydraEditor).to receive(:models).and_return(['TuftsPdf'])
+  end
   subject { FactoryGirl.build(:batch_xml_import) }
 
   it 'has a display name' do

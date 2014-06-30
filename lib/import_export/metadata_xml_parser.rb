@@ -22,8 +22,13 @@ class NodeNotFoundError < MetadataXmlParserError
 end
 
 class HasModelNodeInvalidError < MetadataXmlParserError
+  def initialize(line, message, details={})
+    @msg = message
+    super(line, details)
+  end
+
   def message
-    "Invalid data in <rel:hasModel> for record beginning at line #{@line}" + append_details
+    "Invalid data in <rel:hasModel> for record beginning at line #{@line}." + @msg + append_details
   end
 end
 
@@ -90,8 +95,8 @@ module MetadataXmlParser
           errors << NodeNotFoundError.new(digital_object.line, '<file>', error_details(digital_object))
         end
         begin
-          record_class = get_record_class(digital_object)
-          m = record_class.new(get_record_attributes(digital_object, record_class))
+          record_class = valid_record_class(digital_object)
+          m = record_class.new(record_attributes(digital_object, record_class))
           m.valid?
           m.errors.full_messages.each do |message|
             errors << ModelValidationError.new(digital_object.line, message, error_details(digital_object))
@@ -115,8 +120,8 @@ module MetadataXmlParser
       doc = Nokogiri::XML(metadata)
       node = doc.at_xpath("//digitalObject[child::file/text()='#{document_filename}']")
       raise FileNotFoundError.new(document_filename) if node.nil?
-      record_class = get_record_class(node)
-      record_class.new(get_record_attributes(node, record_class))
+      record_class = valid_record_class(node)
+      record_class.new(record_attributes(node, record_class))
     end
 
     def get_filenames(xml)
@@ -153,7 +158,7 @@ module MetadataXmlParser
         xpath: ds_class.new.public_send(attribute_name).xpath}
     end
 
-    def get_record_attributes(node, record_class)
+    def record_attributes(node, record_class)
       pid = get_node_content(node, "./pid")
       result = pid.present? ? {:pid => pid} : {}
       # remove attributes that are relationships
@@ -192,11 +197,11 @@ module MetadataXmlParser
       filename
     end
 
-    def get_record_class(node)
+    def valid_record_class(node)
       class_uri = get_node_content(node, "./rel:hasModel", "rel" => "info:fedora/fedora-system:def/relations-external#")
       raise NodeNotFoundError.new(node.line, '<rel:hasModel>', error_details(node)) unless class_uri
       record_class = ActiveFedora::Model.from_class_uri(class_uri)
-      raise HasModelNodeInvalidError.new(node.line, error_details(node)) unless valid_record_types.include?(record_class.to_s)
+      raise HasModelNodeInvalidError.new(node.line, "'#{record_class}' was not amongst the allowed types: #{valid_record_types.inspect}.", error_details(node) ) unless valid_record_types.include?(record_class.to_s)
       record_class
     end
 
