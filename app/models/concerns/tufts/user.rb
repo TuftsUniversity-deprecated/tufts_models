@@ -1,10 +1,8 @@
 module Tufts::User
   extend ActiveSupport::Concern
 
-  include do
-    # Connects this user object to Role behaviors. 
-    include Hydra::RoleManagement::UserRoles
-  end
+  # Connects this user object to Role behaviors. 
+  include Hydra::RoleManagement::UserRoles
 
   def registered?
     self.groups.include?('registered')
