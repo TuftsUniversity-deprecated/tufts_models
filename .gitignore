@@ -39,3 +39,6 @@ uploads
 
 Gemfile.lock
 
+config/fedora.yml
+config/solr.yml
+

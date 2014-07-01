@@ -8,7 +8,7 @@ FactoryGirl.define do
     password 'password'
 
     factory :admin do
-#      roles { [Role.where(name: 'admin').first_or_create] }
+      roles { [Role.where(name: 'admin').first_or_create] }
     end
   end
 end
