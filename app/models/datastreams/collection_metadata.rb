@@ -35,6 +35,8 @@ end
 
 
 class CollectionProxy
+  include Enumerable
+
   def initialize(list)
     @list = list
   end
