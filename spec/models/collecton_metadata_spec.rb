@@ -14,6 +14,11 @@ describe CollectionMetadata do
         expect(subject.members[0]).to eq image1
         expect(subject.members[1]).to eq image2
       end
+
+      it "responds to some array methods" do
+        expect(subject.members).to respond_to :each
+        expect(subject.members).to respond_to :each_with_index
+      end
     end
 
     it 'adds a member with the shift operator' do
