@@ -27,6 +27,12 @@ class CollectionMetadata < ActiveFedora::NtriplesRDFDatastream
     end
   end
 
+  def delete_member_at(index)
+    new_members = members.to_ary
+    new_members.delete_at(index)
+    self.members = new_members
+  end
+
   def serialize!
     member_ids.resource.persist! #https://github.com/projecthydra/active_fedora/issues/444
     super

@@ -34,6 +34,14 @@ describe CollectionMetadata do
       end
     end
 
+    describe '#delete_member_at' do
+      it 'deletes a member from the list' do
+        subject.delete_member_at(1)
+        expect(subject.members).to eq [image1]
+        subject.delete_member_at(0)
+        expect(subject.members).to eq []
+      end
+    end
   end
 
   context 'set with objects' do
