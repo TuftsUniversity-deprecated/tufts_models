@@ -26,6 +26,14 @@ describe CollectionMetadata do
       expect(subject.member_ids).to eq [image1.pid, image2.pid, image1.pid]
       expect(subject.members).to eq [image1, image2, image1]
     end
+
+    describe 'replacing the list' do
+      it 'can be re-set' do
+        subject.member_ids = [image2.id, image1.id]
+        expect(subject.member_ids).to eq [image2.id, image1.id]
+      end
+    end
+
   end
 
   context 'set with objects' do

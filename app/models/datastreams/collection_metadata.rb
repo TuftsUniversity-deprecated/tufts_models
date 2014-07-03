@@ -1,6 +1,6 @@
 class CollectionMetadata < ActiveFedora::NtriplesRDFDatastream
 
-  property :member_list, predicate: RDF::DC.relation, class_name: 'ActiveFedora::Rdf::List'
+  property :member_list, predicate: RDF::DC.relation, class_name: 'ActiveTriples::List'
 
   def members(force_reload = false)
     reset if force_reload
@@ -21,6 +21,7 @@ class CollectionMetadata < ActiveFedora::NtriplesRDFDatastream
   end
 
   def member_ids= ids
+    member_ids.clear()
     ids.each do |id|
       member_ids << id
     end
