@@ -14,7 +14,7 @@ class CuratedCollection < ActiveFedora::Base
   has_attributes :title, datastream: 'DCA-META', multiple: false
   has_attributes :displays, datastream: 'DCA-ADMIN', multiple: true
 
-  delegate :members, :member_ids, to: :collectionMetadata
+  delegate :members, :member_ids, :members=, :member_ids=, to: :collectionMetadata
 
   private
     def default_attributes
