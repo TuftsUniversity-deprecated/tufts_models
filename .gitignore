@@ -30,6 +30,7 @@ jetty
 #
 spec/fixtures/local_object_store
 spec/internal
+batch_xml_import
 
 # Ignore ctags files
 tags
