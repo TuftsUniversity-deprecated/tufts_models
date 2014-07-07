@@ -7,7 +7,7 @@ class DcaAdmin < ActiveFedora::OmDatastream
     t.name namespace_prefix: "ac", index_as: :stored_searchable
     t.comment namespace_prefix: "ac", index_as: :stored_searchable
     t.retentionPeriod namespace_prefix: "local", index_as: :stored_searchable
-    t.displays namespace_prefix: "local", index_as: [:stored_sortable, :stored_searchable]
+    t.displays namespace_prefix: "local", index_as: [:stored_sortable, :symbol]
     t.embargo namespace_prefix: "local", index_as: :stored_searchable
     t.status namespace_prefix: "local", index_as: :stored_searchable
     t.startDate namespace_prefix: "local", index_as: :stored_searchable
