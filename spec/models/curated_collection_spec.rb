@@ -74,4 +74,10 @@ describe CuratedCollection do
       expect(subject.edit_users).to eq ['jcoyne']
     end
   end
+
+  it 'has a prefix-formatted PID' do
+    subject.save!
+    expect(subject.pid).to match /tufts.uc:\d+/
+  end
+
 end
