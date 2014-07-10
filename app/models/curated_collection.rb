@@ -24,8 +24,14 @@ class CuratedCollection < ActiveFedora::Base
 
   def to_solr(solr_doc=Hash.new)
     super.tap do |solr_doc|
-      solr_doc['member_ids_ssim'] = member_ids.to_a.map(&:value)
+      solr_doc[solr_name('member_ids', :symbol)] = member_ids.map(&:value)
     end
+  end
+
+  
+  def parent_count
+    query = ActiveFedora::SolrService.construct_query_for_rel(member_ids: self.id)
+    ActiveFedora::SolrService.count query
   end
 
   private
