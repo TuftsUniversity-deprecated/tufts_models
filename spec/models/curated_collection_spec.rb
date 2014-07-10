@@ -40,6 +40,14 @@ describe CuratedCollection do
         subject.save!
         expect(subject.members(true)).to eq [img1, img2, img3]
       end
+
+      describe "to_solr" do
+        it 'lists the members' do
+          solr_doc = subject.to_solr
+          expect(solr_doc['member_ids_ssim']).to eq [img1.id, img2.id]
+          expect(solr_doc['member_ids_ssim'].first.class).to eq String
+        end
+      end
     end
   end
 

@@ -17,6 +17,12 @@ class CuratedCollection < ActiveFedora::Base
   delegate :members, :member_ids, :members=, :member_ids=, to: :collectionMetadata
   delegate :delete_member_at, to: :collectionMetadata
 
+  def to_solr(solr_doc=Hash.new)
+    super.tap do |solr_doc|
+      solr_doc['member_ids_ssim'] = member_ids.to_a.map(&:value)
+    end
+  end
+
   private
     def default_attributes
       self.displays = ['tdil'] if displays.empty?
