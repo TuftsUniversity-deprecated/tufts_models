@@ -28,7 +28,6 @@ class CuratedCollection < ActiveFedora::Base
     end
   end
 
-  
   def parent_count
     query = ActiveFedora::SolrService.construct_query_for_rel(member_ids: self.id)
     ActiveFedora::SolrService.count query
