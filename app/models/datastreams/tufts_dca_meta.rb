@@ -11,8 +11,8 @@ class TuftsDcaMeta < ActiveFedora::OmDatastream
            "xmlns:dcadec" => "http://nils.lib.tufts.edu/dcadesc/",
            "xmlns:dcatech" => "http://nils.lib.tufts.edu/dcatech/",
            "xmlns:xlink" => "http://www.w3.org/1999/xlink")
-    t.title(:namespace_prefix => "dc", :index_as => :stored_searchable)
-    t.creator(:namespace_prefix => "dc", :index_as => :stored_searchable)
+    t.title(:namespace_prefix => "dc", :index_as => [:stored_searchable, :sortable])
+    t.creator(:namespace_prefix => "dc", :index_as => [:stored_searchable, :sortable])
     t.source(:path => "source", :namespace_prefix => "dc", :index_as => :stored_searchable)
     t.description(:namespace_prefix => "dc", :index_as => :stored_searchable)
     t.date_created(:path => "date.created", :namespace_prefix => "dc", :index_as => :stored_searchable)

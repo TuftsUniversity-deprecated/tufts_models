@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe CuratedCollection do
 
-  subject { CuratedCollection.new title: 'some title' }
+  subject { CuratedCollection.new title: 'some title', creator: 'Bilbo Baggins' }
 
   describe "members" do
     context "when it's empty" do
@@ -46,6 +46,12 @@ describe CuratedCollection do
           solr_doc = subject.to_solr
           expect(solr_doc['member_ids_ssim']).to eq [img1.id, img2.id]
           expect(solr_doc['member_ids_ssim'].first.class).to eq String
+        end
+
+        it 'has fields needed for catalog sort' do
+          solr_doc = subject.to_solr
+          expect(solr_doc['title_si']).to eq 'some title'
+          expect(solr_doc['creator_si']).to eq 'Bilbo Baggins'
         end
       end
     end
