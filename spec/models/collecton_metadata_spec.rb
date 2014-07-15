@@ -18,6 +18,8 @@ describe CollectionMetadata do
       it "responds to some array methods" do
         expect(subject.members).to respond_to :each
         expect(subject.members).to respond_to :each_with_index
+        expect(subject.members).to respond_to :empty?
+        expect(subject.members).to respond_to :size
       end
     end
 
