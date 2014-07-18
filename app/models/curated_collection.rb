@@ -33,6 +33,10 @@ class CuratedCollection < ActiveFedora::Base
     ActiveFedora::SolrService.count query
   end
 
+  def self.not_containing(pid)
+    where(["-member_ids_ssim:\"#{pid}\""])
+  end
+
   private
     def default_attributes
       self.displays = ['tdil'] if displays.empty?

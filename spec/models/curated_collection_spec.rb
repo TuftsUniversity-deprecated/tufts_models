@@ -57,6 +57,16 @@ describe CuratedCollection do
     end
   end
 
+  describe "not_containing" do
+    let(:child) { CuratedCollection.create title: 'some title' }
+    let(:parent) { CuratedCollection.create title: 'some title', members: [child] }
+
+    it "excludes collections with the given pid" do
+      expect(CuratedCollection.not_containing(child.pid)).to_not include(parent)
+      expect(CuratedCollection.not_containing(child.pid)).to include(child)
+    end
+  end
+
   describe "parents" do
     let(:child) { CuratedCollection.create title: 'some title' }
     let(:parent1) { CuratedCollection.create title: 'some title' }
