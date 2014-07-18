@@ -15,7 +15,7 @@ describe Job::RunAsBatchItem do
       @old_batch_id = '456'
       @old_status = 'some existing status message'
 
-      @pdf = FactoryGirl.create(:tufts_pdf, batch_id: @old_batch_id, qrStatus: [Reviewable.batch_review_text, @old_status])
+      @pdf = FactoryGirl.create(:tufts_pdf, batch_id: [@old_batch_id], qrStatus: [Reviewable.batch_review_text, @old_status])
       @job = Job::MyJob.new
     end
 

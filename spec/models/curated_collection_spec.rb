@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe CuratedCollection do
 
-  subject { CuratedCollection.new title: 'some title', creator: 'Bilbo Baggins' }
+  subject { CuratedCollection.new title: 'some title', creator: ['Bilbo Baggins'] }
 
   describe "members" do
     context "when it's empty" do

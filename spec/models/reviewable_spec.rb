@@ -9,7 +9,7 @@ describe Reviewable do
 
   it 'knows if the object has been marked as reviewed' do
     expect(subject.reviewed?).to be_falsey
-    subject.qrStatus = Reviewable.batch_review_text
+    subject.qrStatus = [Reviewable.batch_review_text]
     expect(subject.reviewed?).to be_truthy
   end
 
@@ -19,7 +19,7 @@ describe Reviewable do
   end
 
   it "doesn't clobber existing status when it marks reviewed" do
-    subject.qrStatus = 'status 1'
+    subject.qrStatus = ['status 1']
     subject.reviewed
     expect(subject.qrStatus).to eq ['status 1', Reviewable.batch_review_text]
   end

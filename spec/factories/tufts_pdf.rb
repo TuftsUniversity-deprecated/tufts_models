@@ -8,7 +8,7 @@ FactoryGirl.define do
     after(:build) { |deposit, evaluator|
       deposit.apply_depositor_metadata(evaluator.user.email)
     }
-    rights { 'http://dca.tufts.edu/ua/access/rights-creator.html' }
+    rights { ['http://dca.tufts.edu/ua/access/rights-creator.html'] }
   end
 
   factory :self_deposit_pdf, parent: :tufts_pdf do

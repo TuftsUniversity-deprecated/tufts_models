@@ -28,8 +28,8 @@ describe TuftsBase do
 
       describe "subject field" do
         it "should save both" do
-          subject.subject = "subject1"
-          subject.funder = "subject2"
+          subject.subject = ["subject1"]
+          subject.funder = ["subject2"]
           solr_doc = subject.to_solr
           solr_doc["subject_tesim"].should == ["subject1"]
           solr_doc["funder_tesim"].should == ["subject2"]
@@ -40,7 +40,7 @@ describe TuftsBase do
 
       describe "displays" do
         it "should save it" do
-          subject.displays = "dl"
+          subject.displays = ["dl"]
           solr_doc = subject.to_solr
           solr_doc['displays_ssi'].should == 'dl'
         end
@@ -57,7 +57,7 @@ describe TuftsBase do
 
       describe "contributor added" do
         it "should save it" do
-          subject.contributor = "Michael Jackson"
+          subject.contributor = ["Michael Jackson"]
           solr_doc = subject.to_solr
           solr_doc['names_sim'].should == ['Michael Jackson']
         end
@@ -78,21 +78,21 @@ describe TuftsBase do
   describe "displays" do
     it "should only allow one of the approved values" do
       subject.title = 'test title' #make it valid
-      subject.displays = 'dl'
+      subject.displays = ['dl']
       subject.should be_valid
-      subject.displays = 'tisch'
+      subject.displays = ['tisch']
       subject.should be_valid
-      subject.displays = 'aah'
+      subject.displays = ['aah']
       subject.should be_valid
-      subject.displays = 'perseus'
+      subject.displays = ['perseus']
       subject.should be_valid
-      subject.displays = 'elections'
+      subject.displays = ['elections']
       subject.should be_valid
-      subject.displays = 'dark'
+      subject.displays = ['dark']
       subject.should be_valid
-      subject.displays = 'tdil'
+      subject.displays = ['tdil']
       subject.should be_valid
-      subject.displays = 'fake'
+      subject.displays = ['fake']
       subject.should_not be_valid
     end
   end

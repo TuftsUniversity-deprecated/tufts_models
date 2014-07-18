@@ -73,7 +73,7 @@ describe Job::ApplyTemplate do
     end
 
     it 'updates the record' do
-      object = TuftsPdf.new(title: 'old title', toc: 'old toc', displays: ['dl'])
+      object = TuftsPdf.new(title: 'old title', toc: ['old toc'], displays: ['dl'])
       object.save!
       batch = FactoryGirl.create(:batch_template_update)
       job = Job::ApplyTemplate.new('uuid', 'user_id' => 1, 'record_id' => object.id, 'batch_id' => batch.id,  'attributes' => {toc: 'new toc'})
@@ -83,7 +83,7 @@ describe Job::ApplyTemplate do
     end
 
     it "can be killed" do
-      object = TuftsPdf.new(title: 'old title', toc: 'old toc', displays: ['dl'])
+      object = TuftsPdf.new(title: 'old title', toc: ['old toc'], displays: ['dl'])
       object.save!
       job = Job::ApplyTemplate.new('uuid', 'user_id' => 1, 'record_id' => object.id, 'attributes' => {toc: 'new toc'})
       allow(job).to receive(:tick).and_raise(Resque::Plugins::Status::Killed)

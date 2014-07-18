@@ -23,7 +23,7 @@ describe Job::CreateDerivatives do
     end
 
     it 'creates derivatives' do
-      object = TuftsPdf.new(title: 'old title', toc: 'old toc', displays: ['dl'])
+      object = TuftsPdf.new(title: 'old title', toc: ['old toc'], displays: ['dl'])
       object.save!
       job = Job::CreateDerivatives.new('uuid', 'record_id' => object.id)
 
