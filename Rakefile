@@ -12,7 +12,8 @@ RSpec::Core::RakeTask.new(:spec)
 require 'jettywrapper'
 
 require 'engine_cart/rake_task'
-task :ci => ['engine_cart:generate', 'jetty:clean'] do
+desc "Run the ci build"
+task ci: ['engine_cart:generate', 'jetty:clean', 'jetty:config_solr'] do
   ENV['environment'] = "test"
   jetty_params = Jettywrapper.load_config
   jetty_params[:startup_wait]= 90
@@ -22,6 +23,17 @@ task :ci => ['engine_cart:generate', 'jetty:clean'] do
     Rake::Task["spec"].invoke
   end
 end
+
+namespace :jetty do
+  desc "Configure solr"
+  task :config_solr do
+    FileList['solr_conf/conf/*'].each do |f|  
+      cp("#{f}", 'jetty/solr/development-core/conf/', :verbose => true)
+      cp("#{f}", 'jetty/solr/test-core/conf/', :verbose => true)
+    end
+  end
+end
+
 
 
 task default: :ci
