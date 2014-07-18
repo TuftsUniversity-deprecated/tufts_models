@@ -4,6 +4,7 @@ class TuftsImage < TuftsBase
   has_file_datastream 'Archival.tif', control_group: 'E', original: true
   has_file_datastream 'Advanced.jpg', control_group: 'E'
   has_file_datastream 'Basic.jpg', control_group: 'E'
+  include CollectionMember
 
   def self.default_content_ds
     'Basic.jpg'
