@@ -16,9 +16,9 @@ describe CuratedCollection do
     end
 
     context "when it's not empty" do
-      let(:img1) { FactoryGirl.create('tufts_image') }
-      let(:img2) { FactoryGirl.create('tufts_image') }
-      let(:img3) { FactoryGirl.create('tufts_image') }
+      let(:img1) { FactoryGirl.create(:tufts_image) }
+      let(:img2) { FactoryGirl.create(:tufts_image) }
+      let(:img3) { FactoryGirl.create(:tufts_image) }
 
       before do
         subject.members << img1
@@ -39,6 +39,27 @@ describe CuratedCollection do
         subject.member_ids << img3.pid
         subject.save!
         expect(subject.members(true)).to eq [img1, img2, img3]
+      end
+
+      describe "deleting a member" do
+        let(:child_collection) { FactoryGirl.create(:curated_collection) }
+        before do
+          subject.members << child_collection
+          subject.save!
+        end
+        context "that is an image" do
+          before { img2.destroy }
+          it "removes the reference to the deleted image from the members" do
+            expect(subject.reload.member_ids).to eq [img1.id, child_collection.id]
+          end
+        end
+
+        context "that is an collection" do
+          before { child_collection.destroy }
+          it "removes the reference to the deleted collection from the members" do
+            expect(subject.reload.member_ids).to eq [img1.id, img2.id]
+          end
+        end
       end
 
       describe "to_solr" do

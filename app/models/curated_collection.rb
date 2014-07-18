@@ -2,6 +2,7 @@ class CuratedCollection < ActiveFedora::Base
   include Hydra::ModelMethods
   include Hydra::AccessControls::Permissions
   include WithValidDisplays
+  include CollectionMember
 
   validates :title, presence: true
   after_initialize :default_attributes
