@@ -3,6 +3,7 @@ class CuratedCollection < ActiveFedora::Base
   include Hydra::AccessControls::Permissions
   include WithValidDisplays
   include CollectionMember
+  include WithParent
 
   validates :title, presence: true
   after_initialize :default_attributes
@@ -27,6 +28,10 @@ class CuratedCollection < ActiveFedora::Base
     super.tap do |solr_doc|
       solr_doc[solr_name('member_ids', :symbol)] = member_ids.map(&:value)
     end
+  end
+
+  def to_s
+    title
   end
 
   def parent_count

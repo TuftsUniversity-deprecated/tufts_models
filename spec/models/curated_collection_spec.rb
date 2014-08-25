@@ -4,6 +4,12 @@ describe CuratedCollection do
 
   subject { CuratedCollection.new title: 'some title', creator: ['Bilbo Baggins'] }
 
+  describe "#to_s" do
+    it "displays the title" do
+      expect(subject.to_s).to eq 'some title'
+    end
+  end
+
   describe "members" do
     context "when it's empty" do
       it "has an empty list of members" do
@@ -98,7 +104,7 @@ describe CuratedCollection do
       it { should eq 0 }
     end
 
-    context "when it has a parent" do
+    context "with multple parents" do
       before do
         parent1.members << child
         parent1.save!
@@ -107,6 +113,19 @@ describe CuratedCollection do
       end
 
       it { should eq 2 }
+
+    end
+
+    context "with one parent" do
+      before do
+        parent1.members << child
+        parent1.save!
+      end
+
+      it "should have a parent" do
+        expect(child.parent).to eq parent1
+      end
+
     end
   end
 
