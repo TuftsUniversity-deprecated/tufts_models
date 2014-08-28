@@ -13,8 +13,15 @@ module WithParent
     end
   end
 
+  def to_solr(solr_doc=Hash.new)
+    super.tap do |solr_doc|
+      solr_doc['is_root_bsi'] = root?
+    end
+  end
+
   # You must override this method to use this module
+  # We'll just return false because it seems like a reasonable default
   def root?
-    raise NotImplementedError
+    false
   end
 end

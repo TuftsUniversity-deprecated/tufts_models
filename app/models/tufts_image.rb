@@ -108,7 +108,7 @@ class TuftsImage < TuftsBase
   end
 
   def load_image_transformer
-    #TODO tif may not be the only valid extension, 
+    #TODO tif may not be the only valid extension,
     Magick::ImageList.new(local_path_for('Archival.tif', 'tif'))
   end
 

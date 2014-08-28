@@ -75,6 +75,11 @@ describe CuratedCollection do
           expect(solr_doc['member_ids_ssim'].first.class).to eq String
         end
 
+        it "indexes whether this is a root or not" do
+          solr_doc = subject.to_solr
+          expect(solr_doc['is_root_bsi']).to be false
+        end
+
         it 'has fields needed for catalog sort' do
           solr_doc = subject.to_solr
           expect(solr_doc['title_si']).to eq 'some title'
