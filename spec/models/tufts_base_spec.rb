@@ -3,27 +3,27 @@ require 'spec_helper'
 describe TuftsBase do
 
   it 'knows which fields to display for admin metadata' do
-    subject.admin_display_fields.should == [:steward, :name, :comment, :retentionPeriod, :displays, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note, :createdby, :creatordept]
+    expect(subject.admin_display_fields).to eq [:steward, :name, :comment, :retentionPeriod, :displays, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note, :createdby, :creatordept]
   end
 
   it 'batch_id is not editable by users' do
-    subject.terms_for_editing.include?(:batch_id).should be_falsey
+    expect(subject.terms_for_editing.include?(:batch_id)).to be false
   end
 
   describe 'required fields:' do
     it 'requires a title' do
-      subject.required?(:title).should be_truthy
+      expect(subject.required?(:title)).to be true
     end
 
     it 'requires displays' do
-      subject.required?(:displays).should be_truthy
+      expect(subject.required?(:displays)).to be true
     end
   end
 
   describe "to_solr" do
     describe "when not saved" do
       before do
-        subject.stub(:pid => 'changeme:999')
+        allow(subject).to receive(:pid).and_return('changeme:999')
       end
 
       describe "subject field" do
@@ -31,10 +31,10 @@ describe TuftsBase do
           subject.subject = ["subject1"]
           subject.funder = ["subject2"]
           solr_doc = subject.to_solr
-          solr_doc["subject_tesim"].should == ["subject1"]
-          solr_doc["funder_tesim"].should == ["subject2"]
+          expect(solr_doc["subject_tesim"]).to eq ["subject1"]
+          expect(solr_doc["funder_tesim"]).to eq ["subject2"]
           # TODO is this right? Presumably this is for the facet
-          solr_doc["subject_sim"].should == ["Subject1"]
+          expect(solr_doc["subject_sim"]).to eq ["Subject1"]
         end
       end
 
@@ -42,7 +42,7 @@ describe TuftsBase do
         it "should save it" do
           subject.displays = ["dl"]
           solr_doc = subject.to_solr
-          solr_doc['displays_ssi'].should == 'dl'
+          expect(solr_doc['displays_ssim']).to eq ['dl']
         end
       end
 
@@ -50,8 +50,8 @@ describe TuftsBase do
         it "should be searchable and facetable" do
           subject.title = "My title"
           solr_doc = subject.to_solr
-          solr_doc['title_si'].should == 'My title'
-          solr_doc['title_tesim'].should == ['My title']
+          expect(solr_doc['title_si']).to eq 'My title'
+          expect(solr_doc['title_tesim']).to eq ['My title']
         end
       end
 
@@ -59,7 +59,7 @@ describe TuftsBase do
         it "should save it" do
           subject.contributor = ["Michael Jackson"]
           solr_doc = subject.to_solr
-          solr_doc['names_sim'].should == ['Michael Jackson']
+          expect(solr_doc['names_sim']).to eq ['Michael Jackson']
         end
       end
     end
@@ -70,7 +70,7 @@ describe TuftsBase do
         @solr_doc = subject.to_solr
       end
       it "should be sortable" do
-        @solr_doc['system_create_dtsi'].should_not be_nil
+        expect(@solr_doc['system_create_dtsi']).to_not be_nil
       end
     end
   end
@@ -79,21 +79,21 @@ describe TuftsBase do
     it "should only allow one of the approved values" do
       subject.title = 'test title' #make it valid
       subject.displays = ['dl']
-      subject.should be_valid
+      expect(subject).to be_valid
       subject.displays = ['tisch']
-      subject.should be_valid
+      expect(subject).to be_valid
       subject.displays = ['aah']
-      subject.should be_valid
+      expect(subject).to be_valid
       subject.displays = ['perseus']
-      subject.should be_valid
+      expect(subject).to be_valid
       subject.displays = ['elections']
-      subject.should be_valid
+      expect(subject).to be_valid
       subject.displays = ['dark']
-      subject.should be_valid
+      expect(subject).to be_valid
       subject.displays = ['tdil']
-      subject.should be_valid
+      expect(subject).to be_valid
       subject.displays = ['fake']
-      subject.should_not be_valid
+      expect(subject).to_not be_valid
     end
   end
 
@@ -253,7 +253,7 @@ describe TuftsBase do
       end
 
       it "user shouldn't be able to edit has_model" do
-        expect(subject.rels_ext_edit_fields.include?(:has_model)).to be_falsey
+        expect(subject.rels_ext_edit_fields.include?(:has_model)).to be false
 
         new_values = [{ "relationship_name" => "has_model",
                         "relationship_value" => fake_pid }]
@@ -274,7 +274,7 @@ describe TuftsBase do
       let(:record) { TuftsBase.new(attrs) }
 
       it 'has errors for invalid relationships' do
-        expect(record.valid?).to be_falsey
+        expect(record).to_not be_valid
         expect(record.errors[:base].first).to eq "Invalid relationship: \"Has Annotation\" : \"#{bad_pid}\""
       end
 
@@ -293,7 +293,7 @@ describe TuftsBase do
     it "assigns an OAI ID to an object with a 'dl' display" do
       obj = TuftsBase.new(title: 'foo', displays: ['dl'])
       obj.save!
-      oai_id(obj).should == "oai:#{obj.pid}"
+      expect(oai_id(obj)).to eq "oai:#{obj.pid}"
     end
 
     it "does not assign OAI ID to an object with a non-'dl' display" do
@@ -301,7 +301,7 @@ describe TuftsBase do
       obj.save!
       rels_ext = Nokogiri::XML(obj.rels_ext.content)
       namespace = "http://www.openarchives.org/OAI/2.0/"
-      prefix = rels_ext.namespaces.key(namespace).should be_nil
+      expect(prefix = rels_ext.namespaces.key(namespace)).to be_nil
     end
 
     it 'does not change an existing OAI ID when you save the object' do
@@ -309,7 +309,7 @@ describe TuftsBase do
       obj = TuftsBase.new(title: 'foo', displays: ['dl'])
       obj.object_relations.add(:oai_item_id, existing_oai_id, true)
       obj.save!
-      oai_id(obj).should == existing_oai_id
+      expect(oai_id(obj)).to eq existing_oai_id
     end
 
     it "does not remove the OAI ID if a 'dl' object is changed to a non-'dl' object" do
@@ -318,7 +318,7 @@ describe TuftsBase do
 
       obj.displays = ['tisch']
       obj.save!
-      oai_id(obj).should == "oai:#{obj.pid}"
+      expect(oai_id(obj)).to eq "oai:#{obj.pid}"
     end
 
     it "generates an OAI ID if an existing object is changed to display portal 'dl'" do
@@ -327,7 +327,7 @@ describe TuftsBase do
 
       obj.displays = ['dl']
       obj.save!
-      oai_id(obj).should == "oai:#{obj.pid}"
+      expect(oai_id(obj)).to eq "oai:#{obj.pid}"
     end
   end
 
@@ -421,7 +421,7 @@ describe TuftsBase do
   describe 'Batch operations' do
     it 'has a field for batch_id' do
       subject.batch_id = ['1', '2', '3']
-      subject.batch_id.should == ['1', '2', '3']
+      expect(subject.batch_id).to eq ['1', '2', '3']
     end
   end
 
@@ -433,9 +433,9 @@ describe TuftsBase do
       @obj.save!
 
       prod = Rubydora.connect(ActiveFedora.data_production_credentials)
-      prod.should_receive(:purge_object).with(pid: @obj.pid)
-      prod.should_receive(:ingest)
-      @obj.stub(:production_fedora_connection) { prod }
+      expect(prod).to receive(:purge_object).with(pid: @obj.pid)
+      expect(prod).to receive(:ingest)
+      allow(@obj).to receive(:production_fedora_connection).and_return(prod)
     end
 
     after do
@@ -445,14 +445,14 @@ describe TuftsBase do
     it 'adds an entry to the audit log' do
       @obj.publish!(user.id)
       @obj.reload
-      @obj.audit_log.who.include?(user.user_key).should be_truthy
-      @obj.audit_log.what.should == ['Pushed to production']
+      expect(@obj.audit_log.who.include?(user.user_key)).to be true
+      expect(@obj.audit_log.what).to eq ['Pushed to production']
     end
 
     it 'publishes the record to the production fedora' do
       @obj.publish!
       @obj.reload
-      @obj.published?.should be_truthy
+      expect(@obj.published?).to be true
     end
 
     it 'only updates the published_at time when actually published' do
@@ -492,7 +492,7 @@ describe TuftsBase do
         TuftsBase.revert_to_production(@model.pid)
 
         @model.reload
-        expect(@model.published?).to be_truthy
+        expect(@model.published?).to be true
         expect(@model.published_at).to eq published_at
         expect(@model.admin.published_at.first).to eq published_at
       end
@@ -518,7 +518,7 @@ describe TuftsBase do
         TuftsBase.revert_to_production(@pid)
       end
       it 'copys the record from production' do
-        expect(TuftsPdf.exists?(@pid)).to be_truthy
+        expect(TuftsPdf.exists?(@pid)).to be true
         expect(TuftsPdf.find(@pid).title).to eq "prod title"
       end
     end
@@ -562,18 +562,18 @@ describe TuftsBase do
     after { subject.delete if subject.persisted? }
 
     it 'adds an entry if the content changes' do
-      subject.stub(:content_will_update) { 'hello content' }
+      allow(subject).to receive(:content_will_update).and_return('hello content')
       subject.save!
-      subject.audit_log.who.include?(user.user_key).should be_truthy
-      subject.audit_log.what.include?('Content updated: hello content').should be_truthy
+      expect(subject.audit_log.who.include?(user.user_key)).to be true
+      expect(subject.audit_log.what.include?('Content updated: hello content')).to be true
     end
 
     it 'adds an entry if the metadata changes' do
-      subject.admin.stub(:changed?) { true }
+      allow(subject.admin).to receive(:changed?).and_return(true)
       subject.save!
-      subject.audit_log.who.include?(user.user_key).should be_truthy
+      expect(subject.audit_log.who.include?(user.user_key)).to be true
       messages = subject.audit_log.what.select {|x| x.match(/Metadata updated/)}
-      messages.any?{|msg| msg.match(/DCA-ADMIN/)}.should be_truthy
+      expect(messages.any?{|msg| msg.match(/DCA-ADMIN/)}).to be true
     end
   end
 

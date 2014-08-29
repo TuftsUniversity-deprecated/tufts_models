@@ -10,7 +10,7 @@ describe TuftsFacultyPublication do
   end
 
   it "should have an original_file_datastream" do
-    TuftsFacultyPublication.original_file_datastreams.should == ["Archival.pdf"]
+    expect(TuftsFacultyPublication.original_file_datastreams).to eq ["Archival.pdf"]
   end
 
 end

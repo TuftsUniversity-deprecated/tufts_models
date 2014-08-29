@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe TuftsAudio do
-  
+
   describe "terms_for_editing" do
     it "has the correct values" do
       expect(subject.terms_for_editing).to eq [:identifier, :title, :alternative, :creator, :contributor, :description, :abstract, :toc, :publisher, :source, :date, :date_created, :date_copyrighted, :date_submitted, :date_accepted, :date_issued, :date_available, :date_modified, :language, :type, :format, :extent, :medium, :persname, :corpname, :geogname, :subject, :genre, :provenance, :rights, :access_rights, :rights_holder, :license, :replaces, :isReplacedBy, :hasFormat, :isFormatOf, :hasPart, :isPartOf, :accrualPolicy, :audience, :references, :spatial, :bibliographic_citation, :temporal, :funder, :resolution, :bitdepth, :colorspace, :filesize, :steward, :name, :comment, :retentionPeriod, :displays, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note, :createdby, :creatordept]
@@ -10,10 +10,8 @@ describe TuftsAudio do
 
   describe "required terms" do
     it "should be required" do
-       subject.required?(:title).should be_truthy
-       # subject.required?(:creator).should be_truthy
-       # subject.required?(:description).should be_truthy
-       subject.required?(:source2).should be_falsey
+       expect(subject.required?(:title)).to be_truthy
+       expect(subject.required?(:source2)).to be_falsey
     end
   end
 
@@ -26,7 +24,7 @@ describe TuftsAudio do
 
   describe "external_datastreams" do
     it "should have the correct ones" do
-      subject.external_datastreams.keys.should include('ACCESS_MP3', 'ARCHIVAL_SOUND')
+      expect(subject.external_datastreams.keys).to include('ACCESS_MP3', 'ARCHIVAL_SOUND')
     end
   end
 
@@ -43,15 +41,15 @@ describe TuftsAudio do
     end
 
     it "should publish to production" do
-      @audio.should_not be_published
+      expect(@audio).to_not be_published
       @audio.push_to_production!
-      @audio.should be_published
+      expect(@audio).to be_published
     end
   end
 
 
   it "should have an original_file_datastream" do
-    TuftsAudio.original_file_datastreams.should == ["ARCHIVAL_SOUND"]
+    expect(TuftsAudio.original_file_datastreams).to eq ["ARCHIVAL_SOUND"]
   end
 
   describe "an audio with a pid" do
@@ -59,10 +57,10 @@ describe TuftsAudio do
       subject.inner_object.pid = 'tufts:MS054.003.DO.02108'
     end
     it "should give a remote url" do
-      subject.remote_url_for('ARCHIVAL_SOUND', 'mp3').should == 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3'
+      expect(subject.remote_url_for('ARCHIVAL_SOUND', 'mp3')).to eq 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3'
     end
     it "should give a local_path" do
-      subject.local_path_for('ARCHIVAL_SOUND', 'mp3').should == File.expand_path("../../fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3", __FILE__)
+      expect(subject.local_path_for('ARCHIVAL_SOUND', 'mp3')).to eq File.expand_path("../../fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3", __FILE__)
     end
   end
 
@@ -76,9 +74,9 @@ describe TuftsAudio do
     describe "basic" do
       before { subject.create_derivatives }
       it "should create ACCESS_MP3" do
-        File.exists?(subject.local_path_for('ACCESS_MP3', 'mp3')).should be_truthy
-        subject.datastreams["ACCESS_MP3"].dsLocation.should == "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/access_mp3/MISS.ISS.IPPI.access.mp3"
-        subject.datastreams["ACCESS_MP3"].mimeType.should == "audio/mpeg"
+        expect(File).to exist(subject.local_path_for('ACCESS_MP3', 'mp3'))
+        expect(subject.datastreams["ACCESS_MP3"].dsLocation).to eq "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/access_mp3/MISS.ISS.IPPI.access.mp3"
+        expect(subject.datastreams["ACCESS_MP3"].mimeType).to eq "audio/mpeg"
       end
     end
   end
@@ -92,14 +90,14 @@ describe TuftsAudio do
         subject.audit(user, 'updated stuff')
       end
       it "should get an entry" do
-        subject.audit_log.who.should == [user.display_name]
+        expect(subject.audit_log.who).to eq [user.display_name]
       end
     end
 
     describe "when content is updated" do
       before do
-        subject.stub(:content_will_update) { '123' }
-        subject.stub(:working_user) { user }
+        allow(subject).to receive(:content_will_update).and_return('123')
+        allow(subject).to receive(:working_user).and_return(user)
         subject.title = 'title'
         subject.displays = ['dl']
         subject.save!

@@ -7,8 +7,8 @@ describe Audit do
     subject.what = 'Updated metadata'
     subject.when = DateTime.now
 
-    subject.who.should == ['Sara']
-    subject.what.should == ['Updated metadata']
-    subject.when.first.should be_kind_of DateTime
+    expect(subject.who).to eq ['Sara']
+    expect(subject.what).to eq ['Updated metadata']
+    expect(subject.when.first).to be_kind_of DateTime
   end
 end

@@ -4,19 +4,19 @@ describe SolrDocument do
   before { subject['id'] = 'tufts:7'}
 
   it 'knows if the object is part of a batch' do
-    expect(subject.in_a_batch?).to be_falsey
+    expect(subject).to_not be_in_a_batch
     subject['batch_id_ssim'] = ['1']
-    expect(subject.in_a_batch?).to be_truthy
+    expect(subject).to be_in_a_batch
   end
 
   describe "#preview_fedora_path" do
     it "should always have link to fedora object" do
       url = 'http://localhost:8983/fedora/objects/tufts:7'
-      subject['displays_ssi'] = nil
+      subject['displays_ssim'] = nil
       expect(subject.preview_fedora_path).to eq url
-      subject['displays_ssi'] = 'dl'
+      subject['displays_ssim'] = ['dl']
       expect(subject.preview_fedora_path).to eq url
-      subject['displays_ssi'] = 'tufts'
+      subject['displays_ssim'] = ['tufts']
       expect(subject.preview_fedora_path).to eq url
     end
   end
@@ -24,28 +24,28 @@ describe SolrDocument do
   describe "#preview_dl_path" do
     let(:url) { 'http://dev-dl.lib.tufts.edu/catalog/tufts:7' }
     describe "when displays is 'dl'" do
-      before { subject['displays_ssi'] = 'dl' }
+      before { subject['displays_ssim'] = ['dl'] }
       it "has a link to the fedora object" do
         expect(subject.preview_dl_path).to eq url
       end
     end
     describe "when displays is not set" do
       it "has a link to the fedora object" do
-        subject['displays_ssi'] = nil
+        subject['displays_ssim'] = nil
         expect(subject.preview_dl_path).to eq url
-        subject['displays_ssi'] = ''
+        subject['displays_ssim'] = ['']
         expect(subject.preview_dl_path).to eq url
       end
     end
     describe "when displays is something else" do
-      before { subject['displays_ssi'] = 'tisch'}
+      before { subject['displays_ssim'] = ['tisch']}
       it "has a link to the fedora object" do
         expect(subject.preview_dl_path).to be_nil
       end
     end
     describe "when the object is a template" do
       before do
-        subject['displays_ssi'] = 'dl'
+        subject['displays_ssim'] = ['dl']
         subject['active_fedora_model_ssi'] = 'TuftsTemplate'
       end
       it "has a link to the fedora object" do
@@ -62,13 +62,13 @@ describe SolrDocument do
     end
 
     it 'knows whether or not an object is a template' do
-      @template.template?.should be_truthy
-      @pdf.template?.should be_falsey
+      expect(@template).to be_template
+      expect(@pdf).to_not be_template
     end
 
     it 'are not publishable' do
-      @template.publishable?.should be_falsey
-      @pdf.publishable?.should be_truthy
+      expect(@template).to_not be_publishable
+      expect(@pdf).to be_publishable
     end
   end
 
@@ -80,29 +80,29 @@ describe SolrDocument do
     end
 
     it 'knows if an object has been reviewed already' do
-      @doc.reviewed?.should be_falsey
+      expect(@doc).to_not be_reviewed
       @doc['qrStatus_tesim'] = Reviewable.batch_review_text
-      @doc.reviewed?.should be_truthy
+      expect(@doc).to be_reviewed
     end
 
     it 'knows if an object is reviewable' do
-      @doc.reviewable?.should be_truthy
+      expect(@doc).to be_reviewable
     end
 
     it 'an object that has already been reviewed is not reviewable' do
       @doc['qrStatus_tesim'] = Reviewable.batch_review_text
-      @doc.reviewed?.should be_truthy
-      @doc.reviewable?.should be_falsey
+      expect(@doc).to be_reviewed
+      expect(@doc).to_not be_reviewable
     end
 
     it 'templates are not reviewable' do
       @doc['active_fedora_model_ssi'] = 'TuftsTemplate'
-      @doc.reviewable?.should be_falsey
+      expect(@doc).to_not be_reviewable
     end
 
     it 'an object that is not in a batch is not reviewable' do
       @doc['batch_id_ssim'] = nil
-      @doc.reviewable?.should be_falsey
+      expect(@doc).to_not be_reviewable
     end
 
   end

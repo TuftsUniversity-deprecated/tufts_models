@@ -40,9 +40,9 @@ describe Job::Publish do
 
     it 'publishes the record' do
       record = FactoryGirl.create(:tufts_pdf)
-      ActiveFedora::Base.should_receive(:find).with(record.id, cast: true).and_return(record)
+      expect(ActiveFedora::Base).to receive(:find).with(record.id, cast: true).and_return(record)
       job = Job::Publish.new('uuid', 'user_id' => 1, 'record_id' => record.id)
-      record.should_receive(:push_to_production!).once
+      expect(record).to receive(:push_to_production!).once
       job.perform
       record.delete
     end

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Job::CreateDerivatives do
 
   it 'uses the "derivatives" queue' do
-    Job::CreateDerivatives.queue.should == :derivatives
+    expect(Job::CreateDerivatives.queue).to eq :derivatives
   end
 
   describe '::create' do
@@ -27,8 +27,8 @@ describe Job::CreateDerivatives do
       object.save!
       job = Job::CreateDerivatives.new('uuid', 'record_id' => object.id)
 
-      TuftsPdf.any_instance.should_receive(:create_derivatives)
-      TuftsPdf.any_instance.should_receive(:save)
+      expect_any_instance_of(TuftsPdf).to receive(:create_derivatives)
+      expect_any_instance_of(TuftsPdf).to receive(:save)
       job.perform
     end
   end

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Job::ApplyTemplate do
 
   it 'uses the "templates" queue' do
-    Job::ApplyTemplate.queue.should == :templates
+    expect(Job::ApplyTemplate.queue).to eq :templates
   end
 
   describe '::create' do
@@ -79,7 +79,7 @@ describe Job::ApplyTemplate do
       job = Job::ApplyTemplate.new('uuid', 'user_id' => 1, 'record_id' => object.id, 'batch_id' => batch.id,  'attributes' => {toc: 'new toc'})
       job.perform
       object.reload
-      object.toc.should == ['old toc', 'new toc']
+      expect(object.toc).to eq ['old toc', 'new toc']
     end
 
     it "can be killed" do

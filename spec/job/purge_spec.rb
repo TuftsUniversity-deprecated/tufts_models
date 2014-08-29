@@ -40,9 +40,9 @@ describe Job::Purge do
 
     it 'purges the record' do
       record = FactoryGirl.create(:tufts_pdf)
-      ActiveFedora::Base.should_receive(:find).with(record.id, cast: true).and_return(record)
+      expect(ActiveFedora::Base).to receive(:find).with(record.id, cast: true).and_return(record)
       job = Job::Purge.new('uuid', 'user_id' => 1, 'record_id' => record.id)
-      record.should_receive(:purge!).once
+      expect(record).to receive(:purge!).once
       job.perform
       record.delete
     end

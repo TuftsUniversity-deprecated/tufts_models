@@ -7,27 +7,27 @@ describe DcaAdmin do
   it 'has template_name' do
     title = 'Title for a Template'
     subject.template_name = title
-    subject.template_name.should == [title]
+    expect(subject.template_name).to eq [title]
   end
 
   it "should have a published date" do
     time = DateTime.parse('2013-03-22T12:33:00Z')
     subject.published_at = time
-    subject.published_at.should == [time]
+    expect(subject.published_at).to eq [time]
   end
 
   it "should have an edited date" do
     time = DateTime.parse('2013-03-22T12:33:00Z')
     subject.edited_at = time
-    subject.edited_at.should == [time]
+    expect(subject.edited_at).to eq [time]
   end
 
   it "should index the published and edited dates" do
     time = DateTime.parse('2013-03-22T12:33:00Z')
     subject.edited_at = time
     subject.published_at = time
-    subject.to_solr.should == {
-       "edited_at_dtsi" =>'2013-03-22T12:33:00Z', 'published_at_dtsi' =>'2013-03-22T12:33:00Z'}
+    expect(subject.to_solr).to eq(
+       "edited_at_dtsi" =>'2013-03-22T12:33:00Z', 'published_at_dtsi' =>'2013-03-22T12:33:00Z')
   end
 
   it "should have note" do
@@ -38,7 +38,7 @@ describe DcaAdmin do
   end
 
   it "should have createdby" do
-    subject.createdby = 'selfdep' 
+    subject.createdby = 'selfdep'
     expect(subject.createdby).to eq ['selfdep']
     subject.createdby = 'admin-deposit'
     expect(subject.createdby).to eq ['admin-deposit']

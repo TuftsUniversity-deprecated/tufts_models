@@ -9,7 +9,7 @@ describe TuftsGenericObject do
   end
 
   # it "should have an original_file_datastream" do
-  #   TuftsGenericObject.original_file_datastream.should == "GENERIC-CONTENT"
+  #   expect(TuftsGenericObject.original_file_datastream).to eq "GENERIC-CONTENT"
   # end
 
 #   <foxml:datastream ID="GENERIC-CONTENT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
@@ -31,18 +31,18 @@ describe TuftsGenericObject do
       subject.inner_object.pid = 'tufts:MS054.003.DO.02108'
     end
     it "should give a remote url" do
-      subject.remote_url_for('GENERIC-CONTENT', 'zip').should == 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/generic/MS054.003.DO.02108.zip'
+      expect(subject.remote_url_for('GENERIC-CONTENT', 'zip')).to eq 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/generic/MS054.003.DO.02108.zip'
     end
     it "should give a local_path" do
-      subject.local_path_for('GENERIC-CONTENT', 'zip').should == File.expand_path("../../fixtures/local_object_store/data01/tufts/central/dca/MS054/generic/MS054.003.DO.02108.zip", __FILE__)
+      expect(subject.local_path_for('GENERIC-CONTENT', 'zip')).to eq File.expand_path("../../fixtures/local_object_store/data01/tufts/central/dca/MS054/generic/MS054.003.DO.02108.zip", __FILE__)
     end
   end
 
   describe "setting items" do
     it "should accept a hash" do
       subject.item_attributes = {"0"=>{"item_id" => '0', "link"=>"link one", "mimeType"=>"mime one", "fileName"=>"file one"}, "1"=>{"item_id" => '1', "link"=>"link two", "mimeType"=>"mime two", "fileName"=>"file two"}, "2"=>{"item_id" => '2', "link"=>"link three", "mimeType"=>"mime three", "fileName"=>"file three"}}
-      subject.item(1).link.should == ["link two"]
-      subject.item(2).item_id.should == ["2"]
+      expect(subject.item(1).link).to eq ["link two"]
+      expect(subject.item(2).item_id).to eq ["2"]
     end
   end
 end

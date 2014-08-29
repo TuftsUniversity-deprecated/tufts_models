@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TuftsDcDetailed do
   it "should have provenance" do
     subject.provenance = 'test'
-    subject.provenance.should == ['test']
+    expect(subject.provenance).to eq ['test']
   end
 end
 

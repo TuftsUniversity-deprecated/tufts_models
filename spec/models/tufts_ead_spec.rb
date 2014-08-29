@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TuftsEAD do
 
   it "should have an original_file_datastreams" do
-    TuftsEAD.original_file_datastreams.should == ['Archival.xml']
+    expect(TuftsEAD.original_file_datastreams).to eq ['Archival.xml']
   end
 
   describe "to_class_uri" do

@@ -37,7 +37,7 @@ shared_examples 'an import error path (no documents uploaded)' do
   end
 
   it 'renders the form' do
-    response.should render_template(:edit)
+    expect(response).to render_template(:edit)
   end
 
   it 'displays a flash message' do
