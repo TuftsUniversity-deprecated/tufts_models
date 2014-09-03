@@ -30,8 +30,22 @@ class DcaAdmin < ActiveFedora::OmDatastream
     Nokogiri::XML('<admin xmlns:local="http://nils.lib.tufts.edu/dcaadmin/" xmlns:ac="http://purl.org/dc/dcmitype/"/>')
   end
 
+  # This is the prefix for all of the generated solr fields
   def prefix
     ""
+  end
+
+  def term_values_append(opts={})
+    ensure_local_namespace_exists!
+    super
+  end
+
+  # TDL staff decided to change from having a default namespace to a prefixed namespace.
+  # This method ensures the prefixed namespace is added to the document
+  def ensure_local_namespace_exists!
+    unless ng_xml.namespaces.key? 'xmlns:local'
+      ng_xml.root.add_namespace_definition('local', 'http://nils.lib.tufts.edu/dcaadmin/')
+    end
   end
 
 end
