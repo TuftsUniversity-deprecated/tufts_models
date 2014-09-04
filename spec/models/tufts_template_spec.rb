@@ -37,13 +37,15 @@ describe TuftsTemplate do
 
   describe '#attributes_to_update' do
     it "removes attributes that aren't in the edit list" do
-      attrs = { title: 'Title from template',
+      attrs = { template_name: 'Name of template',
+                title: 'Title from template',
                 filesize: ['57 MB'],
                 discover_users: ['someone@example.com'] }
       template = TuftsTemplate.new(attrs)
 
       # This test assumes that :discover_users is not included
       # in terms_for_editing, but the other attributes are
+      expect(template.terms_for_editing.include?(:template_name)).to be_truthy
       expect(template.terms_for_editing.include?(:title)).to be_truthy
       expect(template.terms_for_editing.include?(:filesize)).to be_truthy
       expect(template.terms_for_editing.include?(:discover_users)).to be_falsey
@@ -54,6 +56,7 @@ describe TuftsTemplate do
       expect(result.class).to eq Hash
       expect(result.include?(:title)).to be_truthy
       expect(result.include?(:filesize)).to be_truthy
+      expect(result.include?(:template_name)).to be_falsey
       expect(result.include?(:discover_users)).to be_falsey
     end
 

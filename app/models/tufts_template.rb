@@ -45,8 +45,17 @@ class TuftsTemplate < ActiveFedora::Base
     end
   end
 
+  # The list of fields to edit from the DCA_ADMIN datastream
+  def admin_display_fields
+    super + [:template_name]
+  end
+
+  def terms_for_updating
+    terms_for_editing - [:template_name]
+  end
+
   def attributes_to_update
-    updates = terms_for_editing.inject({}) do |attrs, attribute|
+    updates = terms_for_updating.inject({}) do |attrs, attribute|
       value_of_attr = self.send(attribute)
       unless attr_empty?(value_of_attr)
         attrs.merge!(attribute => value_of_attr)
