@@ -58,5 +58,18 @@ describe CollectionMetadata do
     end
   end
 
-end
 
+  context "when a member is deleted" do
+    before do
+      subject.members = [image1, image2]
+      image1.delete
+    end
+
+    describe 'members' do
+      it 'returns the non-deleted elements' do
+        expect(subject.members).to eq [image2]
+        expect(subject.member_ids).to eq [image2.pid]
+      end
+    end
+  end
+end

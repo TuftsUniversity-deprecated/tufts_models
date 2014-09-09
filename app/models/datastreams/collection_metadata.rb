@@ -70,11 +70,31 @@ class CollectionProxy
   end
 
   def to_ary
-    ids.map { |pid| ActiveFedora::Base.find(pid.to_s) }
+    not_found_ids = []
+    members = ids.map do |pid|
+      begin
+        ActiveFedora::Base.find(pid.to_s)
+      rescue ActiveFedora::ObjectNotFoundError
+        not_found_ids << pid
+        nil
+      end
+    end.compact
+
+    remove_missing_members(not_found_ids)
+    members
   end
 
   delegate :each, :each_with_index, to: :to_ary
   delegate :empty?, :size, to: :@list
 
-end
+  private
 
+    def remove_missing_members(not_found_ids)
+      return if not_found_ids.empty?
+      keep_ids = ids - not_found_ids
+      @list.clear
+      keep_ids.each do |id|
+        @list << id
+      end
+    end
+end
