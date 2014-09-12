@@ -39,6 +39,19 @@ class CuratedCollection < ActiveFedora::Base
     ActiveFedora::SolrService.count query
   end
 
+  ##
+  # flatten the collection recursively
+  def flatten(list = members)
+    first, *rest = *list
+    if first.nil?
+      []
+    elsif first.respond_to? :flatten # it's a collection
+      first.flatten + flatten(rest)
+    else
+      [first] + flatten(rest)
+    end
+  end
+
   def self.not_containing(pid)
     where(["-member_ids_ssim:\"#{pid}\""])
   end

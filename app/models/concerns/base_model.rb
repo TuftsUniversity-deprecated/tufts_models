@@ -53,7 +53,7 @@ module BaseModel
     #MK 2011-04-13 - Are we really going to need to access FILE-META from FILE-META.  I'm guessing not.
     has_metadata "FILE-META", type: TuftsFileMeta
 
-    has_attributes :identifier, :creator, :description, :publisher, :source, 
+    has_attributes :identifier, :creator, :description, :publisher, :source,
                    :date_created, :date_issued, :date_available, :type,
                    :format, :extent,  :persname, :corpname, :geogname,
                    :subject, :genre, :rights, :bibliographic_citation,

@@ -164,4 +164,21 @@ describe CuratedCollection do
     expect(subject.pid).to match /tufts.uc:\d+/
   end
 
+  describe "flatten" do
+    let(:collection) { build(:curated_collection) }
+    let(:nested_collection) { build(:curated_collection) }
+    let(:image) { create(:tufts_image) }
+    let(:nested_image) { create(:tufts_image) }
+
+    before do
+      nested_collection.members = [ nested_image ]
+      nested_collection.save!
+      collection.members = [ image, nested_collection ]
+      collection.save!
+    end
+
+    subject { collection.flatten }
+
+    it { should eq [image, nested_image] }
+  end
 end
