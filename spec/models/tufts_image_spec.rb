@@ -70,7 +70,7 @@ describe TuftsImage do
       before { subject.create_thumbnail }
       it "should create Thumbnail.png" do
         expect(File.exists?(subject.local_path_for('Thumbnail.png', 'png'))).to be_truthy
-        expect(subject.datastreams["Thumbnail.png"].dsLocation).to eq "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/thumbnail_png/MISS.ISS.IPPI.thumbnail.png"
+        expect(subject.datastreams["Thumbnail.png"].dsLocation).to eq "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/thumb_png/MISS.ISS.IPPI.thumbnail.png"
         expect(subject.datastreams["Thumbnail.png"].mimeType).to eq "image/png"
       end
     end
