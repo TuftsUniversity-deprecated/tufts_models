@@ -82,12 +82,12 @@ class TuftsDcDetailed < ActiveFedora::OmDatastream
              "xmlns:dcadesc" => "http://nils.lib.tufts.edu/dcadesc/",
              "xmlns:dcatech" => "http://nils.lib.tufts.edu/dcatech/",
              "xmlns:dcterms" => "http://purl.org/d/terms/",
-             "xmlns:xlink" => "http://www.w3.org/1999/xlink") 
+             "xmlns:xlink" => "http://www.w3.org/1999/xlink")
     end
     builder.doc
   end
 
   def prefix
-    "dc_detail_meta__"
+    ""
   end
 end
