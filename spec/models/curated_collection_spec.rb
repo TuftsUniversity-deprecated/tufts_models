@@ -135,13 +135,20 @@ describe CuratedCollection do
   end
 
 
-  describe "to_class_uri" do
+  describe "displays" do
     it "sets the displays" do
       expect(subject.displays).to eq ['tdil']
     end
 
     it "allows tdil as a display" do
       expect(subject.save).to be true
+    end
+  end
+
+  describe "createdby" do
+    it "can be set/read" do
+      subject.createdby = 'bob'
+      expect(subject.createdby).to eq 'bob'
     end
   end
 
