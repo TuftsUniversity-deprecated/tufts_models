@@ -54,4 +54,10 @@ describe DcaAdmin do
     expect(subject.batch_id).to eq ['1', '2', '3']
   end
 
+  it "should index an embargo date as a date" do
+    subject.embargo='2023-06-12'
+    expect(subject.to_solr).to eq(
+      "embargo_dtsim" =>['2023-06-12T00:00:00Z'])
+  end
+
 end
