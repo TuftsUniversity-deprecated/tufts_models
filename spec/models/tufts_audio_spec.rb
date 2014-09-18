@@ -63,6 +63,21 @@ describe TuftsAudio do
       expect(subject.local_path_for('ARCHIVAL_SOUND', 'mp3')).to eq File.expand_path("../../fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3", __FILE__)
     end
   end
+  # if mira touches an object with data stored in a legacy location it shouldn't
+  # start moving that data around to the new store or looking for it somewhere
+  # it is not
+  describe "an audio with existing legacy datastreams on different data shares" do
+    before do
+      subject.inner_object.pid = 'tufts:MS054.003.DO.02108'
+      subject.inner_object.datastreams['ARCHIVAL_SOUND'].dsLocation = 'http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3'
+    end
+    it "should give a remote url" do
+      expect(subject.remote_url_for('ARCHIVAL_SOUND', 'mp3')).to eq 'http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3'
+    end
+    it "should give a local_path" do
+      expect(subject.local_path_for('ARCHIVAL_SOUND', 'mp3')).to eq File.expand_path("../../fixtures/local_object_store/data05/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3", __FILE__)
+    end
+  end
 
 
   # This tests depends on ffmpeg, so exlude it for travis
