@@ -13,7 +13,7 @@ class TuftsImage < TuftsBase
   def to_solr(solr_doc=Hash.new)
     #prefilter perseus, art history objects, year book pages and election images
     if perseus? || art_history? || year_book_page? || election_image?
-      solr_doc
+      solr_doc.merge!(id: pid)
     else
       super
     end

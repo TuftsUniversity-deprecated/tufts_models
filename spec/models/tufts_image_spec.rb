@@ -78,5 +78,26 @@ describe TuftsImage do
   end
 
 
+  describe "to_solr" do
+    subject { image.to_solr }
 
+    context "for a regular object" do
+      let(:image) { TuftsImage.new(pid: 'tufts:1', title: 'Foo') }
+
+      it "should create a solr document with pid, title, etc" do
+        expect(subject[:id]).to eq 'tufts:1'
+        expect(subject['title_tesim']).to eq ['Foo']
+      end
+    end
+
+    context "for an art-history object" do
+      let(:image) { TuftsImage.new(pid: 'tufts:aah.1', title: 'Foo') }
+
+      it "should create a solr document with just a pid" do
+        # This ought to change. See https://github.com/curationexperts/tufts-image-library/issues/174
+        expect(subject[:id]).to eq 'tufts:aah.1'
+        expect(subject).to_not have_key 'title_tesim'
+      end
+    end
+  end
 end
