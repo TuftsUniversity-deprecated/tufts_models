@@ -1,6 +1,6 @@
 require 'jettywrapper'
 
-namepace :tufts do
+namespace :tufts do
 
   desc 'Load fixture data'
   task :fixtures => :environment do
