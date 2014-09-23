@@ -32,7 +32,7 @@ class HasModelNodeInvalidError < MetadataXmlParserError
   end
 end
 
-class InvalidPidError < MetadataXmlParserError
+class ExistingPidError < MetadataXmlParserError
   def message
     "The PID for the record beginning at line #{@line} already exists in the repository" + append_details
   end
@@ -47,6 +47,12 @@ end
 class DuplicatePidError < MetadataXmlParserError
   def message
     "Multiple PIDs defined for record beginning at line #{@line}" + append_details
+  end
+end
+
+class InvalidPidError < MetadataXmlParserError
+  def message
+    "Invalid PID defined for record beginning at line #{@line}. Pids must be in this format: tufts:1231" + append_details
   end
 end
 
@@ -84,10 +90,14 @@ module MetadataXmlParser
         errors << DuplicateFilenameError.new(duplicate.line, error_details(duplicate))
       end
 
-      # check for duplicate pids
       pids = doc.xpath("//digitalObject/pid/text()")
+      # check for duplicate pids
       pids.group_by(&:content).values.map{|nodes| nodes.drop(1)}.flatten.each do |duplicate|
         errors << DuplicatePidError.new(duplicate.line, error_details(duplicate))
+      end
+      # check for invalid pids
+      pids.reject{|pid| TuftsBase.valid_pid?(pid.content)}.each do |invalid|
+        errors << InvalidPidError.new(invalid.line, error_details(invalid))
       end
 
       doc.xpath('//digitalObject').map do |digital_object|
@@ -187,7 +197,7 @@ module MetadataXmlParser
 
     def get_pid(node)
       pid = get_node_content(node, "./pid")
-      raise InvalidPidError.new(node.line, error_details(node)) if pid && ActiveFedora::Base.exists?(pid)
+      raise ExistingPidError.new(node.line, error_details(node)) if pid && ActiveFedora::Base.exists?(pid)
       pid
     end
 

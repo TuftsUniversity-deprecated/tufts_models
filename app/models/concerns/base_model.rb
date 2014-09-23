@@ -37,6 +37,10 @@ module BaseModel
 
     before_save :update_audit_log
 
+    def self.valid_pid?(pid)
+      pid.match(/^([A-Za-z0-9]|-|\.)+:(([A-Za-z0-9])|-|\.|~|_|(%[0-9A-F]{2}))+$/)
+    end
+
     def update_audit_log
       if respond_to?(:content_will_update) && content_will_update
         self.audit(working_user, "Content updated: #{content_will_update}")

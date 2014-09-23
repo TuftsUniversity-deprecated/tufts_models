@@ -50,6 +50,14 @@ describe MetadataXmlParser do
       errors = MetadataXmlParser.validate(xml).map(&:message)
       expect(errors.first).to match /Multiple PIDs defined for record beginning at line \d+/
     end
+
+    it "doesn't allow invalid pids" do
+      xml = "<input>" +
+        build_node('pid' => ['demo:FLORA:01.01'], 'file' => ['foo1.pdf']).to_xml +
+        "</input>"
+      errors = MetadataXmlParser.validate(xml).map(&:message)
+      expect(errors.first).to match /Invalid PID defined for record beginning at line \d+/
+    end
   end
 
   describe "::build_record" do
@@ -174,7 +182,7 @@ describe MetadataXmlParser do
 
       expect{
         MetadataXmlParser.get_pid(node_with_only_pid)
-      }.to raise_error(InvalidPidError, /The PID .* already exists in the repository/)
+      }.to raise_error(ExistingPidError, /The PID .* already exists in the repository/)
     end
   end
 

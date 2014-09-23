@@ -20,6 +20,13 @@ describe TuftsBase do
     end
   end
 
+  describe ".valid_pid?" do
+    it "tells you if a pid is valid" do
+      expect(TuftsBase.valid_pid?('tufts:1')).to be_truthy
+      expect(TuftsBase.valid_pid?('demo:FLORA:01.01')).to be_falsy
+    end
+  end
+
   describe "to_solr" do
     describe "when not saved" do
       before do
