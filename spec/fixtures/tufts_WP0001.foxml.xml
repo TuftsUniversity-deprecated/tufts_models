@@ -245,44 +245,4 @@ xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.opena
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="Thumbnail.png" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Thumbnail.png.0" LABEL="Thumbnail" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="image/png">
-<foxml:contentLocation TYPE="URL" REF="http://dl.tufts.edu/fakeData/TV07-450.COLO.Distended.Gallbladder.thumbnail.png"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Thumbnail.png.1" LABEL="Thumbnail" CREATED="2011-02-28T17:27:32.649Z" MIMETYPE="image/png">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/thumb_png/TV07-450.COLO.Distended.Gallbladder.thumbnail.png"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="Basic.jpg" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Basic.jpg.0" LABEL="Medium-quality image" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="image/jpeg">
-<foxml:contentLocation TYPE="URL" REF="http://dl.tufts.edu/fakeData/TV07-450.COLO.Distended.Gallbladder.basic.jpg"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Basic.jpg.1" LABEL="Medium-quality image" CREATED="2011-02-28T17:28:32.389Z" MIMETYPE="image/jpeg">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/basic_jpg/TV07-450.COLO.Distended.Gallbladder.basic.jpg"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="Advanced.jpg" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Advanced.jpg.0" LABEL="High-quality image" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="image/jpeg">
-<foxml:contentLocation TYPE="URL" REF="http://dl.tufts.edu/fakeData/TV07-450.COLO.Distended.Gallbladder.jpg"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Advanced.jpg.1" LABEL="High-quality image" CREATED="2011-02-28T17:29:06.925Z" MIMETYPE="image/jpeg">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/advanced_jpg/TV07-450.COLO.Distended.Gallbladder.jpg"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="Archival.tif" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Archival.tif.0" LABEL="Archival-quality image" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="image/jpeg">
-<foxml:contentLocation TYPE="URL" REF="http://dl.tufts.edu/fakeData/TV07-450.COLO.Distended.Gallbladder.jpg"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Archival.tif.1" LABEL="Archival-quality image" CREATED="2011-02-28T17:30:18.357Z" MIMETYPE="image/jpeg">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/advanced_tif/TV07-450.COLO.Distended.Gallbladder.jpg"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="Metadata.xml" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Metadata.xml.0" LABEL="NBII LIFE Metadata" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://dl.tufts.edu/fakeData/WP0001.metadata.xml"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Metadata.xml.1" LABEL="NBII LIFE Metadata" CREATED="2011-02-28T17:31:00.423Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/archival_xml/WP0001.metadata.xml"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
 </foxml:digitalObject>

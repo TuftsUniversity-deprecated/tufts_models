@@ -192,5 +192,4 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 <foxml:contentLocation TYPE="INTERNAL_ID" REF="http://repository01.lib.tufts.edu:8080/fedora/get/tufts:12423/audit_log/2014-07-11T15:17:51.979Z"/>
 </foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="Archival.pdf" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
 </foxml:digitalObject>

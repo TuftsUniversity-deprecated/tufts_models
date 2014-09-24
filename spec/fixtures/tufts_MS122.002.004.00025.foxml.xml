@@ -111,14 +111,4 @@ xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.opena
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="ACCESS_MP3" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="ACCESS_MP3.0" LABEL="Dikala lead gung-gong drum language audio (1) gnuni sagirisi ku ba ku" CREATED="2006-03-09T18:08:11.808Z" MIMETYPE="audio/mpeg">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS122/access_mp3/MS122.002.004.00025.access.mp3"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="ARCHIVAL_SOUND" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="ARCHIVAL_SOUND.0" LABEL="Dikala lead gung-gong drum language audio (1) gnuni sagirisi ku ba ku" CREATED="2006-03-09T18:08:11.808Z" MIMETYPE="application/octet-stream">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS122/archival_sound/MS122.002.004.00025.archival.mp3"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
 </foxml:digitalObject>

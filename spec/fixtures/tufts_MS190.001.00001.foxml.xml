@@ -81,30 +81,6 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="Archival.tif" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Archival.tif.0" LABEL="Sarcophagus of Nedymos, Church of St-Lukas, Thiva, Greece" CREATED="2014-01-30T20:29:23.102Z" MIMETYPE="image/tiff">
-<foxml:contentDigest TYPE="MD5" DIGEST="6651fe1d9fabd67483649cb780b6f14a"/>
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS190/archival_tif/MS190.001.00001.archival.tif"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="Advanced.jpg" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Advanced.jpg.0" LABEL="Sarcophagus of Nedymos, Church of St-Lukas, Thiva, Greece" CREATED="2014-01-30T20:29:23.102Z" MIMETYPE="image/jpeg">
-<foxml:contentDigest TYPE="MD5" DIGEST="fe37cba4139a57851fd155ac04c45202"/>
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS190/advanced_jpg/MS190.001.00001.advanced.jpg"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="Basic.jpg" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Basic.jpg.0" LABEL="Sarcophagus of Nedymos, Church of St-Lukas, Thiva, Greece" CREATED="2014-01-30T20:29:23.102Z" MIMETYPE="image/jpeg">
-<foxml:contentDigest TYPE="MD5" DIGEST="1ce14fdb436866c702b210a889f72b46"/>
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS190/basic_jpg/MS190.001.00001.basic.jpg"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="Thumbnail.png" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Thumbnail.png.0" LABEL="Sarcophagus of Nedymos, Church of St-Lukas, Thiva, Greece" CREATED="2014-01-30T20:29:23.102Z" MIMETYPE="image/png">
-<foxml:contentDigest TYPE="MD5" DIGEST="631b8de124dc85bb0d3da1d468fda0be"/>
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS190/thumb_png/MS190.001.00001.thumb.png"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Relationships to other objects" CREATED="2014-01-30T20:29:23.102Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="953">
 <foxml:contentDigest TYPE="MD5" DIGEST="0d784c74e3aa43a183d81c7e914270ab"/>

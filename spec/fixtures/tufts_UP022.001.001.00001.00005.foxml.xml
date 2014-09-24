@@ -26,11 +26,6 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="Advanced.jpg" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Advanced.jpg.0" LABEL="High-quality image" CREATED="2005-05-17T23:08:38.024Z" MIMETYPE="image/jpeg">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UP022/advanced_jpg/UP022.001.001.00001.00005.advanced.jpg"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Relationships to other objects" CREATED="2005-05-17T23:08:38.024Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="951">
 <foxml:xmlContent>
@@ -62,11 +57,6 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
   </rdf:Description>
 </rdf:RDF>
 </foxml:xmlContent>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="Basic.jpg" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Basic.jpg.0" LABEL="Medium-quality image" CREATED="2005-05-17T23:08:38.024Z" MIMETYPE="image/jpeg">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UP022/basic_jpg/UP022.001.001.00001.00005.basic.jpg"/>
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
@@ -185,16 +175,6 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 			      
             </dca_dc:dc>
 </foxml:xmlContent>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="Archival.tif" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Archival.tif.0" LABEL="Archival-quality image" CREATED="2005-05-17T23:08:38.024Z" MIMETYPE="image/tiff">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UP022/archival_tif/UP022.001.001.00001.00005.archival.tif"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="Thumbnail.png" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Thumbnail.png.0" LABEL="Thumbnail" CREATED="2005-05-17T23:08:38.024Z" MIMETYPE="image/png">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UP022/thumb_png/UP022.001.001.00001.00005.thumb.png"/>
 </foxml:datastreamVersion>
 </foxml:datastream>
 </foxml:digitalObject>

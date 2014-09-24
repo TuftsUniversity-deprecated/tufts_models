@@ -144,16 +144,6 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="ARCHIVAL_XML" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="ARCHIVAL_XML.0" LABEL="Archival TEI transcript" CREATED="2006-03-09T18:06:24.684Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS124/archival_xml/MS124.001.001.00002.tei.xml"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="ARCHIVAL_WAV" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="ARCHIVAL_WAV.0" LABEL="Archival Broadcast WAV file" CREATED="2006-03-09T18:09:25.470Z" MIMETYPE="audio/wav">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS124/archival_wav/MS124.001.001.00002.archival.wav"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
 <foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="DC1.0" LABEL="Dublin Core Metadata" CREATED="2006-03-09T18:02:32.926Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="825">
 <foxml:xmlContent>
@@ -276,19 +266,6 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
   <dcadesc:subject>Somerville (Mass.)</dcadesc:subject>
 </dca_dc:dc>
 </foxml:xmlContent>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="ACCESS_MP3" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="ACCESS_MP3.0" LABEL="MP3 audio file" CREATED="2006-03-09T18:08:11.808Z" MIMETYPE="audio/mpeg">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS124/access_mp3/MS124.001.001.00002.mp3"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="PRESENT_SMIL" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="PRESENT_SMIL.0" LABEL="SMIL presentation file" CREATED="2006-03-09T18:10:40.914Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS124/access_smil/MS124.001.001.00002.smil"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="PRESENT_SMIL.1" LABEL="SMIL presentation file" CREATED="2006-03-09T18:19:43.856Z" MIMETYPE="application/smil+xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS124/access_smil/MS124.001.001.00002.smil"/>
 </foxml:datastreamVersion>
 </foxml:datastream>
 </foxml:digitalObject>
