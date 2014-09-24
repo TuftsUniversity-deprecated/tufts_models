@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foxml:digitalObject VERSION="1.1" PID="tufts:UA206.001.426.00042"
+xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+<foxml:objectProperties>
+<foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="Trip to Nicaragua with the Tufts group BUILD in coordination with the organization Bridges to Community. Photo 535"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE=""/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2008-06-23T20:27:33.671Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2013-03-26T16:49:18.991Z"/>
+</foxml:objectProperties>
+<foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2008-06-23T20:27:33.671Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:xmlContent>
+<audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+<audit:record ID="AUDREC1">
+<audit:process type="Fedora API-M"/>
+<audit:action>ingest</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2011-10-04T16:08:18.471Z</audit:date>
+<audit:justification>Ingested from local file p:\ingests\20111003.1\objects\tufts-UA206.001.426.00042.foxml.xml</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC2">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-META</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-03-26T16:49:18.812Z</audit:date>
+<audit:justification>purging bib citation</audit:justification>
+</audit:record>
+<audit:record ID="AUDREC3">
+<audit:process type="Fedora API-M"/>
+<audit:action>modifyDatastreamByValue</audit:action>
+<audit:componentID>DCA-ADMIN</audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2013-03-26T16:49:18.991Z</audit:date>
+<audit:justification>purging datastream</audit:justification>
+</audit:record>
+</audit:auditTrail>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Relationships to other objects" CREATED="2005-05-17T23:08:38.024Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="874">
+<foxml:xmlContent>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.fedora.info/definitions/">
+          					<rdf:Description rdf:about="info:fedora/tufts:UA206.001.426.00042">
+						            <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Image.4DS"></fedora-model:hasModel> 
+						            <itemID xmlns="http://www.openarchives.org/OAI/2.0/">oai:tufts:UA206.001.426.00042</itemID>
+						            
+						<rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA206"></rel:isMemberOfCollection>
+						            <rel:hasDescription rdf:resource="info:fedora/tufts:UA069.001.DO.UA206"></rel:hasDescription>
+						         </rdf:Description>
+        				</rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DC.1" LABEL="Dublin Core Metadata" CREATED="2005-05-17T23:11:21.803Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="1050">
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:title>Trip to Nicaragua with the Tufts group BUILD in coordination with the organization Bridges to Community. Photo 535</dc:title>
+  <dc:creator>Ko, Melody</dc:creator>
+  <dc:description>Trip to Nicaragua with the Tufts group BUILD in coordination with the organization Bridges to Community. The permanent URL for this resource is: http://hdl.handle.net/10427/75142</dc:description>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:date>20110930</dc:date>
+  <dc:date>2006-01-08</dc:date>
+  <dc:type>image</dc:type>
+  <dc:format>image/jpeg</dc:format>
+  <dc:identifier>tufts:UA206.001.426.00042</dc:identifier>
+  <dc:source>UA206</dc:source>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights.html</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DCA-ADMIN" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DCA-ADMIN.1" LABEL="DCA Adminstrative Metadata" CREATED="2005-05-17T23:08:38.024Z" MIMETYPE="text/xml" SIZE="316">
+<foxml:xmlContent>
+<dca_admin:admin xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.fedora.info/definitions/">
+			</dca_admin:admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-ADMIN.2" LABEL="DCA Administrative Metadata" CREATED="2013-03-26T16:49:18.991Z" MIMETYPE="text/xml" SIZE="266">
+<foxml:xmlContent>
+<dca_admin:admin xmlns:admin="http://nils.lib.tufts.edu/admin/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_admin="http://nils.lib.tufts.edu/dca_admin/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/TR/xlink"></dca_admin:admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DCA-META" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DCA-META.1" LABEL="DCA Descriptive Metadata" CREATED="2005-05-17T23:08:38.024Z" MIMETYPE="text/xml" SIZE="2663">
+<foxml:xmlContent>
+<dca_dc:dc xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.fedora.info/definitions/">
+				           <dc:title>Trip to Nicaragua with the Tufts group BUILD in coordination with the organization Bridges to Community. Photo 535</dc:title>
+				           <dc:creator>Ko, Melody</dc:creator>
+				           <dc:description>Trip to Nicaragua with the Tufts group BUILD in coordination with the organization Bridges to Community.</dc:description>
+				           <dc:source>UA206</dc:source>
+				           <dc:temporal>2006-01-08</dc:temporal>
+				           <dc:date.created>2006-01-08</dc:date.created>
+				           <dc:date.available>20110930</dc:date.available>
+				           <dc:date.issued>2011-09-30</dc:date.issued>
+				           <dc:bibliographicCitation>Ko, Melody. &quot;Trip to Nicaragua with the Tufts group BUILD in coordination with the organization Bridges to Community. Photo 535.&quot; 2006-01-08. Tufts University. Digital Collections and Archives. Medford, MA. http://hdl.handle.net/10427/75142</dc:bibliographicCitation>
+				           <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+				           <dc:rights>http://dca.tufts.edu/ua/access/rights.html</dc:rights>
+				           <dc:identifier>http://hdl.handle.net/10427/75142</dc:identifier>
+				           <dcterms:extent>2478343 bytes</dcterms:extent>
+				           <dc:extent>2478343 bytes</dc:extent>
+				           <dc:type>image</dc:type>
+				           <dc:format>image/jpeg</dc:format>
+				           <dcatech:fileSize>2478343 bytes</dcatech:fileSize>
+				           <dcadesc:funder>md5 checksum: d39e2dc21536b8a0ed97ec8cdcdbc25b|Original file name: 060108_MKO_Nicaragua535.jpg|Accessioned by: Veronica Martzahl, Records Archivist|Accession date: 2010-04-06|Accession procedure: ACC-020|Accession number:201.075|Stabilized by: Aaron Rubinstein, Archivist for Digital Collections|Stabilization date: 2011-09-23|Stabilization procedure: ACC-009|Virus check application: NA|Checksum application: UNIX md5|Media image application: NA|Other applications used:NA|Notes: On 2010-04-06 and 2010-04-07, Veronica Martzahl, Records Archivist, moved all Digital Photography images from Xythos dropbox to the staging area in the Digital Green Barcodes server. A few additional images were deposited after this move and they were retrieved on 2010-08-09 (2006-01 images)</dcadesc:funder>
+			         </dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+<foxml:datastreamVersion ID="DCA-META.2" LABEL="DCA Descriptive Metadata" CREATED="2013-03-26T16:49:18.812Z" MIMETYPE="text/xml" SIZE="2111">
+<foxml:xmlContent>
+<dca_dc:dc xmlns="http://www.fedora.info/definitions/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <dc:title>Trip to Nicaragua with the Tufts group BUILD in coordination with the organization Bridges to Community. Photo 535</dc:title>
+  <dc:creator>Ko, Melody</dc:creator>
+  <dc:description>Trip to Nicaragua with the Tufts group BUILD in coordination with the organization Bridges to Community.</dc:description>
+  <dc:source>UA206</dc:source>
+  <dc:temporal>2006-01-08</dc:temporal>
+  <dc:date.created>2006-01-08</dc:date.created>
+  <dc:date.available>20110930</dc:date.available>
+  <dc:date.issued>2011-09-30</dc:date.issued>
+  <dc:publisher>Digital Collections and Archives, Tufts University</dc:publisher>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights.html</dc:rights>
+  <dc:identifier>http://hdl.handle.net/10427/75142</dc:identifier>
+  <dcterms:extent>2478343 bytes</dcterms:extent>
+  <dc:extent>2478343 bytes</dc:extent>
+  <dc:type>image</dc:type>
+  <dc:format>image/jpeg</dc:format>
+  <dcatech:fileSize>2478343 bytes</dcatech:fileSize>
+  <dcadesc:funder>md5 checksum: d39e2dc21536b8a0ed97ec8cdcdbc25b|Original file name: 060108_MKO_Nicaragua535.jpg|Accessioned by: Veronica Martzahl, Records Archivist|Accession date: 2010-04-06|Accession procedure: ACC-020|Accession number:201.075|Stabilized by: Aaron Rubinstein, Archivist for Digital Collections|Stabilization date: 2011-09-23|Stabilization procedure: ACC-009|Virus check application: NA|Checksum application: UNIX md5|Media image application: NA|Other applications used:NA|Notes: On 2010-04-06 and 2010-04-07, Veronica Martzahl, Records Archivist, moved all Digital Photography images from Xythos dropbox to the staging area in the Digital Green Barcodes server. A few additional images were deposited after this move and they were retrieved on 2010-08-09 (2006-01 images)</dcadesc:funder>
+</dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+</foxml:digitalObject>

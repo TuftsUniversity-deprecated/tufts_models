@@ -5,7 +5,6 @@ namespace :tufts do
   desc 'Load fixture data'
   task :fixtures => :environment do
     FIXTURES = %w(
-      tufts:WP0001
       tufts:UA069.001.DO.UP029
       tufts:UA069.005.DO.00272
       tufts:UA069.005.DO.00239
@@ -55,6 +54,28 @@ namespace :tufts do
       tufts:me.uscongress3.second.1825
       tufts:sample001
       tufts:sample002
+
+      tufts:MK999.999.999.99999
+      tufts:MS134.006.035.00004
+      tufts:MS190.001.00005
+      tufts:UA009.011.029.00009
+      tufts:UA015.001.003.00072.00005
+      tufts:WP0001
+      tufts:sample007
+      tufts:aah.slidelib.8358-195
+      tufts:aah.slidelib.8358-198
+      tufts:facpubs.nriagu-1983.00007
+      tufts:ddennett-2006.00007
+      tufts:UA206.001.426.00042
+      tufts:UA084.508087359
+      tufts:MS201.002.03081
+      tufts:MS190.001.00001
+      tufts:RCR00979
+      tufts:UP226.001.001.00010.00002
+      tufts:MS123.001.001.00001
+      tufts:MS165.002.001.00012
+      tufts:12423
+      tufts:sd.0000189
       )
 
     loader = ActiveFedora::FixtureLoader.new("#{TuftsModels::Engine.root}/spec/fixtures")

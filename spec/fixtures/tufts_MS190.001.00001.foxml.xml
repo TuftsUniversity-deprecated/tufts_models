@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<foxml:digitalObject VERSION="1.1" PID="tufts:MS190.001.00001"
+xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+<foxml:objectProperties>
+<foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="Sarcophagus of Nedymos, Church of St-Lukas, Thiva, Greece"/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE=""/>
+<foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2014-01-30T20:29:22.596Z"/>
+<foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2014-01-30T20:29:22.596Z"/>
+</foxml:objectProperties>
+<foxml:datastream ID="AUDIT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="false">
+<foxml:datastreamVersion ID="AUDIT.0" LABEL="Audit Trail for this object" CREATED="2014-01-30T20:29:22.596Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit">
+<foxml:xmlContent>
+<audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+<audit:record ID="AUDREC1">
+<audit:process type="Fedora API-M"/>
+<audit:action>ingest</audit:action>
+<audit:componentID></audit:componentID>
+<audit:responsibility>fedoraAdmin</audit:responsibility>
+<audit:date>2014-01-30T20:29:22.596Z</audit:date>
+<audit:justification>Ingested from local file /home/efauld01/ingests/20131219.3/objects/tufts-MS190.001.00001.foxml.xml</audit:justification>
+</audit:record>
+</audit:auditTrail>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DC" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DC.1" LABEL="Dublin Core Metadata" CREATED="2014-01-30T20:29:23.101Z" MIMETYPE="text/xml" FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" SIZE="710">
+<foxml:contentDigest TYPE="MD5" DIGEST="0b54f2a6b66611bb0e5d9c335b589303"/>
+<foxml:xmlContent>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+  <dc:title>Sarcophagus of Nedymos, Church of St-Lukas, Thiva, Greece</dc:title>
+  <dc:creator>Beaulieu, Marie-Claire</dc:creator>
+  <dc:date>2013-12-02T00:00:00</dc:date>
+  <dc:date>2007</dc:date>
+  <dc:type>Image</dc:type>
+  <dc:format>image/tiff</dc:format>
+  <dc:identifier>tufts:MS190.001.00001</dc:identifier>
+  <dc:source>MS190</dc:source>
+  <dc:rights>http://dca.tufts.edu/ua/access/rights.html</dc:rights>
+</oai_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DCA-ADMIN" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DCA-ADMIN.0" LABEL="DCA Administrative Metadata" CREATED="2014-01-30T20:29:23.101Z" MIMETYPE="text/xml" SIZE="235">
+<foxml:contentDigest TYPE="MD5" DIGEST="9adc4359fbf3195276bcef514ca73636"/>
+<foxml:xmlContent>
+<admin xmlns="http://nils.lib.tufts.edu/dcaadmin/" xmlns:ac="http://purl.org/dc/dcmitype/">
+               <steward>dca</steward>
+               <displays>dl</displays>
+               <createdBy>CIDER</createdBy>
+            </admin>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="DCA-META" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="DCA-META.1" LABEL="DCA Descriptive Metadata" CREATED="2014-01-30T20:29:23.101Z" MIMETYPE="text/xml" SIZE="1319">
+<foxml:contentDigest TYPE="MD5" DIGEST="15070f577f8ac1a48e9a284e7f3c8a8b"/>
+<foxml:xmlContent>
+<dca_dc:dc xmlns:dca_dc="http://nils.lib.tufts.edu/dca_dc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:dcatech="http://nils.lib.tufts.edu/dcatech/" xmlns:dcadesc="http://nils.lib.tufts.edu/dcadesc/">
+               <dc:title>Sarcophagus of Nedymos, Church of St-Lukas, Thiva, Greece</dc:title>
+               <dc:creator>Beaulieu, Marie-Claire</dc:creator>
+               <dc:description> General view of the sarcophagus of Nedymos. Shows the location of the
+              sarcophagus in the church </dc:description>
+               <dc:source>MS190</dc:source>
+               <dc:date.created>2007</dc:date.created>
+               <dc:date.available>2013-12-02T00:00:00</dc:date.available>
+               <dc:date.issued>2014-01-27</dc:date.issued>
+               <dc:publisher>Tufts University. Digital Collections and Archives.</dc:publisher>
+               <dc:rights>http://dca.tufts.edu/ua/access/rights.html</dc:rights>
+               <dc:identifier>http://hdl.handle.net/10427/78514</dc:identifier>
+               <dc:type>Image</dc:type>
+               
+            <dc:format>image/tiff</dc:format>
+               <dcadesc:geogname>Thebes (Greece)</dcadesc:geogname>
+               <dcadesc:subject>Sarcophagi, Greek</dcadesc:subject>
+            </dca_dc:dc>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="Archival.tif" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
+<foxml:datastreamVersion ID="Archival.tif.0" LABEL="Sarcophagus of Nedymos, Church of St-Lukas, Thiva, Greece" CREATED="2014-01-30T20:29:23.102Z" MIMETYPE="image/tiff">
+<foxml:contentDigest TYPE="MD5" DIGEST="6651fe1d9fabd67483649cb780b6f14a"/>
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS190/archival_tif/MS190.001.00001.archival.tif"/>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="Advanced.jpg" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
+<foxml:datastreamVersion ID="Advanced.jpg.0" LABEL="Sarcophagus of Nedymos, Church of St-Lukas, Thiva, Greece" CREATED="2014-01-30T20:29:23.102Z" MIMETYPE="image/jpeg">
+<foxml:contentDigest TYPE="MD5" DIGEST="fe37cba4139a57851fd155ac04c45202"/>
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS190/advanced_jpg/MS190.001.00001.advanced.jpg"/>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="Basic.jpg" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
+<foxml:datastreamVersion ID="Basic.jpg.0" LABEL="Sarcophagus of Nedymos, Church of St-Lukas, Thiva, Greece" CREATED="2014-01-30T20:29:23.102Z" MIMETYPE="image/jpeg">
+<foxml:contentDigest TYPE="MD5" DIGEST="1ce14fdb436866c702b210a889f72b46"/>
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS190/basic_jpg/MS190.001.00001.basic.jpg"/>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="Thumbnail.png" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
+<foxml:datastreamVersion ID="Thumbnail.png.0" LABEL="Sarcophagus of Nedymos, Church of St-Lukas, Thiva, Greece" CREATED="2014-01-30T20:29:23.102Z" MIMETYPE="image/png">
+<foxml:contentDigest TYPE="MD5" DIGEST="631b8de124dc85bb0d3da1d468fda0be"/>
+<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS190/thumb_png/MS190.001.00001.thumb.png"/>
+</foxml:datastreamVersion>
+</foxml:datastream>
+<foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Relationships to other objects" CREATED="2014-01-30T20:29:23.102Z" MIMETYPE="text/xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="953">
+<foxml:contentDigest TYPE="MD5" DIGEST="0d784c74e3aa43a183d81c7e914270ab"/>
+<foxml:xmlContent>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:rcr="http://dca.lib.tufts.edu/ontology/rcr#">
+               <rdf:Description rdf:about="info:fedora/tufts:MS190.001.00001">
+                  <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Image.4DS"></fedora-model:hasModel>
+                  <rel:hasDescription rdf:resource="info:fedora/tufts:UA069.001.DO.MS190"></rel:hasDescription>
+                  <rel:isMemberOf rdf:resource="info:fedora/tufts:UA069.001.DO.MS190"></rel:isMemberOf>
+                  <rel:hasDerivation rdf:resource="info:fedora/tufts:MS190.001.00007"></rel:hasDerivation>
+                  <rel:hasDerivation rdf:resource="info:fedora/tufts:MS190.001.00008"></rel:hasDerivation>
+               </rdf:Description>
+            </rdf:RDF>
+</foxml:xmlContent>
+</foxml:datastreamVersion>
+</foxml:datastream>
+</foxml:digitalObject>
