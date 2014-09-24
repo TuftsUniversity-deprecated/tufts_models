@@ -19,7 +19,7 @@ class TuftsFileMeta  < ActiveFedora::OmDatastream
   end
 
   def prefix
-    "audit_log__"
+    "tufts_file_meta__"
   end
 
 end
