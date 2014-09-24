@@ -1,6 +1,8 @@
 class DcaAdmin < ActiveFedora::OmDatastream
+  DCMI_TYPE = 'http://purl.org/dc/dcmitype/'
+  DCA_ADMIN = 'http://nils.lib.tufts.edu/dcaadmin/'
   set_terminology do |t|
-    t.root(:path => "admin", 'xmlns:local'=>"http://nils.lib.tufts.edu/dcaadmin/", 'xmlns:ac'=>"http://purl.org/dc/dcmitype/")
+    t.root(:path => "admin", 'xmlns:local' => DCA_ADMIN, 'xmlns:ac' => DCMI_TYPE)
 
     t.template_name index_as: :stored_searchable, path: 'templateName'
     t.steward namespace_prefix: "local", index_as: :stored_searchable
@@ -27,7 +29,7 @@ class DcaAdmin < ActiveFedora::OmDatastream
   #   compared to when the root has a namespace and the child elements do not have an namespace.
 
   def self.xml_template
-    Nokogiri::XML('<admin xmlns:local="http://nils.lib.tufts.edu/dcaadmin/" xmlns:ac="http://purl.org/dc/dcmitype/"/>')
+    Nokogiri::XML("<admin xmlns:local=\"#{DCA_ADMIN}\" xmlns:ac=\"#{DCMI_TYPE}\"/>")
   end
 
   # This is the prefix for all of the generated solr fields
@@ -37,15 +39,26 @@ class DcaAdmin < ActiveFedora::OmDatastream
 
   def term_values_append(opts={})
     ensure_local_namespace_exists!
+    ensure_ac_namespace_exists!
     super
   end
 
-  # TDL staff decided to change from having a default namespace to a prefixed namespace.
-  # This method ensures the prefixed namespace is added to the document
-  def ensure_local_namespace_exists!
-    unless ng_xml.namespaces.key? 'xmlns:local'
-      ng_xml.root.add_namespace_definition('local', 'http://nils.lib.tufts.edu/dcaadmin/')
+  private
+
+    # TDL staff decided to change from having a default namespace to a prefixed namespace.
+    # This method ensures the prefixed namespace is added to the document
+    def ensure_local_namespace_exists!
+      unless ng_xml.namespaces.key? 'xmlns:local'
+        ng_xml.root.add_namespace_definition('local', DCA_ADMIN)
+      end
     end
-  end
+
+    # TDL staff decided to add a namespace/terms that aren't on all existing documents.
+    # This method ensures the prefixed namespace is added to the document
+    def ensure_ac_namespace_exists!
+      unless ng_xml.namespaces.key? 'xmlns:ac'
+        ng_xml.root.add_namespace_definition('ac', DCMI_TYPE)
+      end
+    end
 
 end

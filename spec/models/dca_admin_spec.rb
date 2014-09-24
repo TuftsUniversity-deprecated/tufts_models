@@ -79,6 +79,22 @@ describe DcaAdmin do
         subject.content = source
       end
 
+      context "and without a prefix 'ac' defined" do
+        let(:namespaces) { 'xmlns="http://nils.lib.tufts.edu/dcaadmin/"' }
+
+        describe "write" do
+          context "a new node" do
+            before do
+              subject.name = ['foo']
+            end
+
+            it "should add the prefixed node" do
+              expect(subject.to_xml).to eq "<admin xmlns=\"http://nils.lib.tufts.edu/dcaadmin/\" xmlns:local=\"http://nils.lib.tufts.edu/dcaadmin/\" xmlns:ac=\"http://purl.org/dc/dcmitype/\"> <steward>Hey</steward> <ac:name>foo</ac:name></admin>"
+            end
+          end
+        end
+      end
+
       context "and without a prefix 'local' defined" do
         let(:namespaces) { 'xmlns="http://nils.lib.tufts.edu/dcaadmin/" xmlns:ac="http://purl.org/dc/dcmitype/"' }
         describe "read" do
@@ -142,7 +158,7 @@ describe DcaAdmin do
         end
 
         describe "write" do
-          context "a new node" do
+          context "a new 'local' node" do
             before do
               subject.note = ['foo']
             end
