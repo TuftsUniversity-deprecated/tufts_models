@@ -62,8 +62,6 @@ namespace :tufts do
       tufts:UA015.001.003.00072.00005
       tufts:WP0001
       tufts:sample007
-      tufts:aah.slidelib.8358-195
-      tufts:aah.slidelib.8358-198
       tufts:facpubs.nriagu-1983.00007
       tufts:ddennett-2006.00007
       tufts:UA206.001.426.00042
