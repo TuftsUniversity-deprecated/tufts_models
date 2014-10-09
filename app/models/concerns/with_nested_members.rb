@@ -60,6 +60,65 @@ module WithNestedMembers
     members.select {|m| m.kind_of? CuratedCollection }
   end
 
+  # returns a lazy, ordered list of all members (all leaf nodes of the tree)
+  def flattened_member_ids
+    flattened_member_ids_with_collections.map(&:first)
+  end
+
+  # returns a lazy, ordered list of all members (all leaf nodes of the tree) and their parent collections
+  def flattened_member_ids_with_collections(pids=nil, parent_collection=nil)
+    # logger.info "WithNestedMembers.flatten_pids_via_solr: querying for #{pids.inspect}"
+    if pids.nil?
+      pids = member_ids.map(&:to_s)
+    end
+    # FIXME move this into the flat_map section
+    if parent_collection.nil?
+      query = ActiveFedora::SolrService.construct_query_for_pids([pid])
+      parent_collection = ActiveFedora::SolrService.query(query).first
+    end
+    model_attr = ActiveFedora::SolrService.solr_name("has_model", :symbol)
+    query = ActiveFedora::SolrService.construct_query_for_pids(pids)
+    docs = ActiveFedora::SolrService.query(query, rows: pids.count).reduce({}){|acc,doc| acc.merge!(doc['id'] => doc)}
+    pids.lazy.flat_map do |pid|
+      model = docs[pid]
+      class_uri = model[model_attr].first
+      if [PersonalCollection, CourseCollection].map(&:to_class_uri).include? class_uri
+        # this pid is a collection
+        flattened_member_ids_with_collections(ActiveFedora::Base.find(pid).member_ids.map(&:to_s),
+                                              model)
+      else
+        # this pid is a non-collection
+        [[pid, parent_collection]]
+      end
+    end
+  end
+
+  # find the positions of all the members in the root collection (and their parent)
+  def positions_of_members
+    image_positions = flattened_member_ids_with_collections.
+      # keep only the parent collections
+      map(&:second).
+      # add positions
+      with_index.
+      # keep only the children of this collection
+      select { |(parent, position)| parent['id'] == pid }.
+      # keep only the positions
+      map(&:second)
+    # collections don't have positions when going through a flattened collection, put nils in for
+    # the positions of collections
+    member_positions = []
+    members.map do |member|
+      if member.is_a? CuratedCollection
+        member_positions << nil
+      else
+        # parents_of_members looks like this: [[parent, position], ...]
+        # using .next here because .drop(1) causes the internal pointer to rewind
+        # which makes us query for the dropped item a second time
+        member_positions << image_positions.next
+      end
+    end
+    member_positions
+  end
 
   protected
 
