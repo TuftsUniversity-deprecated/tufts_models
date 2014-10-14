@@ -3,17 +3,19 @@ class TuftsDcaMeta < ActiveFedora::OmDatastream
   # 2012-01-23 decided to make everything searchable here and handle facetable in the to_solr methods of the
   # models
 
+  DC_ELEMENTS = 'http://purl.org/dc/elements/1.1/'
+
   set_terminology do |t|
     t.root("path" => "dc",
            # use explicit namespaces for all terms to ensure backwards compatibility with other Tufts (non-hydra) applications
-           "xmlns:dc" => "http://purl.org/dc/elements/1.1/",
+           "xmlns:dc" => DC_ELEMENTS,
            "xmlns:dca_dc" => "http://nils.lib.tufts.edu/dca_dc/",
            "xmlns:dcadec" => "http://nils.lib.tufts.edu/dcadesc/",
            "xmlns:dcatech" => "http://nils.lib.tufts.edu/dcatech/",
            "xmlns:xlink" => "http://www.w3.org/1999/xlink")
     t.title(:namespace_prefix => "dc", :index_as => [:stored_searchable, :sortable])
     t.creator(:namespace_prefix => "dc", :index_as => [:stored_searchable, :sortable])
-    t.source(:path => "source", :namespace_prefix => "dc", :index_as => :stored_searchable)
+    t.source(:namespace_prefix => "dc", :index_as => :stored_searchable)
     t.description(:namespace_prefix => "dc", :index_as => :stored_searchable)
     t.date_created(:path => "date.created", :namespace_prefix => "dc", :index_as => :stored_searchable)
     t.date_available(:path => "date.available", :namespace_prefix => "dc", :index_as => :stored_searchable)
@@ -59,4 +61,18 @@ class TuftsDcaMeta < ActiveFedora::OmDatastream
     ""
   end
 
+  def term_values_append(opts={})
+    ensure_dc_namespace_exists!
+    super
+  end
+
+  private
+
+    # TDL staff decided to change from having a default namespace to a prefixed namespace.
+    # This method ensures the prefixed namespace is added to the document
+    def ensure_dc_namespace_exists!
+      unless ng_xml.namespaces.key? 'xmlns:dc'
+        ng_xml.root.add_namespace_definition('dc', DC_ELEMENTS)
+      end
+    end
 end

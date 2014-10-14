@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe DcaAdmin do
-
   subject { DcaAdmin.new(nil, 'DCA-ADMIN') }
 
   it 'has template_name' do
@@ -181,5 +180,4 @@ describe DcaAdmin do
       end
     end
   end
-
 end
