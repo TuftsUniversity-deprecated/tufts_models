@@ -146,7 +146,7 @@ describe TuftsBase do
       admin_attributes.each do |attrib|
         dsid = subject.class.defined_attributes[attrib].dsid
         namespace = subject.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
-        expect(namespace).to eq('oxns'),
+        expect(namespace).to eq('local'),
                              "wrong namespace for :#{attrib.to_s}\n  expected: 'local'\n       got: '#{namespace}"
       end
     end

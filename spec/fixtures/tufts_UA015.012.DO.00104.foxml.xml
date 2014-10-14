@@ -266,14 +266,6 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="Access.xml" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Access.xml.0" LABEL="Index PDF of the Document Source" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA015/access_xml/UA015.012.DO.00104.access.xml"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Access.xml.1" LABEL="Index PDF of the Document Source" CREATED="2010-12-17T19:59:51.303Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA015/access_xml/UA015.012.DO.00104.access.xml"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Relationships to other objects" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="901">
 <foxml:xmlContent>
@@ -1191,14 +1183,6 @@ communist revolutions and Soviet infiltration in Latin America but to genuinely 
   <dcadesc:subject>Technology transfer</dcadesc:subject>
 </dca_dc:dc>
 </foxml:xmlContent>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="Archival.pdf" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Archival.pdf.0" LABEL="Full PDF Document Source" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="application/pdf">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA015/archival_pdf/UA015.012.DO.00104.archival.pdf"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Archival.pdf.1" LABEL="Full PDF Document Source" CREATED="2010-12-17T19:59:50.813Z" MIMETYPE="application/pdf">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA015/archival_pdf/UA015.012.DO.00104.archival.pdf"/>
 </foxml:datastreamVersion>
 </foxml:datastream>
 </foxml:digitalObject>

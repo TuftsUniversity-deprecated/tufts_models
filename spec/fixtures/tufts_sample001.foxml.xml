@@ -142,41 +142,4 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="Thumbnail.png" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Thumbnail.png.0" LABEL="Thumbnail" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="image/png">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/thumb_png/TV07-450.COLO.Distended.Gallbladder.thumbnail.png"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Thumbnail.png.1" LABEL="Thumbnail" CREATED="2011-04-08T16:51:05.109Z" MIMETYPE="image/png">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/thumb_png/sample001.thumb.png"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="Basic.jpg" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Basic.jpg.0" LABEL="Medium-quality image" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="image/jpeg">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/basic_jpg/TV07-450.COLO.Distended.Gallbladder.basic.jpg"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Basic.jpg.1" LABEL="Medium-quality image" CREATED="2011-04-08T16:50:12.753Z" MIMETYPE="image/jpeg">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/basic_jpg/sample001.basic.jpg"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="Advanced.jpg" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Advanced.jpg.0" LABEL="High-quality image" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="image/jpeg">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/advanced_jpg/TV07-450.COLO.Distended.Gallbladder.jpg"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Advanced.jpg.1" LABEL="High-quality image" CREATED="2011-04-08T16:48:28.995Z" MIMETYPE="image/jpeg">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/advanced_jpg/sample001.advanced.jpg"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="Archival.tif" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Archival.tif.0" LABEL="Archival-quality image" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="image/jpeg">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/archival_tif/TV07-450.COLO.Distended.Gallbladder.jpg"/>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="Archival.tif.1" LABEL="Archival-quality image" CREATED="2011-04-08T16:51:47.142Z" MIMETYPE="image/jpeg">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/archival_tif/sample001.archivial.tif"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="Content.html" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Metadata.xml.0" LABEL="HTML Content" CREATED="2011-01-24T16:00:00.000Z" MIMETYPE="text/html">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/sample/access_xml/sample001.html"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
 </foxml:digitalObject>

@@ -26,11 +26,6 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:xmlContent>
 </foxml:datastreamVersion>
 </foxml:datastream>
-<foxml:datastream ID="Access.xml" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Access.xml.0" LABEL="Index PDF of the Document Source" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="text/xml">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/DEMO/access_xml/DEMO.003.003.00012.access.xml"/>
-</foxml:datastreamVersion>
-</foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
 <foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Relationships to other objects" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="926">
 <foxml:xmlContent>
@@ -107,11 +102,6 @@ xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.opena
 				           <dcadesc:subject>Data processing</dcadesc:subject>
 			         </dca_dc:dc>
 </foxml:xmlContent>
-</foxml:datastreamVersion>
-</foxml:datastream>
-<foxml:datastream ID="Archival.pdf" STATE="A" CONTROL_GROUP="E" VERSIONABLE="true">
-<foxml:datastreamVersion ID="Archival.pdf.0" LABEL="Multiresolution Decomposition Schemes Using the Parameterized Logarithmic Image Processing Model with Application to Image Fusion" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="application/pdf">
-<foxml:contentLocation TYPE="URL" REF="http://bucket01.lib.tufts.edu/data05/tufts/central/dca/PB/archival_pdf/PB.005.001.00001.archival.pdf"/>
 </foxml:datastreamVersion>
 </foxml:datastream>
 </foxml:digitalObject>
