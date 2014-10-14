@@ -6,7 +6,7 @@ class TuftsDcDetailed < ActiveFedora::OmDatastream
   set_terminology do |t|
     t.root(path: "dc", "xmlns" => "http://purl.org/dc/elements/1.1/",
            "xmlns:dca_dc" => "http://nils.lib.tufts.edu/dca_dc/",
-           "xmlns:dcadec" => "http://nils.lib.tufts.edu/dcadesc/",
+           "xmlns:dcadesc" => "http://nils.lib.tufts.edu/dcadesc/",
            "xmlns:dcatech" => "http://nils.lib.tufts.edu/dcatech/",
            "xmlns:dcterms" => "http://purl.org/d/terms/",
            "xmlns:xlink" => "http://www.w3.org/1999/xlink")

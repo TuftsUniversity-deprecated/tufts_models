@@ -10,7 +10,7 @@ class TuftsDcaMeta < ActiveFedora::OmDatastream
            # use explicit namespaces for all terms to ensure backwards compatibility with other Tufts (non-hydra) applications
            "xmlns:dc" => DC_ELEMENTS,
            "xmlns:dca_dc" => "http://nils.lib.tufts.edu/dca_dc/",
-           "xmlns:dcadec" => "http://nils.lib.tufts.edu/dcadesc/",
+           "xmlns:dcadesc" => "http://nils.lib.tufts.edu/dcadesc/",
            "xmlns:dcatech" => "http://nils.lib.tufts.edu/dcatech/",
            "xmlns:xlink" => "http://www.w3.org/1999/xlink")
     t.title(:namespace_prefix => "dc", :index_as => [:stored_searchable, :sortable])
