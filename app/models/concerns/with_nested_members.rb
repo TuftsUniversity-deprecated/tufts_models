@@ -115,7 +115,7 @@ module WithNestedMembers
       # add positions
       with_index.
       # keep only the children of this collection
-      select { |(parent, position)| parent['id'] == pid }.
+      select { |(parent, _)| parent['id'] == pid }.
       # keep only the positions
       map(&:second)
     # collections don't have positions when going through a flattened collection, put nils in for
