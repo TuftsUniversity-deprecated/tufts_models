@@ -68,29 +68,43 @@ module WithNestedMembers
   # returns a lazy, ordered list of all members (all leaf nodes of the tree) and their parent collections
   def flattened_member_ids_with_collections(pids=nil, parent_collection=nil)
     # logger.info "WithNestedMembers.flatten_pids_via_solr: querying for #{pids.inspect}"
+
+    # default to info from this collection
     if pids.nil?
-      pids = member_ids.map(&:to_s)
+      pids = member_ids
     end
-    # FIXME move this into the flat_map section
     if parent_collection.nil?
       query = ActiveFedora::SolrService.construct_query_for_pids([pid])
       parent_collection = ActiveFedora::SolrService.query(query).first
     end
-    model_attr = ActiveFedora::SolrService.solr_name("has_model", :symbol)
+
+    # make sure pids aren't RDFLiterals
+    pids = pids.map(&:to_s)
+
+    # load many docs at once so we have fewer requests
     query = ActiveFedora::SolrService.construct_query_for_pids(pids)
-    docs = ActiveFedora::SolrService.query(query, rows: pids.count).reduce({}){|acc,doc| acc.merge!(doc['id'] => doc)}
-    pids.lazy.flat_map do |pid|
-      model = docs[pid]
-      class_uri = model[model_attr].first
-      if [PersonalCollection, CourseCollection].map(&:to_class_uri).include? class_uri
-        # this pid is a collection
-        flattened_member_ids_with_collections(ActiveFedora::Base.find(pid).member_ids.map(&:to_s),
-                                              model)
-      else
-        # this pid is a non-collection
-        [[pid, parent_collection]]
-      end
+    docs = ActiveFedora::SolrService.query(query, rows: pids.count).reduce({}) do |acc,doc|
+      acc.merge!(doc['id'] => doc)
     end
+
+    model_attr = ActiveFedora::SolrService.solr_name("has_model", :symbol)
+    pids.
+      # don't do queries for all pids if we only need the first few
+      lazy.
+      # this is needed because member_ids sometimes returns deleted pids
+      # see https://github.com/curationexperts/tufts_models/issues/8
+      select{|pid| ActiveFedora::Base.exists?(pid)}.
+      flat_map do |pid|
+        doc = docs[pid]
+        class_uri = doc[model_attr].first
+        if [PersonalCollection, CourseCollection].map(&:to_class_uri).include? class_uri
+          # this pid is a collection
+          flattened_member_ids_with_collections(ActiveFedora::Base.find(pid).member_ids, doc)
+        else
+          # this pid is a non-collection
+          [[pid, parent_collection]]
+        end
+      end
   end
 
   # find the positions of all the members in the root collection (and their parent)

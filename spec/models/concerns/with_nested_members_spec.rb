@@ -23,6 +23,7 @@ describe WithNestedMembers do
     allow(ActiveFedora::SolrService).to receive(:construct_query_for_pids) { |pids| pids }
     allow(ActiveFedora::SolrService).to receive(:query) { |pids| solr_docs.values_at(*pids) }
     allow(ActiveFedora::Base).to receive(:find) { |pid| all_models.find{|m| m.pid == pid} }
+    allow(ActiveFedora::Base).to receive(:exists?) { true }
   end
 
   describe  '#falttened_member_ids_with_collections' do
@@ -33,6 +34,20 @@ describe WithNestedMembers do
         [img3.pid, solr_docs[coll1.pid]],
         [img4.pid, solr_docs[subject.pid]]]
       expect(subject.flattened_member_ids_with_collections.force).to eq expected
+    end
+
+    context "with a deleted member" do
+      before do
+        allow(ActiveFedora::Base).to receive(:exists?) {|pid| pid != img2.pid }
+      end
+
+      it 'skips the deleted item' do
+        expected = [
+          [img1.pid, solr_docs[subject.pid]],
+          [img3.pid, solr_docs[coll1.pid]],
+          [img4.pid, solr_docs[subject.pid]]]
+        expect(subject.flattened_member_ids_with_collections.force).to eq expected
+      end
     end
   end
 
