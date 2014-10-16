@@ -4,7 +4,7 @@ class DcaAdmin < ActiveFedora::OmDatastream
   set_terminology do |t|
     t.root(:path => "admin", 'xmlns:local' => DCA_ADMIN, 'xmlns:ac' => DCMI_TYPE)
 
-    t.template_name index_as: :stored_searchable, path: 'templateName'
+    t.template_name namespace_prefix: "local", index_as: :stored_searchable, path: 'templateName'
     t.steward namespace_prefix: "local", index_as: :stored_searchable
     t.name namespace_prefix: "ac", index_as: :stored_searchable
     t.comment namespace_prefix: "ac", index_as: :stored_searchable

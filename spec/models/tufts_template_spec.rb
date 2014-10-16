@@ -22,6 +22,12 @@ describe TuftsTemplate do
     it 'is required' do
       expect(subject.required?(:template_name)).to be_truthy
     end
+
+    it 'has the right prefix' do
+      dsid = subject.class.defined_attributes[:template_name].dsid
+      namespace = subject.datastreams[dsid].class.terminology.terms[:template_name].namespace_prefix
+      expect(namespace).to eq('local')
+    end
   end
 
   describe 'publishing' do
