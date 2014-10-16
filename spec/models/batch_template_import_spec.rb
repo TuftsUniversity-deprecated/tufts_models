@@ -36,15 +36,16 @@ describe BatchTemplateImport do
   it 'is invalid if record type is invalid' do
     subject.record_type = 'TuftsTemplate'
     expect(subject.valid?).to be_falsey
-    expect(subject.errors[:base]).to eq ["The template does not have the required attributes for the selected record type."]
+    expect(subject.errors[:base]).to eq ["This record type is invalid."]
   end
 
   it 'based on record type, it validates required fields' do
+    allow(HydraEditor).to receive(:models) { ['TuftsPdf'] }
     subject.record_type = 'TuftsPdf'
     template = TuftsTemplate.find(subject.template_id)
     template.update_attributes(title: nil)  # title is required on TuftsPdf
     expect(subject.valid?).to be_falsey
-    expect(subject.errors[:base]).to eq ["The template does not have the required attributes for the selected record type."]
+    expect(subject.errors[:base]).to eq ["The template does not have the required attributes for the selected record type (title can't be blank)."]
   end
 
 end
