@@ -149,13 +149,10 @@ module MetadataXmlParser
         result
       end
 
-      # Hacks to fix potential bug in datastream definitions.
-      # See: https://github.com/curationexperts/tufts/issues/227#preview_bucket_339
-      if datastream_class == TuftsDcaMeta
-        namespaces['dcadesc'] ||= namespaces['dcadec']
-      end
+      # Hack to fix potential bug in datastream definitions.
+      # See https://github.com/curationexperts/mira/issues/227#issuecomment-40148086
+      # and https://github.com/curationexperts/tufts_models/issues/11
       if datastream_class == TuftsDcDetailed
-        namespaces['dcadesc'] ||= namespaces['dcadec']
         namespaces['dcterms'] = namespaces['dcterms'].gsub("http://purl.org/d/terms/", "http://purl.org/dc/terms/")
       end
 

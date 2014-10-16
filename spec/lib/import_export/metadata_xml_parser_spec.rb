@@ -112,12 +112,9 @@ describe MetadataXmlParser do
     end
 
     # if the typos in the namespaces get fixed, we can remove this test and
-    # the corresponding code
+    # the corresponding code in MetadataXmlParser#get_namespaces
     it "doesn't modify namespaces if they have been fixed in the project" do
-      ns = MetadataXmlParser.get_namespaces(TuftsDcaMeta)
-      expect(ns["dcadesc"]).to eq TuftsDcaMeta.ox_namespaces["xmlns:dcadec"]
       ns = MetadataXmlParser.get_namespaces(TuftsDcDetailed)
-      expect(ns["dcadesc"]).to eq TuftsDcDetailed.ox_namespaces["xmlns:dcadec"]
       expect(ns["dcterms"]).to eq "http://purl.org/dc/terms/"
     end
   end
