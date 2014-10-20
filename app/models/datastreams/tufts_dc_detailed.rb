@@ -12,13 +12,9 @@ class TuftsDcDetailed < ActiveFedora::OmDatastream
            "xmlns:xlink" => "http://www.w3.org/1999/xlink")
     t.identifier
     t.alternative(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Alternative Title")
-    t.creator(index_as: :stored_searchable, label: "Creator")
     t.contributor(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Contributor")
-    t.description(index_as: :stored_searchable, label: "Description")
     t.abstract(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Abstract")
     t.toc(namespace_prefix: "dcterms", path: "tableOfContents", index_as: :stored_searchable, label: "Table of Contents")
-    t.publisher( index_as: :stored_searchable, label: "Publisher")
-    t.source(index_as: :stored_searchable, label: "Source")
     t.date(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Date")
     t.date_created(namespace_prefix: 'dcterms', path: "created", index_as: :displayable, label: "Date Created")
     t.date_copyrighted(namespace_prefix: "dcterms", path: "dateCopyrighted", index_as: :stored_searchable, label: "Date Copyrighted")
@@ -29,9 +25,6 @@ class TuftsDcDetailed < ActiveFedora::OmDatastream
     t.date_modified(namespace_prefix: "dcterms", path: "modified", index_as: :stored_searchable, label: "Date Modified")
     t.language(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Language")
 
-    t.type(index_as: :stored_searchable, label: "Type")
-    t.format(index_as: :stored_searchable, label: "Format")
-    t.extent(index_as: :stored_searchable, label: "Extent")
     t.medium(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Medium")
 
     t.persname(namespace_prefix: "dcadesc", path: "persname", index_as: :stored_searchable, label: "Person Name")
@@ -42,7 +35,6 @@ class TuftsDcDetailed < ActiveFedora::OmDatastream
     t.genre(namespace_prefix: "dcadesc", index_as: :stored_searchable, label: "DCA Genre")
 
     t.provenance(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Provenance")
-    t.rights(index_as: :stored_searchable, label: "Rights")
 
     t.access_rights(namespace_prefix: "dcterms", path: "accessRights", index_as: :stored_searchable, label: "Access Rights")
     t.rights_holder(namespace_prefix: "dcterms", path: "rightsHolder", index_as: :stored_searchable, label: "Rights Holder")

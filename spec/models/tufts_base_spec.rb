@@ -161,18 +161,20 @@ describe TuftsBase do
       end
     end
 
-    it "has namespacesed attributes for all models" do
-      HydraEditor.models.each do |model_str|
-        model = model_str.constantize
-        attribute_definitions = model.defined_attributes.select do |name, definition|
-          definition.dsid != "RELS-EXT"
+    it "has namespacese prefixes for all attributes of all models" do
+      # make sure all our models are loaded so we find all our descendants
+      Dir["app/models/*.rb"].each {|file| require_relative('../../' + file) }
+
+      TuftsBase.descendants.each do |model|
+        attribute_definitions = model.defined_attributes.reject do |_, definition|
+          ["RELS-EXT", "GENERIC-CONTENT"].include? definition.dsid
         end
         attribute_definitions.each do |attrib_str, attrib_info|
           attrib = attrib_str.to_sym
           dsid = attrib_info.dsid
-          namespace = model.new.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
-          expect(namespace).to_not be_blank,
-                                   "wrong namespace for #{model_str}.#{attrib.to_s}\n  expected: 'ac'\n       got: '#{namespace}"
+          prefix = model.new.datastreams[dsid].class.terminology.terms[attrib].namespace_prefix
+          expect(prefix).to_not eq('oxns'),
+                                   "missing prefix for #{model.to_s}.#{attrib.to_s}\n  expected: something other than 'oxns' (what Om uses for the default prefix)\n       got: '#{prefix}'"
         end
       end
     end
