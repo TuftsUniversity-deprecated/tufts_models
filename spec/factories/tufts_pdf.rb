@@ -6,7 +6,7 @@ FactoryGirl.define do
     sequence(:title) {|n| "Title #{n}" }
     displays { ['dl'] }
     after(:build) { |deposit, evaluator|
-      deposit.apply_depositor_metadata(evaluator.user.email)
+      deposit.apply_depositor_metadata(evaluator.user.username)
     }
     rights { ['http://dca.tufts.edu/ua/access/rights-creator.html'] }
   end
