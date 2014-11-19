@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :tufts_pdf do
-    ignore do
+    transient do
       user { FactoryGirl.create(:user) }
     end
     sequence(:title) {|n| "Title #{n}" }
@@ -12,7 +12,7 @@ FactoryGirl.define do
   end
 
   factory :self_deposit_pdf, parent: :tufts_pdf do
-    ignore do
+    transient do
       user { FactoryGirl.create(:user) }
     end
     createdby 'selfdep'

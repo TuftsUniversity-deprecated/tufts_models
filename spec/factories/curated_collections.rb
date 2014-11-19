@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :curated_collection do
-    ignore do
+    transient do
       user { FactoryGirl.create(:user) }
     end
     sequence(:title) {|n| "Title #{n}" }

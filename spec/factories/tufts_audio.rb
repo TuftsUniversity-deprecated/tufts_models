@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :tufts_audio do
-    ignore do
+    transient do
       user { FactoryGirl.create(:user) }
     end
     displays { ['dl'] }
