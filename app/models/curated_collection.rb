@@ -60,6 +60,6 @@ class CuratedCollection < ActiveFedora::Base
 
   private
     def default_attributes
-      self.displays = ['tdil'] if displays.empty?
+      self.displays = ['trove'] if displays.empty?
     end
 end

@@ -177,10 +177,10 @@ describe CourseCollection do
 
   describe "to_class_uri" do
     it "sets the displays" do
-      expect(subject.displays).to eq ['tdil']
+      expect(subject.displays).to eq ['trove']
     end
 
-    it "allows tdil as a display" do
+    it "allows trove as a display" do
       expect(subject.save).to be true
     end
   end
@@ -229,6 +229,6 @@ describe CourseCollection do
 
   describe "#createdby" do
     subject { CourseCollection.new.createdby }
-    it { should eq 'tdil' }
+    it { should eq 'trove' }
   end
 end

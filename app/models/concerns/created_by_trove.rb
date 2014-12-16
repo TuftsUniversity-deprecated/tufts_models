@@ -1,4 +1,4 @@
-module CreatedByTdil
+module CreatedByTrove
   extend ActiveSupport::Concern
 
   included do
@@ -7,6 +7,6 @@ module CreatedByTdil
 
   protected
     def add_created_by
-      self.createdby ||= 'tdil'
+      self.createdby ||= 'trove'
     end
 end

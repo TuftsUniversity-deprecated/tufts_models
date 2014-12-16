@@ -63,7 +63,7 @@ describe TuftsAudio do
       expect(subject).to be_valid
       subject.displays = ['tisch']
       expect(subject).to be_valid
-      subject.displays = ['aah']
+      subject.displays = ['trove']
       expect(subject).to be_valid
       subject.displays = ['perseus']
       expect(subject).to be_valid
