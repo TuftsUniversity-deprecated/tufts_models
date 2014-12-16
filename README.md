@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/curationexperts/tufts_models.svg)](https://travis-ci.org/curationexperts/tufts_models)
+
 In order to use tufts\_models you must insure you use the provided solr configuration in `solr\_conf`.  This has an autocommit directive which ensures the soft-commits used by ActiveFedora are persisted to disk.
 
 Add the following to `app/models/solr_document.rb`
