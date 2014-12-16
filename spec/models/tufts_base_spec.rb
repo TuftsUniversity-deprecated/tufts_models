@@ -89,8 +89,6 @@ describe TuftsBase do
       expect(subject).to be_valid
       subject.displays = ['tisch']
       expect(subject).to be_valid
-      subject.displays = ['aah']
-      expect(subject).to be_valid
       subject.displays = ['perseus']
       expect(subject).to be_valid
       subject.displays = ['elections']
