@@ -26,7 +26,7 @@ module WithPersonalCollections
 
     def create_personal_collection!
       PersonalCollection.new(pid: root_pid, title: collection_title,
-                            displays: ['tdil'], creator: [self.user_key]).tap do |coll|
+                            displays: ['trove'], creator: [self.user_key]).tap do |coll|
         coll.apply_depositor_metadata(self)
         coll.save!
       end

@@ -137,10 +137,10 @@ describe CuratedCollection do
 
   describe "displays" do
     it "sets the displays" do
-      expect(subject.displays).to eq ['tdil']
+      expect(subject.displays).to eq ['trove']
     end
 
-    it "allows tdil as a display" do
+    it "allows trove as a display" do
       expect(subject.save).to be true
     end
   end

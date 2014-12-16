@@ -28,7 +28,7 @@ describe DcaAdmin do
       doc.edited_at = time
       doc.published_at = time
       doc.embargo='2023-06-12'
-      doc.displays = ['dl', 'tdil']
+      doc.displays = ['dl', 'trove']
     end
 
     subject { doc.to_solr }
@@ -40,7 +40,7 @@ describe DcaAdmin do
     end
 
     it "should index displays so the tufts-image-library app can search for items" do
-      expect(subject['displays_ssim']).to match_array ['dl', 'tdil']
+      expect(subject['displays_ssim']).to match_array ['dl', 'trove']
     end
 
   end

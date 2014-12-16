@@ -97,7 +97,7 @@ describe TuftsBase do
       expect(subject).to be_valid
       subject.displays = ['dark']
       expect(subject).to be_valid
-      subject.displays = ['tdil']
+      subject.displays = ['trove']
       expect(subject).to be_valid
       subject.displays = ['fake']
       expect(subject).to_not be_valid
