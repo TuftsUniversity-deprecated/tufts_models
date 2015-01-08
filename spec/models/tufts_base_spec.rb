@@ -97,6 +97,8 @@ describe TuftsBase do
       expect(subject).to be_valid
       subject.displays = ['trove']
       expect(subject).to be_valid
+      subject.displays = ['nowhere']
+      expect(subject).to be_valid
       subject.displays = ['fake']
       expect(subject).to_not be_valid
     end
