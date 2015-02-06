@@ -16,22 +16,6 @@ class TuftsImage < TuftsBase
     create_thumbnail
   end
 
-  def perseus?
-    pid.include? 'perseus'
-  end
-
-  def art_history?
-    pid.include? 'aah'
-  end
-
-  def year_book_page?
-    pid.starts_with? 'tufts:UP150'
-  end
-
-  def election_image?
-    pid.starts_with? 'tufts:MS115.001'
-  end
-
   # Advanced Datastream
   #   The advanced datastream is a high-resolution jpeg file used in the advanced image viewer in the TDL. The advanced datastream is used to generate the basic and thumbnail datastreams.
   #   Format: jpg, high quality (8/12) -- or 69/100
