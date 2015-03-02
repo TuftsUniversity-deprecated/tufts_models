@@ -1,8 +1,9 @@
 class TuftsRCR < TuftsBase
 
-  #MK 2011-04-13 - Are we really going to need to access FILE-META from FILE-META.  I'm guessing
-  # not.
-  has_metadata :name => "FILE-META", :type => TuftsFileMeta
+  has_file_datastream 'RCR-CONTENT', control_group: 'E', original: true
 
-  has_metadata :name => "RCR-CONTENT", :type => TuftsRcrMeta
+  def self.to_class_uri
+    'info:fedora/cm:Text.RCR'
+  end
+
 end

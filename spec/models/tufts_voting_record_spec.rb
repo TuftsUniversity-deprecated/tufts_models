@@ -13,4 +13,17 @@ describe TuftsVotingRecord do
     end
   end
 
+  describe '#to_solr' do
+    subject { TuftsVotingRecord.create(pid: 'tufts:ny.someoffice.1', title: 'some title') }
+
+    before do
+      subject.add_relationship(:has_model, 'info:fedora/cm:VotingRecord')
+    end
+
+    it 'sets object type as Dataset' do
+      solr_doc = subject.to_solr
+      expect(solr_doc['object_type_sim']).to eq ['Datasets']
+    end
+  end
+
 end

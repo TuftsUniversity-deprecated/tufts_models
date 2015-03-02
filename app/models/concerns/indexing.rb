@@ -307,13 +307,13 @@ module Indexing
 
     def insert_object_type(solr_doc, model)
       model_s = case model
-      when "info:fedora/cm:WP","info:fedora/afmodel:TuftsWP","info:fedora/afmodel:TuftsTeiFragmented","info:fedora/cm:Text.TEI-Fragmented","info:fedora/afmodel:TuftsVotingRecord","info:fedora/cm:VotingRecord"
+      when "info:fedora/afmodel:TuftsTeiFragmented","info:fedora/cm:Text.TEI-Fragmented","info:fedora/afmodel:TuftsVotingRecord","info:fedora/cm:VotingRecord"
         "Datasets"
       when "info:fedora/cm:Text.EAD", "info:fedora/afmodel:TuftsEAD"
         "Collection Guides"
       when "info:fedora/cm:Audio", "info:fedora/afmodel:TuftsAudio","info:fedora/cm:Audio.OralHistory","info:fedora/afmodel:TuftsAudioText"
         "Audio"
-      when "info:fedora/cm:Image.4DS","info:fedora/cm:Image.3DS","info:fedora/afmodel:TuftsImage","info:fedora/cm:Image.HTML"
+      when "info:fedora/cm:Image.4DS","info:fedora/cm:Image.3DS","info:fedora/afmodel:TuftsImage"
         pid.starts_with?("tufts:MS115") ? "Datasets" : "Images"
       when "info:fedora/cm:Text.PDF","info:fedora/afmodel:TuftsPdf","info:fedora/afmodel:TuftsTEI","info:fedora/cm:Text.TEI","info:fedora/cm:Text.FacPub","info:fedora/afmodel:TuftsFacultyPublication"
         pid.starts_with?("tufts:UP") ? "Periodicals" : "Text"
@@ -321,6 +321,8 @@ module Indexing
         "Generic Objects"
       when "info:fedora/afmodel:TuftsTemplate"
         "Template"
+      when "info:fedora/cm:Text.RCR", "info:fedora/afmodel:TuftsRCR"
+        "Collection Creators"
       else
         COLLECTION_ERROR_LOG.error "Could not determine Format for : #{pid} with model #{model.inspect}"
       end
