@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "devise", ">= 3.4.0"
 
   s.add_dependency "railties", ">= 3.2", '< 5'
-  s.add_dependency "active-fedora", "~> 7.0"
+  s.add_dependency "active-fedora", "~> 7.1"
   s.add_dependency "chronic"
   s.add_dependency "hydra-core"
   s.add_dependency "hydra-role-management"
