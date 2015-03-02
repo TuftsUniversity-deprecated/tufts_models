@@ -9,8 +9,6 @@ describe "Overrides of ActiveFedora" do
       expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:Image.3DS')).to eq ['TuftsImage', 'afmodel']
       #TODO uh-oh! This mapping isn't reversable, which cm should a TuftsImage get?
       expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:Image.4DS')).to eq ['TuftsImage', 'afmodel']
-      expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:Image.HTML')).to eq ['TuftsImageText', 'afmodel']
-      expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:WP')).to eq ['TuftsWP', 'afmodel']
       expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:Text.FacPub')).to eq ['TuftsFacultyPublication', 'afmodel']
       expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:Text.PDF')).to eq ['TuftsPdf', 'afmodel']
       expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:Object.Generic')).to eq ['TuftsGenericObject', 'afmodel']
