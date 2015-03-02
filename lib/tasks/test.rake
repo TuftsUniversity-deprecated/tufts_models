@@ -52,7 +52,6 @@ namespace :tufts do
       tufts:ky.clerkofthehouse.1813
       tufts:la.speakerofthehouse.1820
       tufts:me.uscongress3.second.1825
-      tufts:sample001
       tufts:sample002
 
       tufts:MK999.999.999.99999
@@ -60,7 +59,6 @@ namespace :tufts do
       tufts:MS190.001.00005
       tufts:UA009.011.029.00009
       tufts:UA015.001.003.00072.00005
-      tufts:WP0001
       tufts:sample007
       tufts:ddennett-2006.00007
       tufts:UA206.001.426.00042
