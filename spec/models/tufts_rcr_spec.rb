@@ -11,4 +11,17 @@ describe TuftsRCR do
       expect(subject.to_class_uri).to eq 'info:fedora/cm:Text.RCR'
     end
   end
+
+  describe '#to_solr' do
+    subject { TuftsVotingRecord.create(pid: 'tufts:RCR000001', title: 'some title') }
+
+    before do
+      subject.add_relationship(:has_model, 'info:fedora/cm:Text.RCR')
+    end
+
+    it 'sets object type as Dataset' do
+      solr_doc = subject.to_solr
+      expect(solr_doc['object_type_sim']).to eq ['Collection Creators']
+    end
+  end
 end
