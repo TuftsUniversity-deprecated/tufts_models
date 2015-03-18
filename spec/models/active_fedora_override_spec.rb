@@ -13,7 +13,6 @@ describe "Overrides of ActiveFedora" do
       expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:Text.PDF')).to eq ['TuftsPdf', 'afmodel']
       expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:Object.Generic')).to eq ['TuftsGenericObject', 'afmodel']
       expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:Text.EAD')).to eq ['TuftsEAD', 'afmodel']
-      expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:Text.TEI-Fragmented')).to eq ['TuftsTeiFragmented', 'afmodel']
       expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:Text.TEI')).to eq ['TuftsTEI', 'afmodel']
       expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:Text.RCR')).to eq ['TuftsRCR', 'afmodel']
       expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:VotingRecord')).to eq ['TuftsVotingRecord', 'afmodel']
