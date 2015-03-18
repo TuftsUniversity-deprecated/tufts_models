@@ -307,7 +307,7 @@ module Indexing
 
     def insert_object_type(solr_doc, model)
       model_s = case model
-      when "info:fedora/afmodel:TuftsTeiFragmented","info:fedora/cm:Text.TEI-Fragmented","info:fedora/afmodel:TuftsVotingRecord","info:fedora/cm:VotingRecord"
+      when "info:fedora/afmodel:TuftsVotingRecord","info:fedora/cm:VotingRecord"
         "Datasets"
       when "info:fedora/cm:Text.EAD", "info:fedora/afmodel:TuftsEAD"
         "Collection Guides"
