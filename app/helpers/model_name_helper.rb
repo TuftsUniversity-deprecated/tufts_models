@@ -29,8 +29,6 @@ module ModelNameHelper
         "info:fedora/afmodel:TuftsGenericObject"
       when "info:fedora/cm:Text.EAD"
         "info:fedora/afmodel:TuftsEAD"
-      when "info:fedora/cm:Text.TEI-Fragmented"
-        "info:fedora/afmodel:TuftsTeiFragmented"
       when "info:fedora/cm:Text.TEI"
         "info:fedora/afmodel:TuftsTEI"
       when "info:fedora/cm:Text.RCR"

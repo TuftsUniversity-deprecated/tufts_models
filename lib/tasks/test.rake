@@ -43,9 +43,6 @@ namespace :tufts do
       tufts:UA069.001.DO.UA001
       tufts:UA069.001.DO.UA015
       tufts:UA069.005.DO.00001
-      tufts:UA069.005.DO.00002
-      tufts:UA069.005.DO.00015
-      tufts:UA069.005.DO.00020
       tufts:UA069.005.DO.00026
       tufts:UA069.005.DO.00090
       tufts:UA069.005.DO.00094
