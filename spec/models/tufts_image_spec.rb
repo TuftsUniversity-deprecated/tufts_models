@@ -88,6 +88,17 @@ describe TuftsImage do
         expect(subject[:id]).to eq 'tufts:1'
         expect(subject['title_tesim']).to eq ['Foo']
       end
+
+      it "should create a solr document with appropriately formatted BCE date created" do
+        image.date_created = ['-0462']
+        expect(subject['date_created_formatted_tesim']).to eq ['462 BCE']
+      end
+
+      it "should create a solr document with an appropriately CE date" do
+        image.date_created = ['1963']
+        expect(subject['date_created_formatted_tesim']).to eq ['1963']
+      end
+
     end
 
   end
