@@ -310,7 +310,7 @@ module Indexing
       self.date_created.each do |date_created|
         # we're storing BCE dates as -0462 using ISO-6801 standard but we want to retrieve them for display formatted for the screen
         if date_created.start_with? '-'
-         date_created = date_created.sub(/^[0\-]*/,"") + " BCE"
+         date_created = "#{date_created.sub(/^[0\-]*/,'')} BCE"
         end
 
         Solrizer.insert_field(solr_doc, 'date_created_formatted', "#{date_created}", :stored_searchable) #tesim
