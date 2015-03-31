@@ -327,7 +327,7 @@ module Indexing
         "Audio"
       when "info:fedora/cm:Image.4DS","info:fedora/cm:Image.3DS","info:fedora/afmodel:TuftsImage"
         pid.starts_with?("tufts:MS115") ? "Datasets" : "Images"
-      when "info:fedora/cm:Text.PDF","info:fedora/afmodel:TuftsPdf","info:fedora/afmodel:TuftsTEI","info:fedora/cm:Text.TEI","info:fedora/cm:Text.FacPub","info:fedora/afmodel:TuftsFacultyPublication"
+      when "info:fedora/cm:Text.PDF","info:fedora/afmodel:TuftsPdf","info:fedora/afmodel:TuftsTEI","info:fedora/cm:Text.TEI"
         pid.starts_with?("tufts:UP") ? "Periodicals" : "Text"
       when "info:fedora/cm:Object.Generic","info:fedora/afmodel:TuftsGenericObject"
         "Generic Objects"
