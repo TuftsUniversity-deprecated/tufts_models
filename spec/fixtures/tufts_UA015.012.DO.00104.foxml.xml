@@ -267,95 +267,13 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Relationships to other objects" CREATED="2005-05-25T20:33:57.600Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="901">
-<foxml:xmlContent>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/TR/xlink">
-				        
-               <rdf:Description rdf:about="info:fedora/tufts:UA015.012.DO.00104"><fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.PDF"></fedora-model:hasModel>
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:TuftsFacultyPublication"></fedora-model:hasModel>
-					          
-                  <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015"></rel:isMemberOfCollection>
-					          
-                  <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015.012"></rel:isMemberOfCollection>
-					          
-                  <rel:hasDescription rdf:resource="info:fedora/tufts:UA069.001.DO.UA015"></rel:hasDescription>
-				        
-               </rdf:Description>
-			      
-            </rdf:RDF>
-</foxml:xmlContent>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="RELS-EXT.1" LABEL="Relationships to other objects" CREATED="2010-06-25T19:42:41.854Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="1049">
-<foxml:xmlContent>
-<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <rdf:Description rdf:about="info:fedora/tufts:UA015.012.DO.00104">
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:TuftsFacultyPublication"></fedora-model:hasModel>
-    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015"></rel:isMemberOfCollection>
-    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015.012"></rel:isMemberOfCollection>
-    <rel:hasDescription rdf:resource="info:fedora/tufts:UA069.001.DO.UA015"></rel:hasDescription>
-    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.PB003.00006"></rel:isMemberOfCollection>
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:FacPub"></fedora-model:hasModel>
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:TuftsFacultyPublication"></fedora-model:hasModel>
-  </rdf:Description>
-</rdf:RDF>
-</foxml:xmlContent>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="RELS-EXT.2" LABEL="Relationships to other objects" CREATED="2010-06-28T15:12:16.396Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="1059">
-<foxml:xmlContent>
-<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <rdf:Description rdf:about="info:fedora/tufts:UA015.012.DO.00104">
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.FacPub"></fedora-model:hasModel>
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:TuftsFacultyPublication"></fedora-model:hasModel>
-    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015"></rel:isMemberOfCollection>
-    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015.012"></rel:isMemberOfCollection>
-    <rel:hasDescription rdf:resource="info:fedora/tufts:UA069.001.DO.UA015"></rel:hasDescription>
-    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.PB003.00006"></rel:isMemberOfCollection>
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.FacPub"></fedora-model:hasModel>
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:TuftsFacultyPublication"></fedora-model:hasModel>
-  </rdf:Description>
-</rdf:RDF>
-</foxml:xmlContent>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="RELS-EXT.3" LABEL="Relationships to other objects" CREATED="2010-06-28T17:05:15.327Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="1059">
-<foxml:xmlContent>
-<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <rdf:Description rdf:about="info:fedora/tufts:UA015.012.DO.00104">
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.FacPub"></fedora-model:hasModel>
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:TuftsFacultyPublication"></fedora-model:hasModel>
-    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015"></rel:isMemberOfCollection>
-    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015.012"></rel:isMemberOfCollection>
-    <rel:hasDescription rdf:resource="info:fedora/tufts:UA069.001.DO.UA015"></rel:hasDescription>
-    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.PB003.00006"></rel:isMemberOfCollection>
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.FacPub"></fedora-model:hasModel>
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:TuftsFacultyPublication"></fedora-model:hasModel>
-  </rdf:Description>
-</rdf:RDF>
-</foxml:xmlContent>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="RELS-EXT.4" LABEL="Relationships to other objects" CREATED="2010-08-28T20:38:38.531Z" MIMETYPE="text/xml" FORMAT_URI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" SIZE="1154">
-<foxml:xmlContent>
-<rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <rdf:Description rdf:about="info:fedora/tufts:UA015.012.DO.00104">
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.FacPub"></fedora-model:hasModel>
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:TuftsFacultyPublication"></fedora-model:hasModel>
-    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015"></rel:isMemberOfCollection>
-    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015.012"></rel:isMemberOfCollection>
-    <rel:hasDescription rdf:resource="info:fedora/tufts:UA069.001.DO.UA015"></rel:hasDescription>
-    <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.PB003.00006"></rel:isMemberOfCollection>
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Text.FacPub"></fedora-model:hasModel>
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:TuftsFacultyPublication"></fedora-model:hasModel>
-    <itemID xmlns="http://www.openarchives.org/OAI/2.0/">oai:tufts:UA015.012.DO.00104</itemID>
-  </rdf:Description>
-</rdf:RDF>
-</foxml:xmlContent>
-</foxml:datastreamVersion>
-<foxml:datastreamVersion ID="RELS-EXT.5" LABEL="Relationships to other objects" CREATED="2010-12-17T19:59:51.687Z" MIMETYPE="text/xml" FORMAT_URI="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Relationships to other objects" CREATED="2010-12-17T19:59:51.687Z" MIMETYPE="text/xml" FORMAT_URI="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 <foxml:xmlContent>
 <rdf:RDF xmlns="http://www.fedora.info/definitions/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/1999/xlink">
   <rdf:Description rdf:about="info:fedora/tufts:UA015.012.DO.00104">
     <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/afmodel:TuftsFacultyPublication"></fedora-model:hasModel>
-    <fedora-model:hasModel rdf:resource="info:fedora/cm:Text.FacPub" xmlns:fedora-model="info:fedora/fedora-system:def/model#"/>
+    <fedora-model:hasModel rdf:resource="info:fedora/cm:Text.PDF" xmlns:fedora-model="info:fedora/fedora-system:def/model#"/>
     <itemID xmlns="http://www.openarchives.org/OAI/2.0/">oai:tufts:UA015.012.DO.00104</itemID>
     <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015"/>
     <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.UA015.012"/>
