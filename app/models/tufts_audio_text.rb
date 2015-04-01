@@ -3,7 +3,6 @@ class TuftsAudioText < TuftsBase
   has_file_datastream 'ARCHIVAL_XML', control_group: 'E', original: true
   has_file_datastream 'ARCHIVAL_WAV', control_group: 'E', original: true
   has_file_datastream 'ACCESS_MP3', control_group: 'E'
-  has_file_datastream 'PRESENT_SMIL', control_group: 'E'
 
   def create_derivatives
     make_directory_for_datastream('ACCESS_MP3')
