@@ -21,8 +21,6 @@ module ModelNameHelper
         "info:fedora/afmodel:TuftsAudioText"
       when "info:fedora/cm:Image.3DS", "info:fedora/cm:Image.4DS"
         "info:fedora/afmodel:TuftsImage"
-      when "info:fedora/cm:Text.FacPub"
-        "info:fedora/afmodel:TuftsFacultyPublication"
       when "info:fedora/cm:Text.PDF"
         "info:fedora/afmodel:TuftsPdf"
       when "info:fedora/cm:Object.Generic"
