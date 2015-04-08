@@ -112,10 +112,10 @@ describe TuftsAudio do
       subject.inner_object.pid = 'tufts:MS054.003.DO.02108'
     end
     it "should give a remote url" do
-      expect(subject.remote_url_for('ARCHIVAL_SOUND', 'mp3')).to eq 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3'
+      expect(subject.remote_url_for('ARCHIVAL_WAV', 'mp3')).to eq 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/archival_wav/MS054.003.DO.02108.archival.mp3'
     end
     it "should give a local_path" do
-      expect(subject.local_path_for('ARCHIVAL_SOUND', 'mp3')).to eq File.expand_path("../../fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3", __FILE__)
+      expect(subject.local_path_for('ARCHIVAL_WAV', 'mp3')).to eq File.expand_path("../../fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_wav/MS054.003.DO.02108.archival.mp3", __FILE__)
     end
   end
   # if mira touches an object with data stored in a legacy location it shouldn't
@@ -124,13 +124,13 @@ describe TuftsAudio do
   describe "an audio with existing legacy datastreams on different data shares" do
     before do
       subject.inner_object.pid = 'tufts:MS054.003.DO.02108'
-      subject.inner_object.datastreams['ARCHIVAL_SOUND'].dsLocation = 'http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3'
+      subject.inner_object.datastreams['ARCHIVAL_WAV'].dsLocation = 'http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS054/archival_wav/MS054.003.DO.02108.archival.mp3'
     end
     it "should give a remote url" do
-      expect(subject.remote_url_for('ARCHIVAL_SOUND', 'mp3')).to eq 'http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3'
+      expect(subject.remote_url_for('ARCHIVAL_WAV', 'mp3')).to eq 'http://bucket01.lib.tufts.edu/data05/tufts/central/dca/MS054/archival_wav/MS054.003.DO.02108.archival.mp3'
     end
     it "should give a local_path" do
-      expect(subject.local_path_for('ARCHIVAL_SOUND', 'mp3')).to eq File.expand_path("../../fixtures/local_object_store/data05/tufts/central/dca/MS054/archival_sound/MS054.003.DO.02108.archival.mp3", __FILE__)
+      expect(subject.local_path_for('ARCHIVAL_WAV', 'mp3')).to eq File.expand_path("../../fixtures/local_object_store/data05/tufts/central/dca/MS054/archival_wav/MS054.003.DO.02108.archival.mp3", __FILE__)
     end
   end
   # Per Mark, the audit history can be found by using fedora versioning to see the audit entries on previous versions of the object.
@@ -163,14 +163,14 @@ describe TuftsAudio do
   end
 
   describe "to_class_uri" do
-    subject { TuftsAudioText }
+    subject { TuftsAudio }
     it "has sets the class_uri" do
-      expect(subject.to_class_uri).to eq 'info:fedora/cm:Audio.OralHistory'
+      expect(subject.to_class_uri).to eq 'info:fedora/cm:Audio'
     end
   end
 
   it "should have an original_file_datastreams" do
-    expect(TuftsAudioText.original_file_datastreams).to eq ['ARCHIVAL_XML', "ARCHIVAL_WAV"]
+    expect(TuftsAudio.original_file_datastreams).to eq ['ARCHIVAL_XML', "ARCHIVAL_WAV"]
   end
 
   describe "an audio text with a pid" do
@@ -201,7 +201,7 @@ describe TuftsAudio do
   describe "create_derivatives", :unless => ENV["TRAVIS"] do
     before do
       subject.inner_object.pid = 'tufts:MISS.ISS.IPPI'
-      subject.datastreams["ARCHIVAL_WAV"].dsLocation = "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/archival_sound/MISS.ISS.IPPI.archival.wav"
+      subject.datastreams["ARCHIVAL_WAV"].dsLocation = "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/archival_wav/MISS.ISS.IPPI.archival.wav"
     end
     describe "basic" do
       before { subject.create_derivatives }
