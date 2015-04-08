@@ -5,7 +5,6 @@ describe "Overrides of ActiveFedora" do
   describe "ActiveFedora::Module.classname_from_uri" do
     it "should return a uri" do
       expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:Audio')).to eq ['TuftsAudio', 'afmodel']
-      expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:Audio.OralHistory')).to eq ['TuftsAudioText', 'afmodel']
       expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:Image.3DS')).to eq ['TuftsImage', 'afmodel']
       #TODO uh-oh! This mapping isn't reversable, which cm should a TuftsImage get?
       expect(ActiveFedora::Model.classname_from_uri('info:fedora/cm:Image.4DS')).to eq ['TuftsImage', 'afmodel']
