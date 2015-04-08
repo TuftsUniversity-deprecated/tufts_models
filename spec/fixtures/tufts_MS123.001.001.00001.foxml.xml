@@ -43,21 +43,11 @@ xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/
 </foxml:datastreamVersion>
 </foxml:datastream>
 <foxml:datastream ID="RELS-EXT" STATE="A" CONTROL_GROUP="X" VERSIONABLE="true">
-<foxml:datastreamVersion ID="RELS-EXT.0" LABEL="Relationships to other objects" CREATED="2005-05-17T23:08:38.024Z" MIMETYPE="application/rdf+xml" FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" SIZE="673">
-<foxml:xmlContent>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/TR/xlink" xmlns:rel="info:fedora/fedora-system:def/relations-external#">
-          <rdf:Description rdf:about="info:fedora/tufts:MS123.001.001.00001"><fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Audio.OralHistory"></fedora-model:hasModel>
-            <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.MS123"></rel:isMemberOfCollection>
-            <rel:hasDescription rdf:resource="info:fedora/tufts:UA069.001.DO.MS123"></rel:hasDescription>
-          </rdf:Description>
-        </rdf:RDF>
-</foxml:xmlContent>
-</foxml:datastreamVersion>
 <foxml:datastreamVersion ID="RELS-EXT.1" LABEL="Relationships to other objects" CREATED="2010-09-06T18:53:11.032Z" MIMETYPE="text/xml" FORMAT_URI="http://www.w3.org/1999/02/22-rdf-syntax-ns#" SIZE="734">
 <foxml:xmlContent>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rel="info:fedora/fedora-system:def/relations-external#" xmlns:xlink="http://www.w3.org/TR/xlink">
   <rdf:Description rdf:about="info:fedora/tufts:MS123.001.001.00001">
-    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Audio.OralHistory"></fedora-model:hasModel>
+    <fedora-model:hasModel xmlns:fedora-model="info:fedora/fedora-system:def/model#" rdf:resource="info:fedora/cm:Audio"></fedora-model:hasModel>
     <rel:isMemberOfCollection rdf:resource="info:fedora/tufts:UA069.006.DO.MS123"></rel:isMemberOfCollection>
     <rel:hasDescription rdf:resource="info:fedora/tufts:UA069.001.DO.MS123"></rel:hasDescription>
     <itemID xmlns="http://www.openarchives.org/OAI/2.0/">oai:tufts:MS123.001.001.00001</itemID>

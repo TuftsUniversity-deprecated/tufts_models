@@ -323,7 +323,7 @@ module Indexing
         "Datasets"
       when "info:fedora/cm:Text.EAD", "info:fedora/afmodel:TuftsEAD"
         "Collection Guides"
-      when "info:fedora/cm:Audio", "info:fedora/afmodel:TuftsAudio","info:fedora/cm:Audio.OralHistory","info:fedora/afmodel:TuftsAudioText"
+      when "info:fedora/cm:Audio", "info:fedora/afmodel:TuftsAudio"
         "Audio"
       when "info:fedora/cm:Image.4DS","info:fedora/cm:Image.3DS","info:fedora/afmodel:TuftsImage"
         pid.starts_with?("tufts:MS115") ? "Datasets" : "Images"
@@ -340,14 +340,18 @@ module Indexing
       end
 
       Solrizer.insert_field(solr_doc, 'object_type', model_s, :facetable) if model_s
+      Solrizer.insert_field(solr_doc, 'object_type', model_s, :symbol) if model_s
 
 
       # At this point primary classification is complete but there are some outlier cases where we want to
       # Attribute two classifications to one object, now's the time to do that
       ##,"info:fedora/cm:Audio.OralHistory","info:fedora/afmodel:TuftsAudioText" -> needs text
       ##,"info:fedora/cm:Image.HTML" -->needs text
-      if ["info:fedora/cm:Audio.OralHistory","info:fedora/afmodel:TuftsAudioText","info:fedora/cm:Image.HTML"].include? model
-        Solrizer.insert_field(solr_doc, 'object_type', 'Text', :facetable) 
+      if ["info:fedora/cm:Audio","info:fedora/afmodel:TuftsAudio"].include? model
+        unless self.datastreams['ARCHIVAL_XML'].dsLocation.nil?
+          Solrizer.insert_field(solr_doc, 'object_type', 'Text', :facetable)
+          Solrizer.insert_field(solr_doc, 'object_type', 'Text', :symbol)
+        end
       end
     end
 
