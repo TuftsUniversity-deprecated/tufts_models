@@ -17,8 +17,6 @@ module ModelNameHelper
       mapped_model_name = case model_name
       when "info:fedora/cm:Audio"
         "info:fedora/afmodel:TuftsAudio"
-      when "info:fedora/cm:Audio.OralHistory"
-        "info:fedora/afmodel:TuftsAudioText"
       when "info:fedora/cm:Image.3DS", "info:fedora/cm:Image.4DS"
         "info:fedora/afmodel:TuftsImage"
       when "info:fedora/cm:Text.PDF"
