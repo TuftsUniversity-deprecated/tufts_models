@@ -20,7 +20,7 @@ class TuftsAudio < TuftsBase
   end
 
   def self.to_class_uri
-    'info:fedora/cm:Audio.OralHistory'
+    'info:fedora/cm:Audio'
   end
 
   # Given a datastream name, return the local path where the file can be found.
