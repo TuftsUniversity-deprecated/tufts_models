@@ -1,4 +1,5 @@
 class TuftsPdf < TuftsBase
+  include DraftVersion
 
   PDF_CONTENT_DS = 'Archival.pdf'
 

@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe TuftsRCR do
+
+  it 'has methods to support a draft version of the object' do
+    expect(TuftsRCR.respond_to?(:build_draft_version)).to be_truthy
+  end
+
   it "should have an original_file_datastreams" do
     expect(TuftsRCR.original_file_datastreams).to eq ['RCR-CONTENT']
   end

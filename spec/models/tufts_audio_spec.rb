@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe TuftsAudio do
+
+  it 'has methods to support a draft version of the object' do
+    expect(TuftsAudio.respond_to?(:build_draft_version)).to be_truthy
+  end
+
   describe "to_solr" do
     describe "when not saved" do
       before do
