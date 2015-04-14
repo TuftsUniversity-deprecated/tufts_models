@@ -1,4 +1,5 @@
 class TuftsRCR < TuftsBase
+  include DraftVersion
 
   has_file_datastream 'RCR-CONTENT', control_group: 'E', original: true
 

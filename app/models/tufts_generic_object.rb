@@ -1,4 +1,6 @@
 class TuftsGenericObject < TuftsBase
+  include DraftVersion
+
   has_metadata "GENERIC-CONTENT", type: TuftsGenericMeta
 
   has_attributes :item, datastream: 'GENERIC-CONTENT', multiple: true
