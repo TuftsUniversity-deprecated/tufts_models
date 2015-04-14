@@ -94,21 +94,20 @@ describe TuftsAudio do
     end
   end
 
-  describe "push_to_production!" do
-    before do
-      @audio = TuftsAudio.new(title: 'foo', displays: ['dl'])
-      @audio.read_groups = ['public']
-      @audio.save!
-    end
-
-    after do
-      @audio.destroy
-    end
-
+  describe "publish!" do
     it "should publish to production" do
-      expect(@audio).to_not be_published
-      @audio.push_to_production!
-      expect(@audio).to be_published
+      audio = TuftsAudio.build_draft_version(title: 'foo', displays: ['dl'], pid: 'tufts:123')
+      audio.read_groups = ['public']
+      audio.save!
+
+      expect(audio).to_not be_published
+
+      audio.publish!
+
+      expect(audio.reload).to be_published
+
+      published_version = TuftsAudio.find(PidUtils.to_published(audio.pid))
+      expect(published_version).to be_published
     end
   end
 

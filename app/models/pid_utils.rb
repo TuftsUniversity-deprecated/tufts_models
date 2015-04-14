@@ -11,6 +11,10 @@ class PidUtils
   def self.to_draft(pid)
     "#{draft_namespace}:#{stripped_pid(pid)}"
   end
+  
+  def self.to_published(pid)
+    "#{published_namespace}:#{stripped_pid(pid)}"
+  end
 
   def self.stripped_pid(pid)
     pid.sub(/.+:(.+)$/, '\1')
