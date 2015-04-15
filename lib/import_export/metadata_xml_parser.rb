@@ -130,8 +130,15 @@ module MetadataXmlParser
       doc = Nokogiri::XML(metadata)
       node = doc.at_xpath("//digitalObject[child::file/text()='#{document_filename}']")
       raise FileNotFoundError.new(document_filename) if node.nil?
+
       record_class = valid_record_class(node)
-      record_class.new(record_attributes(node, record_class))
+      attrs = record_attributes(node, record_class)
+
+      if record_class.respond_to?(:build_draft_version)
+        record_class.build_draft_version(attrs)
+      else
+        record_class.new(attrs)
+      end
     end
 
     def get_filenames(xml)
@@ -194,7 +201,10 @@ module MetadataXmlParser
 
     def get_pid(node)
       pid = get_node_content(node, "./pid")
-      raise ExistingPidError.new(node.line, error_details(node)) if pid && ActiveFedora::Base.exists?(pid)
+      if pid
+        draft_pid = PidUtils.to_draft(pid)
+        raise ExistingPidError.new(node.line, error_details(node)) if ActiveFedora::Base.exists?(pid) || ActiveFedora::Base.exists?(draft_pid)
+      end
       pid
     end
 

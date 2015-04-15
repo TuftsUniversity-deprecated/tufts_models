@@ -61,24 +61,37 @@ describe MetadataXmlParser do
   end
 
   describe "::build_record" do
-    it "builds a record that has the given filename" do
-      attributes = {
-        'pid' => ['tufts:1'],
-        'file' => ['somefile.pdf'],
-        'dc:title' => ['some title'],
-        'dc:description' => ['desc 1', 'desc 2']
-      }
+    let(:attributes) {{ 'pid' => ['tufts:1'],
+                        'file' => ['somefile.pdf'],
+                        'dc:title' => ['some title'],
+                        'dc:description' => ['desc 1', 'desc 2']
+    }}
+
+    it "builds a draft record that has the given filename" do
       m = MetadataXmlParser.build_record(build_node(attributes).to_xml, attributes['file'].first)
-      expect(m.pid).to eq attributes['pid'].first
+
+      expect(m.pid).to eq 'draft:1' # draft version of given pid
       expect(m.title).to eq attributes['dc:title'].first
       expect(m.description).to eq attributes['dc:description']
     end
 
+    context "with a model that doesn't support draft versions" do
+      before do
+        allow(TuftsPdf).to receive(:respond_to?).with(:pid_namespace).and_call_original
+        expect(TuftsPdf).to receive(:respond_to?).with(:build_draft_version).and_return(false)
+      end
+
+      it 'builds a non-draft model with the original pid' do
+        m = MetadataXmlParser.build_record(build_node(attributes).to_xml, attributes['file'].first)
+
+        expect(m.pid).to eq attributes['pid'].first
+      end
+    end
+
     context "with a filename that's not in the metadata" do
+      let(:attributes) {{ 'file' => ['somefile.pdf'] }}
+
       it "raises an error" do
-        attributes = {
-        'file' => ['somefile.pdf'],
-        }
         expect{MetadataXmlParser.build_record(build_node(attributes).to_xml, "fail")}.to raise_exception(FileNotFoundError)
       end
     end
@@ -162,15 +175,16 @@ describe MetadataXmlParser do
   end
 
   describe "::get_pid" do
+    let(:pid) { 'tufts:1' }
+    let(:draft_pid) { 'draft:1' }
+
     it "gets the pid" do
-      pid = 'tufts:1'
       ActiveFedora::Base.find(pid).destroy if ActiveFedora::Base.exists?(pid)
       pid = MetadataXmlParser.get_pid(node_with_only_pid)
       expect(pid).to eq pid
     end
 
     it "raises if the pid already exists" do
-      pid = 'tufts:1'
       unless ActiveFedora::Base.exists?(pid)
         attrs = FactoryGirl.attributes_for(:tufts_pdf)
         TuftsPdf.create(attrs.merge(pid: pid))
@@ -180,6 +194,27 @@ describe MetadataXmlParser do
       expect{
         MetadataXmlParser.get_pid(node_with_only_pid)
       }.to raise_error(ExistingPidError, /The PID .* already exists in the repository/)
+    end
+
+    context 'when draft version of the object already exists' do
+      before do
+        unless ActiveFedora::Base.exists?(draft_pid)
+          attrs = FactoryGirl.attributes_for(:tufts_pdf)
+          TuftsPdf.create(attrs.merge(pid: draft_pid))
+        end
+        if ActiveFedora::Base.exists?(pid)
+          obj = ActiveFedora::Base.find(pid)
+          obj.delete
+        end
+      end
+
+      it 'raises an exception' do
+        expect(ActiveFedora::Base.exists?(draft_pid)).to be_truthy
+        expect(ActiveFedora::Base.exists?(pid)).to be_falsey
+        expect{
+          MetadataXmlParser.get_pid(node_with_only_pid)
+        }.to raise_error(ExistingPidError, /The PID .* already exists in the repository/)
+      end
     end
   end
 

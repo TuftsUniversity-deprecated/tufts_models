@@ -30,7 +30,7 @@ describe TuftsPdf do
         subject.collection_id = collection_id
       end
       it "should give a remote URL" do
-        #http://bucket01.lib.tufts.edu/data05/tufts/central/dca/UA015/archival_pdf/{#PID}.archival.pdf
+        expect(subject.collection_id).to eq collection_id
         expect(subject.remote_url_for('Archival.pdf', 'pdf')).to eq 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA015/archival_pdf/MS054.003.DO.02108.archival.pdf'
       end
 
