@@ -20,7 +20,10 @@ module DraftVersion
     # Publish the record to the production fedora server
     def publish!(user_id = nil)
       self.working_user = User.where(id: user_id).first
-      self.admin.published_at = self.edited_at = DateTime.now
+
+      now = DateTime.now
+      self.admin.published_at = now
+      self.edited_at = now
 
       create_published_version!
     end
