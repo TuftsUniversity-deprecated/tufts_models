@@ -81,7 +81,7 @@ describe DraftVersion do
       expect(@obj).to receive(:audit).with(instance_of(User), 'Pushed to production').once
 
       # This needs to be happen a number of times because of the multiple object updates in #publish!
-      expect(@obj).to receive(:audit).with(instance_of(User), 'Metadata updated DCA-ADMIN').twice
+      expect(@obj).to receive(:audit).with(instance_of(User), 'Metadata updated DCA-ADMIN').once
 
       @obj.publish!(user.id)
     end
@@ -101,7 +101,7 @@ describe DraftVersion do
 
       @obj.publish!(user.id)
 
-      expect(@obj.admin.published_at.first).to be_within(1.second).of(@obj.edited_at)
+      expect(@obj.published_at).to_not be_nil
     end
   end
 

@@ -19,11 +19,8 @@ module DraftVersion
 
     # Publish the record to the production fedora server
     def publish!(user_id = nil)
+      self.publishing = true
       self.working_user = User.where(id: user_id).first
-
-      now = DateTime.now
-      self.admin.published_at = now
-      self.edited_at = now
 
       create_published_version!
     end
@@ -41,12 +38,13 @@ module DraftVersion
       if published_obj.save
         now = DateTime.now
         published_obj.update_attributes(published_at: now, edited_at: now)
-        # Avoid before_save bookkeeping in base_model. There's got to be a better way to do this.
-        if save(run_callbacks: false)
-          update_attributes(published_at: now, edited_at: now)
+
+        if save
+          audit(working_user, 'Pushed to production')
         end
 
-        audit(working_user, 'Pushed to production')
+        self.publishing = false
+
       else
         raise "Unable to publish object, #{published_obj.errors.inspect}"
       end
