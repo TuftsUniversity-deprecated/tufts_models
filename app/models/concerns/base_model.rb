@@ -291,26 +291,6 @@ module BaseModel
 
   module ClassMethods
     def revert_to_production(pid)
-
-      #draft_pid = PidUtils.to_draft(pid)
-
-      #if ActiveFedora::Base.exists?(draft_pid)
-      #  ActiveFedora::Base.find(draft_pid).destroy
-      #end
-
-      #published_pid = PidUtils.to_published(pid)
-      #published_record = ActiveFedora::Base.find(published_pid)
-
-      #if published_record
-      #  klazz = published_record.class
-
-      #  new_draft = klazz.new(published_record.attributes.except("id").merge(pid: draft_pid))
-      #  new_draft.save
-      #else
-      #  raise "Could not find published version of #{draft_pid}"
-      #end
-
-
       prod = Rubydora.connect(ActiveFedora.data_production_credentials)
       begin
         foxml = prod.api.export(pid: pid, context: 'archive')
