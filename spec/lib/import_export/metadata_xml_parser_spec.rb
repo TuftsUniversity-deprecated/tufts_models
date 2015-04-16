@@ -180,8 +180,8 @@ describe MetadataXmlParser do
 
     it "gets the pid" do
       ActiveFedora::Base.find(pid).destroy if ActiveFedora::Base.exists?(pid)
-      pid = MetadataXmlParser.get_pid(node_with_only_pid)
-      expect(pid).to eq pid
+      new_pid = MetadataXmlParser.get_pid(node_with_only_pid)
+      expect(new_pid).to eq 'tufts:1'
     end
 
     it "raises if the pid already exists" do
