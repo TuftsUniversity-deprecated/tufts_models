@@ -49,22 +49,6 @@ module DraftVersion
       end
     end
 
-    #def push_to_production!
-    #  if save
-    #    self.audit(working_user, 'Pushed to production')
-    #    # Now copy to prod
-    #    # Rubydora::FedoraInvalidRequest
-    #    foxml = self.inner_object.repository.api.export(pid: pid, context: 'archive')
-    #    # You can't ingest to a pid that already exists, so try to purge it first
-    #    production_fedora_connection.purge_object(pid: pid) rescue RestClient::ResourceNotFound
-    #    production_fedora_connection.ingest(file: foxml)
-    #  else
-    #    # couldn't save
-    #    raise "Unable to push to production"
-    #  end
-
-    #end
-
   end  # end "included" section
 
 
