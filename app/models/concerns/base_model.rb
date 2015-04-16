@@ -23,7 +23,6 @@ module BaseModel
     attr_accessor :working_user
 
     before_save do
-      self.edited_at = DateTime.now
       # Don't change existing OAI IDs, but for any objects with a display portal of 'dl', generate an OAI ID
       if displays.include?('dl') && !object_relations.has_predicate?(:oai_item_id)
         self.add_relationship(:oai_item_id, "oai:#{pid}", true)
