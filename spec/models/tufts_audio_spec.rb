@@ -104,10 +104,12 @@ describe TuftsAudio do
 
       audio.publish!
 
-      expect(audio.reload).to be_published
+      audio = TuftsAudio.find('draft:123')
+      expect(audio).to be_published
 
       published_version = TuftsAudio.find(PidUtils.to_published(audio.pid))
       expect(published_version).to be_published
+      expect(published_version.pid).to eq('tufts:123')
     end
   end
 
