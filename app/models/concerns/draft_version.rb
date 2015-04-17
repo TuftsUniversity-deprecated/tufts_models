@@ -9,14 +9,6 @@ module DraftVersion
       new(attrs)
     end
 
-    def self.draft_pid(pid)
-      "#{draft_namespace}:#{stripped_pid(pid)}"
-    end
-
-    def self.stripped_pid(pid)
-      pid.sub(/.+:(.+)$/, '\1')
-    end
-
     def publish!(user_id = nil)
       self.publishing = true
       self.working_user = User.where(id: user_id).first
