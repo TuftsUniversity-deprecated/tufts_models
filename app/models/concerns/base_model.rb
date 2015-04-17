@@ -20,11 +20,12 @@ module BaseModel
     has_metadata "DCA-ADMIN", type: DcaAdmin
     has_metadata "audit_log", type: Audit
 
-    attr_accessor :push_production, :working_user
+    attr_accessor :working_user, :publishing
 
     before_save do
       self.edited_at = DateTime.now
-      self.admin.published_at = edited_at if push_production
+
+      self.published_at = edited_at if publishing
 
       # Don't change existing OAI IDs, but for any objects with a display portal of 'dl', generate an OAI ID
       if displays.include?('dl') && !object_relations.has_predicate?(:oai_item_id)
@@ -49,9 +50,6 @@ module BaseModel
         self.audit(working_user, "Metadata updated #{metadata_streams.select { |ds| ds.changed? }.map{ |ds| ds.dsid}.join(', ')}")
       end
 
-      if push_production
-        self.audit(working_user, 'Pushed to production')
-      end
     end
 
     #MK 2011-04-13 - Are we really going to need to access FILE-META from FILE-META.  I'm guessing not.
@@ -271,30 +269,7 @@ module BaseModel
 
   # Has this record been published yet?
   def published?
-    published_at == edited_at
-  end
-
-  # Publish the record to the production fedora server
-  def publish!(user_id = nil)
-    self.working_user = User.where(id: user_id).first
-    push_to_production!
-  end
-
-  def push_to_production!
-    self.push_production = true
-    save_succeeded = save
-    self.push_production = false
-    if save_succeeded
-      # Now copy to prod
-      # Rubydora::FedoraInvalidRequest
-      foxml = self.inner_object.repository.api.export(pid: pid, context: 'archive')
-      # You can't ingest to a pid that already exists, so try to purge it first
-      production_fedora_connection.purge_object(pid: pid) rescue RestClient::ResourceNotFound
-      production_fedora_connection.ingest(file: foxml)
-    else
-      # couldn't save
-      raise "Unable to push to production"
-    end
+    published_at && published_at == edited_at
   end
 
   def purge!
