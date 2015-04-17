@@ -66,4 +66,15 @@ module DraftVersion
   #      self.class.production_pid(pid)
   #    end
 
+  def draft?
+    draft_pid = pid && pid.start_with?(PidUtils.draft_namespace)
+    draft_namespace = inner_object && inner_object.respond_to?(:namespace) && inner_object.namespace == PidUtils.draft_namespace
+
+    draft_pid || draft_namespace
+  end
+
+  def find_draft
+    self.class.find(PidUtils.to_draft(pid))
+  end
+
 end
