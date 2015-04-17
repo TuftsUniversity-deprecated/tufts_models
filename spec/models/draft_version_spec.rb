@@ -65,4 +65,54 @@ describe DraftVersion do
     end
   end
 
+
+  describe '#draft?' do
+    subject { TestObject.new(pid: pid, namespace: namespace) }
+
+    context 'with a non-draft PID' do
+      let(:pid) { 'tufts:123' }
+      let(:namespace) { nil }
+
+      it 'reports non-draft status' do
+        expect(subject.draft?).to be_falsey
+      end
+    end
+
+    context 'a PID with the draft namespace' do
+      let(:pid) { 'draft:123' }
+      let(:namespace) { nil }
+
+      it 'reports draft status' do
+        expect(subject.draft?).to be_truthy
+      end
+    end
+
+    context 'with no PID, but draft namespace' do
+      let(:pid) { nil }
+      let(:namespace) { PidUtils.draft_namespace }
+
+      it 'reports draft status' do
+        expect(subject.draft?).to be_truthy
+      end
+    end
+
+    context 'with no PID, but non-draft namespace' do
+      let(:pid) { nil }
+      let(:namespace) { PidUtils.published_namespace }
+
+      it 'reports non-draft status' do
+        expect(subject.draft?).to be_falsey
+      end
+    end
+
+    context 'with no PID and no namespace' do
+      let(:pid) { nil }
+      let(:namespace) { nil }
+
+      it 'reports non-draft status' do
+        expect(subject.draft?).to be_falsey
+      end
+    end
+  end
+
 end
