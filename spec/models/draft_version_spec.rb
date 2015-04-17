@@ -75,7 +75,15 @@ describe DraftVersion do
         @obj.publish!
       end
 
-      it "results in a published copy of the original"
+      it "results in a published copy of the original" do
+        @obj.publish!
+
+        published_obj = @obj.find_published
+
+        expect(published_obj).to be_published
+        expect(published_obj.title).to eq('My title')
+        expect(published_obj.displays).to eq(['dl'])
+      end
     end
 
 

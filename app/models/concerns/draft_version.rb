@@ -17,7 +17,6 @@ module DraftVersion
       pid.sub(/.+:(.+)$/, '\1')
     end
 
-    # Publish the record to the production fedora server
     def publish!(user_id = nil)
       self.publishing = true
       self.working_user = User.where(id: user_id).first
@@ -53,19 +52,6 @@ module DraftVersion
   end  # end "included" section
 
 
-  #    def draft?
-  #      # Handle case where pid isn't set yet?
-  #      pid.start_with?(self.class.draft_namespace)
-  #    end
-
-  #    def draft_pid
-  #      self.class.draft_pid(pid)
-  #    end
-
-  #    def production_pid
-  #      self.class.production_pid(pid)
-  #    end
-
   def draft?
     draft_pid = pid && pid.start_with?(PidUtils.draft_namespace)
     draft_namespace = inner_object && inner_object.respond_to?(:namespace) && inner_object.namespace == PidUtils.draft_namespace
@@ -75,6 +61,10 @@ module DraftVersion
 
   def find_draft
     self.class.find(PidUtils.to_draft(pid))
+  end
+
+  def find_published
+    self.class.find(PidUtils.to_published(pid))
   end
 
 end
