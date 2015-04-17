@@ -68,7 +68,9 @@ describe DraftVersion do
 
         @obj.publish!
 
-        expect(TuftsImage).to receive(:destroy).with(published_pid).once { true }
+        published_obj = double('published')
+        expect(published_obj).to receive(:destroy) { true }
+        expect(TuftsImage).to receive(:find).with(published_pid).once { published_obj }
 
         @obj.publish!
       end

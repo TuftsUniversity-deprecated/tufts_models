@@ -30,7 +30,7 @@ module DraftVersion
       published_pid = PidUtils.to_published(pid)
 
       if self.class.exists?(published_pid)
-        self.class.destroy(published_pid)
+        self.class.find(published_pid).destroy
       end
 
       published_obj = self.class.new(attributes.except("id").merge(pid: published_pid))
