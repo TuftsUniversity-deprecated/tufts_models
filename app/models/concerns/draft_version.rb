@@ -11,4 +11,8 @@ module DraftVersion
 
   end
 
+  def find_draft
+    self.class.find(PidUtils.to_draft(pid))
+  end
+
 end
