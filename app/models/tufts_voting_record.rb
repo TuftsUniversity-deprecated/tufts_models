@@ -1,6 +1,4 @@
 class TuftsVotingRecord < TuftsBase
-  include DraftVersion
-
   has_file_datastream 'RECORD-XML', control_group: 'E', original: true
 
   def self.to_class_uri

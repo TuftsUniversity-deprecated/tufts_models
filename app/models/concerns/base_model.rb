@@ -5,7 +5,8 @@ module BaseModel
     include Hydra::ModelMethods
     include Hydra::AccessControls::Permissions
     include Indexing
-    include Workflow
+
+    STATE_DELETED = 'D'
 
     validate :relationships_have_parseable_uris
 
@@ -38,6 +39,20 @@ module BaseModel
     end
 
     before_save :update_audit_log
+
+    def purge!
+      production_fedora_connection.purge_object(pid: pid) rescue RestClient::ResourceNotFound
+      update_attributes(state: STATE_DELETED) # This is a soft-delete
+    end
+
+    def purged?
+      state == STATE_DELETED
+    end
+
+    # TODO remove this
+    def production_fedora_connection
+      @prod_repo ||= Rubydora.connect(ActiveFedora.data_production_credentials)
+    end
 
     def self.valid_pid?(pid)
       pid.match(/^([A-Za-z0-9]|-|\.)+:(([A-Za-z0-9])|-|\.|~|_|(%[0-9A-F]{2}))+$/)

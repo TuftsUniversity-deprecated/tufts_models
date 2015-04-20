@@ -138,6 +138,8 @@ describe TuftsTemplate do
 
   describe 'deleted templates' do
     before do
+      skip "purging a template should hard-delete it (tufts #339)"
+
       TuftsTemplate.delete_all
       subject.template_name = 'Name'
       subject.save!
