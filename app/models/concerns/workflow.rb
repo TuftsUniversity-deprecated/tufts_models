@@ -1,6 +1,17 @@
 module Workflow
   extend ActiveSupport::Concern
 
+  def workflow_status
+    raise "Production objects don't have a workflow" unless draft?
+    if published?
+      :published
+    elsif published_at.blank?
+      :new
+    else
+      :edited
+    end
+  end
+
   # Has this record been published yet?
   def published?
     published_at && published_at == edited_at

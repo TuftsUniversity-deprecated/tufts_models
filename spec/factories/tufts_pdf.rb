@@ -4,7 +4,7 @@ FactoryGirl.define do
       user { FactoryGirl.create(:user) }
     end
     sequence(:title) {|n| "Title #{n}" }
-    displays { ['dl'] } 
+    displays { ['dl'] }
     after(:build) { |deposit, evaluator|
       deposit.apply_depositor_metadata(evaluator.user.email)
     }
