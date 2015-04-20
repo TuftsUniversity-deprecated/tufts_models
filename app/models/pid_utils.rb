@@ -8,10 +8,14 @@ class PidUtils
     'tufts'
   end
 
+  def self.draft?(pid)
+    pid && pid.start_with?(draft_namespace)
+  end
+
   def self.to_draft(pid)
     "#{draft_namespace}:#{stripped_pid(pid)}"
   end
-  
+
   def self.to_published(pid)
     "#{published_namespace}:#{stripped_pid(pid)}"
   end
