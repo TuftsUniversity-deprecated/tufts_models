@@ -5,6 +5,7 @@ module BaseModel
     include Hydra::ModelMethods
     include Hydra::AccessControls::Permissions
     include Indexing
+    include Workflow
 
     validate :relationships_have_parseable_uris
 
@@ -228,7 +229,7 @@ module BaseModel
     [:identifier, :title, :alternative, :creator, :contributor, :description, :abstract,
      :toc, :publisher, :source, :date, :date_created, :date_copyrighted,
      :date_submitted, :date_accepted, :date_issued, :date_available,
-     :date_modified, :language, :type, :format, :extent, :medium, :persname, 
+     :date_modified, :language, :type, :format, :extent, :medium, :persname,
      :corpname, :geogname, :subject, :genre, :provenance, :rights,
      :access_rights, :rights_holder, :license, :replaces, :isReplacedBy,
      :hasFormat, :isFormatOf, :hasPart, :isPartOf, :accrualPolicy, :audience,
@@ -267,20 +268,6 @@ module BaseModel
     self.class.validators_on(key).any?{|v| v.kind_of? ActiveModel::Validations::PresenceValidator}
   end
 
-  # Has this record been published yet?
-  def published?
-    published_at && published_at == edited_at
-  end
-
-  def purge!
-    production_fedora_connection.purge_object(pid: pid) rescue RestClient::ResourceNotFound
-    update_attributes(state: "D")
-  end
-
-  def production_fedora_connection
-    @prod_repo ||= Rubydora.connect(ActiveFedora.data_production_credentials)
-  end
-
   # override this method if you want to restrict the accepted formats to a particular mime-type
   # @param [String] dsid Datastream id
   # @param [String] type the content type to test
@@ -290,18 +277,5 @@ module BaseModel
 
   def has_thumbnail?
     false
-  end
-
-  module ClassMethods
-    def revert_to_production(pid)
-      prod = Rubydora.connect(ActiveFedora.data_production_credentials)
-      begin
-        foxml = prod.api.export(pid: pid, context: 'archive')
-      rescue RestClient::ResourceNotFound
-        raise ActiveFedora::ObjectNotFoundError.new("Could not find pid #{pid} on production server")
-      end
-      connection_for_pid(pid).purge_object(pid: pid) rescue RestClient::ResourceNotFound
-      connection_for_pid(pid).ingest(file: foxml)
-    end
   end
 end
