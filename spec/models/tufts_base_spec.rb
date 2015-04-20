@@ -434,6 +434,39 @@ describe TuftsBase do
     end
   end
 
+  describe '#workflow_status' do
+    context "for a draft object" do
+      let(:draft) { TuftsPdf.create(FactoryGirl.attributes_for(:tufts_pdf).merge(pid: 'draft:123')) }
+      subject { draft.workflow_status }
+
+      context "that is new" do
+        it { is_expected.to eq :new }
+      end
+
+      context "that is same as the object in production" do
+        before { draft.publish! }
+        it { is_expected.to eq :published }
+      end
+
+      context "that differs from the object in production" do
+        before do
+          draft.publish!
+          sleep 1 # ensure there is a time change between publish & edit
+          draft.update(creator: ['Bob'])
+        end
+
+        it { is_expected.to eq :edited }
+      end
+    end
+
+    context "for a production object" do
+      let(:obj) { TuftsPdf.create(FactoryGirl.attributes_for(:tufts_pdf).merge(pid: 'tufts:123')) }
+      it "raises an error" do
+        expect { obj.workflow_status }.to raise_error
+      end
+    end
+  end
+
   describe '.revert_to_production' do
     let(:user) { FactoryGirl.create(:user) }
     before do
