@@ -1,6 +1,7 @@
-module Workflow
+module Publishable
   extend ActiveSupport::Concern
 
+  STATE_DELETED = 'D'
 
   def workflow_status
     raise "Production objects don't have a workflow" unless draft?
@@ -25,6 +26,15 @@ module Workflow
     published_at && published_at == edited_at
   end
 
+  def purge!
+    production_fedora_connection.purge_object(pid: pid) rescue RestClient::ResourceNotFound
+    update_attributes(state: STATE_DELETED) # This is a soft-delete
+  end
+
+  def purged?
+    state == STATE_DELETED
+  end
+
   def draft?
     draft_pid = pid && pid.start_with?(PidUtils.draft_namespace)
     draft_namespace = inner_object && inner_object.respond_to?(:namespace) && inner_object.namespace == PidUtils.draft_namespace
@@ -41,6 +51,10 @@ module Workflow
   end
 
   private
+  # TODO remove this
+  def production_fedora_connection
+    @prod_repo ||= Rubydora.connect(ActiveFedora.data_production_credentials)
+  end
 
   def create_published_version!
     published_pid = PidUtils.to_published(pid)
