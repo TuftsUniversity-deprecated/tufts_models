@@ -137,6 +137,7 @@ module MetadataXmlParser
       if record_class.respond_to?(:build_draft_version)
         record_class.build_draft_version(attrs)
       else
+        raise "#{record_class} doesn't implement build_draft_version"
         record_class.new(attrs)
       end
     end

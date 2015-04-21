@@ -52,18 +52,18 @@ describe BatchXmlImport do
   end
 
   describe ".uploaded_files" do
+    let(:m) { FactoryGirl.build(:batch_xml_import) }
+
     it "gets pids from the uploaded_files" do
-      m = FactoryGirl.build(:batch_xml_import)
-      expect(m.pids).to eq []
-      m.uploaded_files = {"foo.jpg" => "tufts:1"}
-      expect(m.pids).to eq ["tufts:1"]
+      expect {
+        m.uploaded_files = {"foo.jpg" => "tufts:1"}
+      }.to change { m.pids }.from([]).to ["tufts:1"]
     end
 
-    it "provides a default value for .uploade_files" do
-      m = FactoryGirl.build(:batch_xml_import)
-      expect(m.uploaded_files).to eq({})
-      m.uploaded_files['foo.txt'] = 'tufts:1'
-      expect(m.uploaded_files).to eq({'foo.txt' => 'tufts:1'})
+    it "provides a default value for .uploaded_files" do
+      expect {
+        m.uploaded_files['foo.txt'] = 'tufts:1'
+      }.to change { m.uploaded_files }.from({}).to('foo.txt' => 'tufts:1')
     end
   end
 
