@@ -1,5 +1,6 @@
 class TuftsBase < ActiveFedora::Base
   include BaseModel
+  include Publishable
   include AttachedFiles
   include Reviewable
   include BatchUpdate

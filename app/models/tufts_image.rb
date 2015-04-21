@@ -1,6 +1,4 @@
 class TuftsImage < TuftsBase
-  include DraftVersion
-
   has_file_datastream 'Thumbnail.png', control_group: 'E'
   has_file_datastream 'Archival.tif', control_group: 'E', original: true
   has_file_datastream 'Advanced.jpg', control_group: 'E'

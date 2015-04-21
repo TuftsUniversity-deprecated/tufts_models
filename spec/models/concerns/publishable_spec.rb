@@ -1,11 +1,10 @@
 require 'spec_helper'
 
 class TestObject < ActiveFedora::Base
-  include DraftVersion
+  include Publishable
 end
 
-
-describe DraftVersion do
+describe Publishable do
 
   describe '.build_draft_version' do
     subject { TestObject.build_draft_version(attrs) }

@@ -1,6 +1,4 @@
 class TuftsPdf < TuftsBase
-  include DraftVersion
-
   PDF_CONTENT_DS = 'Archival.pdf'
 
   has_file_datastream PDF_CONTENT_DS, control_group: 'E', original: true

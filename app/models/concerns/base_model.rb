@@ -5,7 +5,6 @@ module BaseModel
     include Hydra::ModelMethods
     include Hydra::AccessControls::Permissions
     include Indexing
-    include Workflow
 
     validate :relationships_have_parseable_uris
 
@@ -38,6 +37,7 @@ module BaseModel
     end
 
     before_save :update_audit_log
+
 
     def self.valid_pid?(pid)
       pid.match(/^([A-Za-z0-9]|-|\.)+:(([A-Za-z0-9])|-|\.|~|_|(%[0-9A-F]{2}))+$/)
