@@ -51,6 +51,15 @@ module Publishable
     self.class.find(PidUtils.to_published(pid))
   end
 
+  # copy the published object over the draft
+  def revert!
+    published_pid = PidUtils.to_published(pid)
+    draft_pid = PidUtils.to_draft(pid)
+
+    deep_copy_fedora_object from: published_pid, to: draft_pid
+  end
+
+
   protected
 
   def published!(user)
@@ -58,14 +67,6 @@ module Publishable
     save!
     audit(user, 'Pushed to production')
     self.publishing = false
-  end
-
-  # copy the published object over the draft
-  def revert!
-    published_pid = PidUtils.to_published(pid)
-    draft_pid = PidUtils.to_draft(pid)
-
-    deep_copy_fedora_object from: published_pid, to: draft_pid
   end
 
   private
@@ -82,9 +83,6 @@ module Publishable
   end
 
   def create_published_version!(user)
-    # You can't ingest to a pid that already exists, so try to purge it first
-    destroy_published_version!
-
     published_pid = PidUtils.to_published(pid)
 
     deep_copy_fedora_object from: pid, to: published_pid
@@ -99,9 +97,7 @@ module Publishable
     destination_pid = options.fetch(:to)
 
     # You can't ingest to a pid that already exists, so try to purge it first
-    if self.class.exists?(destination_pid)
-      self.class.find(destination_pid).destroy
-    end
+    destroy_published_version!
 
     api = inner_object.repository.api
     foxml = api.export(pid: source_pid, context: 'archive')
