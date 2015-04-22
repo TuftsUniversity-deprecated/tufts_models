@@ -47,7 +47,7 @@ module BaseModel
       if respond_to?(:content_will_update) && content_will_update
         self.audit(working_user, "Content updated: #{content_will_update}")
         self.content_will_update = nil
-      elsif metadata_streams.any? { |ds| ds.changed? }
+      elsif metadata_streams.any? { |ds| ds.changed? } && !publishing
         self.audit(working_user, "Metadata updated #{metadata_streams.select { |ds| ds.changed? }.map{ |ds| ds.dsid}.join(', ')}")
       end
 
