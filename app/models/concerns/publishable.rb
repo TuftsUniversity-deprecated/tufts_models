@@ -15,7 +15,7 @@ module Publishable
   end
 
   def publish!(user_id = nil)
-    user = user_id ? User.find(user_id) : 'No user'
+    user = User.find(user_id) if user_id
     create_published_version!(user)
   end
 

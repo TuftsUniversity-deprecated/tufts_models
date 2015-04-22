@@ -87,9 +87,6 @@ describe Publishable do
     it 'adds an entry to the audit log' do
       expect(obj).to receive(:audit).with(instance_of(User), 'Pushed to production').once
 
-      # This needs to be happen a number of times because of the multiple object updates in #publish!
-      expect(obj).to receive(:audit).with(instance_of(User), 'Metadata updated DCA-ADMIN').once
-
       obj.publish!(user.id)
     end
 
