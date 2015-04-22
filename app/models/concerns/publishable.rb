@@ -15,7 +15,7 @@ module Publishable
   end
 
   def publish!(user_id = nil)
-    user = User.find(user_id) if user_id
+    user = User.where(id: user_id).first if user_id
     create_published_version!(user)
   end
 
@@ -60,6 +60,14 @@ module Publishable
     self.publishing = false
   end
 
+  # copy the published object over the draft
+  def revert!
+    published_pid = PidUtils.to_published(pid)
+    draft_pid = PidUtils.to_draft(pid)
+
+    deep_copy_fedora_object from: published_pid, to: draft_pid
+  end
+
   private
   # TODO remove this
   def production_fedora_connection
@@ -76,13 +84,28 @@ module Publishable
   def create_published_version!(user)
     # You can't ingest to a pid that already exists, so try to purge it first
     destroy_published_version!
-    api = inner_object.repository.api
-    foxml = api.export(pid: pid, context: 'archive')
+
     published_pid = PidUtils.to_published(pid)
-    api.ingest(file: foxml.gsub(pid, published_pid))
+
+    deep_copy_fedora_object from: pid, to: published_pid
+
     published = self.class.find(published_pid)
     published.published!(user)
     published!(user)
+  end
+
+  def deep_copy_fedora_object(options = {})
+    source_pid = options.fetch(:from)
+    destination_pid = options.fetch(:to)
+
+    # You can't ingest to a pid that already exists, so try to purge it first
+    if self.class.exists?(destination_pid)
+      self.class.find(destination_pid).destroy
+    end
+
+    api = inner_object.repository.api
+    foxml = api.export(pid: source_pid, context: 'archive')
+    api.ingest(file: foxml.gsub(source_pid, destination_pid))
   end
 
   def draft_namespace?
@@ -90,23 +113,11 @@ module Publishable
   end
 
   module ClassMethods
-    def revert_to_production(pid)
-      prod = Rubydora.connect(ActiveFedora.data_production_credentials)
-      begin
-        foxml = prod.api.export(pid: pid, context: 'archive')
-      rescue RestClient::ResourceNotFound
-        raise ActiveFedora::ObjectNotFoundError.new("Could not find pid #{pid} on production server")
-      end
-      connection_for_pid(pid).purge_object(pid: pid) rescue RestClient::ResourceNotFound
-      connection_for_pid(pid).ingest(file: foxml)
-    end
-
     def build_draft_version(attrs = {})
       attrs.merge!(pid: PidUtils.to_draft(attrs[:pid])) if attrs[:pid]
       attrs.merge!(namespace: PidUtils.draft_namespace)
       new(attrs)
     end
-
   end
 
 end

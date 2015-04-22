@@ -17,9 +17,9 @@ module Job
       tick # give resque-status a chance to kill this
 
       begin
-        TuftsBase.revert_to_production(options['record_id'])
         run_as_batch_item(options['record_id'], options['batch_id']) do |record|
-          record.save!
+          record.revert!
+          record.save! # redundant?
         end
       rescue ActiveFedora::ObjectNotFoundError
         # doesn't exist on production, hard delete it on staging
