@@ -15,9 +15,8 @@ module Publishable
   end
 
   def publish!(user_id = nil)
-    self.working_user = User.where(id: user_id).first
-
-    create_published_version!
+    user = user_id ? User.find(user_id) : 'No user'
+    create_published_version!(user)
   end
 
   # Has this record been published yet?
@@ -51,10 +50,10 @@ module Publishable
 
   protected
 
-  def published!
+  def published!(user)
     self.publishing = true
     save!
-    audit(working_user, 'Pushed to production')
+    audit(user, 'Pushed to production')
     self.publishing = false
   end
 
@@ -64,7 +63,7 @@ module Publishable
     @prod_repo ||= Rubydora.connect(ActiveFedora.data_production_credentials)
   end
 
-  def create_published_version!
+  def create_published_version!(user)
     published_pid = PidUtils.to_published(pid)
 
     # You can't ingest to a pid that already exists, so try to purge it first
@@ -77,8 +76,8 @@ module Publishable
 
     api.ingest(file: foxml.gsub(pid, published_pid))
     published = self.class.find(published_pid)
-    published.published!
-    published!
+    published.published!(user)
+    published!(user)
   end
 
   module ClassMethods
