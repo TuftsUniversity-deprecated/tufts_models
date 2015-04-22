@@ -20,7 +20,7 @@ module BaseModel
     has_metadata "DCA-ADMIN", type: DcaAdmin
     has_metadata "audit_log", type: Audit
 
-    attr_accessor :working_user, :publishing
+    attr_accessor :working_user, :publishing, :unpublishing
 
     before_save do
       self.edited_at = DateTime.now
@@ -47,7 +47,7 @@ module BaseModel
       if respond_to?(:content_will_update) && content_will_update
         self.audit(working_user, "Content updated: #{content_will_update}")
         self.content_will_update = nil
-      elsif metadata_streams.any? { |ds| ds.changed? } && !publishing
+      elsif metadata_streams.any? { |ds| ds.changed? } && !publishing && !unpublishing
         self.audit(working_user, "Metadata updated #{metadata_streams.select { |ds| ds.changed? }.map{ |ds| ds.dsid}.join(', ')}")
       end
 
