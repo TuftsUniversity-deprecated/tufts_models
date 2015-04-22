@@ -16,14 +16,15 @@ module Job
     def perform
       tick # give resque-status a chance to kill this
 
+      published_pid = PidUtils.to_published(options['record_id'])
+
       begin
-        run_as_batch_item(options['record_id'], options['batch_id']) do |record|
+        run_as_batch_item(published_pid, options['batch_id']) do |record|
+          record.save! # batch_id gets set on the object here, so we need to save it first
           record.revert!
-          record.save! # redundant?
         end
-      rescue ActiveFedora::ObjectNotFoundError
-        # doesn't exist on production, hard delete it on staging
-        TuftsBase.find(options['record_id']).destroy if TuftsBase.exists?(options['record_id'])
+      rescue ActiveFedora::ObjectNotFoundError => ex
+        # nothing here. It's ok to try to revert a pid that doesn't exist.
       end
     end
 

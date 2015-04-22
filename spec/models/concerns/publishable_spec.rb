@@ -91,8 +91,6 @@ describe Publishable do
     end
 
     it 'results in the image being published' do
-      skip "this test randomly fails"
-
       expect(obj.published_at).to eq(nil)
 
       obj.publish!

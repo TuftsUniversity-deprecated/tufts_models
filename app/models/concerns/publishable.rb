@@ -56,9 +56,11 @@ module Publishable
     published_pid = PidUtils.to_published(pid)
     draft_pid = PidUtils.to_draft(pid)
 
-    deep_copy_fedora_object from: published_pid, to: draft_pid
+    if self.class.exists? published_pid
+      destroy_draft_version!
+      deep_copy_fedora_object from: published_pid, to: draft_pid
+    end
   end
-
 
   protected
 
@@ -76,15 +78,17 @@ module Publishable
   end
 
   def destroy_published_version!
-    published_pid = PidUtils.to_published(pid)
-    if self.class.exists?(published_pid)
-      self.class.find(published_pid).destroy
-    end
+    self.class.destroy_if_exists PidUtils.to_published(pid)
+  end
+
+  def destroy_draft_version!
+    self.class.destroy_if_exists PidUtils.to_draft(pid)
   end
 
   def create_published_version!(user)
     published_pid = PidUtils.to_published(pid)
 
+    destroy_published_version!
     deep_copy_fedora_object from: pid, to: published_pid
 
     published = self.class.find(published_pid)
@@ -96,10 +100,10 @@ module Publishable
     source_pid = options.fetch(:from)
     destination_pid = options.fetch(:to)
 
-    # You can't ingest to a pid that already exists, so try to purge it first
-    destroy_published_version!
+    return false unless self.class.exists? source_pid
 
     api = inner_object.repository.api
+
     foxml = api.export(pid: source_pid, context: 'archive')
     api.ingest(file: foxml.gsub(source_pid, destination_pid))
   end
@@ -113,6 +117,12 @@ module Publishable
       attrs.merge!(pid: PidUtils.to_draft(attrs[:pid])) if attrs[:pid]
       attrs.merge!(namespace: PidUtils.draft_namespace)
       new(attrs)
+    end
+
+    def destroy_if_exists(pid)
+      if exists?(pid)
+        find(pid).destroy
+      end
     end
   end
 
