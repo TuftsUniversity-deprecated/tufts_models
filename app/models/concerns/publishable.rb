@@ -19,6 +19,12 @@ module Publishable
     create_published_version!(user)
   end
 
+  def unpublish!(user_id = nil)
+    destroy_published_version!
+    user = User.find(user_id) if user_id
+    audit(user, 'Unpublished')
+  end
+
   # Has this record been published yet?
   def published?
     published_at && published_at == edited_at
@@ -63,17 +69,19 @@ module Publishable
     @prod_repo ||= Rubydora.connect(ActiveFedora.data_production_credentials)
   end
 
-  def create_published_version!(user)
+  def destroy_published_version!
     published_pid = PidUtils.to_published(pid)
-
-    # You can't ingest to a pid that already exists, so try to purge it first
     if self.class.exists?(published_pid)
       self.class.find(published_pid).destroy
     end
+  end
 
+  def create_published_version!(user)
+    # You can't ingest to a pid that already exists, so try to purge it first
+    destroy_published_version!
     api = inner_object.repository.api
     foxml = api.export(pid: pid, context: 'archive')
-
+    published_pid = PidUtils.to_published(pid)
     api.ingest(file: foxml.gsub(pid, published_pid))
     published = self.class.find(published_pid)
     published.published!(user)
