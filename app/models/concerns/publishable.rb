@@ -15,7 +15,6 @@ module Publishable
   end
 
   def publish!(user_id = nil)
-    self.publishing = true
     self.working_user = User.where(id: user_id).first
 
     create_published_version!
@@ -50,6 +49,15 @@ module Publishable
     self.class.find(PidUtils.to_published(pid))
   end
 
+  protected
+
+  def published!
+    self.publishing = true
+    save!
+    audit(working_user, 'Pushed to production')
+    self.publishing = false
+  end
+
   private
   # TODO remove this
   def production_fedora_connection
@@ -59,25 +67,18 @@ module Publishable
   def create_published_version!
     published_pid = PidUtils.to_published(pid)
 
+    # You can't ingest to a pid that already exists, so try to purge it first
     if self.class.exists?(published_pid)
       self.class.find(published_pid).destroy
     end
 
-    published_obj = self.class.new(attributes.except("id").merge(pid: published_pid))
+    api = inner_object.repository.api
+    foxml = api.export(pid: pid, context: 'archive')
 
-    if published_obj.save
-      now = DateTime.now
-      published_obj.update_attributes(published_at: now, edited_at: now)
-
-      if save
-        audit(working_user, 'Pushed to production')
-      end
-
-      self.publishing = false
-
-    else
-      raise "Unable to publish object, #{published_obj.errors.inspect}"
-    end
+    api.ingest(file: foxml.gsub(pid, published_pid))
+    published = self.class.find(published_pid)
+    published.published!
+    published!
   end
 
   module ClassMethods
