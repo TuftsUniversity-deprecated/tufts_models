@@ -121,7 +121,7 @@ describe Publishable do
       expect(obj).to receive(:audit).with(instance_of(User), 'Unpublished').once
       obj.unpublish!(user.id)
       expect { obj.find_published }.to raise_error ActiveFedora::ObjectNotFoundError
-      expect(obj.find_draft).not_to be_nil
+      expect(obj.find_draft).not_to be_published
     end
   end
 

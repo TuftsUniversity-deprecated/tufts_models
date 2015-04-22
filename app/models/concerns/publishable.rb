@@ -21,6 +21,9 @@ module Publishable
 
   def unpublish!(user_id = nil)
     destroy_published_version!
+    self.unpublishing = true
+    update_attributes(published_at: nil)
+    self.unpublishing = false
     user = User.find(user_id) if user_id
     audit(user, 'Unpublished')
   end
