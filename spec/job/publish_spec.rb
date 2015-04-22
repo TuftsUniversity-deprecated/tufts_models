@@ -6,11 +6,11 @@ describe Job::Publish do
     expect(Job::Publish.queue).to eq :publish
   end
 
+  let(:user) { FactoryGirl.create(:user) }
+
   describe '::create' do
     let(:opts) do
-      {record_id: '1',
-        user_id: '1',
-        batch_id: '1'}
+      {record_id: '1', user_id: user.id, batch_id: '1'}
     end
 
     it 'requires the user id' do
@@ -57,7 +57,7 @@ describe Job::Publish do
     it 'runs the job as a batch item' do
       pdf = FactoryGirl.create(:tufts_pdf)
       batch_id = '10'
-      job = Job::Publish.new('uuid', 'record_id' => pdf.id, 'user_id' => '1', 'batch_id' => batch_id)
+      job = Job::Publish.new('uuid', 'record_id' => pdf.id, 'user_id' => user.id, 'batch_id' => batch_id)
 
       job.perform
       pdf.reload
