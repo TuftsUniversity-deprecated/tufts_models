@@ -36,15 +36,6 @@ class TuftsTemplate < ActiveFedora::Base
     false
   end
 
-  def queue_jobs_to_apply_template(user_id, record_ids, batch_id)
-    attrs = attributes_to_update
-    return if attrs.empty?
-
-    record_ids.map do |id|
-      Job::ApplyTemplate.create(user_id: user_id, record_id: id, attributes: attrs, batch_id: batch_id)
-    end
-  end
-
   # The list of fields to edit from the DCA_ADMIN datastream
   def admin_display_fields
     super + [:template_name]

@@ -16,7 +16,7 @@ class Batch < ActiveRecord::Base
   end
 
   def jobs
-    job_ids? ? job_ids.map{|job_id| Resque::Plugins::Status::Hash.get(job_id)} : []
+    job_ids? ? job_ids.map { |job_id| Resque::Plugins::Status::Hash.get(job_id) } : []
   end
 
   def status
@@ -32,7 +32,7 @@ class Batch < ActiveRecord::Base
     elsif jobs.any?(&:nil?)
       :not_available
     else
-      jobs.min_by{|s| order[s.status.to_sym]}.status.to_sym
+      jobs.min_by { |s| order[s.status.to_sym] }.status.to_sym
     end
   end
 

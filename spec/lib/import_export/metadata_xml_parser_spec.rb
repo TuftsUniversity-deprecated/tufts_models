@@ -81,10 +81,10 @@ describe MetadataXmlParser do
         expect(TuftsPdf).to receive(:respond_to?).with(:build_draft_version).and_return(false)
       end
 
-      it 'builds a non-draft model with the original pid' do
-        m = MetadataXmlParser.build_record(build_node(attributes).to_xml, attributes['file'].first)
-
-        expect(m.pid).to eq attributes['pid'].first
+      it 'raises an error' do
+        expect {
+          MetadataXmlParser.build_record(build_node(attributes).to_xml, attributes['file'].first)
+        }.to raise_error("TuftsPdf doesn't implement build_draft_version")
       end
     end
 

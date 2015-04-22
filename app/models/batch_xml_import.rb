@@ -9,7 +9,7 @@ class BatchXmlImport < Batch
   validates :metadata_file, presence: true
   validate :metadata_file_must_be_valid
 
-  serialize :uploaded_files
+  serialize :uploaded_files # uploaded files should be a list of draft pids
 
   def display_name
     "Xml Import"

@@ -20,22 +20,36 @@ describe BatchTemplateUpdate do
     expect(subject.valid?).to be_falsey
   end
 
-  it 'starts processing and saves the job UUIDs' do
-    template = TuftsTemplate.find(subject.template_id)
-    allow(TuftsTemplate).to receive(:find).with(template.id) { template }
-    job_ids = [1, 2]
-    subject.save
+  describe "#run" do
+    it 'starts processing and saves the job UUIDs' do
+      template = TuftsTemplate.find(subject.template_id)
+      allow(TuftsTemplate).to receive(:find).with(template.id) { template }
+      job_ids = [1, 2]
+      subject.save
 
-    expect(template).to receive(:queue_jobs_to_apply_template).with(subject.creator.id, subject.pids, subject.id) { job_ids }
-    subject.run
-    expect(subject.job_ids).to eq job_ids
-    template.delete
-  end
+      expect(subject).to receive(:queue_jobs_to_apply_template).with(title: "updated title") { job_ids }
+      subject.run
+      expect(subject.job_ids).to eq job_ids
+      template.delete
+    end
 
-  it "only runs when it's valid" do
-    b = BatchTemplateUpdate.new
-    expect(b.valid?).to be_falsey
-    expect(b.run).to be_falsey
+    it "only runs when it's valid" do
+      b = BatchTemplateUpdate.new
+      expect(b.valid?).to be_falsey
+      expect(b.run).to be_falsey
+    end
+
+    context "when there is nothing to update" do
+      before do
+        template = double(attributes_to_update: {})
+        allow(TuftsTemplate).to receive(:find) { template }
+      end
+
+      it "doesn't queue any jobs if there is nothing to update" do
+        expect(Job::ApplyTemplate).not_to receive(:create)
+        subject.run
+      end
+    end
   end
 
   describe 'template behavior rules:' do
@@ -67,4 +81,28 @@ describe BatchTemplateUpdate do
       expect(b.overwrite?).to be_truthy
     end
   end
+
+  describe '#queue_jobs_to_apply_template' do
+    let(:attrs) { { filesize: ['57 MB'] } }
+    before do
+      allow(subject).to receive(:id) { 10 }
+      allow(subject).to receive(:pids) { ['tufts:1', 'tufts:2', 'tufts:3'] }
+    end
+
+    it 'queues one job for each record' do
+      args = { user_id: subject.creator_id, attributes: attrs, batch_id: 10 }
+      expect(Job::ApplyTemplate).to receive(:create).with(args.merge(record_id: "draft:1"))
+      expect(Job::ApplyTemplate).to receive(:create).with(args.merge(record_id: "draft:2"))
+      expect(Job::ApplyTemplate).to receive(:create).with(args.merge(record_id: "draft:3"))
+
+      subject.send(:queue_jobs_to_apply_template, attrs)
+    end
+
+    it "returns a list of job ids" do
+      allow(Job::ApplyTemplate).to receive(:create).and_return(:a, :b, :c)
+
+      expect(subject.send(:queue_jobs_to_apply_template, attrs)).to eq [:a, :b, :c]
+    end
+  end
+
 end
