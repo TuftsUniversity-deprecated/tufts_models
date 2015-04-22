@@ -1,5 +1,4 @@
 class TuftsVideo < TuftsBase
-  include DraftVersion
 
   has_file_datastream 'ARCHIVAL_XML', control_group: 'E', original: true
   has_file_datastream 'Archival.video', control_group: 'E', original: true
