@@ -18,7 +18,6 @@ module BaseModel
     has_metadata "DCA-META", type: TuftsDcaMeta
     has_metadata "DC-DETAIL-META", type: TuftsDcDetailed
     has_metadata "DCA-ADMIN", type: DcaAdmin
-    has_metadata "audit_log", type: Audit
 
     attr_accessor :working_user, :publishing, :unpublishing
 
@@ -32,7 +31,7 @@ module BaseModel
         self.add_relationship(:oai_item_id, "oai:#{pid}", true)
         # we didn't use .serialize! here because it would mark the model as clean and then
         # never actually save to Fedora
-        self.rels_ext.content = rels_ext.to_rels_ext()
+        self.rels_ext.content = rels_ext.to_rels_ext
       end
     end
 
@@ -48,7 +47,7 @@ module BaseModel
         self.audit(working_user, "Content updated: #{content_will_update}")
         self.content_will_update = nil
       elsif metadata_streams.any? { |ds| ds.changed? } && !publishing && !unpublishing
-        self.audit(working_user, "Metadata updated #{metadata_streams.select { |ds| ds.changed? }.map{ |ds| ds.dsid}.join(', ')}")
+        self.audit(working_user, "Metadata updated: #{metadata_streams.select { |ds| ds.changed? }.map{ |ds| ds.dsid}.join(', ')}")
       end
 
     end
@@ -184,10 +183,8 @@ module BaseModel
   protected :relationships_have_parseable_uris
 
   def audit(user, what)
-    return unless user
-    audit_log.who = user.user_key
-    audit_log.what = what
-    audit_log.when = DateTime.now
+    user_label = user ? user.user_key : 'unknown'
+    AuditLogService.log(user_label, pid, what)
   end
 
   def datastreams= (ds_data)

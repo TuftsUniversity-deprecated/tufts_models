@@ -184,30 +184,24 @@ describe BatchUpdate do
 
 
     describe 'general case (whether overwrite is true or false)' do
-      before do
-        @obj = TuftsBase.new(title: 'old title', displays: ['dl'],
-                             description: ['old desc 1', 'old desc 2'])
-        @obj.save!
-      end
-
-      after { @obj.delete }
+      let(:obj) { TuftsBase.create(title: 'old title', displays: ['dl'],
+                             description: ['old desc 1', 'old desc 2']) }
+      let(:user) { FactoryGirl.create(:user) }
 
       it 'returns true if the record successfully saved' do
-        result = @obj.apply_attributes(description: 'new desc')
+        result = obj.apply_attributes(description: 'new desc')
         expect(result).to be_truthy
       end
 
       it 'returns false if the record failed to save' do
-        expect(@obj).to receive(:save).and_return(false)
-        result = @obj.apply_attributes(description: 'new desc')
+        expect(obj).to receive(:save).and_return(false)
+        result = obj.apply_attributes(description: 'new desc')
         expect(result).to be_falsey
       end
 
       it 'adds an entry to the audit log' do
-        user = FactoryGirl.create(:user)
-        @obj.apply_attributes({description: 'new desc'}, user.id)
-        @obj.reload
-        expect(@obj.audit_log.who.include?(user.user_key)).to be_truthy
+        expect(AuditLogService).to receive(:log).with(user.user_key, obj.pid, 'Metadata updated: DCA-META, DCA-ADMIN')
+        obj.apply_attributes({description: 'new desc'}, user.id)
       end
     end
 

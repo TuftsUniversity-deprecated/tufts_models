@@ -139,34 +139,6 @@ describe TuftsAudio do
       expect(subject.local_path_for('ARCHIVAL_WAV', 'mp3')).to eq File.expand_path("../../fixtures/local_object_store/data05/tufts/central/dca/MS054/archival_wav/MS054.003.DO.02108.archival.mp3", __FILE__)
     end
   end
-  # Per Mark, the audit history can be found by using fedora versioning to see the audit entries on previous versions of the object.
-  describe "auditing" do
-    let (:user) { FactoryGirl.create(:user) }
-
-    describe "when metadata is updated" do
-      before do
-        subject.audit(user, 'updated stuff')
-      end
-      it "should get an entry" do
-        expect(subject.audit_log.who).to eq [user.display_name]
-      end
-    end
-
-    describe "when content is updated" do
-      before do
-        allow(subject).to receive(:content_will_update).and_return('123')
-        allow(subject).to receive(:working_user).and_return(user)
-        subject.title = 'title'
-        subject.displays = ['dl']
-        subject.save!
-      end
-
-      it "should get an entry" do
-        expect(subject.audit_log.who).to eq [user.display_name]
-        expect(subject.audit_log.what.first).to match /Content updated: 123/i
-      end
-    end
-  end
 
   describe "to_class_uri" do
     subject { TuftsAudio }
