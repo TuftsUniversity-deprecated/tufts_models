@@ -33,9 +33,16 @@ module Publishable
     published_at && published_at == edited_at
   end
 
-  def purge!
-    destroy_published_version!
-    destroy_draft_version!
+  def purge!(user_id = nil)
+    user = User.find(user_id) if user_id
+
+    if destroy_published_version!
+      audit(user, "Purged published version")
+    end
+
+    if destroy_draft_version!
+      audit(user, "Purged draft version")
+    end
   end
 
   def draft?

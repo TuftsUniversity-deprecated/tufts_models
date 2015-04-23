@@ -467,23 +467,6 @@ describe TuftsBase do
     end
   end
 
-  describe "#purge!" do
-    subject { TuftsBase.create(title: 'some title') }
-    before do
-      TuftsPdf.connection_for_pid('tufts:1')
-      @prod = Rubydora.connect(ActiveFedora.data_production_credentials)
-      allow(subject).to receive(:production_fedora_connection) { @prod }
-    end
-    it "hard deletes this pid on production" do
-      expect(@prod).to receive(:purge_object).with(pid: subject.pid)
-      subject.purge!
-    end
-
-    it "soft deletes this pid on staging" do
-      subject.purge!
-      expect(subject.state).to eq "D"
-    end
-  end
 
   describe 'audit log' do
     let(:user) { FactoryGirl.create(:user) }

@@ -200,23 +200,31 @@ describe Publishable do
   describe "#purge!" do
     subject { TuftsImage.build_draft_version(title: 'My title', displays: ['dl']) }
 
+    let(:user) { FactoryGirl.create(:user) }
     let(:draft_pid) { PidUtils.to_draft(subject.pid) }
     let(:published_pid) { PidUtils.to_published(subject.pid) }
 
-    context "when the published version exists" do
+    context "when only the published version exists" do
+      # not a very likely scenario
       before do
         subject.save!
         subject.publish!
+        subject.destroy
       end
 
       it "hard-deletes the published version" do
         expect(TuftsImage.exists?(published_pid)).to be_truthy
+
         subject.purge!
+
         expect(TuftsImage.exists?(published_pid)).to be_falsey
       end
 
       it "creates an audit log" do
-        pending
+        expect(subject).to receive(:audit).with(instance_of(User), "Purged published version").once
+        expect(subject).to receive(:audit).with(instance_of(User), "Purged draft version").never
+
+        subject.purge!(user)
       end
     end
 
@@ -232,7 +240,10 @@ describe Publishable do
       end
 
       it "creates an audit log" do
-        pending
+        expect(subject).to receive(:audit).with(instance_of(User), "Purged published version").never
+        expect(subject).to receive(:audit).with(instance_of(User), "Purged draft version").once
+
+        subject.purge!(user)
       end
     end
 
@@ -252,9 +263,14 @@ describe Publishable do
         expect(TuftsImage.exists?(published_pid)).to be_falsey
       end
 
+      it "creates an audit log" do
+        expect(subject).to receive(:audit).with(instance_of(User), "Purged published version").once
+        expect(subject).to receive(:audit).with(instance_of(User), "Purged draft version").once
+
+        subject.purge!(user)
+      end
     end
 
-  end
-
+  end # purge!
 
 end
