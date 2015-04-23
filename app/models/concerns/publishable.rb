@@ -34,12 +34,8 @@ module Publishable
   end
 
   def purge!
-    production_fedora_connection.purge_object(pid: pid) rescue RestClient::ResourceNotFound
-    update_attributes(state: STATE_DELETED) # This is a soft-delete
-  end
-
-  def purged?
-    state == STATE_DELETED
+    destroy_published_version!
+    destroy_draft_version!
   end
 
   def draft?
