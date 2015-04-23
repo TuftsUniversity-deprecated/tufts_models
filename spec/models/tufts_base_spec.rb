@@ -492,21 +492,17 @@ describe TuftsBase do
       subject.displays = ['dl']
       subject.working_user = user
     end
-    after { subject.delete if subject.persisted? }
 
     it 'adds an entry if the content changes' do
       allow(subject).to receive(:content_will_update).and_return('hello content')
+      expect(AuditLogService).to receive(:log).with(user.user_key, an_instance_of(String), 'Content updated: hello content')
       subject.save!
-      expect(subject.audit_log.who.include?(user.user_key)).to be true
-      expect(subject.audit_log.what.include?('Content updated: hello content')).to be true
     end
 
     it 'adds an entry if the metadata changes' do
       allow(subject.admin).to receive(:changed?).and_return(true)
+      expect(AuditLogService).to receive(:log).with(user.user_key, an_instance_of(String), 'Metadata updated: DCA-META, DCA-ADMIN')
       subject.save!
-      expect(subject.audit_log.who.include?(user.user_key)).to be true
-      messages = subject.audit_log.what.select {|x| x.match(/Metadata updated/)}
-      expect(messages.any?{|msg| msg.match(/DCA-ADMIN/)}).to be true
     end
   end
 
