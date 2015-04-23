@@ -197,4 +197,80 @@ describe Publishable do
     end
   end
 
+  describe "#purge!" do
+    subject { TuftsImage.build_draft_version(title: 'My title', displays: ['dl']) }
+
+    let(:user) { FactoryGirl.create(:user) }
+    let(:draft_pid) { PidUtils.to_draft(subject.pid) }
+    let(:published_pid) { PidUtils.to_published(subject.pid) }
+
+    context "when only the published version exists" do
+      # not a very likely scenario
+      before do
+        subject.save!
+        subject.publish!
+        subject.destroy
+      end
+
+      it "hard-deletes the published version" do
+        expect(TuftsImage.exists?(published_pid)).to be_truthy
+
+        subject.purge!
+
+        expect(TuftsImage.exists?(published_pid)).to be_falsey
+      end
+
+      it "creates an audit log" do
+        expect(subject).to receive(:audit).with(instance_of(User), "Purged published version").once
+        expect(subject).to receive(:audit).with(instance_of(User), "Purged draft version").never
+
+        subject.purge!(user)
+      end
+    end
+
+    context "when the draft version exists" do
+      before do
+        subject.save!
+      end
+
+      it "hard-deletes the draft version" do
+        expect(TuftsImage.exists?(draft_pid)).to be_truthy
+        subject.purge!
+        expect(TuftsImage.exists?(draft_pid)).to be_falsey
+      end
+
+      it "creates an audit log" do
+        expect(subject).to receive(:audit).with(instance_of(User), "Purged published version").never
+        expect(subject).to receive(:audit).with(instance_of(User), "Purged draft version").once
+
+        subject.purge!(user)
+      end
+    end
+
+    context "when both versions exist" do
+      before do
+        subject.save!
+        subject.publish!
+      end
+
+      it "hard-deletes both versions" do
+        expect(TuftsImage.exists?(draft_pid)).to be_truthy
+        expect(TuftsImage.exists?(published_pid)).to be_truthy
+
+        subject.purge!
+
+        expect(TuftsImage.exists?(draft_pid)).to be_falsey
+        expect(TuftsImage.exists?(published_pid)).to be_falsey
+      end
+
+      it "creates an audit log" do
+        expect(subject).to receive(:audit).with(instance_of(User), "Purged published version").once
+        expect(subject).to receive(:audit).with(instance_of(User), "Purged draft version").once
+
+        subject.purge!(user)
+      end
+    end
+
+  end # purge!
+
 end

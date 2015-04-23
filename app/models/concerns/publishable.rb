@@ -33,13 +33,16 @@ module Publishable
     published_at && published_at == edited_at
   end
 
-  def purge!
-    production_fedora_connection.purge_object(pid: pid) rescue RestClient::ResourceNotFound
-    update_attributes(state: STATE_DELETED) # This is a soft-delete
-  end
+  def purge!(user_id = nil)
+    user = User.find(user_id) if user_id
 
-  def purged?
-    state == STATE_DELETED
+    if destroy_published_version!
+      audit(user, "Purged published version")
+    end
+
+    if destroy_draft_version!
+      audit(user, "Purged draft version")
+    end
   end
 
   def draft?

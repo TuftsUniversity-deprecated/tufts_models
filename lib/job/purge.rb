@@ -17,6 +17,7 @@ module Job
       tick # give resque-status a chance to kill this
 
       run_as_batch_item(options['record_id'], options['batch_id']) do |record|
+        record.save!
         record.purge!
       end
     end
