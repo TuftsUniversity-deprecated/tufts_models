@@ -349,7 +349,7 @@ module Indexing
       # Attribute two classifications to one object, now's the time to do that
       ##,"info:fedora/cm:Audio.OralHistory","info:fedora/afmodel:TuftsAudioText" -> needs text
       ##,"info:fedora/cm:Image.HTML" -->needs text
-      if ["info:fedora/cm:Audio","info:fedora/afmodel:TuftsAudio"].include? model
+      if ["info:fedora/cm:Audio","info:fedora/afmodel:TuftsAudio","info:fedora/afmodel:TuftsVideo"].include? model
         unless self.datastreams['ARCHIVAL_XML'].dsLocation.nil?
           Solrizer.insert_field(solr_doc, 'object_type', 'Text', :facetable)
           Solrizer.insert_field(solr_doc, 'object_type', 'Text', :symbol)

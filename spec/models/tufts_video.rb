@@ -16,11 +16,12 @@ describe TuftsVideo do
 
     before do
       subject.add_relationship(:has_model, 'info:fedora/afmodel:TuftsVideo')
+      subject.datastreams['ARCHIVAL_XML'].dsLocation  = "http://example.com/example.xml"
     end
 
     it 'sets object type as Video' do
       solr_doc = subject.to_solr
-      expect(solr_doc['object_type_sim']).to eq ['Video']
+      expect(solr_doc['object_type_sim']).to eq ['Video','Text']
     end
   end
 
