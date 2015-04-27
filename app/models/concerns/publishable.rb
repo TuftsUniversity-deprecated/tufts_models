@@ -64,7 +64,7 @@ module Publishable
 
     if self.class.exists? published_pid
       destroy_draft_version!
-      deep_copy_fedora_object from: published_pid, to: draft_pid
+      FedoraObjectCopyService.new(self.class, from: published_pid, to: draft_pid).run
     end
   end
 
@@ -95,23 +95,11 @@ module Publishable
     published_pid = PidUtils.to_published(pid)
 
     destroy_published_version!
-    deep_copy_fedora_object from: pid, to: published_pid
+    FedoraObjectCopyService.new(self.class, from: pid, to: published_pid).run
 
     published = self.class.find(published_pid)
     published.published!(user)
     published!(user)
-  end
-
-  def deep_copy_fedora_object(options = {})
-    source_pid = options.fetch(:from)
-    destination_pid = options.fetch(:to)
-
-    return false unless self.class.exists? source_pid
-
-    api = inner_object.repository.api
-
-    foxml = api.export(pid: source_pid, context: 'archive')
-    api.ingest(file: foxml.gsub(source_pid, destination_pid))
   end
 
   def draft_namespace?
