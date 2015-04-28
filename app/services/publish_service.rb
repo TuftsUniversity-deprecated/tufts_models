@@ -21,7 +21,7 @@ class PublishService < WorkflowService
     def published!(obj, user)
       obj.publishing = true
       obj.save!
-      obj.audit(user, 'Pushed to production')
+      audit('Pushed to production')
       obj.publishing = false
     end
 

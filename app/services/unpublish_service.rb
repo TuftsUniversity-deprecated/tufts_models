@@ -4,6 +4,6 @@ class UnpublishService < WorkflowService
     object.unpublishing = true
     object.update_attributes(published_at: nil)
     object.unpublishing = false
-    object.audit(user, 'Unpublished')
+    audit('Unpublished')
   end
 end

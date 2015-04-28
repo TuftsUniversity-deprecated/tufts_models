@@ -23,18 +23,6 @@ module Publishable
     published_at && published_at == edited_at
   end
 
-  def purge!(user_id = nil)
-    user = User.find(user_id) if user_id
-
-    if destroy_published_version!
-      audit(user, "Purged published version")
-    end
-
-    if destroy_draft_version!
-      audit(user, "Purged draft version")
-    end
-  end
-
   def draft?
     PidUtils.draft?(pid) || draft_namespace?
   end
@@ -59,10 +47,6 @@ module Publishable
   end
 
   private
-
-  def destroy_published_version!
-    self.class.destroy_if_exists PidUtils.to_published(pid)
-  end
 
   def destroy_draft_version!
     self.class.destroy_if_exists PidUtils.to_draft(pid)

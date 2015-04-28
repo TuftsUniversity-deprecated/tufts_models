@@ -8,8 +8,16 @@ class WorkflowService
 
   private
 
-  # TODO This is shared by publish, unpublish & purge
-  def destroy_published_version!
-    object.class.destroy_if_exists PidUtils.to_published(object.pid)
-  end
+    def destroy_published_version!
+      object.class.destroy_if_exists PidUtils.to_published(object.pid)
+    end
+
+    def destroy_draft_version!
+      object.class.destroy_if_exists PidUtils.to_draft(object.pid)
+    end
+
+    def audit(what)
+      user_label = user ? user.user_key : 'unknown'
+      AuditLogService.log(user_label, object.pid, what)
+    end
 end
