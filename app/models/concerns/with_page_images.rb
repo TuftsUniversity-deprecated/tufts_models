@@ -23,7 +23,7 @@ module WithPageImages
   end
 
 
-  def local_path_for_png(page_number, derivatives_path = local_path_for_pdf_derivatives, filename_base = pid_without_namespace)
+  def local_path_for_png(page_number, derivatives_path = local_path_for_pdf_derivatives, filename_base = PidUtils.stripped_pid(pid))
     derivatives_path + '/' + filename_base + "-" + page_number.to_s + '.png'
   end
 

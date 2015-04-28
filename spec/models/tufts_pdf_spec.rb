@@ -17,32 +17,6 @@ describe TuftsPdf do
     expect(TuftsPdf.original_file_datastreams).to eq ["Archival.pdf"]
   end
 
-  describe "an pdf with a pid" do
-    before do
-      subject.inner_object.pid = 'tufts:MS054.003.DO.02108'
-    end
-    describe "and a collection" do
-      let(:collection_id) { 'tufts:UA069.001.DO.UA015' }
-      before do
-        unless ActiveFedora::Base.exists? collection_id
-          ActiveFedora::FixtureLoader.new('spec/fixtures').import_and_index(collection_id)
-        end
-        subject.collection_id = collection_id
-      end
-      it "should give a remote URL" do
-        expect(subject.collection_id).to eq collection_id
-        expect(subject.remote_url_for('Archival.pdf', 'pdf')).to eq 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA015/archival_pdf/MS054.003.DO.02108.archival.pdf'
-      end
-
-    end
-    it "should give a remote url" do
-      expect(subject.remote_url_for('Archival.pdf', 'pdf')).to eq 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MS054/archival_pdf/MS054.003.DO.02108.archival.pdf'
-    end
-    it "should give a local_path" do
-      expect(subject.local_path_for('Archival.pdf', 'pdf')).to eq File.expand_path("../../fixtures/local_object_store/data01/tufts/central/dca/MS054/archival_pdf/MS054.003.DO.02108.archival.pdf", __FILE__)
-    end
-  end
-
   describe "attributes" do
     it "should have createdby fields" do
       expect(subject.createdby).to be_nil
