@@ -5,16 +5,17 @@ class TuftsAudio < TuftsBase
   has_file_datastream 'ACCESS_MP3', control_group: 'E'
 
   def create_derivatives
-    make_directory_for_datastream('ACCESS_MP3')
+    access_path = LocalPathService.new(self, 'ACCESS_MP3', 'mp3')
+
+    access_path.make_directory
     # Local path should be able to use the extension from the dsLocation.
     input_file = local_path_for('ARCHIVAL_WAV')
     output_path = local_path_for('ACCESS_MP3', 'mp3')
 
     encode_mp3(input_file, output_path)
 
-    # passing the extension is not necessary, so just plassing mime_type as a placeholder for that.
-    datastreams['ACCESS_MP3'].dsLocation = remote_url_for('ACCESS_MP3', 'mp3')
-    datastreams['ACCESS_MP3'].mimeType = 'audio/mpeg' 
+    datastreams['ACCESS_MP3'].dsLocation = access_path.remote_url
+    datastreams['ACCESS_MP3'].mimeType = 'audio/mpeg'
     output_path
 
   end
@@ -34,10 +35,10 @@ class TuftsAudio < TuftsBase
         self.datastreams[name].dsLocation.sub(Settings.trim_bucket_url + '/' + object_store_path, "")
       else
         raise ArgumentError, "Extension required for #{name}" unless extension
-        File.join(directory_for(name), "#{pid_without_namespace}.archival.#{extension}")
+        File.join(directory_for(name), "#{PidUtils.stripped_pid(pid)}.archival.#{extension}")
       end
     else
-      File.join(directory_for(name), "#{pid_without_namespace}.#{name.downcase.sub('_', '.')}")
+      File.join(directory_for(name), "#{PidUtils.stripped_pid(pid)}.#{name.downcase.sub('_', '.')}")
     end
   end
 

@@ -13,10 +13,10 @@ class TuftsVideo < TuftsBase
           self.datastreams[name].dsLocation.sub(Settings.trim_bucket_url + '/' + object_store_path, "")
         else
           raise ArgumentError, "Extension required for #{name}" unless extension
-          File.join(directory_for(name), "#{pid_without_namespace}.archival.#{extension}")
+          File.join(directory_for(name), "#{PidUtils.stripped_pid(pid)}.archival.#{extension}")
         end
       else
-        File.join(directory_for(name), "#{pid_without_namespace}.#{name.downcase.sub('_', '.')}")
+        File.join(directory_for(name), "#{PidUtils.stripped_pid(pid)}.#{name.downcase.sub('_', '.')}")
     end
   end
 

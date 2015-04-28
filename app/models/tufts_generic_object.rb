@@ -15,7 +15,7 @@ class TuftsGenericObject < TuftsBase
   #   obj.file_path('GENERIC-CONTENT', 'zip')
   #   # => /local_object_store/data01/tufts/central/dca/MS054/archival_tif/MS054.003.DO.02108.archival.tif
   def file_path(name, extension=nil)
-    File.join(directory_for(name), "#{pid_without_namespace}.#{extension}")
+    File.join(directory_for(name), "#{PidUtils.stripped_pid(pid)}.#{extension}")
   end
 
   # Given a datastream name, return the directory path where the file can be found.

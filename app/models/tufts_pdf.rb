@@ -102,7 +102,7 @@ class TuftsPdf < TuftsBase
 
   def create_pdf_page_images(derivative_settings)
     page_number = 0
-    filename_base = pid_without_namespace
+    filename_base = PidUtils.stripped_pid(pid)
     pdf_pages = derivative_settings[:pdf]
 
     pdf_pages.each do |pdf_page|
