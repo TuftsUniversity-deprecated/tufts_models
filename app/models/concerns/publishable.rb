@@ -3,6 +3,10 @@ module Publishable
 
   STATE_DELETED = 'D'
 
+  def publishable?
+    true
+  end
+
   def workflow_status
     raise "Production objects don't have a workflow" unless draft?
     if published?
@@ -12,11 +16,6 @@ module Publishable
     else
       :edited
     end
-  end
-
-  def publish!(user_id = nil)
-    user = User.find(user_id) if user_id
-    create_published_version!(user)
   end
 
   def unpublish!(user_id = nil)
@@ -68,8 +67,7 @@ module Publishable
     end
   end
 
-  protected
-
+  # Mark that this object has been published
   def published!(user)
     self.publishing = true
     save!
@@ -89,17 +87,6 @@ module Publishable
 
   def destroy_draft_version!
     self.class.destroy_if_exists PidUtils.to_draft(pid)
-  end
-
-  def create_published_version!(user)
-    published_pid = PidUtils.to_published(pid)
-
-    destroy_published_version!
-    FedoraObjectCopyService.new(self.class, from: pid, to: published_pid).run
-
-    published = self.class.find(published_pid)
-    published.published!(user)
-    published!(user)
   end
 
   def draft_namespace?

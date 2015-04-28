@@ -1,3 +1,8 @@
+# Templates should never be pushed to the production
+# environment.  They are meant to be used by admin users
+# to ingest files in bulk and apply the same metadata to
+# many files.  There should be no need for them to be
+# visible to general users.
 class TuftsTemplate < ActiveFedora::Base
   include BaseModel
 
@@ -18,21 +23,11 @@ class TuftsTemplate < ActiveFedora::Base
     TuftsTemplate.where('object_state_ssi:A')
   end
 
-  # Templates should never be pushed to the production
-  # environment.  They are meant to be used by admin users
-  # to ingest files in bulk and apply the same metadata to
-  # many files.  There should be no need for them to be
-  # visible to general users.
-
-  def publish!(user_id = nil)
-    raise UnpublishableModelError.new
-  end
-
-  def push_to_production!
-    raise UnpublishableModelError.new
-  end
-
   def published?
+    false
+  end
+
+  def publishable?
     false
   end
 
@@ -83,11 +78,5 @@ class CannotApplyTemplateError < StandardError
   end
   def to_s
     self.class.to_s + ": " + message
-  end
-end
-
-class UnpublishableModelError < StandardError
-  def message
-    'Templates cannot be pushed to production'
   end
 end

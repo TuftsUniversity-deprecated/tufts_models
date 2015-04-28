@@ -39,80 +39,12 @@ describe Publishable do
     end
   end
 
-  describe '#publish!' do
-    let(:user) { FactoryGirl.create(:user) }
-
-    let(:obj) do
-      TuftsImage.create(title: 'My title', displays: ['dl']).tap do |image|
-        image.datastreams['Thumbnail.png'].dsLocation = "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/UA136/thumb_png/UA136.002.DO.02673.thumbnail.png"
-        image.save
-      end
-    end
-
-    after do
-      obj.destroy if obj
-    end
-
-    context "when a published version does not exist" do
-
-      let(:published_pid) { PidUtils.to_published(obj.pid) }
-
-      it "results in a published copy of the draft" do
-        expect {
-          obj.publish!
-        }.to change { TuftsImage.exists?(published_pid) }.from(false).to(true)
-
-        published_obj = obj.find_published
-        expect(published_obj).to be_published
-        expect(published_obj.title).to eq 'My title'
-        expect(published_obj.displays).to eq ['dl']
-        expect(published_obj.datastreams['Thumbnail.png']).not_to be_new
-      end
-    end
-
-    context "when a published version already exists" do
-      let(:published_pid) { PidUtils.to_published(obj.pid) }
-      before { obj.publish! }
-
-      it "replaces the existing published copy" do
-        obj.update_attributes title: 'Edited title'
-        obj.publish!
-        published_obj = obj.find_published
-        expect(published_obj.title).to eq 'Edited title'
-      end
-
-    end
-
-
-    it 'adds an entry to the audit log' do
-      expect(obj).to receive(:audit).with(instance_of(User), 'Pushed to production').once
-
-      obj.publish!(user.id)
-    end
-
-    it 'results in the image being published' do
-      expect(obj.published_at).to eq(nil)
-
-      obj.publish!
-      obj.reload
-      expect(obj.published?).to be_truthy
-    end
-
-    it 'only updates the published_at time when actually published' do
-      expect(obj.published_at).to eq nil
-
-      obj.publish!(user.id)
-
-      expect(obj.published_at).to_not be_nil
-    end
-  end
-
   describe '#unpublish!' do
     let(:obj) { TuftsImage.build_draft_version(title: 'My title', displays: ['dl']) }
     let(:user) { FactoryGirl.create(:user) }
     before do
       obj.save
-      obj.publish!
+      PublishService.new(obj).run
     end
 
     it "deletes the published copy, retains the draft, and logs the action" do
@@ -208,7 +140,7 @@ describe Publishable do
       # not a very likely scenario
       before do
         subject.save!
-        subject.publish!
+        PublishService.new(subject).run
         subject.destroy
       end
 
@@ -250,7 +182,7 @@ describe Publishable do
     context "when both versions exist" do
       before do
         subject.save!
-        subject.publish!
+        PublishService.new(subject).run
       end
 
       it "hard-deletes both versions" do
