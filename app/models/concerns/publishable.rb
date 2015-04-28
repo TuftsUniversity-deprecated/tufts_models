@@ -35,22 +35,7 @@ module Publishable
     self.class.find(PidUtils.to_published(pid))
   end
 
-  # copy the published object over the draft
-  def revert!
-    published_pid = PidUtils.to_published(pid)
-    draft_pid = PidUtils.to_draft(pid)
-
-    if self.class.exists? published_pid
-      destroy_draft_version!
-      FedoraObjectCopyService.new(self.class, from: published_pid, to: draft_pid).run
-    end
-  end
-
   private
-
-  def destroy_draft_version!
-    self.class.destroy_if_exists PidUtils.to_draft(pid)
-  end
 
   def draft_namespace?
     inner_object && inner_object.respond_to?(:namespace) && inner_object.namespace == PidUtils.draft_namespace

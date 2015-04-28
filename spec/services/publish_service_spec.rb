@@ -50,7 +50,7 @@ describe PublishService do
 
 
     it 'adds an entry to the audit log' do
-      expect(obj).to receive(:audit).with(instance_of(User), 'Pushed to production').once
+      expect(AuditLogService).to receive(:log).with(user.user_key, obj.id, 'Pushed to production').once
 
       PublishService.new(obj, user.id).run
     end

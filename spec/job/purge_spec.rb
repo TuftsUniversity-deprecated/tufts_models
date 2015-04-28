@@ -42,7 +42,7 @@ describe Job::Purge do
       record = FactoryGirl.create(:tufts_pdf)
       expect(ActiveFedora::Base).to receive(:find).with(record.id, cast: true).and_return(record)
       job = Job::Purge.new('uuid', 'user_id' => 1, 'record_id' => record.id)
-      expect(record).to receive(:purge!).once
+      expect_any_instance_of(PurgeService).to receive(:run).once
       job.perform
       record.delete
     end

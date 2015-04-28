@@ -13,6 +13,7 @@ class PublishService < WorkflowService
     published = object.class.find(published_pid)
     published!(published, user)
     published!(object, user)
+    audit('Pushed to production')
   end
 
   private
@@ -21,7 +22,6 @@ class PublishService < WorkflowService
     def published!(obj, user)
       obj.publishing = true
       obj.save!
-      audit('Pushed to production')
       obj.publishing = false
     end
 
