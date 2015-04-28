@@ -1,8 +1,7 @@
 class UnpublishService < WorkflowService
 
   def initialize(object, user_id = nil)
-    draft = object.draft? ? object : object.find_draft
-    super(draft, user_id)
+    super(object.find_draft, user_id)
   end
 
   def run

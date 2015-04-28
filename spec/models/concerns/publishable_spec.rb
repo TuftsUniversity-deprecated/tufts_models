@@ -54,11 +54,40 @@ describe Publishable do
       it 'finds the draft version of that record' do
         expect(record.find_draft).to eq draft_record
       end
+
+      it "just returns self if it's already a draft record" do
+        expect(draft_record.class).to_not receive(:find)
+        expect(draft_record.find_draft).to eq draft_record
+      end
     end
 
     context 'given a record without a draft version' do
       it 'raises an exception' do
         expect{ record.find_draft }.to raise_error ActiveFedora::ObjectNotFoundError
+      end
+    end
+  end
+
+  describe '#find_published' do
+    before { ActiveFedora::Base.delete_all }
+    let!(:draft)  { TestObject.create!(pid: 'draft:123') }
+
+    context 'when there is a published record' do
+      let!(:record) { TestObject.create!(pid: 'tufts:123') }
+
+      it 'finds the published version of the draft' do
+        expect(draft.find_published).to eq record
+      end
+
+      it "just returns self if it's already a published record" do
+        expect(record.class).to_not receive(:find)
+        expect(record.find_published).to eq record
+      end
+    end
+
+    context "when a published record doesn't exist" do
+      it 'raises an exception' do
+        expect{ draft.find_published }.to raise_error ActiveFedora::ObjectNotFoundError
       end
     end
   end

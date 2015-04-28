@@ -28,11 +28,14 @@ module Publishable
   end
 
   def find_draft
+    return self if draft?
     self.class.find(PidUtils.to_draft(pid))
   end
 
   def find_published
-    self.class.find(PidUtils.to_published(pid))
+    published_pid = PidUtils.to_published(pid)
+    return self if pid == published_pid
+    self.class.find(published_pid)
   end
 
   private
