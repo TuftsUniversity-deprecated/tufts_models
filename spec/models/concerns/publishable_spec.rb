@@ -39,22 +39,6 @@ describe Publishable do
     end
   end
 
-  describe '#unpublish!' do
-    let(:obj) { TuftsImage.build_draft_version(title: 'My title', displays: ['dl']) }
-    let(:user) { FactoryGirl.create(:user) }
-    before do
-      obj.save
-      PublishService.new(obj).run
-    end
-
-    it "deletes the published copy, retains the draft, and logs the action" do
-      expect(obj).to receive(:audit).with(instance_of(User), 'Unpublished').once
-      obj.unpublish!(user.id)
-      expect { obj.find_published }.to raise_error ActiveFedora::ObjectNotFoundError
-      expect(obj.find_draft).not_to be_published
-    end
-  end
-
   describe '#find_draft' do
     before { ActiveFedora::Base.delete_all }
 

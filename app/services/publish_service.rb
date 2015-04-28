@@ -11,9 +11,20 @@ class PublishService < WorkflowService
     FedoraObjectCopyService.new(object.class, from: object.pid, to: published_pid).run
 
     published = object.class.find(published_pid)
-    published.published!(user)
-    object.published!(user)
+    published!(published, user)
+    published!(object, user)
   end
+
+  private
+
+    # Mark that this object has been published
+    def published!(obj, user)
+      obj.publishing = true
+      obj.save!
+      obj.audit(user, 'Pushed to production')
+      obj.publishing = false
+    end
+
 end
 
 class UnpublishableModelError < StandardError

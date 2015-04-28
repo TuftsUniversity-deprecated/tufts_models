@@ -18,15 +18,6 @@ module Publishable
     end
   end
 
-  def unpublish!(user_id = nil)
-    destroy_published_version!
-    self.unpublishing = true
-    update_attributes(published_at: nil)
-    self.unpublishing = false
-    user = User.find(user_id) if user_id
-    audit(user, 'Unpublished')
-  end
-
   # Has this record been published yet?
   def published?
     published_at && published_at == edited_at
@@ -67,19 +58,7 @@ module Publishable
     end
   end
 
-  # Mark that this object has been published
-  def published!(user)
-    self.publishing = true
-    save!
-    audit(user, 'Pushed to production')
-    self.publishing = false
-  end
-
   private
-  # TODO remove this
-  def production_fedora_connection
-    @prod_repo ||= Rubydora.connect(ActiveFedora.data_production_credentials)
-  end
 
   def destroy_published_version!
     self.class.destroy_if_exists PidUtils.to_published(pid)
