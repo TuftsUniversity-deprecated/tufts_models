@@ -21,7 +21,7 @@ module Job
       begin
         run_as_batch_item(published_pid, options['batch_id']) do |record|
           record.save! # batch_id gets set on the object here, so we need to save it first
-          record.revert!
+          RevertService.new(record).run
         end
       rescue ActiveFedora::ObjectNotFoundError => ex
         # nothing here. It's ok to try to revert a pid that doesn't exist.

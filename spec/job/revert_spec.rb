@@ -37,7 +37,7 @@ describe Job::Revert do
         # exists on staging
         record = TuftsPdf.build_draft_version(displays: ['dl'], title: "orig title")
         record.save!
-        record.publish!
+        PublishService.new(record).run
 
         # make sure it reverts
         record.title = "changed title"
@@ -70,7 +70,7 @@ describe Job::Revert do
         record.save!
 
         pid = record.pid
-        record.publish!
+        PublishService.new(record).run
 
         # missing draft
         record.destroy
@@ -110,7 +110,7 @@ describe Job::Revert do
     it 'runs the job as a batch item' do
       pdf = TuftsPdf.build_draft_version(displays: ['dl'], title: "orig title")
       pdf.save!
-      pdf.publish!
+      PublishService.new(pdf).run
 
       batch_id = '10'
       job = Job::Revert.new('uuid', 'record_id' => pdf.id, 'user_id' => '1', 'batch_id' => batch_id)

@@ -444,13 +444,13 @@ describe TuftsBase do
       end
 
       context "that is same as the object in production" do
-        before { draft.publish! }
+        before { PublishService.new(draft).run }
         it { is_expected.to eq :published }
       end
 
       context "that differs from the object in production" do
         before do
-          draft.publish!
+          PublishService.new(draft).run
           sleep 1 # ensure there is a time change between publish & edit
           draft.update(creator: ['Bob'])
         end

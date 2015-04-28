@@ -1,11 +1,10 @@
 module BaseModel
   extend ActiveSupport::Concern
+  include Hydra::ModelMethods
+  include Hydra::AccessControls::Permissions
+  include Indexing
 
   included do
-    include Hydra::ModelMethods
-    include Hydra::AccessControls::Permissions
-    include Indexing
-
     validate :relationships_have_parseable_uris
 
     # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright

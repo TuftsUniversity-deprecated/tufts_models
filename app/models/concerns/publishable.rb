@@ -3,6 +3,10 @@ module Publishable
 
   STATE_DELETED = 'D'
 
+  def publishable?
+    true
+  end
+
   def workflow_status
     raise "Production objects don't have a workflow" unless draft?
     if published?
@@ -14,35 +18,9 @@ module Publishable
     end
   end
 
-  def publish!(user_id = nil)
-    user = User.find(user_id) if user_id
-    create_published_version!(user)
-  end
-
-  def unpublish!(user_id = nil)
-    destroy_published_version!
-    self.unpublishing = true
-    update_attributes(published_at: nil)
-    self.unpublishing = false
-    user = User.find(user_id) if user_id
-    audit(user, 'Unpublished')
-  end
-
   # Has this record been published yet?
   def published?
     published_at && published_at == edited_at
-  end
-
-  def purge!(user_id = nil)
-    user = User.find(user_id) if user_id
-
-    if destroy_published_version!
-      audit(user, "Purged published version")
-    end
-
-    if destroy_draft_version!
-      audit(user, "Purged draft version")
-    end
   end
 
   def draft?
@@ -57,50 +35,7 @@ module Publishable
     self.class.find(PidUtils.to_published(pid))
   end
 
-  # copy the published object over the draft
-  def revert!
-    published_pid = PidUtils.to_published(pid)
-    draft_pid = PidUtils.to_draft(pid)
-
-    if self.class.exists? published_pid
-      destroy_draft_version!
-      FedoraObjectCopyService.new(self.class, from: published_pid, to: draft_pid).run
-    end
-  end
-
-  protected
-
-  def published!(user)
-    self.publishing = true
-    save!
-    audit(user, 'Pushed to production')
-    self.publishing = false
-  end
-
   private
-  # TODO remove this
-  def production_fedora_connection
-    @prod_repo ||= Rubydora.connect(ActiveFedora.data_production_credentials)
-  end
-
-  def destroy_published_version!
-    self.class.destroy_if_exists PidUtils.to_published(pid)
-  end
-
-  def destroy_draft_version!
-    self.class.destroy_if_exists PidUtils.to_draft(pid)
-  end
-
-  def create_published_version!(user)
-    published_pid = PidUtils.to_published(pid)
-
-    destroy_published_version!
-    FedoraObjectCopyService.new(self.class, from: pid, to: published_pid).run
-
-    published = self.class.find(published_pid)
-    published.published!(user)
-    published!(user)
-  end
 
   def draft_namespace?
     inner_object && inner_object.respond_to?(:namespace) && inner_object.namespace == PidUtils.draft_namespace
