@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe UnpublishService do
+  let(:user) { FactoryGirl.create(:user) }
+
   describe '#run' do
     let(:obj) { TuftsImage.build_draft_version(title: 'My title', displays: ['dl']) }
-    let(:user) { FactoryGirl.create(:user) }
 
     before do
       obj.save
@@ -17,4 +18,35 @@ describe UnpublishService do
       expect(obj.find_draft).not_to be_published
     end
   end
+
+
+  describe '.new' do
+    let!(:draft) do
+      obj = TuftsImage.build_draft_version(title: 'My title', displays: ['dl'])
+      obj.save
+      obj
+    end
+
+    let!(:published) do
+      PublishService.new(draft).run
+      draft.find_published
+    end
+
+    context 'when you pass it a draft object' do
+      subject { UnpublishService.new(draft, user.id) }
+
+      it 'assigns the object' do
+        expect(subject.object).to eq draft
+      end
+    end
+
+    context 'when you pass it a published object' do
+      subject { UnpublishService.new(published, user.id) }
+
+      it 'assigns the object to the draft version' do
+        expect(subject.object).to eq draft
+      end
+    end
+  end
+
 end
