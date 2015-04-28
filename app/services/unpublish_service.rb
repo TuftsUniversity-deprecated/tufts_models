@@ -1,4 +1,10 @@
 class UnpublishService < WorkflowService
+
+  def initialize(object, user_id = nil)
+    draft = object.draft? ? object : object.find_draft
+    super(draft, user_id)
+  end
+
   def run
     destroy_published_version!
     object.unpublishing = true
@@ -6,4 +12,5 @@ class UnpublishService < WorkflowService
     object.unpublishing = false
     audit('Unpublished')
   end
+
 end
