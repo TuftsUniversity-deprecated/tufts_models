@@ -8,16 +8,18 @@ class ArchivalStorageService < DatastreamGeneratingService
   end
 
   def run
-    make_directory_for_datastream(dsid)
-    File.open(local_path_for(dsid, extension), 'wb') do |f|
+    path_service = LocalPathService.new(object, dsid, extension)
+    path_service.make_directory
+    File.open(path_service.local_path, 'wb') do |f|
       f.write file.read
     end
     object.content_will_update = dsid
 
     ds = object.datastreams[dsid]
-    ds.dsLocation = remote_url_for(dsid, extension)
+    ds.dsLocation = path_service.remote_url
     ds.mimeType = file.content_type
-    Job::CreateDerivatives.create(record_id: pid)
+    # TODO seems like there ought to be a save here if we're going to kick of a derivatives job.
+    Job::CreateDerivatives.create(record_id: object.pid)
   end
 
   def extension
