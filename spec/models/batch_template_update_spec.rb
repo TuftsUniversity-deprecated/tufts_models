@@ -20,38 +20,6 @@ describe BatchTemplateUpdate do
     expect(subject.valid?).to be_falsey
   end
 
-  describe "#run" do
-    it 'starts processing and saves the job UUIDs' do
-      template = TuftsTemplate.find(subject.template_id)
-      allow(TuftsTemplate).to receive(:find).with(template.id) { template }
-      job_ids = [1, 2]
-      subject.save
-
-      expect_any_instance_of(BatchTemplateUpdateRunnerService).to receive(:create_jobs).with(title: "updated title") { job_ids }
-      subject.run
-      expect(subject.job_ids).to eq job_ids
-      template.delete
-    end
-
-    it "only runs when it's valid" do
-      b = BatchTemplateUpdate.new
-      expect(b.valid?).to be_falsey
-      expect(b.run).to be_falsey
-    end
-
-    context "when there is nothing to update" do
-      before do
-        template = double(attributes_to_update: {})
-        allow(TuftsTemplate).to receive(:find) { template }
-      end
-
-      it "doesn't queue any jobs if there is nothing to update" do
-        expect(Job::ApplyTemplate).not_to receive(:create)
-        subject.run
-      end
-    end
-  end
-
   describe 'template behavior rules:' do
     it 'has a list of valid behavior rules' do
       expect(BatchTemplateUpdate.behavior_rules).to eq [BatchTemplateUpdate::PRESERVE, BatchTemplateUpdate::OVERWRITE]

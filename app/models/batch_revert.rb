@@ -4,8 +4,4 @@ class BatchRevert < Batch
   def display_name
     "Revert"
   end
-
-  def run
-    BatchRunnerService.new(self).run
-  end
 end

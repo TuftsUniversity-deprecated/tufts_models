@@ -19,10 +19,6 @@ class BatchTemplateUpdate < Batch
     "Update"
   end
 
-  def run
-    BatchTemplateUpdateRunnerService.new(self).run
-  end
-
   def overwrite?
     behavior == OVERWRITE
   end

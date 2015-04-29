@@ -437,6 +437,7 @@ describe TuftsBase do
   describe '#workflow_status' do
     context "for a draft object" do
       let(:draft) { TuftsPdf.create(FactoryGirl.attributes_for(:tufts_pdf).merge(pid: 'draft:123')) }
+      let(:now) { Time.now }
       subject { draft.workflow_status }
 
       context "that is new" do
@@ -444,15 +445,17 @@ describe TuftsBase do
       end
 
       context "that is same as the object in production" do
-        before { PublishService.new(draft).run }
+        before do
+          draft.published_at = now
+          draft.edited_at = now
+        end
         it { is_expected.to eq :published }
       end
 
       context "that differs from the object in production" do
         before do
-          PublishService.new(draft).run
-          sleep 1 # ensure there is a time change between publish & edit
-          draft.update(creator: ['Bob'])
+          draft.published_at = now
+          draft.edited_at = now + 1
         end
 
         it { is_expected.to eq :edited }
