@@ -25,6 +25,14 @@ class ImageGeneratingService
     output_path
   end
 
+  def generate_resized(long_edge_size)
+    generate do |xfrm|
+      xfrm.change_geometry!("#{long_edge_size}x#{long_edge_size}") do |cols, rows, img|
+       img.resize!(cols, rows)
+      end
+    end
+  end
+
   private
 
   def load_image_transformer

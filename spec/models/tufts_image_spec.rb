@@ -29,6 +29,7 @@ describe TuftsImage do
     end
     describe "basic" do
       before { subject.create_basic }
+
       it "should create Basic.jpg" do
         expect(File.exists?(subject.local_path_for('Basic.jpg', 'jpg'))).to be_truthy
         expect(subject.datastreams["Basic.jpg"].dsLocation).to eq "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/basic_jpg/MISS.ISS.IPPI.basic.jpg"
