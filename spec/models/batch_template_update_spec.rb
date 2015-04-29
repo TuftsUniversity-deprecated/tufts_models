@@ -27,7 +27,7 @@ describe BatchTemplateUpdate do
       job_ids = [1, 2]
       subject.save
 
-      expect(subject).to receive(:queue_jobs_to_apply_template).with(title: "updated title") { job_ids }
+      expect_any_instance_of(BatchTemplateUpdateRunnerService).to receive(:create_jobs).with(title: "updated title") { job_ids }
       subject.run
       expect(subject.job_ids).to eq job_ids
       template.delete
@@ -79,29 +79,6 @@ describe BatchTemplateUpdate do
       expect(b.overwrite?).to be_falsey
       b.behavior = BatchTemplateUpdate::OVERWRITE
       expect(b.overwrite?).to be_truthy
-    end
-  end
-
-  describe '#queue_jobs_to_apply_template' do
-    let(:attrs) { { filesize: ['57 MB'] } }
-    before do
-      allow(subject).to receive(:id) { 10 }
-      allow(subject).to receive(:pids) { ['tufts:1', 'tufts:2', 'tufts:3'] }
-    end
-
-    it 'queues one job for each record' do
-      args = { user_id: subject.creator_id, attributes: attrs, batch_id: 10 }
-      expect(Job::ApplyTemplate).to receive(:create).with(args.merge(record_id: "draft:1"))
-      expect(Job::ApplyTemplate).to receive(:create).with(args.merge(record_id: "draft:2"))
-      expect(Job::ApplyTemplate).to receive(:create).with(args.merge(record_id: "draft:3"))
-
-      subject.send(:queue_jobs_to_apply_template, attrs)
-    end
-
-    it "returns a list of job ids" do
-      allow(Job::ApplyTemplate).to receive(:create).and_return(:a, :b, :c)
-
-      expect(subject.send(:queue_jobs_to_apply_template, attrs)).to eq [:a, :b, :c]
     end
   end
 

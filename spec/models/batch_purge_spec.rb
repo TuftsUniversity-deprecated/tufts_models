@@ -12,7 +12,7 @@ describe BatchPurge do
 
   it "only runs when it's valid, returns false if not valid" do
     invalid_batch = BatchPurge.new
-    expect(invalid_batch.valid?).to be_falsey
+    expect(invalid_batch).not_to be_valid
     expect(invalid_batch.run).to be_falsey
   end
 
