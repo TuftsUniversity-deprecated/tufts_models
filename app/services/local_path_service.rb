@@ -10,7 +10,7 @@ class LocalPathService
 
   def local_path
     if object.datastreams[dsid] && object.datastreams[dsid].dsLocation
-      object.datastreams[dsid].dsLocation.sub('http://bucket01.lib.tufts.edu', Settings.object_store_root)
+      object.datastreams[dsid].dsLocation.sub(Settings.trim_bucket_url, Settings.object_store_root)
     else
       File.join(local_path_root, object.file_path(dsid, extension))
     end
