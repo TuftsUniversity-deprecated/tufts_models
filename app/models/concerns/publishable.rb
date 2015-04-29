@@ -1,8 +1,6 @@
 module Publishable
   extend ActiveSupport::Concern
 
-  STATE_DELETED = 'D'
-
   def publishable?
     true
   end
