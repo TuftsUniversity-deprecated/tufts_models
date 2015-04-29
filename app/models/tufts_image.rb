@@ -22,11 +22,11 @@ class TuftsImage < TuftsBase
   #   Colorspace: Same as archival datastream.
   #   Pixel dimensions: Same as archival datastream, unless the resulting file is greater than 1 MB. If smaller files are required, set the size of the long side of the image to 1200 pixels.
   def create_advanced
-    dsid = 'Advanced.jpg'
-    output_path = create_image(dsid, 'image/jpeg', 69)
+    image_service = ImageGeneratingService.new(self, 'Advanced.jpg', 'image/jpeg', 69)
+    output_path = image_service.generate
     original_size_mb = File.size(output_path).to_f / 2**20
     if original_size_mb > 1.0
-      create_resized_image(dsid, 1200, 'image/jpeg', 69)
+      image_service.generate_resized(1200)
     end
   end
 
@@ -38,7 +38,7 @@ class TuftsImage < TuftsBase
   #   Colorspace: Same as archival datastream
   #   Pixel dimensions: All basic datastreams MUST be 600 pixels on the long side of the image for proper display in the TDL.
   def create_basic
-    create_resized_image('Basic.jpg', 600, 'image/jpeg', 100)
+    ImageGeneratingService.new(self, 'Basic.jpg', 'image/jpeg', 100).generate_resized(600)
   end
 
   # Thumbnail Datastream
@@ -48,20 +48,7 @@ class TuftsImage < TuftsBase
   #   Colorspace: Same as archival datastream
   #   Pixel dimensions: All thumbnail datastream images MUST be 120 pixels on the long side of the image for proper display in the TDL.
   def create_thumbnail
-    create_resized_image('Thumbnail.png', 120, 'image/png')
-  end
-
-
-  def create_resized_image(dsid, long_edge_size, mime_type, quality=nil)
-    create_image(dsid, mime_type, quality) do |xfrm|
-      xfrm.change_geometry!("#{long_edge_size}x#{long_edge_size}") do |cols, rows, img|
-       img.resize!(cols, rows)
-      end
-    end
-  end
-
-  def create_image(dsid, mime_type, quality = nil)
-    ImageGeneratingService.new(self, dsid, mime_type, quality).generate
+    ImageGeneratingService.new(self, 'Thumbnail.png', 'image/png').generate_resized(120)
   end
 
   def has_thumbnail?
