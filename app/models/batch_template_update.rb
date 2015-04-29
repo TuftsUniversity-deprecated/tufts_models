@@ -15,6 +15,15 @@ class BatchTemplateUpdate < Batch
         message: "%{value} is not a valid template behavior" }
 
 
+  def initialize(attrs={})
+    pids = attrs.delete(:pids)
+    pids ||= attrs.delete('pids')
+    pids ||= []
+
+    attrs['pids'] = pids.map { |pid| PidUtils.to_draft(pid) }.uniq
+    super
+  end
+
   def display_name
     "Update"
   end
