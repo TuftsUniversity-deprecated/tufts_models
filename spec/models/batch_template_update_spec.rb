@@ -3,6 +3,28 @@ require 'spec_helper'
 describe BatchTemplateUpdate do
   subject { FactoryGirl.build(:batch_template_update) }
 
+  describe '.initialize' do
+    subject { BatchTemplateUpdate.new(pids: input_pids) }
+
+    context 'with non-draft pids' do
+      let(:input_pids) { ['tufts:1', 'draft:2'] }
+      let(:final_pids) { ['draft:1', 'draft:2'] }
+
+      it 'converts pids to draft pids' do
+        expect(subject.pids).to eq final_pids
+      end
+    end
+
+    context 'with duplicate pid in different namespaces' do
+      let(:input_pids) { ['tufts:1', 'draft:1'] }
+      let(:final_pids) { ['draft:1'] }
+
+      it 'removes duplicate pids' do
+        expect(subject.pids).to eq final_pids
+      end
+    end
+  end
+
   it "requires a template_id" do
     subject.template_id = nil
     expect(subject.valid?).to be_falsey
