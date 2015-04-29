@@ -1,8 +1,7 @@
-# Templates should never be pushed to the production
-# environment.  They are meant to be used by admin users
-# to ingest files in bulk and apply the same metadata to
-# many files.  There should be no need for them to be
-# visible to general users.
+# Templates should never be published. They are meant 
+# to be used by admin users to ingest files in bulk and 
+# apply the same metadata to many files.  There should 
+# be no need for them to be visible to general users.
 class TuftsTemplate < ActiveFedora::Base
   include BaseModel
 
