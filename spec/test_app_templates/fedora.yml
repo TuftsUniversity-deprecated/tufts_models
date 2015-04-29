@@ -1,28 +1,13 @@
 development:
-  data_stage:
-    user: fedoraAdmin
-    password: fedoraAdmin
-    url: http://127.0.0.1:8983/fedora
-  data_production:
-    user: fedoraAdmin
-    password: fedoraAdmin
-    url: http://127.0.0.1:8983/fedora-test
+  user: fedoraAdmin
+  password: fedoraAdmin
+  url: http://127.0.0.1:8983/fedora
 test: &TEST  
-  data_stage:
-    user: fedoraAdmin
-    password: fedoraAdmin
-    url: <%= "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8983}/fedora-test" %>
-  data_production:
-    user: fedoraAdmin
-    password: fedoraAdmin
-    url: http://127.0.0.1:8983/fedora
+  user: fedoraAdmin
+  password: fedoraAdmin
+  url: <%= "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8983}/fedora-test" %>
 production:
-  data_stage:
-    user: fedoraAdmin
-    password: fedoraAdmin
-    url: http://your.production.server:8080/fedora-stage
-  data_production:
-    user: fedoraAdmin
-    password: fedoraAdmin
-    url: http://your.production.server:8080/fedora
+  user: fedoraAdmin
+  password: fedoraAdmin
+  url: http://your.production.server:8080/fedora-stage
 
