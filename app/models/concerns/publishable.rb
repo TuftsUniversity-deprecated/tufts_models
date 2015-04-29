@@ -50,12 +50,5 @@ module Publishable
       attrs.merge!(namespace: PidUtils.draft_namespace)
       new(attrs)
     end
-
-    def destroy_if_exists(pid)
-      if exists?(pid)
-        find(pid).destroy
-      end
-    end
   end
-
 end
