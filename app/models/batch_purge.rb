@@ -5,7 +5,4 @@ class BatchPurge < Batch
     "Purge"
   end
 
-  def run
-    BatchRunnerService.new(self).run
-  end
 end

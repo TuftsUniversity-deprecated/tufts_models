@@ -4,9 +4,4 @@ class BatchPublish < Batch
   def display_name
     "Publish"
   end
-
-  def run
-    BatchRunnerService.new(self).run
-  end
-
 end

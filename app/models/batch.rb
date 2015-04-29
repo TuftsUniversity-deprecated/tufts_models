@@ -5,8 +5,8 @@ class Batch < ActiveRecord::Base
   belongs_to :creator, class_name: "User"
   validates :creator, presence: true
 
-  serialize :pids
-  serialize :job_ids
+  serialize :pids, Array
+  serialize :job_ids, Array
 
   before_destroy do |batch|
     batch.jobs.each do |job|
@@ -37,10 +37,6 @@ class Batch < ActiveRecord::Base
   end
 
   def display_name
-    raise NotImplementedError.new
-  end
-
-  def run
     raise NotImplementedError.new
   end
 end

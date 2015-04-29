@@ -21,10 +21,6 @@ describe Batch do
     expect(subject.valid?).to be_falsey
   end
 
-  it "requires children to implement run" do
-    expect{Batch.new.run}.to raise_error(NotImplementedError)
-  end
-
   it "saves pids correctly" do
     pids = ['a', 'b', 'c']
     id = FactoryGirl.create(:batch_template_update, pids: pids).id
