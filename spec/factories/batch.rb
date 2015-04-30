@@ -17,6 +17,13 @@ FactoryGirl.define do
     pids ["tufts:1", "tufts:2"]
   end
 
+  factory :batch_unpublish do
+    type 'BatchUnpublish'
+    association :creator, factory: :admin
+    created_at 4.minutes.ago
+    pids ["draft:1", "draft:2"]
+  end
+
   factory :batch_purge do
     type 'BatchPurge'
     association :creator, factory: :admin
