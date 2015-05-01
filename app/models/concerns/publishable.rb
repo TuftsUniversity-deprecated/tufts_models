@@ -25,11 +25,13 @@ module Publishable
     PidUtils.draft?(pid) || draft_namespace?
   end
 
+  # TODO this can move into the workflow_service
   def find_draft
     return self if draft?
     self.class.find(PidUtils.to_draft(pid))
   end
 
+  # TODO this can move into the workflow_service
   def find_published
     published_pid = PidUtils.to_published(pid)
     return self if pid == published_pid
