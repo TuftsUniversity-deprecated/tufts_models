@@ -18,10 +18,10 @@ module BaseModel
     has_metadata "DC-DETAIL-META", type: TuftsDcDetailed
     has_metadata "DCA-ADMIN", type: DcaAdmin
 
-    attr_accessor :working_user, :publishing, :unpublishing
+    attr_accessor :working_user, :publishing, :unpublishing, :reverting
 
     before_save do
-      self.edited_at = DateTime.now
+      self.edited_at = DateTime.now unless reverting
 
       self.published_at = edited_at if publishing
 
