@@ -50,9 +50,30 @@ describe TuftsPdf do
     subject { TuftsPdf.new }
 
     context "for the Archival.pdf datastream" do
-      it "allows various expected PDF mime types" do
-        %w(application/pdf application/x-pdf application/acrobat applications/vnd.pdf text/pdf text/x-pdf).each do |type|
-          expect(subject.valid_type_for_datastream?(TuftsPdf::PDF_CONTENT_DS, type)).to be_truthy
+      context "various expected PDF mime types" do
+
+        it "allows application/pdf" do
+          expect(subject.valid_type_for_datastream?(TuftsPdf::PDF_CONTENT_DS, "application/pdf")).to be_truthy
+        end
+
+        it "allows application/x-pdf" do
+          expect(subject.valid_type_for_datastream?(TuftsPdf::PDF_CONTENT_DS, "application/x-pdf")).to be_truthy
+        end
+
+        it "allows application/acrobat" do
+          expect(subject.valid_type_for_datastream?(TuftsPdf::PDF_CONTENT_DS, "application/acrobat")).to be_truthy
+        end
+
+        it "allows applications/vnd.pdf" do
+          expect(subject.valid_type_for_datastream?(TuftsPdf::PDF_CONTENT_DS, "applications/vnd.pdf")).to be_truthy
+        end
+
+        it "allows text/pdf" do
+          expect(subject.valid_type_for_datastream?(TuftsPdf::PDF_CONTENT_DS, "text/pdf")).to be_truthy
+        end
+
+        it "allows text/x-pdf" do
+          expect(subject.valid_type_for_datastream?(TuftsPdf::PDF_CONTENT_DS, "text/x-pdf")).to be_truthy
         end
       end
 
@@ -67,7 +88,36 @@ describe TuftsPdf do
       it "does not allow an empty string" do
         expect(subject.valid_type_for_datastream?(TuftsPdf::PDF_CONTENT_DS, "")).to be_falsey
       end
+    end
 
+    context "for the Transfer.binary datastream" do
+      subject { lambda { |mime_type| TuftsPdf.new.valid_type_for_datastream?(TuftsPdf::TRANSFER_BINARY_DS, mime_type) } }
+
+      it "allows PDF files" do
+        expect(subject.call("application/pdf")).to be_truthy
+      end
+
+      it "allows tiff files" do
+        expect(subject.call("image/tiff")).to be_truthy
+      end
+
+      it "allows a blank string" do
+        expect(subject.call("  ")).to be_truthy
+      end
+
+      it "allows an empty string" do
+        expect(subject.call("")).to be_truthy
+      end
+
+      it "allows nil" do
+        expect(subject.call(nil)).to be_truthy
+      end
+    end
+
+    context "for an unknown datastream" do
+      it "raises a KeyError" do
+        expect { subject.valid_type_for_datastream?("unknown", "image/jpeg") }.to raise_error(KeyError)
+      end
     end
 
   end

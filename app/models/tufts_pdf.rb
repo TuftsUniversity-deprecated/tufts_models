@@ -10,15 +10,11 @@ class TuftsPdf < TuftsBase
   include WithPageImages
 
   def valid_type_for_datastream?(dsid, mime_type)
-    self.class.valid_pdf_mime_type?(mime_type)
+    {
+      PDF_CONTENT_DS     => lambda { |mime_type| self.class.valid_pdf_mime_type?(mime_type) },
+      TRANSFER_BINARY_DS => lambda { |mime_type| true }
+    }.fetch(dsid).call(mime_type)
   end
-
-  #def valid_type_for_datastream?(dsid, mime_type)
-  #  {
-  #    PDF_CONTENT_DS     => ->(mime_type) { self.class.valid_pdf_mime_type?(mime_type) },
-  #    TRANSFER_BINARY_DS => ->(mime_type) { true }
-  #  }[dsid].call(type)
-  #end
 
   def self.valid_pdf_mime_type?(mime_type)
     ALLOWED_PDF_MIME_TYPES.include? mime_type
