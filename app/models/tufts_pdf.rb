@@ -1,34 +1,37 @@
 class TuftsPdf < TuftsBase
+  ALLOWED_PDF_MIME_TYPES = %w(application/pdf application/x-pdf application/acrobat applications/vnd.pdf text/pdf text/x-pdf)
+
   PDF_CONTENT_DS = 'Archival.pdf'
+  TRANSFER_BINARY_DS = 'Transfer.binary'
 
   has_file_datastream PDF_CONTENT_DS, control_group: 'E', original: true
+  has_file_datastream TRANSFER_BINARY_DS, control_group: 'E', original: true
+
   include WithPageImages
 
-
-  # @param [String] _ Datastream id - not used
-  # @param [String] type the content type to test
-  # @return [Boolean] true if type is a valid mime type for pdf
-  def valid_type_for_datastream?(_, type)
-      self.class.valid_pdf_mime_type?(type)
+  def valid_type_for_datastream?(dsid, mime_type)
+    self.class.valid_pdf_mime_type?(mime_type)
   end
 
+  #def valid_type_for_datastream?(dsid, mime_type)
+  #  {
+  #    PDF_CONTENT_DS     => ->(mime_type) { self.class.valid_pdf_mime_type?(mime_type) },
+  #    TRANSFER_BINARY_DS => ->(mime_type) { true }
+  #  }[dsid].call(type)
+  #end
 
-  def self.valid_pdf_mime_type?(type)
-    %q{application/pdf application/x-pdf application/acrobat applications/vnd.pdf text/pdf text/x-pdf}.include?(type)
+  def self.valid_pdf_mime_type?(mime_type)
+    ALLOWED_PDF_MIME_TYPES.include? mime_type
   end
-
 
   def self.to_class_uri
     'info:fedora/cm:Text.PDF'
   end
 
-
   # To cause create_derivatives to be invoked, execute this line of code in rails console:
   # Job::CreateDerivatives.new('uuid', 'record_id' => '<pid beginning with tufts:>').perform
   def create_derivatives
-
     begin
-
       if datastreams.include? PDF_CONTENT_DS
         DERIVATIVES_LOGGER.info(DateTime.parse(Time.now.to_s).strftime('%A %B %-d, %Y %I:%M:%S %p'))
 
