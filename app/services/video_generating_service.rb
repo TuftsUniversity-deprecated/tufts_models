@@ -60,13 +60,13 @@ class VideoGeneratingService
     error_msg = ''
 
     unless File.exist? @video_path
-      raise Errno::ENOENT
+      raise Errno::ENOENT, @video_path
     end
 
     @output_path_service.make_directory
 
     unless File.writable?(File.dirname(@output_path))
-      raise Errno::EACCES
+      raise Errno::EACCES, @output_path
     end
 
     command = "#{@@ffmpeg_path} -y -i \"#{@video_path}\" #{options} #{@output_path}"
