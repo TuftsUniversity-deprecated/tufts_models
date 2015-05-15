@@ -3,6 +3,12 @@ require 'open3'
 class VideoGeneratingService
   attr_reader :object, :dsid, :mime_type, :quality
 
+  MP4_OPTIONS = '-vcodec libx264 -pix_fmt yuv420p -vprofile high -preset fast -b:v 500k -maxrate 500k -bufsize 1000k -vf scale=400:trunc\(ow/a/2\)*2 -threads 0 -acodec libvo_aacenc -b:a 128k'
+
+  WEBM_OPTIONS = '-vcodec libvpx -quality good -cpu-used 5 -b:v 500k -maxrate 500k -bufsize 1000k -vf scale=400:trunc\(ow/a/2\)*2 -threads 0 -acodec libvorbis -f webm'
+
+  THUMBNAIL_OPTIONS = "-vframes 1 -r 1 -vf scale=60:trunc\\(ow/a/2\\)*2 -f image2"
+
   @@ffmpeg_path = 'ffmpeg'
 
   def initialize(object, dsid, mime_type)
@@ -17,22 +23,19 @@ class VideoGeneratingService
 
   def generate_access_mp4
     DERIVATIVES_LOGGER.info("Converting #{@video_path} to #{@output_path}.")
-    options = '-vcodec libx264 -pix_fmt yuv420p -vprofile high -preset fast -b:v 500k -maxrate 500k -bufsize 1000k -vf scale=400:trunc\(ow/a/2\)*2 -threads 0 -acodec libvo_aacenc -b:a 128k'
-    transcode_video(options)
+    transcode_video(MP4_OPTIONS)
 
   end
 
   def generate_access_webm
     DERIVATIVES_LOGGER.info("Converting #{@video_path} to #{@output_path}.")
-    options = '-vcodec libvpx -quality good -cpu-used 5 -b:v 500k -maxrate 500k -bufsize 1000k -vf scale=400:trunc\(ow/a/2\)*2 -threads 0 -acodec libvorbis -f webm'
-    transcode_video(options)
+    transcode_video(WEBM_OPTIONS)
   end
 
   def generate_thumbnail
     DERIVATIVES_LOGGER.info("Converting #{@video_path} to #{@output_path}.")
     length = get_video_length.to_i / 2
-    options = "-ss #{length} -vframes 1 -r 1 -vf scale=60:trunc\\(ow/a/2\\)*2 -f image2"
-    transcode_video(options)
+    transcode_video("-ss #{length} #{THUMBNAIL_OPTIONS}")
   end
 
   private

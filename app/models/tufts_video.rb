@@ -11,12 +11,12 @@ class TuftsVideo < TuftsBase
   # @return [Boolean] true if type is a valid mime type for audio when dsid == 'ARCHIVAL_WAV' or an xml type when dsid == 'ARCHIVAL_XML'
   def valid_type_for_datastream?(dsid, type)
     case dsid
-      when 'Archival.video'
-        %Q{video/mp4, video/ogg, video/webm, video/avi}.include?(type)
-      when 'ARCHIVAL_XML'
-        %Q{text/xml application/xml application/x-xml}.include?(type)
-      else
-        false
+    when 'Archival.video'
+      %w(video/mp4 video/ogg video/webm video/avi).include?(type)
+    when 'ARCHIVAL_XML'
+      %w(text/xml application/xml application/x-xml).include?(type)
+    else
+      false
     end
   end
 

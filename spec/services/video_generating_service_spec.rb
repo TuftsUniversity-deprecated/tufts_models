@@ -23,11 +23,14 @@ describe VideoGeneratingService do
       context "when the file exists" do
         it "generates the derivative" do
           file_path = LocalPathService.new(video, derivative_id).local_path
-          FileUtils.rm_r(file_path, force: true)
+
+          original_path = LocalPathService.new(video, 'Archival.video').local_path
+
+          expected_command = "ffmpeg -y -i \"#{original_path}\" #{VideoGeneratingService::WEBM_OPTIONS} #{file_path}"
+
+          expect(Open3).to receive(:popen3).with(expected_command) { true }
 
           video_service.generate_access_webm
-
-          expect(File.exists?(file_path)).to be_truthy
         end
       end
 
@@ -56,11 +59,16 @@ describe VideoGeneratingService do
       context "when the file exists" do
         it "generates the derivative" do
           file_path = LocalPathService.new(video, derivative_id).local_path
-          FileUtils.rm_r(file_path, force: true)
 
+          original_path = LocalPathService.new(video, 'Archival.video').local_path
+
+          video_length = 42
+          allow(video_service).to receive(:get_video_length) { video_length }
+
+          expected_command = "ffmpeg -y -i \"#{original_path}\" -ss #{video_length / 2} #{VideoGeneratingService::THUMBNAIL_OPTIONS} #{file_path}"
+
+          expect(Open3).to receive(:popen3).with(expected_command) { true }
           video_service.generate_thumbnail
-
-          expect(File.exists?(file_path)).to be_truthy
         end
       end
 
@@ -89,11 +97,14 @@ describe VideoGeneratingService do
       context "when the file exists" do
         it "generates the derivative" do
           file_path = LocalPathService.new(video, derivative_id).local_path
-          FileUtils.rm_r(file_path, force: true)
 
-          video_service.generate_access_webm
+          original_path = LocalPathService.new(video, 'Archival.video').local_path
 
-          expect(File.exists?(file_path)).to be_truthy
+          expected_command = "ffmpeg -y -i \"#{original_path}\" #{VideoGeneratingService::MP4_OPTIONS} #{file_path}"
+
+          expect(Open3).to receive(:popen3).with(expected_command) { true }
+
+          video_service.generate_access_mp4
         end
       end
 
