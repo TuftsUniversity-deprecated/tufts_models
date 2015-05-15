@@ -20,11 +20,9 @@ class VideoGeneratingService
     @output_path = @output_path_service.local_path
   end
 
-
   def generate_access_mp4
     DERIVATIVES_LOGGER.info("Converting #{@video_path} to #{@output_path}.")
     transcode_video(MP4_OPTIONS)
-
   end
 
   def generate_access_webm
@@ -48,10 +46,7 @@ class VideoGeneratingService
       stdin.close
       result = stdout.read
       stdout.close
-      #error_msg = stderr.read
       stderr.close
-
-      #success = !wait_thread.nil? && wait_thread.value.success?
     }
 
     result
@@ -94,9 +89,7 @@ class VideoGeneratingService
       DERIVATIVES_LOGGER.error("#{$PROGRAM_NAME}: ffmpeg error on command \n #{command} \n #{error_msg}")
     end
 
-
     return success
   end
-
 
 end
