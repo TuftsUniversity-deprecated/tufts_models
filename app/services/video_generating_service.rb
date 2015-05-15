@@ -34,8 +34,7 @@ class VideoGeneratingService
 
   def generate_thumbnail
     DERIVATIVES_LOGGER.info("Converting #{@video_path} to #{@output_path}.")
-    length = get_video_length.to_i / 2
-    transcode_video("-ss #{length} #{THUMBNAIL_OPTIONS}")
+    transcode_video("-ss #{get_video_half_length} #{THUMBNAIL_OPTIONS}")
   end
 
   private
@@ -56,6 +55,10 @@ class VideoGeneratingService
     }
 
     result
+  end
+
+  def get_video_half_length
+    get_video_length.to_i / 2
   end
 
   def transcode_video(options)
