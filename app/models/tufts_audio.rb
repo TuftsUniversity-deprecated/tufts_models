@@ -1,4 +1,3 @@
-require 'open3'
 class TuftsAudio < TuftsBase
   has_file_datastream 'ARCHIVAL_XML', control_group: 'E', original: true
   has_file_datastream 'ARCHIVAL_WAV', control_group: 'E', original: true

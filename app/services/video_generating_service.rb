@@ -1,3 +1,5 @@
+require 'open3'
+
 class VideoGeneratingService
   attr_reader :object, :dsid, :mime_type, :quality
 
