@@ -26,8 +26,6 @@ class VideoGeneratingService
     DERIVATIVES_LOGGER.info("Converting #{@video_path} to #{@output_path}.")
     options = '-vcodec libvpx -quality good -cpu-used 5 -b:v 500k -maxrate 500k -bufsize 1000k -vf scale=400:trunc\(ow/a/2\)*2 -threads 0 -acodec libvorbis -f webm'
     transcode_video(options)
-
-
   end
 
   def generate_thumbnail

@@ -9,7 +9,6 @@ describe TuftsVideo do
     expect(TuftsVideo.original_file_datastreams).to eq ['ARCHIVAL_XML','Archival.video']
   end
 
-
   describe '#to_solr' do
     subject { TuftsVideo.create(pid: 'tufts:ua236.001', title: 'some video') }
 
@@ -50,39 +49,24 @@ describe TuftsVideo do
       subject.save
     end
 
-    it "raises an error if it the archival video doesn't exist" do
-      subject.datastreams['Archival.video'].dsLocation = 'http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/archival_video/non-existant.mp4'
-      subject.save
-      expect { subject.create_derivatives }.to raise_error(Errno::ENOENT)
-    end
+    it "uses the video generating service to create various derivatives" do
+      webm_video_service = double('webm-service')
+      mp4_video_service = double('mp4-service')
+      thumbnail_service = double('png-service')
 
-    it "raises an error if it doesn't have write permission to the derivatives folder" do
-      webm_path = LocalPathService.new(subject, 'Access.webm').local_path
-      webm_dirname = File.dirname(webm_path)
+      expect(VideoGeneratingService).to receive(:new).with(subject, 'Access.webm', 'video/webm') { webm_video_service }
 
-      FileUtils.mkdir_p(webm_dirname)  # in case the derivatives folder doesn't already exist
-      FileUtils.chmod(0444, webm_dirname)
+      expect(webm_video_service).to receive(:generate_access_webm).once
 
-      expect { subject.create_derivatives }.to raise_error(Errno::EACCES)
 
-      FileUtils.chmod(0755, File.dirname(webm_path))
-    end
+      expect(VideoGeneratingService).to receive(:new).with(subject, 'Access.mp4', 'video/mp4') { mp4_video_service }
+      expect(mp4_video_service).to receive(:generate_access_mp4).once
 
-    it 'creates derivatives' do
-      webm_path = LocalPathService.new(subject, 'Access.webm').local_path
-      mp4_path = LocalPathService.new(subject, 'Access.mp4').local_path
-      thumb_path = LocalPathService.new(subject, 'Thumbnail.png').local_path
+      expect(VideoGeneratingService).to receive(:new).with(subject, 'Thumbnail.png', 'image/png') { thumbnail_service }
+      expect(thumbnail_service).to receive(:generate_thumbnail).once
 
-      # remove previously generated derivatives, if any
-      FileUtils.rm_r(webm_path, force: true)
-      FileUtils.rm_r(mp4_path, force: true)
-      FileUtils.rm_r(thumb_path, force: true)
 
       subject.create_derivatives
-
-      expect(File.exists?(webm_path)).to be_truthy
-      expect(File.exists?(mp4_path)).to be_truthy
-      expect(File.exists?(thumb_path)).to be_truthy
     end
 
   end

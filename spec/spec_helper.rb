@@ -62,3 +62,16 @@ def clean_fedora_and_solr
   solr.delete_by_query("*:*", params: { commit: true })
 end
 
+def with_unwritable_directory(path)
+  dir = File.dirname(path)
+
+  begin
+    FileUtils.mkdir_p(dir)
+    FileUtils.chmod(0444, dir)
+
+    yield if block_given?
+
+  ensure
+    FileUtils.chmod(0755, dir)
+  end
+end
