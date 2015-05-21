@@ -16,7 +16,7 @@ describe BatchXmlImport do
   end
 
   it "saves uploaded_files correctly" do
-    uploaded_files = {"foo.jpg" => "tufts:1"}
+    uploaded_files = [UploadedFile.new(filename: "foo.jpg", pid: "tufts:1")]
     id = FactoryGirl.create(:batch_xml_import, uploaded_files: uploaded_files).id
     expect(Batch.find(id).uploaded_files).to eq uploaded_files
   end
@@ -46,30 +46,23 @@ describe BatchXmlImport do
   end
 
   describe ".pids" do
-    it "doesn't let you assign pids directly" do
-      expect{FactoryGirl.build(:batch_xml_import).pids = []}.to raise_exception(NotImplementedError)
-    end
-  end
-
-  describe ".uploaded_files" do
     let(:m) { FactoryGirl.build(:batch_xml_import) }
+    let(:file) { UploadedFile.new(filename: "foo.jpg", pid: "tufts:1") }
+
+    it "doesn't let you assign pids directly" do
+      expect { m.pids = [] }.to raise_exception(NotImplementedError)
+    end
 
     it "gets pids from the uploaded_files" do
       expect {
-        m.uploaded_files = {"foo.jpg" => "tufts:1"}
+        m.uploaded_files = [file]
       }.to change { m.pids }.from([]).to ["tufts:1"]
-    end
-
-    it "provides a default value for .uploaded_files" do
-      expect {
-        m.uploaded_files['foo.txt'] = 'tufts:1'
-      }.to change { m.uploaded_files }.from({}).to('foo.txt' => 'tufts:1')
     end
   end
 
   describe ".missing_files" do
     it "shows missing files" do
-      uploaded_files = {"hello.pdf" => "tufts:1"}
+      uploaded_files = [UploadedFile.new(filename: "hello.pdf", pid: "tufts:1")]
       m = FactoryGirl.create(:batch_xml_import, uploaded_files: uploaded_files)
       expect(m.missing_files.count).to eq 4
       expect(m.missing_files).to_not include("hello.pdf")
