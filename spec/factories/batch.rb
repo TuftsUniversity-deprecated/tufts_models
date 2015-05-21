@@ -48,7 +48,6 @@ FactoryGirl.define do
   factory :batch_xml_import do
     type 'BatchXmlImport'
     association :creator, factory: :admin
-    metadata_file { Rack::Test::UploadedFile.new( File.expand_path("../../fixtures/MIRABatchUpload_valid.xml", __FILE__)) }
   end
 
 end
