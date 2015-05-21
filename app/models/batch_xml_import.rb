@@ -12,7 +12,7 @@ class BatchXmlImport < Batch
   attr_writer :parser_class
 
   def parser
-    @parser ||= (@parser_class || 'MetadataXmlParser').constantize
+    @parser ||= (@parser_class || 'MetadataXmlParser').constantize.new(metadata_file.read)
   end
 
   def display_name
@@ -20,7 +20,7 @@ class BatchXmlImport < Batch
   end
 
   def missing_files
-    parser.get_filenames(metadata_xml) - uploaded_files.map(&:filename)
+    parser.filenames - uploaded_files.map(&:filename)
   end
 
   def pids=(*args)
@@ -35,13 +35,9 @@ class BatchXmlImport < Batch
 
   def metadata_file_must_be_valid
     if metadata_file_changed? && parser
-      parser.validate(metadata_xml).each do |error|
+      parser.validate.each do |error|
         errors.add(:base, error.message)
       end
     end
-  end
-
-  def metadata_xml
-    metadata_file.read
   end
 end

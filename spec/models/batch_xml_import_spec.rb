@@ -5,7 +5,9 @@ describe BatchXmlImport do
     allow(HydraEditor).to receive(:models).and_return(['TuftsPdf'])
 
     class StubParser
-      def self.validate(*)
+      def initialize(xml)
+      end
+      def validate
         []
       end
     end
@@ -40,15 +42,15 @@ describe BatchXmlImport do
   it 'requires the metadata file to be valid' do
     xml = "<input><digitalObject></digitalObject></input>"
     allow(subject.metadata_file).to receive(:read) { xml }
-    allow(StubParser).to receive(:validate) { [double(message: 'some errors')] }
+    allow_any_instance_of(StubParser).to receive(:validate) { [double(message: 'some errors')] }
     expect(subject).to_not be_valid
     expect(subject.errors.full_messages).to include 'some errors'
   end
 
   it 'only checks the validity of the metadata file if it has changed' do
-    expect(StubParser).to receive(:validate).once { [] }
+    expect_any_instance_of(StubParser).to receive(:validate).once { [] }
     subject.save
-    expect(StubParser).to receive(:validate).never
+    expect_any_instance_of(StubParser).to receive(:validate).never
     subject.save
   end
 
@@ -78,7 +80,7 @@ describe BatchXmlImport do
     it "shows missing files" do
       uploaded_files = [UploadedFile.new(filename: "hello.pdf", pid: "tufts:1")]
       m = FactoryGirl.create(:batch_xml_import, uploaded_files: uploaded_files, parser_class: 'StubParser', metadata_file: metadata)
-      expect(m.parser).to receive(:get_filenames).and_return(['compendioussyste00brya.pdf', 'foo.bar', 'hello.pdf'])
+      expect(m.parser).to receive(:filenames).and_return(['compendioussyste00brya.pdf', 'foo.bar', 'hello.pdf'])
       expect(m.missing_files).to eq ['compendioussyste00brya.pdf', 'foo.bar']
     end
   end
