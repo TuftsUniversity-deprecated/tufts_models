@@ -3,8 +3,24 @@ require 'spec_helper'
 describe BatchXmlImport do
   before do
     allow(HydraEditor).to receive(:models).and_return(['TuftsPdf'])
+
+    class StubParser
+      def self.validate(*)
+        []
+      end
+    end
   end
-  subject { FactoryGirl.build(:batch_xml_import) }
+  let(:metadata) do
+    StringIO.new('content').tap do |stringio|
+      allow(stringio).to receive_messages(local_path: "",
+                    original_filename: 'foo.xml',
+                    content_type: 'application/xml')
+    end
+  end
+
+  after { Object.send(:remove_const, :StubParser) }
+
+  subject { FactoryGirl.build(:batch_xml_import, parser_class: 'StubParser', metadata_file: metadata) }
 
   it 'has a display name' do
     expect(subject.display_name).to eq 'Xml Import'
@@ -17,31 +33,29 @@ describe BatchXmlImport do
 
   it "saves uploaded_files correctly" do
     uploaded_files = [UploadedFile.new(filename: "foo.jpg", pid: "tufts:1")]
-    id = FactoryGirl.create(:batch_xml_import, uploaded_files: uploaded_files).id
-    expect(Batch.find(id).uploaded_files).to eq uploaded_files
+    batch = FactoryGirl.create(:batch_xml_import, uploaded_files: uploaded_files, parser_class: 'StubParser', metadata_file: metadata)
+    expect(batch.reload.uploaded_files).to eq uploaded_files
   end
 
   it 'requires the metadata file to be valid' do
     xml = "<input><digitalObject></digitalObject></input>"
     allow(subject.metadata_file).to receive(:read) { xml }
+    allow(StubParser).to receive(:validate) { [double(message: 'some errors')] }
     expect(subject).to_not be_valid
-    MetadataXmlParser.validate(xml).each do |error|
-      expect(subject.errors.full_messages).to include error.message
-    end
+    expect(subject.errors.full_messages).to include 'some errors'
   end
 
   it 'only checks the validity of the metadata file if it has changed' do
-    expect(MetadataXmlParser).to receive(:validate).once { [] }
+    expect(StubParser).to receive(:validate).once { [] }
     subject.save
-    expect(MetadataXmlParser).to receive(:validate).never
+    expect(StubParser).to receive(:validate).never
     subject.save
   end
 
   it 'calls read on the UploadedFile' do
-    xml = "<input><digitalObject></digitalObject></input>"
     # we need it to call read here because Nokogiri won't correctly parse an
     # ActionDispatch::Http::UploadedFile
-    expect(subject.metadata_file).to receive(:read) { xml }.once
+    expect(subject.metadata_file).to receive(:read).once
     subject.valid?
   end
 
@@ -63,9 +77,9 @@ describe BatchXmlImport do
   describe ".missing_files" do
     it "shows missing files" do
       uploaded_files = [UploadedFile.new(filename: "hello.pdf", pid: "tufts:1")]
-      m = FactoryGirl.create(:batch_xml_import, uploaded_files: uploaded_files)
-      expect(m.missing_files.count).to eq 4
-      expect(m.missing_files).to_not include("hello.pdf")
+      m = FactoryGirl.create(:batch_xml_import, uploaded_files: uploaded_files, parser_class: 'StubParser', metadata_file: metadata)
+      expect(m.parser).to receive(:get_filenames).and_return(['compendioussyste00brya.pdf', 'foo.bar', 'hello.pdf'])
+      expect(m.missing_files).to eq ['compendioussyste00brya.pdf', 'foo.bar']
     end
   end
 end

@@ -1,7 +1,5 @@
-require 'import_export/metadata_xml_parser'
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
-
 
 class BatchXmlImport < Batch
   mount_uploader :metadata_file, MetadataFileUploader
@@ -11,10 +9,10 @@ class BatchXmlImport < Batch
 
   has_many :uploaded_files, foreign_key: 'batch_id'
 
-  attr_writer :parser
+  attr_writer :parser_class
 
   def parser
-    @parser ||= MetadataXmlParser
+    @parser ||= (@parser_class || 'MetadataXmlParser').constantize
   end
 
   def display_name
@@ -22,7 +20,7 @@ class BatchXmlImport < Batch
   end
 
   def missing_files
-    parser.get_filenames(metadata_file.read) - uploaded_files.map(&:filename)
+    parser.get_filenames(metadata_xml) - uploaded_files.map(&:filename)
   end
 
   def pids=(*args)
