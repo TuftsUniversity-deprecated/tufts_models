@@ -9,19 +9,20 @@ class BatchXmlImport < Batch
   validates :metadata_file, presence: true
   validate :metadata_file_must_be_valid
 
-  serialize :uploaded_files # uploaded files should be a list of draft pids
+  has_many :uploaded_files, foreign_key: 'batch_id'
+
+  attr_writer :parser
+
+  def parser
+    @parser ||= MetadataXmlParser
+  end
 
   def display_name
     "Xml Import"
   end
 
-  def uploaded_files
-    self['uploaded_files'] ||= {}
-    super
-  end
-
   def missing_files
-    MetadataXmlParser.get_filenames(metadata_file.read) - uploaded_files.keys
+    parser.get_filenames(metadata_file.read) - uploaded_files.map(&:filename)
   end
 
   def pids=(*args)
@@ -29,16 +30,20 @@ class BatchXmlImport < Batch
   end
 
   def pids
-    (uploaded_files || {}).values
+    uploaded_files.map(&:pid)
   end
 
   private
 
   def metadata_file_must_be_valid
-    if metadata_file_changed?
-      MetadataXmlParser.validate(metadata_file.read).each do |error|
+    if metadata_file_changed? && parser
+      parser.validate(metadata_xml).each do |error|
         errors.add(:base, error.message)
       end
     end
+  end
+
+  def metadata_xml
+    metadata_file.read
   end
 end
