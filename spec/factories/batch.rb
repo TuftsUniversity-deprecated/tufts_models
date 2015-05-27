@@ -50,4 +50,11 @@ FactoryGirl.define do
     association :creator, factory: :admin
   end
 
+  factory :batch_export do
+    type 'BatchExport'
+    association :creator, factory: :admin
+    created_at 2.minutes.ago
+    pids ["draft:1", "draft:2"]
+  end
+
 end
