@@ -27,6 +27,15 @@ describe TuftsBase do
     end
   end
 
+  describe 'validation messages' do
+    it 'includes a custom message when :displays fails validation' do
+      obj = described_class.new(displays: ['foo'])
+      obj.valid?
+
+      expect(obj.errors[:displays]).to include('must include at least one valid entry')
+    end
+  end
+
   describe "to_solr" do
     describe "when not saved" do
       before do
