@@ -2,12 +2,7 @@ require 'spec_helper'
 
 describe TuftsVideo do
   it 'has methods to support a draft version of the object' do
-    expect(TuftsVideo.respond_to?(:build_draft_version)).to be_truthy
-  end
-
-  describe "#original_file_datastreams" do
-    subject { described_class.original_file_datastreams }
-    it { is_expected.to eq ['Archival.video', 'ARCHIVAL_XML'] }
+    expect(described_class).to respond_to(:build_draft_version)
   end
 
   describe "#default_datastream" do

@@ -4,8 +4,7 @@ module AttachedFiles
   extend ActiveSupport::Concern
 
   included do
-    class_attribute :original_file_datastreams
-    self.original_file_datastreams = []
+    class_attribute :default_datastream
     attr_accessor :content_will_update
   end
 
@@ -79,7 +78,7 @@ module AttachedFiles
   module ClassMethods
 
     # @note this overrides the has_file_datastream method from ActiveFedora::Base
-    #   Adding the :original option.
+    #   Adding the :default option.
     # @overload has_file_datastream(name, args)
     #   Declares a file datastream exists for objects of this type
     #   @param [String] name
@@ -87,7 +86,7 @@ module AttachedFiles
     #     @option args :type (ActiveFedora::Datastream) The class the datastream should have
     #     @option args :label ("File Datastream") The default value to put in the dsLabel field
     #     @option args :control_group ("M") The type of controlGroup to store the datastream as. Defaults to M
-    #     @option args :original [Boolean] (false) Declare whether or not this datastream contain the preservation master
+    #     @option args :default [Boolean] used to indicate this is the datastream to attach an uploaded file to if the user hasn't provided the DSID
     #     @option args [Boolean] :autocreate Always create this datastream on new objects
     #     @option args [Boolean] :versionable Should versioned datastreams be stored
     # @overload has_file_datastream(args)
@@ -97,7 +96,7 @@ module AttachedFiles
     #     @option args :type (ActiveFedora::Datastream) The class the datastream should have
     #     @option args :label ("File Datastream") The default value to put in the dsLabel field
     #     @option args :control_group ("M") The type of controlGroup to store the datastream as. Defaults to M
-    #     @option args :original [Boolean] (false) Declare whether or not this datastream contain the preservation master
+    #     @option args :default [Boolean] used to indicate this is the datastream to attach an uploaded file to if the user hasn't provided the DSID
     #     @option args [Boolean] :autocreate Always create this datastream on new objects
     #     @option args [Boolean] :versionable Should versioned datastreams be stored
     def has_file_datastream(*args)
@@ -110,13 +109,7 @@ module AttachedFiles
         args = args.first || {}
       end
 
-      self.original_file_datastreams += [args.fetch(:name, 'content')] if args[:original]
-    end
-
-    # This is used to determine which datastream to attach an uploaded file
-    # to if the user hasn't provided the DSID
-    def default_datastream
-      original_file_datastreams.first
+      self.default_datastream = args.fetch(:name, 'content') if args[:default]
     end
 
     def encode(input_file, output_file)

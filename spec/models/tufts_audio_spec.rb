@@ -95,15 +95,8 @@ describe TuftsAudio do
   end
 
   describe "to_class_uri" do
-    subject { TuftsAudio }
-    it "has sets the class_uri" do
-      expect(subject.to_class_uri).to eq 'info:fedora/cm:Audio'
-    end
-  end
-
-  describe "#original_file_datastreams" do
-    subject { described_class.original_file_datastreams }
-    it { is_expected.to eq ['ARCHIVAL_WAV', 'ARCHIVAL_XML'] }
+    subject { described_class.to_class_uri }
+    it { is_expected.to eq 'info:fedora/cm:Audio' }
   end
 
   describe "#default_datastream" do

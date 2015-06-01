@@ -17,11 +17,6 @@ describe TuftsImage do
     it { is_expected.to include('Advanced.jpg', 'Basic.jpg', 'Archival.tif', 'Thumbnail.png') }
   end
 
-  describe "#original_file_datastreams" do
-    subject { described_class.original_file_datastreams }
-    it { is_expected.to eq ["Archival.tif"] }
-  end
-
   describe "#default_datastream" do
     subject { described_class.default_datastream }
     it { is_expected.to eq 'Archival.tif' }

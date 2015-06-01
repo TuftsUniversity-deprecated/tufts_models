@@ -3,22 +3,21 @@ require 'spec_helper'
 describe TuftsTEI do
 
   it 'has methods to support a draft version of the object' do
-    expect(TuftsTEI.respond_to?(:build_draft_version)).to be_truthy
+    expect(described_class).to respond_to(:build_draft_version)
   end
 
-  it "should have an original_file_datastreams" do
-    expect(TuftsTEI.original_file_datastreams).to eq ['Archival.xml']
+  describe "#default_datastream" do
+    subject { described_class.default_datastream }
+    it { is_expected.to eq 'Archival.xml' }
   end
- 
+
   describe "to_class_uri" do
-    subject {TuftsTEI}
-    it "has sets the class_uri" do
-      expect(subject.to_class_uri).to eq 'info:fedora/cm:Text.TEI'
-    end
+    subject { described_class.to_class_uri }
+    it { is_expected.to eq 'info:fedora/cm:Text.TEI' }
   end
 
   describe '#to_solr' do
-    subject { TuftsTEI.create(pid: 'tufts:ms102.001', title: 'some title') }
+    subject { TuftsTEI.new(pid: 'tufts:ms102.001', title: 'some title') }
 
     before do
       subject.add_relationship(:has_model, 'info:fedora/cm:Text.TEI')
