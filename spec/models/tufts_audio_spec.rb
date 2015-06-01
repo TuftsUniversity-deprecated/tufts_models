@@ -95,14 +95,13 @@ describe TuftsAudio do
   end
 
   describe "to_class_uri" do
-    subject { TuftsAudio }
-    it "has sets the class_uri" do
-      expect(subject.to_class_uri).to eq 'info:fedora/cm:Audio'
-    end
+    subject { described_class.to_class_uri }
+    it { is_expected.to eq 'info:fedora/cm:Audio' }
   end
 
-  it "should have an original_file_datastreams" do
-    expect(TuftsAudio.original_file_datastreams).to eq ['ARCHIVAL_XML', "ARCHIVAL_WAV"]
+  describe "#default_datastream" do
+    subject { described_class.default_datastream }
+    it { is_expected.to eq 'ARCHIVAL_WAV' }
   end
 
   # This tests depends on ffmpeg, so exlude it for travis

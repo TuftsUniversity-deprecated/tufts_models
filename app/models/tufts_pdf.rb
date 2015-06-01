@@ -4,8 +4,8 @@ class TuftsPdf < TuftsBase
   PDF_CONTENT_DS = 'Archival.pdf'
   TRANSFER_BINARY_DS = 'Transfer.binary'
 
-  has_file_datastream PDF_CONTENT_DS, control_group: 'E', original: true
-  has_file_datastream TRANSFER_BINARY_DS, control_group: 'E', original: true
+  has_file_datastream PDF_CONTENT_DS, control_group: 'E', default: true
+  has_file_datastream TRANSFER_BINARY_DS, control_group: 'E'
 
   include WithPageImages
 

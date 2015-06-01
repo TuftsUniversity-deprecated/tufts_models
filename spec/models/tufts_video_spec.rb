@@ -2,15 +2,16 @@ require 'spec_helper'
 
 describe TuftsVideo do
   it 'has methods to support a draft version of the object' do
-    expect(TuftsVideo.respond_to?(:build_draft_version)).to be_truthy
+    expect(described_class).to respond_to(:build_draft_version)
   end
 
-  it "should have an original_file_datastreams" do
-    expect(TuftsVideo.original_file_datastreams).to eq ['ARCHIVAL_XML','Archival.video']
+  describe "#default_datastream" do
+    subject { described_class.default_datastream }
+    it { is_expected.to eq 'Archival.video' }
   end
 
   describe '#to_solr' do
-    subject { TuftsVideo.create(pid: 'tufts:ua236.001', title: 'some video') }
+    subject { TuftsVideo.new(pid: 'tufts:ua236.001', title: 'some video') }
 
     before do
       subject.add_relationship(:has_model, 'info:fedora/afmodel:TuftsVideo')
@@ -24,36 +25,32 @@ describe TuftsVideo do
   end
 
   describe "#valid_type_for_datastream?" do
-    subject { TuftsVideo.create(pid: 'tufts:ua236.001', title: 'some video') }
+    subject { TuftsVideo.new(pid: 'tufts:ua236.001', title: 'some video') }
 
-    it 'should not allow you to upload an invalid type for a video' do
+    it "doesn't allow you to upload an invalid type for a video" do
      expect(subject.valid_type_for_datastream?('Archival.video','image/png')).to eq false
     end
 
-    it 'should allow you to upload an valid type for a video' do
+    it 'allows you to upload an valid type for a video' do
       expect(subject.valid_type_for_datastream?('Archival.video','video/mp4')).to eq true
     end
   end
-  
+
   describe '#create_derivatives' do
 
-    subject { FactoryGirl.create(:tufts_video) }
+    subject { FactoryGirl.build(:tufts_video) }
 
-    before(:all) do
+    before do
       TuftsVideo.find('tufts:v1').destroy if TuftsVideo.exists?('tufts:v1')
-    end
-
-    before(:each) do
       subject.datastreams["Archival.video"].dsLocation = "http://bucket01.lib.tufts.edu/data01/tufts/central/dca/MISS/archival_video/sample.mp4"
       subject.datastreams["Archival.video"].mimeType = "video/mp4"
-      subject.save
     end
 
-    it "uses the video generating service to create various derivatives" do
-      webm_video_service = double('webm-service')
-      mp4_video_service = double('mp4-service')
-      thumbnail_service = double('png-service')
+    let(:webm_video_service) { double('webm-service') }
+    let(:mp4_video_service) { double('mp4-service') }
+    let(:thumbnail_service) { double('png-service') }
 
+    it "uses the video generating service to create various derivatives" do
       expect(VideoGeneratingService).to receive(:new).with(subject, 'Access.webm', 'video/webm') { webm_video_service }
 
       expect(webm_video_service).to receive(:generate_access_webm).once
@@ -68,7 +65,5 @@ describe TuftsVideo do
 
       subject.create_derivatives
     end
-
   end
-
 end

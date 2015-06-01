@@ -1,7 +1,7 @@
 class TuftsVideo < TuftsBase
 
-  has_file_datastream 'ARCHIVAL_XML', control_group: 'E', original: true
-  has_file_datastream 'Archival.video', control_group: 'E', original: true
+  has_file_datastream 'Archival.video', control_group: 'E', default: true
+  has_file_datastream 'ARCHIVAL_XML', control_group: 'E'
   has_file_datastream 'Thumbnail.png', control_group: 'E'
   has_file_datastream 'Access.webm', control_group: 'E'
   has_file_datastream 'Access.mp4', control_group: 'E'

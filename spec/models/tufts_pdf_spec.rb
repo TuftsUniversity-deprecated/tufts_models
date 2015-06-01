@@ -3,18 +3,17 @@ require 'spec_helper'
 describe TuftsPdf do
 
   it 'has methods to support a draft version of the object' do
-    expect(TuftsPdf.respond_to?(:build_draft_version)).to be_truthy
+    expect(described_class).to respond_to(:build_draft_version)
   end
 
   describe "to_class_uri" do
-    subject { TuftsPdf }
-    it "has sets the class_uri" do
-      expect(subject.to_class_uri).to eq 'info:fedora/cm:Text.PDF'
-    end
+    subject { described_class.to_class_uri }
+    it { is_expected.to eq 'info:fedora/cm:Text.PDF' }
   end
 
-  it "should have an original_file_datastream" do
-    expect(TuftsPdf.original_file_datastreams).to eq %w(Archival.pdf Transfer.binary)
+  describe "#default_datastream" do
+    subject { described_class.default_datastream }
+    it { is_expected.to eq 'Archival.pdf' }
   end
 
   describe "attributes" do
