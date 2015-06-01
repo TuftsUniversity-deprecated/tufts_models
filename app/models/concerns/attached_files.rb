@@ -113,6 +113,12 @@ module AttachedFiles
       self.original_file_datastreams += [args.fetch(:name, 'content')] if args[:original]
     end
 
+    # This is used to determine which datastream to attach an uploaded file
+    # to if the user hasn't provided the DSID
+    def default_datastream
+      original_file_datastreams.first
+    end
+
     def encode(input_file, output_file)
       options = '-b:a 192k'
       command = "#{ffmpeg_path} -y -i \"#{input_file}\" #{options} #{output_file}"

@@ -13,8 +13,14 @@ describe TuftsPdf do
     end
   end
 
-  it "should have an original_file_datastream" do
-    expect(TuftsPdf.original_file_datastreams).to eq %w(Archival.pdf Transfer.binary)
+  describe "#original_file_datastreams" do
+    subject { described_class.original_file_datastreams }
+    it { is_expected.to eq %w(Archival.pdf Transfer.binary) }
+  end
+
+  describe "#default_datastream" do
+    subject { described_class.default_datastream }
+    it { is_expected.to eq 'Archival.pdf' }
   end
 
   describe "attributes" do

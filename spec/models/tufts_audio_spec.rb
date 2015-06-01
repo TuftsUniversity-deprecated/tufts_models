@@ -101,8 +101,14 @@ describe TuftsAudio do
     end
   end
 
-  it "should have an original_file_datastreams" do
-    expect(TuftsAudio.original_file_datastreams).to eq ['ARCHIVAL_XML', "ARCHIVAL_WAV"]
+  describe "#original_file_datastreams" do
+    subject { described_class.original_file_datastreams }
+    it { is_expected.to eq ['ARCHIVAL_WAV', 'ARCHIVAL_XML'] }
+  end
+
+  describe "#default_datastream" do
+    subject { described_class.default_datastream }
+    it { is_expected.to eq 'ARCHIVAL_WAV' }
   end
 
   # This tests depends on ffmpeg, so exlude it for travis

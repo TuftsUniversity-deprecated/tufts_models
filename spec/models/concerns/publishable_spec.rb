@@ -46,9 +46,9 @@ describe Publishable do
 
     context 'given a record with a draft version' do
       let!(:draft_record) {
-        obj = TestObject.build_draft_version(record.attributes.except('id').merge(pid: record.pid))
-        obj.save!
-        obj
+        TestObject.build_draft_version(record.attributes.except('id').merge(pid: record.pid)).tap do |obj|
+          obj.save!
+        end
       }
 
       it 'finds the draft version of that record' do
@@ -63,7 +63,7 @@ describe Publishable do
 
     context 'given a record without a draft version' do
       it 'raises an exception' do
-        expect{ record.find_draft }.to raise_error ActiveFedora::ObjectNotFoundError
+        expect { record.find_draft }.to raise_error ActiveFedora::ObjectNotFoundError
       end
     end
   end

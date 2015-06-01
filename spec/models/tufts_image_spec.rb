@@ -3,24 +3,28 @@ require 'spec_helper'
 describe TuftsImage do
 
   it 'has methods to support a draft version of the object' do
-    expect(TuftsImage.respond_to?(:build_draft_version)).to be_truthy
+    expect(described_class).to respond_to(:build_draft_version)
   end
 
   describe "to_class_uri" do
-    subject {TuftsImage}
-    it "has sets the class_uri" do
-      expect(subject.to_class_uri).to eq 'info:fedora/cm:Image.4DS'
-    end
+    subject { described_class.to_class_uri }
+    it { is_expected.to eq 'info:fedora/cm:Image.4DS' }
   end
 
   describe "external_datastreams" do
-    it "should have the correct ones" do
-      expect(subject.external_datastreams.keys).to include('Advanced.jpg', 'Basic.jpg', 'Archival.tif', 'Thumbnail.png')
-    end
+    let(:image) { described_class.new }
+    subject { image.external_datastreams.keys }
+    it { is_expected.to include('Advanced.jpg', 'Basic.jpg', 'Archival.tif', 'Thumbnail.png') }
   end
 
-  it "should have an original_file_datastream" do
-    expect(TuftsImage.original_file_datastreams).to eq ["Archival.tif"]
+  describe "#original_file_datastreams" do
+    subject { described_class.original_file_datastreams }
+    it { is_expected.to eq ["Archival.tif"] }
+  end
+
+  describe "#default_datastream" do
+    subject { described_class.default_datastream }
+    it { is_expected.to eq 'Archival.tif' }
   end
 
   describe "create_derivatives" do
@@ -62,24 +66,26 @@ describe TuftsImage do
     subject { image.to_solr }
 
     context "for a regular object" do
-      let(:image) { TuftsImage.new(pid: 'tufts:1', title: 'Foo') }
+      let(:image) { described_class.new(pid: 'tufts:1', title: 'Foo') }
 
       it "should create a solr document with pid, title, etc" do
         expect(subject[:id]).to eq 'tufts:1'
         expect(subject['title_tesim']).to eq ['Foo']
       end
 
-      it "should create a solr document with appropriately formatted BCE date created" do
-        image.date_created = ['-0462']
-        expect(subject['date_created_formatted_tesim']).to eq ['462 BCE']
+      context "with BCE date created" do
+        it "creates a solr document with appropriately formatted date" do
+          image.date_created = ['-0462']
+          expect(subject['date_created_formatted_tesim']).to eq ['462 BCE']
+        end
       end
 
-      it "should create a solr document with an appropriately CE date" do
-        image.date_created = ['1963']
-        expect(subject['date_created_formatted_tesim']).to eq ['1963']
+      context "with CE date created" do
+        it "creates a solr document with appropriately formatted date" do
+          image.date_created = ['1963']
+          expect(subject['date_created_formatted_tesim']).to eq ['1963']
+        end
       end
-
     end
-
   end
 end
