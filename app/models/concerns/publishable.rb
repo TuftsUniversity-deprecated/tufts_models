@@ -6,7 +6,7 @@ module Publishable
   end
 
   def workflow_status
-    raise "Production objects don't have a workflow" unless draft?
+    raise "Published objects don't have a workflow" unless draft?
     if published?
       :published
     elsif published_at.blank?

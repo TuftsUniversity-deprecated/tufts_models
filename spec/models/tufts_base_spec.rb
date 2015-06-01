@@ -453,7 +453,7 @@ describe TuftsBase do
         it { is_expected.to eq :new }
       end
 
-      context "that is same as the object in production" do
+      context "that is same as the published object" do
         before do
           draft.published_at = now
           draft.edited_at = now
@@ -461,7 +461,7 @@ describe TuftsBase do
         it { is_expected.to eq :published }
       end
 
-      context "that differs from the object in production" do
+      context "that differs from the published object" do
         before do
           draft.published_at = now
           draft.edited_at = now + 1
@@ -471,7 +471,7 @@ describe TuftsBase do
       end
     end
 
-    context "for a production object" do
+    context "for a published object" do
       let(:obj) { TuftsPdf.create(FactoryGirl.attributes_for(:tufts_pdf).merge(pid: 'tufts:123')) }
       it "raises an error" do
         expect { obj.workflow_status }.to raise_error

@@ -9,7 +9,7 @@ describe PidUtils do
   end
 
   describe '.published_namespacs' do
-    it 'returns the namespace for a production PID' do
+    it 'returns the namespace for a published PID' do
       expect(PidUtils.published_namespace).to eq 'tufts'
     end
   end
