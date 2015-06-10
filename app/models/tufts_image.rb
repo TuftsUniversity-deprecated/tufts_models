@@ -1,8 +1,9 @@
 class TuftsImage < TuftsBase
-  has_file_datastream 'Thumbnail.png', control_group: 'E'
-  has_file_datastream 'Archival.tif', control_group: 'E', default: true
-  has_file_datastream 'Advanced.jpg', control_group: 'E'
-  has_file_datastream 'Basic.jpg', control_group: 'E'
+  has_file_datastream 'Thumbnail.png', control_group: 'E', versionable: false
+  has_file_datastream 'Archival.tif', control_group: 'E', versionable: false, default: true
+  has_file_datastream 'Advanced.jpg', control_group: 'E', versionable: false
+  has_file_datastream 'Basic.jpg', control_group: 'E', versionable: false
+
   include CollectionMember
 
   def self.default_content_ds
