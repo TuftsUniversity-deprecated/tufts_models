@@ -21,39 +21,6 @@ describe SolrDocument do
     end
   end
 
-  describe "#preview_dl_path" do
-    let(:url) { 'http://dev-dl.lib.tufts.edu/catalog/tufts:7' }
-    describe "when displays is 'dl'" do
-      before { subject['displays_ssim'] = ['dl'] }
-      it "has a link to the fedora object" do
-        expect(subject.preview_dl_path).to eq url
-      end
-    end
-    describe "when displays is not set" do
-      it "has a link to the fedora object" do
-        subject['displays_ssim'] = nil
-        expect(subject.preview_dl_path).to eq url
-        subject['displays_ssim'] = ['']
-        expect(subject.preview_dl_path).to eq url
-      end
-    end
-    describe "when displays is something else" do
-      before { subject['displays_ssim'] = ['tisch']}
-      it "has a link to the fedora object" do
-        expect(subject.preview_dl_path).to be_nil
-      end
-    end
-    describe "when the object is a template" do
-      before do
-        subject['displays_ssim'] = ['dl']
-        subject['active_fedora_model_ssi'] = 'TuftsTemplate'
-      end
-      it "has a link to the fedora object" do
-        expect(subject.preview_dl_path).to be_nil
-      end
-    end
-  end
-
   describe 'Templates' do
     before do
       edit_date_key = Solrizer.solr_name("edited_at", :stored_sortable, type: :date)
