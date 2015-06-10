@@ -1,7 +1,7 @@
 class TuftsAudio < TuftsBase
-  has_file_datastream 'ARCHIVAL_WAV', control_group: 'E', default: true
-  has_file_datastream 'ARCHIVAL_XML', control_group: 'E'
-  has_file_datastream 'ACCESS_MP3', control_group: 'E'
+  has_file_datastream 'ARCHIVAL_WAV', control_group: 'E', versionable: false, default: true
+  has_file_datastream 'ARCHIVAL_XML', control_group: 'E', versionable: false
+  has_file_datastream 'ACCESS_MP3', control_group: 'E', versionable: false
 
   def create_derivatives
     access_path = LocalPathService.new(self, 'ACCESS_MP3', 'mp3')

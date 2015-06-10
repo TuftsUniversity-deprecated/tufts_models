@@ -1,10 +1,10 @@
 class TuftsVideo < TuftsBase
 
-  has_file_datastream 'Archival.video', control_group: 'E', default: true
-  has_file_datastream 'ARCHIVAL_XML', control_group: 'E'
-  has_file_datastream 'Thumbnail.png', control_group: 'E'
-  has_file_datastream 'Access.webm', control_group: 'E'
-  has_file_datastream 'Access.mp4', control_group: 'E'
+  has_file_datastream 'Archival.video', control_group: 'E', versionable: false, default: true
+  has_file_datastream 'ARCHIVAL_XML', control_group: 'E', versionable: false
+  has_file_datastream 'Thumbnail.png', control_group: 'E', versionable: false
+  has_file_datastream 'Access.webm', control_group: 'E', versionable: false
+  has_file_datastream 'Access.mp4', control_group: 'E', versionable: false
 
   # @param [String] dsid Datastream id
   # @param [String] type the content type to test
