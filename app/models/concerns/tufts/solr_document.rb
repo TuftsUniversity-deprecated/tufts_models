@@ -37,15 +37,6 @@ module Tufts::SolrDocument
     Settings.preview_fedora_url + "/objects/#{id}"
   end
 
-  def preview_dl_path
-    return nil if template?
-    if self['displays_ssim'].blank? || self['displays_ssim'] == [''] || self['displays_ssim'].include?('dl')
-      Settings.preview_dl_url + "/catalog/#{id}"
-    else
-      return nil
-    end
-  end
-
   def to_model
     if collection?
       m = ActiveFedora::Base.load_instance_from_solr(id, self)
