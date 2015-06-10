@@ -83,8 +83,7 @@ class VideoGeneratingService
     }
 
     if success
-      @object.datastreams[dsid].dsLocation = @output_path_service.remote_url
-      @object.datastreams[dsid].mimeType = @mime_type
+      DerivativeAttachmentService.attach(@object, dsid, @output_path_service.remote_url, @mime_type)
     else
       DERIVATIVES_LOGGER.error("#{$PROGRAM_NAME}: ffmpeg error on command \n #{command} \n #{error_msg}")
     end

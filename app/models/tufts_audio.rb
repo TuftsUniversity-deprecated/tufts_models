@@ -13,10 +13,8 @@ class TuftsAudio < TuftsBase
 
     encode_mp3(input_file, output_path)
 
-    datastreams['ACCESS_MP3'].dsLocation = access_path.remote_url
-    datastreams['ACCESS_MP3'].mimeType = 'audio/mpeg'
+    DerivativeAttachmentService.attach(self, 'ACCESS_MP3', access_path.remote_url, 'audio/mpeg')
     output_path
-
   end
 
   def self.to_class_uri

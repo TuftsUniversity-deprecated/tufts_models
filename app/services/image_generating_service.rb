@@ -20,8 +20,7 @@ class ImageGeneratingService
       xfrm.write(output_path)
     end
 
-    object.datastreams[dsid].dsLocation = path_service.remote_url
-    object.datastreams[dsid].mimeType = mime_type
+    DerivativeAttachmentService.attach(object, dsid, path_service.remote_url, mime_type)
     output_path
   end
 
@@ -40,6 +39,4 @@ class ImageGeneratingService
     tiff_path = LocalPathService.new(object, 'Archival.tif', 'tif').local_path
     Magick::ImageList.new(tiff_path)
   end
-
-
 end
