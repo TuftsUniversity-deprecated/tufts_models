@@ -28,4 +28,20 @@ describe PidUtils do
     end
   end
 
+  describe '.draft?' do
+    it 'correctly identifies a draft pid' do
+      expect(PidUtils.draft?('draft:1234')).to be_truthy
+      expect(PidUtils.draft?('tufts:1234')).to be_falsey
+      expect(PidUtils.draft?('tufts.uc:1234')).to be_falsey
+    end
+  end
+
+  describe '.published?' do
+    it 'correctly identifies a published pid' do
+      expect(PidUtils.published?('tufts:1234')).to be_truthy
+      expect(PidUtils.published?('tufts.uc:1234')).to be_truthy
+      expect(PidUtils.published?('draft:1234')).to be_falsey
+    end
+  end
+
 end

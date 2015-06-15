@@ -1,15 +1,21 @@
 class PidUtils
+  NAMESPACE_DRAFT = 'draft'
+  NAMESPACE_PUBLISHED = 'tufts'
 
   def self.draft_namespace
-    'draft'
+    NAMESPACE_DRAFT
   end
 
   def self.published_namespace
-    'tufts'
+    NAMESPACE_PUBLISHED
   end
 
   def self.draft?(pid)
     pid && pid.start_with?(draft_namespace)
+  end
+
+  def self.published?(pid)
+    pid && pid.start_with?(published_namespace)
   end
 
   def self.to_draft(pid)
