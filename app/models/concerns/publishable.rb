@@ -33,15 +33,14 @@ module Publishable
 
   # TODO this can move into the workflow_service
   def find_published
-    published_pid = PidUtils.to_published(pid)
-    return self if pid == published_pid
-    self.class.find(published_pid)
+    return self if PidUtils.published?(pid)
+    self.class.find(PidUtils.to_published(pid))
   end
 
   private
 
   def draft_namespace?
-    inner_object && inner_object.respond_to?(:namespace) && inner_object.namespace == PidUtils.draft_namespace
+    inner_object && inner_object.respond_to?(:namespace) && PidUtils.draft?(inner_object.namespace)
   end
 
   module ClassMethods
