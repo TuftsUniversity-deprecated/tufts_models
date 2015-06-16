@@ -18,10 +18,10 @@ module BaseModel
     has_metadata "DC-DETAIL-META", type: TuftsDcDetailed
     has_metadata "DCA-ADMIN", type: DcaAdmin
 
-    attr_accessor :working_user, :publishing, :unpublishing, :reverting
+    attr_accessor :working_user, :publishing, :unpublishing, :reverting, :exporting
 
     before_save do
-      self.edited_at = DateTime.now unless reverting
+      self.edited_at = DateTime.now if update_edited_at?
 
       self.published_at = edited_at if publishing
 
@@ -36,6 +36,9 @@ module BaseModel
 
     before_save :update_audit_log
 
+    def update_edited_at?
+      !(reverting || exporting)
+    end
 
     def self.valid_pid?(pid)
       pid.match(/^([A-Za-z0-9]|-|\.)+:(([A-Za-z0-9])|-|\.|~|_|(%[0-9A-F]{2}))+$/)
