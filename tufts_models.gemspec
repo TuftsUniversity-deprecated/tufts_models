@@ -33,6 +33,6 @@ Gem::Specification.new do |s|
   s.add_dependency "resque-status"
   s.add_dependency "carrierwave"
   s.add_dependency "hydra-editor"
-  s.add_dependency "rmagick", '2.13.2'
+  s.add_dependency "rmagick", '2.15.2'
   s.add_dependency "jettywrapper", '>= 1.8', '< 2'
 end
