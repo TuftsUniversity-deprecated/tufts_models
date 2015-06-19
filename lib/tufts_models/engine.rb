@@ -6,7 +6,7 @@ require 'titleize'
 require 'settingslogic'
 require 'hydra-editor'
 require 'resque-status'
-require 'RMagick'
+require 'rmagick'
 
 module TuftsModels
   class Engine < ::Rails::Engine
