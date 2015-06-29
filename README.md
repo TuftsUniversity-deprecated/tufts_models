@@ -9,8 +9,12 @@ Add the following to `app/models/solr_document.rb`
   include Tufts::SolrDocument
 ```
 
-
 You must have a config/application.yml file.
+
+In your rails app, you'll need to configure the front-ends that records can be displayed in.
+Using spec/test_app_templates/displays.yml as an example, create a file in your rails app called config/authorities/displays.yml
+
+Run `rails g qa:install` to configure the routes for QA.
 
 ## Running the tests
 

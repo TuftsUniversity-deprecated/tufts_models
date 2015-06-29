@@ -21,6 +21,11 @@ class TestAppGenerator < Rails::Generators::Base
     copy_file "fedora.yml", "config/fedora.yml", force: true
   end
 
+  def displays_config
+    copy_file "displays.yml", "config/authorities/displays.yml", force: true
+    generate 'qa:install'
+  end
+
   # TODO move to the install generator
   # Add behaviors to the SolrDocument model
   def inject_solr_document_behavior

@@ -35,4 +35,5 @@ Gem::Specification.new do |s|
   s.add_dependency "hydra-editor"
   s.add_dependency "rmagick", '2.15.2'
   s.add_dependency "jettywrapper", '>= 1.8', '< 2'
+  s.add_dependency "qa", "0.5.0"
 end

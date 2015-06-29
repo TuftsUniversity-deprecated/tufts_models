@@ -5,12 +5,17 @@ module WithValidDisplays
     validate :displays_valid
   end
 
+  def displays_options
+    Qa::Authorities::Local.subauthority_for('displays'.freeze).all.map { |t| t['label'.freeze] }
+  end
+
   protected
 
     def displays_valid
       return unless displays.present?
-      unless displays.all? {|d| %w(dl tisch perseus elections dark trove nowhere).include? d }
+      unless displays.all? {|d| displays_options.include? d }
         errors.add(:displays, "must include at least one valid entry")
       end
     end
+
 end

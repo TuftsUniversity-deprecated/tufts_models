@@ -102,8 +102,6 @@ describe TuftsBase do
       expect(subject).to be_valid
       subject.displays = ['elections']
       expect(subject).to be_valid
-      subject.displays = ['dark']
-      expect(subject).to be_valid
       subject.displays = ['trove']
       expect(subject).to be_valid
       subject.displays = ['nowhere']

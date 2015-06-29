@@ -7,6 +7,7 @@ require 'settingslogic'
 require 'hydra-editor'
 require 'resque-status'
 require 'rmagick'
+require 'qa'
 
 module TuftsModels
   class Engine < ::Rails::Engine
