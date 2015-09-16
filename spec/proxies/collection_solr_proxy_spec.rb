@@ -35,8 +35,8 @@ describe CollectionSolrProxy do
     subject { CollectionSolrProxy.new(id: 'tufts.uc:77', member_ids: ['foo:2', 'foo:1', 'foo:3'], klass: CourseCollection ).collection_member_ids }
 
     before do
-      solr.add has_model_ssim: [CourseCollection.to_class_uri], id: 'foo:1'
-      solr.add has_model_ssim: [CourseCollection.to_class_uri], id: 'foo:2'
+      solr.add has_model_ssim: [CourseCollection.to_class_uri], id: 'foo:1', displays_ssim: ['trove']
+      solr.add has_model_ssim: [CourseCollection.to_class_uri], id: 'foo:2', displays_ssim: ['trove']
       solr.add has_model_ssim: [TuftsImage.to_class_uri], id: 'foo:3'
       solr.commit
     end

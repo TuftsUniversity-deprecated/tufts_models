@@ -5,8 +5,9 @@ describe WithNestedMembers do
   let(:img2) {TuftsImage.new pid: 'tufts:2'}
   let(:img3) {TuftsImage.new pid: 'tufts:3'}
   let(:img4) {TuftsImage.new pid: 'tufts:4'}
-  let(:coll1) {CourseCollection.new pid: 'tufts.uc:a', members: [img2, img3]}
-  let(:all_models) { [subject, img1, img2, img3, img4, coll1] }
+  let(:video5) {TuftsVideo.new pid: 'tufts:5'}
+  let(:coll1) {CourseCollection.new pid: 'tufts.uc:a', members: [img2, img3, video5]}
+  let(:all_models) { [subject, img1, img2, img3, img4, video5, coll1] }
   let(:solr_docs) do
     all_models.reduce({}) do |result, model|
       result.merge(model.pid => model.to_solr.merge('id' => model.pid,
@@ -32,6 +33,7 @@ describe WithNestedMembers do
         [img1.pid, solr_docs[subject.pid]],
         [img2.pid, solr_docs[coll1.pid]],
         [img3.pid, solr_docs[coll1.pid]],
+        [video5.pid, solr_docs[coll1.pid]],
         [img4.pid, solr_docs[subject.pid]]]
       expect(subject.flattened_member_ids_with_collections.force).to eq expected
     end
@@ -45,6 +47,7 @@ describe WithNestedMembers do
         expected = [
           [img1.pid, solr_docs[subject.pid]],
           [img3.pid, solr_docs[coll1.pid]],
+          [video5.pid, solr_docs[coll1.pid]],
           [img4.pid, solr_docs[subject.pid]]]
         expect(subject.flattened_member_ids_with_collections.force).to eq expected
       end
@@ -53,14 +56,14 @@ describe WithNestedMembers do
 
   describe '#flattened_member_ids' do
     it 'gets all descendants' do
-      expected = [img1, img2, img3, img4].map(&:pid)
+      expected = [img1, img2, img3, video5, img4].map(&:pid)
       expect(subject.flattened_member_ids.force).to eq expected
     end
   end
 
   describe '#positions_of_members' do
     it 'gets positions (giving nil for collections)' do
-      expected = [0, nil, 3]
+      expected = [0, nil, 4]
       expect(subject.positions_of_members).to eq expected
     end
   end
