@@ -12,7 +12,7 @@ class TuftsVideo < TuftsBase
   def valid_type_for_datastream?(dsid, type)
     case dsid
     when 'Archival.video'
-      %w(video/mp4 video/ogg video/webm video/avi).include?(type)
+      %w(video/mp4 video/ogg video/webm video/avi video/quicktime).include?(type)
     when 'ARCHIVAL_XML'
       %w(text/xml application/xml application/x-xml).include?(type)
     else
