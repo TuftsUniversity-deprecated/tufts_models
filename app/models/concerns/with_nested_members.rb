@@ -177,6 +177,6 @@ module WithNestedMembers
     end
 
     def child_images
-      @child_images ||= members.select {|m| m.kind_of? TuftsImage }
+      @child_images ||= members.select {|m| (m.kind_of?(TuftsVideo) || m.kind_of?(TuftsImage))}
     end
 end
