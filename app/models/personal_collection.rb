@@ -1,6 +1,6 @@
 class PersonalCollection < CuratedCollection
   include WithNestedMembers
-  include CreatedByTrove
+  include CreatedBy
 
   after_create :add_to_root_collection
 

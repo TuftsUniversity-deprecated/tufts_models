@@ -72,7 +72,8 @@ class CollectionSolrProxy
   private
     def collection_member_query
       ['(' + ActiveFedora::SolrService.construct_query_for_pids(member_ids) + ')',
-       ActiveFedora::SolrService.construct_query_for_rel(has_model: klass.to_class_uri)
+       ActiveFedora::SolrService.construct_query_for_rel(has_model: klass.to_class_uri),
+       ActiveFedora::SolrService.construct_query_for_rel(displays: CollectionInfo.displays_in)
       ].join(' AND ')
     end
 
