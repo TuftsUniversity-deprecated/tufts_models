@@ -7,7 +7,7 @@ class VideoGeneratingService
 
   WEBM_OPTIONS = '-vcodec libvpx -quality good -cpu-used 5 -b:v 500k -maxrate 500k -bufsize 1000k -vf scale=400:trunc\(ow/a/2\)*2 -threads 0 -acodec libvorbis -f webm'
 
-  THUMBNAIL_OPTIONS = "-vframes 1 -r 1 -vf scale=60:trunc\\(ow/a/2\\)*2 -f image2"
+  THUMBNAIL_OPTIONS = "-vframes 1 -r 1 -vf scale=200:trunc\\(ow/a/2\\)*2 -f image2"
 
   @@ffmpeg_path = 'ffmpeg'
 
