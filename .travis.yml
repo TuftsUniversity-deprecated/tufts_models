@@ -6,7 +6,7 @@ rvm:
 
 notifications:
   email:
-    - justin@curationexperts.com
+    - mike.korcynski@tufts.edu
 
 env:
   global:
