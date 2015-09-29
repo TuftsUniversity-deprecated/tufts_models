@@ -66,7 +66,7 @@ class TuftsPdf < TuftsBase
     pdf_path = derivative_settings[:pdf_path] = local_path_for PDF_CONTENT_DS
 
     DERIVATIVES_LOGGER.info("Creating PDF derivatives for #{pid}.")
-
+    raise Magick::ImageMagickError unless File.exists?(pdf_path)
     derivative_settings[:pdf] = Magick::Image.read(pdf_path) { self.density = '150x150' } # meaning 150 dpi
 
     DERIVATIVES_LOGGER.info("  Archival PDF is at #{pdf_path}.")
