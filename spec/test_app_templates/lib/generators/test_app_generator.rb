@@ -6,6 +6,12 @@ class TestAppGenerator < Rails::Generators::Base
   def generate_blacklight
     generate 'blacklight:install', '--devise'
     generate 'hydra:head', '-f'
+
+    devise_initalizer = 'config/initializers/devise.rb'
+    text = File.read(devise_initalizer)
+    new_contents = text.gsub(/:email/, ":username")
+    File.open(devise_initalizer, "w") {|file| file.puts new_contents }
+
   end
 
   def run_spotlight_migrations
@@ -52,5 +58,8 @@ class TestAppGenerator < Rails::Generators::Base
     else
       puts "     \e[31mFailure\e[0m  TuftsModels requires a user object. This generators assumes that the model is defined in the file #{file_path}, which does not exist."
     end
+   gsub_file "app/models/user.rb", /email/, "username"
+   gsub_file "app/models/user.rb", /devise .*$/, "devise :ldap_authenticatable, :trackable"
+   gsub_file "app/models/user.rb", /:recoverable, :rememberable, :trackable, :validatable/, ""
   end
 end
