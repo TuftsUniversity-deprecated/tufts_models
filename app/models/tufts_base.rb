@@ -6,6 +6,5 @@ class TuftsBase < ActiveFedora::Base
   include BatchUpdate
   include WithValidDisplays
   validates :title, presence: true
-  has_attributes :batch_id, datastream: 'DCA-ADMIN', multiple: true
-
+  property :batch_id, delegate_to: 'DCA-ADMIN', multiple: true
 end

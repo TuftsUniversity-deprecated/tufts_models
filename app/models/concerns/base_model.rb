@@ -1,6 +1,6 @@
 module BaseModel
   extend ActiveSupport::Concern
-  include Hydra::ModelMethods
+#TODO - decide what to do here  include Hydra::ModelMethods
   include Hydra::AccessControls::Permissions
   include Indexing
 
@@ -8,15 +8,16 @@ module BaseModel
     validate :relationships_have_parseable_uris
 
     # Uses the Hydra Rights Metadata Schema for tracking access permissions & copyright
-    has_metadata "rightsMetadata", type: Hydra::Datastream::RightsMetadata
+#    has_metadata "rightsMetadata", type: Hydra::Datastream::RightsMetadata
 
-    belongs_to :ead, :property => :has_description, :class_name=>'TuftsEAD'
-    belongs_to :collection, :property => :is_member_of, :class_name=>'TuftsEAD'
+#TODO -- do we still need these or are they fedora 3 statements
+    belongs_to :ead, :predicate => ActiveFedora::RDF::Fcrepo::RelsExt.hasDescription, :class_name=>'TuftsEAD'
+    belongs_to :collection, :predicate => ActiveFedora::RDF::Fcrepo::RelsExt.isMemberOf, :class_name=>'TuftsEAD'
 
     # Tufts specific needed metadata streams
-    has_metadata "DCA-META", type: TuftsDcaMeta
-    has_metadata "DC-DETAIL-META", type: TuftsDcDetailed
-    has_metadata "DCA-ADMIN", type: DcaAdmin
+    contains "DCA-META", class_name: 'TuftsDcaMeta'
+    contains "DC-DETAIL-META", class_name: 'TuftsDcDetailed'
+    contains "DCA-ADMIN", class_name: 'DcaAdmin'
 
     attr_accessor :working_user, :publishing, :unpublishing, :reverting, :exporting
 
@@ -54,33 +55,76 @@ module BaseModel
 
     end
 
-    #MK 2011-04-13 - Are we really going to need to access FILE-META from FILE-META.  I'm guessing not.
-    has_metadata "FILE-META", type: TuftsFileMeta
+    property :identifier, delegate_to: 'DCA-META', multiple: true
+    property :creator, delegate_to: 'DCA-META', multiple: true
+    property :description, delegate_to: 'DCA-META', multiple: true
+    property :publisher, delegate_to: 'DCA-META', multiple: true
+    property :source, delegate_to: 'DCA-META', multiple: true
+    property :date_created, delegate_to: 'DCA-META', multiple: true
+    property :date_issued, delegate_to: 'DCA-META', multiple: true
+    property :date_available, delegate_to: 'DCA-META', multiple: true
+    property :type, delegate_to: 'DCA-META', multiple: true
+    property :format, delegate_to: 'DCA-META', multiple: true
+    property :extent, delegate_to: 'DCA-META', multiple: true
+    property :persname, delegate_to: 'DCA-META', multiple: true
+    property :corpname, delegate_to: 'DCA-META', multiple: true
+    property :geogname, delegate_to: 'DCA-META', multiple: true
+    property :subject, delegate_to: 'DCA-META', multiple: true
+    property :genre, delegate_to: 'DCA-META', multiple: true
+    property :rights, delegate_to: 'DCA-META', multiple: true
+    property :bibliographic_citation, delegate_to: 'DCA-META', multiple: true
+    property :temporal, delegate_to: 'DCA-META', multiple: true
+    property :funder, delegate_to: 'DCA-META', multiple: true
+    property :resolution, delegate_to: 'DCA-META', multiple: true
+    property :bitdepth, delegate_to: 'DCA-META', multiple: true
+    property :colorspace, delegate_to: 'DCA-META', multiple: true
+    property :filesize, delegate_to: 'DCA-META', multiple: true
 
-    has_attributes :identifier, :creator, :description, :publisher, :source,
-                   :date_created, :date_issued, :date_available, :type,
-                   :format, :extent,  :persname, :corpname, :geogname,
-                   :subject, :genre, :rights, :bibliographic_citation,
-                   :temporal, :funder, :resolution, :bitdepth,
-                   :colorspace, :filesize, datastream: 'DCA-META', multiple: true
+    property :title, delegate_to: 'DCA-META', multiple: false
 
-    has_attributes :title, datastream: 'DCA-META', multiple: false
+    property :alternative, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :contributor, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :abstract, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :toc, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :date, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :date_copyrighted, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :date_submitted, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :date_accepted, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :date_modified, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :language, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :medium, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :provenance, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :access_rights, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :rights_holder, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :license, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :replaces, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :isReplacedBy, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :hasFormat, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :isFormatOf, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :hasPart, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :isPartOf, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :accrualPolicy, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :audience, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :references, delegate_to: 'DCA-DETAIL-META', multiple: true
+    property :spatial, delegate_to: 'DCA-DETAIL-META', multiple: true
 
-    has_attributes :alternative, :contributor, :abstract, :toc,
-                   :date, :date_copyrighted, :date_submitted,
-                   :date_accepted, :date_modified, :language, :medium,
-                   :provenance, :access_rights, :rights_holder,
-                   :license, :replaces, :isReplacedBy, :hasFormat,
-                   :isFormatOf, :hasPart, :isPartOf, :accrualPolicy,
-                   :audience, :references, :spatial,
-                   datastream: 'DC-DETAIL-META', multiple: true
+    property :published_at, delegate_to: 'DCA-ADMIN', multiple: false
+    property :edited_at, delegate_to: 'DCA-ADMIN', multiple: false
+    property :createdby, delegate_to: 'DCA-ADMIN', multiple: false
+    property :creatordept, delegate_to: 'DCA-ADMIN', multiple: false
 
-    has_attributes :published_at, :edited_at, :createdby, :creatordept,
-                   datastream: 'DCA-ADMIN', multiple: false
-
-    has_attributes :steward, :name, :comment, :displays, :retentionPeriod, :embargo,
-                   :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note,
-                   datastream: 'DCA-ADMIN', multiple: true
+    property :steward, delegate_to: 'DCA-ADMIN', multiple: true
+    property :name, delegate_to: 'DCA-ADMIN', multiple: true
+    property :comment, delegate_to: 'DCA-ADMIN', multiple: true
+    property :displays, delegate_to: 'DCA-ADMIN', multiple: true
+    property :retentionPeriod, delegate_to: 'DCA-ADMIN', multiple: true
+    property :embargo, delegate_to: 'DCA-ADMIN', multiple: true
+    property :status, delegate_to: 'DCA-ADMIN', multiple: true
+    property :startDate, delegate_to: 'DCA-ADMIN', multiple: true
+    property :expDate, delegate_to: 'DCA-ADMIN', multiple: true
+    property :qrStatus, delegate_to: 'DCA-ADMIN', multiple: true
+    property :rejectionReason, delegate_to: 'DCA-ADMIN', multiple: true
+    property :note, delegate_to: 'DCA-ADMIN', multiple: true
 
   end  # end "included" section
 

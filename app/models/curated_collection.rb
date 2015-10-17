@@ -1,5 +1,5 @@
 class CuratedCollection < ActiveFedora::Base
-  include Hydra::ModelMethods
+#TODO -- wtf  include Hydra::ModelMethods
   include Hydra::AccessControls::Permissions
   include WithValidDisplays
   include CollectionMember
@@ -8,15 +8,15 @@ class CuratedCollection < ActiveFedora::Base
   validates :title, presence: true
   after_initialize :default_attributes
 
-  has_metadata "DCA-META", type: TuftsDcaMeta
-  has_metadata 'collectionMetadata', type: CollectionMetadata
-  has_metadata "DCA-ADMIN", type: DcaAdmin
+  contains "DCA-META", class_name: 'TuftsDcaMeta'
+  contains 'collectionMetadata', class_name: 'CollectionMetadata'
+  contains "DCA-ADMIN", class_name: 'DcaAdmin'
 
-  has_attributes :creator, :description, :date_created, datastream: 'DCA-META', multiple: true
-  has_attributes :title, datastream: 'DCA-META', multiple: false
+  property :creator, delegate_to: 'DCA-META', multiple: true
+  property :title, delegate_to: 'DCA-META', multiple: false
 
-  has_attributes :createdby, datastream: 'DCA-ADMIN', multiple: false
-  has_attributes :displays, datastream: 'DCA-ADMIN', multiple: true
+  property :createdBy, delegate_to: 'DCA-ADMIN', multiple: false
+  property :displays, delegate_to: 'DCA-ADMIN', multiple: true
 
   delegate :members, :member_ids, :members=, :member_ids=, to: :collectionMetadata
   delegate :delete_member_at, to: :collectionMetadata

@@ -24,8 +24,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "devise", ">= 3.4.0"
 
   s.add_dependency "railties", ">= 3.2", '< 5'
-  s.add_dependency "active-fedora", "~> 7.1"
   s.add_dependency "chronic"
+  s.add_dependency "active-fedora", ">=9.0"
   s.add_dependency "hydra-core"
   s.add_dependency "hydra-role-management"
   s.add_dependency "titleize"
@@ -34,6 +34,6 @@ Gem::Specification.new do |s|
   s.add_dependency "carrierwave"
   s.add_dependency "hydra-editor"
   s.add_dependency "rmagick", '2.15.2'
-  s.add_dependency "jettywrapper", '>= 1.8', '< 2'
   s.add_dependency "qa", "0.5.0"
+  s.add_dependency "jettywrapper"
 end
