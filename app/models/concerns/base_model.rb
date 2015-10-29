@@ -220,7 +220,8 @@ module BaseModel
      :is_member_of_collection, :has_collection_member,
      :is_metadata_for, :has_metadata,
      :is_part_of, :has_part,
-     :is_subset_of, :has_subset]
+     :is_subset_of, :has_subset,
+     :is_notes_of, :is_slides_of]
   end
 
   # The list of fields to edit from the DCA_META datastream

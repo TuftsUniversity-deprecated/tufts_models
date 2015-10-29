@@ -21,6 +21,10 @@ class TestAppGenerator < Rails::Generators::Base
     copy_file "fedora.yml", "config/fedora.yml", force: true
   end
 
+  def predicate_mappings_config
+    copy_file "predicate_mappings.yml", "config/predicate_mappings.yml", force: true
+  end
+
   def displays_config
     copy_file "displays.yml", "config/authorities/displays.yml", force: true
     generate 'qa:install'
