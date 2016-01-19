@@ -43,6 +43,25 @@ class DcaAdmin < ActiveFedora::OmDatastream
     super
   end
 
+  # primary_solr_name() is implemented so that collections can be loaded from solr rather than
+  # from Fedora, to improve performance.  primary_solr_name() only returns values for solr
+  # fields that are used;  if others are used in the future they will have to be added too.
+  def primary_solr_name(field)
+    if field == :displays then
+      "displays_ssim"
+    else
+      ""
+    end
+  end
+
+  # type() is implemented so that collections can be loaded from solr rather than
+  # from Fedora, to improve performance.  If any fields are in date format it should
+  # return :date;  otherwise it doesn't matter what it returns, but it needs to be
+  # defined.
+  def self.type(field)
+    return nil
+  end
+
   private
 
     # TDL staff decided to change from having a default namespace to a prefixed namespace.
