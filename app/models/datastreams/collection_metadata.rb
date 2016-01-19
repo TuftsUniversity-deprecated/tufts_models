@@ -73,10 +73,14 @@ class CollectionProxy
     not_found_ids = []
     members = ids.map do |pid|
       begin
-        ActiveFedora::Base.find(pid.to_s)
-      rescue ActiveFedora::ObjectNotFoundError
-        not_found_ids << pid
-        nil
+        ActiveFedora::Base.load_instance_from_solr(pid.to_s)
+      rescue NoMethodError, ActiveFedora::ObjectNotFoundError
+        begin
+          ActiveFedora::Base.find(pid.to_s)
+        rescue ActiveFedora::ObjectNotFoundError
+          not_found_ids << pid
+          nil
+        end
       end
     end.compact
 

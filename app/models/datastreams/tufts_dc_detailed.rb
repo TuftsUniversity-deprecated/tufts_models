@@ -82,4 +82,20 @@ class TuftsDcDetailed < ActiveFedora::OmDatastream
   def prefix
     ""
   end
+
+  # primary_solr_name() is implemented so that collections can be loaded from solr rather than
+  # from Fedora, to improve performance.  No fields from this datastream are currently used,
+  # so no names are returned, but the method still needs to be defined.
+  def primary_solr_name(field)
+    return ""
+  end
+
+  # type() is implemented so that collections can be loaded from solr rather than
+  # from Fedora, to improve performance.  If any fields are in date format it should
+  # return :date;  otherwise it doesn't matter what it returns, but it needs to be
+  # defined.
+  def self.type(field)
+    return nil
+  end
+
 end
