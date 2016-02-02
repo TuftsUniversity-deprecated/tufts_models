@@ -93,6 +93,7 @@ module WithNestedMembers
       lazy.
       # this is needed because member_ids sometimes returns deleted pids
       # see https://github.com/curationexperts/tufts_models/issues/8
+      select{|pid| docs.key?(pid)}.
       flat_map do |pid|
         doc = docs[pid]
         class_uri = doc[model_attr].first
@@ -177,16 +178,11 @@ module WithNestedMembers
 
     def destroy_child_collections
       child_collections.each do |child_collection|
-        begin
-          child_collection.destroy
-        rescue NoMethodError
-          # This failed because .load_instance_from_solr returns a proxy object
-          # which is meant to be read-only;  calling reify will give it a destroy method.
-          # But don't call reify unless it's necessary because the whole point is to speed
-          # up by loading from solr rather than from Fedora.
-          child_collection.reify!.destroy
-          next
+        if child_collection.inner_object.is_a?(ActiveFedora::SolrDigitalObject)
+          child_collection.reify!
         end
+
+        child_collection.destroy
       end
     end
 
