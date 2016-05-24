@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TuftsBase do
 
   it 'knows which fields to display for admin metadata' do
-    expect(subject.admin_display_fields).to eq [:steward, :name, :comment, :retentionPeriod, :displays, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note, :createdby, :creatordept]
+    expect(subject.admin_display_fields).to eq [:steward, :name, :comment, :retentionPeriod, :displays, :embargo, :status, :startDate, :expDate, :qrStatus, :rejectionReason, :note, :createdby, :creatordept, :visibility]
   end
 
   it 'batch_id is not editable by users' do

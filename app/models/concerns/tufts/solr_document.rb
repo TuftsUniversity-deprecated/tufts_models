@@ -1,5 +1,15 @@
 # -*- encoding : utf-8 -*-
 module Tufts::SolrDocument
+
+  def visibility
+   # if document.visibility == Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
+    if self['visibility_ssi'] == 'authenticated'
+      'Tufts University'
+    else
+      'Open'
+    end
+  end
+
   def reviewed?
     Array(self['qrStatus_tesim']).include?(Reviewable.batch_review_text)
   end
