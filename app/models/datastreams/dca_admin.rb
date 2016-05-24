@@ -23,6 +23,7 @@ class DcaAdmin < ActiveFedora::OmDatastream
     t.edited_at namespace_prefix: "local", path: "editedAt", type: :time, index_as: :stored_sortable
     t.creatordept namespace_prefix: "local"
     t.batch_id namespace_prefix: "local", index_as: :symbol, :path => 'batchID'
+    t.visibility namespace_prefix: "local", index_as: [:stored_sortable, :symbol]
   end
 
   # BUG?  Extra solr fields are generated when there is a default namespace (xmlns) declared on the root.

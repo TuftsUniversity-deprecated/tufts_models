@@ -9,6 +9,10 @@ describe SolrDocument do
     expect(subject).to be_in_a_batch
   end
 
+  it 'knows its visibility' do
+    expect(subject.visibility).to eq 'Open'
+  end
+
   describe "#preview_fedora_path" do
     it "should always have link to fedora object" do
       url = 'http://localhost:8983/fedora/objects/tufts:7'
@@ -71,7 +75,6 @@ describe SolrDocument do
       @doc['batch_id_ssim'] = nil
       expect(@doc).to_not be_reviewable
     end
-
   end
 
 end
