@@ -75,7 +75,7 @@ module BaseModel
                    :audience, :references, :spatial,
                    datastream: 'DC-DETAIL-META', multiple: true
 
-    has_attributes :published_at, :edited_at, :createdby, :creatordept, :visibility,
+    has_attributes :published_at, :edited_at, :createdby, :creatordept, :visibility, :download, 
                    datastream: 'DCA-ADMIN', multiple: false
 
     has_attributes :steward, :name, :comment, :displays, :retentionPeriod, :embargo,
