@@ -1,6 +1,14 @@
 # -*- encoding : utf-8 -*-
 module Tufts::SolrDocument
 
+  def download
+    if self['download_ssi'] == 'no-link'
+      'Do not show a download link to any users'
+    else
+      'Show a download link to all users'
+    end
+  end
+
   def visibility
    # if document.visibility == Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
     if self['visibility_ssi'] == 'authenticated'
