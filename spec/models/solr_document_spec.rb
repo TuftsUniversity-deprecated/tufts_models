@@ -13,6 +13,10 @@ describe SolrDocument do
     expect(subject.visibility).to eq 'Open'
   end
 
+  it 'knows whether to show a download link' do
+    expect(subject.download).to eq 'Show a download link to all users'
+  end
+
   describe "#preview_fedora_path" do
     it "should always have link to fedora object" do
       url = 'http://localhost:8983/fedora/objects/tufts:7'
