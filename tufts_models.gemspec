@@ -21,8 +21,10 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec"
   s.add_development_dependency "factory_girl"
   s.add_development_dependency "engine_cart", "0.7.1"
-  s.add_development_dependency "devise", ">= 3.4.0"
-
+  s.add_development_dependency "devise", "3.3.0"
+  s.add_dependency 'bootstrap-sass', '3.3.4.1'
+  s.add_dependency 'bootstrap_form', '2.3.0'
+  s.add_dependency 'blacklight', '~> 5.7.1'
   s.add_dependency "railties", ">= 3.2", '< 5'
   s.add_dependency "active-fedora", "~> 7.1"
   s.add_dependency "chronic"
