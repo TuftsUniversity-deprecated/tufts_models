@@ -165,7 +165,7 @@ module Indexing
   end
 
   def index_pub_date(solr_doc)
-      dates = self.date_created
+      dates = self.date
       
       if dates.empty?
         dates = self.temporal
@@ -253,7 +253,7 @@ module Indexing
     #automatically based on the available data.
 
     def index_date_info(solr_doc)
-      dates = self.date_created
+      dates = self.date
 
       if dates.empty?
         dates = self.temporal
@@ -310,13 +310,13 @@ module Indexing
     end
 
     def create_formatted_fields(solr_doc)
-      self.date_created.each do |date_created|
+      self.date.each do |date|
         # we're storing BCE dates as -0462 using ISO-6801 standard but we want to retrieve them for display formatted for the screen
-        if date_created.start_with? '-'
-         date_created = "#{date_created.sub(/^[0\-]*/,'')} BCE"
+        if date.start_with? '-'
+         date = "#{date.sub(/^[0\-]*/,'')} BCE"
         end
 
-        Solrizer.insert_field(solr_doc, 'date_created_formatted', "#{date_created}", :stored_searchable) #tesim
+        Solrizer.insert_field(solr_doc, 'date_formatted', "#{date}", :stored_searchable) #tesim
       end
     end
 
