@@ -108,11 +108,14 @@ module Indexing
         Solrizer.insert_field(solr_doc, 'collection', clean_ead_title, :facetable) 
       end
     else
-      ead_title = Tufts::ModelUtilityMethods.clean_ead_title(ead.title.first)
+      ead_title = Tufts::ModelUtilityMethods.clean_ead_title(ead.title.first) unless ead.nil?
       ead_title = get_collection_from_pid(pid, ead_title)
-      clean_ead_title = Titleize.titleize(ead_title)
-      Solrizer.insert_field(solr_doc, 'collection', clean_ead_title, :facetable) 
-      Solrizer.insert_field(solr_doc, 'collection_title', clean_ead_title, :stored_searchable) 
+
+      unless ead_title.nil?
+        clean_ead_title = Titleize.titleize(ead_title)
+        Solrizer.insert_field(solr_doc, 'collection', clean_ead_title, :facetable)
+        Solrizer.insert_field(solr_doc, 'collection_title', clean_ead_title, :stored_searchable)
+      end
 
       # TODO Facetable and unstemmed_searchable might be equivalent
       Solrizer.insert_field(solr_doc, 'collection_id', ead_id, :facetable) 
