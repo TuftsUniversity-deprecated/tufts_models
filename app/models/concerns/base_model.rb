@@ -58,20 +58,20 @@ module BaseModel
     has_metadata "FILE-META", type: TuftsFileMeta
 
     has_attributes :identifier, :creator, :description, :publisher, :source,
-                   :date_created, :date_issued, :date_available, :type,
+                   :date_created, :date, :date_issued, :date_available, :type,
                    :format, :extent,  :persname, :corpname, :geogname,
                    :subject, :genre, :rights, :bibliographic_citation,
-                   :temporal, :funder, :resolution, :bitdepth,
+                   :temporal, :funder, :resolution, :bitdepth, :isPartOf,
                    :colorspace, :filesize, datastream: 'DCA-META', multiple: true
 
     has_attributes :title, datastream: 'DCA-META', multiple: false
 
     has_attributes :alternative, :contributor, :abstract, :toc,
-                   :date, :date_copyrighted, :date_submitted,
+                   :date_deprecated, :date_copyrighted, :date_submitted,
                    :date_accepted, :date_modified, :language, :medium,
                    :provenance, :access_rights, :rights_holder,
                    :license, :replaces, :isReplacedBy, :hasFormat,
-                   :isFormatOf, :hasPart, :isPartOf, :accrualPolicy,
+                   :isFormatOf, :hasPart, :isPartOf_deprecated, :accrualPolicy,
                    :audience, :references, :spatial,
                    datastream: 'DC-DETAIL-META', multiple: true
 

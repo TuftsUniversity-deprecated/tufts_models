@@ -12,6 +12,7 @@ class TuftsDcaMeta < ActiveFedora::OmDatastream
            "xmlns:dca_dc" => "http://nils.lib.tufts.edu/dca_dc/",
            "xmlns:dcadesc" => "http://nils.lib.tufts.edu/dcadesc/",
            "xmlns:dcatech" => "http://nils.lib.tufts.edu/dcatech/",
+           "xmlns:dcterms" => "http://purl.org/d/terms/",
            "xmlns:xlink" => "http://www.w3.org/1999/xlink")
     t.title(:namespace_prefix => "dc", :index_as => [:stored_searchable, :sortable])
     t.creator(:namespace_prefix => "dc", :index_as => [:stored_searchable, :sortable])
@@ -38,6 +39,8 @@ class TuftsDcaMeta < ActiveFedora::OmDatastream
     t.bitdepth(:namespace_prefix => "dcatech", :index_as => :stored_searchable)
     t.colorspace(:namespace_prefix => "dcatech", :index_as => :stored_searchable)
     t.filesize(:namespace_prefix => "dcatech", :index_as => :stored_searchable)
+    t.date(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Date")
+    t.isPartOf(namespace_prefix: "dcterms", path: "isPartOf", index_as: :stored_searchable, label: "Is Part Of")
   end
 
   # Generates an empty Mods Article (used when you call ModsArticle.new without passing in existing xml)
@@ -51,6 +54,7 @@ class TuftsDcaMeta < ActiveFedora::OmDatastream
              "xmlns:dc" => "http://purl.org/dc/elements/1.1/",
              "xmlns:dcadesc" => "http://nils.lib.tufts.edu/dcadesc/",
              "xmlns:dcatech" => "http://nils.lib.tufts.edu/dcatech/",
+             "xmlns:dcterms" => "http://purl.org/d/terms/",
              "xmlns:xlink" => "http://www.w3.org/1999/xlink")
     end
 

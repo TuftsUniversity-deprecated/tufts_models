@@ -15,7 +15,7 @@ class TuftsDcDetailed < ActiveFedora::OmDatastream
     t.contributor(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Contributor")
     t.abstract(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Abstract")
     t.toc(namespace_prefix: "dcterms", path: "tableOfContents", index_as: :stored_searchable, label: "Table of Contents")
-    t.date(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Date")
+    t.date_deprecated(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Date")
     t.date_created(namespace_prefix: 'dcterms', path: "created", index_as: :displayable, label: "Date Created")
     t.date_copyrighted(namespace_prefix: "dcterms", path: "dateCopyrighted", index_as: :stored_searchable, label: "Date Copyrighted")
     t.date_submitted(namespace_prefix: "dcterms", path: "dateSubmitted", index_as: :stored_searchable, label: "Date Submitted")
@@ -24,18 +24,13 @@ class TuftsDcDetailed < ActiveFedora::OmDatastream
     t.date_available(namespace_prefix: 'dcterms', path: "available", index_as: :stored_searchable, label: "Date Available")
     t.date_modified(namespace_prefix: "dcterms", path: "modified", index_as: :stored_searchable, label: "Date Modified")
     t.language(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Language")
-
     t.medium(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Medium")
-
     t.persname(namespace_prefix: "dcadesc", path: "persname", index_as: :stored_searchable, label: "Person Name")
     t.corpname(namespace_prefix: "dcadesc", path: "corpname", index_as: :stored_searchable, label: "Corporate Name")
     t.geogname(namespace_prefix: "dcadesc", path: "geogname", index_as: :stored_searchable, label: "Geographic Name")
-
     t.subject(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Subject")
     t.genre(namespace_prefix: "dcadesc", index_as: :stored_searchable, label: "DCA Genre")
-
     t.provenance(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Provenance")
-
     t.access_rights(namespace_prefix: "dcterms", path: "accessRights", index_as: :stored_searchable, label: "Access Rights")
     t.rights_holder(namespace_prefix: "dcterms", path: "rightsHolder", index_as: :stored_searchable, label: "Rights Holder")
     t.license(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "License")
@@ -44,7 +39,7 @@ class TuftsDcDetailed < ActiveFedora::OmDatastream
     t.hasFormat(namespace_prefix: "dcterms", path: "hasFormat", index_as: :stored_searchable, label: "Has Format")
     t.isFormatOf(namespace_prefix: "dcterms", path: "isFormatOf", index_as: :stored_searchable, label: "Is Format Of")
     t.hasPart(namespace_prefix: "dcterms", path: "hasPart", index_as: :stored_searchable, label: "Has Part")
-    t.isPartOf(namespace_prefix: "dcterms", path: "isPartOf", index_as: :stored_searchable, label: "Is Part Of")
+    t.isPartOf_deprecated(namespace_prefix: "dcterms", path: "isPartOf", index_as: :stored_searchable, label: "Is Part Of")
     t.accrualPolicy(namespace_prefix: "dcterms", path: "accrualPolicy", index_as: :stored_searchable, label: "Accrual Policy")
     t.audience(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "Audience")
     t.references(namespace_prefix: "dcterms", index_as: :stored_searchable, label: "References")
