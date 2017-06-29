@@ -12,7 +12,7 @@ class TuftsDcaMeta < ActiveFedora::OmDatastream
            "xmlns:dca_dc" => "http://nils.lib.tufts.edu/dca_dc/",
            "xmlns:dcadesc" => "http://nils.lib.tufts.edu/dcadesc/",
            "xmlns:dcatech" => "http://nils.lib.tufts.edu/dcatech/",
-           "xmlns:dcterms" => "http://purl.org/d/terms/",
+           "xmlns:dcterms" => "http://purl.org/dc/terms/",
            "xmlns:xlink" => "http://www.w3.org/1999/xlink")
     t.title(:namespace_prefix => "dc", :index_as => [:stored_searchable, :sortable])
     t.creator(:namespace_prefix => "dc", :index_as => [:stored_searchable, :sortable])
@@ -54,7 +54,7 @@ class TuftsDcaMeta < ActiveFedora::OmDatastream
              "xmlns:dc" => "http://purl.org/dc/elements/1.1/",
              "xmlns:dcadesc" => "http://nils.lib.tufts.edu/dcadesc/",
              "xmlns:dcatech" => "http://nils.lib.tufts.edu/dcatech/",
-             "xmlns:dcterms" => "http://purl.org/d/terms/",
+             "xmlns:dcterms" => "http://purl.org/dc/terms/",
              "xmlns:xlink" => "http://www.w3.org/1999/xlink")
     end
 
@@ -67,6 +67,7 @@ class TuftsDcaMeta < ActiveFedora::OmDatastream
 
   def term_values_append(opts={})
     ensure_dc_namespace_exists!
+    ensure_dcterms_namespace_exists!
     super
   end
 
@@ -100,6 +101,12 @@ class TuftsDcaMeta < ActiveFedora::OmDatastream
     def ensure_dc_namespace_exists!
       unless ng_xml.namespaces.key? 'xmlns:dc'
         ng_xml.root.add_namespace_definition('dc', DC_ELEMENTS)
+      end
+    end
+
+    def ensure_dcterms_namespace_exists!
+      unless ng_xml.namespaces.key? 'xmlns:dcterms'
+        ng_xml.root.add_namespace_definition('dcterms', 'http://purl.org/dc/terms/')
       end
     end
 end

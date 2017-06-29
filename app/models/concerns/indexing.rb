@@ -76,7 +76,12 @@ module Indexing
 
   def titleize_and_index_single(solr_doc, field_prefix, name, index_type)
     if name.present? &&  !name.downcase.include?('unknown')
-      clean_name = Titleize.titleize(name)
+      begin
+        clean_name = Titleize.titleize(name)
+      rescue TypeError
+        #titelize occasionally hits an internal nil
+        clean_name = name
+      end
       Solrizer.insert_field(solr_doc, field_prefix, clean_name, index_type)
     end
   end
