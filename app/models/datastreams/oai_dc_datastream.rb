@@ -23,10 +23,15 @@ class OaiDcDatastream < ActiveFedora::OmDatastream
     t.coverage(:namespace_prefix => "dc", :index_as => :stored_searchable)
     t.rights(:namespace_prefix => "dc", :index_as => :stored_searchable)
   end
+  
+   # This is the prefix for all of the generated solr fields
+  def prefix
+    'oai_dc' 
+  end
 
   def self.xml_template
     builder = Nokogiri::XML::Builder.new do |xml|
-      xml.dc(:version => "0.1",
+      xml.oai_dc(:version => "0.1",
              "xmlns:oai_dc" => "http://www.openarchives.org/OAI/2.0/oai_dc/",
              "xmlns:dc" => "http://purl.org/dc/elements/1.1/",
              "xmlns:xsi" => "http://www.w3.org/2001/XMLSchema-instance",
