@@ -50,7 +50,7 @@ module BaseModel
       self.datastreams['OAI-DC'].identifier = self.pid
       self.datastreams['OAI-DC'].title = self.title
       self.datastreams['OAI-DC'].creator = self.creator
-      self.datastreams['OAI-DC'].subject = self.subject + self.persname, self.corpname, self.geogname
+      self.datastreams['OAI-DC'].subject = self.subject + self.persname + self.corpname + self.geogname
       self.datastreams['OAI-DC'].description = self.description
       self.datastreams['OAI-DC'].publisher = self.publisher
       self.datastreams['OAI-DC'].date = self.date
