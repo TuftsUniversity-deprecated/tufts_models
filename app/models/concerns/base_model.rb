@@ -17,6 +17,7 @@ module BaseModel
     has_metadata "DCA-META", type: TuftsDcaMeta
     has_metadata "DC-DETAIL-META", type: TuftsDcDetailed
     has_metadata "DCA-ADMIN", type: DcaAdmin
+    has_metadata "OAI-DC", type: OaiDcDatastream
 
     attr_accessor :working_user, :publishing, :unpublishing, :reverting, :exporting
 
@@ -35,6 +36,7 @@ module BaseModel
     end
 
     before_save :update_audit_log
+    before_save :update_oai_dc
 
     def update_edited_at?
       !(reverting || exporting)
@@ -42,6 +44,21 @@ module BaseModel
 
     def self.valid_pid?(pid)
       pid.match(/^([A-Za-z0-9]|-|\.)+:(([A-Za-z0-9])|-|\.|~|_|(%[0-9A-F]{2}))+$/)
+    end
+
+    def update_oai_dc
+      self.datastreams['OAI-DC'].identifier = self.pid
+      self.datastreams['OAI-DC'].title = self.title
+      self.datastreams['OAI-DC'].creator = self.creator
+      self.datastreams['OAI-DC'].subject = self.subject + self.persname + self.corpname + self.geogname
+      self.datastreams['OAI-DC'].description = self.description
+      self.datastreams['OAI-DC'].publisher = self.publisher.include?("Tisch") ? ["Tisch Library"] : self.publisher
+      self.datastreams['OAI-DC'].date = self.date
+      self.datastreams['OAI-DC'].type = self.type
+      self.datastreams['OAI-DC'].format = self.format
+      self.datastreams['OAI-DC'].source = self.source
+      self.datastreams['OAI-DC'].relation = self.isPartOf
+      self.datastreams['OAI-DC'].rights = self.rights
     end
 
     def update_audit_log
