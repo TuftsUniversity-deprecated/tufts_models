@@ -52,7 +52,7 @@ module BaseModel
       self.datastreams['OAI-DC'].creator = self.creator
       self.datastreams['OAI-DC'].subject = self.subject + self.persname + self.corpname + self.geogname
       self.datastreams['OAI-DC'].description = self.description
-      self.datastreams['OAI-DC'].publisher = self.publisher
+      self.datastreams['OAI-DC'].publisher = self.publisher.include?("Tisch") ? ["Tisch Library"] : self.publisher
       self.datastreams['OAI-DC'].date = self.date
       self.datastreams['OAI-DC'].type = self.type
       self.datastreams['OAI-DC'].format = self.format
