@@ -271,7 +271,7 @@ module Indexing
         date = date.strip
 
         # trim trailing period as that causes problem for chronic on many dates
-        date = date.first(-1) if date.rindex('.') + 1 == date.length
+        date = date.first(-1) if !date.rindex('.').nil?  && date.rindex('.') + 1 == date.length
 
         if date.length() == 4
           date += "-01-01"
