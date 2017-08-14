@@ -6,7 +6,7 @@ class TuftsPdf < TuftsBase
 
   has_file_datastream PDF_CONTENT_DS, control_group: 'E', versionable: false, default: true
   has_file_datastream TRANSFER_BINARY_DS, control_group: 'E', versionable: false
-
+  has_file_datastream 'THUMBNAIL', control_group: 'E', versionable: false
   include WithPageImages
 
   def valid_type_for_datastream?(dsid, mime_type)
@@ -33,6 +33,7 @@ class TuftsPdf < TuftsBase
 
         derivative_settings = setup_derivative_environment
 
+        create_pdf_thumbnail(derivative_settings)
         create_page_turner_json(derivative_settings)
         create_readme(derivative_settings)
         create_pdf_page_images(derivative_settings)
@@ -56,9 +57,20 @@ class TuftsPdf < TuftsBase
 
   end
 
+  def create_pdf_thumbnail(derivative_settings)
+    page_number = 'thumb'
+    filename_base = PidUtils.stripped_pid(pid)
+    pdf_pages = derivative_settings[:pdf]
+    # png_path = local_path_for_png(page_number, derivative_settings[:derivatives_path], filename_base)
+    path_service = LocalPathService.new(self, 'THUMBNAIL.png')
+    thumb = pdf_pages[0].resize_to_fit(120, 120)
+    path_service.make_directory
+    thumb.write(path_service.local_path)
+    DerivativeAttachmentService.attach(self, 'THUMBNAIL', path_service.remote_url, 'image/png') if (thumb)
+    thumb.destroy! # this is important - without it RMagick can occasionally be left in a state that causes subsequent failures
+  end
 
   private
-
 
   def setup_derivative_environment
     derivative_settings = Hash.new
@@ -97,6 +109,7 @@ class TuftsPdf < TuftsBase
     FileUtils.mkdir_p(derivatives_path) #returns list
     derivatives_path
   end
+
 
 
   def create_pdf_page_images(derivative_settings)

@@ -15,6 +15,12 @@ describe TuftsPdf do
     subject { described_class.default_datastream }
     it { is_expected.to eq 'Archival.pdf' }
   end
+ 
+  describe "external_datastreams" do
+    let(:pdf) { described_class.new }
+    subject { pdf.external_datastreams.keys }
+    it { is_expected.to include('THUMBNAIL') }
+  end
 
   describe "attributes" do
     it "should have createdby fields" do
