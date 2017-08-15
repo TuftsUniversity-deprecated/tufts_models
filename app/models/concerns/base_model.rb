@@ -84,11 +84,11 @@ module BaseModel
     has_attributes :title, datastream: 'DCA-META', multiple: false
 
     has_attributes :alternative, :contributor, :abstract, :toc,
-                   :date_deprecated, :date_copyrighted, :date_submitted,
+                   :date_copyrighted, :date_submitted,
                    :date_accepted, :date_modified, :language, :medium,
                    :provenance, :access_rights, :rights_holder,
                    :license, :replaces, :isReplacedBy, :hasFormat,
-                   :isFormatOf, :hasPart, :isPartOf_deprecated, :accrualPolicy,
+                   :isFormatOf, :hasPart, :accrualPolicy,
                    :audience, :references, :spatial,
                    datastream: 'DC-DETAIL-META', multiple: true
 
