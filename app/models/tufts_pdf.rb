@@ -57,6 +57,34 @@ class TuftsPdf < TuftsBase
 
   end
 
+  def create_thumb_backport
+    begin
+      if datastreams.include? PDF_CONTENT_DS
+        DERIVATIVES_LOGGER.info(DateTime.parse(Time.now.to_s).strftime('%A %B %-d, %Y %I:%M:%S %p'))
+
+        derivative_settings = setup_derivative_environment
+
+        create_pdf_thumbnail(derivative_settings)
+      else
+        DERIVATIVES_LOGGER.error("Can't create PDF derivatives for #{pid}.  Object does not have an Archival.pdf datastream.")
+      end
+
+    rescue Magick::ImageMagickError => ex
+      DERIVATIVES_LOGGER.error("Can't create PDF derivatives for #{pid}.  ImageMagick error: #{ex.message}")
+      raise(ex)
+    rescue SystemCallError => ex
+      DERIVATIVES_LOGGER.error("Can't create PDF derivatives for #{pid}.  I/O error: #{ex.message}")
+      raise(ex)
+    rescue StandardError => ex
+      DERIVATIVES_LOGGER.error("Can't create PDF derivatives for #{pid}.  error: #{ex.message}")
+      raise(ex)
+    ensure
+      DERIVATIVES_LOGGER.info(DateTime.parse(Time.now.to_s).strftime('%A %B %-d, %Y %I:%M:%S %p'))
+      DERIVATIVES_LOGGER.info('') # blank line between events
+    end
+
+  end
+
   def create_pdf_thumbnail(derivative_settings)
     page_number = 'thumb'
     filename_base = PidUtils.stripped_pid(pid)
